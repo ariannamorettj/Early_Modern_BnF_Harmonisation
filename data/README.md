@@ -272,7 +272,7 @@ generates:
 In these two files, the hononyms linked with different identifiers
 The json shows also the other metadata related to the entity, so to understand whether it might me an hononym or a not reconciliated duplicate
 Go to input dataset for more specific analysis (actors_matched_names and actors_matched_ids do not preserve the links between the fields of instances with the same name / id)
-Is there a way to see the entity online without downloading the rdf file?
+Is there a way to see the entity online without downloading the rdf file? Yes, using the catalogue and replacing in this way : http://data.bnf.fr/ark:/12148/cb352060674#about --> https://catalogue.bnf.fr/ark:/12148/cb352060674
 
 ---
 
