@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "bnf-new-dataset-analysis"
+version = "0.1.0"
+description = ""
+authors = ["amorettij <209892264+bombedceramics@users.noreply.github.com>"]
+readme = "README.md"
+packages = [{include = "bnf_new_dataset_analysis"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
