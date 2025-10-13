@@ -44,7 +44,7 @@ FILTER(?year_first = ",as.character(year),").
 }")  
 results <- SPARQL(url="https://data.bnf.fr/sparql",query=query)
 data_table <- results$results
-write.csv(data_table,paste0("edition_raw_data/raw_edition_data_for_the_year_",as.character(year),".csv"),row.names = FALSE)
+write.csv(data_table,paste0("edition_raw_data_by_year/raw_edition_data_for_the_year_",as.character(year),".csv"),row.names = FALSE)
 Sys.sleep(5+runif(n=1)*5) 
 rm(data_table)
 gc()
@@ -59,7 +59,7 @@ for(i in 1454:1799){
 }
 
 # Compile the data into a single data frame
-list_edition_data <- list.files("edition_raw_data/",full.names = TRUE)
+list_edition_data <- list.files("edition_raw_data_by_year/",full.names = TRUE)
 list_edition_data_combined_data <- do.call(rbind,lapply(list_edition_data,read.csv)) 
 
 # Save the data frame
