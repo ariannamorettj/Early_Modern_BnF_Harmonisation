@@ -76,10 +76,13 @@ bnf_raw_edition_data_unique_places <- bnf_raw_edition_data_unique_places %>%
 # Get the unique harmonised values
 bnf_raw_edition_data_unique_places_harmonised <- bnf_raw_edition_data_unique_places %>% count(city_harmonised,wt=n) %>% arrange(-n)
 
+
+# For documentation: Publication place data matched between the HPB and TGN was used to create a raw (e.g. prior to manual curation version) of the harmonisation
+# table for publication place information, the silenced code documents this.
+
 #bnf_raw_edition_data_unique_places_harmonised_mapped_to_tgn_ids <- bnf_raw_edition_data_unique_places_harmonised %>%
 #left_join(publication_place_strings_to_tgn_ids) %>%
 #left_join(tgn_ids_to_tgn_metadata)  
-
 #bnf_raw_edition_data_unique_places_harmonised_mapped_to_tgn_ids_top_2000 <- bnf_raw_edition_data_unique_places_harmonised_mapped_to_tgn_ids %>% arrange(-n) %>% distinct(city_harmonised,tgn_id,publication_place,publication_country,longitude,latitude) %>% .[1:2000,]
 #write.csv(bnf_raw_edition_data_unique_places_harmonised_mapped_to_tgn_ids_top_2000,"data/data_work/bnf_place_name_harmonisation_table.csv",row.names = FALSE)
 
