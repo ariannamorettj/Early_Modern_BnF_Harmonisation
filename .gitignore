@@ -1,3 +1,6 @@
+data/bnf_edition_data/edition_raw_data
+.idea/
+*/.DS_Store
 data/actors_matched_ids/actors_aut.json
 data/actors_matched_ids/actors_ill.json
 data/actors_matched_ids/actors_trl.json
