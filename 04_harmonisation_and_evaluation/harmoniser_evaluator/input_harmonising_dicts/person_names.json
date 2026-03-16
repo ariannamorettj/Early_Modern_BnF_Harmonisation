@@ -1,0 +1,83 @@
+{
+  "field": "person_name",
+  "warning": [
+    [
+      "initials only",
+      "^(?:[A-Za-z]{1,2}\\.?)(?:\\s+[A-Za-z]{1,2}\\.?)+$"
+    ],
+    [
+      "dotted initials only",
+      "^(?:[A-Za-z]{1,2}\\.)+(?:\\s+[A-Za-z]{1,2}\\.)*$"
+    ],
+    [
+      "undefined number of undeciphered characters",
+      "\\.{3,}"
+    ],
+    [
+      "possibly missing name or surname",
+      "^\\S+$"
+    ],
+    [
+      "possibly contains multiple values",
+      ".*\\b(y|and|et|e|und)\\b.*"
+    ],
+    [
+      "specific number of undeciphered characters",
+      "\\*{2,}"
+    ],
+    [
+      "probably contains alternative names",
+      ".*(\\balias\\b|plus connu|dit il|dit le|dit la|detto il|detto lo|detto la|detta la|called\\b|known as|also known as|surnommé|surnommee|llamado|llamada|conocido como|conocida como|apodado|apodada|genannt|bekannt als).*"
+    ],
+    [
+      "possibly contains an article (in the place of or in addition to the name)",
+      ".*\\b(le|la|les|l'|il|lo|gli|i|the|el|los|las|der|die|das)\\b$"
+    ],
+    [
+      "possibly contains a preposition (in the place of or in addition to the name)",
+      ".*\\b(de|d|d'|du|des|di|del|della|dei|degli|da|of|from|van|von|de la|de los|de las|of the)\\b$"
+    ],
+    [
+      "possible abbreviation",
+      "^[A-Za-z]{2,3}\\.$"
+    ],
+    [
+      "contain possible personal title or role",
+      ".*\\b(veuve|vve|seigneur|sieur|prince|chevalier|comte|comtesse|duque|duc|cardinal|officier|officer|colonel|dame|madame|mme|abbé|abbe|abate|abbot|herr|frau|rey|reina|king|queen)\\b.*"
+    ],
+    [
+      "possibly contains only part of multiple values",
+      ".*\\b(e|and|et|y|und)\\b$"
+    ],
+    [
+      "possibly contains a Roman numeral (in the place of or in addition to the name)",
+      ".*\\b[IVXLCDM]+\\b$"
+    ],
+    [
+      "contains also dotted initials",
+      ".*(?:[A-Za-z]\\.){2,}.*\\b[A-Za-z]{2,}\\b.*"
+    ]
+  ],
+  "error": [
+    [
+      "missing value",
+      "^\\*{3}$"
+    ],
+    [
+      "contains number (non-Roman)",
+      "\\d"
+    ],
+    [
+      "contains non-alphanumerical characters (excluding * and .)",
+      "[^\\w\\s\\*\\.]"
+    ],
+    [
+      "contains null marker",
+      "\\b(null|nan)\\b"
+    ],
+    [
+      "contains brackets or surrounding separators",
+      "[\\[\\]\\(\\)\\{\\}\"<>]"
+    ]
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "filter": {
+    "record_type": "http://purl.org/dc/dcmitype/Text"
+  },
+  "counts": {
+    "editions_total": 465542,
+    "expressions_total": 465542,
+    "editions_with_multiple_expressions": 0,
+    "editions_without_expression": 0,
+    "expressions_without_edition": 0
+  },
+  "editions_with_multiple_expressions": {},
+  "editions_without_expression": [],
+  "expressions_without_edition": [],
+  "samples": {
+    "editions_with_multiple_expressions": [],
+    "editions_without_expression": [],
+    "expressions_without_edition": []
+  }
+}
