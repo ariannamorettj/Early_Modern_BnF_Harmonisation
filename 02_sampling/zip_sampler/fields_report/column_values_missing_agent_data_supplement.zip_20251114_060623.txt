@@ -1,0 +1,8839 @@
+COLUMN VALUE REPORT
+-------------------
+ZIP: data/bnf_agents_data_gap_filling/missing_agent_data_supplement.zip
+Columns: actor_last_name, entity_type
+
+Column: actor_last_name
+Unique values found: 8825
+'Abd al Razzāk Samarqandt
+***
+0+NaNi
+:***:+étoiles 03+
+[E er tai]
+A. D. T.
+A. G.
+Aagaard
+Abarca
+Abassal
+Abbadie
+Abbati
+Abbinck
+Abbondanti
+Abbé de T***
+Abbé J. P. T. L. S.
+Abd Al Razzak ibn Ishak
+Abegg
+Abele von Lilienberg
+Abot de Bazinghen
+Abou Ali Yahya ibn Isa ibn Djazla
+Aboulafia
+Abraham ibn ʿAqraʼ
+Abraham Porto
+Abreu
+Abrigeon
+Abrusci
+Abulfeda
+Acami
+Acciajuoli
+Accolito
+Acerbi
+Acoluth
+Adair
+Adam
+Adami
+Adams
+Addimari
+Addington
+Adelungk
+Adler
+Adolph
+Adolphi
+Adolphus
+Aegidius a Praesentatione
+Aeltius
+Affeln
+Affenschwantzius
+Affinati d Acuto
+Afforty
+Agent de change
+Agerius
+Agincourt
+Agnelli
+Agnes
+Agolla
+Agostini
+Agoult
+Agrain
+Agrammat
+Agretti
+Agricola
+Aguilar
+Aguilera
+Aguilón
+Ahnert
+Ai na ju shi
+Aiacius
+Aichelius
+Aide-de-camp de la Garde nationale
+Aiguillon
+Ailé
+Aimo
+Airoldi
+Aisy
+Aiton
+Akazome Emon
+Akera
+Akerland
+Akersloot
+Aktifbürger der zehnten Sektion Strassburgs
+Alaigre
+Alain
+Alais
+Alais de Beaulieu
+Alard
+Alaux
+Albanese
+Albano
+Albant
+Alberda
+Alberghini
+Albert
+Albertani
+Alberti
+Albertinus
+Albertonio
+Albicini
+Albinus
+Albizzi
+Albrecht
+Albrizzi
+Albéric de Trois-Fontaines
+Alcindo Isaurense
+Alcoforado
+Alcolea
+Alcázar
+Alderisio
+Aldoinus
+Aldáma y Guevára
+Alegiani
+Alegre
+Aleixo
+Alessandri
+Alessi
+Alethinus
+Alethès
+Alexander
+Alexandre
+Alexandre de Ste Thérèse
+Alfieri
+Alfonso
+Alfred of Beverley
+Ali Casza
+Ali ibn Abou Bakr
+Aliin
+Aliprandi
+Alix
+Allaire
+Allais
+Allan
+Allard
+Allendorp
+Alliès
+Allmers
+Alloza
+Allwoerden
+Alléon de Varcourt
+Alphonse De Chartres
+Alruz
+Alsarius
+Alsem van Lingen
+Alsworth
+Alt de Tieffenthal
+Altano
+Altieri
+Altmann
+Altogradi
+Alton
+Alvarez de Socampo
+Alvarus
+Alveres de Castro
+Alypius
+Alziary
+Amalry
+Amalvi
+Amarasiṃha
+Amariton
+Amat de Palou y Pont
+Amateur de cet art
+Amato
+Amatore
+Ambiveri
+Ambly
+Ambrozi
+Amelonghi
+Amelung
+Amerista
+Ameron
+Amerval
+Amezua
+Amici
+Amico
+Amiet
+Amiroutzis
+Amorini
+Ana de San Bartolome
+Ancien militaire
+Ancillon
+Andelle
+Anderlini
+Anderson
+Andrade
+Andrault de Langeron Maulevrier
+Andreae
+Andreas
+Andreasy
+Andreozzi
+Andreucci
+Andrews
+Andriesz
+Andrieux
+Androphilus
+Andry
+André
+André de Marchiennes
+Anet
+Anfray
+Ange de Sainte-Claire
+Ange de Saulieu
+Angeli
+Angelis
+Angelita
+Angelo Maria della Croce
+Angely
+Angermann
+Ango
+Anguisciola
+Anguissola
+Anheuser
+Anne d Orange
+Annell
+Anonymus Belae regis notarius
+Anselme de Gembloux
+Anstis
+Antamori
+Anthemius
+Antinori
+Antoine
+Antoine de la Taverne
+Antoinette de Jésus
+Anton
+Antonil
+Antonin
+Antonio
+Antonio d Ascoli
+Antonio d Orvieto
+Antonio da Annunciaçam
+Antonio da Purificaçam
+Antonio de San Bernardino
+Antonio Juan Andreu de S Joseph
+Antonius
+Antonius a Matre Dei
+Antonus
+Antravanensis
+Antrechaus
+Apchier
+Aphonin
+Apompée de Tragopone
+Appert
+Apsinès
+Aquila
+Aquila de Santis
+Aquin
+Aquino
+Aranda
+Aratus
+Arbeltier
+Arbinet
+Arbussy
+Arbuthnot
+Arcangeli
+Archange
+Archangelo dall Epifania
+Arche
+Archer
+Archon
+Arco
+Ardenne
+Arderne
+Ardizzone
+Arellano
+Arenchilius
+Arend von Der Lieth
+Arenius
+Argananzio
+Argenteuil
+Argenti Leys
+Argentini
+Arias Davila Puertocarrero
+Ariste
+Armann
+Armenonville
+Armiger
+Arnaud
+Arnauld
+Arnavon
+Arnd
+Arnodin
+Arnold
+Arnoldi
+Arnot
+Arnoul
+Arnoulx
+Arntzenius
+Arnù
+Arondel
+Arontar
+Arquer
+Arrerac
+Arrien
+Arrighi
+Arrigoni
+Arrérac
+Arta
+Artale
+Arvinger
+Arzwuzerus
+Aréthuse de Radamante
+Ascevolini
+Ashby
+Ashwell
+Asilus
+Asp
+Aspais
+Aspley
+Asprucci
+Assner
+Asso
+Assonleville
+Assum
+Astorg
+Astori
+Astudillo
+Athalin
+Atienza,
+Atilla
+Atrocianus
+Atwood
+Aube
+Aubenton
+Aubert
+Aubry
+Aubusson
+Aucourt e Padilha
+Audebez de Moncaubet
+Audier-Massillon
+Audiffret
+Audigier
+Audirac
+Audoin
+Audouin de Chaignebrun
+Audrichi
+Auerbach
+Auger
+Augerius
+Augier
+Augustin
+Aula
+Aultruy
+Aumont
+Auricoste
+Aurivillius
+Aurran
+Austen
+Auteur du Tribut patriotique 
+Auteur moderne
+Auteur séquanais
+Autrepte
+Auvity
+Auvray
+Auxiron
+Avalle
+Avanne
+Avanzo
+Aveele
+Avelin
+Avelloni
+Averoldi
+Avesani
+Avila
+Aviler
+Avisard
+Avison
+Avoine
+Avully
+Aweiar
+Aylesbury
+Aymon
+Aymonnet
+Aynsa y de Iriarte
+Ayrail
+Ayrer
+Ayrerus
+Ayscu
+Aznar Cardona
+Azur
+Azzolini
+B. D. L.
+B.C.T. 
+Baader
+Baaz
+Babai
+Babaud
+Babeau
+Babel
+Babin
+Babinet
+Babington
+Babst
+Babynet
+Bacalan
+Baccanti
+Baccei
+Baccherius
+Bach
+Bachelier
+Bachelu
+Bacheracht
+Bachman
+Bachmayer
+Backmeister
+Badaraque
+Bader
+Badetto
+Badinus
+Badoer
+Badoulier
+Baeckner
+Baert
+Baffin
+Bagelaar
+Baglioni
+Bagnoli
+Bagou
+Bagshaw
+Baguer y Oliver
+Bahl
+Bahlmann
+Bailet
+Bailey
+Baillie
+Baillon
+Baillot
+Baillou
+Bailly
+Bailly de Bourcheny
+Baillère
+Baiwo
+Bajomez
+Baker
+Balbi
+Balboa
+Baldini
+Baldovini
+Baldrati
+Balducci
+Balemann
+Balestrieri
+Balladori
+Balland
+Ballarini
+Ballay
+Ballester
+Ballhorn
+Ballin
+Ballon
+Ballonffeaux
+Ballot
+Bally de Roison
+Balme
+Balsamo
+Balthasaris
+Bamberg
+Ban
+Banares
+Banchereau
+Bandemer
+Bandini
+Bang
+Bannefroy
+Banyer
+Banère
+Baono
+Baragnes
+Baraguey d'Hilliers
+Barante
+Barateri
+Barattieri
+Barbanti
+Barbarigo
+Barbaro
+Barbat Du Closel
+Barbentane
+Barberio
+Barberousse
+Barbier
+Barbieri
+Barbo
+Barbon
+Barbosa Homem
+Barbuo
+Barbuot
+Barbès
+Barca
+Barciet
+Barckhausen
+Barco
+Bardi
+Bardili
+Bardin
+Bardon
+Bardoux
+Barekaus
+Bareth
+Barford
+Bargeton
+Barnard
+Barnavophile
+Barny
+Baron
+Baroncini
+Baronio
+Barral
+Barrali
+Barret
+Barreto da Veiga
+Barroeta y Angel
+Barrois
+Barron
+Barros
+Barrouso
+Barrow
+Barré
+Bartels
+Barteus
+Barth
+Barthelet
+Bartholdi
+Bartholin
+Bartholomaeus a Sancto Fausto
+Barthélemy
+Barthélemy d'Orbanne
+Bartoli
+Bartolini
+Baruch ibn Baruch
+Baryphonus
+Barzini
+Baréty
+Baselli
+Basili
+Basilović
+Basin
+Bassani
+Basset
+Bastardi
+Baster
+Basterot
+Bastide
+Bastion
+Basuel
+Bathurst
+Batista
+Batonnet
+Battistella
+Battisti
+Batut
+Baucher
+Baudart
+Baude
+Baude de La Cloy
+Baudemont
+Baudin
+Baudisson
+Baudoin
+Baudouin
+Baudrand
+Baudry
+Bauer
+Baugion
+Bauhof
+Baum
+Bauman
+Baumann
+Baumeister
+Baumgarten
+Baumgartner
+Baur
+Bauregard
+Bauriedel
+Bausch
+Bausser de Roquefort
+Baut de Rasmon
+Bauvin
+Bauwens
+Bauyn
+Baver
+Baverel
+Bavière
+Bayard
+Bayart
+Bayly
+Bayo
+Bayon
+Bazin
+Baños de Velasco y Azebedo
+Beati
+Beatson
+Beatty
+Beaudeux
+Beauharnais de la Grillaire
+Beaulieu
+Beaumel
+Beaumont
+Beaupoil
+Beaupré
+Beauregard
+Beauroche
+Beaussier
+Beautemps-Beaupré
+Beauteville
+Beauvais
+Beauvallet
+Beauvau
+Beauvau-Craon
+Beauvilliers
+Beberling
+Beccari
+Beccaria
+Beccaria Boschi
+Beck
+Becker
+Beckers
+Beckh
+Becuwe
+Bedford
+Bedigis
+Bedé
+Beer
+Beheim
+Behling
+Behr
+Behrends
+Behrenklau
+Behrens
+Beier
+Beilby
+Beilwitz
+Bel
+Belay
+Belcher
+Belderbusch
+Belhoste
+Belhumeur
+Belin
+Belin de Monterzi
+Bell
+Bellamy
+Bellanger
+Belle-Isle
+Bellegarde
+Bellejoeuse
+Bellement
+Bellenden
+Bellet
+Belli
+Bellin
+Bellinger
+Bellis
+Bellissen
+Belloc
+Bellocq d'Espechede
+Bellon
+Belloni
+Bellot
+Bellus
+Belluti
+Belluzzi
+Belo
+Belonei
+Beltran de Santa Rosa Maria
+Belvaleti
+Bembo
+Bembus
+Benavides
+Benci
+Benda
+Bendeler
+Bender
+Bene
+Benedetti
+Benedictus
+Benenatus
+Benescia
+Benetti
+Beneyto
+Benincasa
+Benjamin
+Bennelle de La Jaille
+Bennet
+Benninge
+Benningh Bodecheer
+Benoni
+Benson
+Benzel
+Benzelius
+Benzelstierna
+Bequius
+Berbis de Corcelles
+Berchelmann
+Berckenmayern
+Berckheim
+Beretta
+Berg
+Bergadís
+Bergamori
+Berge
+Berger
+Bergeras
+Bergeret
+Bergerus
+Bergh
+Berghauer
+Bergmann
+Bergsøe
+Beringer
+Beringius
+Berlaymont
+Berlenbac
+Berlichius
+Berlikom
+Berlin
+Berliquet
+Bernades de Castilho
+Bernaerts
+Bernard
+Bernard de Paris
+Bernard du Mont Cassin
+Bernardellus
+Bernardin
+Bernardini
+Bernardinus Eretinus
+Bernardo da Bibiena
+Bernardus
+Bernberch
+Bernd
+Berndt
+Bernelot
+Bernet de Boislorette
+Bernhard
+Bernhardi
+Berniera
+Bernigaud de Grange
+Bernou
+Bernowlly
+Bernstorff
+Beroa
+Beronicius
+Berr
+Berry
+Bertani
+Bertaud
+Berthe
+Bertheaume
+Berthelet
+Berthelson
+Berthier
+Bertholdus
+Berthon de Fromental
+Berthoud
+Berti
+Bertin
+Bertling
+Bertolini
+Berton
+Bertoni
+Bertonio
+Bertram
+Bertrand
+Bertuchius
+Berzetti
+Berzevicaeus
+Besard
+Bescher
+Besnard
+Besnier de Vallière
+Bessay
+Besse
+Bessel
+Besser
+Bessié
+Besson
+Betonius
+Betti
+Beugnol
+Beurhaus
+Beuriot
+Beusch
+Beusser
+Beust
+Beutherus
+Beutler
+Bevilacqua
+Bewert
+Beyckert
+Beyer
+Beyerlinck
+Beyerus
+Beylié
+Beyschlag
+Bianchi
+Bias Parent
+Bicaise
+Bicetti de Buttinoni
+Bicker
+Bickerstaf
+Bicknell
+Bidar
+Bieck
+Bielitz
+Bielke
+Biensack
+Bienvenu
+Bierbaum
+Bierkén
+Biermann
+Biessenius
+Bigeot
+Bignon
+Bigot de Sommesnil
+Bilderbeck
+Bilfinger
+Bilhon
+Billiard
+Billion
+Billon
+Bimius
+Binder
+Binet
+Binet de Montifroy
+Bingius
+Bini
+Binnava
+Binot
+Binsfeld
+Binur
+Biondi
+Birac
+Birago
+Bircken
+Birelli
+Biré
+Bisciola
+Bisson
+Biston
+Bittigius
+Bittmer
+Bizac
+Bizantio
+Bizot
+Bjarni Pálsson
+Bjerkén
+Blagrave
+Blain
+Blair
+Blanc
+Blanchard
+Blanckaert
+Blanckmüller
+Blancquebyl
+Blane
+Blanes
+Blanquet
+Blaquiere
+Blau
+Blaviel
+Blaw
+Blechschmid
+Blesendorff
+Bloch
+Blochwitz
+Blocq
+Bloeid de Kunst
+Bloemendal
+Blom
+Blommart
+Blondel
+Blondin
+Bloss
+Blotz
+Blower
+Blue
+Blum
+Blumenthal
+Blyenbergh
+Blüting
+Bobart
+Boblique
+Bobé
+Bocangel
+Boccalini
+Boccius
+Bock
+Bocquillon
+Bocris
+Boddens
+Boddingius
+Bode
+Bodife
+Bodineau
+Bodler
+Bodock
+Bodreau
+Boeckmann
+Boecler
+Boehme
+Boekel
+Boeler
+Boemus de Nova Domo
+Boenaert
+Boenneken
+Boers
+Boffat
+Boguslavius
+Bohet
+Bohlmann
+Bohme
+Bohn
+Bohnstedt
+Boije
+Boili
+Boillot
+Boily
+Boinod
+Boirel
+Bois d'Enemetz
+Boisbilly
+Boisneuf
+Boisrot de Lacour
+Boisrouvray
+Boissel de Monville
+Boissi
+Boissier
+Boistouchet d Ormenans
+Boivin de Blancmure
+Boix y Moliner
+Bokelmann
+Boldetti
+Boldini
+Boleslavius
+Bollhagen
+Bollmann
+Bolognini
+Bolt
+Bolten
+Bombelles
+Bombelli
+Bompar
+Bompard
+Bon
+Bonadies
+Bonafede
+Bonald
+Bonard
+Bonardy
+Bonaventura da Recanati
+Bonaventura di Ferrara
+Bonaventure d Amiens
+Bonbardi
+Bonde
+Bondonnet
+Bonefons
+Bonet de Treiches
+Bonfadini
+Bonicelli
+Bonier
+Bonifaccio
+Bonifazio
+Bonjour
+Bonna
+Bonnamy
+Bonnard
+Bonnardot
+Bonnay
+Bonneau
+Bonnefond
+Bonnellus
+Bonnemant
+Bonnet
+Bonnet de La Chassenitte
+Bonnichon
+Bonnier d'Alco
+Bonnin
+Bonomo
+Bononi
+Bontemps
+Bony
+Bootius
+Borassatti
+Borboni
+Borde
+Bordes
+Bordeu
+Bordier
+Bordonia
+Boretti
+Borg
+Borges Pacheco
+Borgesius
+Borgo
+Borgucci Verani
+Borja
+Borja y de Llinás
+Borlace
+Born
+Borneman
+Bornmann
+Borrel
+Borremans
+Borromeo
+Borsati
+Borsch
+Borzacchini
+Boré
+Borée
+Bosc d'Antic
+Boscamp Lasopolski
+Bosch
+Bossart
+Bossi
+Bothe
+Botteo
+Bottereau
+Bottiger
+Bottée
+Botvidi
+Bouchard
+Bouchenroeder
+Boucher
+Boucheron
+Bouchet
+Bouckart
+Boudan
+Boudens
+Boudet
+Boudewyns
+Boudin
+Boudin de Tromelin
+Boudon
+Boudot
+Bouginé
+Bouguer
+Bouhier de l'Ecluse
+Bouillaud
+Boulainvilliers
+Boulanger
+Boulay
+Boulen
+Boulenger
+Boullongne
+Boulée
+Bouman
+Bouquet
+Bouquin
+Bouquié
+Bourbon
+Bourcel
+Bourdelin
+Bourdois
+Bourdoise
+Bourgault
+Bourgault-Ducoudray
+Bourgeois
+Bourgius
+Bourgogne
+Bourgoin
+Bourlat
+Bourlier
+Bournon
+Bourrienne
+Bourtoucoue
+Bousquet
+Boussard
+Boussemart
+Boussernant
+Bouteiller
+Boutery
+Boutillier
+Boutin
+Boutroux de Montcresson
+Bouttats
+Bouvet
+Bouvignes
+Bouzonnet Stella
+Bouëtte de Blémur
+Bovillon
+Bovio
+Bowens
+Boxbarter
+Boyer
+Boyer Des Roches
+Boyl
+Boyteux
+Boyve
+Bozy
+Bozza
+Boüin
+Brabant
+Bracceschi
+Bracciolini
+Brachoud
+Bradford
+Brady
+Bragelongne
+Brahl
+Braibanzi
+Braithwaite
+Bramigk
+Bramston
+Branda
+Brander
+Brandmüller
+Brandolese
+Brandolini
+Brandt
+Branges
+Brantius
+Brants
+Braschi
+Brault
+Braun
+Bray
+Brebis
+Brechtel
+Brechtius
+Bredefeld
+Bredenkamp
+Brehm
+Bremer
+Bremond
+Brenart
+Brendel
+Brenner
+Brent
+Brescianini
+Bresler
+Bressani
+Bressillac
+Bresson
+Brest
+Bret
+Breteuil
+Breuché de la Croix
+Brevel
+Bricka
+Bricogne
+Bricq
+Bridel
+Briet
+Brijon
+Brillat
+Brinon
+Brisset
+Brissio
+Brisson
+Britaine
+Brito Alão
+Brito Freyre
+Broc
+Broch
+Brochmand
+Brocktorff
+Brodaeus
+Brodbeck
+Brodd
+Brodeau
+Brodhag
+Brodhagen
+Broen
+Broestedt
+Brome
+Bromley
+Bron
+Broniowski
+Bronzini
+Brooke
+Brookes
+Brorson
+Brossard
+Brotbeck
+Brouaut
+Broughton
+Broun
+Brousse
+Brouwer
+Brouzet
+Brown
+Bruce
+Bruch
+Bruchausen
+Bruckmannus
+Bruckner
+Brugmann
+Bruhier
+Bruix
+Brulart de Genlis
+Brulley
+Brulon de Saint Remy
+Brun
+Brunacci
+Brunand
+Bruneau
+Bruner
+Brunet
+Brunet de Brou
+Brunetus ab Arranquetio
+Bruni
+Bruning
+Brunn
+Brunner
+Brunnerus
+Bruno
+Brunon
+Brunswick-Wolfenbuttel
+Brusantini
+Brussel
+Brutto
+Bruun Candidus
+Bruxelles
+Bryon
+Brès de Vammale
+Bréguet
+Brémond
+Bréviande
+Bröning
+Brückner
+Brüggen
+Brüning
+Buccio
+Bucerus
+Buchanan of Auchmar
+Buchat
+Bucher
+Buchet
+Bucholtz
+Buck
+Bucquet
+Budaeus
+Buddeus
+Buersinck
+Bufalo
+Bufevent de Murynes
+Bugeol
+Bugnet
+Bugniatre
+Bugnot
+Buininck
+Buirette
+Buirette de Verrierres
+Buisson
+Bukky
+Bulgetti
+Bullaeus
+Bullenius
+Bullier
+Bullingbrooke
+Bullmann
+Bulteau de Franqueville
+Bunbury
+Bunce
+Buonaccorsi
+Buonfigli
+Buonsignori
+Buquet
+Buquoy
+Burbaum
+Burck
+Burckharth
+Burdett
+Burdo
+Bureau
+Burg
+Burgaver
+Burger
+Burgermeister
+Burges
+Burghardt
+Burgmann
+Burguillos
+Buri
+Burkart
+Burlaber
+Burlacy
+Burlamacchi
+Burr
+Burton
+Busch
+Buschere
+Busens
+Busius
+Bussani
+Busseto
+Bussey
+Bussy d'Amboise
+Butini
+Butot
+Butti
+Buttner
+Butzer
+Buvée
+Buxbaum
+Buxtorfius
+Buyn
+Buzio
+Byres
+Bähr
+Bång
+Bédigis
+Bégat
+Béguin
+Béhague
+Bénard
+Bérardier
+Béraud
+Böchel
+Bödiker
+Böhm
+Böse
+Böving
+Bülow
+Büning
+Bürlein
+Bütemeister
+Büterus
+Bütner
+Büttner
+C***
+C. B.
+C. F.
+C.d.v
+Cabanoeus
+Cabeljavius
+Cabotin
+Cabral
+Cabriao
+Caccini
+Cachin
+Cademann
+Cadroy
+Cadwallader
+Caene
+Caffe
+Caille
+Caillemer
+Cailleux
+Cairol
+Caissant
+Cajôn
+Cal
+Calado
+Calamnius
+Calanna
+Calcagni
+Calcagnini
+Caldaad
+Caldera de Heredia
+Calderon
+Calderon de La Barca
+Calderoni
+Calero de Valdibia
+Calignon
+Calino
+Calley
+Calli
+Callier
+Callé
+Calmann
+Calonges
+Calonne
+Calovius
+Calvel
+Calvet
+Calveton
+Calvin
+Calà
+Camarra
+Cambery
+Cambiac
+Cambier
+Cambis
+Cambolive
+Cambry
+Camerarij
+Camerarius
+Camerer
+Camilli
+Caminha
+Campaignolle
+Campana
+Campardon
+Campe
+Camphuysen
+Camphövener
+Campillo
+Campo
+Camus
+Camus Du Tertre
+Canale
+Canaye
+Candibus
+Canigonet
+Canngiesser
+Canonhiero
+Cantelius
+Canton
+Cantone
+Cao
+Capelain
+Capella
+Capelle
+Capellis
+Capello
+Capgrave
+Capilupi
+Capinaud
+Capmas
+Cappelli
+Cappellus
+Capra
+Capradosso
+Capricornus
+Caputi
+Caradeuc de Karanroy
+Caradeuc de Keranroy
+Carafa
+Caraffa
+Caraffe
+Caratus
+Caravita
+Carbasus
+Carben
+Carbon
+Carcani
+Cardella
+Cardelli
+Cardes
+Cardo
+Cardoso da Costa
+Cardozo
+Care
+Caretto
+Carger
+Carisius
+Carité
+Carlell
+Carles
+Carletti
+Carlile
+Carmeni
+Carmessonius
+Carmignano
+Carminati
+Carnac
+Carné
+Caron
+Carondas
+Caroto
+Carpentarius
+Carpenter
+Carpenterius
+Carpio
+Carpzov
+Carpzovius
+Carrança
+Carrarino
+Carrel
+Carrelier
+Carriau
+Carrier
+Carrione
+Carroll
+Carrère-Lagarière
+Carré
+Carstens
+Cartari
+Cartegni
+Cartheuser
+Carthew
+Cartier
+Cartier Saint René
+Cartin
+Carvalho
+Carvalho da Costa
+Carvalho de Ataide
+Carvin
+Caryl
+Casa Major
+Casa-Major
+Casal
+Casali
+Casati
+Casedepatz
+Casellas
+Casembroot
+Casimir
+Caspari
+Cassel
+Cassell
+Cassini
+Cassius
+Cassière
+Castagné
+Castain
+Castaldo
+Castaneyra
+Castel
+Castell
+Castellanos
+Castellet
+Castelli
+Castelmont
+Castiglione
+Castilho
+Castille
+Castillo
+Castillon
+Castries
+Castro
+Castro y Toledo
+Castrofilica
+Cataneo
+Catani
+Catania
+Catel
+Catelan
+Catelano
+Catellan
+Catho
+Catin Dubois
+Cattaneo
+Cauche
+Cautillo
+Cautru de La Montagne
+Cavaccia
+Cavailhon
+Cavalier
+Cavallari
+Cavalleriis
+Cavallini
+Cavander
+Cave
+Cavelier
+Cavendish
+Cavet
+Cayon-Liébault
+Cayro
+Cazalet
+Cazalis de Labarèze
+Cazaux
+Caïus
+Cecconi
+Cedercrona
+Ceilhes de Ross et de Fleury
+Celani
+Celer
+Celeste
+Cellarius
+Celli
+Ceneri
+Cephala
+Cephale
+Ceraldi
+Ceramius
+Cerfvol
+Cerisy
+Cermenate
+Cernitius
+Cerqueira
+Cerreti
+Cerreto
+Cerrius
+Certain
+Certaldo
+Cervoni
+Cesarini
+Cesius
+Cespedes
+Cezerac
+Chabert
+Chabert de La Charière
+Chabrey
+Chabrol Du Cluzaud
+Chaillou
+Chaix de Latuillère
+Chalemot
+Chalesme
+Challan
+Challier
+Challine
+Chalmot
+Chambel
+Chamberlaine
+Chambers
+Chambon
+Chambon de Montaux
+Chamborant
+Chamoux
+Champ-Veille
+Champagne
+Champdevaux
+Champeaux
+Champenois
+Champigny-Aubin
+Champin
+Chancerel
+Chandler
+Chandon
+Chantot
+Chantrelle
+Chanut
+Chapelle de Jumilhac de Sainte Jean
+Chapman
+Chaponnières
+Chapoteau
+Chappe
+Chappe de Ligny
+Chappelle de Jumilhac
+Chappuyzi
+Chardel
+Chardon
+Chariot
+Charisius
+Charlery
+Charles
+Charles de Saint Christophe
+Charles-Théodore
+Charmasson
+Charon
+Charpentier
+Charstadius
+Charvet
+Chasles
+Chastellain
+Chateau Villain
+Chatelain
+Chaumareix
+Chaumont
+Chauveau
+Chauvet
+Chauvet le jeune
+Chauvin
+Chauvin-Hersant
+Chaves
+Chavigni de Saint Martin
+Chaxel
+Chazal
+Chazot
+Chelidonius
+Chemnitz
+Chemnitzius
+Chen
+Chermont Du Poncet
+Chero
+Cherpignon
+Chery
+Chesneau
+Cheston
+Chetwood
+Chevalier
+Chevalier de Saint-Victor
+Chevanes
+Chevrier
+Cheynell
+Chiaramonti
+Chiarugi
+Chiavenna
+Chicaneau de Neuville
+Chicaneau de Neuvillé
+Chiesa
+Chillac
+Chiussa
+Chizzola
+Chladni
+Chofmeister
+Choiseul
+Chol
+Chomel Midon
+Chong xian
+Chopin
+Chopitel
+Chottard
+Christallnick
+Christian
+Christiani
+Christianopulus
+Chrovet
+Chrzanowski
+Chrétien de Macheco de Prémeaux
+Chépy
+Chéri
+Chéron
+Chézard de Matel
+Chüden
+Cianca
+Cibber
+Cicognini
+Cideville
+Cifolelli
+Cifuentes
+Cigala
+Cilienne
+Cilli
+Cimiloti
+Cini
+Cinino
+Cinqarbres
+Cirier
+Cismondi
+Cito
+Citoyen
+Citoyen de la Société populaire de la section de la Halle-aux-blés
+Citoyen du bataillon [de Sainte-Opportune]
+Citoyen inconnu
+Cittadella
+Cittadino modanese
+Civille
+Clain
+Claius
+Claparède
+Clappier
+Clarac
+Clark
+Clarke
+Clarus
+Classen
+Claude
+Clauder
+Clauderus
+Claus
+Clavel
+Claverie
+Clayton
+Cleaveland
+Cleffel
+Clemens
+Clemente
+Clereau
+Clergé
+Clermont-Tonnerre
+Cless
+Clifford
+Clinchamp
+Clingius
+Clisorius
+Clivier
+Clodius
+Cloquet
+Closio
+Cluyt
+Cluzel
+Clèves
+Clémenceau
+Clément de Ris
+CM. P.P.P.P.
+Cnoglerus
+Cnopf
+Cnyrim
+Cobb
+Cobenzl
+Coberus
+Cocciolla
+Cochet
+Cochin
+Cochlovius
+Cochois
+Cocker
+Cocq
+Cocquard de Saint-Cyr
+Cocquebert
+Cocus
+Codet
+Codorniu
+Coelho
+Coenen
+Cohen
+Coignard
+Coignet
+Coing
+Cointet
+Cointreau
+Coislin
+Coisy de Montigny
+Colantonii
+Colaud de La Salcette
+Colb
+Coldewey
+Coler
+Colerus
+Coleti
+Colin
+Colin de Cancey
+Colizzi
+Collado
+Colladus
+Collard
+Collart
+Colle
+Collet
+Colletet
+Collin
+Collinet
+Collini
+Collins
+Collombon
+Colom
+Colomb
+Colombano
+Colombo
+Colonna d'Istria
+Colosso
+Colson
+Comans
+Combe
+Combonus
+Combrès
+Combés
+Comes
+Como
+Compagnon
+Comte de S**Ent
+Concina
+Condren
+Condren Susanne
+Conen de Saint-Luc
+Conerding
+Conestable
+Coninck
+Connor
+Conrad von Lauterberg
+Conradi
+Constance
+Constans
+Constant
+Contades
+Contarenus
+Contarini
+Conte
+Conti
+Contreras
+Convers
+Conzié
+Cooke
+Cooper
+Cope
+Copio Sullam
+Coquebert de Montbret
+Coquillard
+Coquillot
+Corazzini
+Corbeius
+Corbel
+Corbmacher
+Corcelles Lahaye
+Cordeyro
+Cordier
+Coren
+Coret
+Cori
+Corker
+Cormier
+Cornand de la Crose
+Cornelio
+Cornelio da Bologna
+Cornement
+Corner
+Cornerius
+Cornet
+Cornette
+Cornide
+Cornuau
+Cornuaud
+Cornudet
+Cornwallis
+Corny
+Coroller
+Corpéchot
+Correa Castelblanco
+Correale
+Cortes
+Corthymius
+Corvinus
+Cosci
+Cosgrave
+Cosnac
+Cossetti
+Costa
+Costalta
+Costansò
+Coste
+Costius
+Costé
+Cothenius
+Cotrugli
+Cotta
+Cottenceau
+Cottereau
+Cottet
+Cottier Julian
+Cotton
+Coudert de Clozol
+Couet Du Vivier
+Cougy
+Couillerot des Charières
+Coulange
+Coullion
+Coulon
+Coupe Tête
+Courant
+Courcelle
+Courcelles
+Courchant
+Cournol
+Courtenay
+Courtin
+Courtivron
+Courtois
+Courtois de Lorinsy
+Cousturier
+Coutam
+Coutanceau
+Coutans
+Coutinho
+Couture
+Couvreur
+Couwenburg Du Bois
+Coward
+Cowe
+Cowper
+Cox
+Coye de Vaumalle
+Coysgarne
+Cozio
+Cradock
+Cragius
+Crain
+Cramer
+Cranz
+Crato
+Craveri
+Crawford
+Crawfurd
+Crede
+Creil
+Creitzradt
+Cremmens
+Cren
+Crepel
+Crescenzo
+Crespin de La Roche
+Cretet
+Crettus
+Creusent
+Crillon
+Crisso
+Croce
+Crochereau du Vivier
+Crochet
+Crochin
+Crocinowsky
+Cronein
+Crooke
+Croonenborgh
+Cros
+Crosnier
+Crotta
+Crouzeil
+Crowe
+Croyzé
+Cruden
+Crugot
+Cruiqius
+Cruse
+Crusius
+Crussol
+Cruz
+Cruzamont
+Crécy
+Crépin
+Crêpe
+Crüger
+Csilich
+Cuccagni
+Culant
+Culemann
+Cuminet
+Cumnène
+Cunelius
+Cunha
+Cunigati
+Cuningham
+Cunningham
+Cunovius
+Cunradi
+Curel Duverbois
+Curicke
+Curiel
+Curion
+Curmer
+Curre
+Currel
+Currie
+Curtius
+Curvo Semmedo
+Curzio
+Cusani
+Cusanus
+Cuspidius
+Cypraeus
+Cyprarius
+Cyprianus
+Cyrille
+Cyujyo Keiho
+Cyuwa
+Céard
+Cécile
+Céphale
+César
+Cöper
+D
+D C H L 
+D**
+D*** D***
+D. T. E. S.
+D.j.
+D.S.V.E.E.M.
+D.T.G. 
+Dachs
+Daehne
+Dagneau
+Dagobert
+Dagois
+Dahl
+Dahn
+Dai
+Daiteg
+Dal
+Dalby
+Dalgarno
+Dalham
+Dalin
+Dallas
+Dallison
+Dalton
+Damadenus
+Damas
+Damiani
+Damianus
+Damoiseau de Monfort
+Damond
+Damoreau
+Dancel
+Danckelman
+Danckerts de Rij
+Dandolo
+Danet
+Danielle Perugino
+Danjou
+Danneau
+Dantonet
+Dao Yuan
+Darcet
+Darcier
+Dardana
+Darluc
+Darman Maisonneuve
+Darrieux
+Dasse
+Dassel
+Dassier
+Daubigny
+Daubuz
+Daulle
+Dauphin
+Dautzenberg
+Daverhoult
+David
+David ben Abraham
+Davidis
+Davidsohn
+Davier
+Davies
+Davila
+Davila y Heredia
+Davin
+Davion
+Day
+Dazin
+De Biencourt
+De Castelein
+De hui
+De La Concha Miera
+De la Riva Herrera
+De Laet
+De Leth
+De R 
+De Sanctis
+De Schryver
+De' Fabrizi
+De' Porti
+Debes
+Debonmazot
+Debrières
+Debure
+Decher
+Dechermont-Duponcet
+Decheverry
+Deck
+Deckberg
+Decker
+Deckherr
+Decret
+Decroix
+Decrues
+Deeleman
+Deferre
+Defesle Burolleau
+Defos
+Degardein de Ville-Maire
+Degland
+Degner
+Degnerus
+Degreville
+Deharme
+Dehayons
+Deinlein
+Dejean
+Dekens
+Del Bene
+Delabat
+Delacolonge
+Delacour Damonville
+Delacour-Damonville
+Delaferté
+Delafond
+Delage de Cueilly
+Delahaye de Launay
+Delahouardière
+Delahuproye
+Delairas
+Delaisse
+Delaistre
+Delalande
+Delambre
+Delarive
+Delasalle
+Delattre
+Delaval
+Delavau
+Delavigne
+Delbreil de Scorbiac
+Delehelle
+Deleville Baussart
+Delfaud
+Delgado
+Delignières
+Delius
+Dell
+Dellecourt
+Dellehé
+Delloye
+Delmar
+Delmez
+Delneuf
+Delorme
+Delormel
+Delpuech
+Delsenbach
+Dely
+Delètre
+Demaretz
+Demasse
+Demidov
+Demilly
+Demol
+Demonceaux
+Demontlibert
+Demoustier
+Denelle
+Denoux
+Denys
+Deodati de Tovazzi
+Deperthes
+Derham
+Deriaux
+Dermout
+Des Achards de La Baume
+Des Alleurs
+Des Barres
+Des Commiers
+Des Essars
+Des Farges
+Des Fontenelles
+Des Geneys
+Des Isles Bonnemie
+Des Montaignes
+Des Noulis
+Des Pommelles
+Des Preaux
+Des Réaux de La Richardière
+Des Vignoles
+Des Voeux
+Des**
+Desaurs
+Desbaulx
+Desbois
+Descamps
+Descazals
+Deschamps
+Deschamps Dumesnil
+Desclozeaux
+Desclozest
+Descontes
+Descours
+Deseine
+Desessartz
+Desevigny
+Desfeux
+Desfieux
+Desgabets
+Desgranges
+Desinnocends
+Desloges
+Desmarest
+Desmarets
+Desmolins
+Desnos
+Desnoues
+Despalle
+Despont
+Desportes
+Desprez
+Despuech
+Desrenaudes
+Desrivières
+Desroches
+Dessaudrais Sébire
+Destaelleur
+Destrés
+Detchegaray
+Detert
+Detroye
+Deumer
+Deventerwaag
+Devermont l'aîné
+Devillario
+Deville
+Devilliers
+Devismes
+Devoti
+Dexippe
+Deça Sottomayor
+Di guan
+Diamantini
+Diamantino da Sanseverino
+Dias
+Diassidio
+Diaz
+Dibdin
+Dickson
+Dide Drigas
+Didier
+Didier de Lonroy
+Dieck
+Diego de Jesus Maria
+Diepholdus
+Diericke
+Dieskau
+Dieterich
+Dieterlein
+Dietl
+Dietrich
+Dietz
+Dietzius
+Dieu La Foy
+Dieudonné
+Dieudé
+Dieulot
+Digneffe
+Dijon
+Dillenius
+Dilling
+Dillworth
+Dilly
+Dinckgreve
+Dingé
+Dionis
+Dionis Du Séjour
+Dioszeghi
+Dirckhart
+Diroys
+Dirxs
+Disney Ffytche
+Disson
+Dist
+Diston
+Diterich
+Divry
+Djupedius
+Dobbelaer
+Docampo
+Docteur de la faculté de Paris
+Dodson
+Doigny du Ponceau
+Doisy
+Doix
+Dolce
+Doles
+Dolfi
+Dolfusius
+Dombasle
+Domingo de Jésus Maria
+Domingo de Santo Tomás
+Dominguez
+Dominguez Vicente
+Dominicus Georgius
+Donado
+Donati
+Donato da Siderno
+Donckers
+Doneda
+Donet
+Dong
+Dongelberg
+Donnissant
+Dons
+Dop
+Doppert
+Dordelu Du Fays
+Dorea Caceres e Faria
+Dorema de Vries
+Dorio
+Dorisius
+Dorizy
+Dorliac
+Dorno
+Dorsten
+Dorthes
+Dortoman
+Dou
+Douchet
+Doude
+Doudieux
+Doujat
+Douven
+Douw
+Douziech
+Dowland
+Doyle
+Drake
+Dralet
+Drancy
+Draper
+Drascon
+Draudius
+Drechsler
+Drechssler
+Dresanus
+Dressel
+Drevet
+Drew
+Drewis
+Dreyhaupt
+Dreyssig
+Driessen
+Drion
+Droit
+Droogenham
+Droulin
+Drudo
+Drulhe
+Drummond
+Du Bois
+Du Bosc
+Du Bosq
+Du Boulet
+Du Breuil Pompée
+Du Broquart de la Motte
+Du Buisson
+Du Carlo
+Du Castelier
+Du Chalard
+Du Chanoy
+Du Chastel
+Du Chastelet des Boys
+Du Chat
+Du Château
+Du Cloux
+Du Cros
+Du Crozet
+Du Faur
+Du Fousteau
+Du Françoys
+Du Fresnoy
+Du Gua
+Du Hallay des Cazeaux
+Du Joncoux
+Du Laurens
+Du Loir
+Du Mas
+Du May
+Du Metz
+Du Mezerey
+Du Monchaux
+Du Monstier
+Du Montelet
+Du Moulinet de Chamroc
+Du Paez
+Du Pan
+Du Parcq
+Du Pille
+Du Pire
+Du Pissot des Coutures
+Du Plaisir
+Du Plessis d'Argentré
+Du Pont
+Du Port
+Du Renard
+Du Reverdun
+Du Rocher
+Du Rosset
+Du Roujoux
+Du Sable
+Du Saussay
+Du Tertre
+Du Tillet
+Du Val
+Du Verger
+Du Vernoy
+Du Villar
+Du Vivier de Trèves
+Duarte
+Duban
+Dubaraille
+Dubocage
+Dubois
+Duboscq de La Roberdière
+Duboucher
+Dubourg
+Duboys
+Duboys Lesnel
+Dubufe
+Dubus
+Dubé
+Ducaurroy
+Duchemin
+Duchesne
+Duclaux
+Duclos
+Duconte
+Ducros
+Ducry
+Dudin
+Dufart
+Dufaure
+Duflos de Visé
+Dufour
+Dufranc
+Dufrene
+Dufresne
+Dugas
+Dugdale
+Dugonics
+Duguet
+Duhamel
+Duhem
+Duhenois
+Duising
+Dujon
+Dulac
+Dulacq de Drassat
+Dulong
+Dumas
+Dumas de Culture
+Dumesnildot
+Dumoitiez de Saint-Maur
+Dumont
+Dumédoc
+Dunant
+Duncan
+Duncon
+Dunony
+Dupas de Chaumillon
+Duperche
+Duperin
+Dupeus
+Dupeuty
+Dupin
+Dupiney
+Duplain
+Dupleix
+Duplessis
+Duplessis Guipperreux
+Duplécy
+Dupoirier
+Dupont
+Dupont de Lille
+Duportail
+Dupouy
+Dupp
+Duppa
+Dupré
+Dupuits
+Dupuy
+Dupuy-Montbrun
+Durand
+Durand de La Corderie
+Durande
+Durandé
+Durant
+Durant de Chazelle
+Duras
+Duret
+Durey
+Durham
+Durieu
+Durocher Des Croix
+Durval
+Dury
+Dusault de la Grave
+Dussau
+Dutertre de Sancé
+Duthier
+Dutour
+Dutrau
+Dutton
+Dutuit
+Duval
+Duval Desmaillaits
+Duvegrier
+Duverger
+Duvernoy
+Duvicq
+Duvigneau
+Duvrac
+Duwicquet d'Ordre
+Duyf
+Dwall
+Dyrnhard
+Dyrrhius
+Dämen
+Déageant
+Déjean
+Député du côté gauche à l'Assemblée nationale
+Désaguliers
+Döring
+Düfreny
+Długosz
+E. D. B.
+E. D. P. I.
+E. Q. M******
+Eayrs
+Ebel
+Ebeling
+Eber
+Ebersbach
+Ebert
+Ebner von Eschenbach
+Ecclésiastique
+Echave
+Eck
+Eckardi
+Eckhard
+Eckhardt
+Econdamma
+Ecsedi
+Edelsheim
+Edgeworth
+Ediger
+Edmond Rich
+Effetti
+Eggelinck
+Eggeling
+Eggelingk
+Eggers
+Ehrentreich
+Ehrhart
+Ehrlich
+Ehrmann
+Eichhorn
+Eilschow
+Einzinger von Einzing
+Eiselin
+Eisen
+Eisenlohr
+Eisenmann
+Eizaq Tirnau
+Ejima
+Ekelund
+Ekkehard
+Ekman
+Elbel
+Elbée
+Eldercampius
+Eleazar
+Elfvius
+Eliak̇im ben Naphtali
+Eliot
+Ellain
+Elliott
+Ellis
+Ellisenius
+Elsner
+Elwert
+Elyot
+Embuena
+Emery
+Emmanuel
+Emmanuel de Rennes
+Emminghaus
+Emmrich
+Empoli
+Enaux
+Enciso
+Enderbie
+Endter
+Engel
+Engelcke
+Engelen
+Engelmann
+Engelschall
+Enghien
+Engramelle
+Engstler
+Engstrom
+Enguehard
+Enguerran des Roussières
+Enholm
+Enjelvin
+Enriquez
+Enström
+Episcopius
+Epkema
+Erasmus Irenicus
+Erdeman
+Erdmann
+Ereiber
+Eremia de Meghri
+Erhard
+Erhardt
+Erhart
+Erice
+Erich
+Erici
+Ericson
+Erizzo
+Ernelle
+Ernest Jester
+Ernesti
+Erni
+Errard
+Ersckhein
+Erythropel
+Eschenbach
+Eschinger
+Escobar y Loaisa
+Escoffier
+Escot
+Escudié
+Escuer
+Escury
+Esdré
+Esgers
+Esguisier
+Esophile
+Espariat
+Esperandieu
+Espiard de la Cour
+Espinha
+Espinosa
+Espinosa de Los Monteros
+Espée de Selincourt
+Essen
+Essenius
+Essione Partico
+Estancelin
+Estard
+Estienne-Liébault
+Estlander
+Estrangin
+Estève
+Esychius
+Eszékius
+Etterlin
+Ettorre
+Eudersch
+Eugenii
+Eustache
+Euth
+Eutrope
+Evangelisti
+Evans
+Evenbly
+Eversmann
+Everwijn
+Ewaldt
+Exchaquet
+Eybeschitz
+Eymar
+Eyrard
+Eyraud
+Eyring
+Eyrl
+Eysel
+Eyselius
+Ezanville
+Ezler
+Eznik de Kolb
+Ezweilerus
+F E 
+F N 
+F S G 
+F. D. P.
+F. L.
+F. S.
+F.d.s. religieux
+Faber
+Fabert
+Fabiani
+Fabiger
+Fabre
+Fabri
+Fabricius
+Fabrini
+Fabritius
+Fabry
+Facundus
+Fagalde
+Fagerroth
+Fages
+Fagnano
+Faino
+Faipoult
+Falbaire
+Falck
+Falcon
+Falcone
+Falgarius
+Fallo
+Fanello
+Fang
+Fangarezzi
+Fano
+Fantuzzi
+Faraudy
+Farcy
+Fardeau
+Fargeix
+Fargna
+Faria
+Farjon
+Farmer
+Faroul
+Farrant
+Farwell
+Fassardi
+Fasseau
+Fassini
+Fattolilli
+Faucher
+Fauconnier
+Faugères
+Faulhaber
+Faulques
+Faure
+Faust von Aschaffenburg
+Fauvel
+Favart
+Favereau
+Faverot
+Favras
+Favreau
+Fay
+Faydeau
+Fayolle
+Fazellus
+Febvre
+Febvé
+Fech
+Fedaeus
+Federici
+Fedini
+Feheul
+Fehleisen
+Fehmel
+Feigneaux
+Feild
+Feistkohl
+Feitama
+Feith
+Feliciano
+Feller
+Felmer
+Fels
+Felsing
+Feltham
+Feltz
+Femme de la capitale
+Fenaroli
+Fenel
+Feng
+Fenn
+Fenon de Litany
+Fenouillot
+Feodorowicz
+Ferber
+Ferdinandi
+Ferdinando della Madre Di Dio
+Feret
+Ferguson
+Feriere
+Fernandez
+Ferne
+Fernández
+Fernández de Mesa
+Fernández del Rio
+Feron
+Ferrand
+Ferrante
+Ferrari
+Ferrarius
+Ferreira
+Ferreira de Vera
+Ferrer
+Ferrero
+Ferretti
+Ferrier
+Ferrière
+Ferro
+Ferron de Mondion
+Ferry
+Fesel
+Feselius
+Feuchter
+Feuerbach
+Feuquières
+Feydeau
+Feyerabend
+Feynes
+Fick
+Fickewirth
+Fidel de Burgos
+Fidèle
+Fiedler
+Fiefbrun
+Fieffe
+Fieschi
+Fieux
+Figueiró
+Figueredo
+Figueroa y Cordoba
+Figueroa y Córdoba
+Fikenscher
+Fildar
+Filiczki
+Filippini
+Filippo Maria di San Paolo
+Filitz
+Filland
+Filleul
+Filmer
+Filotero Cosmio
+Filz
+Fina
+Fincel
+Finckh
+Findeisen
+Findekeller
+Finelli
+Finen
+Fineti
+Finnur Jónsson
+Fiochetto
+Fiool
+Fiorani
+Fioravanti
+Fiore
+Fiorentino
+Fiorilli
+Fiquenel
+Fiquet
+Firenzola
+Fischer
+Fisher
+Fitz Gerald
+Fitz Gérard
+Flacourt
+Flacé
+Flagel
+Flambe
+Flament
+Flamine
+Flangini
+Flechtner
+Fleetwood
+Fleischer
+Fleischhauer
+Fleischmann
+Fletcher
+Fleurizelle
+Fleury
+Fleyschbein von Kleeberg
+Fliccius
+Flin
+Flinspach
+Floderus
+Flon
+Florez
+Florianus
+Floridor
+Florietus
+Florindo
+Floriot
+Floto
+Floux
+Floyd
+Flurl
+Foertsch
+Foignet
+Foin
+Fois Franque
+Foissey
+Foix
+Foliot
+Folli
+Follini
+Fondeur
+Fondmarin
+Fonseca
+Fonseca Henriques
+Fonseca Pimentel
+Fontaine
+Fontaine Des Bertins
+Fontana
+Fontenay
+Fontenettes
+Fontette-Sommery
+Forbes
+Forcellini
+Forde
+Forest
+Forestier
+Forgerolaeus
+Forges
+Forgues
+Formentin
+Fornari
+Fornbacher
+Forner
+Fornerod
+Forni
+Forrest
+Forset
+Forsten Verschuir
+Fortescue
+Forth
+Forti
+Fortia
+Fortin
+Fortin de Melleville
+Forziati
+Foscarini
+Foss
+Fossanus
+Fossard
+Foster
+Foti
+Foubert
+Foubert de la Lande
+Foucher
+Foucqué
+Fouet de La Fontaine
+Fouinat
+Foulet
+Foulhiade
+Fouquet
+Fouqué
+Four
+Four de Bourrieu
+Fourcroy
+Fourgon
+Fourmont
+Fournel
+Fournier
+Fournès
+Foutakina
+Fowler
+Fox
+Foy de La Neuville
+Fracanzani
+Fradin
+Fragoso
+Fraguier
+France
+Francesco
+Francesco d Arezzo
+Francheville
+Franchi
+Francin
+Francisco da Cunha
+Franciscus a Messana
+Franciscus de Crema
+Franck
+Franck von Franckenstein
+Francke
+Francklyn
+Francus
+Francy
+Frangespan
+Frank
+Franke
+Franklin
+Franquelin
+Franquet
+Frantzke
+Franz Josias
+Franzesi
+Franzius
+François
+François d'Amboise
+François de Caudebec
+François Louis
+Françoise de la Croix
+Fratzscher
+Frauendorff
+Freeman
+Fremery
+Fremin
+Fremyn
+Frentz
+Frerret
+Frescobaldi
+Freslon
+Freudenberg
+Frey
+Freyberg
+Freyburger
+Freyle de Andrade
+Frias Salazar
+Frick
+Fridel
+Fridemund
+Friderici
+Fridolin
+Friedeborn
+Friedel
+Friedlieb
+Friedrich Karl
+Fries
+Friese
+Friesen
+Friesse
+Frigard
+Frisari
+Frisch
+Frisciotti
+Frisendorff
+Frisi
+Fritsch
+Fritze
+Frizon
+Frizzolio
+Frobenius
+Froland
+Fromentin
+Fromhold
+Fromme
+Fromont
+Fronmüller
+Frontinières
+Fronto
+Froschel
+Frugoli
+Frumento
+Frä Rex
+Frèse
+Frédéric
+Frédéric-Louis
+Frémond
+Frérart
+Fréville
+Frézeau de La Frézelière
+Frölich
+Frömmichen
+Fu
+Fu heng
+Fu lin
+Fucci
+Fuchs
+Fuchs von Herrnau
+Fuente
+Fuhrmann
+Fujimura Zenwemon
+Fumée
+Fundis
+Funk
+Furtado
+Fusslin
+Fyot de Vaugimois
+Féltham
+Fénelon
+Féraud
+Fögglerus
+Förster
+Fürckel
+Fürst
+Füssli
+G de M 
+G.
+G. S. F. 
+G.A.L.
+Gabon
+Gabriel
+Gabriel de San Buenaventura
+Gabrielis
+Gabrielli
+Gaby
+Gadolla
+Gaebel
+Gael
+Gaertner
+Gaeta
+Gageot
+Gagliardi
+Gago
+Gagon
+Gai
+Gaillard
+Gaillon
+Gainel
+Galand
+Galante
+Galard de Terraube
+Galard-Terraube
+Galassi
+Galesius
+Galfi
+Gali
+Galianis
+Galiberti
+Galiot
+Galisio
+Gallegos
+Gallernant
+Gallet
+Gallicciolli
+Galliculus
+Gallus
+Galvani
+Gamaches
+Gamba Curta
+Gambari
+Gambart
+Gambs
+Gamot
+Gampiculi
+Ganahl
+Ganassi
+Gandelot
+Gandese
+Gandini
+Gandolfi
+Gandouin
+Ganne
+Gao qiao jing bao
+Gaona
+Garb
+Garcia de Nodal
+Garcin
+Garcés
+García
+García Cabero
+García de La Huerta
+García del Valle
+Garderot
+Gardien
+Gardnor
+Gardé
+Gargarosso
+Gargon
+Garibaldi
+Garma y Duran
+Garnerin
+Garnier
+Garopoli
+Garrau
+Garreau
+Garrellon
+Garzadoro
+Garzi
+Gas
+Gascher
+Gaschignard
+Gasnier
+Gaspar da Madre de Deos
+Gaspari
+Gasparis
+Gassendi
+Gastaud
+Gastin
+Gastumeau
+Gatta
+Gattico
+Gattin
+Gattrez
+Gaub
+Gaubier
+Gaubier de Barrault
+Gaudot
+Gaudru
+Gaue
+Gaufredus
+Gaufreteau
+Gauguelin
+Gaultier
+Gaultron
+Gaussen
+Gautier
+Gautier de Faget
+Gautier de Thérouanne
+Gavanto
+Gavilan Vela
+Gay
+Gayet
+Gaza
+Gazaeus
+Gazano
+Gaétan de Thiene
+Geach
+Gebauer
+Gebhard
+Gebhardt
+Gebler
+Geblerus
+Geelen
+Gehwolff
+Geiger
+Geislinger
+Geist
+Gelb
+Gelderman
+Gelède
+Geminiani
+Gemma
+Gempt
+Gendry
+Generini
+Genest
+Genet
+Gennaro de Giesù Maria
+Genret
+Gentil
+Gentile
+Gentilhomme
+Gentilhomme de l'Église
+Gentili di Rovellone
+Gentilini
+Gentilys
+Genz
+Geoffroi de Vinsauf
+Geoffroy
+Geoffroy de Vendôme
+Georg
+George l Apostre
+Georgel
+Georgii
+Georgj
+Gerard
+Gerber
+Gerbier
+Gercken
+Gerding
+Gerdret
+Gerhard
+Gerhardi
+Gerile
+Gerlach
+Gerlacius
+Gerli
+Germain
+German
+Gernet
+Gernon
+Gervais
+Gervaise
+Gervasius
+Gesner
+Gessi
+Gessner
+Gestas
+Geudenus
+Geuder
+Geuns
+Geussenhainer
+Gevaerts
+Geve
+Gevigney
+Gevry
+Geyer
+Geyling
+Gherardi
+Gherardini
+Ghewiet
+Ghibbesius
+Ghini
+Ghioni
+Ghirardelli
+Ghirardi
+Giac
+Giacobbi
+Giacomelli
+Giambattista
+Gianettani
+Gianetti da Salo
+Giangi Vittorii
+Giannelli
+Giannini
+Gianotti
+Giardini
+Gibbes
+Gibbon
+Gibbons
+Gibel
+Giboin
+Giessmann
+Gigas
+Gihnlein
+Gil
+Gil de Velasco
+Gilbert
+Gilbertus
+Gille
+Gillenius
+Gilles
+Ginanni
+Ginsepp
+Gionsonius
+Giordano
+Giorgi
+Giorna
+Giovanetti
+Giovanni Agostino della Natività
+Giovanni della Croce
+Giovanni Paolo di Roma
+Giovardi
+Giral
+Giraldi
+Giraldi Cinthio
+Girard
+Girardin
+Girardot
+Girau
+Giraud
+Giraudeau
+Girault
+Girecourt
+Giribaldi
+Girolami
+Girom
+Giron
+Girouard
+Gisborne
+Gisclard
+Giselerus
+Gittio
+Giuffus
+Giulianati
+Giulianelli
+Giuliani
+Giulini
+Giunti
+Giupponi
+Giuseppe da Capriglia
+Giuseppe di Como
+Giustiniani
+Giöransson
+Gjöding
+Gla
+Gladbach
+Glado
+Glandevès
+Glantzby
+Glas
+Glaser
+Glatigni
+Glaubrecht
+Gleditsch
+Gleich
+Gleim
+Gleise
+Gleitsmann
+Gliovio
+Glisenti
+Glock
+Gmelin
+Gnilius
+Gnosp
+Gnospelius
+Goade
+Gobert
+Gobet
+Gobet dit Saint-Louis
+Gobillon
+Gockelius
+Godard
+Godefroy
+Godinez
+Godunov
+Goeling
+Goens
+Goetzuis
+Goislard de Monsabert
+Golański
+Golini
+Golini de Vespasiano
+Goll
+Gollardt
+Golles
+Gollwitzer
+Golt
+Goltzius
+Golz
+Gommarc
+Gondier
+Gong
+Gonin
+Gonjart
+Gonsin
+Gonzaga
+González de Acuña
+González de Agueros
+González de Castro
+González de Mendoza
+González de Rosende
+Goodman
+Goodwin
+Goodwyn
+Goos
+Gordine
+Gordon
+Gore
+Gorges
+Gorsse
+Gorton
+Gorög
+Gossart
+Gosse
+Gossec
+Gosset
+Gosson
+Gotter
+Gottfried
+Goudicheau
+Gouffé Beauregard
+Gougnon
+Gouin
+Goujon
+Gould
+Goulet
+Goulu Duplessis de La Hauterie
+Goupil
+Goupil Duclos
+Gouraud
+Gourjon
+Gourlez de La Motte
+Goury de Champgrand
+Gouïn
+Goy
+Goyer Duplessis
+Goyrand
+Goślicki
+Graaff
+Grabow
+Grace
+Grade
+Gradenico
+Gradis
+Graef
+Graeuwen
+Graf
+Grafius
+Grain
+Graindorge
+Gramann
+Grambert
+Grambusch
+Gramignani
+Gramildo
+Gramm
+Grana
+Grand
+Grandchamp
+Grandi
+Grandjean
+Grandmont
+Grandvert
+Grandville
+Grandvoinet de Verrière
+Granet
+Grangeron
+Grangé
+Granlund
+Granouilhet de Sablières
+Grante
+Grantz
+Granville
+Grass
+Grasset
+Grasset de Saint-Sauveur
+Grassetti
+Grassis
+Grasso
+Grassot
+Grateloup
+Gratiano
+Gratius Faliscus
+Grau
+Grauer
+Graumüller
+Gravel
+Graveron
+Graves
+Gray
+Graziani
+Greatheed
+Green
+Greffier-concierge du Châtelet
+Grelin
+Grellmann
+Grest
+Greven
+Grevenkop
+Greverus
+Grevin
+Grey
+Grieser
+Griesmayr
+Griffini
+Griffon
+Grifo
+Grifoni
+Grignan
+Grignani
+Grillo
+Grillo Cattaneo
+Grimaldi
+Grimaldi d Antibes
+Grimani
+Grimaud
+Grimm
+Grimmenn
+Grimod de Beauregard
+Grimouart
+Grischow
+Grisignano
+Grison
+Grisot
+Gritio da Iesi
+Groen
+Grolier
+Grolmann
+Gros
+Groscassand Dorimond
+Gross von Trockau
+Grossmannus
+Grote
+Grouwels
+Grubb
+Gruber
+Grulich
+Grumet de Montpie
+Grundemann
+Gruner
+Grupen
+Gräfenhahn
+Gräff
+Grässer
+Grégoire
+Grégoire le Prêtre
+Gröper
+Gsell
+Gu
+Gualterus
+Gualtieri
+Guardia
+Guarinonius
+Guasco
+Guattani
+Guchan
+Gudenus
+Gueidan
+Guenzio
+Guerente
+Guerin
+Guernes
+Guerra
+Guerry
+Guiard
+Guibon
+Guibourt
+Guicciardi
+Guichon
+Guidetti
+Guidoni Conte Cremasco
+Guiducci
+Guignard
+Guignet
+Guilbert
+Guillaume
+Guillaume d Andres
+Guillaume de Saint Bénigne
+Guillaumet
+Guillelmus de Pastrengo
+Guilleminot
+Guillemot
+Guillermo
+Guillery
+Guilliaud
+Guillier
+Guillot
+Guinebaud
+Guinoyseau
+Guis
+Guise
+Guislain
+Guitard
+Gulich
+Gumpertz
+Gundling
+Gunning
+Gunter
+Guntherus
+Gurdon
+Guret
+Gurney
+Gurski
+Gussago
+Gutermann
+Gutierrez de Godoy
+Gutierrez de Los Rios y Cordoba
+Gutiérrez
+Guttin
+Gutzeit
+Guyard
+Guyart
+Guynant
+Guyon
+Guyot
+Guyot de Fontaine
+Guyot de Marne
+Guytot
+Guzman
+Guzman Gençor
+Guéau
+Guérin
+Gyllenborg
+Gymnich
+Gyongyossi a Petteny
+Gyraldus
+Gädicke
+Gérard
+Gênes
+Gómez de Mora
+Gödeke
+Göhausen
+Göller
+Gölze
+Görges
+Görner
+Gössell
+Göteke
+Götschel
+Götz
+Günther
+Güntherus
+Güntz
+H. D. B.
+Haack
+Haacke
+Haag
+Haan
+Haas
+Haase
+Haasius
+Haberer
+Habert
+Habicht
+Hacke
+Hacot
+Hacquius
+Hadelich
+Haeckhel
+Haen
+Hafner
+Hagberg
+Hagedorn
+Hagelganss
+Hagemeister
+Hagen
+Hagenbuch
+Hagius
+Hahn
+Haionis
+Hakewill
+Hakmann
+Hakuro
+Halenbeck
+Halffman
+Hall
+Haller
+Hallet
+Halmael
+Halpitius
+Hambergerus
+Hambraeus
+Hamelin
+Hamerlin
+Hamilton
+Hammond
+Hanbury
+Hanel
+Hanin
+Hankoph
+Hannecart
+Hannemann
+Hansen
+Hanus
+Hao
+Happe
+Happedey
+Happel
+Happell
+Happoncourt
+Haquinius
+Harbert
+Harbet
+Harbey
+Harder
+Harding
+Harduinus
+Harington
+Harkenroht
+Harley
+Harmer
+Harmes
+Harnisch
+Harouys
+Harpprecht
+Hartel
+Harter
+Hartgyll
+Hartmann
+Harts
+Hartung
+Hartweck
+Hartwig
+Harvant
+Haselhuhn
+Hasernöhrl
+Hasler
+Hassell
+Hasselt
+Hastiville
+Hatton
+Hattron
+Hauber
+Haudart
+Haudesens Desclozeaux
+Hauer
+Haug
+Haughton
+Haupt
+Hauptmann
+Hausmann
+Haussleutner
+Hauswolff
+Hauterive
+Hauteserre
+Hauteville
+Hauteville de Maisonneuve
+Havard
+Haver
+Hawker
+Hawkins
+Hawles
+Hawtrey
+Hayez
+He
+Heading
+Hebenstreit
+Hechtel
+Heckel
+Heckenberg
+Hectoreus
+Heda
+Heden
+Hederich
+Hedraeus
+Heerbrand
+Heere
+Heeren
+Heersiens de Kleinemer
+Heffelmaier
+Heggeman
+Heidemann
+Heidenreich
+Heidfeld
+Heil
+Heilbronner
+Heiliger
+Heimbach
+Heimreich
+Hein
+Heinigke
+Heinse
+Heinsius
+Heintzius
+Heinze
+Heinzelmann
+Heiss
+Heister
+Helbigk
+Helffer
+Heliger
+Helladios
+Helladius Besantinous
+Hellegers
+Hellen
+Heller
+Helmichius
+Helmold
+Helms
+Helmuth
+Helsing
+Helwig
+Helwing
+Hemerle
+Hemmerling
+Hemmersam
+Hempel
+Henckel
+Hendreich
+Hendrich
+Henel
+Hennand
+Hennemann
+Hennequin
+Henner
+Henning
+Hennings
+Henningsen
+Henri
+Henrici
+Henrion
+Henriquez Basurto
+Henriquez de Guzman
+Henriquez de Villegas
+Henry
+Henrys Des Noizet
+Henrys-Marcilly
+Hensler
+Hentschel
+Hentzschel
+Herbaius
+Herbelot
+Herbert
+Herbet
+Herbst
+Hercklitz
+Herestorff
+Herholdt
+Hering
+Heriot
+Herizzo
+Hermann
+Hernandez Blasco
+Hernández Delgado
+Herrera
+Herrichen
+Herrmann
+Herstatt
+Hert
+Hertré
+Herttenstein
+Hertzog
+Hervey
+Hervieu
+Hervilly
+Hervin
+Hervé
+Herzog
+Hesius
+Hesletine
+Hesnault
+Hess
+Hesselin
+Hesselius
+Hesselmann
+Hettling
+Heu
+Heudier
+Heunisch
+Heurteloup
+Heyl
+Heyman
+Heynes
+Heyns
+Heyrick
+Heywood
+Hezel
+Hibert
+Hickeringill
+Hickey Pellizoni
+Hickmann
+Hiddinga
+Hieber
+Hiebner
+Hiegell
+Hien-Ts'in
+Hieranus
+Higgons
+Hilarion
+Hilarion de Sainte-Ursule
+Hilarius Litoměřický
+Hildebrand
+Hill
+Hillar
+Hilleprand
+Hillerin
+Hillers
+Hillier-Parry
+Hillius
+Hilluis
+Hilscher
+Hiltprand
+Hiltropf
+Himmelreich
+Himénès
+Hind
+Hingant
+Hinlopen
+Hinsberg
+Hion
+Hipparque de Nicée
+Hirsch
+Hirschel
+Hirschfeld
+Hirsekorn
+Hirt
+Hirzelius
+Hirzgarter
+Hisingh
+Hitchcock
+Hizovol
+Hoare
+Hobart
+Hoburg
+Hoche
+Hochstater
+Hockel
+Hocker
+Hoden
+Hodey
+Hodkiewicz
+Hoeffer
+Hoensbroeck
+Hoerle
+Hoet
+Hoff
+Hoffman
+Hoffmann
+Hoffmannus
+Hofman
+Hofmann
+Hofsnijder
+Hofstäter
+Hogguer
+Hohenthal
+Hoiermann
+Holdermann
+Hollebeek
+Holm
+Holmes
+Holmquist
+Holmskiold
+Holst
+Holthusius
+Holtzhauern
+Holtzmüller
+Holzhalb
+Hom
+Home
+Homme de lettres patriote, citoyen du district des Petits-Augustins
+Homme vraiment libre
+Hondius
+Hondt
+Honemann
+Honorante
+Honorat de Marseille
+Hontalba y Arze
+Honzentei
+Hooft
+Hoog
+Hooge
+Hoogeveen
+Hope
+Hopman
+Hoppesteyn
+Horace
+Hordal
+Horix
+Hormeyer
+Horn
+Horni
+Hornuff
+Horozco
+Horst
+Horstig
+Horstius
+Horstmann
+Hortensius
+Horzizki
+Hosmann
+Hospineau
+Hotham
+Hotman
+Hotton
+Houck
+Houdet
+Houel de Resneville
+Houghton
+Houlston
+Housset
+Houstoun
+Houth
+Houvet de Sécouet
+Hoverlant de Beauwelaere
+Hovius
+Howe
+Howes
+Hoyer
+Hozier
+Hu
+Hua Bellebat
+Huan zhu ming
+Huang
+Huau
+Huber
+Hubert
+Huchet
+Huchet de la Bédoyère
+Hudemann
+Hue
+Hueber
+Huet
+Hufeland
+Hugford
+Huggan
+Hugon
+Hui yuan
+Huilard
+Huillery
+Hulsen
+Humbert
+Humble
+Hume
+Humières
+Hummel
+Hunauld
+Hundeshagen
+Hundius
+Hunnius
+Hunter
+Huntington
+Hurson
+Husson
+Hutchinson
+Huth
+Hutton
+Huwe
+Huyden
+Huët
+Hwass
+Hybner
+Hydorell
+Hylaret
+Hymnophilus
+Hynitzsch
+Hyperius
+Häberlin
+Häfelin
+Hälisch
+Hänffling
+Häntzschel
+Héard
+Hébert Artigues
+Hébert Lapellière
+Hébrard de Fau
+Hécatée d Abdère
+Héliodore
+Hélyot
+Hémard
+Héral
+Héraut
+Héricourt
+Hérissant
+Hérisson
+Héron de Byzance
+Héron de Villefosse
+Hérouville de Claye
+Héré
+Hévin
+Höchstetterus
+Hönn
+Höping
+Höpingk
+Höyer
+Hübner
+Hüe de Miromesnil
+Hüls
+Hünerwolff
+Hütten
+Ḥamzah ibn Ḥasan al Iṣfahanî
+I.
+I. B. G. 
+I. D.
+I. D. B. P.
+I. de La V.
+I. S. D. V. D.
+Iaenisch
+Iantke
+Iañez Fajardo
+Ibbot
+Ibn Abī Zarʿ al-Fāsī
+Ibn al-Hayṯam
+Ibn Wāfid al-Laẖmi
+Ideler
+Ienisc
+Ignacy od Swie̡tego Jana
+Im Hoff
+Immen
+Immermann
+Immig
+Inga
+Inguelberg
+Innocent
+Innocenzo
+Inselin
+Inwood
+Ioecher
+Ioerdens
+Irail
+Irone
+Isa
+Iselin
+Ishikawa
+Isimbardi
+Isnard
+Israel
+Israel ben Moses Najara
+Iṣḥaq ben Joshua ben Abraham
+Iṣḥaq Düren ben Meir
+Itard
+Ittner
+Itzstein
+Iñiguez de Lequerica
+J C G
+J. A.-R.
+J. B. Cla...
+J. H. M.
+Jac
+Jackson
+Jacob
+Jacobi
+Jacobs
+Jacobsen
+Jacobson
+Jacobus a Sancto Michaele
+Jacquelot
+Jacquemont
+Jacques d'Auvergne
+Jacques de Nisibe
+Jacques Denis 
+Jacquet
+Jacquier
+Jacquin
+Jadelot
+Jaegerschmidt
+Jaenisch
+James
+Jamet
+Jan
+Jani
+Janigan Deschastelets
+Jannart
+Jannequin
+Janozki
+Jansen
+Jansenius
+Janson
+Jantet
+Janvier
+Jardin
+Jarry
+Jassaud
+Jaubert
+Jauberthou
+Jaugeon
+Jaume
+Jaunay
+Jaussan
+Javercy
+Jean Baptiste de Bourges
+Jean Chrysostome
+Jean de Djoulfa
+Jean de Gaza
+Jean de Hexham
+Jean François de Dieppe
+Jean l'Évangéliste d'Arras
+Jean-Georges
+Jeaurat de Bertry
+Jeger
+Jenichen
+Jens
+Jester
+Jevon
+Ji
+Jia
+Jia zhan yan zi
+Jiang
+Jirásek
+Jobard
+Jobey
+Joblot
+Johann Albrecht
+Johannes Evangelista van 's-Hertogenbosch
+Johannis
+John
+Johnson
+Johnstone
+Johnstown
+Johrenius
+Joli
+Jolis
+Joly
+Joly de Fleury
+Jones
+Jonge
+Jongerheld
+Jonsius
+Jonszon
+Jordan
+Jorden
+Jordin
+Jordis
+Joseph ben Gorian
+Joseph de Nossa Senhora
+Joseph de Santa Maria
+Josephs
+Josset
+José de Santa María
+Jouannaux
+Joubert
+Jouffroy
+Jouot
+Jourdan
+Jourde
+Journu
+Jousse
+Jousselin
+Jousseran
+Joutel
+Jouvanci
+Jouvant
+Jouvin
+Jovet
+Joyeuse
+Joyner
+Jozeau
+João de São Bernardino
+Joüan
+Juan de la Concepción
+Juan de la Presentación
+Juan de Persia
+Juan de Santa María
+Juch
+Juge
+Juglar
+Julien
+Julien de Prunay
+Jullien de Prunay
+Junckersdorff
+Jung
+Jungermann
+Junghans
+Junius Palmotta
+Junius Witebergensis
+Juslenius
+Jussy
+Juste d'Urgel
+Justus
+Juvernay
+Juvigny
+Jäger
+Jérôme de Saint Louis
+Jönckers
+Jünger
+Kaau
+Kadčić
+Kang
+Kapff
+Kapnist
+Karnatz
+Karpiński
+Katt
+Katzenellenbogen
+Kayser
+Keck
+Keckerbart
+Kegel
+Keiling
+Keir
+Kelemen Didák
+Kellander
+Keller
+Kellermann
+Kellner
+Kelly
+Kels
+Kemna
+Kempelen
+Kempff
+Kenedicz
+Kennens
+Kenrick
+Kent
+Kentmann
+Kepplerus
+Ker 
+Kerer h
+Kern
+Kersauson
+Kersten
+Kessel
+Kessler
+Kettenis
+Keuchenius
+Keventer
+Keyser
+Keysler
+Kieboom
+Kiechel
+Kienlein
+Kiesewetter
+Kihlgren
+Kilius
+Kinckel
+Kindervater
+King
+Kingston
+Kintius
+Kipping
+Kiraly
+Kirchner
+Kirchring
+Kirkwood
+Kislingius
+Kissel
+Kiöping
+Kiörning
+Kiörninger
+Klad
+Klanke
+Klein
+Kleine
+Kleinschrod
+Kleinsorgen
+Kleinsorgh
+Klencke
+Kletschke
+Klinggraff
+Klinglin
+Klint
+Klippe
+Klobius
+Klodzinski
+Kloek
+Kloekhof
+Kloekhoff
+Klose
+Klou
+Klug
+Klärner
+Klöpper
+Klügel
+Knauth
+Knell
+Kneppelhout
+Knevet
+Kniep
+Knippenbergh
+Knoblach
+Knochenwebel
+Knock
+Knoll
+Knorre
+Knée
+Knövenagel
+Kobelt
+Kobenhaupt
+Kober
+Koch
+Koechlin
+Koenig
+Kofler
+Kofod
+Koker
+Kolb
+Kolbani
+Kolbe
+Kolczawa
+Kolding
+Kolinovics
+Kollar
+Kollossowskys
+Kolly
+Kolross
+Kondō
+Kong
+Koning
+Koole
+Kooy
+Koppi
+Kortholt
+Kosoken
+Kostka
+Kotzebue
+Koulas
+Kozamer
+Krafft
+Kraft
+Kramer
+Kratochwill
+Kraus
+Krause
+Krauss
+Kreidenmann
+Krekels
+Krezschmer
+Krieg
+Krieger
+Kriegk
+Kries
+Krighout
+Krisch
+Krischnerus
+Krogius
+Kropf
+Krug von Nidda
+Krumholz
+Kruyff
+Kryger
+Kröl
+Krüger
+Krünitz
+Krüsike
+Kubn
+Kuckuck
+Kuester
+Kugelmann
+Kuhla
+Kuhn
+Kuhnert
+Kulikowski
+Kullin
+Kundt
+Kunth
+Kurzer
+Kutasi
+Kutter
+Kyblin
+Kähler
+Kératry
+Köelreuter
+Köhler
+Kölbele
+König
+Königsegg und Rotenfels
+Köpke
+Köplin
+Köten
+Kövesdi
+Kühlbrunn
+Kühlewein
+Kühn
+Kümmet
+Kün
+Kürner
+Kürssner
+Küss
+Küstner
+L 
+L Angle
+L Aubrussel
+L D W 
+L Escalle
+L Espiney
+L Hermite de Vauzelle
+L Honoré
+L Hostis
+L L 
+L Écluze
+L'Amy
+L'Angle
+L'Angélique
+L'Espine
+L'Hermite
+L'Honoré
+L'Oselier
+L. C. B. M.
+L. D. R. S.
+L. G.
+L.c.h.m.
+L.g......
+La Barre
+La Barre de Carroy
+La Bastide Du Tausian
+La Baune
+La Bintinaye
+La Blinière
+La Bodega Quadra y Mollinedo
+La Boisselière
+La Bourdonnaye
+La Brude
+La Brune
+La Buctiere
+La Calmette
+La Carriere
+La Cassaigne
+La Cave
+La Caze
+La Cerda
+La Cervelle
+La Chappelle
+La Chau
+La Chausse
+La Concha Ahera
+La Coudretz
+La Croix
+La Croix de Castries
+La Dixmerie
+La Douceur
+La Faye
+La Ferrandière
+La Ferté
+La Fond
+La Force
+La Fosse
+La Franchise
+La Fraye
+La Fuente
+La Garde
+La Geard de Cherval
+La Gravete
+La Gravette de Mayolas
+La Guesle
+La Guignardière
+La Gándara
+La Hamaide
+La Haye
+La Lande
+La Landelle de St Rémy
+La Limouse
+La Live de Jully
+La Marck
+La Marinière
+La Morelle
+La Morinière
+La Mota
+La Mothe
+La Motte
+La Motte Geffrard
+La Motte Messemé
+La Motthe Luyne
+La Nauze
+La Noüe
+La Palun
+La Palus
+La Place
+La Plesse
+La Pointe
+La Porte
+La Porterie
+La Poterie
+La Poujade
+La Quadra
+La Quintine
+La Ripa
+La Rivière
+La Roberdière
+La Roche
+La Roche Aymon
+La Roche d Or
+La Rochefoucauld
+La Rochefoucauld-Liancourt
+La Rochemaillet
+La Romagère de Ronssecy
+La Roque
+La Rue
+La Sala y Abarca
+La Salle
+La Saullaye
+La Scala
+La Touche
+La Tour d Auvergne
+La Tour d'Auvergne
+La Tour Hotman
+la Tournelle
+La Tuillerie
+La Vaigne
+La Valette
+La Vallière
+La Valée
+La Vaux
+La Verdure
+La Vergne-Montenard de Tressan
+La Vigne
+La Ville
+Labadens
+Labat
+Labatut
+Labbé
+Labeyrie
+Labigarre
+Laboulaye
+Labrude
+Lacassagne
+Lacathon-Delaforest
+Lacavalleria y Dulach
+Lachaud
+Lachausse
+Lachino
+Lachièze
+Lacombe
+Lacombe de Crouzet
+Lacomparte
+Lacoste
+Lacourt
+Lacroix
+Lacroix de Niré
+Lad Auf
+Lade
+Ladeveze
+Ladey
+Laducquerie
+Laetus
+Laffertey
+Laffon
+Lafitte
+Lafon
+Lafont
+Laforgue
+Lafouge
+Lagerbring
+Lagoy
+Lagrange
+Laharpe
+Laignel
+Laisné
+Laius
+Lake
+Lalaurie
+Laleu
+Lallemand
+Lallemant
+Lallemant de Lavignan
+Lallier
+Lallié de La Tour
+Lalourcé
+Lamartine
+Lamathe
+Lamber
+Lambergen
+Lambert
+Lambert de Mospurg
+Lambert de Sainte Foi
+Lamberti
+Lambertinus
+Lamberts
+Lamblardie
+Lambrechts
+Lambrechtsen
+Lamm
+Lammergelle
+Lamothe
+Lamotte Aigron
+Lamour
+Lampius
+Lamprecht
+Lamy
+Laméri
+Lancaster
+Lancellotti
+Lanchère
+Lanci
+Lanckisch
+Landi
+Landragin
+Landsheere
+Lane
+Lang
+Lange
+Langellé
+Langensee
+Langi
+Langius
+Langlade
+Langlois
+Langlé
+Langrish
+Languth
+Lanigan
+Lanneau
+Lannes
+Lannoy
+Lansel
+Lantheaume
+Lanti
+Lap
+Lapis
+Laplaigne
+Lappi
+Lapérière
+Lara
+Larard
+Larcher
+Lardiani
+Lardin
+Larue
+Las Torres
+Lasalle
+Lasaussais Geré
+Lasius
+Lasser
+Lasseret
+Lassone
+Latalscy
+Latch
+Latre de Feignies
+Latrobio
+Lattanzi
+Lattre
+Lau
+Laubardemont
+Laubenberger
+Laubry
+Lauder
+Laugeois
+Laugier
+Laulanié
+Launay
+Lauremberg
+Laurence
+Laurens
+Laurent
+Laurent de Paris
+Laurentius
+Laurentius a Sancto Paulo
+Laurich
+Lauro
+Lauterbach
+Lautitz
+Lauvel
+Lauvergne
+Lauwers
+Lavater
+Lavau
+Lavauzelle
+Lavergne de Tressan
+Lavergue
+Lawrence
+Lazara
+Lazare de Parpi
+Le
+Le Balleur
+Le Barbier
+Le Baron
+Le Bas
+Le Blanc
+Le Blanc de Verneuil
+Le Blond de La Tour
+Le Bloy
+Le Boucher
+Le Boulanger
+Le Bouthillier
+Le Bret
+Le Bruin
+Le Brun
+Le Bé
+Le Bée de Belicourt
+Le Camus
+Le Cauchois
+Le Cellier
+Le Cerf
+Le Chanteur
+Le Clerc
+Le Coigneux
+Le Coniat
+Le Coq
+Le Corvaisier de Courteilles
+Le Court
+Le Court de La Tonnelle
+Le Cousin
+Le Cozic
+Le Creux
+Le Doux
+Le Duc
+Le Duchat
+Le Faucheur
+Le Fault
+Le Febvre
+Le Febvre de La Barre
+Le Febvre de la Griffaudrye
+Le Febvre de Laubrière
+Le Fesseur
+Le Franc
+Le Fèvre
+Le Gai
+Le Gauffre
+Le Gendre
+Le Gentil
+Le Goazre
+Le Grand
+Le Gris
+Le Guales
+Le Guen
+Le Heudre
+Le Hongre
+Le Houx
+Le Héricy
+Le Jeune
+Le Juge
+Le Letier
+Le Lièvre
+Le Lorrain
+Le Loyer
+Le Maignen
+Le Maire
+Le Male
+Le Mascrier
+Le Meyssonnier
+Le Moine
+Le Moulinet
+Le Muet
+Le Myère
+Le Nepveu
+Le Nicolais du Saulsay
+Le Noir
+Le Normand
+Le Normant
+Le Paige
+Le Paulmier
+Le Pelletier
+Le Petit de Marcenou
+Le Picquier
+Le Prestre
+Le Prevost
+Le Proust
+Le Père
+Le Queu
+Le Roi de Fontigny
+Le Roux
+Le Roy
+Le Roy de Fontenailles
+Le Sage
+Le Seurre de La Bellerie
+Le Soyeur
+Le Sueur
+Le Telier
+Le Thimonnier Desartours
+Le Vachet
+Le Vassor
+Le Vavasseur de Masseville
+Le Veneur
+Le Verrier
+Le Voirier
+Leandro Montato de Murcia
+Leauson
+Lebeau
+Lebedel
+Leblond
+Leblond de Saint-Martin
+Lebou
+Lebreton
+Lebrun
+Lebrunet
+Lecerf
+Lech
+Lechat
+Lechford
+Leclerc
+Lecor
+Ledeboer
+Ledermuller
+Ledoux
+Leduc
+Leenaerts
+Leers
+Leeuw
+Lefebure
+Lefebvre
+Lefer
+Lefevre
+Lefort de la Morinière
+Lefranc
+Legal-Lalande
+Legall
+Legendre
+Leger
+Legier
+Legouvé
+Legoux
+Legoyt
+Legrand
+Legrip
+Legroing La Maisonneuve
+Legros
+Leguay
+Lehmann
+Lehms
+Lehner
+Lehnhardi
+Leickerus
+Leickher
+Leitaõ
+Leitão d Andrada
+Lejourdan
+Lemaire
+Lemaistre de Saint-Peravy
+Lemarchant de Gomicourt
+Lemarchant de Vanval
+Lemard
+Lemarié
+Lembke
+Lemenuet de La Jugannière
+Lemenuet-Lajugannière
+Lemerer
+Lemoine
+Lemoyne
+Lemulier de Bressey
+Lenain
+Lengerken
+Lenglet
+Lente
+Lenten
+Lentfrinck
+Lentz
+Lenz
+Leo
+Leonagnus
+Leonardo de São Joseph
+Leonelli
+Leonhard
+Leonhardi
+Leoni
+Leonida
+Leonini
+Leontowytsch
+Leopold
+Lepaige
+Leporius
+Lerche
+Lerchenfeld
+Leroi de Neufvillette
+Leroux Du Cloteau
+Leroy
+Lersner
+Lesbeaupin
+Lescellier
+Leschener
+Lescuyer
+Leslie
+Lespaignol
+Lessero
+Lessing
+Lestang
+Lestranges
+Lestrée
+Lesurques
+Letter
+Lettré
+Leucken
+Leudfelds
+Leufroy
+Leutel
+Levasseur
+Levavasseur
+Leveling
+Lever
+Levesque
+Levis
+Levuyt
+Levy de Vantadour
+Lewal
+Lewin
+Lewis
+Leyssenne
+Leão
+León y Gómez
+Lherminier
+Lhommeau
+Lhomond
+Lhoste
+Li
+Li ma dou
+Libens
+Lichtenberger
+Lidborg
+Lieb
+Lieben
+Liebenroth
+Liebentantz
+Liebseskind
+Liedvogel
+Liefde
+Liendon
+Lienhardt
+Liewen
+Liger
+Lightfoot
+Ligier
+Liguoro
+Liliemberg
+Lilien
+Liljestråle
+Lille
+Lillie
+Limmer
+Limpo
+Linck
+Lincke
+Linde
+Lindemann
+Lindenbrogius
+Lindes
+Lindisch
+Lindner
+Line
+Linek
+Linglois
+Lingne
+Linroth
+Lionnois
+Lippa
+Liruti
+Lischwitz
+Liscow
+Lisle
+Lissalde
+Liu
+Liverziani
+Livingston
+Lizana
+Lizel
+Liély
+Liñán y Verdugo
+Ljungberg
+Ljungqvist
+LL. PP.
+Lloyd
+Lo Looz
+Lobé
+Locatelli
+Lochner
+Loddi
+Lodewijk van Velthem
+Lodi
+Lodtmann
+Loehn
+Loehr
+Loen
+Loescherus
+Loeuillart
+Loiseleur
+Loivet
+Loizel
+Lolli
+Lombardi
+Lompagieu Lapole
+Loménie de Brienne
+London
+Long
+Longchamp
+Longueil
+Longuet
+Lonicer
+Loperraez Corvalan
+Lopes
+Lopez Cogolludo
+Lorber
+Lordat
+Loredano
+Lorentz
+Lorenzi
+Loriet Padela
+Loris
+Lorme
+Lorraine
+Los
+Losses
+Lostelneau
+Lotter
+Lotz
+Louis
+Louis de Bourdeaux
+Louise Marie du Saint Sacrement
+Louit
+Loustaunau
+Loutaud
+Loyens
+Loyola
+Loys
+Loysius
+Lozano
+Lozes
+Lubac
+Lubières
+Luca di San Diego
+Lucante
+Lucarini
+Lucas
+Lucas de Blaire
+Lucas de Van
+Lucatelli
+Lucet
+Luchetti
+Luchini
+Lucius
+Lucotte
+Lucretiis
+Lucuce
+Luder
+Luderhoff
+Ludgers
+Ludo
+Ludolf
+Ludolff
+Ludovici
+Ludovicus a Sancto Malachia
+Ludwig
+Lugo y Davila
+Luiggi
+Luine
+Luiz
+Luiz da Cruz
+Lullin
+Lumnitzer
+Lungwitz
+Luparus
+Lupian Zapata
+Luppé
+Lupton
+Luquin
+Lurano
+Lushington
+Lussan
+Luther
+Luzy
+Lyly
+Lymbourgh
+Lyon
+Lys
+Lystenius
+Läusepeltz
+Léautaud
+Léger
+Léon
+Léonard
+Léonidas d Alexandrie
+Lépine
+Lévesque
+Lévis de Ventadour
+Lévis Mirepoix
+Lévis-Mirepoix
+Lévy de Vantadour
+López de Araújo y Ascarraga
+López de Barrera
+Löder
+Löffler
+Löscher
+Löven
+Löwe
+Löwenthal
+Lü
+Lübben
+Lübbers
+Lüder
+Lünde
+Lütgert
+M D 
+M D P 
+M***
+M****
+M.
+M. B***
+M. B. L.
+M. D.
+M. D. B.......
+M. D. M***
+M. de ***
+M. L. C. D. D.
+M. L. F. I. D. P. E. C.
+M. Th. A. B. D. C*******
+M.***
+Ma
+Maasius
+Mac Caghwell
+Mac Connell
+Mac Geoghegan
+Mac Intire
+Mac-Keogh
+Mac-Mahon
+Macarty
+Maccarthy
+Maccioni
+Machado
+Machiai
+Macigni
+Maciá
+Mackius
+Maconay
+Macquet
+Macé
+Madaria
+Madramany y Calatayud
+Madrigal
+Maecianus
+Maffei
+Magalhães
+Magens
+Mages
+Magiotti
+Magirus
+Magistris
+Magnani
+Magnanima
+Magni
+Magnien
+Magnier
+Magno
+Magny
+Magon de La Balue
+Maheult
+Mahler
+Mahmud Raif Efendi
+Maier
+Maignelay
+Maigret
+Maihows
+Mailhos
+Maillant
+Maillart
+Maille
+Maillebois
+Maillet
+Maillot
+Mailly
+Mainard
+Maingui
+Mainnemare
+Mair
+Maire de Taverny
+Mairot
+Maisnel
+Maistret
+Maitland
+Maius
+Majault
+Majerus
+Major
+Malachias Hibernicus
+Malacreta
+Malartic
+Malaspina
+Malatesta
+Malatesta Strinati
+Malatra
+Malavolti
+Malcolmus
+Malfatti
+Malga
+Malgrape
+Malinari
+Mallard
+Mallet de Saint Hilaire
+Malleville
+Mallinkrott
+Malmedie
+Malmesbury
+Malobiczki
+Maloiselle
+Malon
+Malpas
+Malthus
+Malvilux
+Malzac
+Manaud
+Mancini
+Manda
+Mandillo
+Manerba
+Manet
+Manfred
+Mangold
+Mangot
+Mangourit
+Manialdus
+Maniban de Casauban
+Manissi
+Manitius
+Manley
+Mann
+Manning
+Manoel da Cruz
+Mansell
+Mansuet
+Mantz
+Manzoni
+Mappus
+Maraimberg
+Marais
+Marbeuf
+Marc
+Marc Ant de Noé
+Marc Eugénicos
+Marchand
+Marchant
+Marche
+Marcheselli
+Marchi
+Marchisetti
+Marconnay
+Marcquis
+Marcé
+Mardelle
+Marescalchi
+Mareschal
+Marggraff
+Mari
+Maria
+Mariani
+Marianus
+Marie
+Marie de La Antigua
+Marie de Saint-Ursin
+Marie-Thérèse
+Marigny
+Marigo
+Marikowsky
+Marillac
+Marin
+Marinario
+Marinet
+Marini
+Marinis
+Marinus a Sancta Cruce
+Mariot
+Mariscotti
+Marius
+Marliani
+Marliére
+Marolle
+Marolt
+Maron
+Marot
+Marquet
+Marquier
+Marquis
+Marraud
+Marre
+Marrero Suarez
+Marrini
+Marryat
+Marschall
+Marsciano
+Marsden
+Marsollier de Villedombe
+Marstaller
+Marta
+Marteau
+Martel
+Martelli
+Marth
+Martin
+Martin de La Bastide
+Martinati
+Martinellis
+Martinet
+Martinez
+Martinez Van Waucquier
+Martinez,
+Martini
+Martinius
+Martinon
+Martinus
+Martinus de Fano
+Martín
+Martínez
+Marugj
+Marx
+Mary
+Marzagaglia
+Marzio
+Marzio Medici
+Marzioli
+Marés
+Mas
+Masacconi
+Mascré
+Masino
+Massac
+Massemin
+Masset
+Massey
+Massi Benedetti
+Massimiliani
+Massimo della Purificazione
+Masson
+Masson Delongpré
+Massucci
+Massé
+Mastagli
+Masucci
+Mata
+Matal
+Matamoros
+Matare
+Matelief
+Materni
+Mateucci
+Mathelin
+Mathew
+Mathias de St Bernard
+Mathieu
+Matos
+Matt
+Matte La Faveur
+Matteacci
+Mattei
+Mattens
+Matthaei
+Matthaeis
+Matthaeus
+Matthaeus Armenus
+Matthews
+Matthiae
+Matthieu
+Mattioli
+Matute y Acevedo
+Mauch
+Mauchartus
+Mauche
+Mauclerc
+Mauger
+Maugras
+Maujean
+Maule
+Maulny
+Mauléon
+Maunsell
+Mauny
+Maupin
+Mauray
+Mauregnault
+Mauronne
+Mauroy
+Maury
+Maurès
+Mavelot
+Mavonius
+Mavrokordatos
+Maximilien-Emmanuel
+May
+Mayer
+Mayet
+Mayeur
+Mayeuvre
+Mayeux
+Mayr
+Mazarin
+Mazio
+Mazière
+Mazza
+Mazzolari
+Mazzoli
+Mazzucchelli
+Mazères
+McKean
+Meallet de Fargues
+Meares
+Mederer
+Medici
+Medicus
+Medina
+Meding
+Medolago
+Megenhard
+Megerlin
+Mehlbaum
+Meier
+Meinhardt
+Meinier
+Meis
+Meisner
+Melan
+Melchior
+Melder
+Mele
+Melio de Sande
+Melisch
+Melius
+Mella Arborio
+Mellemann
+Melletier
+Mello
+Melloni
+Melm
+Melmoth
+Melon de Pradou
+Meloncelli
+Melonius
+Melzer
+Melzner
+Member of Parliament, and of His Majesty's privy council
+Mena
+Menahem Azariah da Fano
+Menantel
+Menardeau
+Mendoça Corte Real
+Menesse
+Menestrier
+Menezes
+Mengaud
+Mengering
+Mengin
+Menschen
+Mensing
+Mente
+Mentelle
+Mentzelius
+Mentzer
+Menzel
+Mercadanti
+Mercado
+Mercier
+Mercier Du Rocher
+Merckelius
+Mercklinus
+Merclinus
+Mercy
+Mereau
+Meredith
+Meresos y Paralipipos
+Mergey
+Merille
+Merle
+Merlet
+Merlini
+Merlinja
+Merlino
+Merlo
+Mermont
+Merola
+Merveilleux
+Merville
+Mesa
+Meslé
+Mesmer
+Mesmes
+Mesnard
+Mesnidrieu
+Mestais
+Mestanier
+Mestre
+Metternich
+Metzger
+Meurisse
+Meurs
+Meuschius
+Meusnier
+Meusnier de La Place
+Mexia
+Mexía
+Meybachius
+Meyer
+Meynadier
+Meynier
+Mialaret
+Micalori
+Micalorio
+Michael
+Michaelis
+Michaille
+Michallet
+Michaud
+Michault
+Michel
+Michel-Ange de Sainte Françoise
+Michelet
+Michels
+Michiels
+Michonius
+Micol
+Micolon
+Micon
+Middleton
+Midnight
+Mieg
+Migliore
+Mignot
+Miillerus
+Milandre
+Milani
+Milanuzzi
+Milbillez
+Milcent
+Mildapettus
+Mildenhall
+Milesius
+Milet de Monville
+Milges
+Milhau
+Millan
+Millard
+Mille
+Miller
+Millerand
+Millet
+Millo
+Millot Du Plessis
+Milnes
+Milton
+Milus
+Minacci
+Minerbetti
+Minguet
+Minier
+Minières
+Minotopolis
+Minvielle
+Miqueorena
+Mirabeau-Cravate
+Mirampal
+Mirandola
+Miron
+Missa
+Missy
+Miñana
+Mocenigo
+Modestini
+Modestinus
+Modiford
+Modjeski
+Moebius
+Moellerus
+Moerbeeck
+Moeser
+Moeslerus
+Moestlin
+Moger Dorlan
+Mogidō Shujin
+Mohy
+Moḥammad ʿAlī Khān
+Moissant
+Moisy
+Moitelle
+Molen
+Molerius
+Moles
+Molin
+Molina
+Molines
+Molinetti
+Molineus
+Molinier
+Molino
+Molins
+Moll
+Moller
+Mollerus
+Mollet
+Monaca
+Monacelli
+Monachus Paduanus
+Monchy
+Moncreiff
+Moncrif
+Moncé
+Mondain
+Mondin
+Mondina
+Mondésir
+Monerius
+Monestier
+Monetus
+Monfort
+Mongaultier
+Mongiorgio
+Mongrolle
+Monier
+Monnet
+Monnier
+Monro
+Monrus
+Mons
+Monsabert
+Monsieur B****
+Monsignani
+Monsodive
+Montagnat
+Montalvo
+Montano
+Montanus
+Montauban
+Montboissier-Beaufort-Canillac
+Monte
+Monte Mellini
+Montecalvi
+Montecatini
+Montegiani
+Montegnaco
+Montesardo
+Montesquieu
+Montesquiou-Poylobon
+Monteverdi
+Montfort
+Monthieu de Bellegarde
+Monthorry
+Monti
+Montlibert
+Montmollin
+Montot
+Montpellier
+Montpensier
+Montreuil
+Montvéran
+Montégut-Sègla
+Moor
+Moraenius
+Moraes Silva
+Morain
+Morak
+Morales
+Morando
+Moras
+Moratti
+Moravius
+Moreau
+Moreau de Mersan
+Moreau le jeune
+Moreau père
+Morel
+Moreli
+Morelli
+Moresini
+Morgues
+Morhof
+Morin
+Morin de Voligny
+Morisani
+Morisot
+Morisot des Landes
+Morisot-Deslandes
+Moritz
+Moro
+Moroni
+Morosini
+Morot
+Morozzi
+Morozzo
+Morphey
+Morphy
+Morra
+Morri
+Morris
+Morrona
+Morsey
+Morsicato Pallavicini
+Morstatt
+Mortanus
+Mortier
+Mortimer
+Morton
+Morville
+Morville de Champclos
+Mory
+Mosca
+Moscherosch
+Mose
+Moseley
+Moser
+Mosnier
+Mosquera de Barnuevo
+Mossner
+Motais de Narbonne
+Motillo
+Motschenbach
+Motta
+Mottin
+Mottoulle
+Motus
+Mougenot
+Moult
+Moultrie
+Mountaine
+Mountgomery
+Mouquet
+Mourer
+Mourett
+Mourgeon
+Mourgues
+Mourre
+Moustier
+Mouton
+Mouturier
+Movillet
+Mowbray
+Moya
+Moynat
+Moysson
+Moytinho
+Moïse de Mardin
+Mueller
+Mugnier
+Mulkeman
+Muller
+Muncker
+Munich
+Munierus
+Munnier
+Muntaner
+Muratowicz
+Murga
+Murillo Velarde
+Murray
+Murschel
+Musaeus
+Musculus
+Musgrave
+Musler
+Musonius
+Musschenbroek
+Musset de Cogners
+Mussi
+Mutarelli
+Muth
+Mutillet
+Mutinelli
+Mutuelle
+Mutus
+Mutzenbecher
+Muyssart
+Muñoz Barma
+Mylius
+Myller
+Mylonius
+Mysberg
+Méat
+Méaudre
+Méglat
+Ménager
+Ménape
+Ménard
+Ménassier
+Ménières
+Méré
+Mézard
+Möbius
+Möllenbrock
+Möllenhoff
+Möller
+Mönch
+Möschel
+Mühlen
+Müller
+Mümperowe
+Münch
+Münch von Bellinghausen
+Münter
+N
+N. 
+N. G. R.
+NA
+Naaldwyck
+Naborowius
+Nadasi
+Nadasti
+Nadaud
+Nadisto
+Naeranus
+Naich
+Nakamura
+Naldi
+Namura
+Nannoni
+Nantiat
+Napolini
+Naquet
+Naramowski
+Narbona
+Nardeau de Lagrange
+Nardi
+Nares
+Narsius
+Narvaez
+Narychkin
+Nascimento Silveira
+Nash
+Nassau La Lecq
+Nassau-Siegen
+Nasser
+Natalis
+Nathus
+Nathusius
+Nati
+Nativelle
+Natoire
+Nau
+Naubert
+Naumann
+Naurissart de Forest
+Navarro
+Navazotti
+Navesi
+Navier
+Naxagoras
+Nazmer
+Neal
+Nebel
+Neerinca
+Nefen
+Negri
+Nehring
+Neickelius
+Neidhardt
+Nektarios
+Neller
+Nelli
+Nelson
+Nember
+Nenci
+Nepveu
+Nerbec
+Nerdenhagen
+Neri
+Nerli
+Nersesewicz
+Nervius
+Nestor
+Nettekoven
+Nettirvill
+Nettmann
+Neubauer
+Neuberger
+Neuffer
+Neurath
+Neuscheller
+Neve
+Newenhauss
+Newton
+Neydecker
+Neyt
+Nible
+Nibles
+Nicaeus
+Nicaise de Sainte Terese
+Nicander
+Niccolai
+Nicolai
+Nicolas
+Nicolaï
+Nicoleau
+Nicoletti
+Niconitius
+Nicétas d'Héraclée
+Nidepontanus
+Nieberle
+Niemann
+Niemirycz
+Niemtschek
+Nieren
+Niethammer
+Nietzschius
+Nieulant
+Nieupoort
+Niggel
+Niggelius
+Nigidius
+Nigrisoli
+Nihell
+Nimptsch
+Nini
+Ninkai
+Nirel
+Nisbet
+Nissl
+Nitsche
+Niu niu
+Noaille
+Noailles
+Nobisius
+Noblet
+Noce
+Noci
+Nodin
+Noe
+Nogavet
+Nogues
+Nohr
+Noinville
+Nokken
+Nolte
+Nonancourt
+Nonnen
+Nonney de Fontenai
+Nonney de Fontenay
+Nonnot
+Norcia
+Nordio
+Norio
+Normand
+Noronha
+Norris
+Northall
+Norton
+Norweg
+Nostradamus
+Nostredame
+Noswizius
+Nouet
+Nounez
+Nourry
+Nouzen
+Nova
+Novel
+Novisadi
+Nugent
+Nuguet
+Nullyacus
+Nunn
+Nutzius
+Nuñez Da Cunha
+Nuñez de La Vega
+Nysaeus
+Négociant de Paris
+Nöhden
+Nüchterlein
+O Connell
+O Conor
+O Dwyer
+O Halloran
+O Rourke
+O'Molony
+Oberlin
+Obert
+Obrecht
+Ocellus
+Ochs
+Ockland
+Odenwald
+Odhelius
+Odolant Desnos
+Oedman
+Oeler
+Oelsner
+Oerius
+Oertel
+Offman
+Offmann
+Ofmülner von Mülfeldt
+Ogerius
+Ogle
+Oheim
+Oheimb
+Ohlemann
+Okada
+Olave
+Oldekop
+Oldenburger
+Oldendorp
+Oldfield
+Oldius
+Oldoini
+Olignano
+Olimpo degli Alessandri
+Oliva
+Olivecrona
+Olivier
+Olivier de Saint Anastase
+Olivier de Saint Vast
+Olivier de Villeneuve
+Olivieri
+Ollivier
+Olovchich
+Olpius
+Olry de Loriande
+Olsen
+Olufsen
+Omgoys de Therouanne
+Oosterdyk
+Oosterling
+Oppermann
+Opsimathes
+Orichovius
+Orieu de S Basile
+Orlandi
+Ornberg
+Orsi
+Orsini
+Orsino
+Orso
+Orsolini
+Orthius
+Ortlob
+Orton
+Ortí
+Orville
+Oré
+Oschmann
+Osio
+Osten
+Ostens
+Othmayr
+Otto
+Oudart
+Oudenaarden
+Oudet
+Oudiette
+Oudin
+Oudineau
+Ouen
+Ouloug Beg Ibn Chakroukh Ibn Timour Kourgān
+Oulton
+Outhier
+Outshooren
+Ouwens
+Oviedo y Herrera Ordóñez
+Oxenstierna
+Oxholm
+Oyanguren Cavallero
+Ozet
+P
+P.
+P. F. P.
+P. G. N.
+P. I. D. G. C.
+P. L.
+P. L. B. W. K.
+P. L. C. V. H.
+P. S. C.
+P. V. C. F.
+P.D.C. 
+Paccalia
+Pacheco
+Pachetti
+Pacifici
+Packe
+Pacquin
+Padilla Altamirano
+Padilla y Meneses
+Paets
+Paganucci
+Pagendarm
+Pagenstecher
+Paggi
+Pagnini
+Paidodais
+Paignon
+Paillet
+Paing
+Palain
+Palasne de Champeaux
+Palau
+Palazzi
+Palazzoli
+Palermo
+Palisot de Beauvois
+Pallavicini
+Pallavicino
+Palm
+Palmer
+Palmerand
+Palmroot,
+Palosa
+Paludan
+Palun
+Pamfili
+Pamphilus
+Pane
+Panetier de Montgrenier
+Pannelli
+Pantaleon
+Papelier
+Papini
+Papon
+Pappus
+Pardaillan de Gondrin d'Antin
+Pardes
+Pardessus
+Parent
+Parenti
+Parigi
+Paringet
+Parinus
+Paris
+Parma
+Parnham
+Parrain
+Partini
+Partridge
+Pary
+Pascali
+Paschasius Dumiensis
+Pask
+Pasqual
+Pasquali
+Pasquier
+Pasquin
+Passarelli
+Passarini
+Passerat de La Chapelle
+Passeri
+Pasteur
+Pastoret
+Pastritius
+Pasturel
+Pastõr de Larrinaga
+Patissier de La Foretille
+Patriote raisonnable
+Patriote sensible
+Patris
+Patru
+Paul
+Paul de Vendôme
+Paule
+Pauli
+Paullus
+Paulmier
+Pauw
+Pavoni
+Payen Boisneuf
+Payne
+Pazzi
+Peacock
+Pearse
+Pechet
+Peck
+Pecoroni
+Pedersøn
+Peetrino
+Pelaez
+Pelicot
+Pellas
+Pellegrini
+Pellerin
+Pellet
+Pelletier
+Pellicer y Saforcada
+Pellier
+Pellisson
+Pellot
+Peloux
+Peloux de Clairfontaine
+Pels
+Peltre
+Pelé
+Pelée de Chenouteau
+Pelée de Valoncourt
+Pemsel
+Pencini
+Peneau
+Pennazzi
+Pennyman
+Penrose
+Penton
+Penzenkuffer
+Peralta Calderon
+Perazzoli
+Perbandt
+Perego
+Pereira
+Pereira Bracamonte
+Peret
+Perez
+Perez de Heredia
+Perez de Rua
+Perez de Xea
+Pergen
+Pergmayr
+Periconi
+Perier
+Perin
+Perlensee
+Perne
+Perotti
+Perquis
+Perrard de Montreuil
+Perrelli
+Perret
+Perretus
+Perrier
+Perrin
+Perron
+Perronet
+Perrot
+Perrott
+Perroud
+Perry
+Perthuis
+Pertsch
+Perussault
+Peré
+Pesciony
+Pesme
+Pessarini
+Pesserl
+Pestalossi
+Pestalozzi
+Peters
+Petersen
+Peterson
+Petibeau
+Petiot
+Petit
+Petit de La Fontenelle
+Petit Douxciel
+Peton
+Petreius
+Petri
+Petriconi
+Petritz
+Petro Poissonier
+Petrocha
+Petronius
+Petrosilius
+Petrucci
+Pettenkover
+Peuplus
+Peveratus
+Peyre
+Peyroux
+Peyrusset de Labruguière
+Peyssard
+Peytavin
+Pezerols
+Pezet
+Pezold
+Pezoldus
+Peñafiel y Araujo
+Peñalosa
+Peñalosa y Mondragon
+Pfaff
+Pfaffreuter
+Pfauder
+Pfeffel
+Pfeiffer
+Pfeil
+Pfettisheim
+Pfitzer
+Pflaum
+Pflaumb
+Pfluger
+Phelines
+Philagathon
+Philander von Sittewalt
+Philanthrope
+Philarchus
+Philibert
+Philibert fils
+Philidor
+Philiponeau de Hautecour
+Philipp Wilhelm
+Philippe
+Philippe le Magnanime
+Philippi
+Philippus Lastrich Ochieva
+Phillips
+Philopatris
+Philopistius
+Philosophischer Weltbürger
+Philoxène
+Phinn
+Phélip
+Phélypeaux  d'Herbault
+Phérécyde de Syros
+Pianzola
+Piard
+Piatti
+Picart
+Picaïne
+Picchi
+Piccinetti
+Picherel
+Pichi de Trevio
+Pichon
+Pichon Lapinsonière
+Picker
+Pico
+Picoletus
+Picon
+Picot
+Picot Ducharvin
+Picquet
+Pideritz
+Pien
+Piepenbring
+Pier
+Pieracci
+Piererus
+Pieri
+Pierre de Bretagne
+Pierre de la Résurrection
+Pierre de Laodicée
+Pierre de Saint-Louis
+Pierre de Sicile
+Pierre La Coignée
+Piette
+Piettre de Saint Benoist
+Pigot
+Pilizzari
+Pilkington
+Pimenta
+Pimonte
+Pin
+Pinardy
+Pinatelle
+Pinchinat
+Pindemonte
+Pinelle
+Pinet
+Pinget
+Pinheiro
+Pini
+Pinière
+Pinna
+Pinsart
+Pinson
+Pinto
+Piotto
+Piper
+Pipereau
+Piquet
+Piranesi
+Pirckeymer
+Pirelli
+Pirellius
+Piron
+Piroulle
+Pirri
+Pistorius
+Pistorozzi
+Pit
+Pitcarne
+Pithoeus
+Pitoni
+Pitsillius
+Pitts
+Piva
+Pizolanti
+Piña
+Pla
+Placidus
+Planchot
+Planis Campy
+Planque
+Planta
+Plantier
+Plas de Tane
+Platner
+Platz
+Plaustrarius
+Playcard de Raigecourt
+Playne
+Plessen
+Plitz
+Ploos Van Amstel
+Ploucquet
+Plumyoen
+Poeschel
+Poeta Saxo
+Poggio
+Pohlmann
+Poille
+Poillet
+Poilroux
+Poinssart
+Point
+Pointel
+Poirriez
+Poiré
+Poirée
+Poissault
+Poisson
+Poitevin
+Pol de Sainct Tronquet
+Polack
+Polcken
+Poleni
+Polentz
+Poli
+Polidorus
+Poliphile
+Polonus
+Polop y Valdès
+Polunin
+Pomme
+Pompe
+Pompei
+Poncino Della Torre
+Pons
+Ponsard
+Pont
+Pontallié
+Pontanus
+Pontchartrain
+Ponte
+Ponza
+Poopds
+Poplicola
+Popoff
+Popov
+Popow
+Poppe
+Poppo
+Porcellinis
+Porcher
+Porché
+Porres
+Porro
+Porta
+Portail
+Porter
+Portillo
+Poschet
+Post
+Potgieter
+Potho
+Potier
+Potier de La Germondaye
+Potron
+Pott
+Potter
+Potterus
+Pou
+Poubeau de Bellechaume
+Poucquet
+Poudenx
+Pouderoux
+Poulain
+Poullet
+Poulot Dorigny
+Poultier
+Pous
+Poussin
+Poutrue de Grandville
+Poyer
+Pozuelo y Espinosa
+Praetorius
+Praetorius Luberosanus
+Pragemann
+Prandi
+Prato
+Preisler
+Preissac
+Premagny
+Prenger
+Preposito
+Presseux
+Preuschen
+Preuss
+Prevost
+Price
+Prickelius
+Prignard
+Primelius
+Pring
+Prins
+Prior
+Priuli
+Privat
+Probst
+Probstingh
+Probstius
+Prochaska
+Prochnau
+Procope
+Prodon
+Proelius
+Projean
+Prospero
+Prost
+Pruneau de Pommegorge
+Prunettus
+Prunis
+Préaudeau
+Précy
+Préfontaine
+Préseau de Dompierre
+Prévost
+Prévot
+Psaume
+Psichholtz
+Pucci
+Puchairic
+Pueyo y Pueyo
+Pugh
+Pugnatore
+Pullieni de Lupari
+Pulsictus
+Purcell
+Pusch
+Puthaux
+Puttock
+Puylon
+Pyl
+Pyot
+Pyrrhys de Varille
+Pàramo
+Pâris
+Péchaut
+Péchon
+Pérac
+Pérez Bocanegra
+Périn
+Pérès
+Pühler von Schwandorff
+Qaffon
+Qiao
+Qin
+Quandt
+Quantz
+Quarré
+Quasius
+Quattrehomme
+Quehl
+Quenin
+Quené
+Quer
+Querci
+Querini
+Queru de La Coste
+Querzoli
+Quesnay de Saint-Germain
+Quesnel
+Queyratz
+Quick
+Quilici
+Quilin
+Quincy
+Quiquebeuf
+Quirinus a Sancto Augustino
+Quirsfeld
+Quiñones de Benavente
+Qureshi
+Quénard
+R.
+R. Bt
+Raad
+Rabaud
+Rabe
+Rabelais Daquin
+Rabenius
+Raby
+Racine
+Rademacher
+Radermacher
+Radziwiłł
+Raei de Jonge
+Raenner
+Raffaele da Roma
+Raffié
+Ragonneau
+Ragotzky
+Ragueneau
+Rahne
+Raiberti
+Raicus
+Raid
+Raigneaux
+Raimondo
+Rainssant
+Raisin
+Rallius
+Ram
+Rambaud
+Rame
+Rameen
+Ramirez
+Ramponeau
+Ramponneau
+Ramsden
+Ramus
+Ranchin
+Randall
+Randan
+Randoux
+Rang
+Ranghiasci
+Ranis
+Ransleben
+Ranssanne
+Rantzau
+Rantzov
+Rantzovij
+Ranucci
+Raoul
+Raparlier
+Raphaël
+Raphel
+Raphson
+Rapin
+Rapinat
+Rappoltus
+Rasch
+Rassiels Du Vigier
+Rassino da Belforte
+Rastrelli
+Rat
+Ratenburg
+Ratshamhausen
+Rauch
+Raue
+Raup de Baptestin de Moulières
+Rausch
+Raussin
+Ravechet
+Ravelli
+Ravenstein
+Raverta
+Rawson
+Raymond
+Rayssiguier
+Re
+Real well-wisher to both societies
+Realis
+Reares
+Rebel
+Rectorius
+Rede
+Redeker
+Redel
+Reebmann
+Reefmann
+Reersløw
+Regenfus
+Regenmorter
+Reghini
+Reginerius
+Reglet
+Regnani
+Regnard
+Regnault
+Regnault Le Gouvello
+Regulus
+Rehburg
+Reich
+Reichard
+Reichardt
+Reichart
+Reichenbach
+Reichmann
+Reichwein
+Reif
+Reillac
+Reily
+Reimann
+Reimbold
+Reimer
+Reinach
+Reinaud
+Reinboth
+Reiners
+Reinhard
+Reinhardt
+Reinhold
+Reinmann
+Reinold
+Reisig
+Reitz
+Reitzenstein
+Reiz
+Reling
+Rembach
+Remigio
+Remus
+Remy
+Renard
+Renaud
+Rengger
+Rengguer de La Lime
+Reniger
+Renouard
+Renoud
+Renout
+Renström
+Requier
+Rerertigu
+Resende
+Rességuier
+Restout
+Reuchlin
+Reufflet
+Reusner
+Reussner
+Reuter
+Reutlinger
+Reutter
+Revet
+Rewa
+Rey
+Reynal
+Reynald
+Reynard
+Reynaud
+Reynerus
+Rhades
+Rhetius
+Rho
+Rhode
+Rhodes
+Ribeiro
+Ribero
+Ribes
+Riboudeault
+Ribouté
+Ricaud de Tirregaille
+Ricci
+Ricciardi
+Riccio
+Riccius
+Rich
+Richa
+Richard
+Richard de Venosa
+Richards
+Richardson
+Richerand
+Richers
+Richery
+Richier de Cerisy
+Richier de La Rochelongchamp
+Richter
+Rickemann
+Ricoul
+Ricourt
+Ridder
+Riddere
+Rider
+Ridley
+Riedel
+Riemschneider
+Riess
+Riet
+Rietmakers
+Rietmannus
+Rigamonti
+Rigault
+Rigel
+Rijmsdyck
+Rilliet de Livron
+Rimbaud
+Rimius
+Ring
+Ringhieri
+Ringier
+Rioja
+Riolet
+Riollet
+Ripaut
+Ripert
+Ripoll
+Rippelius
+Risbeck
+Riseberg
+Risler
+Rissoan
+Risteau
+Ristori
+Ritsius
+Ritter
+Rittou de S
+Riva
+Rivaz
+Riverius
+Rivette
+Rivinus
+Rivius
+Rivière
+Rixinger
+Rizo
+Rizzacasa
+Rizzi
+Roa Dávila
+Roaldes
+Roberjot
+Robert
+Robert d'Auxerre
+Robert le Diable
+Robert Pullen
+Roberti
+Roberts
+Robertson
+Robiano
+Robien
+Robillard
+Robin
+Robin de la Voisinière
+Robin de Mozas
+Robinaux
+Robinet
+Robinson
+Robles
+Robson
+Rocaché
+Rocafull
+Rocca
+Roch
+Rocha
+Rochaeus
+Rochambeau
+Rochas
+Roche
+Rochebrune
+Rochechouart
+Rochefort
+Rochegude
+Rocheplate
+Rochus
+Rodamel
+Rodat
+Rodberg
+Rode
+Rodenkamp
+Rodes
+Rodolfi
+Rodox
+Rodriguez
+Rodríguez
+Roeder
+Roelofsz
+Roemers
+Roemplerus
+Roeseling
+Roffin
+Roger
+Rogers
+Roggeveen
+Rogier
+Rohan
+Rohan Rochefort
+Rohan-Ventadour
+Rohault
+Roi
+Roidi
+Roig
+Roigius
+Roissy
+Roitzch
+Rojare
+Rojas
+Rojas Alarcon
+Rokwa
+Rol
+Roland
+Roland de Richeville
+Rolin de Morel de Mons
+Rolland
+Rollat
+Rollin
+Rollin de La Farge
+Rollos
+Rollwagen
+Roma
+Romain
+Romain de Bonne Espérance
+Romanet Du Caillaud
+Romani
+Romanis
+Romas
+Romeri
+Ronconius
+Rondin
+Rondinelli
+Ronile
+Ronzier de Joly
+Ronzy
+Roode
+Roonptsÿ
+Roos
+Root
+Roque
+Roques
+Ros
+Rosa da Cairano
+Rose
+Rosenfeld
+Rosenfelt
+Rosenhagen
+Rosenhardt
+Rosensten
+Roseti
+Rosiceus
+Rosier
+Rosing
+Rosis
+Roskopf
+Rosler
+Rossel
+Rossellus
+Rosset
+Rosset de Rochefort
+Rosseti
+Rossi
+Rossi Callizo
+Rossignol
+Rota
+Rotarius
+Roth
+Rotha Unsslöbius
+Rothe
+Rotheram
+Rothfischer
+Rothmaler
+Rotmar
+Rotmundus de Sangal
+Rouchet-Duverger
+Roudil
+Rougemont
+Rougier-La-Bergerie
+Rouhaud
+Rouhier
+Rouillac
+Rouillé de Meslay
+Rouppe
+Rouquet
+Rous
+Rouse
+Rousseau
+Roussel
+Rousselet
+Rousset
+Roussineau
+Roussy
+Rouveyre Duplan
+Roux
+Rovenzon
+Row
+Roy
+Royer
+Royer-Collard
+Rozandre
+Rozard
+Roze'e
+Rozier
+Rozy
+Rubat
+Rubaus
+Rubeus
+Rubinus
+Rubis
+Rudamina
+Rudd
+Rudisindus
+Ruffel
+Ruffinus
+Ruffo
+Rugenwald
+Ruhedorf
+Ruhl
+Ruhtag
+Ruigo
+Ruis
+Ruitingius
+Ruivet
+Ruiz
+Ruiz de León
+Ruiz del Cerro
+Ruiz López
+Rumpel
+Rumpelius
+Rumpf
+Rumpff
+Rund
+Runge
+Runnio
+Ruperti
+Ruricius
+Ruschi
+Russel
+Russell
+Ruteau
+Ruthard
+Rutilio
+Rutofle de Lode
+Ruusscher
+Ruyt
+Ruyz
+Ruzzini
+Rychnerus
+Ryd
+Ryon
+Rypland
+Ryssel
+Rzewuski
+Rålamb
+Réal de Curban
+Rémard
+Rémond
+Rémouleau
+Röber
+Rödenbeck
+Rösch
+Röser
+Rösler
+Rösner
+Röteln
+Rövestrunck
+Rübner
+Rückoldt
+Rüdiger
+Rüfferus
+Rühfel
+S
+Saalman
+Sabbati
+Sabbattini
+Sacchetti
+Sacchetto
+Saclier de Giverdey
+Sacrobosco
+Sacrogorgon
+Sacrélaire
+Saddumene
+Sadous
+Sagamiya
+Sagius Perlucius
+Sahurs
+Saigyō
+Sainmartin
+Saint Chéron
+Saint Hilaire
+Saint Jean
+Saint Macaire
+Saint Morien
+Saint Philippe
+Saint Pré
+Saint Sauflieu
+Saint-Aulaire
+Saint-Claret
+Saint-Foix
+Saint-Foy
+Saint-Germain-Robin
+Saint-Léger
+Saint-Martin
+Saint-Onufre
+Saint-Priest de Saint-Mur
+Saint-Prix
+Saint-Roman
+Saint-Sauveur
+Saint-Yves
+Sainte Croix
+Sainte Irène
+Sainte Marie
+Sainte Marthe
+Sainte-Aulaire
+Sainte-Font
+Sainte-Marie
+Sainte-Marthe
+Sala
+Salander
+Salcedo y Aguirre
+Salchow
+Salemann
+Salengre
+Salerne
+Sales
+Salin
+Salis
+Salis Soglio
+Salis von Marschlins
+Sallas Barbadillo
+Sallentin
+Salles
+Salligny
+Sallière
+Sallo Desvarennes
+Salm Salm
+Salm-Salm
+Salmade
+Salmon
+Salodius
+Salomon
+Salone
+Salpets
+Salvatico
+Salvator
+Salverte
+Salvi
+Salvianus
+Salvini
+Salzhuebero
+Salé
+Sambiasi
+San Juan
+Sanchez Valdes de la Plata
+Sancroft
+Sanctius
+Sanctus Martinus
+Sand
+Sanderson
+Sandrart
+Sandras de Courtilz
+Sandwich
+Sanegonius
+Sanfermo
+Sangomischi
+Sanguin
+Sangutelli
+Sanllorente
+Sans
+Sansbury
+Sanson
+Santa Cruz
+Santa Ella
+Santa Paulina
+Santander
+Santiago Palomares
+Santiago y Palomares
+Santis
+Santmann
+Santo Thomas
+Santvoort
+Sanvitores
+Sanxay
+Saporta
+Sappa
+Saracenus
+Saracinelli
+Saracini
+Saracino
+Sariis
+Sarman
+Sarraute
+Sarria
+Sarrois
+Sartorius
+Saryčev
+Sasse
+Saturnatus
+Sauerbrei
+Sauli
+Saulx
+Saunders
+Saunderson
+Saunier
+Saur
+Saussine
+Sautereau de Belleveau
+Sauthier
+Sautier
+Sauvé
+Savary
+Savi
+Savignac
+Savigny
+Savile
+Savion
+Savioni
+Savorini
+Saxibellius
+Saxtorph
+Sayer
+Sbarra
+Sberti
+Scaguller
+Scalberge Minière
+Scalona
+Scalus
+Scanaroli
+Scannagatta
+Scaranus
+Scardona
+Schaaff
+Schacher
+Schacht
+Schaeffer
+Schaffshausen
+Schallenbach
+Schaller
+Schallern
+Schalom
+Schaper
+Schard
+Scharlach
+Schattenmann
+Schaub
+Schauenburg
+Schauer
+Schede
+Scheffel
+Scheffer
+Schefferus
+Schehmel
+Scheich
+Scheidlin
+Scheinhardt
+Schell
+Schellwiz
+Schelver
+Schenck
+Schenckel
+Schenk van Tautenburg
+Schepman
+Scherer
+Schermer
+Scherrer
+Schetz
+Scheubner
+Scheuchzer
+Scheumaeder
+Scheyfve
+Schick
+Schickard
+Schickedanz
+Schierwasser
+Schiffermüller
+Schiffert
+Schil
+Schilling
+Schim
+Schippers
+Schirkouch
+Schirmerus
+Schlegel
+Schlegelius
+Schleiermacher
+Schleiff
+Schlereth
+Schleussner
+Schlipalius
+Schlosser
+Schlotterbeck
+Schlüter
+Schmauss
+Schmettau
+Schmid
+Schmidius
+Schmidt
+Schmiedl
+Schmolek
+Schmuck
+Schnabel
+Schnapperus
+Schnebergerus
+Schneider
+Schnell
+Schneyder
+Schnitzler
+Schnizzer
+Schnurr
+Schoder
+Schoefner
+Schoenav
+Schoenberg
+Schoener
+Schoenmetzler
+Schoenwald
+Scholl
+Scholten
+Scholtz
+Schoningh
+Schoonebeek
+Schoppf
+Schott
+Schrader
+Schrag
+Schratt
+Schreck
+Schreiber
+Schreiner
+Schreiter
+Schrembgen
+Schroeder
+Schroegel
+Schroen
+Schroeter
+Schröckius
+Schröder
+Schrötel
+Schröter
+Schröterus
+Schrøder
+Schubarth
+Schubert
+Schuch
+Schuchart
+Schuer
+Schulli
+Schultz
+Schultzius
+Schulz
+Schulze
+Schumann
+Schumlansky
+Schunk
+Schupp
+Schuster
+Schuylius
+Schwab
+Schwaegrichen
+Schwartz
+Schwarz
+Schwarzius
+Schwebel
+Schwebius
+Schweizer
+Schwencke
+Schwendi
+Schwentzel
+Schwerin
+Schychzerus
+Schyth
+Schyz
+Schäffer
+Schöll
+Schönberg
+Schönberger
+Schönborn
+Schöne
+Schönemann
+Schönfeld
+Schönland
+Schöppich
+Schüler
+Schülin
+Schüsler
+Schüssler
+Schütz
+Sciarelli
+Scingliaga
+Scot
+Scoti
+Scotofee
+Scott
+Scotti
+Scotté Velinghen
+Scotus
+Scrofani
+Scutillus
+Scymnus de Chio
+Sebastiani
+Seberus Sulanus
+Sedan
+Seebach
+Seed
+Seeger
+Seegers
+Segers
+Segla
+Segner
+Segnerus
+Segond
+Seguenville
+Segui
+Seguin
+Seidel
+Seideln
+Seidenbecher
+Seidenstücker
+Seiffart
+Seigneur
+Seiler
+Seipp
+Seippius
+Seiz
+Seligerus
+Sell
+Sellier
+Sellius
+Sellschopp
+Sellèque
+Selpert
+Selva
+Seminarius
+Senarclens
+Senckenberg
+Seneschal
+Senner
+Sennertus
+Sentilly
+Septalius
+Sequeira Massuelos
+Serane
+Serantoni
+Seraphinus
+Serchius
+Serdobbel
+Sergeant
+Serigny
+Seriès
+Sermundus
+Serpe
+Serrao
+Serre
+Serre de La Tour
+Serre de la Tour
+Serres
+Servaas
+Servais
+Sethon
+Settei
+Seufferheld
+Sevelenberg
+Severino
+Severinus
+Seydel
+Seyffert
+Seyfried
+Seymour
+Sfenosa
+Sfondrati
+Sgrilli
+Sgualdi
+Shang
+Sharp
+Shen
+Sheng
+Sheppard
+Sheridan
+Shguanin
+Shi
+Shimokōbe
+Shuckford
+Sibthorp
+Sicard
+Sicola
+Sicopeo
+Sidley
+Sidney
+Sidrén
+Siebeker
+Sieben
+Sieffert
+Siegfried
+Sievert
+Siewert
+Sigel
+Sigfrid
+Sigismond
+Sigismondo
+Sigismund
+Sigwart
+Sikitei Samba
+Silberman
+Silberrad
+Silchmüller
+Silly
+Silva
+Silva y Toledo
+Silvain
+Silveire
+Silvestre
+Silvestro da Milano
+Silvio
+Silvère
+Simai
+Simeon
+Simiane
+Simien Despréaux
+Simler
+Simmias de Rhodes
+Simon
+Simonet
+Simoneta
+Simonot
+Simons
+Simplicius
+Sinck
+Sind
+Sindré
+Sinfray d'Aumont
+Singer
+Sinibaldi
+Sinnichius
+Sinton
+Sionville
+Sirano
+Siri
+Sirleto
+Sithmann
+Siver
+Six
+Slade
+Slevogt
+Slooff
+Slothouwer
+Sluter
+Slötel
+Smalbroke
+Smallenburg
+Smeling
+Smidenstet
+Smidt
+Smith
+Smogolecki
+Smythe
+Snape
+Snashall
+Snell
+Snellen
+Snellius
+Snoeck
+Soame
+Soares Albergaria
+Sobek von Kornitz
+Sobieski
+Socini
+Socinus
+Soderini
+Soffing
+Solatio
+Soler
+Soler y Palet
+Solinus
+Solis
+Solis y Herrera
+Soliva
+Sologorgeo
+Solsona
+Soltau
+Solter
+Solórzano
+Sommer
+Sommerfeld und Falckenhain
+Song
+Sonnelles
+Sonnenkalb
+Sonnenschmid
+Sontag
+Soos
+Sorel
+Sorini
+Sorolla
+Sotheby
+Soto
+Souchet
+Soulat
+Soulès
+Souque
+Sousa
+Sousa e Almeida
+Sousselier de La Tour
+Soustelle
+Soutin
+Souverain
+Souza de Tavares da Silva
+Souèges
+Soycourt
+Spada
+Spadille
+Spaignart
+Spang
+Spanocchi
+Spanowsky
+Sparra
+Sparre
+Speirmannus
+Spenero
+Sperandio
+Sperbach
+Speth
+Spielmann
+Spieser
+Spiess
+Spigelberg
+Spigelbergius
+Spindier
+Spinola
+Spiringh
+Spitz
+Sporer
+Sporisch
+Spranger
+Sprenger
+Springer
+Springsfeld
+Spölin
+Stade
+Staden
+Stadion
+Staehelin
+Staehlin
+Stafford
+Stagnon
+Stainer
+Stalburger
+Stalsvärd
+Stamitz
+Stampa
+Stampioen
+Stanislas Kostka
+Starck
+Starckmann
+Stauber
+Staunforde
+Stautacher
+Stavorinus
+Stecchini
+Steck
+Stedler
+Steele
+Steenevelt
+Steffan von Cronstett
+Stehelinus
+Steier
+Steiger
+Stein
+Steincallenfels
+Steindel
+Steinderff
+Steinegger
+Steinhausser
+Steinheuser
+Stelt
+Stelzer
+Stempel
+Stephani
+Stephanus
+Stephenson
+Sternbeck
+Sterringa
+Stettner
+Steudner
+Stevens
+Stevenson
+Stiefelius
+Stieler
+Stillen
+Stinstra
+Stippe
+Stirtz
+Stisser
+Stith
+Stmitrk
+Stock
+Stockar
+Stockhausen
+Stockins
+Stoeckhardt
+Stoesius
+Stofflet
+Stolberg
+Stolle
+Stollius
+Stolte
+Stoop
+Stoor
+Storch
+Stoughton
+Stradella
+Stradling
+Straforelli
+Strahl
+Strahlenberg
+Stramboli
+Strampin
+Strang
+Strasser
+Stratius
+Straus
+Strauss
+Streidthorst
+Streiff
+Streiffius
+Strick
+Stritter
+Strobel
+Strozzi
+Struchtmeyer
+Struensee
+Strupp
+Struve
+Stryjkowski
+Strémon
+Stuart
+Stubenrauch
+Stuck
+Stuckerus
+Stucki
+Stumpf
+Stupfel
+Sturm
+Sturmius
+Sturtzelius
+Sturz
+Styller
+Stynen
+Städel
+Stöckle
+Stöcklin
+Stöltzel
+Stölzel
+Stürmer von Unter Nesselbach
+Su
+Suaresius
+Suarez de Alarcon
+Sudre
+Sullivan
+Sulzbeger
+Sulzer
+Sun
+Supprian
+Sureau
+Surendonck
+Surgères
+Surleau
+Sussen
+Sustmann
+Sutcliffe
+Suárez de Molina
+Swaving
+Swebach Des Fontaines
+Sweigkhard von Freihausen
+Swidde
+Swinnas
+Syllanaeus
+Syllm
+Sylva y Pacheco
+Sylvester
+Sylvestre
+Sylvi
+Sylvius
+Symonson
+Synge
+Syrianus
+Szklenár
+Sánchez
+Sánchez Çarçosa
+Séguier
+Ségusie
+Sémonin
+Sénèque
+Sérane
+Séraphin de Jésus
+Séras
+Sölling
+Süheylî
+Süssemilch
+Süvern
+Ṣalomon Luria ben Yeḥiel
+Taaffe
+Tabarrani
+Taccone
+Tachenius
+Tachibana
+Tachon
+Tacke
+Taddel
+Tafalla y Negrete
+Tafuri
+Tagarro
+Tagault
+Tailhant
+Taillandier
+Taisand
+Tallendier de La Bassière
+Talma
+Talucci
+Tam bèn David ibn Yahya
+Tamariz
+Tanco
+Tancredi
+Tandeau
+Tandon
+Tang
+Tange
+Tangy de La Boissière
+Tanini
+Tannenbaum
+Tanquerel
+Tanzini
+Tao Hua
+Tarbé
+Targa
+Tarizzo
+Tarmini
+Tarsia
+Tartarotti
+Tassi
+Tasso
+Tassoni
+Tattenbach
+Taubman
+Tauffenberg
+Tauleri
+Taurello
+Taurinus
+Tausia Bournos
+Tavares
+Taveau
+Tavernier
+Taylor
+Tebar
+Tebel
+Teelinck
+Tegnagel
+Teisseire
+Telegdi
+Teleki
+Telesius
+Telindo
+Telles Da Silva
+Telles da Silva
+Tello
+Telmon
+Temlin
+Tempesti
+Ten Houte
+Ten Kate
+Teniers
+Tenon
+Ter Hoeven
+Terbeek van Coesfelt
+Termonville
+Terne
+Terral
+Terrasse
+Terrasse Desmareilles
+Terray
+Terrien
+Terrones de Robres
+Tersier
+Terson
+Tervenus
+Tesdorff
+Tessier
+Teste
+Testenoire
+Testu
+Tetsugoshi
+Teulières
+Thaddée de Saint Adam
+Thegman
+Themel
+Theodericus
+Theodoricus
+Theofridus Epternacensis
+Theophilus
+Theophylactus
+Thetion
+Theune
+Theuner
+Thevenet
+Thibaud
+Thibault
+Thibaut
+Thiercelin
+Thieriot
+Thierry
+Thiery
+Thillaye
+Thilo
+Thimhée
+Thiphaingne
+Thiriet
+Thiroux
+Thiry
+Thiébault
+Thiémet
+Thiéry de Franqueville
+Thoen
+Tholé
+Thomae
+Thomas
+Thomassin
+Thomson
+Thomé
+Thonerus
+Thooft
+Thorin
+Thorne
+Thouin
+Thoulouse
+Thoureaux
+Thouret
+Thouvenin
+Thruston
+Thubé de Salin
+Thullin
+Théagène
+Thémines
+Théodore
+Théodore de Canterbury
+Théodoric
+Théophane
+Théophane de Nicée
+Théophile
+Thépault du Dreignou
+Théry Falligan
+Thévenot
+Thévet
+Thöne
+Tickell
+Tieck
+Tieffenbrokk
+Tilebomenus
+Tilemann
+Tillaye-Desviviers
+Tilman
+Timbury
+Timm
+Tinseau
+Tipaldi
+Tipou Sahib
+Tirion
+Tischbein
+Tissot
+Titius
+Tittmann
+Tixedor
+Tod
+Toennies
+Toepel
+Toepelmann
+Togni
+Tokiyori
+Toledo Osorio
+Tolin
+Tollenaer
+Tolson
+Tomaselli
+Tomati
+Tombe
+Tombes
+Tomeo
+Tondini
+Tondu de Nangis
+Toniani
+Tonischi
+Tonjola
+Topius
+Toplady
+Torelli
+Torii
+Tornacius
+Tornamira de Soto
+Torraca
+Torre
+Torrecilla
+Torres
+Torretti
+Tort de La Sonde
+Tortorelli
+Tosca
+Tottola
+Touard
+Touffrainville
+Toullieu
+Toulotte
+Toulouse-Lautrec
+Toupelin
+Tournaire
+Tournay
+Tournier
+Tournon
+Touros
+Toussaint
+Towers
+Townley
+Trabit
+Trachala
+Tracy
+Tragiense
+Tralles
+Tramenus
+Transée
+Trant
+Trapp
+Trasmiera
+Traubot
+Traumen
+Trauthson
+Traverse
+Traversier
+Trelcat
+Trelierius
+Tremarc
+Trenta
+Tresti
+Treutler
+Trie
+Trillo
+Trincado
+Trioen
+Trissino
+Tristany
+Tritonio
+Tritto
+Triveri
+Trivorius
+Trobriand de Keredern
+Trofinet
+Troglio
+Troguet
+Trombelli
+Trombetti
+Tromby
+Tromp
+Tronchin
+Tropanniger
+Troschke
+Trott
+Trouard de Riolle
+Trouffeuille
+Trouvé
+Trouïllart
+Truchy
+Trudon
+Trull
+Trullard
+Try
+Tryon
+Tryseen
+Trécourt
+Tréhouart de Beaulieu
+Trémondrie
+Trémont
+Tscherning
+Tschonder
+Tseh Szent Peteri
+Tsukioka
+Ttzschimmer
+Tu
+Tucker
+Tudini
+Tudway
+Tuffière
+Tullianus
+Tuo
+Turamini
+Turck
+Turlin
+Turnbull
+Turner
+Turpin
+Turquoys
+Twyne
+Tye
+Tyssot
+Tzanphornárīs
+Tölle
+Töpfer
+Töpffer
+Törneros
+Türchner
+Türcke
+Ugolini
+Uhland
+Ulff
+Ulloa
+Ulner
+Ulrich
+Ulrici
+Ulricus
+Unold
+Untzelmann
+Uranius
+Uri Ben Simon
+Ursinus
+Urstisius
+Ursulanus
+Usategui
+Usson
+Usteri
+Ustius
+Usátegui
+V
+V D J 
+V***
+V.
+V. D. B.
+V.xxxxx de Toulouse
+Va... T
+Vaccà Berlinghieri
+Vachette
+Vaetterli
+Vahle
+Val
+Valady
+Valadés
+Valbonette
+Valconio
+Valder
+Valentin
+Valentinus
+Valenzuela
+Valerianus
+Valerinus
+Valkenburg
+Vallant
+Valli
+Vallier
+Vallin
+Valls
+Vallée
+Valmesnil
+Valtherus
+Valz
+Van Abkoude
+Van Akerlaken
+Van Alderwerelt
+Van Allendorp
+Van Amsterdam
+Van Aysma
+Van Banchem
+Van Beaumont
+Van Berckenrode
+Van Berghem
+Van Berkman
+Van Blesdijk
+Van Blitterswijk
+Van Bommel
+Van Bos
+Van Boshuysen Craanen
+Van Bracht
+Van Brey
+Van Bruggen
+Van Bynckershoeck
+Van Ceulen
+Van Craywinckel
+Van Dalen
+Van Damme
+Van De Kerckhove
+Van De Poel
+Van de Putte
+Van De Stadt
+Van De Wall
+Van de Water
+Van de Wijnpersse
+Van Den Bergh
+Van Den Berghe
+Van Den Brande
+Van Den Honert
+Van den Keere
+Van den Perre
+Van Der Donck
+Van Der Dussen
+Van Der Goes
+Van Der Groe
+Van Der Hagen
+Van Der Hoeve
+Van Der Marck
+Van Der Schaaff
+Van Der Spek
+Van der Vinne
+Van der Weel
+Van Der Well
+Van Der Woude
+Van Diepen
+Van Ditthefft
+Van Doetichum
+Van Donia
+Van Doorgeest
+Van Dormael
+Van Dyk
+Van Eck
+Van Effen
+Van Emenes
+Van Empel
+Van Essen
+Van Ewyk
+Van Eyndhoven
+Van Gent
+Van Groenevelt
+Van Haastenburg
+Van Hagen
+Van Herwerden
+Van Hese
+Van Heyst
+Van Hogelande
+Van Hoorn
+Van Horenbecke
+Van Huls
+Van Kal
+Van Lamzweerde
+Van Lansbergen
+Van Lennep
+Van Loo
+Van Marle
+Van Mauden
+Van Mechelen
+Van Moorsel
+Van Muyden
+Van Nes Tot Meerkerk
+Van Nieren
+Van Nieuwenhuysen
+Van Nispen
+Van Noemer
+Van Otten
+Van Overmeer
+Van Overstraeten
+Van Oyenbrugge
+Van Papenbroeck
+Van Putten
+Van Quellenburgh
+Van Ranouw
+Van Reigersberch
+Van Rheden
+Van Rijgersberge
+Van Rossum
+Van Ryssen
+Van Schellebeek
+Van Someren
+Van Staveren
+Van Steelant
+Van Steveninck
+Van Stipriaan Luïscius
+Van Strydonk
+Van Turnhaut
+Van Veen
+Van Velden
+Van Velsen
+Van Vliet
+Van Wachendorff
+Van Waesberghe
+Van Wambeke
+Van Westrenen
+Van Wouw
+Van Zuylekom
+Vandani
+Vanderkaa
+Vangerow
+Vanni
+Vantius
+Vaqué
+Varaine
+Varenbüler
+Vargas Macciucca
+Vargas y Ponce
+Varin
+Varnhagen von Ense
+Varon
+Vasconcellos
+Vasolo
+Vassallieu dit Nicolay
+Vassanius
+Vasse
+Vassy
+Vaucher de Rotalier
+Vaudripont
+Vaulx
+Vaumesle
+Vauvenargues
+Vaux
+Vecchioni
+Veerman
+Vega
+Vega Carpio
+Veiga
+Veilhault
+Veilly
+Velasco
+Velpio
+Velázquez Minaya
+Venaille
+Vendôme
+Veni d Arbouze
+Vento
+Ventoux
+Ventura
+Ventura Minardo
+Venturi
+Vera
+Vera y Ordoñez de Villaquiran
+Veraz
+Verberght
+Verbeuf
+Verdier de Courbillac
+Verdugo
+Verdun
+Verdussen
+Vergara Gavira
+Vergile de La Bastide
+Vergés
+Verkaven
+Verlato
+Verlove
+Vermeren
+Vermeulen
+Vermond
+Vernage
+Vernezobre
+Verniel
+Vernier
+Vernon
+Verny
+Veronese
+Verpoortenius
+Verrati
+Verrier
+Verrière
+Vertamon de Chavagnac
+Verthamon
+Verthamon de Chavagnac
+Vertsch
+Verzure
+Vesterboe
+Vesterman
+Vestermannus
+Vestier
+Vestri Barbiani
+Vetour
+Vetter
+Vexiau de La Touche
+Veydt
+Vezu
+Vhlich
+Viala
+Vialart
+Vialis
+Vianelli
+Vianello
+Viard
+Vias
+Viau
+Viccars
+Vichard
+Vico
+Vicose
+Vicq
+Victor
+Vidal
+Vieillard
+Vieillot
+Vieira
+Vielle
+Viennay
+Vienne de Trévilliers
+Vieuille
+Viger
+Vigneron d'Heucqueville
+Vilars
+Vilella
+Villa Señor y Sánchez
+Villacorta
+Villauteau
+Villaverde
+Ville
+Villemontée
+Villemotte
+Villeneufve
+Villeneuve
+Villenhoven
+Villiard
+Villiers
+Villiers de Saint-Étienne
+Villinger
+Villingerus
+Villotti
+Villoutreys
+Villéon
+Vilosa
+Vinay
+Vince
+Vincendon Dutour
+Vincens-Planchut
+Vincent
+Vincent d Orléans
+Vincenti
+Vincentius
+Vincioli
+Vinciolo
+Vincquels
+Vinold
+Vinson
+Vinyes
+Viola Zanini
+Violand
+Violet
+Vion
+Virchaux
+Virely
+Visconte
+Visconti
+Vise
+Visscher
+Vitale
+Vitelli
+Vitellius
+Viti
+Vitoria
+Vitringa
+Vitry
+Vittone
+Vittoz
+Vitzer
+Vivante
+Vivario
+Vives de Rocamora
+Vivey
+Vivien de Goubert
+Vlemincx de Gobiery
+Voello
+Voet Van Oudheusden
+Vogel
+Vogler
+Vogt
+Voigt
+Voilleret
+Voisenet
+Voisin
+Volaire
+Volck
+Volckmar
+Volland
+Vollant
+Vollenhove
+Voller von Gellhausen
+Vollrath
+Volpe
+Volpelli
+Voltelen
+Volusianus
+Voocht
+Vorst
+Vorstius
+Vosmon
+Vossius
+Voysin de Gartempe
+Vrai républicain, ami des lois
+Vream
+Vries
+Vrillac
+Vuaflart
+Vázquez de Espinosa
+Vécharigi
+Védrines
+Vélin
+Véridic
+Vérité
+Vézien
+Völkel
+Wachsgrun
+Wacquant
+Waechter
+Wagener
+Wagner
+Wahlberg
+Wahlman
+Wainman
+Walacus
+Walch
+Walchius
+Waldelk
+Walkart
+Wallart
+Wallbaum
+Wallhorn
+Wallin
+Walsh
+Walstorff
+Walter
+Walther
+Waltsgott
+Walz
+Wan
+Wang
+Wanostrocht
+Waraeus
+Warburthon
+Ward
+Warmond
+Warnaar
+Warnatius
+Warneck
+Warth
+Wartis
+Warton
+Wasse
+Wastelain
+Watson
+Watts
+Waulde
+Webb
+Webel
+Weber
+Wech
+Wedich
+Weever
+Wegele
+Wegelin
+Weidenmann
+Weidling
+Weidner
+Weieller
+Weinberg
+Weinckens
+Weininger
+Weinlin
+Weinmann
+Weisius
+Weiss
+Weisse
+Weitzmann
+Welsted
+Wen
+Wencker
+Wendelin
+Wendler
+Wendt
+Wendzel
+Wenner
+Wennerlind
+Wenng
+Weppen
+Werden
+Werdenhagen
+Werner
+Wesener
+West
+Westhovius
+Wetterstein
+Wetzel
+Weyde
+Weyermann
+Weytsen
+White
+Whitwell
+Wibara Saikaku
+Wibeking
+Wibel
+Wichelhausen
+Wichgreve
+Wichmannshausen
+Wiclandii
+Wideburg
+Widekind
+Widemann
+Widemannus
+Widley
+Widmann
+Widmarckter
+Widmarius
+Wied
+Wiegandt
+Wielant
+Wielinga
+Wijkström
+Wilbraham
+Wilcke
+Wild
+Wilhelm
+Wilisch
+Wilkins
+Wilks
+Willebrand
+Willerval
+William
+Willich
+Willink
+Willis
+Willius
+Willmans
+Willmet
+Willon le Pleureur
+Willot
+Willymat
+Wilmer
+Wilminiack
+Wilson
+Wiltens
+Wimpffen
+Wimpffen de Bornebourg
+Windler
+Winkler
+Winsemius
+Winter
+Winterbotham
+Wintzler
+Wipacher
+Wipperius
+Wirth
+Wiseman
+Wiston
+Wit
+With
+Witherspoon
+Witschel
+Witteveen
+Wittgenstein Berleburg
+Witzel
+Witzelius
+Witzleben
+Wogau
+Woide
+Wolderus
+Wolf
+Wolff
+Wolff Metternich zur Gracht
+Wolfhard
+Wolfhard von Herrieden
+Wollaston
+Wolson
+Wolter
+Wood
+Woodhouse
+Woodville
+Woodward
+Woolhouse
+Worms
+Worster
+Wrangel
+Wrede
+Wright
+Wu
+Wulf
+Wulffen
+Wulle
+Wunderlich
+Wurm
+Wurmser
+Wurstemberger
+Wyiaśnicki
+Wynell
+Wyttenbach
+Wölfflin
+Würzer
+Xia
+Xie
+Ximenez
+Xing cheng
+Xiong
+Xu
+Xue
+Yang
+Yao
+Yatez
+Yelde
+Yemrof
+Yenkwo
+Yorke
+Young
+Ysbrands
+Ysermans
+Yu
+Yu quan Qi bai fu
+Yun
+Zabala
+Zacharie
+Zaffiro
+Zahn
+Zalivani
+Zambeccari
+Zamperoli
+Zampini
+Zanchi
+Zanetti
+Zangalheiro
+Zani
+Zapata
+Zapler
+Zaramella
+Zavarrone
+Zavona
+Zedler
+Zeeman
+Zegollström
+Zehender
+Zehner
+Zeidelmaier
+Zenobio
+Zerlii
+Zernotte
+Zerola
+Zeylemaker
+Zhang
+Zhao
+Zheng
+Zhi xiang
+Zhong
+Zhu
+Ziegler
+Zierold
+Zigli
+Zimmermann
+Zinck
+Zinelli
+Zippel
+Zizmann
+Zoccolari
+Zoller
+Zollikoffer
+Zompini
+Zoons
+Zopf
+Zoppio
+Zorn
+Zorrilla
+Zschach
+Zucchini
+Zun zhe Zhong xian
+Zurara
+Zurita
+Zuylen de Nyevelt
+Zweybrücker
+Zwinger
+Zylof
+Zyoruri
+Zyrler
+Zysthenius
+Zäpelihn
+Zölner
+Âroslav Mudryj
+Åkerman
+Çaira
+Écrammeville
+Édesse
+Éleuthère Le François
+Éliars
+Épiphane Hagiopolite
+Étienne
+Újfalvi Katona
+Čermák
+Łojko
+Šafirov
+ʻAbdisho bar Berīkā
+
+Column: entity_type
+Unique values found: 3
+<http://xmlns.com/foaf/0.1/Organization>
+<http://xmlns.com/foaf/0.1/Person>
+NA
+

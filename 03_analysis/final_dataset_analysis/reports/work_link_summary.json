@@ -1,0 +1,12 @@
+{
+  "filter": {
+    "record_type": "http://purl.org/dc/dcmitype/Text"
+  },
+  "works_total": 3958,
+  "works_with_edition": 3958,
+  "works_with_expression": 3958,
+  "works_with_both": 3958,
+  "works_with_neither": 0,
+  "unique_editions_linked_from_works": 22238,
+  "unique_expressions_linked_from_works": 22238
+}

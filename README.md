@@ -6,7 +6,7 @@ Each script performs a specific task — from inspecting raw CSVs and merging da
 ---
 
 ## File List
-
+0. [Data retrieval: get_edition_raw_data.R + query_missing_agents.R](#0_retrieval)
 1. [main.py](#1_mainpy)
 2. [agents_main.py](#2_agents_mainpy)
 3. [actors_id_matching.py](#3_actors_id_matchingpy)
@@ -21,6 +21,246 @@ Each script performs a specific task — from inspecting raw CSVs and merging da
 12. [WORKFLOW OVERVIEW](#WORKFLOW)
 
 ---
+## 0. Data retrieval 
+<a id="0_retrieval"></a>
+
+## BnF data acquisition: column-level documentation (README)
+
+This repository contains two acquisition scripts:
+
+* **Bibliographic entities (editions / manifestations / expressions):** `data/bnf_edition_data/get_edition_raw_data.R`
+* **Agents (actors) enrichment:** `data/bnf_agents_data_querying/query_missing_agents.R`
+
+The two outputs are conceptually distinct:
+
+1. **Edition-level CSV**: records about bibliographic entities and their linked agents via MARC relators.
+2. **Actor-level CSV**: authority-style enrichment for each agent URI harvested from the edition-level CSV.
+
+---
+
+### 1) Edition / bibliographic entity dataset (`bnf_edition_data_raw.csv`)
+
+**Script:** `data/bnf_edition_data/get_edition_raw_data.R`
+**Endpoint:** `https://data.bnf.fr/sparql`
+
+### Columns
+
+* **edition** → BnF URI of the edition/manifestation resource being queried
+  → SPARQL pattern: `?edition bnf-onto:firstYear ?year_first .` (the `?edition` subject bound by this triple)
+
+* **bnf_id** → FRBNF identifier for the edition/manifestation
+  → `OPTIONAL { ?edition bnf-onto:FRBNF ?bnf_id . }`
+
+* **title** → title string of the edition/manifestation
+  → `OPTIONAL { ?edition dcterms:title ?title . }`
+
+* **year_first** → first year associated with the edition/manifestation (used to drive yearly extraction)
+  → `?edition bnf-onto:firstYear ?year_first .` and filtered via `FILTER(?year_first = <YEAR>)`
+
+* **year_range** → date string/range associated with the edition/manifestation
+  → `OPTIONAL { ?edition dcterms:date ?year_range . }`
+
+* **description** → free-text description of the edition/manifestation
+  → `OPTIONAL { ?edition dcterms:description ?description . }`
+
+* **place** → place associated with the manifestation (RDA element)
+  → `OPTIONAL { ?edition rdam:P30279 ?place . }`
+
+* **publisher** → publisher statement/value associated with the manifestation (RDA element)
+  → `OPTIONAL { ?edition rdam:P30176 ?publisher . }`
+
+* **work** → linked Work resource manifested by the edition/manifestation
+  → `OPTIONAL { ?edition rdarelationships:workManifested ?work . }`
+
+* **digital_copy_link** → link/resource pointing to a digital copy (RDA element)
+  → `OPTIONAL { ?edition rdam:P30016 ?digital_copy_link . }`
+
+* **subject_topic** → subject resource(s) linked to the edition/manifestation
+  → `OPTIONAL { ?edition dcterms:subject ?subject_topic . }`
+
+* **expression** → linked Expression resource manifested by the edition/manifestation
+  → `?edition rdarelationships:expressionManifested ?expression .`
+
+* **language** → language of the Expression
+  → `OPTIONAL { ?expression dcterms:language ?language . }`
+
+* **record_type** → type of the Expression record
+  → `OPTIONAL { ?expression dcterms:type ?record_type . }`
+
+* **author** → agent URI linked to the Expression as author (MARC relator)
+  → `OPTIONAL { ?expression marcrel:aut ?author . }`
+
+* **editor** → agent URI linked to the Expression as editor (MARC relator)
+  → `OPTIONAL { ?expression marcrel:edt ?editor . }`
+
+* **translator** → agent URI linked to the Expression as translator (MARC relator)
+  → `OPTIONAL { ?expression marcrel:trl ?translator . }`
+
+* **publisher_2** → agent URI linked to the Expression as publisher (MARC relator)
+  → `OPTIONAL { ?expression marcrel:pbl ?publisher_2 . }`
+
+* **illustrator** → agent URI linked to the Expression as illustrator (MARC relator)
+  → `OPTIONAL { ?expression marcrel:ill ?illustrator . }`
+
+---
+
+### 2) Actor / agent enrichment dataset (`actor_data.csv`)
+
+**Script:** `data/bnf_agents_data_querying/query_missing_agents.R`
+**Input dependency:** `bnf_edition_data_raw.csv`
+**Endpoint:** `https://data.bnf.fr/sparql`
+
+### How `actor` is obtained (not from SPARQL in this script)
+
+The script reads the edition-level CSV and builds a unique list of agent URIs from the role columns:
+
+* `author`, `editor`, `translator`, `publisher_2`, `illustrator`
+  Then it deduplicates them (e.g., via `unique(...)`) and queries enrichment for each URI.
+
+### Columns
+
+* **actor** → agent URI being enriched
+  → **Not retrieved via SPARQL** in this script; injected in output by R when writing results (prepended as a constant column for each query result row)
+
+* **actor_birth** → birth value (typically a date literal)
+  → `OPTIONAL { <actor> bio:birth ?actor_birth . }`
+
+* **actor_name** → full name string (if present on the actor URI)
+  → `OPTIONAL { <actor> foaf:name ?actor_name . }`
+
+* **actor_first_name** → given name (if modelled)
+  → `OPTIONAL { <actor> foaf:givenName ?actor_first_name . }`
+
+* **actor_last_name** → family name (if modelled)
+  → `OPTIONAL { <actor> foaf:familyName ?actor_last_name . }`
+
+* **entity_type** → RDF class of the actor URI (e.g., `foaf:Person`, organisation classes, etc.)
+  → `OPTIONAL { <actor> rdf:type ?entity_type . }`
+
+* **first_year** → first year associated with the actor (BnF ontology)
+  → `OPTIONAL { <actor> bnf-onto:firstYear ?first_year . }`
+
+* **actor_country** → country associated with the person (RDA Group 2 element)
+  → `OPTIONAL { <actor> rdagroup2elements:countryAssociatedWithThePerson ?actor_country . }`
+
+* **actor_language** → language associated with the person (RDA Group 2 element)
+  → `OPTIONAL { <actor> rdagroup2elements:languageOfThePerson ?actor_language . }`
+
+* **actor_gender** → gender value (if present)
+  → `OPTIONAL { <actor> foaf:gender ?actor_gender . }`
+
+* **actor_profession** → biographical information note (free-text)
+  → `OPTIONAL { <actor> rdagroup2elements:biographicalInformation ?actor_profession . }`
+
+* **actor_death** → death value (typically a date literal)
+  → `OPTIONAL { <actor> bio:death ?actor_death . }`
+
+* **actor_start** → first year associated with the actor, used as an interpreted “start” temporal bound
+  → `OPTIONAL { <actor> bnf-onto:firstYear ?actor_start . }`
+
+* **actor_end** → last year associated with the actor, used as an interpreted “end” temporal bound
+  → `OPTIONAL { <actor> bnf-onto:lastYear ?actor_end . }`
+
+* **actor_link_exact** → external authority link(s) declared as exact matches
+  → `OPTIONAL { ?person foaf:focus <actor> . ?person skos:exactMatch ?actor_link_exact . }`
+
+* **actor_link_close** → external authority link(s) declared as close matches
+  → `OPTIONAL { ?person foaf:focus <actor> . ?person skos:closeMatch ?actor_link_close . }`
+
+**Note on row multiplicity:** a single `actor` may appear in multiple rows because `skos:exactMatch` / `skos:closeMatch` can return multiple values, producing multiple distinct solution bindings.
+
+---
+
+### 3) Recovering the actor’s role (and differentiating it from “profession”)
+
+### Role (bibliographic function in the record)
+
+The **role** is the function an agent plays **in relation to a bibliographic entity**, and it is encoded in the edition-level dataset via MARC relator predicates on the **Expression**:
+
+* `marcrel:aut` → author
+* `marcrel:edt` → editor
+* `marcrel:trl` → translator
+* `marcrel:pbl` → publisher (agent role)
+* `marcrel:ill` → illustrator
+
+To recover role(s) for a given actor URI:
+
+* Search across the role columns (`author`, `editor`, `translator`, `publisher_2`, `illustrator`) in `bnf_edition_data_raw.csv`.
+* The column in which the URI occurs is the role label for that occurrence.
+* Because the same URI can occur in multiple columns across different records, a single actor can legitimately have **multiple roles** (role is not an intrinsic property of the agent; it is a contextual relation).
+
+### Profession (agent attribute)
+
+The **profession** (or more precisely, the agent’s biographical/occupational description) is an **attribute of the agent**, not a role in a bibliographic record. In the actor enrichment CSV, the field named `actor_profession` is sourced from:
+
+* `rdagroup2elements:biographicalInformation`
+
+This is a **free-text biographical note**, not a controlled profession taxonomy, and should not be treated as equivalent to the MARC relator roles.
+
+### Practical linkage model
+
+* Use `bnf_edition_data_raw.csv` to model:
+  **(edition/expression) —[role predicate]→ (actor URI)**
+* Use `actor_data.csv` to enrich the actor URI with:
+  **(actor URI) —[attributes]→ (birth/death, country, language, biographical note, external matches, etc.)**
+
+This separation preserves:
+
+* contextual **roles** from the bibliographic graph, and
+* intrinsic **agent attributes** from authority-style enrichment.
+
+### Actor URIs: how they are obtained (pattern)
+
+Actor URIs are not generated ad hoc: they are harvested from the **edition/expression query** by reading the agent-role properties on `?expression`:
+
+* `?expression marcrel:aut ?author`
+* `?expression marcrel:edt ?editor`
+* `?expression marcrel:trl ?translator`
+* `?expression marcrel:pbl ?publisher_2`
+* `?expression marcrel:ill ?illustrator`
+
+These URIs are then concatenated and de-duplicated in R (e.g., `unique(c(author, editor, translator, publisher_2, illustrator))`) to form the list passed to the actor-enrichment query.
+
+---
+
+### Actor enrichment table (`actor_data.csv`): field structure (concise)
+
+**Key**
+
+* `actor` → the BnF agent URI being enriched (added by R, not returned by SPARQL).
+
+**Identity / label**
+
+* `actor_name` → `foaf:name`
+* `actor_first_name` → `foaf:givenName`
+* `actor_last_name` → `foaf:familyName`
+* `entity_type` → `rdf:type` (e.g., `foaf:Person`, org types)
+
+**Temporal**
+
+* `actor_birth` → `bio:birth`
+* `actor_death` → `bio:death`
+* `first_year` / `actor_start` → `bnf-onto:firstYear` (generic first year; interpreted as “start” esp. for non-person agents)
+* `actor_end` → `bnf-onto:lastYear`
+
+**Contextual attributes (RDA / FOAF)**
+
+* `actor_country` → `rdagroup2elements:countryAssociatedWithThePerson`
+* `actor_language` → `rdagroup2elements:languageOfThePerson`
+* `actor_gender` → `foaf:gender`
+* `actor_profession` → `rdagroup2elements:biographicalInformation` (free-text biographical note; not a controlled profession)
+
+**External links**
+
+* `actor_link_exact` → via a `?person` node with `foaf:focus actor`, then `skos:exactMatch`
+* `actor_link_close` → same pattern, `skos:closeMatch`
+
+**Row multiplicity note**
+
+* One `actor` can appear in multiple rows because `skos:exactMatch/closeMatch` may return multiple values (one row per match).
+
+
+
 
 ## 1. main.py
 
@@ -619,3 +859,13 @@ RDF GRAPH
 > * `unified_agents/*.csv` (produced by `agents_main.py`), or
 > * `unified_dataset/unified_chunks/*.csv` (produced by the editions unifier), or
 > * intermediate JSON/CSV produced by sibling steps (e.g., `actors_*_matching.py` feeding field-cardinality analyses, or `counting_types.py` feeding `fetch_bnf_ark_titles.py`, etc.).
+
+
+### important next steps
+- linking 
+- documenting harmonisation 
+- chiedere a sebastian 
+- publish the dataset 
+- evaluation !!!
+- preparing what is necessary for dataset production 
+- linking script on jonas side 

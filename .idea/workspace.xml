@@ -2,13 +2,61 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1b720a4a-002c-455e-91e9-1743170b9c1a" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/places/data/data_final/bnf_publication_place.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/data/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actors_id_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/actors/actors_id_matching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actors_name_matching.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/actors/actors_name_matching.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actors_names_to_many_fields_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/actors_names_to_many_fields_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/actors_one_to_may_fields_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/actors_one_to_may_fields_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bnf_place_harmonisation/Readme.MD" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/places/Readme.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bnf_place_harmonisation/bnf_edition_data_raw.csv" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/places/bnf_edition_data_raw.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bnf_place_harmonisation/data/data_final/bnf_publication_place.csv" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bnf_place_harmonisation/data/data_work/bnf_country_harmonisation_table.csv" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/places/data/data_work/bnf_country_harmonisation_table.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bnf_place_harmonisation/data/data_work/bnf_place_name_harmonisation_table_final.csv" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/places/data/data_work/bnf_place_name_harmonisation_table_final.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bnf_place_harmonisation/data/data_work/bnf_unique_raw_country_values.csv" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/places/data/data_work/bnf_unique_raw_country_values.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bnf_place_harmonisation/scripts/bnf_place_harmonisation.R" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/places/scripts/bnf_place_harmonisation.R" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/counting_types.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/counting_types.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/edition_record_type_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/edition_record_type_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/editions_additional_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/editions_additional_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/editions_analysis.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/editions_analysis.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/fetch_bnf_ark_titles.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/fetch_bnf_ark_titles.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/find_entities_without_record_type.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/find_entities_without_record_type.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/no_type_random_sample.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/no_type_random_sample.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/reports/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/reports/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/final_dataset_analysis/stupid_counter.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/final_dataset_analysis/stupid_counter.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/bib_resources/dataset_overview.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_analysis/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/names/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_analysis/csv_analysis_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/names/csv_analysis_maker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_analysis/detect_real_names.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/names/detect_real_names.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_analysis/enhanced_detect_names.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/names/enhanced_detect_names.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_analysis/enhanced_detect_names_cleaner.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/names/enhanced_detect_names_cleaner.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_analysis/names_dict_maker.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/names/names_dict_maker.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_analysis/names_results/names_results.zip" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/actors/names/names_results/names_results.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/names_with_multiple_ids.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/harmoniser_evaluator/names_with_multiple_ids.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/gen_author_links_optm.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/gen_author_links_optm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/id_roles/actor_roles_links.csv" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/id_roles/actor_roles_links.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/output/bnf_actors_optimised.csv" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/output/bnf_actors_optimised.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/output/bnf_actors_optimised_minimal.csv" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/output/bnf_actors_optimised_minimal.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/report/merged_entities.json" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/report/merged_entities.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/report/summary_report.txt" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/report/summary_report.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/roles_enricher.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/roles_enricher.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/subset_optimisation/usage.MD" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/subset_optimisation/usage.MD" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/unique_values_per_field.py" beforeDir="false" afterPath="$PROJECT_DIR$/support_scripts/analysis/bib_resources/unique_values_per_field.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Unit Test" />
+        <option value="Python Script" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -24,7 +72,20 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/docs" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/docs" />
+      <recent name="$PROJECT_DIR$/test/test_equivalent_py_r" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/support_scripts/analysis/bib_resources" />
+      <recent name="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/harmoniser_evaluator" />
+      <recent name="$PROJECT_DIR$/support_scripts/analysis/actors" />
+      <recent name="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation/actors" />
+      <recent name="$PROJECT_DIR$/support_scripts/harmonisation_and_evaluation" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

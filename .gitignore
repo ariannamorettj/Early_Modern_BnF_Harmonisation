@@ -1,4 +1,7 @@
 data/bnf_edition_data/edition_raw_data
+old_extra
+01_data_retrieval/01_editions/data/old_zip
+01_data_retrieval/02_actors/data/old_zip
 .idea/
 */.DS_Store
 data/actors_matched_ids/actors_aut.json
