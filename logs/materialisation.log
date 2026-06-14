@@ -1,0 +1,923 @@
+2026-06-03 13:57:52,051 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 13:58:42,909 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 14:14:05,669 [INFO] [INFO] Modalità campione: prime 100 righe per dataset
+2026-06-03 14:15:58,107 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_actors.csv
+2026-06-03 14:15:58,565 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (100 righe)
+2026-06-03 14:15:58,602 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (90 righe)
+2026-06-03 14:15:58,623 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (71 righe)
+2026-06-03 14:15:58,624 [INFO] [BIB] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_editions.csv
+2026-06-03 14:16:00,378 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (100 righe)
+2026-06-03 14:16:01,668 [INFO] [KGC] Avvio morph-kgc con config: 07_graph_materialisation/config.ini
+2026-06-03 14:30:46,364 [INFO] [INFO] Modalità campione: prime 10 righe per dataset
+2026-06-03 14:30:46,408 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_actors.csv
+2026-06-03 14:30:46,419 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 14:30:46,429 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 14:30:46,436 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 14:30:46,437 [INFO] [BIB] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_editions.csv
+2026-06-03 14:30:46,445 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 14:30:46,780 [INFO] [KGC] Avvio morph-kgc con config: 07_graph_materialisation/config.ini
+2026-06-03 14:32:23,588 [INFO] [INFO] Modalità campione: prime 10 righe per dataset
+2026-06-03 14:32:23,687 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_actors.csv
+2026-06-03 14:32:23,701 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 14:32:23,791 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 14:32:23,812 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 14:32:23,812 [INFO] [BIB] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_editions.csv
+2026-06-03 14:32:23,839 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 14:32:24,328 [INFO] [KGC] Avvio morph-kgc con config: 07_graph_materialisation/config.ini
+2026-06-03 14:33:24,152 [INFO] [INFO] Modalità campione: prime 10 righe per dataset
+2026-06-03 14:33:24,192 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_actors.csv
+2026-06-03 14:33:24,203 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 14:33:24,214 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 14:33:24,222 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 14:33:24,222 [INFO] [BIB] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_editions.csv
+2026-06-03 14:33:24,230 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 14:33:24,561 [INFO] [KGC] Avvio morph-kgc con config: 07_graph_materialisation/config.ini
+2026-06-03 14:45:24,054 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 14:45:24,077 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 14:45:24,086 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 14:45:24,092 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 14:45:24,092 [INFO] [BIB] Lettura da: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 14:45:24,100 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 14:45:24,435 [INFO] [KGC] Avvio morph-kgc con config: 07_graph_materialisation/config.ini
+2026-06-03 14:58:54,355 [ERROR] [ERROR] CSV attori non trovato: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 14:58:54,356 [ERROR] Copia il file nella posizione indicata nel config.ini e riprova.
+2026-06-03 15:00:55,924 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:00:55,944 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:00:56,009 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:00:56,029 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:00:56,030 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:00:56,042 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:00:57,054 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:14:19,808 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:14:19,837 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:14:19,847 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:14:19,852 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:14:19,852 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:15:01,246 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:15:01,269 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:15:01,279 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:15:01,285 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:15:01,285 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:18:42,800 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:18:42,812 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:18:42,818 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:18:42,824 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:18:42,824 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:19:57,152 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:19:57,166 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:19:57,176 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:19:57,182 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:19:57,182 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:22:44,604 [ERROR] [ERROR] CSV attori non trovato: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:22:44,604 [ERROR] Copia il file nella posizione indicata nel config.ini e riprova.
+2026-06-03 15:24:39,297 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:24:39,315 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:24:39,325 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:24:39,331 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:24:39,331 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:24:46,314 [INFO] [INFO] Modalità campione: prime 5 righe per dataset
+2026-06-03 15:24:46,339 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_actors.csv
+2026-06-03 15:24:46,346 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (5 righe)
+2026-06-03 15:24:46,352 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (5 righe)
+2026-06-03 15:24:46,358 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (0 righe)
+2026-06-03 15:24:46,358 [INFO] [BIB] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_editions.csv
+2026-06-03 15:27:49,405 [INFO] [INFO] Modalità campione: prime 5 righe per dataset
+2026-06-03 15:27:49,436 [INFO] [ACTORS] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_actors.csv
+2026-06-03 15:27:49,445 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (5 righe)
+2026-06-03 15:27:49,457 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (5 righe)
+2026-06-03 15:27:49,462 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (0 righe)
+2026-06-03 15:27:49,462 [INFO] [BIB] Lettura da: 07_graph_materialisation/input/ready_to_convert/sample_editions.csv
+2026-06-03 15:27:49,478 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (5 righe)
+2026-06-03 15:27:49,785 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:29:56,608 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:29:56,628 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:29:56,639 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:29:56,645 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:29:56,645 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:29:56,660 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:29:57,211 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:30:54,673 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:30:54,690 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:30:54,700 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:30:54,706 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:30:54,707 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:30:54,721 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:30:55,032 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:32:23,404 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:32:23,426 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:32:23,436 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:32:23,442 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:32:23,442 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:32:23,456 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:32:24,141 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:33:11,016 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:33:11,039 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:33:11,048 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:33:11,053 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:33:11,053 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:33:11,066 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:33:11,613 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:36:31,255 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:36:31,279 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:36:31,289 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:36:31,295 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:36:31,295 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:36:31,308 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:36:31,664 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:37:28,877 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:37:28,893 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:37:28,903 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:37:28,908 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:37:28,908 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:37:28,924 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:37:29,229 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:39:44,918 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:39:44,936 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:39:44,947 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:39:44,954 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:39:44,954 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:39:44,971 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:39:45,300 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:40:31,711 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:40:31,729 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:40:31,740 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:40:31,745 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:40:31,745 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:40:31,761 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:40:32,082 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:41:11,718 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:41:11,736 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:41:11,745 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:41:11,751 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:41:11,751 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:41:11,767 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:41:12,102 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:41:59,784 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:41:59,800 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:41:59,812 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:41:59,818 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:41:59,818 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:41:59,834 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:42:00,167 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:44:51,633 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:44:51,650 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:44:51,661 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:44:51,667 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:44:51,667 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:44:51,684 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:44:52,016 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:48:27,969 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:48:27,991 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:48:27,999 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:48:28,005 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:48:28,005 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:48:28,020 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:48:28,388 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 15:56:13,177 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 15:56:13,196 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 15:56:13,207 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 15:56:13,213 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 15:56:13,213 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 15:56:13,229 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 15:56:13,556 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:01:40,357 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:01:40,373 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:01:40,384 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:01:40,390 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:01:40,390 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:01:40,406 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:01:40,736 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:03:34,488 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:03:34,506 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:03:34,516 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:03:34,522 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:03:34,522 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:03:34,537 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:03:34,882 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:10:48,020 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:10:48,037 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:10:48,045 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:10:48,052 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:10:48,052 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:10:48,065 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:10:48,440 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:22:54,724 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:22:54,742 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:22:54,751 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:22:54,757 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:22:54,757 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:22:54,772 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:22:55,094 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:24:21,261 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:24:21,281 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:24:21,292 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:24:21,298 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:24:21,298 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:25:10,830 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:25:10,846 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:25:10,854 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:25:10,860 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:25:10,860 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:27:40,319 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:27:40,335 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:27:40,344 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:27:40,350 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:27:40,350 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:28:14,157 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:28:14,173 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:28:14,183 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:28:14,189 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:28:14,189 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:28:42,534 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:28:42,550 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:28:42,559 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:28:42,565 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:28:42,565 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:28:42,578 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:28:42,891 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:29:46,969 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:29:46,986 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:29:46,995 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:29:47,001 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:29:47,001 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:29:47,014 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:29:47,349 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:32:29,118 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:32:29,134 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:32:29,143 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:32:29,149 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:32:29,149 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:32:29,162 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:32:29,492 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:33:47,920 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:33:47,937 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:33:47,946 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:33:47,952 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:33:47,952 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:33:47,963 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:33:48,290 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:35:51,040 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:35:51,120 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:35:51,183 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:35:51,189 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:35:51,189 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:35:51,220 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:35:51,540 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:38:49,129 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:38:49,146 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:38:49,156 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:38:49,161 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:38:49,162 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:38:49,173 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:38:49,509 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:40:51,510 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:40:51,526 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:40:51,536 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:40:51,543 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:40:51,543 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:40:51,559 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:40:51,887 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 16:46:21,424 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 16:46:21,444 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 16:46:21,454 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 16:46:21,458 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 16:46:21,458 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 16:46:21,473 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 16:46:21,794 [INFO] [KGC] Avvio morph-kgc con config: config.ini
+2026-06-03 17:53:09,681 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 17:53:09,699 [INFO] [ACTORS] CSV principale pronto: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 17:53:09,706 [INFO] [ACTORS] Link esatti: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 17:53:09,711 [INFO] [ACTORS] Link approssimativi: 07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 17:53:09,711 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 17:53:09,722 [INFO] [BIB] CSV pronto: 07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 17:53:10,118 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 17:58:23,318 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 17:58:23,333 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 17:58:23,341 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 17:58:23,346 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:06:47,078 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:06:47,095 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:06:47,104 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:06:47,109 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:06:47,109 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:06:47,122 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:06:47,447 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:09:06,229 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:09:06,248 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:09:06,255 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:09:06,261 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:09:06,261 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:09:06,273 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:09:06,649 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:11:52,172 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:11:52,189 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:11:52,196 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:11:52,200 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:11:52,200 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:11:52,211 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:11:52,536 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:12:16,145 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:12:16,162 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:12:16,168 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:12:16,171 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:12:16,172 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:12:16,182 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:12:16,509 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:23:56,069 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:23:56,093 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:23:56,105 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:23:56,110 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:23:56,110 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:23:56,126 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:23:56,445 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:24:47,286 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:24:47,307 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:24:47,315 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:24:47,319 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:24:47,319 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:24:47,331 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:24:47,675 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:28:21,288 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:28:21,306 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:28:21,314 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:28:21,319 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:28:21,319 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:28:21,332 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:28:21,656 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:30:19,762 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:30:19,773 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:30:19,782 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:30:19,787 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:30:19,787 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:30:19,797 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:30:20,141 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:30:53,288 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:30:53,302 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:30:53,310 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:30:53,314 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:30:53,314 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:30:53,327 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:30:53,660 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:44:45,882 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:44:45,897 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:44:45,905 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:44:45,910 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:44:45,910 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:44:45,922 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:44:46,249 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:45:19,224 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:45:19,241 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:45:19,247 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:45:19,251 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:45:19,251 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:45:19,263 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:45:19,582 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:46:34,297 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:46:34,317 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:46:34,327 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:46:34,337 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:46:34,341 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:46:34,358 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:46:34,740 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:46:36,875 [INFO] [KGC] Triple generate: 0
+2026-06-03 18:46:36,881 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl
+2026-06-03 18:47:26,222 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:47:26,238 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:47:26,246 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:47:26,249 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:47:26,250 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:47:26,261 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:47:26,582 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:47:30,808 [INFO] [KGC] Triple generate: 0
+2026-06-03 18:47:30,810 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl
+2026-06-03 18:52:47,700 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:52:47,718 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:52:47,724 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:52:47,728 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:52:47,728 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:52:47,738 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:52:48,062 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:52:50,255 [INFO] [KGC] Triple N-Triples generate: 403
+2026-06-03 18:52:50,266 [INFO] [KGC] Triple nel grafo: 0
+2026-06-03 18:52:50,267 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl
+2026-06-03 18:53:30,142 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:53:30,159 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:53:30,166 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:53:30,169 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:53:30,170 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:53:30,180 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:53:30,497 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:53:33,053 [INFO] [KGC] Triple N-Triples generate: 403
+2026-06-03 18:53:33,055 [INFO] [KGC] Triple nel grafo: 0
+2026-06-03 18:53:33,057 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl
+2026-06-03 18:53:44,366 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 18:53:44,380 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 18:53:44,387 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 18:53:44,390 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 18:53:44,391 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 18:53:44,400 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 18:53:44,715 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 18:53:46,743 [INFO] [KGC] Triple N-Triples generate: 403
+2026-06-03 18:53:46,746 [INFO] [KGC] Triple nel grafo: 0
+2026-06-03 18:53:46,747 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl
+2026-06-03 19:05:18,394 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 19:05:18,405 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 19:05:18,411 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 19:05:18,414 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 19:05:18,415 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 19:05:18,425 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 19:05:20,379 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:05:22,348 [INFO] [KGC] Triple N-Triples generate: 403
+2026-06-03 19:05:22,350 [INFO] [KGC] Triple nel grafo: 0
+2026-06-03 19:05:22,352 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl
+2026-06-03 19:07:55,819 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 19:07:55,831 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 19:07:55,837 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 19:07:55,840 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 19:07:55,841 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 19:07:55,851 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 19:07:56,167 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:26:44,251 [INFO] [INFO] Modalità campione: prime 20 righe per dataset
+2026-06-03 19:26:44,313 [INFO] [ACTORS] Lettura da: input/ready_to_convert/sample_actors.csv
+2026-06-03 19:26:44,327 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 19:26:44,333 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 19:26:44,340 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 19:26:44,340 [INFO] [BIB] Lettura da: input/ready_to_convert/sample_editions.csv
+2026-06-03 19:26:44,356 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 19:26:48,627 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:26:50,880 [INFO] [KGC] Triple N-Triples generate: 407
+2026-06-03 19:26:50,895 [INFO] [KGC] Triple nel grafo: 0
+2026-06-03 19:26:50,899 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl (0 triple)
+2026-06-03 19:34:33,622 [INFO] [INFO] Modalità campione: prime 20 righe per dataset
+2026-06-03 19:34:33,659 [INFO] [ACTORS] Lettura da: input/ready_to_convert/sample_actors.csv
+2026-06-03 19:34:33,673 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 19:34:33,681 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 19:34:33,685 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 19:34:33,685 [INFO] [BIB] Lettura da: input/ready_to_convert/sample_editions.csv
+2026-06-03 19:34:33,698 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 19:34:34,009 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:34:36,261 [INFO] [KGC] Triple generate da morph-kgc: 407
+2026-06-03 19:34:36,263 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_editor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,263 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_place_app> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "[Mainz] (Allemagne avant 1945)" | errore: Invalid line: 
+2026-06-03 19:34:36,263 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#gender_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsPropertyOfType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/gender> | errore: Invalid line: 
+2026-06-03 19:34:36,263 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb47485413f#ts_year_first> | errore: Invalid line: 
+2026-06-03 19:34:36,263 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#app_lastname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,263 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_actor_app> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "Gutenberg" | errore: Invalid line: 
+2026-06-03 19:34:36,263 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Organization> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#birth_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://wikidata.org/entity/Q134588> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://wikidata.org/entity/Q134588"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#pub_place_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#bnf_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#digital_obj> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/extensions/crmdig/D9_Data_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_translator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300069831> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_actor_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#pub_actor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E39_Actor> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb31015462k#bnf_id> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025492> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#digital_obj> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb47485413f#digital_id> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb43724574d#pub_actor> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P130i_features_are_also_found_on> <http://data.bnf.fr/ark:/12148/cb43724574d#digital_obj> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#Expression> <http://www.cidoc-crm.org/cidoc-crm/P72_has_language> <http://id.loc.gov/vocabulary/iso639-2/lat> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://www.idref.fr/033582262> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://wikidata.org/entity/Q134588> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,264 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://data.bnf.fr/ark:/12148/cb124434672#app_firstname> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for> <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "31015462" | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#Expression> <http://www.cidoc-crm.org/cidoc-crm/P72_has_language> <http://id.loc.gov/vocabulary/iso639-2/fre> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb11863754h#about> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb11926496p#end_event> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404621> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb11926496p#death_event> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F28_Expression_Creation> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#pub_actor> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb33810223k#pub_actor_app> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_editor> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb12171062v#about> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404126> | errore: Invalid line: 
+2026-06-03 19:34:36,265 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#profession_lo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/LinguisticObject> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#birth_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#language_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsAttributeTo> <http://data.bnf.fr/ark:/12148/cb11926496p#about> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11935758x> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404126> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#digital_obj> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb338102258#digital_id> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <https://data.biblissima.fr/entity/Q7101> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#ts_year_first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#gender_aa> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/AttributeAssignment> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#birth_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/birth> | errore: Invalid line: 
+2026-06-03 19:34:36,266 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#ts_year_first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,267 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_illustrator> | errore: Invalid line: 
+2026-06-03 19:34:36,267 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#death_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasEndTime> "1455-03-24T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#pub_place_app> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "(S. l. n. d.) (inconnu)" | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb124434672#death_event> | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_illustrator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#death_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasEndTime> "1274-03-09T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_actor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E39_Actor> | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://viaf.org/viaf/120732037/> | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#digital_obj> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb43724574d#digital_id> | errore: Invalid line: 
+2026-06-03 19:34:36,268 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#app_firstname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_author> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://iflastandards.info/ns/lrm/lrmoo/R4i_is_embodied_in> <http://data.bnf.fr/ark:/12148/cb47485413f#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_translator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#bnf_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_translator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_illustrator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#Expression> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F2_Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,269 [WARNING] [KGC] Tripla scartata: <https://francearchives.gouv.fr/agent/27356835> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "https://francearchives.gouv.fr/agent/27356835"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F3_Manifestation> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://www.idref.fr/086126997> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#digital_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <https://data.biblissima.fr/entity/Q12611> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://data.bnf.fr/ark:/12148/cb11926496p#app_fullname> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb47485413f#bnf_id> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_translator> | errore: Invalid line: 
+2026-06-03 19:34:36,270 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_place> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb31015462k#pub_place_app> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#ts_year_range> <http://www.cidoc-crm.org/cidoc-crm/P82_at_some_time_within> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_translator> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://iflastandards.info/ns/lrm/lrmoo/R4i_is_embodied_in> <http://data.bnf.fr/ark:/12148/cb31015462k#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_translator> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb119074986#about> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasResidenceIn> <http://id.loc.gov/vocabulary/countries/it> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#end_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#language_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsAttributeTo> <http://data.bnf.fr/ark:/12148/cb124434672#about> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_illustrator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025164> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#digital_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,271 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_place_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#app_lastname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/last-name> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#ts_year_first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#app_lastname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "Nicolas" | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#language_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsPropertyOfType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/language> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#pub_place> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb33810223k#pub_place_app> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#bnf_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation> <http://iflastandards.info/ns/lrm/lrmoo/R17_created> <http://data.bnf.fr/ark:/12148/cb43724574d#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#birth_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasEndTime> "1397-11-15T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_translator> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb33810223k#pub_actor> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#start_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F28_Expression_Creation> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#death_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#end_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb11926496p#end_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb338102258#bnf_id> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> <http://data.bnf.fr/ark:/12148/cb338102258#pub_place> | errore: Invalid line: 
+2026-06-03 19:34:36,272 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for> <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> <http://data.bnf.fr/ark:/12148/cb47485413f#pub_place> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#pub_actor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E39_Actor> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#ts_year_range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#death_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb11926496p#death_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://www.idref.fr/086126997> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb12171062v#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation> <http://iflastandards.info/ns/lrm/lrmoo/R17_created> <http://data.bnf.fr/ark:/12148/cb31015462k#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#pub_place> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb43724574d#pub_place_app> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://data.bnf.fr/ark:/12148/cb11926496p#app_lastname> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://viaf.org/viaf/120732037/> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_author> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://fr.dbpedia.org/resource/Nicolas_V> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://fr.dbpedia.org/resource/Nicolas_V"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Person> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> <http://data.bnf.fr/ark:/12148/cb43724574d#pub_place> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://isni.org/isni/000000012149188X> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#digital_obj> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/extensions/crmdig/D9_Data_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,273 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#digital_obj> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/extensions/crmdig/D9_Data_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_translator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11976232x> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404126> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://iflastandards.info/ns/lrm/lrmoo/R4i_is_embodied_in> <http://data.bnf.fr/ark:/12148/cb43724574d#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_illustrator> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_editor> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300312355> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#digital_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404630> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#start_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb124434672#start_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://fr.wikipedia.org/wiki/Nicolas_V> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://fr.wikipedia.org/wiki/Nicolas_V"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#ts_year_range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb33810223k#bnf_id> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404621> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#Expression> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F2_Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,274 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#app_firstname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/first-name> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#pub_place> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E53_Place> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_actor> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb47485413f#pub_actor_app> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#pub_actor_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#profession_lo> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "Pape de 1447 à 1455. - Met un terme définitif au Grand Schisme en recevant la soumission de l'antipape Félix V et du concile de Bâle. - Fondateur de la bibliothèque du Vatican" | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_author> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E35_Title> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_illustrator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025164> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#digital_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404630> | errore: Invalid line: 
+2026-06-03 19:34:36,275 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,276 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_editor> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300312355> | errore: Invalid line: 
+2026-06-03 19:34:36,276 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_author> | errore: Invalid line: 
+2026-06-03 19:34:36,276 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E35_Title> | errore: Invalid line: 
+2026-06-03 19:34:36,276 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404621> | errore: Invalid line: 
+2026-06-03 19:34:36,276 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_editor> | errore: Invalid line: 
+2026-06-03 19:34:36,277 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_translator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300069831> | errore: Invalid line: 
+2026-06-03 19:34:36,277 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://data.bnf.fr/ark:/12148/cb124434672#app_fullname> | errore: Invalid line: 
+2026-06-03 19:34:36,277 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#title> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300417204> | errore: Invalid line: 
+2026-06-03 19:34:36,277 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_illustrator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,277 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F28_Expression_Creation> | errore: Invalid line: 
+2026-06-03 19:34:36,278 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#start_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/foundation> | errore: Invalid line: 
+2026-06-03 19:34:36,278 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_translator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300069831> | errore: Invalid line: 
+2026-06-03 19:34:36,278 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_place_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,278 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb43724574d#ts_year_first> | errore: Invalid line: 
+2026-06-03 19:34:36,278 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_translator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300069831> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#title> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "Ordonnance portant qu'il sera délivré aux possesseurs des fiefs du pays et duché de Normandie un duplicata des lettres de leurs hommages, signé et scellé, pour en poursuivre l'expédition en la Chambre des comptes" | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#Expression> <http://www.cidoc-crm.org/cidoc-crm/P129_is_about> <http://data.bnf.fr/ark:/12148/cb12171062v#about> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404621> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#ts_year_range> <http://www.cidoc-crm.org/cidoc-crm/P82_at_some_time_within> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_place_app> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "Mayence (Allemagne)" | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://isni.org/isni/000000012149188X> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb124434672#end_event> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://fr.wikipedia.org/wiki/Nicolas_V> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://isni.org/isni/000000012149188X> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://isni.org/isni/000000012149188X"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "33810225" | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F3_Manifestation> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_editor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#start_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb11926496p#start_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,279 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://iflastandards.info/ns/lrm/lrmoo/R4i_is_embodied_in> <http://data.bnf.fr/ark:/12148/cb338102258#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#title> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "[Saint Bernardin de Sienne] : [estampe]" | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://fr.dbpedia.org/resource/Nicolas_V> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb133203637#about> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for> <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_editor> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300312355> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025492> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#digital_obj> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/extensions/crmdig/D9_Data_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://wikidata.org/entity/Q134588> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://purl.org/dc/dcmitype/StillImage> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb43724574d#bnf_id> | errore: Invalid line: 
+2026-06-03 19:34:36,280 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb31015462k#ts_year_first> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#bnf_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#death_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasStartTime> "1455-03-24T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> <http://data.bnf.fr/ark:/12148/cb33810223k#pub_place> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> "In-4°, 2 p." | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb47485413f#pub_actor> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://id.loc.gov/vocabulary/countries/it> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Place> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://www.idref.fr/086126997> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation> <http://iflastandards.info/ns/lrm/lrmoo/R17_created> <http://data.bnf.fr/ark:/12148/cb47485413f#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <https://francearchives.gouv.fr/agent/27356835> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#death_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/death> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#pub_place_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_translator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Organization> | errore: Invalid line: 
+2026-06-03 19:34:36,281 [WARNING] [KGC] Tripla scartata: <https://francearchives.gouv.fr/agent/27356835> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_illustrator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025164> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E35_Title> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#end_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#app_fullname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/full-name> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> "1 placard anopisthographe" | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://www.idref.fr/033582262> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "47485413" | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#profession_lo> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "Théologien dominicain. - Canonisé en 1323. - Docteur de l'Église" | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb33810223k#ts_year_first> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isReferredToBy> <http://data.bnf.fr/ark:/12148/cb11926496p#profession_lo> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#digital_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb133203637#about> | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_actor_app> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "[Johannes Gutenberg]" | errore: Invalid line: 
+2026-06-03 19:34:36,282 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025492> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#pub_place_app> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "(S. l. n. d.) (inconnu)" | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://iflastandards.info/ns/lrm/lrmoo/R4i_is_embodied_in> <http://data.bnf.fr/ark:/12148/cb33810223k#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb338102258#ts_year_range> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "43724574" | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#end_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/dissolution> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#language_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assigns> <http://id.loc.gov/vocabulary/iso639-2/lat> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#language_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsPropertyOfType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/language> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isReferredToBy> <http://data.bnf.fr/ark:/12148/cb124434672#profession_lo> | errore: Invalid line: 
+2026-06-03 19:34:36,283 [WARNING] [KGC] Tripla scartata: <http://fr.wikipedia.org/wiki/Nicolas_V> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#pub_actor_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_illustrator> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#Expression> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F2_Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#birth_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb11926496p#birth_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#bnf_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F28_Expression_Creation> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025492> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_editor> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300312355> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://wikidata.org/entity/Q134588> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <https://data.biblissima.fr/entity/Q12611> | errore: Invalid line: 
+2026-06-03 19:34:36,284 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#language_aa> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/AttributeAssignment> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_editor> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300312355> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb47485413f#ts_year_range> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#pub_place> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E53_Place> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_place> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E53_Place> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#ts_year_range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <https://data.biblissima.fr/entity/Q7101> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "https://data.biblissima.fr/entity/Q7101"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#ts_year_first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P7_took_place_at> <http://data.bnf.fr/ark:/12148/cb31015462k#pub_place> | errore: Invalid line: 
+2026-06-03 19:34:36,285 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_editor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,286 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,286 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#end_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,286 [WARNING] [KGC] Tripla scartata: <http://isni.org/isni/000000012149188X> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,286 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#Expression> <http://www.cidoc-crm.org/cidoc-crm/P72_has_language> <http://id.loc.gov/vocabulary/iso639-2/lat> | errore: Invalid line: 
+2026-06-03 19:34:36,286 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#birth_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb124434672#birth_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,286 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_editor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,286 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#birth_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasStartTime> "1397-11-15T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,287 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#Expression> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F2_Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,287 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://purl.org/dc/dcmitype/Text> | errore: Invalid line: 
+2026-06-03 19:34:36,287 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#death_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,287 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb338102258#pub_actor> | errore: Invalid line: 
+2026-06-03 19:34:36,287 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_place> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb47485413f#pub_place_app> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#gender_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsAttributeTo> <http://data.bnf.fr/ark:/12148/cb11926496p#about> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#pub_actor> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb43724574d#pub_actor_app> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#death_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/death> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#app_firstname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb11863754h#about> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://d-nb.info/gnd/118622110> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://d-nb.info/gnd/118622110"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#birth_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasStartTime> "1225-01-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#app_fullname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/full-name> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <https://data.biblissima.fr/entity/Q12611> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_actor_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#digital_id> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "https://gallica.bnf.fr/ark:/12148/btv1b55003824c"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb43724574d#ts_year_range> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#about> <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> "1 est. : gravure en criblé, col. ; 235 x 187 mm (plaque)" | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#digital_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404630> | errore: Invalid line: 
+2026-06-03 19:34:36,288 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#ts_year_range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,289 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,289 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb338102258#ts_year_first> | errore: Invalid line: 
+2026-06-03 19:34:36,289 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasResidenceIn> <http://id.loc.gov/vocabulary/countries/it> | errore: Invalid line: 
+2026-06-03 19:34:36,289 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#ts_year_range> <http://www.cidoc-crm.org/cidoc-crm/P82_at_some_time_within> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,289 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://d-nb.info/gnd/118622110> | errore: Invalid line: 
+2026-06-03 19:34:36,290 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E35_Title> | errore: Invalid line: 
+2026-06-03 19:34:36,290 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://purl.org/dc/dcmitype/Text> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#start_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#end_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb124434672#end_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#app_fullname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#pub_place_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_actor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E39_Actor> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#language_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assigns> <http://id.loc.gov/vocabulary/iso639-2/lat> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#death_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasTimeSpan> <http://data.bnf.fr/ark:/12148/cb124434672#death_ts> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P130i_features_are_also_found_on> <http://data.bnf.fr/ark:/12148/cb31015462k#digital_obj> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#language_aa> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/AttributeAssignment> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://viaf.org/viaf/120732037/> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#pub_actor_app> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E41_Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,291 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#ts_year_range> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb33810223k#ts_year_range> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://d-nb.info/gnd/118622110> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_author> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#title> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E35_Title> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404621> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#title> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "[Indulgentiarum litterae Nicolai V pro regno Cypri]" | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F3_Manifestation> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#Expression> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F2_Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#digital_id> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "https://gallica.bnf.fr/ark:/12148/btv1b105055515"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_editor> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#pub_place> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E53_Place> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for> <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Person> | errore: Invalid line: 
+2026-06-03 19:34:36,292 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> "3 f." | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb11926496p#birth_event> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://fr.dbpedia.org/resource/Nicolas_V> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#digital_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404630> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation> <http://iflastandards.info/ns/lrm/lrmoo/R17_created> <http://data.bnf.fr/ark:/12148/cb33810223k#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#death_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P4_has_time-span> <http://data.bnf.fr/ark:/12148/cb31015462k#ts_year_range> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation> <http://iflastandards.info/ns/lrm/lrmoo/R17_created> <http://data.bnf.fr/ark:/12148/cb338102258#Expression> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11935758x> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_translator> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_translator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#pub_place> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb338102258#pub_place_app> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#digital_id> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300404630> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F3_Manifestation> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#gender_aa> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/AttributeAssignment> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb124434672#start_event> | errore: Invalid line: 
+2026-06-03 19:34:36,293 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#end_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/dissolution> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#start_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11976232x> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E73_Information_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://purl.org/dc/dcmitype/Text> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_illustrator> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_editor> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://data.bnf.fr/ark:/12148/cb11926496p#app_firstname> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb43724574d#expr_creation_translator> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#gender_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assigns> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/male> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#app_lastname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "Thomas d'Aquin" | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#start_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://data.bnf.fr/ark:/12148/cb11976232x> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#digital_obj> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb31015462k#digital_id> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#ts_year_first> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E52_Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#end_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#bnf_id> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "33810223" | errore: Invalid line: 
+2026-06-03 19:34:36,294 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#app_lastname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/last-name> | errore: Invalid line: 
+2026-06-03 19:34:36,295 [WARNING] [KGC] Tripla scartata: <http://viaf.org/viaf/120732037/> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://viaf.org/viaf/120732037/"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,295 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_illustrator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,295 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <https://data.biblissima.fr/entity/Q7101> | errore: Invalid line: 
+2026-06-03 19:34:36,295 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_illustrator> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,295 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://purl.org/dc/dcmitype/Text> | errore: Invalid line: 
+2026-06-03 19:34:36,296 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F3_Manifestation> | errore: Invalid line: 
+2026-06-03 19:34:36,296 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#Expression> <http://www.cidoc-crm.org/cidoc-crm/P72_has_language> <http://id.loc.gov/vocabulary/iso639-2/fre> | errore: Invalid line: 
+2026-06-03 19:34:36,296 [WARNING] [KGC] Tripla scartata: <http://www.idref.fr/033582262> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://www.idref.fr/033582262"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,296 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#app_lastname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,296 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#about> <http://www.cidoc-crm.org/cidoc-crm/P130i_features_are_also_found_on> <http://data.bnf.fr/ark:/12148/cb47485413f#digital_obj> | errore: Invalid line: 
+2026-06-03 19:34:36,296 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_illustrator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025164> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#title> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "Biblia latina, sans commentaire" | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#Expression> <http://www.cidoc-crm.org/cidoc-crm/P129_is_about> <http://data.bnf.fr/ark:/12148/cb11976232x> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#gender_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsPropertyOfType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/gender> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_translator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300069831> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://data.bnf.fr/ark:/12148/cb124434672#app_lastname> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <https://data.biblissima.fr/entity/Q7101> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#ts_year_range> <http://www.cidoc-crm.org/cidoc-crm/P82_at_some_time_within> "1454/1455"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_editor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,297 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#pub_actor> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb31015462k#pub_actor_app> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#about> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb31015462k#pub_actor> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P3_has_note> "In-4°, 15 p." | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://www.idref.fr/086126997> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "http://www.idref.fr/086126997"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#title> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300417204> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#death_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#title> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300417204> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#profession_lo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/LinguisticObject> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82a_begin_of_the_begin> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#title> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300417204> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#title> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300417204> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#pub_place_app> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "[Rhin supérieur] (Allemagne avant 1945)" | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#birth_ts> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Time-Span> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb11926496p#start_event> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#birth_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasEndTime> "1225-01-01T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#birth_event> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Event> | errore: Invalid line: 
+2026-06-03 19:34:36,298 [WARNING] [KGC] Tripla scartata: <http://www.idref.fr/033582262> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/uri> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#gender_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assigns> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/male> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#profession_lo> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/description> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#app_fullname> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Appellation> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#profession_lo> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/description> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb33810223k#expr_creation_illustrator> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <https://data.biblissima.fr/entity/Q12611> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasSymbolicContent> "https://data.biblissima.fr/entity/Q12611"^^<http://www.w3.org/2001/XMLSchema#anyURI> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#digital_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/wasPresentAt> <http://data.bnf.fr/ark:/12148/cb124434672#birth_event> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#pub_place> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E53_Place> | errore: Invalid line: 
+2026-06-03 19:34:36,299 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#Expression> <http://www.cidoc-crm.org/cidoc-crm/P129_is_about> <http://data.bnf.fr/ark:/12148/cb11935758x> | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <http://fr.wikipedia.org/wiki/Nicolas_V> | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#title> <http://www.cidoc-crm.org/cidoc-crm/P190_has_symbolic_content> "Ordonnance sur le fait et estat de la Chambre des comptes de Paris" | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#digital_obj> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/extensions/crmdig/D9_Data_Object> | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#about> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/isIdentifiedBy> <https://francearchives.gouv.fr/agent/27356835> | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#gender_aa> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/assignsAttributeTo> <http://data.bnf.fr/ark:/12148/cb124434672#about> | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#birth_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/birth> | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation_illustrator> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025164> | errore: Invalid line: 
+2026-06-03 19:34:36,300 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#ts_year_range> <http://www.cidoc-crm.org/cidoc-crm/P82_at_some_time_within> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,301 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#digital_id> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E42_Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,301 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P130i_features_are_also_found_on> <http://data.bnf.fr/ark:/12148/cb338102258#digital_obj> | errore: Invalid line: 
+2026-06-03 19:34:36,301 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation> <http://www.cidoc-crm.org/cidoc-crm/P9_consists_of> <http://data.bnf.fr/ark:/12148/cb47485413f#expr_creation_editor> | errore: Invalid line: 
+2026-06-03 19:34:36,301 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb43724574d#pub_actor> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E39_Actor> | errore: Invalid line: 
+2026-06-03 19:34:36,305 [WARNING] [KGC] Tripla scartata: <http://d-nb.info/gnd/118622110> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,305 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://iflastandards.info/ns/lrm/lrmoo/F28_Expression_Creation> | errore: Invalid line: 
+2026-06-03 19:34:36,305 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P2_has_type> <http://vocab.getty.edu/aat/300025492> | errore: Invalid line: 
+2026-06-03 19:34:36,305 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb124434672#app_firstname> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/first-name> | errore: Invalid line: 
+2026-06-03 19:34:36,305 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb47485413f#ts_year_first> <http://www.cidoc-crm.org/cidoc-crm/P82b_end_of_the_end> "1454"^^<http://id.loc.gov/datatypes/edtf/EDTF> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#about> <http://www.cidoc-crm.org/cidoc-crm/P130i_features_are_also_found_on> <http://data.bnf.fr/ark:/12148/cb33810223k#digital_obj> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#start_event> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasType> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/foundation> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_author> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.cidoc-crm.org/cidoc-crm/E7_Activity> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb11926496p#death_ts> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/hasStartTime> "1274-03-09T00:00:00"^^<http://www.w3.org/2001/XMLSchema#dateTime> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://fr.dbpedia.org/resource/Nicolas_V> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Identifier> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#pub_actor> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb338102258#pub_actor_app> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb31015462k#expr_creation_author> <http://www.cidoc-crm.org/cidoc-crm/P14_carried_out_by> <http://data.bnf.fr/ark:/12148/cb124434672#about> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb33810223k#digital_obj> <http://www.cidoc-crm.org/cidoc-crm/P1_is_identified_by> <http://data.bnf.fr/ark:/12148/cb33810223k#digital_id> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [WARNING] [KGC] Tripla scartata: <http://data.bnf.fr/ark:/12148/cb338102258#about> <http://www.cidoc-crm.org/cidoc-crm/P16i_was_used_for> <http://data.bnf.fr/ark:/12148/cb338102258#expr_creation> | errore: Invalid line: 
+2026-06-03 19:34:36,306 [INFO] [KGC] Triple nel grafo RDFLib: 0
+2026-06-03 19:34:36,308 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl (0 triple)
+2026-06-03 19:38:06,257 [INFO] [INFO] Modalità campione: prime 20 righe per dataset
+2026-06-03 19:38:06,296 [INFO] [ACTORS] Lettura da: input/ready_to_convert/sample_actors.csv
+2026-06-03 19:38:06,311 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 19:38:06,318 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 19:38:06,323 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 19:38:06,323 [INFO] [BIB] Lettura da: input/ready_to_convert/sample_editions.csv
+2026-06-03 19:38:06,336 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 19:38:06,665 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:38:08,916 [INFO] [KGC] Triple generate da morph-kgc: 407
+2026-06-03 19:38:08,927 [INFO] [KGC] Triple RDFLib aggiunte da tuple: 0
+2026-06-03 19:38:08,927 [INFO] [KGC] Triple RDFLib aggiunte da stringhe: 407
+2026-06-03 19:38:08,927 [INFO] [KGC] Triple nel grafo RDFLib: 407
+2026-06-03 19:38:08,945 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl (407 triple)
+2026-06-03 19:38:56,455 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 19:38:56,485 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 19:38:56,493 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 19:38:56,497 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 19:38:56,497 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 19:38:56,508 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 19:38:56,818 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:38:59,043 [INFO] [KGC] Triple generate da morph-kgc: 407
+2026-06-03 19:38:59,054 [INFO] [KGC] Triple RDFLib aggiunte da tuple: 0
+2026-06-03 19:38:59,054 [INFO] [KGC] Triple RDFLib aggiunte da stringhe: 407
+2026-06-03 19:38:59,054 [INFO] [KGC] Triple nel grafo RDFLib: 407
+2026-06-03 19:38:59,071 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl (407 triple)
+2026-06-03 19:40:47,346 [INFO] [ACTORS] Lettura da: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 19:40:47,376 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (10 righe)
+2026-06-03 19:40:47,384 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (10 righe)
+2026-06-03 19:40:47,388 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (2 righe)
+2026-06-03 19:40:47,388 [INFO] [BIB] Lettura da: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 19:40:47,399 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (10 righe)
+2026-06-03 19:40:47,711 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:40:50,119 [INFO] [KGC] Triple generate da morph-kgc: 407
+2026-06-03 19:40:50,131 [INFO] [KGC] Triple RDFLib aggiunte da tuple: 0
+2026-06-03 19:40:50,131 [INFO] [KGC] Triple RDFLib aggiunte da stringhe: 407
+2026-06-03 19:40:50,131 [INFO] [KGC] Triple nel grafo RDFLib: 407
+2026-06-03 19:40:50,148 [INFO] [MERGE] Graph merged and saved to output/knowledge-graph_merged.ttl (407 triple)
+2026-06-03 19:44:26,034 [INFO] [ACTORS] Lettura da: ../01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+2026-06-03 19:44:50,027 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (403973 righe)
+2026-06-03 19:45:04,717 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (318921 righe)
+2026-06-03 19:45:10,241 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (189683 righe)
+2026-06-03 19:45:10,445 [INFO] [BIB] Lettura da: ../01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+2026-06-03 19:46:59,999 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (1341324 righe)
+2026-06-03 19:47:03,316 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini
+2026-06-03 19:50:08,483 [INFO] [CONFIG] Actor raw/preprocess input: ../01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+2026-06-03 19:50:08,488 [INFO] [CONFIG] Actor morph-kgc input: input/ready_to_convert/bnf_actors_ready.csv
+2026-06-03 19:50:08,488 [INFO] [CONFIG] Bibliographic raw/preprocess input: ../01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+2026-06-03 19:50:08,488 [INFO] [CONFIG] Bibliographic morph-kgc input: input/ready_to_convert/bnf_editions_ready.csv
+2026-06-03 19:50:08,509 [INFO] [ACTORS] Lettura da: ../01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+2026-06-03 19:50:33,636 [INFO] [ACTORS] CSV principale pronto: input/ready_to_convert/bnf_actors_ready.csv (403973 righe)
+2026-06-03 19:50:45,601 [INFO] [ACTORS] Link esatti: input/ready_to_convert/bnf_actors_ready_links_exact.csv (318921 righe)
+2026-06-03 19:50:56,942 [INFO] [ACTORS] Link approssimativi: input/ready_to_convert/bnf_actors_ready_links_close.csv (189683 righe)
+2026-06-03 19:50:57,240 [INFO] [BIB] Lettura da: ../01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+2026-06-03 19:52:49,656 [INFO] [BIB] CSV pronto: input/ready_to_convert/bnf_editions_ready.csv (1341324 righe)
+2026-06-03 19:52:53,512 [INFO] [KGC] Avvio morph-kgc con config: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/config.ini

@@ -1,0 +1,510 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113516
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+Column requested: actor_profession
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 32728
+Sampled values count: 500
+
+" Prestre, docteur en théologie ". - Peut-être frère de Nicolas Charpy de Sainte-Croix
+A aussi traduisit de l'anglais et de l'italien en français
+A aussi traduit de l'hébreu en romanche
+A aussi traduit du français et du latin en espagnol
+A aussi traduit du latin en castillan
+A aussi traduit du suédois en latin
+A aussi écrit en français et traduit du grec ancien en latin
+A aussi écrit en latin et traduit  du grec en latin
+A aussi écrit en latin, en espagnol et en italien
+A letter from a gentleman of quality in the country, to his friend, upon his being chosen a member to serve in the approaching parliament, and desiring his advice... / [E. F.], 1679
+A traduit de l'arabe en latin
+A traduit du grec, du latin et de l'italien en allemand moyen haut
+A travaillé en association avec Hero Fuchs en 1520-1521 ; a sans doute travaillé en association avec Gottfried Hittorp à partir de 1521
+A écrit aussi en flamand
+A écrit en italien (textes littéraires, historiques et juridiques) et en latin (textes juridiques)
+Abbé d'Echternach. - Historien
+Abbé de Valcroissant. - Théologien janséniste
+Abbé, érudit et théologien
+Abbé. - Docteur en théologie et en droit. - Devint l'un des vicaires généraux de l'archevêque de Lyon
+Abbé. - Mathématicien
+Abbé. - Professeur de philosophie à Montpellier. - Astronome et physicien. - Né en 1741 ou 1734, meurt probablement au Bengale
+Acteur et auteur dramatique. - A dirigé le théâtre de la Comédie italienne
+Actif en 1629
+Actif à Nuremberg en 1478
+Administrateur et historien. - Lieutenant général de la ville de Caen (dès 1568). - Avocat du Roi au baillage de la ville de Caen
+Agronome et viticulteur. - Ancien valet de chambre de la Reine Marie Leczinska. - Fit des expériences à Sèvres et à Belleville. - Auteur de méthodes de culture de la vigne et de fabrication du vin qui publie entre 1763 et 1792
+Alchimiste. - Médecin. - Économiste
+Amiral. - A pris part à la guerre d'Amérique ; commandait la flotte à la bataille d'Aboukir
+Ancien officier
+Apothicaire-major des camps et armées d'Allemagne
+Archevêque de Florence en 1670 et cardinal en 1673
+Archevêque de York de 1531 à 1544. Célébre pour sa querelle avec Erasme à propos des Annotations au Nouveau Testament.
+Architecte de la ville de Paris
+Architecte, dessinateur. - Polygraphe
+Architecte. - Dessinateur. - Ornemaniste. - Travaille à paris vers 1760-1784
+Archiviste paléographe (1850). - Bibliographe. - Historien d'art. - Co-fondateur, aux côtés de Jules Guiffrey (1840-1918), de la société de l'histoire de l'art francais (1872). - Professeur de bibliographie, École nationale des chartes, Paris
+Armateur. - Échevin du Havre (1745)
+Associé libre de l' Académie des sciences. - Ami de Condorcet
+Astronome et mathématicien. - Député à l'Assemblée Nationale Constituante
+Astronome. - Membre de l'Académie des sciences (1770). - Fils de l'astronome César-François Cassini (1714-1784), qui était aussi appelé Cassini de Thury, car né à Thury (Oise) en 1714. - Succède à son père comme directeur de l'Observatoire de Paris (en 1784)
+Augustin. - Mystique
+Auteur d' ouvrages de controverse religieuse
+Auteur d'un court traité expliquant les termes en usage dans le service militaire dans l'empire romain. - La bibliographie ne s'accorde pas sur l'existence réelle ou prétendue de l'auteur, considérer parfois le texte comme copié dans Végèce, par Pomponius Laetus ou l'un de ses disciples (qui pourrait être Publio Francesco Modesto)
+Auteur d'un roman de chevalerie
+Auteur d'une géographie publiée pour la première fois en 1705, dédiée à Mlle de C** (Marie-Anne Crozat, née autour de 1700 ?, fille du banquier Antoine Crozat, 1655 ca-1738), adaptée et rééditée à de très nombreuses reprises jusque vers 1870 et généralement connue sous de nom de "Géographie de Crozat"
+Auteur d'une thèse soutenue à l'université d'Uppsala (en 1722)
+Auteur d'une thèse à Strasbourg en 1599
+Auteur de deux essais parus en 1754 et 1757
+Auteur de pièces de théâtre, poèmes, romans
+Auteur de théâtre. - Mémorialiste. - Frère de Gasparo Gozzi. - Comte
+Auteur dramatique et librettiste. - Membre de l'"Accademia degli Imperfetti" de Venise sous le pseudonyme de : "L'Indifferente". - A travaillé à Venise, Vienne et Parme
+Auteur dramatique, journaliste, imprimeur et éditeur. - Natif de Bar-sur-Seine (Aube), fils de Charles-Alexandre Le Blanc de Ferrière, capitaine d'infanterie. Se marie le 29 avril 1799 à Paris. Publie en 1797 le journal "Le Monde" et publie et imprime du 2 août au 7 oct. 1799 "L'Arlequin, journal de pièces et de morceaux". Chef du bureau de statistique au ministère de l'Intérieur (en 1803-1805 au moins). Auteur de nombreuses comédies et opéras-comiques. Également responsable des "Annales de statistique française et étrangère..." (1803-1804) et des "Archives statistiques de la France..." (1804-1805) ; rédacteur de l'"Analise [sic] de la statistique générale de la France..." publiée par le ministère de l'Intérieur (1803-1804). Auteur d'un "Annuaire de Paris et des environs..." publié en 1838. Encore en activité en 1842. Décédé à Paris le 23 fév. 1848
+Auteur dramatique. - Collaboratrice d'Eugène Scribe
+Auteur dramatique. - Premier régent du collège d'Yverdun (Suisse)
+Auteur et éditeur intellectuel
+Autodidacte condamné à vingt ans de galère pour meurtre (1761-1781), crime dont il s'est déclaré innocent, sans obtenir jamais sa réhabilitation. - Auteur d'un projet de paix perpétuelle, adressé à Benjamin Franklin qui le fit imprimer, de projets de réforme de l'orthographe
+Autre(s) graphie(s) : Churchil. - Libraire et éditeur de cartes. - Fils de William I Churchill, libraire à Dorchester ; frère des libraires John, Joshua et William II Churchill. En apprentissage de mai 1674 à juin 1681
+Autre(s) graphie(s) : Grasset et socii, Franciscus. - Imprimeur-libraire et éditeur de cartes géographiques. - Originaire de Genève. Commis des frères Cramer à Genève en 1740 (renvoyé en 1754 pour indélicatesse), puis de Marc Michel Bousquet à Lausanne. François Grasset voyage pour M. M. Bousquet à Paris (1754) et en Espagne (1755-1757). Querelles avec Voltaire en 1755 et 1759. Libraire en 1758, il dirige la maison d'édition des frères d'Arnay à Lausanne. En 1759, il monte, avec son beau-frère, François Terroux, une imprimerie qu'il doit revendre en 1761 à Abraham Louis Tarin. Doit s'exiler pour impressions prohibées. Passe plusieurs années en France, en Espagne et au Portugal. Enrôlé de force, il participe aux sièges de Chaves, Miranda et Almeida. Peut à nouveau imprimer en 1767. S'associe à A. L. Tarin jusqu'en 1782. Recueille la totalité des fonds de Marc Michel Bousquet et de Sigismond d'Arnay. À partir de 1765, il publie sous la raison "François Grasset et compagnie", association qui regroupe successivement divers associés, et notamment Antoine Polier de Saint-Germain de 1768 à 1772. À sa mort, son fonds est repris par son gendre Gabriel Dufournet qui publie sous la raison "François Grasset et compagnie" jusqu'au début du XIXe siècle
+Autre(s) graphie(s) : Minières fils, Olivier de. - Imprimeur de la ville [d'Angoulême]. - Fils de l'imprimeur-libraire d'Angoulême Jean de Minières, il est attesté imprimeur de la ville dès 1567, mais ne publie pas sous son propre nom avant août 1581. En association avec son père en 1581-1582. Auteur de "Les Regretz, complaintes et confusions de Jean Vallette dit de Nogaret sur son despartement de la court...", opuscule publié chez lui en 1589. Encore en activité en 1602
+Autre(s) graphie(s) : Torresanus, Franciscus ; Torresani. - Humaniste et libraire. - Né entre 1495 et 1498. Exerce la librairie à Venise de 1533 à 1546. Décédé entre juin 1557 et mars 1558
+Avocat (reçu en 1696)
+Avocat au Parlement de Grenoble. - A écrit des romans sur les moeurs à la cour de Louis XIII
+Avocat au parlement de Paris puis intendant des finances
+Avocat au parlement de Paris. - Poète
+Avocat au Parlement. - Auteur de théatre et critique théatrale
+Avocat du roi au Présidial (1596-1614). - Pair de La Rochelle et député à l'Assemblée de cette ville
+Avocat et homme politique. - Journaliste. - Député (1791-1792). - Censeur impérial des théâtres. - Membre de l'Académie française (élu en 1819)
+Avocat général au Parlement de Provence (1581-1598 ?). - Archevêque d'Embrun (à partir de 1600/1601)
+Avocat à Lyon
+Avocat, homme de lettres et chroniqueur
+Avocat, procureur du Roi en l'amirauté de Quillebeuf (Eure). - Natif de Caudebec-en-Caux. - D'abord clerc, puis pasteur réformé à Quillebeuf (1616-1626) et à Pont-Audemer (1626-1634). Frappé de suspension au synode réformé de Saint-Lô (1634). - Converti au catholicisme en 1635, il aurait reçu une pension. - Se qualifie de "licentié és loix" et d'avocat au parlement de Paris
+Avocat. - Dans le procès Kornmann il gagne la cause de Mme Kornmann ; défenseur du général Moreau en 1804 ; il est nommé d'office pour défendre Louvel, l'assassin du duc de Berry. - Membre de la Chambre des députés (1820-1824). - Conseiller à la Cour de cassation (1826)
+Avocat. - Employé dans les subsistances de la ville de Paris. - Vice-président de la section de la Réunion, en 1793
+Avocat. - Membre du Conseil des Cinq-Cents
+Avocat. Consul de la nation française à Smyrne (1747), puis ambassadeur de France à Istanbul. - Père de l'écrivain et diplomate [Claude-]Charles de Peyssonnel (1727-1790). - Membre fondateur de l'Académie de Marseille en 1726
+Barnabite. - Historien
+Baron. - Médecin personnel de l'impératrice Marie-Thérèse. - D'origine néerlandaise
+Bibliothécaire des Grands-Augustins
+Botaniste et agronome
+Botaniste. - Député suppléant à la Constituante. - Directeur de la fabrication de la poudre à canon à Port-Louis. - A effectué des voyages en Chine, au Bengale et à Java
+Bénédictin (1586). - Bibliothécaire du Vatican, érudit
+Bénédictin de la Congrégation de Saint-Maur. Profès à l'abbaye de La Daurade de Toulouse. - Enseigne la rhétorique, la philosophie et la théologie à Saint-Pierre de Montmajour, ensuite à Blois. - Bibliothécaire de la Bonne-Nouvelle d'Orléans
+Bénédictin. - Docteur en théologie. - Évêque de Rama. - Mathématicien
+Bénédictin. - Érudit. - Polémiste
+Canoniste. - Avocat au Parlement de Paris
+Capitaine de marine, actif de 1771 à 1814. - Hydrographe de la Compagnie britannique des Indes orientales
+Capucin (prend l'habit en 1599). - Prédicateur. - Gardien du couvent de la rue Saint-Honoré, à Paris
+Cardinal (1577), archevêque de Tolède, Espagne puis vice-roi du Portugal (1583-1596). - Gouverneur des Pays-Bas (1596), archiduc souverain de 1598 à sa mort. - Fils de Maximilien II (empereur germanique), 1527-1576. - Relevé de ses voeux, épousa Isabelle, archiduchesse des Pays-Bas
+Cardinal. - Archevêque de Rouen (1454-1483)
+Carme déchaux. - Disciple et éditeur de Jean de Saint-Samson (1571-1636)
+Carrière militaire, général, général de brigade durant la Révolution, jusqu'en 1794. Royaliste proche du Général Pichegru, émigre en 1802, arrêté en 1804
+Cartographe hollandais
+Cartographe. - Fonctionnaire des postes
+Chancelier de l'Université de Douai. - Censeur
+Chanoine de l'Église métropolitaine de Paris (1728-), commanditaire du prieuré de Saint-Symphorien de Bonnelles et de Sainte-Livrade. - Soutint une thèse de philosophie à l'Université de Paris en 1707. - Fils d'Hilaire Rouillé du Coudray
+Chanoine de Meung-sur-Loire
+Chanoine du Chapitre régulier de Saint-Aubert de Cambrai. - Il s'agit peut-être du compositeur Pierre de Cambrai
+Chanoine régulier de Saint-Augustin (à Þykkvabær (sud de l'Islande)  jusqu'en 1342, puis à Helgafell (près de Stykkishólmur, ouest de l'Islande), enfin à Niðaros (Trondheim, Norvège)
+Chanoine. - Théologien et historien
+Chapelain du Roi, abbé de Landévennec
+Chefcier [équivaut à premier] curé de Saint-Merry de Paris, France. - Évêque de Cavaillon, Vaucluse
+Chimiste, pharmacien, médecin, à Strasbourg
+Chirurgien en chef de l'Hôpital Saint-Louis, Paris. - Baron. - Directeur de l'Institut de pathologie chirurgicale de la Faculté de Paris (1807). - Chirurgien, avec Boyer, de Louis XVIII (1824). - Docteur en médecine (Paris, 1799)
+Chirurgien, eut la charge de "tailleur de vessie". - Enseigna la chirurgie à l'Hôtel-Dieu. - Publia dans le "Journal des savans"
+Chorégraphe et maître de danse. - Travailla à la Cour de Louis XIV. - Né en 1659 ou 1660
+Chroniqueur. - Capitaine en Croatie (1596-1597). - Représentant de la Croatie à la diète hongroise. - Auteur d'une chronique  de la Hongrie de 373 à 1626, reprise et poursuivie pour la période 1626-1732 par Spangár András, jésuite du parti des Habsbourg
+Cistercien. - Historien
+Clerc régulier de la Mère de Dieu. - Théologien. - Historiographe
+Colon à Philadelphie. - Quaker. - Né en Grande-Bretagne, s'installe à Philadelphie en 1686
+Commerçant, auteur dramatique, journaliste et pamphlétaire. - Membre de la "Honourable Society of the Inner Temple". - Collaborateur de "The universal spectator" (1728-1746)
+Compagnon légendaire d'Idoménée au siège de Troie. - Auteur supposé d'un récit de la guerre de Troie connu en latin à partir du 2e ou 3e s.
+Compositeur et clarinettiste
+Compositeur et pianiste. - Fils de Jean-Sébastien Bach (1685-1750)
+Compositeur franco-flamand. - Membre de la chapelle de Charles Quint de 1538 à 1555 (maître de chapelle jusqu'en 1545, puis chantre et chapelain). - Probablement mort début 1557
+Compositeur, organiste et chef d'orchestre
+Compositeur. - Actif en Autriche et en Bohême
+Compositeur. - Instrumentiste et chanteur à l'église San Marco de Venise de 1614 à sa mort. - Né entre 1595 et 1597
+Compositeur. - Organiste et maître de chapelle
+Comte de Bourdeilles, seigneur de Brantôme, premier baron du Périgord. - Conseiller au Grand Conseil le 19 mai 1741 ; maître des requêtes le 30 avril 1745. - Intendant de Roussillon le 8 novembre 1750 ; intendant de Lyon le 17 mars 1754. - Lieutenant général de police de Paris du 21 novembre 1757 à novembre 1759. - Contrôleur général des finances (23 novembre 1759-1763), puis secrétaire d'Etat à l'agriculture, au commerce, aux mines et aux manufactures (14 décembre 1763 - 30 mai 1780), administrateur de la Compagnie des Indes (1763-1764). - Participe activement au mouvement agricole de la seconde moitié du XVIIIe siècle : fonde les écoles vétérinaires de Lyon (1763), d'Alfort (1766) et favorise l'établissement des sociétés d'agriculture. - Membre honoraire de l'Académie des inscriptions et belles-lettres le 5 avril 1772
+Comte. - Avocat. - Député à l'Assemblée nationale constituante
+Comte. - Évêque de Casale Monferrato
+Conseiller au Châtelet, puis avocat. - Exécuté comme contre-révolutionnaire
+Conseiller au Parlement de Toulouse
+Conseiller du roi au présidial de Béziers, Hérault
+Conseiller puis président des enquêtes au Parlement de Paris
+Contre-amiral. - Baron. - Prénoms complets : Jean, Baptiste, Raymond
+Cordelier. - Théologien
+Cuisinier du marquis d'Uxelles
+Curé de l'église Saint-Gervais à Paris (1761-1784)
+Curé de Sainte-Opportune, Paris
+D'oct. 1802 à nov. 1803, il travaille en association avec le libraire Delaplace
+De 1557 à 1564, à Genève, travaille en association avec Thomas Courteau
+De son nom propre Lebna-Denguel, empereur d'Éthiopie sous le nom de David II, surnommé parfois de son temps le "Prêtre Jean", nom donné par la légende au souverain éthiopien chrétien depuis le 12e siècle. De ce fait, plusieurs empereurs d'Éthiopie se cachent sous cette appellation légendaire
+Dessinateur et graveur à l'eau-forte et au burin. Éditeur de ses propres œuvres
+Dessinateur, graveur, éditeur et marchand d'estampes. - Actif à Paris. - Père du sculpteur Jean Rousselet (1656-1693)
+Diacre. - Janséniste et exégète. - Il est inhumé au cimetière de Saint-Médard, et sa sépulture devient le lieu de convulsions
+Diplomate, juriste, publiciste
+Diplomate. - Philologue. - Conseiller de la couronne
+Directeur du mont-de-piété d'Arras, puis prêteur de l'abbaye de Saint-Waart. - Décoré de l'ordre de Saint-michel
+Docteur de Sorbonne
+Docteur en droit, avocat au Parlement de Paris
+Docteur en médecine (1724). Actif à Paris (1724-1774). Doyen de la faculté de médecine de Paris (1744-1746)
+Docteur en médecine (Montpellier, 1714)
+Docteur en médecine (Strasbourg, 1715), professeur d'anatomie et chirurgie à la Faculté de Strasbourg
+docteur en médecine à Bordeaux (1767)
+Docteur en médecine. - Élève de Georg Ernst Stahl
+Docteur en théologie de l'Université de Paris
+Docteur en théologie. - Historien. - Curé de Champs (Vosges). - Archevêque de Césarée
+Docteur ès sciences (Paris, en 1400). - Prêtre croate glagolisant. - Son abécédaire, écrit en caractères glagolitiques avec translittération latine adaptée à la pronontiation française. - Professeur à la Université de Paris, Sorbonne (du 1394 au 1403). - Fut chanoine d'Auxerre et mourut pénitencier de la cathédrale de Tours
+Dominicain, archevêque latin de Corinthe (1278). - Premier traducteur des oeuvres complètes d'Aristote, traduisit aussi ses commentateurs (Alexandre d'Aphrodisias, Thémistios, Ammonios), ainsi que Proclus, Hippocrate et Galien, Archimède, Héron et Ptolémée. - Ami de Thomas d'Aquin
+Dominicain. - Enseigna la théologie au Collège Saint Laurent, Paris. - Né en Espagne
+Dominicain. - Poète, humaniste et théologien. - Adversaire de Luther et Melanchton
+Dominicain. - Écrivain religieux, continuateur des "Annales ecclésiastiques" de Baronio
+Dramaturge et librettiste. - Intendant du Théâtre national de Mannheim, Allemagne
+Duc de Lorraine et de Bar. - Fils de Charles II de Lorraine
+Député au Conseil des Anciens. - Capitaine puis juge de paix
+Député de la Meurthe à l'Assemblé législative puis à la Convention
+Député du département du Gard. - Avocat
+Député à l'Assemblée nationale constituante. - Chevalier de Malte
+Ecclésiastique et homme politique. - Abbé de Saint-Mesmin. - Docteur de la maison & société de Sorbonne. - Vicaire-général du diocèse d'Arles. - Député du clergé à l'Assemblée nationale pour le bailliage d'Orléans. - Victime des Massacres de septembre 1792
+Ecclésiastique. - A été évêque constitutionnel de Tarbes
+Ecclésiastique. - Latiniste
+Ecrivain
+Editeur
+Edler zu Lilienburg, chevalier d'empire
+Employé des douanes
+En association avec sa mère et son cousin Hieronymus Commelinus (Jérôme Commelin). Jusqu'en 1587, leurs éditions communes paraissent sous le seul nom de Pierre de Saint-André
+Entra dans la congrégation des Eudistes en 1753 dont il devint le supérieur général en 1775. - Supérieur du grand Séminaire de Rennes, puis de Rouen
+Erudit et alchimiste
+Eudiste. - Vicaire général du diocèse de Coutances et supérieur du grand séminaire. - Massacré au couvent des Carmes. - Béatifié en 1926. - Auteur d'ouvrages contre-révolutionnaires et antimaçonniques
+Evêque de Salisbury
+Exégète. - Kabbaliste. - Juge de tribunal rabbinique. - Auteur d'un commentaire de la Torah. - Né peut-être en 1255
+Femme de lettres, amie des philosophes. - Auteur de comédies de sentiment, de lettres fictives. - Fréquenta Voltaire à Cirey et la Cour de Vienne
+Fermier général, puis receveur général des finances. - Auteur dramatique. - Collectionneur
+Fils cadet de François I Boujonnier, docteur régent de la Faculté de médecine de Paris. - Mort à 28 ans
+Fils de Jacques (15..-1557) et frère de Jacques (15..-1610)
+Fils de Remacle Le Loup (1694-1746)
+Florentin. - A écrit dans la 2e moitié du 16e s.
+Fourreur à Dresde (Allemagne)
+Franciscain, à Valognes. - Fut vicaire de la province de France
+Franciscain. - Maître en théologie à l'université de Salamanque. - Archevêque des Thermopyles (2 décembre 1491)
+Franciscain. - Écrivain. - Dans le siècle Lorenzo Gerbi
+Frère mineur capucin. - Prédicateur
+Gentilhomme et lettré de Bologne
+Grammairien alexandrin. - Fils d'Apollonius Dyscole
+Grammairien. - D'origine française, né Pierre de Tonneville, prend le nom de Piotr Stoiński (Stojeński) quand il est naturalisé polonais après 1559
+Grand-maître de l'ordre des Hospitaliers de saint-Jean de Jérusalem (élu en 1476). - Cardinal
+Graveur au burin, élève de Filippo Morghen. - Actif à Naples. - Mort après 1803
+Graveur de Robert de Vaugondy, Caille et Desnos
+Graveur et dessinateur. - Éditeur
+Graveur et éditeur. - Illustrateur de livres, notamment ceux de Rétif de La Bretonne en collaboration avec Louis Binet
+Graveur à Berlin
+Graveur, dessinateur et amateur d'art. - Ecclésiastique, il obtint en commende l'abbaye de Poultières, au diocèse de Langres, en 1759
+Graveur, éditeur et cartographe actif à Anvers. - Acquiert en 1600 le fonds d'Ortelius et de De Jode
+Graveur. - Actif à Paris entre 1620 et 1670
+Graveur. - Né en 1616 ou 1631
+Génovéfain
+Général (nommé en 1799). - Diplomate. - Comte d'Empire (en 1809). - Député de l'Aude (élu en 1827)
+Général révolutionnaire et aventurier
+Géographe chinois de la dynastie des Qing (1644-1911)
+Géographe, professeur de cosmographie, censeur royal. - Membre associé à l'Académie de Rouen
+Harpiste et compositeur
+Henri-François Pyrard. - Carme. - Professeur au collège des Carmes de Paris
+Historien des lettres françaises et des traditions nationales. - Poète. - Avocat au Parlement de Paris (à partir de 1549), puis avocat général près la Chambre des comptes (à partir de 1585)
+Historien et homme politique
+Historien et théoricien de la musique, pédagogue, éditeur de musique et compositeur
+Historien, archéologue. - Rédacteur de la revue "Tudománytár". - Académicien
+Historien, novelliste et critique littéraire. - Père de Benjamin Disraéli (1804-1881)
+Historien, voyageur et géographe. - Auteur d'"Études historiques" à l'imitation de Polybe et de la "Géographie"
+Historien. - Compilateur
+Historien. - Héraut d'armes de Charles Ier
+Historien. - Philologue. - Traducteur. - Poète
+Historien. - Théologien. - Jésuite
+Homme d'Etat. - Assistant de Séville et intendant d'Andalousie. - Traducteur d'oeuvres théâtrales françaises et réformateur du théâtre espagnol. - Condammé par l'Inquisition en 1778, il se réfugia en France de 1780 à 1798
+Homme d'état. - Historien. - Poète
+Homme de lettres et géographe. - Voyagea dans le sud de la France et le nord de l'Italie, puis ouvrit une librairie à Rome
+Homme de lettres, gazetier
+Homme de lettres. - Auteur d'un traité d'agronomie
+Homme de lettres. - Médecin. - Diplômé en philosophie et en médecine à Rome en 1653
+Homme de loi et homme politique. - Membre du Club des Cordeliers
+Homme de loi. - Poète
+Homme politique et publiciste
+Homme politique, grand chancelier de la Couronne (1706-1709). - Écrivain politique et religieux. - Co-auteur avec son frère Aleksander d'une dissertation en mathématiques
+Homme politique. - Avocat et subdélégué de l'intendance du Berry. - Député du tiers état en 1789. - Nommé membre de l'administration du département du Cher en 1796, dont il est préfet par intérim en avril 1815
+Homme politique. - Député du Finistère (1811-1815)
+Homme politique. - Fut procureur de Brest puis commissaire à la marine. - Fut député puis secrétaire de la Convention, parmi les Girondins. - Membre du Conseil des Cinq-cents
+Homme politique. - Ordonné prêtre à Rennes (1781). - Prête serment à la constitution civile du clergé. - Abjure la prêtrise (1793). - Président du directoire de la Loire-Inférieure. - Juré à la Haute Cour nationale (1791). - Député à la Convention (1792), puis au Conseil des Cinq-Cents (jusqu'en 1800). - Directeur des douanes à Nantes
+Horloger. - Inventeur d'un chronomètre de marine
+Humaniste et théologien. - Élu prieur général de l'Ordre des Camaldules en 1431
+Humaniste, philosophe et philologue. - Certaines sources le disent né en 1426 et mort en 1504
+Humaniste. - Frère de Servatius Aedicellius. - Collabore, comme son frère, avec Albert Paffraet, imprimeur-libraire de Deventer
+Humaniste. - Philologue. - Professeur à Pérouse
+Humaniste. - Réformateur. - Professeur de mathématique (1554) et de médecine (1560) à l'Université de Wittenberg, Allemagne
+Hébraïste. - Mathématicien. - Auteur de chants liturgiques
+Imprimerie-librairie. - La veuve de l'imprimeur-libraire de Tübingen Ulrich I Morhart (Magdalena Kirsemann, décédée en 1574) gère l'officine, en association avec ses deux fils d'un premier mariage, Oswald et Georg Gruppenbach
+Imprimeur, chalcographe, libraire et marchand d'estampes. - Éditeur de musique en association avec Niccolò Pagni (de 1795 à 1799)
+Imprimeur-libraire ; imprimeur de la république (, de la ville) et de l'académie [de Genève] (1778-1794). - Fils de l'imprimeur-libraire de Genève Pierre Pellet (1697-1771), à qui il succède dès sept. 1769. Reçu bourgeois de Genève le 23 avril 1770. Devient imprimeur de la république de Genève en vertu d'une décision du Conseil du 20 janv. 1778, les frères de Tournes s'étant démis de ce titre le 13 déc. 1777. Destitué de cette charge par les Comités provisoires d'administration et de sûreté le 18 janv. 1794. Encore en activité en 1803
+Imprimeur-libraire ; imprimeur-libraire de l'Académie française (1772-1774). - Fils de l'imprimeur-libraire parisien Bernard Brunet. Reçu libraire le 6 oct. 1760, il succède le 27 mars 1772 à sa mère, veuve de Bernard Brunet puis d'Antoine-Louis Regnard, comme seul imprimeur de l'Académie française. Franc-maçon. En mai 1774, se démet de sa place d'imprimeur et de son titre en faveur de son beau-frère et associé Antoine Guénard Demonville. Bien qu'il ait déclaré vouloir se retirer en province, il continue à exercer la librairie à son compte dans la boutique de son beau-frère. Décédé à Paris en mai 1781, célibataire et sans postérité
+Imprimeur-libraire et fondeur de caractères ; imprimeur-libraire ordinaire de l'Académie royale des inscriptions et médailles (1707). - Fils et successeur du libraire et fondeur de caractères parisien Jean Cot. En apprentissage chez l'imprimeur-libraire parisien André Cramoisy. Reçu libraire le 24 mai 1703 et imprimeur le 28 avril 1712 seulement, en vertu d'un arrêt du Conseil du 25 avril précédent pris à la requête de l'Académie des inscriptions, dont il se qualifie imprimeur-libraire ordinaire dès sept. 1707. Publie en 1707 des "Essais de caractères d'imprimerie" (épreuves de caractères orientaux) de son fonds. Auteur de "L'Origine et le progrès de l'écriture ; avec l'histoire des alphabets de toutes les nations, des bibliotheques & de la librairie" (Paris, l'auteur, 1710, t. I en 56 p., seul paru, d'une "Histoire générale de la fonderie des lettres et de l'imprimerie" qui devait comprendre 4 vol. in-4°). Décédé à Paris en sept. 1712. Laurent d'Houry est reçu le 15 nov. 1712 à sa place d'imprimeur
+Imprimeur-libraire. - Fils d'un parfumeur de Londres ; baptisé le 31 août 1692. En apprentissage d'imprimeur de juin 1708 à août 1715. Établi en avril 1717 au plus tard. Benjamin Franklin est son apprenti de déc. 1724 à la fin de 1725. Auteur de : "The General History of printing" (1729-1732)
+Imprimeur-libraire. - Originaire de Saumur. Fils de Jean Desbordes, libraire de Saumur, puis de Leyde. Dit âgé de 20 ans lors de son inscription à l'université de Leyde en fév. 1687. Reçu bourgeois d'Amsterdam en qualité de relieur en juillet 1698 ; reçu membre de la guilde le 7 juillet 1698. Également auteur d'un "Avis" publié en tête des "Lettres historiques de ce qui se passe de plus important en Europe en 1692", traducteur et éditeur des "Mémoires de M. le chevalier de Melvill" en 1704. Malgré ses mauvaises affaires, sa veuve, Suzanne de Caux, originaire de Dieppe, accepte de lui succéder
+Ingenieur militaire et cartographe piemontais, attaché à la Maison de Savoie. Il leva pendant plusieurs années sur ordre de Charles-Emmanuel II des cartes et plans qui furent publiées par l'éditeur Joan Blaeu en 1682 dans le "Theatrum statuum regiae Sabaudiae ducis". Son oeuvre principale est la "Carta generale de stati di sua altezza reale", dite carte de Madame Reale, parue en 1680
+Ingénieur en chef des ponts-et-chaussées. - Conservateur du patrimoine. - Chargé de la conservation des documents de Nîmes. - Participa à la construction du Canal de Beaucaire à Aigues-Mortes et à l'assainissement des marais
+Ingénieur militaire, commissaire général des fortifications de France. - Cartographe
+Ingénieur-géographe. - Député de l'Oise à la Convention. - Général de brigade (à partir de 1793)
+Installé en Russie à partir de 1735. - Bibliothécaire du tsar Pierre III
+Issu d'une famille souabe noble, au service des évêques d'Augsbourg. - Poète épique, il continua le "Tristan" de Gottfried von Strassburg de 1230 à 1235 et termina le "Willehalm" de Wolfram von Eschenbach de 1240 à 1250
+Journaliste et écrivain politique. - Fut l'un des compilateurs employés par Mirabeau pour préparer ses discours
+Juge de paix à Essommes (en 1797). - Député au Conseil des Cinq-Cents (1797-1799)
+Jurisconsulte et conservateur
+Jurisconsulte, né et mort à Montpellier. Fils de Philippe, juge au présidial de Montpellier. Lieutenant particulier en la cour du sénéchal. Calviniste, il présida divers synodes languedociens ; converti au catholicisme en 1685
+Jurisconsulte. - Fut professeur de droit à Poitiers, avocat du roi au Présidial de cette ville et conseiller d'Etat
+Jurisconsulte. - Un des créateurs du journalisme allemand
+Juriste et humaniste. - Commentateur des oeuvres juridiques de Justinien
+Juriste, au Conseil du Hesse-Darmstadt, directeur de la Cour des comptes
+Juriste, président du Parlement de Toulouse (1611-1615). - Également auteur d'un recueil poétique
+Juriste. - Conseiller aulique
+Juriste. - Liturgiste
+Juriste. - Professeur de droit à l'Université de Göttingen
+Juriste. - Étudiant à l'université de Iéna, Allemagne en 1693
+Jésuite (entré dans la compagnie en 1572 à l'âge de 21 ans). - Professeur de théologie et de lettres classiques. - Aussi utilisé le pseudonyme: "Un Père de la Compagnie de Jésus"
+Jésuite (à partir de 1740). - Part à Tripoli le 1er octobre 1740. - Mort à Alep
+Jésuite, entré dans la Compagnie en 1768. - Chanoine de la cathédrale de Ferrare (1787). - Anti-jacobin, puis opposant à l'administration française en Italie, fut exilé à Reims puis à Paris où il meurt
+Jésuite. - Admis le 11 octobre 1662. - Enseigna la grammaire et les humanités, puis la rhétorique à Rennes, Rouen et La Flèche. - Prédicateur. - Dramaturge néo-latin
+Jésuite. - Compositeur de musique sacrée
+Jésuite. - Entre dans la Compagnie de Jésus le 7 décembre 1727. - Successeur du P. Porée à la chaire de rhétorique du collège de Louis le Grand, à Paris, en 1741. - Poète. - A écrit pour le théâtre du collège de Louis le Grand
+Jésuite. - Humaniste. - Philologue
+Jésuite. - Missionnaire et explorateur de l'Égypte
+Jésuite. - Poète de rhétorique au collège de la Trinité, auteur de poèmes et tragédies
+Jésuite. - Professeur de philosophie
+Jésuite. - Professeur de théologie. - Dramaturge
+Jésuite. - Recteur des collèges jésuites de Bamberg et d'Erfurt, Allemagne. - Poète
+Jésuite. - Économiste. - Exégète
+Latiniste. - Professeur de théologie au Collège de France
+Lettré chinois ayant vécu pendant la dynastie des Song du Nord (960-1127)
+Lexicographe, enseignant du polonais et du latin
+Libraire ; poète ; musicien. - Originaire de Rouen ou de Caen. Passé à la Réforme vers 1540, il se réfugie à Genève en 1547. Également traducteur. De 1551 à 1553, après avoir été expulsé de Genève pour non-respect des ordonnances ecclésiastiques, il est correcteur d'imprimerie à Lyon et à Vienne, chez Balthazar Arnoullet, devenu son beau-frère. Poursuivi en justice pour la publication de la "Christianismi Restitutio" de Michel Servet (juin 1553)
+Libraire à Amsterdam. - D'origine allemande, a été directeur d'école à Berlin avant de s'installer aux Pays-Bas pour raisons religieuses. - Nommé en 1699 bibliothécaire du roi Frédéric Ier de Prusse
+Libraire. - Entré en apprentissage en juillet 1615. Reçu maître le 9 déc. 1625. Inventaire après décès le 19 nov. 1660. Sa veuve, Antoinette Ballin, lui succède avant de se remarier en 1662 à l'imprimeur-libraire Louis Billaine
+Libraire. - Originaire de Florence, petit-fils de l'imprimeur-libraire Filippo I Giunta, il se fixe vers 1540 à Lyon, où il est employé par son cousin le libraire Jacques Giunta. Fin déc. 1546, à la mort de J. Giunta, il devient l'adjoint de Guillaume Regnauld (15..-1572?) comme administrateur de l'association des héritiers de Jacques Giunta. Vers 1550, il devient "facteur" administrateur de cette association, qui cesse d'exercer sous cette raison en 1571. Accusé de malversations par Jeanne Giunta, veuve de Guillaume Regnauld, au nom des héritiers de Jacques Giunta, Philippe Tinghi travaille alors à son compte à Lyon jusqu'à sa mort (juin 1580). Auteur d'épîtres dédicatoires. Testament en date du 11 oct. 1572. Son nom continue de figurer, sous la raison "in officina Q[uondam] Philippi Tinghi", à l'adresse des publications de son successeur et héritier universel Symphorien Béraud, jusqu'en 1586
+Librettiste. - Baptisé le 21 septembre 1606
+Lieutenant de robe-courte de la Prevôté de l'Hôtel. - Librettiste. - Frère aîné de Jean-François Duplat de Monticourt (1710?-1772). - Auteur d'une pièce de vers en collaboration avec Afforti, secrétaire de la Chancellerie
+Lieutenant-général du bailliage de Gray, Haute-Saône. - Membre de l'Assemblée constituante
+Littérateur et médecin
+Littérateur. - Principal au collège de Pontoise
+Magister (Uppsala, 1703). - Bibliophile
+Magistrat, diplomate et homme politique. - Conseiller d'État, puis garde des Sceaux et sénateur
+Maire de Dieppe
+Marchand et juge-consul à Rouen. - Polygraphe
+Marié avant 1582 à une fille du libraire-relieur parisien Guyon Thioust. En janv. 1584, il est qualifié de "marchand bourgeois de Paris, commissaire commis à faire curer les boues de la rue Saint-Jacques". Son fils Jacques II Varangue est attesté en activité dès 1612. Décédé avant le 31 mai 1635
+Marquise de Sablé. - Auteur de "Maximes" sur le modèle de celles de La Rochefoucauld. - Fille d'honneur de Marie de Médicis (1610) ; veuve très tôt (1640), elle se mêle à toutes les intrigues de cour, notamment aux affaires jansénistes
+Maréchal des logis en 1672, remit les premiers mémoires stratégiques au roi en 1689. Après la mort de Louvois resta à la disposition du roi comme chef d'état-major général. Ses archives, y compris les plans de campagne, sont conservées au SHAT
+Mathématicien et physicien. - Exerça une grande influence sur le développement de l'application de l'algèbre à la géométrie. - Mit au point le miroir parabolique, aujourd'hui conservé au National Maritime Museum de Londres. - Collabora, entre autres, avec François Viète en France et avec Galilée en Italie
+Mathématicien, musicien
+Mathématicien. - Juriste. - Théoricien de l'architecture
+Maître d'armes
+Maître de pension, pendant la Révolution française
+Maître orfèvre (en 1637) et joailler du roi Louis XIV. - Marchand orfèvre à Paris au Pont au Change puis rue Saint-Denis. - Élu garde de l'orfèvrerie (en 1662 et 1670) puis grand garde (en 1671)
+Membre de l'Académie des inscriptions et belles lettres (élu en 1862). - Journaliste (1832-1840). - Bibliothécaire adjoint à la Bibliothèque municipale du Mans (1840-1845). - Conservateur à la Bibliothèque nationale (1848-1851). - Député de la Sarthe (1848-1851). - Bibliothécaire de l'ordre des avocats (1861-1871). - Directeur de l'Imprimerie nationale (1871-1882). - Directeur de la Fondation Thiers (à partir de 1893)
+Membre de la congrégation de la Doctrine chrétienne. - Envoyé du Roi au chapitre général de la Congrégation, à Narbonne, en septembre 1646
+Meunier à Cambrai pendant la Révolution française
+Militaire. - Homme de lettres. - Duc de Nardo
+Ministre des arts et des sciences de la République helvétique. - Homme de lettres. - Créateur de la première bibliothèque nationale suisse
+Missionnaire jésuite à Salsette (Goa, Inde). - Auteur de "Kristapurāṇa"
+Moine bénédictin de la Congrégation de Saint-Maur (à partir de 1672). - Éditeur de saint Hilaire de Poitiers et de saint Augustin
+Moine de l'Ordre des Célestins (à partir de 1613)
+Moine, disciple de saint Jean Chrysostome. - Vécut à Ancyre (Petite Galatie) ou près de cette ville (aujourd'hui, Ankara)
+Musicien et compositeur actif à Liège
+Médailleur à la cour de Louis XIV
+Médecin consultant du roi Louis XV
+Médecin de Stanislas, roi de Pologne. - Régent de la Faculté de médecine de Paris
+Médecin et botaniste. - A pris part à des expéditions maritimes et écrit le premier ouvrage de botanique sur l'hémisphère austral. - Membre de l'Académie des sciences (1800) et de l'Académie de médecine (1823)
+Médecin et homme de lettres. - Auteur d'un traité médical et d'une traduction, augmentée, de Soranos. - Originaire de Sicca (Numidie)
+Médecin et philosophe. - Exerça à Bologne et fut consul de cette ville en 1304. - Fils de Barthélemy de Varignana, lui-même médecin à Bologne et premier médecin d'Henri VII
+Médecin jamaïcain
+Médecin vétérinaire au Cap Français, Cap Haïtien, dans les années 1780
+Médecin à Paris, membre de la Convention et du Conseil des Cinq Cents
+Médecin, astrologue et géomètre. - Traducteur des textes scientifiques en arabe et en hébreu dont, pour la première fois en Occident, ceux de Ptolémée. - Serait originaire de Tivoli, a vécu à Barcelone entre 1134 et 1145 environ
+Médecin, doyen de la Faculté de médecine, Paris
+Médecin, philosophe-herméneute et mage-alchimiste
+Médecin-juré à Anvers. - Humaniste
+Médecin. - Botaniste. - Naturaliste. - Étudia auprès de Linné à Uppsala, Suède. - Enseigna à Leipzig et Erlangen, Allemagne
+Médecin. - Eut la chaire de pathologie à l'Université de Valence, la chaire de pharmacie à la Faculté de Paris, dont il fut le régent
+Médecin. - Inspecteur général des hôpitaux et prisons du royaume de France. - Spécialiste de médecine militaire
+Médecin. - Orientaliste
+Médecin. - Professeur de médecine théorique et pratique à l'Université de Ferrare
+Médecin. - Traducteur en poète
+Métallurgiste
+Naturaliste, professeur de botanique. - Médecin au "Collegio" de Florence
+Navigateur, géographe
+Noble crétois. - Bailleur de fonds et commanditaire d'ouvrages grecs imprimés à Venise par son compatriote Zacharias Kalliergis. - Calligraphe (cf. Parisinus graecus 2939)
+Nom patronymique : Marguerite Guymier. - Imprimeur-libraire. - Succède à son mari, l'imprimeur-libraire parisien Jean I Trepperel, décédé entre le 12 juin 1511 et le 17 sept. 1512
+Notaire royal, bailli de la ville et du marquisat de la Pallisse. - Commissaire en droits seigneuriaux
+Né dans la 2e moitié du XVIIe siècle. - Compositeur et maître de chapelle. - Actif à Rome à partir de 1694
+Né à Béziers. - Médecin
+Née Nicole-Reine Étable de La Brière, épouse de Jean-André Lepaute, horloger du Roi. - Mathématicienne, astronome
+Néoplatonicien
+Officier de l'armée de Saxe. - Auteur et traducteur d'ouvrages de tactique militaire
+Officier et homme politique, contre-révolutionnaire
+Officier militaire. - Membre de la commission de l'armée à la Convention
+On lui a longtemps attribué la "glossa ordinaria" de la Bible en langue d'oïl du XIIIe s.
+Oratorien et professeur de mathématiques. - Fut directeur de l'Ecole centrale d'Angers. - Fut président des Amis de la Constitution. - Fut commissaire civil du département de Maine-et-Loire
+Ordonné diacre et nommé cardinal en 1536. - Nommé administrateur apostolique du diocèse de Cantorbéry en 1555. - Ordonné prêtre et consacré archevêque de Cantorbéry en 1556. - Présida le Concile de Trente
+Orientaliste et exégète. - Prénoms complets : Wilhelm Friedrich Johann
+Orientaliste. - Voyageur. - Botaniste
+Originaire de Toulouse
+Pape (élu le 18 novembre 1523)
+Parfois identifié à François Bertaut (1621-1714 ?). L'identification avec François Berthod, franciscain, parfois également avancée, n'est pas vraisemblable
+Pasteur de l'église de Coses (1649). - Auteur d'un recueil de sermons publié en 1650 suite à une approbation donnée à Marennes le 18 août 1649 par "Richier pasteur de l'eglise ref. de Marennes"
+Pasteur et théologien réformé. - Réfugié à La Haye après la Révocation. - Chapelain de Frédéric Ier à Berlin (en 1702)
+Pasteur à Aix-la-Chapelle (Aachen) en 1681. - Historien
+Pasteur, juriste et bibliothécaire
+Pasteur. - Précepteur du prince Guillaume V
+Peintre (sujets religieux, allégories, portraits, scènes de genre, animaux, paysages). - Graveur. - Dessinateur. - À Rome en 1623, de retour en Hollande vers 1655. - Vit à La Haye après 1657 et retourne à Amsterdam en 1659, puis en Italie après 1672
+Peintre de paysages, de genre et animalier. - Graveur. - Membre de l'Académie royale de peinture (1774). - Dessinateur et écrivain
+Peintre et graveur français, né à Nantes le 6 février 1760 et mort à Château-Gontier en 1833
+Peintre et inventeur. - Constructeur du premier sous-marin à hélice
+Peintre, dessinateur
+Peintre, dessinateur, graveur. - Collectionneur d'art. - Fils du peintre Pieter Claesz (159.-166.). - Également connu sous le nom Nicolaes van Haarlem
+Peintre, graveur, dessinateur. - Diplomate de 1772 à 1785, directeur des Musées de France de 1802 à 1815, organisateur du Musée du Louvre
+Peintre. - A travaillé à la cour du prince de Galles
+Peintre. - Graveur. - Fils du graveur Johann Georg Wille
+Peter Stark ou Sterk, dit Petrus Valens. - Professeur de grec au Collège de France. - Se fit naturaliser français
+Philologue et historien, professeur d'histoire et politique à l'Université d'Altdorf, Allemagne, 1598-1600
+Philologue, historien et naturaliste. - Professeur à l'Université de Saint-Pétersbourg. - A vécu en Sibérie de 1768 à 1774 et en Crimée de 1795 à 1810
+Philologue. - Helléniste. - Professeur de grec à l'Université d'Édimbourg
+Philologue. - Professeur à l'université de Wittemberg
+Philosophe de l'école péripatéticienne, commentateur d'Aristote
+Philosophe et théologien. - Astronome. - Poète et musicien
+Philosophe scythe, précurseur des cyniques
+Philosophe, professeur à l'Université de Paris
+Philosophe. - Né en 1705 ou 1706
+Physicien et mathématicien
+Physicien. - Professeur de sciences à Lyon. - Membre de l'Académie de Lyon
+Polygraphe, auteur notamment d'un traité d'éducation courtoise (The Compleat Gentleman)
+Poète andalou
+Poète et auteur d'une comédie. - Recteur du village de Vallfogona de Riucorb (diocèse de Vich) de 1606 à sa mort. - Variante de son 1er prénom : Francesch ; variantes de son 2e prénom : Vicent, Vicens
+Poète et chansonnier. - Fut l'un des premiers à écrire des monologues. - Zélé catholique, écrivit des recueils de chansons licencieuses dirigées contre les réformés. - Prit le nom de : Leclerc de la Tannerie
+Poète et humaniste. - Curé du Sagrario de la cathédrale de Séville, Espagne
+Poète et recteur à Alderton, Suffolk, GB. - Fils cadet de Giles Fletcher l'ancien (1546-1611)
+Poète latin. - Augustin déchaussé de la Congrégation de France
+Poète satirique. - Ami de Régnier et ennemi de Malherbe
+Poète, auteur dramatique et auteur d'ouvrages historiques. - Secrétaire général de la préfecture de Paris. - Journaliste. - Traducteur. - Membre de l'Académie française
+Poète, fervent partisan de Marot. - Signe parfois de son anagramme : Hante le François
+Poète, romancier et dramaturge. - Un des principaux créateurs de la tragédie de l'époque baroque. - Anobli (en 1670)
+Poète. - Ami et correspondant de l'Arétin
+Poète. - Commandant de la forteresse de Fülek, Haute-Hongrie (1667-1682). - Composa de la poésie durant sa captivité (1682-1685). - L'empereur autrichien le nomma comte en 1685 en remerciement de sa fidélité et le nomma "préfet" (főispán) du comitat du Hont en 1711
+Poète. - Historien. - Après une carrière militaire, il fut ordonné prêtre en 1550. - A traduit du portugais, en non écrit, "Palmerín de Inglaterra", oeuvre qui lui a été attribuée à tort
+Poète. - Médecin. - Fils de : Rusting, Abraham Gerbrandsz van
+Poète. - Prêtre du Diocèse de Bayeux. - Curé de Fierville en Bessin (en 1699)
+Poète. - Écclésiastique
+Premier commis de la Commission de France en Lorraine, pour l'inventaire du Trésor des chartes, en 1737. - Officier de la Bibliothèque du Roi. - Bibliophile
+Prieur d'Ayné, membre de l'Académie de La Rochelle et chanoine de la même ville
+Prince de Moldavie. - Poète
+Procureur de la commune de Chevregny, membre du directoire de son département, substitut du procureur général syndic puis membre de la Convention. - Fut administrateur de l'hôpital civil de Saint-Denis puis de celui de Bruxelles
+Professeur au Collège de Sorbonne. - Théologien
+Professeur d'humanités, de philosophie et de mathématiques à Münster (Allemagne). - Jésuite
+Professeur de dialectique à l'Université de Padoue
+Professeur de grec (1645) puis de langues orientales (1650) à l'université de Strasbourg
+Professeur de langues à Londres (en 1774). - Traducteur et lexicographe
+Professeur de mathématiques à Paris. - N'est pas un pseudonyme de Clément Cyriaque de Mangin
+Professeur de médecine, médecin de François Ier et Clément Marot. - Surnommé Sans-Malice, Martin
+Professeur de philosophie à Lyon, puis à Clermont-Ferrand
+Professeur de sciences économiques à l'université d'Åbo, Finlande. - Directeur du comité de révision de la Bible en finnois. - Évêque d'Åbo, Finlande (1757), archevêque d'Uppsala, Suède (1773)
+Professeur docteur en droit
+Professeur à l'Université de Copenhague
+Professeur. - A vécu à Londres en 1728 et en 1736
+Précepteur de l'empereur Théodore Lascaris II. - Hostile à l'union des Églises
+Prédicateur, membre de la Compagnie de Jésus
+Prélat. - Juriste. - Cardinal
+Président de l'Élection de Rouen
+Prêtre (ordonné en 1669). - Agent général du clergé de France (1675). Évêque de Tarbes (1675), puis de Saint-Omer (1677). Archevêque d'Auch (1684)
+Prêtre catholique, ordonné en 1743. - Coadjuteur de l'évêque de Laibach (= Ljubljana, Slovénie) de 1769-1772, puis évêque de ce diocèse de 1772 à sa mort. - Comte
+Prêtre de l'Oratoire originaire de Bourges. - Auteur d'ouvrages sur le plain-chant
+Prêtre des Missions étrangères, exerca son ministère en France et au Québec. - Retourne aux Pays-Bas autrichiens en 1743, date à partir de laquelle on perd sa trace
+Prêtre du diocèse de Rouen. Curé d'Ocqueville de 1701 à sa résignation en 1721
+Prêtre instituteur à Orléans
+Prêtre, collaborateur de Charles Boromée. - Diplomé de médecine et de philosophie
+Prêtre. - Aumônier de l'armée parisienne
+Prêtre. - Député du Gers à la Législative, puis à la Convention
+Prêtre. - Pamphlétaire janséniste. - Vicaire de la paroisse Saint-Lô de Rouen (1724-1727), puis curé de Saint-Ouen-le-Houx (Livarot-Pays d'Auge, Calvados) et vicaire de la paroisse Saint-Vincent de Rouen. - Nommé commis de la bibliothèque cathédrale de Rouen en succession de l'abbé Jean Saas en 1743, il se fait remarquer en raison de son engagement janséniste et est rappelé à l'ordre par l'archevêque de Rouen. - Décédé à Rouen en juin 1757. - Auteur des "Anecdotes ecclésiastiques jésuitiques qui n'ont point encore paru, par feu M. Sonnes...", chronique polémique publiée à Rouen à titre posthume en 1760 et condamnée au feu par le parlement de Normandie
+Prêtre. - Évêque de Soissons. - Frère de Louis Carrelet (1698-1781)
+Pseudonyme de Jean-Paul Marat, d'après Quérard
+Publiciste et historien. - A donné pendant des années des leçons publiques de droit naturel à Leipzig. - Nommé en 1726 archiviste de la cour de Dresde
+Père de Claes Jannszoon Junior
+Pénaliste
+Receveur général des finances de la généralité de Paris. - Hydrologue. - Frère de Claude, Nicolas et Charles Perrault
+Reine d'Angleterre, d'Irlande et d'Écosse de 1689 à 1694
+Religieux de l'Escurial, arabisant et consul
+Religieux franciscain converti au protestantisme
+Religieux. - Chapelain de la reine
+Rhéteur et sophiste. - Auteur de 118 lettres qui sont autant de portraits des personnages de la vie quotidienne grecque
+Roi de France de 1328 à 1350
+Romancier et essayiste. - Docteur en médecine (1772). - Père de John Moore (1761-1809), lieutenant-général
+Romancier. - Poète. - Traducteur
+Récollet. - Théologien
+Révolutionnaire. - Fut président de l'administration municipale du 5e arrondissement du canton de Paris
+Savant et physicien
+Sculpteur, graveur et dessinateur
+Secrétaire de l'Amirauté
+Secrétaire en chef des États de Bourgogne. Naturaliste, correspondant de l'Académie royale des sciences. Fondateur du premier jardin botanique de Dijon. - Collectionneur endetté, il met en vente sa collection d'œuvres d'art du 24 novembre au 9 décembre 1773 à Paris (catalogue imprimé), sa bibliothèque le 3 décembre 1773 et son cabinet de curiosités le 7 juillet 1774 (catalogue imprimé)
+Seigneur de Noyseau. - Avocat. - Président à mortier puis premier président au Parlement de Paris
+Sieur de Belair. - Maître des eaux et forêts de Bourbonnais
+Sophiste chrétien
+Spéléologue et révolutionnaire
+Supérieur général des Frères des Ecoles Chrétiennes. - Nom en religion de Joseph Gonlieu
+Thèse soutenue à l'Université d'Uppsala (1727)
+Théologien calviniste. - Professeur de philologie biblique au Gymnasium de Brême (à partir de 1630), et d'hébreu (à partir de 1636), enfin de théologie (à partir de 1643. - Professeur à l'université de Leyde (à partir de 1650)
+Théologien et historien de l'église janséniste
+Théologien et poète. - Originaire de Nisibe, en Mésopotamie (aujourd'hui Nusaybin en Turquie). - Docteur de l'Église
+Théologien luthérien, pasteur à partir de 1672, prédicateur, dernier poste à Altona, Allemagne. - Écrivain, occultiste
+Théologien protestant, hébraïsant
+Théologien puis géographe et historiographe de France
+Théologien, latiniste, philologue et historien. - Ancien oratorien
+Théologien, élève d'Origène. - Évêque de Néocésarée (à partir de 240)
+Théologien. - Docteur de Sorbonne
+Théologien. - Médecin, botaniste et physicien
+Théologien. - Professeur de langues orientales à l'université d'Ȧbo
+Théologien. - Prêtre
+Théoricien allemand de l'astrologie, originaire du Breisgau
+Tossafiste. - A prêché en Espagne
+Traducteur des "Quadrins historiques de la Bible" de Claude Paradin. - Les seuls renseignements le concernant proviennent de la préface de l'édition de Lyon, J. Frellon, 1553
+Traducteur. - Envoyé en Hollande par Pierre 1er pour étudier la navigation, après avoir étudié le français et l'allemand. - Conseiller puis capitaine à l'Amirauté
+Traduisit du français en italien
+Tragédienne. - Son "Apology of the life of G. Anne Bellamy" serait peut-être due à la plume d'Alexandre Bicknell, auteur d'une "Life of Alexander the Great". - Elle-même a donné plusieurs dates de naissance différentes
+Travaille en association avec son fils François II Chéreau (1717-1755) à partir de 1742
+Troisième fils de Charles III d'Espagne ; roi de Naples (1759-1799, 1799-1806, 1815-1816) et roi de Sicile (1759-1816), puis roi des Deux-Siciles sous le nom de Ferdinand I (1816-1825)
+Valet de chambre de Marguerite de Navarre. - A traduit intégralement pour la première fois en français "Le commentaire sur le Banquet de Platon" de Marsile Ficin, 1546
+Variante(s) de prénom : Gerolamo ; Geronimo. - Imprimeur-libraire et compositeur de musique. - Neveu d'Ottaviano I Scoto et frère d'Ottaviano II Scoto. Décédé en sept. 1572 ; des éditions paraissent encore sous son nom en 1573
+Variante(s) de prénom : Johan Pietersz. - Imprimeur-libraire. - Fils de Pieter (Jansz) Rammazeyn et son associé en 1642-1643 à Gouda. En faillite à Gouda en 1649
+Variante(s) de prénom : Théodore. - Imprimeur-libraire. - A fait son aprentissage chez le libraire Pieter I Van Der Aa
+Vicaire à Fleury (Yonne)
+Violoniste et compositeur. - Membre de la chapelle royale à partir de 1712. - Musicien de la cour de l'ancien roi de Pologne Stanislas Leszczyński, à Lunéville à partir de 1737. - Baptisé à Paris, paroisse Saint-Eustache, le 2 janvier 1676
+Voyageur, historien et poète
+À Avignon, travaille en association avec son frère Barthélemy Bonhomme
+Écclésiastique. - Prêtre. - Chapelain de l'évêque de Poznan
+Économiste. - Prénoms complets : Issac, André, Timothée
+Écrivain de la dynastie des Ming (1368-1644)
+Écrivain et théologien. - Entré dans l'Ordre des Augustins en 1549
+Écrivain voyageur
+Écrivain, poète. - A publié son premier ouvrage en adoptant par admiration pour Jean-Jacques Rousseau le pseudonyme français de Jean Paul
+Écrivain. - Peintre
+Écrivait aussi en latin et en français
+Écrivit aussi en latin. - Publia des textes grecs. - Traduisit du grec en latin
+Éditeur d'ouvrages de médecine. - Originaire de Brescia
+Éditeur et marchand d'estampes londonien, actif de 1781 à 1794
+éditeur à Strasbourg
+Élu doge en 1549
+Épouse en 1561 Antoine de Croÿ. - Épouse en 1570 Henri de Lorraine, duc de Guise
+Érudit. - Archéologue. - Correspondant de l'Académie des Inscriptions en 1740
+Étudia à Londres et Montpellier. - Professeur de chimie à l'université. - Physicien
+Évêque d' Orléans
+Évêque d'Orléans
+Évêque de Cathare. - Linguiste
+Évêque de Girgenti
+Évêque de Macon
+Évêque de Prato et Pistoia
+Évêque de Sisteron puis de Nevers
+Évêque de Vence et de Grasse. - Poète
+Évêque-duc de Laon (à partir de 1724)

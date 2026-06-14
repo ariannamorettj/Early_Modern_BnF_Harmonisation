@@ -1,0 +1,10 @@
+ZIP TREE REPORT
+---------------
+Generated at: 20260330_173848
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+
+File counts by extension:
+.csv: 1
+
+Archive tree:
+file: actor_data.csv

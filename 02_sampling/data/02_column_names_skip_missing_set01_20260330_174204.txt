@@ -1,0 +1,83 @@
+COLUMN NAMES REPORT
+-------------------
+Generated at: 20260330_174204
+Input dataset: 01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+Years filter: not set
+Restricted to file: no
+Unique column names found: 19
+
+Column: author
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: bnf_id
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: description
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: digital_copy_link
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: edition
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: editor
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: expression
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: illustrator
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: language
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: place
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: publisher
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: publisher_2
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: record_type
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: subject_topic
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: title
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: translator
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: work
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: year_first
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv
+
+Column: year_range
+Found in 1 file(s)
+  - bnf_edition_data_raw.csv

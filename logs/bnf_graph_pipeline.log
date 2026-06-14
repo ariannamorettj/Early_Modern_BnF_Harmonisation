@@ -1,0 +1,6 @@
+2026-06-03 20:57:00,079 [INFO] [START] command=materialize profile=full time=2026-06-03T20:57:00
+2026-06-03 20:57:00,080 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc output/runtime_configs/morph_full_actors.ini
+2026-06-03 20:59:53,833 [INFO] [MATERIALIZE] Done.
+2026-06-03 20:59:53,834 [INFO] [DONE]
+2026-06-03 21:02:20,947 [INFO] [START] command=materialize profile=full time=2026-06-03T21:02:20
+2026-06-03 21:02:20,949 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc output/runtime_configs/morph_full_bibliographic.ini

@@ -1,0 +1,94 @@
+prefixes:
+  obj:      https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/
+  crm:      http://www.cidoc-crm.org/cidoc-crm/
+  lrmoo:    http://iflastandards.info/ns/lrm/lrmoo/
+  rdf:      http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  xsd:      http://www.w3.org/2001/XMLSchema#
+  idlab-fn: http://example.com/idlab/function/
+
+# Source: bnf_actors_ready_roles.csv
+# Columns: actor_iri, edition_iri, edition_base, edition_expr_creation,
+#           role, role_activity_iri, role_aat
+#
+# Produced by the preprocess step when the upstream actors CSV contains a
+# role_edition_map column (format: "author:id1,id2;editor:id3").
+# Each row records one actor-edition-role triple.
+
+mappings:
+
+  # Declare the expression-creation event and link it to the edition.
+  # (Duplicate of mapping_bibliographic.yaml when both datasets cover the same
+  # edition — RDF simply de-duplicates the triple.)
+  role_expr_creation_node:
+    sources:
+    - bnf_actors_ready_roles.csv~csv
+    s: $(edition_expr_creation)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(edition_expr_creation)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - lrmoo:F28_Expression_Creation
+
+  role_edition_to_expr_creation:
+    sources:
+    - bnf_actors_ready_roles.csv~csv
+    s: $(edition_iri)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(edition_expr_creation)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P16i_was_used_for
+      o: $(edition_expr_creation)
+      type: iri
+
+  # One E7_Activity node per actor-edition-role combination.
+  role_activity_node:
+    sources:
+    - bnf_actors_ready_roles.csv~csv
+    s: $(role_activity_iri)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(role_aat)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crm:E7_Activity
+    - p: obj:hasType
+      o: $(role_aat)
+      type: iri
+    - p: crm:P14_carried_out_by
+      o: $(actor_iri)
+      type: iri
+
+  # Link the expression-creation event to the role activity.
+  role_activity_link:
+    sources:
+    - bnf_actors_ready_roles.csv~csv
+    s: $(edition_expr_creation)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(role_aat)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P9_consists_of
+      o: $(role_activity_iri)
+      type: iri

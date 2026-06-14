@@ -1,0 +1,12 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113516
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+Column requested: entity_type
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 2
+Sampled values count: 2
+
+<http://xmlns.com/foaf/0.1/Organization>
+<http://xmlns.com/foaf/0.1/Person>

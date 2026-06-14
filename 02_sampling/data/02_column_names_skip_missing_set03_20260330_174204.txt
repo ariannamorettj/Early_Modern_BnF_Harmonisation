@@ -1,0 +1,71 @@
+COLUMN NAMES REPORT
+-------------------
+Generated at: 20260330_174204
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+Years filter: not set
+Restricted to file: no
+Unique column names found: 16
+
+Column: actor
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_birth
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_country
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_death
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_end
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_first_name
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_gender
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_language
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_last_name
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_link_close
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_link_exact
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_name
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_profession
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: actor_start
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: entity_type
+Found in 1 file(s)
+  - actor_data.csv
+
+Column: first_year
+Found in 1 file(s)
+  - actor_data.csv

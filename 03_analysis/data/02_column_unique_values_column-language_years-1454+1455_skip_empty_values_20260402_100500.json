@@ -1,0 +1,18 @@
+{
+  "generated_at": "20260402_100500",
+  "input_dataset": "01_data_retrieval/01_editions/data/old_zip/edition_raw_data_by_year.zip",
+  "column": "language",
+  "years_filter": [
+    1454,
+    1455
+  ],
+  "restricted_to_file": null,
+  "skip_empty_values": true,
+  "total_value_occurrences": 70,
+  "distinct_value_count": 3,
+  "values": {
+    "<http://id.loc.gov/vocabulary/iso639-2/lat>": 64,
+    "<http://id.loc.gov/vocabulary/iso639-2/fre>": 5,
+    "NA": 1
+  }
+}

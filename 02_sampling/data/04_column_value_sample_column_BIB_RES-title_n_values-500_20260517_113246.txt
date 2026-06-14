@@ -1,0 +1,510 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113246
+Input dataset: 01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+Column requested: title
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 698224
+Sampled values count: 500
+
+"11e-12e" Suite de contredances pour les violons, flûtes, hautbois, etc avec accompagnement de basse ou basson etc, telles qu'elles s'exécutent au Bal de l'Opéra. Mises en ordre par M. d'Avesne...
+"Villare Anglicum", or a View of all the cities, towns and villages in England alphabetically composed... collected by the appointment of... Sir Henry Spelman,... the 2d edition corrected...
+(Arrêt de la cour des Grands-Jours qui permet à tous juges royaux d'informer des crimes commis dans l'étendue de leur résidence, même hors de leur ressort, et aux prévôts des maréchaux d'informer de toutes sortes de cas, même non prévotaux, pour les informations rapportées au greffe de ladite cour, être ordonné ce que de raison.)
+(Arrêt des Requêtes du Palais, règlant l'ordre de distribution, entre créanciers, du prix de vente et de bail judiciaire des immeubles saisis sur Léon-Benoist Le Feron, et vendus par sentence du 14 septembre 1715.)
+(Arrêt du parlement concernant les rentes de l'hôtel-de-ville de Paris.)
+(Arrêt du Parlement renvoyant devant les officiers de l'amirauté de France, au siège de la Table de marbre les appels des sentences rendues par les lieutenants des amirautés particulières.)
+(Les environs de Fontarabie.)
+(Ordonnance de police portant défenses aux marchands et marchandes de légumes, oeufs, beurres et autres denrées de s'attrouper dans le faubourg S. Antoine, à l'endroit où la grande rue de Charonne aboutit ; et au laitières de mêler de l'eau dans leur lait.)
+(Ordonnance du bureau de la ville) concernant la sûreté des marchandises et des bateaux dans les ports de cette ville
+(Planche gravée portant en tête deux médaillons dont l'un représente les livres des Jésuites, brûlés par la main du bourreau, avec cette devise : "Impietatis ultrix justitia, combustis libris, VI die augusti 1761" ; et l'autre des écoliers quittant leur Collège, avec cette devise : "Errorum fautores evitat, perversis tandem deletis scholiis", 1761 ; et cette légende au bas :) Par Arrêt du 6 août 1761, la cour, toutes les chambres assemblées, a ordonné que les ouvrages de Busembaum, Escobar, Suarez, Mariana et autres, seront brûlés et lacérés...
+(Sentence du lieutenant général de police concernant l'achat et la vente des animaux de boucherie dans un rayon de vingt lieues autour de Paris.)
+5-16. Plan de la rade de Capbreton, projets divers de ports ; - Carte de la côte depuis Bayonne jusqu'à Capbreton ; - écluses, à sas variables, à Gouffre de Capreton (1759). 17. Extrémité de l'estuaire de la Charente. 18. Port de Cette. 19. Port-Vendres. 20. Canal maritime de Port Vendres à Capbreton
+[Amour conduisant un char attelé à un lion et à une chèvre] : [estampe]
+[Article sur la vie de Marie-Madeleine Lafosse et sur les anabaptistes]
+[Buste de John Leland qui se trouve à Oxford, All Souls'College] : [estampe]
+[Catherine II, impératrice de toutes les Russies] : [estampe]
+[Costume de Bonaparte et des généraux de la République] : [estampe]
+[Deux Boucles rondes] : [estampe]
+[Détail de la colonne toscane avec piédestal] : [estampe]
+[Femme à la tête légèrement tournée à gauche] : [estampe]
+[Gil Blas dans la caverne des brigands] : [estampe]
+[Illustrations de Histoire des Incas, rois du Pérou]
+[Joueurs de cartes dans une auberge] : [estampe]
+[La charité et la miséricorde] : [estampe]
+[La Vieille Gouvernante] : [estampe]
+[Le P. Claude François Menestrier] : [estampe]
+[Les noces de Cana] : [estampe]
+[Louis XIV, enfant, assis sur un trône, à côté d'Anne d'Autriche] : [estampe]
+[Mausolée des ducs de Bouillon, destiné à l'église de Cluny] : [estampe]
+[On tue le veau gras] : [estampe]
+[Paysage, avec une tour carrée munie d'échauguettes aux angles] : [estampe]
+[Planche pour : Abrégé de l'Histoire universelle en figures... dessinées par M. Marillier et gravées par le Sr. Duflos le jeune] : [estampe]
+[Planche pour : Menestrier (Le P. C.-F.). Les Réjouissances de la paix faites dans la ville de Lyon, le 20 mars 1660] : [estampe]
+[Planches pour : Deux Vues de Rouen] : [estampe]
+[Planches pour : Suite de Quatre âges de la Vie] : [estampe]
+[Prospectus] Cours de jeux instructifs pour la jeunesse sous la protection du gouvernement... par l'abbé Gaultier,...
+[Route apparente de la Première Comète de 1790] : [estampe]
+[Sermoens varios, que pregou... D. Fr. Christovam de Almeida,... Terceira parte]
+[Titre gravé des] Lettres // de Ninon de l'Enclos // au // Marquis de Sévigné // Felix qui potuit... // Amsterdam // Chez François [sic] Joly // M.DCC.L. : [estampe]
+[Une bataille] : [estampe]
+[Vignette pour le 3.e chant de la Mort d'Abel] : [estampe]
+[XIL La pureté et droiture de ses intentions : “Nil me Divellet Ab Ista”] : [estampe]
+A Defence of the Scots abdicating Darien, including an answer to the Defence of the Scots settlement there. Authore Britanno sed Dunensi [J. Hodges]
+A manual of prayers
+A Nosseigneurs de parlement en la chambre de la Tournelle. (Requête de Marie-Gabrielle Perreau, servant de réplique à la requête de Louis Semitte de la Croix, son mari, relativement à l'état de ses deux filles légitimes
+A son Eminence.
+Abbregé de la nouvelle methode dans l'art d'écrire ou de tracer toutes sortes de danses de ville...
+Abrégé du commentaire général de toutes les coutumes et des autres loix municipales en usage dans les différentes provinces du royaume [particulièrement dans la province de Touraine] par Jacquet
+Acte dressé par monseigneur l'archevêque duc de Reims, accepté et signé par le Père Robert-François de Y de Seraucourt, recteur du collège de Reims de la Compagnie de Jésus, & par le Père Pierre Flavet, préfet des hautes études, & professeur en théologie dans le même collège : en faveur d'une thèse de Théologie soutenue dans ledit collège, le premier du mois d'août 1698 (21 août 1698)
+Adam Karels Vervolgde Laura
+Adresse de la Convention nationale au peuple français ; décrétée dans la séance du 18 vendémiaire an III... traduite en arabe... imprimée par ordre de la Convention... par les soins de L. Langlès,...
+Adèle 1772 : 1772, [maquette de costume]
+Air de l'opéra de Ponce de Léon, chanté par Mme Skreutzer, avec accompagnemens de piano ou harpe...
+Alexandre de Thomassin Cheualier, Seigneur de // Peynier, d'Aynac et de Taillas Conseiller au // Parlement mort Le... Aout 1718 : [estampe]
+Almanach pour l'an de grâce et bissextile 1672 - par le Sr de Piedmont [Recueil d'almanachs pour l'an 1672, présenté au roi par D. Foucault. 1672]
+Amor divinus adumbratus in D. N. Jesu Christo, elegiarum libri IV, auctore R.P. Guilielmo Vander Hagen,...
+An cardiaca purgantibus commiscenda ? (Praes. Raymundo Vaslet. Cand. Marco-Antonio Hellot)
+An inflammationi pro varia sede resolutis, vel suppuratio potior ? (Praes. Raymundo De La Riviere. Cand. Petro Josepho Macquer)
+An xian sheng xing shu
+Anecdota quaedam ad historiam concilii Tridentini pertinentia
+Annotations by Sam. Johnson and Geo. Steevens and the various commentators upon King John, written by Will. Shakspere
+Antonii Deusingii,... Considerationes circa experimenta physico-mechanica illustris equitis Roberti Boylei, de vi aeris elastica et ejusdem effectibus...
+Apologie de M. l'abbé Sieyes, par M. de Mirabeau l'ainé
+Archiepiscopatus et Electoratus Moguntinus ut et Comitatus uterq[ue] Catimelibocens is, Wertheimensis, Erpacens [is] aliaeque insertae et confines regiones accuratissime delineatae...
+ARISTOTELOUS TOU STAGEIRITOU TA SŌZOMENA. Operum Aristotelis Stagiritae... graece et latiné... ex bibliotheca Isaaci Casauboni...
+Arrest de la Cour de Parlement de Bourdeaux, portant que le cardinal Mazarin, ses parents et domestiques estrangers vuideront le royaume de France, autrement permis aux communes de leur courir sus
+Arrest de la cour du Parlement, obtenu à la poursuite & solicitation de Jacques Guignant l'un desdits maîtres [de la communauté des fripiers d'Orléans], & député de ladite communauté à cet [sic] fin.
+Arrest du Conseil d'Estat [du 17 septembre 1726] et Lettres patentes sur icelui... registrées au Parlement de Flandres le 22 novembre 1726, pour l'abonnement des droits de controlle des actes, insinuations laïques, petits scels et centième denier dans le département de l'intendance de Lille
+Arrest du conseil d'Estat du Roy, qui ordonne l'execution des edits portant permission de tenir hostelleries, tavernes, cabarets & vendre vin en gros par toutes les villes, bourgs & villages, paroisses, havres & ports de ce royaume ; & la taxe que chacun doit payer annuellement pour ladite permission
+Arrest du conseil d'Estat... portant main levée de la surseance de la vente en heredité des offices de jaugeurs, avec la commission pour preceder à la vente desdicts offices
+Arrest du Conseil d'État du Roi, qui ordonne qu'à l'avenir la garance qui viendra de l'étranger, payera à toutes les entrées du Royaume, vingt-cinq sous par quintal
+Arrest du Conseil... pour la prise de possession de la ferme des droits sur les cuivres et les cartes, réunie à la régie de Jean-Baptiste Bocquillon...
+Arrest notable donné le quatriesme jour d'Octobre, l'an mil cinq quarantesix [sic] par la Chambre ordonné [sic] par le Roy, au temps de vacations, Contre grand nombre d'Heretiques & blasphemateurs, du grand marché de Meaulx : avec la forme de l'execution d'icelluy Arrest.
+Arrêt contradictoire du Conseil d'Etat qui déboute les habitants de Reuilly de leur requête en cassation de l'arrêt de la Cour des Aides du 8 juillet 1716 et ordonne que ledit arrêt sera exécuté selon sa forme et teneur
+Arrêt de la Cour de Parlement qui confirme une sentence de la Chambre du Domaine par laquelle il a été jugé qu'il est du des droits Seigneuriaux, lorsqu'un fief substitue passe d'un collatéral à un collatéral quoique celui qui le recueille soit descendu en ligne directe de l'auteur de la substitution
+Arrêt de la cour des aides qui condamne René Maillot bouilleur d'eau-de-vie de son crû en 100 livres d'amende, pour avoir refusé aux commis aux aides, l'ouverture de ses Chaix et brûlerie, pour y exercer les vins et eaux-de-vie en sa possession et le condamne aux dépens
+Arrêt de la cour des monnaies qui reçoit Simon Lotoire, sculpteur-fondeur, et Séb. Chastelain, orfèvre, opposants aux saisies des 20 et 21 février 1721, ordonne que les espèces d'or et les deux lingots d'argent sur eux saisis seront portés au change de la monnaie de Paris, pour y être fondus et convertis en nouvelle espèces, et la valeur rendue auxdits Lotoire et Chastelain
+Arrêt de parlement portant décharge à un séculier, prieur commendataire d'un prieuré de l'ordre de S. Benoit, de nourrir et entretenir les religieux que l'abbé collateur d'icelui y avait envoyé en résidence, pour y faire le service divin
+Arrêt de parlement qui condamne Gaspard Baucheron, voiturier par terre, au carcan, et au bannissement pour 9 ans, pour avoir escroqué de l'argent à plusieurs particuliers, sous prétexte d'aller retirer aux barrières leurs denrées et marchandises
+Arrêt de parlement qui fait défenses aux juges de recevoir des plaintes et informer contre les présidents, conseillers et gens du roi de la cour
+Arrêt du conseil d'Etat (...) qui déclare n'avoir entendu exempter du droit de consommation le poisson de mer pêché dans la Seine et porté à Rouen ; ordonne que les aloses et autres poissons de mer, quoique pêchés dans ladite rivière, acquitteront le droit à raison de 13 sols 5 denier par panier de quatre aloses et ainsi à proportion
+Arrêt du conseil d'Etat du roi, portant défenses aux fabricants debas au métier de la ville de Caen, d'en faire à deux fils...
+Arrêt du Conseil d'Etat portant renvoi à la Chambre de justice des informations faites contre le Sieur de Senegas, pour raison des exactions faites sur les habitants taillables de la Communauté de Curvalle
+Arrêt du Conseil d'Etat qui casse un arrêt de la Cour des aides de Rouen, en conséquence, ordonne que le jour et fête de Saint Romain sera compté pour jour de foire...
+Arrêt du Conseil d'Etat qui excepte des arrêts de surséances et sauf conduits qui pourraient être accordés aux bouchers les sommes par eux dues pour achats de bestiaux aux marchés de Sceaux et de Poissy
+Arrêt du conseil d'Etat qui ordonne qu'après l'expiration du bail les fermiers et leurs cautions ne pourront être assignés qu'en leurs domiciles à Paris, ni traduits ailleurs qu'en la cour des aides de Paris, pour raison des affaires concernant lesdits baux
+Arrêt du conseil d'Etat qui ordonne que les officiers des greniers à sel fourniront sans frais, tant au contrôleur général des gabelles qu'à l'adjudicataire, des certificats de ce qui aura été vendu de sel en chacun quartier et de ce qui en restera dans les greniers
+Arrêt du conseil d'Etat qui proroge pour deux années la modération des droits sur les aiguilles venant des pays étrangers
+Arrêt du Conseil d'Etat, qui fixe l'ouverture du Chapitre ordinaire des Cordeliers de la province de France au 18 juin prochain
+Arrêt du conseil d'état du Roy, par lequel les trois barriques de vins, saisies sur les nommées Sapin, cabaretières de la ville de Saint Maixant, sont confisquées au profit de Martin Girard et lesdites cabaretières ; ensemble le nommé Boneau voiturier, condamnez en l'amende de trois cents livres, pour n'avoir point payé les droits d'inspecteurs aux boissons
+Arrêt du conseil d'état portant suppression d'un libelle intitulé, Discussion intéressante sur la prétention du Clergé, d'être le premier Corps de l'état
+Arrêt du conseil d'état qui confisque une courte-pointe de toile à fleurs bleues fond blanc et 4 morceaux de toile couleur citron, peints par les nommées Liesse et Duperray, filles majeures demeurant à Vendôme, ainsi que 2 moules de bois et différents ingrédients servant à peindre des toiles
+Arrêt du conseil d'état qui ordonne l'exécution dans toutes les fabriques du royaume, des articles des réglements des 27 septembre 1740 et 20 juin 1741, concernant les étoffes de laine de Beauvais et de la généralité d'Amiens, portant défenses de faire fouler draps, serges et autres étoffes, avec de la craie
+Arrêt du conseil d'état qui ordonne que les droits réservés, de ceux qui étaient ci-devant attribués aux offices supprimés par édits des mois d'août 1716 et novembre 1717 continueront d'être payés pour ceux desdits offices compris dans la suppression ordonnée par les dits édits qui peuvent avoir été levés dans les amirautés
+Arrêt du conseil d'état qui règle le droit de sceau des commissions du grand sceau, pour l'exercice des offices de sergents, archers, trompettes, tambours et offices de syndics de paroisses et greffiers des rôles des tailles
+Arrêt du Conseil... qui annulle les passeports expédiés par la Compagnie des Indes depuis le 10 juillet... [1785] jusqu'au 20 août... [1785], pour l'introduction de tales de coton blanches et peintes venante de l'étranger...
+Arrêt du parlement qui déclare y avoir abus dans le mandement de l'évêque de Tulle, du 7 Sept. 1718 (touchant la bulle "Unigenitus".)
+Arrêté de la chambre des Comptes de Bretagne du 28 Juillet 1788
+Articles to be enquiped in the visitation in the fyrste yeare of the raygne of our... soveraygne lady Elizabeth... quene... anno 1559
+Atlante, favola tragicomìca allegoria con gli intermedi apparenti Giacomo Guidotti
+Au Roi et à Nosseigneurs de son conseil. (Requête des marchands en gros de vin et d'eau-de-vie de la ville d'Amiens contre les entreprises de Martin Rochereau, fermier des aides de la généralité d'Amiens
+Augustini Ricii de Motu octavae sphaerae
+Aventures et espiègleries de Lazarille de Tormes
+Baculum familliare, catholicon sive generale, a booke of the making and use of a staffe, newly invented by the author, called the familiar staffe... by John Blagrave,...
+Basilii Pontii Legionensis,... De Sacramento matrimonii...
+Ben cao gang mu : juan 16-22
+Biblia sacra dat is de geheele Heylighe Schrifture bedeylt int Oudt ende Nieu Testament
+Blondi Flavii,... de Origine et gestis Venetorum liber... Editio novissima...
+Breve descritione dell'allegrezze fatte in Mantova il dì 10. maggio 1646.
+Briefe, nebst einer Praktischen Abhandlung von dem guten Geschmacke in Briefen
+Buscum Ducis oppidum
+Cahier de la noblesse des bailliages de Sézanne et de Chatillon-sur-Marne, réunis ; remis à M. le marquis de Pleurre, maréchal de camp, bailly d'epée, député ; en cas d'empêchement, M. Devilliers de La Berge, conseiller au Parlement, député, subrogé
+Canon triangulorum, hoc est, sinuum, tangentium & secantium tabulæ, ad taxationem radii 100000.00, ex accuratissimis operis Palatini tabulis expressæ
+Carmina iliaca...
+Carte de l'Epyre. : [estampe]
+Carte des environs de la Mer-Noire où se trouvent l'Ukrayne, la Petite Tartarie, la Circassie...
+Carte generale des costes de Bretagne, comme elles paroissent de mer basse dans les plus grandes marées
+Carte réduite des îles de France et de La Réunion : Dressée d'après les Observations astronomiques, les Opérations Géométriques de La Caille et les Plans particuliers qu'en ont été levés jusqu'à présent
+Catalogue d'une collection de livres choisis, provenans du cabinet de M***
+Catalogue des livres imprimés chez Pierre Humbert. Ou dont il a nombre. Ceux marqués d'une * sont avec le droit de copie.
+Catalogus librorum, quibus officinam suam auxit anno praeterito 1696. Regnerus Leers, bibliopola Roterodamensis.
+Cavaliers du manege : [estampe]
+Cesse d'agiter mon âme Air à 1 v. et acc. tiré de Diane et Endimion
+Charta öfwer Weners Utlopp med en del af Götha Elf förbi Trollhättan til Lugnwatnet in emot Akerftröm
+Christiani Zachaei Telonarchae Προλεγομενα über die neueste Auslegung der ältesten Urkunde des menslichen Geschlechts
+Cinq discours de cinq chants nouveaux de M. Loys Arioste, suivant la matière du Furieux, avec suite de quelques nouvelles stances du mesme autheur [Giov. Batt. Pescatore ?], traduits nouvellement en françois par Gabriel Chappuys,... dernière édition
+Claudii Galeni,... Paraphraste Menodoti, ad artium liberalium studium capescendum oratio adhortaria. Item, quod optimus medicus nisi etiam philosophus, non sit. Ex interpretatione nova Sixti Arcerii, cum notis ejusdem, in quibus partim textus graecus emendatur, partim illustratur
+Collection complette 8
+Comedia sin Musica por D. Andres Davila y Heredia
+Commentarius brevis rerum in orbe gestarum, ab anno... 1500 usque in annum 1568, ex optimis quibusque scriptoribus congestus et nunc recens non parum auctus et locupletatus, per F. Laurentium Surium,...
+Compendiosum lexicon latino-turcico-germanicum, in quo non solum voces et phrases usitatae continentur, sed etiam illarum lectio
+Concerto [n° 1] à flute principal, deux violons, alto et basse, deux hautbois, deux cors... exécuté par l'auteur au concert spirituel...
+Confirmation faicte par le roy, Charles IX pour l'observation de l'edict de pacification, provisions, & declarations d'iceluy
+Considérations théologiques et critiques sur le projet d'une nouvelle version françoise de la Bible, publié l'an 1696 sous le nom de M. Charles Le Cène, dans lesquelles la vérité est défendue sur un grand nombre de passages de l'Écriture sainte, par Jacques Gousset,...
+Consultation pour le chapitre de (Saint-Pol-de-)Léon.
+Controversiarum Roberti Bellarmini,... defensio. Tomus primus de verbo Dei... [Tomus secundus de Christo Christique vicario, pontifice romano.] Auctore Jacobo Gretsero,...
+Convention nationale. Mémoire présenté à la Convention nationale, au nom de l'Académie des sciences, par le citoyen Borda, l'un des commissaires nommés pour les poids et mesures, le 25 novembre 1792,... suivi de la réponse du président...
+Convention nationale. Rapport fait au nom du Comité de salut public, le premier août 1793, l'an second de la République françoise
+Copie de la lettre écrite au département de Corse et à la Convention nationale
+Corps législatif. Conseil des Anciens. Discours prononcé par G.-F. Dentzel sur la résolution qui porte des modifications à la loi du 10 brumaire sur les marchandises anglaises. Séance du 18 pluviôse
+Corps législatif. Conseil des Anciens. Opinion de P.-C. Laussat,... sur la résolution du 27 brumaire, relative à la contribution personnelle, mobilière et somptuaire de l'an 7. Séance du 3 nivôse an 7
+Corps législatif. Conseil des anciens. Rapport fait par Péré (des Hautes-Pyrénées) sur la résolution qui fixe à Pau le siège de l'administration départementale des Basses-Pyrénées. Séance du 9 floréal an VII
+Corps Législatif. Conseil des Cinq-Cents. Motion d'ordre de Lamy,... relative à la journée du 9 thermidor...
+Corps législatif. Conseil des Cinq-cents. Opinion de Hoverlant,... sur la dénonciation de forfaiture contre le tribunal criminel du département de la Dyle. Séance du 3 ventôse an VI
+Corps législatif. Conseil des Cinq-Cents. Rapport et projet de résolution par Collombel, de la Meurthe, sur la demande faite par les citoyens Solages et Garrigou, d'affecter à leurs usines, dans le département du Tarn, pour trente années, les forêts nationales de Grezigne et des Carmes. Séance du 25 brumaire an V
+Corps législatif. Conseil des Cinq-Cents. Rapport fait par J.-P.-F. Duplantier, député... de la Gironde, sur le mode de paiement de créanciers des successions échues à la république, comme représentant les émigrés, depuis le 9 floréal an VII. Séance du 14 messidor an VII
+Corpus illustrium poetarum lusitanorum, qui latinè scripserunt
+Cours du Danube depuis sa source jusqu'à ses embouchures...
+Curlande // Partie Occidenta.le : [estampe]
+D. Georg. Ern. Stahlii,... Observationes medico-practicae, quarum classis I sistit febres. Praemittitur recensio chronologica scriptorum Stahlii et ad ejus mentem disserentium. Edidit D. Joh. Christophor. Goetzius...
+Dalmatia, Istria, Bosnia, Servia, Croatia e Parte di Schiavonia descritte da Giacomo Cantelli da Vignola con la direzione delle Carte Migliori date in luce da Gio.Giacomo de Rossi... con Priv. del Sommo Pontefice... 90 Miglia Italiane [=Om. 124 ; 1 : 1 338 000 environ]
+De Aanstaande val en ondergang der Geoctroijeerde vereenigde Oostindische Maatschappy, het volk van Nederland aangekondigd by missive van gecommitteerde bewindhebbers aan de Staaten van Zeeland "in dato" 6 maart 1794. [Signé : J. H. Schorer, J. Van den Houte.]
+De Chlorosi. (Cand. Hajo Bregger)
+De Eunuchis dissertatio
+De indulgentiis tractatus brevis, clarus, et eruditus, et quaestionibus, quae circa eas moveri solent. Authore Joanne Capetio, theologiæ licentiato, Insulensi canonico
+De la Constitution militaire
+De Magistratibus sacerdotiisque Romanorum...
+De Origine, continuatione, usu, autoritate atque praestantia ministerii Verbi Dei et sacramentorum et de controversiis ea de re in christiano orbe, hoc praesertim seculo excitatis, ac de earum componendarum ratione, autore Petro Vireto
+De principiis rerum libri tres in quorum I proponuntur
+De Sepulturis imperatorum, regum... in monasteriis... schediasma...
+De Veris et salutaribus animi gaudiis dialogus
+Declaratio sacrae congregationis cardinalium, negotiis regularium proepositae, facta ad instantiam Rmi domini Tornacensis episcopi super examine puellarum religionem intrantium... (Romae, du 27 junii 1631.)
+Decreto sopra la mercede delli auditori, assessori, et cancellieri de'magistrati di Firenze, quando vanno alle differentie per lo stato di S. Altezza serenissima. Fatto, e fermato d'ordine del serenissimo principe di Tosana reggente, & per S. A. dalli molto mag. signori luogotenente, & consiglieri, sotto di 31. di marzo 1573
+Dell' Origine et prima fondatione della città di Lodi vecchio, che fu detta Pompea, per Isidoro Maiani,...
+Demoiselle de la Royale Maison de S.t Loüis à S.t Cir, des deux // premières Classes, qui porte la Croix que l'on donne aux Chefs // de chaque bande ou famille. : [estampe]
+Der Stadt Dantzig historische Beschreibung... verfasset und zusammengetragen durch Reinhold Curicken... aussgegeben von Georg Reinhold Curicken,... vermehret und continuiret biss auff die gegenwertige Zeit
+Descripcion del districts del Audiencia de Lima
+Descrizione del primo ballo Calisto e Ruggero. Ballo tragico in cinque atti composte e diretto dal Signor Francesco Clerico
+Devotes Prières / Escrites et burinées / apres le naturel de / la Plume
+Dichoso fin a la vida humana y feliz tránsito a la eterna de el gran monarca Felipe Quarto, rey de las Españas, escrito por el Reverendísimo P. F. Juan de Santa María,...
+Die Feuerliche Krönung S.r. Maÿ. des Kaisers als König von Böhmen in Prag am 6 September 1791 : [estampe]
+Diocèse, prévosté et eslection de Paris. Le diocèse est divisé en archipreb-trés ou doyennés ruraux, la prévosté en balliages ou prévostés subalternes, et l'eslection en Chastellenies...
+Discours aux Romains sur les prodiges par lesquels le Seigneur a manifesté sa toute puissance pour la défense de la gloire de son Église dans ces derniers temps, dédié au clergé de France... par M. Marotti,... et traduit par M. l'abbé d'Hesmivy d'Auribeau,...
+Discours du sieur de La Milletière au sinode des églises réformées de France, assemblé à Charenton par permission du roy et de la reine régente...
+Discours prononcé par le citoyen Bo,... à la séance de la Société populaire montagnarde d'Aurillac, le 13 pluviôse. Prononcé de nouveau par le même représentant à la Société populaire et montagnarde de Montauban le 17 ventôse, et le 8 floréal à la séance de la Société populaire et montagnarde de Castres
+Discours sur l'état actuel du département des Bouches-du-Rhone
+Disposições do Superior provincial para a observancia regular e literaria da congregação da Ordem Terceira de S. Franciscodestes reinos, feitos em os annos de mil setecentos sessenta e nove, e setenta... - Memorias historicas e appendix segundo a disposição quarta da collecção das disposições do superior provincial, para a observancia e estudos da congregação da Ordem Terceira de S. Francisco...
+Disputatio juridica solennis de exceptionibus paratam executionem impedientibus, quam... in... Academia francovadana, sub praesidio... Joh. Friderici Rhetii,... disquisitioni sistit Gottfridus Mussigk / Lubenâ-Lusatus, ducalis archidicasterii, quod in Patriâ est. Advocatus. in auditorio juridica ad d. VIII april. 1668. Horis ante & pomeridianis.
+Disputatio theologica, bella infinita eaque intestina Ecclesiae romanae... praeside Paulo Pomian Pesarovio,... et respondente Michaele Stobaeo,... ad diem 5. aprilis... 1696... proponens
+Dissertatio de noctiluca mercuriali sive de luce quam argentum vivum in tenebris fundit
+Dissertatio inauguralis medica de Impetigine, una cum observatione chirurgico anatomica de Ano artificiali duplici, quam... solenni eruditorum scrutinio submittit Joannes Nicolaus Broc
+Dissertatio juris gentium publici de judicio seu censura morum
+Dissertatio medica, aegrum incubo laborantem sistens, quam submittit. Responsurus Autor Georgius Fridericus Aeplinus, Servesta Anhaltinus
+Dissertation où l'on montre que des miracles operez par degrez, ou accompagnez de douleurs, n'en sont pas moins de vrays miracles
+Dissertationum academicarum tomus I...
+Dixhuictieme livre de chansons à quatre & cinq parties, d'Orlande de Lassus
+Double dune lettre envoyee a Monsieur de Chamery par ung sien amy, Contenant lordre de Larmee du Roy. Et le lieu ou est Campe Lempereur
+Ducatus, electoratus et principatus ducum Saxoniae...
+Déclaration du roi [Guillaume III] et de la reine [Mary] pour encourager les François Protestants à se transporter en Angleterre [25 avril 1689]
+Déclaration... concernant la discipline intérieure du Parlement de Pau... Registrée au Parlement de Navarre [le 28 août 1747, avec remontrances, et définitivement le 20 février 1784]
+Déclaration... interprétative de l'édit de mai 1711, concernant les droits de la pairie... Registrée en Parlement le 1er mars [1782]...
+Déclaration... portant règlement pour les comptes de la capitation générale...
+Déclaration... qui défend aux accusez d'évoquer des procez criminels dans les cas y marquez... Registrée en Parlement [à Rennes] le 19 février 1714
+Déclarations... [des 1er may et 4 septembre 1696] et arrests [du Conseil d'État, du 11 novembre 1704, et du Grand Conseil, du 19 février 1705,] concernant l'aliénation des droits seigneuriaux dus à S. M. aux mutations par échanges... Registrées en Parlement et Chambre des Comptes
+Délibération faite dans l'assemblée générale tenue le 9 septembre 1709, pour l'établissement d'une société charitable, pour faire venir des blés en cette ville, pour le soulagement du public. Extrait des registres de la maison de ville de Nantes
+Ecija
+Edit et déclarations du Roy concernant la création de la charge de surintendant et ordonnateur général de tous les bâtimens... et manufactures royales...
+Ek tōn Markellou Sidëtou Iatrikōn to Peri ichtyōn. Marcelli Sidetae medici, De remediis ex piscibus
+Eloges des académiciens de l'Académie royale des sciences, morts depuis l'an 1699
+Enchiridion scripturisticum tripartitum
+Ephemeridum novum atque insigne opus, ab anno Domini 1556 usque in 1606, accuratissime supputatum, cui praeter alia omnia in caeteris editionibus addi solita, etiam haec accesserunt : Eclipsium typi elegantissimi ; Expedita ratio constituendi coelestis thematis... Brevis ratio geneses judicandi... Loca stellarum fixarum ab anno Domini 1349 usque in 2029... Themata quatuor anni temporum... Autore Cypriano Leovitio a Leonicia,...
+Epistre du seigneur de Brusquet aux magnifiques & honnorés seigneurs syndicz & conseil de Geneve
+Eruditi viri fratris Antonii de Monelia,... in divini Dionysii mysticam theologiam clarissima commentaria...
+Essai sur la vie de T. Wentworth, comte de Strafford, principal ministre d'Angleterre et lord lieutenant d'Irlande, sous le règne de Charles I, ainsi que sur l'histoire générale d'Angleterre, d'Écosse et d'Irlande, à cette époque, par le comte de Lally-Tolendal
+Estreine de Pierrot à Margot...
+Evangelia. - Noribergae. II. 2e Tomus... [Archadelt, Arn. de Bruck, Brumen, A. Causinus, Clemens non papa, Th. Crequillon, Dambert, A. Fevin, D. Finot, Ville Font, Gardane, Gombert, Jachet, G. Junckers, Lasson, Lerethier, J. Lupi, Fr. Lupino, Maillart, P. Manchicourt, J. Pionier, J. Richafort, C. Rore, Tubal, Ph. Verdelot, anon.]
+Exempla sincerorum evangelicae veritatis confessorum... initiandi operas scholasticas, et continuandae praelusionis secularis caussa, producent in medium e patria, Urbanum Regium Carolus Dietericus Ebel,... ex Italia, Aonium Palearium,... Otto Heinricus Kliffe,... e Galliis, Franciscum Lambertum,... Georgius Grosch,... latinis sermonibus celebraturi singulorum merita, ad quos audiendos... ut frequentes confluant... gymnasii patroni... observantissime rogat rector Gothofredus Vockerodt
+Explication d'un ancien monument trouvé en Guienne, dans le diocèse d'Ausch
+Extraict d'un livre intitulé, Somme des pechez qui se commettent en tous estats
+Extrait des registres des délibérations du Directoire du département de la Meurthe. Séance du 19 octobre 1790
+Extraits de plusieurs lettres de l'auteur des "Mémoires d'un homme de qualité" [l'abbé Prévost] publiés par Étienne Neaulme pour se justifier de ce que la continuation du "Philosophe anglois, ou l'Histoire de Mr. Cleveland" ne paroit pas encore
+Factum du procès pendant à la cour, où Me Nicolas Dondin,... et demoiselle Philiberte Pèlerin, sa femme, tous deux donataires de Me Abel Pèlerin,... sont intimés et appelants de la sentence donnée au bailliage et siège présidial de Bresse, le 12 mars 1688, contre Me Basile Curtil... et... demoiselle Marie Catherin Lacombe, appelants de la susdite sentence et intimés.
+Factum pour Jean Hamart, laboureur, demeurant à Bonjacourt, héritier de feu Jacques Hamart, son père,... intimé et appelant d'une sentence rendue au bailliage et pairie de Reims, le 1er juillet 1704, contre Nicolas Doyen, receveur de la terre de Chaumuzy, Marguerite Dugras, sa femme, et le nommé Feuillet, appelants de la même sentence...
+Factum pour Me Jean Brochet,... curé de la cure Saint-André d'Argent, contre Me Etienne Millet,... curé des cures de Doyet et de Villeginon, prétendant droit à ladite cure d'Argent.
+Factum pour soeur Galiotte de Vaillac, prieure perpétuelle du monastère et hôpital de Beaulieu et de Fieux, son annexe,... diocèse de Cahors,... contre soeur Françoise de Vassal et quatre autres religieuses professes du même monastère...
+Felsina giardiniera d'Apollo, nell'[...] laurea legale del sig. marchese [...] Grivelli...
+Flora Española
+Fortifications des îles de Marseille. (Signé : Embry 1780.)
+Francisci Turriani,... Adversus Magdeburgenses centuriatores pro Canonibus apostolorum et Epistolis decretalibus pontificum apostolicorum, libri quinque...
+Fuite de la nouveauté, ou Réponse à une brochure ayant pour titre Considérations impartiales sur la position actuelle du Brabant, &c
+Galwaye
+Geographica synodica sive regionum urbium et locorum ubi celebrata sunt concilia... Tabula geographica secunda Italiam, Galliam et Angliam exibens...
+Germeuil (par Baculard d'Arnaud)
+Godofredi de Peschwitz de Repressaliis liber
+Grand Tarif des monnaies pour les écus de 3 l. 5 sols et les Louis d'or de 12 l.
+Guicciardini's Account of the ancient Flemish school of painting, translated from his description of the Netherlands, published in Italian at Antwerp, 1567, with a preface by the translator
+Habillement des Vielles [sic] qu'elles portent en été comme en hiver : [estampe]
+Harangues prononcees aux entrees de plusieurs princes et seigneurs & a la reception des consuls et presentation d'advocats avec quelques plaidoiers
+Henrici Scharbau,... Observationes sacrae, quibus varia Sacri Codicis utriusque foederis loca illustrantur et exponuntur, multaque sanctioris et elegantioris doctrinae capita explicantur
+Het Nieuwe Testament, ofte alle boecken des Nieuwen Verbonts Onses Heeren Jesu Christi
+Hispania victrix. Primera y segunda parte de la historia general de las Indias con todo el descubrimiento
+Histoire de l'origine et du progrès des revenus ecclésiastiques... par Jérôme Acosta,... 2e édition, corrigée et augmentée
+Histoire des Albigeois et des Vaudois ou Barbets
+Histoire du règne de Louis XIV,... où l'on trouve une recherche exacte des intrigues de cette cour dans les principaux États de l'Europe
+Histoire véritable
+Historia naturae, variis experimentis et ratiociniis elucidata secundum principia
+hoc est Liber radicum seu lexicon ebraicum... auctore M. Johanne Avenario,...
+Hore beate Marie Virgiuis [i.e. Virginis] secundum usum Romanum
+Hymnes de l'office de Jesus conversant
+Icon Lodoici XIII, Franciae et Navarrae regis christianissimi. [Auctore J. Favereau.]
+Il Buon vescovo, ubbidiente agli avvertimenti pastorali della Santità di N. S. papa Innocentio XI, opera di Giuseppe Crispino,... divisa in sette parti. Parte IIIa. Tomo 1°... - La Tassa Innocentiana, con annotationi, e la canonica distributione delle rendite del vescovato. Parte IIIa. Tomo 2°dell'opera intitolata : "il Buon Vescovo"... composta... da Giuseppe Crispino,...
+Il n'y eut aucun endroit d'épargné dans // tout ce beau corps... : [estampe]
+Il Vaticinio Di Proteo // Cantata á Tre Voci // Da eseguirsi Nella Casa Della Società Mercantile // In Occasione Del Glorioso Esaltamento // Del Trono Ducale // Del Serenissimo D.D. Lodovico Manin // Protettore Della Società Stessa // L'anno 1789 // Del Signor Maestro Ferdinando Bertoni
+In auxilio et ope Trinitatis sanctissima... Officium simplex septem dierum hebdomadae ad usum ecclesiae. Maronitarum
+In Samuelis prophetae libros duos D. D. Petri Martyris Vermilii,... commentarii doctissimi, nunc, adjectis et emendatis quibusdam, denuo editi. His auctarii loco accessit Palaestinorum, Tyriorum ac Sidoniorum populorum antiquiss. ex sacris et prophanis monumentis diligens et accurata historia, ad hos Samuelis, Regum item, Paralipomenon, aliosque historicos et propheticos libros sacros intelligendos accomodatissima, itemque de vicinitate tractatus, per Joan. Guilhel. Stuckium,... Accesserunt praeterea indices locupletissimi...
+Instanza del signore di Alincurt, ambasciatore ordinario del re christianissimo in Roma, per l'assolutione de i Venetiani, et promessa del cardinale di Gioiosa, et sua, per l'adempimento delle conditioni, fatta alla Santità di Nostro Signore, et sottoscritta da essi di lor mano
+Instruction pastorale de Mgr l'évêque de Montpellier (Charles-Joachim Colbert de Croissy)... pour servir de réponse à l'Instruction pastorale de M. l'archevêque de Sens contre les miracles de M. Paris
+Insubres Segusianis. Partie du diocèse et archeve [s] che de Lyon ...
+Irivan
+Iudea sive Terra Sancta quae Israelitarum in suas duodecim Tribus destincta secretis ab invicem Regnis Iuda, et Israel expressis in super Sex ejusdem Terrae Provincijs
+Jacobi Bordingi,... Physiologia denuo recognita et... nunc seorsim edita
+Je vous dirai vos vérités
+Jeu d'armes des Amazones sous les yeux de Minerve N III n 21 : [estampe]
+Joachimi Perionii Benedictini Cormoeriaceni, Pro Ciceronis oratore contra Petrum Ramum, oratio
+Joannis Grammatici, cognomento Philoponi, In duos Priores analyticos Aristotelis libros commentarii nunc demum ab Alexandro Justiniano,... in linguam latinam... conversi, graeco prius codice cum vetustissimo et emendatissimo exemplari collato, atque ab infinitis pene erroribus expurgato, ac multis in locis quibus tum voces, tum periodi integrae deerant ad pristinam integritatem restituto...
+Joh. Buxtorfii Grammaticae chaldaicae et syriacae libri III
+Johannis Frederici Gronovii Ad illustrissimos excelsorum et praepotentum ordinum foederati Belgii generalium ad conventum monasteriensem legatos extraordinarios et plenipotentiarios, quum Daventriae ordiendi punctim itineris caussa convenissent, propemptikos
+Journal chrétien, ou l'Ami de la vérité et de la paix. Prospectus
+Jugement des commissaires établis pour la vérification des droits maritimes qui maintient le sieur Louvet d'Epineville dans la possession d'un parc situé sur la côte de Couteville en Normandie
+Jurisprudentia vetus ante justinianea, ex recensione et cum notis Antonii Schultingii...
+Kitajskoe uloženìe
+L'Academie des dames, ou les Sept entretiens galants d'Alosia
+L'Amour mutuel, pastorale en 1 acte [de Gaultier], chantée devant Leurs Majestez, à Versailles, le 7 janvier 1730, mise en musique par J.-B. Dutartre
+L'Art d'aimer, nouveau poème en six chants, par M.***** [F.-É. Gouge de Cessières.] - La Mort de Zulnï ["sic"]... - Idée de l'Art d'aimer d'Ovide, où par occasion l'on réfute quelques principes que l'abbé Des Fontaines a voulu établir au sujet des moeurs et des usages des anciens
+L'Ecole du scandale ou les Moeurs du jour, comédie... Traduit en françois par Mr. Burnel Delille,...
+L'Espérance des chrétiens ou les saints désirs de la vie bien-heureuse...
+L'Histoire... en laquelle sont contenues les choses... advenues en la primitive Eglise... traduite... par D. M. Mathée
+L'ingénieur français par N. Naudin
+L'Opérateur des pauvres, ou la Fleur d'opérations nécessaires aux pauvres pour conserver leur santé et soy guérir à peu de frais. Où se montre un discours des opérateurs, avec les remèdes de purgation, le prix que couste ["sic"] les drogues et les moyens de les appliquer. Ensemble le secret du baulme Policreston, sa vertu et autres secrets admirables, par M. G. Vaussard,... Reveu et corrigé par l'autheur...
+L. Annaei Flori Histor. rom. lib. IV cum notis integris Cl. Salmasii, additus etiam E. Ampelius...
+La Calamità de cuori, drama giocoso... [Vienna, 1774]
+La Conduite du vray chrétien danz la santification des dimanches et des festes
+La description de l'isle d'Utopie, oú est comprins le miroer des républicques du monde...
+La Fille a talent. : [estampe]
+La Gaule francoise
+La journée d'un Penitent contenant plusieurs poësies de dévotion,... Par H. Poirier
+La Menzogna, commedia...
+La Notice des manuscrits de la bibliothèque de l'église métropolitaine de Rouen
+La Pivoine mâle. : [estampe]
+La Rade De Toulon // Vu de la Campagne dans l'Ouest S. O. du Port. : [estampe]
+La Saincte Bible contenant le Viel & le Nouveau Testament
+La surprinse de la ville de Nismes en Languedoc par ceux de la religion le 15 de novembre 1569, en la nuict : [estampe]
+La vie de dom Armand-Jean Le Bouthillier de Rancé, abbé régulier et réformateur du monastere de La Trappe, de l'etroite observance de Cisteaux
+La vie et les aventures surprenantes de Robinson Crusoe, contenant son retour dans son isle, ses autres nouveaux voyages , & ses réflexions; traduit de l'Anglois. Nouv. ed. , avec fig....
+Lager der Sächsischen und Preussischen Armeen bey Pirna
+Le bac de Suresnes. Vue de la maison du Passeur au Baquet de Suresnes : [dessin]
+Le Carnaval de Lyon, comédie
+Le Comte d'Albert, drame en 2 actes, en prose et en vers, mis en musique... les paroles par M. Sedaine, la musique par M. Grétry. [Fontainebleau, 13 novembre 1786, et Paris, les Comédiens italiens, 8 février 1787.]
+Le devin du village : intermède... [Paris, Académie Royale de musique, 1er mars 1767]...
+Le Ferite felici, favola pastorale, di Angelo Filareti,...
+Le Grant Voyage de Jherusalem divise en deux parties,
+Le Livre du Duel et combat singulier, faict par le Seigneur André Alciat, Jurisconsulte tresexcellent, traduit de Latin en Françoys par I. D. L. F.
+Le ministre d'État : drame en 5 actes
+Le Pacifique en la pratique presente des sacremens de confession & communion pour ces Pasques ; contre les perturbateurs du repos en icelle. Ou le Baillon des arnoldistes, selon la methode de saint Augustin
+Le plus joli chansonnier francois en quatre parties
+Le Purgatoire des âmes catholiques... où est monstré le soin que nous devons avoir des morts... par Jacques d'Illaire, sieur de Jouyac...
+Le royaume de France et les conquêtes de Louis Le Grand...
+Le spectateur françois suivi du Cabinet ou Philosophe par M. de Marivaux, 3e édit.
+Le Trentième anniversaire d'une conférence de Saint-Vincent-de-Paul [par M. de Marolles]
+Le Vrai patriote Chabot : pas plus que moi ne connait l'égalité. Ami du peuple, [estampe]
+Les // Brouilleries // Opéra // En 3 Actes
+Les Aventures de Chaerée et de Callirrhoé (par Chariton d'Aphrodisias), traduites du grec par M. Fallet...
+Les corsaires de la Mer Méditerrannée [sic] réprimez par les armes victorieuses de sa Majesté ... : [estampe]
+Les Duchez de Mantoue et de la Mirandole, avec la plus grande partie des territoires de Virone, Brescia et de Crémone
+Les festes de Thalie, ballet, représenté devant le roi, au château de Bellevue, le 11 avril 1752
+Les intrigues secrètes du Duc de Savoye, avec une relation fidèle des mauvais traitements qu'en a reçu Mr de Phelippeaux, ambassadeur de France, contre le droit des gens.
+Les Muses grecques en traduction en vers français de... la troisième édition d'Anacréon, ect...
+Les Oeuvres du sieur de Saint-Amant...
+Les Principaux poincts de la foi de l'Église catholique défendus contre l'écrit adressé au Roi par les quatre ministres de Charenton, par... Messire Armand-Jean du Plessis de Richelieu,...
+Les ruses, finesses, et trahisons de son altesse de Savoye, tournez à sa perte & confusion, où est comprins l'heureux succez des armees de Sa Majesté en la conqueste entiere de la duchée de Savoye
+Les Trois déesses rivales, [opéra de Propiac].... Ouverture arrangée pour clavecin ou piano-forte par Mr Lachnitt
+Les Épîtres et toutes les Élégies amoureuses d'Ovide, traduites en vers françois [par l'abbé Jean Barrin]. Augmentées de quinze épîtres et cinq élégies, tant en vers qu'en prose
+Lettre au peuple de la ci-devant principauté de Monaco
+Lettre de Jacques Bonhomme paysant de Beauvoisis
+Lettre de M. le marquis de Beaupoil à M. de Bergasse
+Lettre de Sir Édouard, baronet, au révérend Dr William Samuel Brigs à l'occasion du privilège de saint Romain, dit "la Gargouille" ou "la Fierte", dont le chapitre de la cathédrale de Rouen a fait jouir un meurtrier et son complice, le 21 de mai... de cette année
+Lettre du Roy, escrite à monseigneur le cardinal de Noailles, archevêque de Paris. Pour faire demander à Dieu par des prieres publiques l'heureux succés des conferences de la paix.
+Lettre VII. La Christiade ou le Paradis reconquis, pour servir de suite au Paradis perdu de Milton
+Lettres d'un François pour la pre-seance du roy de France contre le roy d'Espagne
+Lettres flamandes a un ami françois sur les différens du monarque de France avec ses parlemens.
+Lettres patentes du Roy, pour les immunitez, franchises & exemptions des ecclesiastiques seculiers & reguliers de ce royaume
+Lettres patentes sur les décrets de l'Assemblée nationale concernant les dettes du clergé, les assignats et les revenus des domaines nationaux
+Lettres patentes... portant règlement pour la sénéchaussée de Lyon... Registrées en Parlement le 5 mai [1772]...
+Lettres à M. Franklin sur la marine, et particulièrement sur la possibilité de rendre Paris port
+Liber de Cena Domini Joannis Antonii Pandosii,... - "A la fin" : Impressum Romae per A. Blodum de Asula in Campo Florae, in aedibus D. J. B. de Maximis, anno... M.D.XXXIIII, die primo mensis junii
+Libourne
+Liste des noms des ci-devant nobles, nobles de race, robins, financiers, intrigans, & de tous les aspirans à la noblesse, ou escrocs d'icelle ; avec des notes sur leurs familles.
+Logica juridica, hoc est Regulae, praecepta et modus argumentandi per inductiones et interpretationes legum... collecta a Martino Schickhardo... Item duo commentarioli, quorum unus est de principiis juris, alter ad fragmenta LL. XII. tabb...
+Love for love, a comedy...
+Luz, y norte musical para caminar por las Cifras de la Guitarre Española... por D. Lucas Ruiz de Ribayaz...
+M. Le Mercier : conseiller du Roi lieutenant criminel au présidial de Saintes. Né le 23 décembre 1754. Député de la sénéchaussée de Saintonge à l'Assemblée nationale de 1789, [estampe]
+M.¦r¦ le Mareschal / d'humiere, enuoye M.¦r¦ / le Marquis d'Uxelle auec / 3. Regimens, à la Uille de / Courtray, qui s'est renduë / le 5. Nouem(b)r(e) .1683. / et la Ci- - tadelle / le 7. a- - lObeis.¦ce¦ / de Louis / le grand : [estampe]
+Mandement de Messieurs les vicaires généraux de Mgr l'éminentissime cardinal de Retz, archevêque de Paris, pour les chrétiens-catholiques du Mont Liban. (12 mai 1659.)
+Mandement... pour faire chanter le "Te Deum"... en actions de grâces de la prise... de Bruges et d'Oudenarde. (Donné à Regennes.)
+Manuel de l'honnête homme ou maximes nécessaires en tous lieux et en tous temps
+Mare Poynaei
+Massacre occasionné au Mans, par le retour des députés
+Medonte, re di Epiro
+Memoires turcs, avec l'histoire galante de leur séjour en France
+Merveilles de l'autre monde, contenant les horribles tormens de l'Enfer, les admirables joyes de Paradis, avec le moyen d'éviter l'un et acquérir l'autre, divisé en trois livres, le tout recueilly des Écritures sainctes et docteurs de l'Église, par François Arnoux,...
+Mikou et Mezi
+Missale Sagiense
+Monnaie : Angleterre, Anne d'Angleterre, Penny, 1706
+Monnaie : France, François Ier, douzain aux salamandres et à la petite croix, 1er type
+Monnaie : Italie, Duché de Milan, Charles II, Philippe, 16[??], Milan
+monnaie : Lorraine, Duché de Lorraine, Charles III, florin d'argent, 1588
+monnaie : Royaume de France, Louis XIV, 2 deniers, 1699
+Monumentorum monasteriensium decuria prima, loca dioeceseos ab A et B inchoantia ordine alphabetico proposita, inscriptionibus et exegesi topographico-historica illustrans, auctore Jodoco Hermanno Nunning,...
+Moyens de cassation contre l'arrêt concernant la théologale de Beaune, au diocèse d'Autun, pour Pierre Durand, prêtre de ladite ville de Beaune,... (contre le sieur Germain
+Méditations sur les mystères de la foy
+Mémoire historique sur la fievre catarrhale, bilieuse, &c. qui a regné épidémiquement à la Forêt-sur-Saivre & les environs, en mars, avril & mai 1784
+Mémoire pour Denis Bannelier,... contre les habitants du village d'Auby en Artois, rébellionnaires à des arrêts de la cour...
+Mémoire pour la marquise de Gouy, en réponse à celui du marquis de Gouy,
+Mémoire pour les abbé et religieux de l'abbaye de Beaulieu en Argonne,... contre Canot et compagnie, adjudicataires des bois de ladite abbaye.
+Mémoire pour Louis Chenedé, sieur du Plessis, fermier des droits d'entrées sur les vins, cidres et autres boissons entrant dans la ville de Rennes,... contre les... directeurs de l'hôpital général de la même ville...
+Mémoire pour Me Simon-Claude Joyant, curé de Sermaise,... contre Me Gouliard,... chapelain de Noyon,... et contre Me Benoît, curé de Libermont...
+Mémoire pour Pierre Alberg,... contre Jacobé La Roche...
+Mémoire signifié pour frère Jacques-Nicolas Le Cornu de Tellières,... prieur-curé de Saint-Langis,... contre messire Nicolas-François-Roger Deshayes,... prétendant droit au même prieuré...
+Mémoire signifié pour messire François Sevin, prieur commendataire du prieuré de l'Enfourchure, intimé et défendeur, contre messire Marc-Antoine Boisset de Boislamdert, prieur commendataire du prieuré de Joigny, appelant et demandeur.
+Mémoire sur la nécessité de transférer et reconstruire l'Hôtel-Dieu de Paris
+Mémoires de la minorité de Louis XIV, corrigés sur trois copies différentes, et augmentés de plusieurs choses fort considérables qui manquent dans les autres éditions, avec une préface nouvelle qui sert d'indice et de sommaire [par La Rochefoucauld]
+Mémoires à MM. les mareschaux de France pour les humbles remonstrances qu'ils ont arresté en leur Assemblée de faire au Roy contre les entreprises du colonel général de l'infanterie françoise et de son prevost...
+Natalis Lastesii,... Gratulationes. Accedit epistola de musaeo Philippi Farsetii
+Nicodème dans la lune ou la Révolution pacifique, folie en prose et en trois actes... telle qu'elle a été jouée au théâtre de la Cité le... 31 décembre 1796... Troisième édition
+Noels nouveaux, composez pour ceste presente annee
+Notizie della zecca e delle monete di Brescia, dissertazione di un cittadino Bresciano, con una picciola latina cronica della stessa citta nel fine [da Carlo Doneda]
+Nouveaux mémoires des missions de la Compagnie de Jésus, dans le Levant. Tome IV
+Nouvelles idées sur la formation des fossiles
+Novus apparatus Virgilii poeticus, synonymorum, epithetorum et phrasium seu elegantiarum poeticarum thesaurum... complectens, opus tum ex Virgilio caeterisque poetis antiquis, tum ex aliis, Gallis, Batavis, Scotis, Italis, etc., tum etiam ex collectionibus R. P. Laurentii Le Brun,... concinnatum...
+Observation de la digamie
+Observations rapides des propriétaires des maisons de Versailles en réponse a l'écrit qui a pour titre : "Précis en faveur des locataires de la ville de Versailles, relativement à la demande en résiliation ou en diminution de bail qu'ils ont formée contre leurs propriétaires"
+Octavii Ferrari Prolusiones et epistolae. Accesserunt formulae ad petenda doctoris insignia
+Oeuvres de M. de Montesquieu. Tome I [-IV]
+Officiolum recitandum pro devotione per novem dies Nativitatem. Domini Nostri Jesu Christi immediate praecedentes
+Opera omnia Pauli comitis in aureo Potok, Pilavitae Potocki
+Opinion de M. Treilhard sur le rapport du Comité des finances, du 18 décembre 1789, au sujet de la caisse d'escompte, et motion sur l'aliénation de quelques portions de possessions
+Oraison funebre prononcee en l'eglise Cathedrale de S. Croix d'Orleans aux obseques et derniers honneurs Du Tres-Auguste,... Henry le Grand... En la presence de... Messire Gabriel de l'Aubespine, Euesque d'Orleans, et Conseiller du Roy... et de tous les Corps de la Ville y assemblez par luy à cest effect, le Vendredy 18. Iuin 1610
+Oratio ab ampliminus rectore M. Joanne-Gabriele Petit Demontempuys,... habita in comitiis generalibus Universitatis apud maturinenses, die 22 mensis junii anni 1716, cum conclusionibus Universitatis, Sacrae theologiae Facultatis, et praeclarae Facultatis artium, ad hanc orationem pertinentibus. Adjuncta est gallica verno
+Oratorium religiosorum, auctore Rmo D. Antonio de Guevara,... interprete ex variis versionibus et apographo hispanico D. Joanne Du Bois,...
+Ordonnance concernant la distraction des matériaux, servans à la construction des bâtimens
+Ordonnance de Monseigneur l'Eminentissime cardinal de Janson. Eveque-comte de Beauvais. Pour la publication de la constitution de Notre Trés-Saint Pere le Pape Clement XI. du 16. de Juillet 1705. Portant confirmation & renovation des constitutions des Papes Innocent X. & Alexandre VII. publiées contre l'heresie Jansenienne, avec quelques nouvelles declarations pour faire observer, comme il faut, ces mêmes constitutions. [1er Février 1706.]
+Ordonnance de police, qui fait défenses à toutes sortes de personnes d'entrer dans les bleds pour y cueillir des fleurs appellées barbeaux ; et aux bouquetières d'en vendre ni débiter, à peine de cinquante livres d'amende
+Ordonnance du roi, pour mettre le régiment des Volontaires de Schomberg, sous le titre de régiment de dragons de Schomberg, & l'augmenter de deux compagnies
+Ordonnance et Placcart des Archiducqz noz Princes souverains, contenant les especes de monnoyes d'or et d'argent, que doresenauant pourront seullement auoir cours es pays de leur obeyssance
+Ordonnance... portant mandement au sieur de Nouveau, surintendant général des postes et relais de France, de faire aller et venir de Paris à Bruxelles, Anvers et Hollande, les couriers ordinaires françois et flamands, ainsi qu'ils avoient accoustumé avant la rupture entre les deux Couronnes ; comme aussi les courriers allans et venans d'Espagne
+Ordonnance... pour suspendre pendant trois ans l'exécution de celle du 29 aoust 1699, concernant les congez d'ancienneté...
+Orgel historie
+Ouverture de Nina [pour harpe]
+Pai an jing qi : juan 8-13
+Par les Auteurs de l'Atlas National
+Pars Vederoviae plurimas ditiones princ. et com. Nassovicor. imprimis vero regionem Schwalbacensem acidulis claram exhibens
+Parties séparées de l'Infante de Zamora opéra-comique en 3 actes, parodié sous la musique de la Frascatana du célèbre Sgr Paisiello... par M. Framery...
+Pax nil amplius de interpretationis philosophi interpretatione Periermenias sua lingua vocatae quid sit sonus, sit ne soni finis intrinsecus pax quaestio est... [Bonaventura Pace de Rusciano authore]
+Petit glossaire, ou Manuel instructif pour faciliter l'intelligence de quelques termes de la coutume de Bretagne, contenant leur définition exacte, leurs significations et étymologies
+Petrus Habert Episc. Et Cornes Cadvrc : [estampe]
+Philostratou eis ton Apollōniou tou Tyaneōs bion biblia oktō. Eusebiou Kaisareias tou Pamphilou, antirrhētikos pros ta Hierokleous, Apollōnion ton Tyanea tō sōtēri Christō paraballontos. Philostrati de Vita Apollonii Tyanei libri octo. lidem libri latini interprete Alemano Rinuccino Florentino. Eusebius contra Hieroclem qui Tyaneum Christo conferre conatus fuerit. Idem latinus interprete Zenobio Acciolo Florentino ordinis praedicatorum
+Pisʹmo o polʹzě stekla kʺ dějstvitelʹnomu eâ Imperatorskogo Veličestva kammergeru i ordenovʺ svâtogo Aleksandra i svâtyâ Anny Kavaleru ego prevoshoditelʹstvu Ivanu Ivanoviču Šuvalovu
+Plaise à Monsieur ... conseiller du roi en sa cour de parlement, protéger le bon droit pour Mathurin de Gouesnel, bourgeois de Paris, contre la calomnieuse accusation contre lui intentée par ses ennemis, sous le nom de messieurs les prince de Condé et duc d'Enguyen.
+Plan de la Bible latine distribuée en forme de bréviaire... (par Remi Carré)
+Plan de la ville et environs de Pondichery, levé lors du siège de cette ville fait par les Anglais en 1778
+Plan du Chasteau de Viviers en Lorraine, pris et razé par Mons. de l'Hospital, l'an 16.. .
+Plan of Jaffrabat on the coast of Guzarat Lat. 20° 51' N.
+Plusieurs odes de la Passion, de la mort et de la résurrection de N. Seigneur J. Christ, extraites de l'Escriture saincte, des hymnes "Stabat Mater dolorosa, Vexilla regis prodeunt" et autres...
+Pompe festive celebrate dalla... città di Messina, nell' anno 1659, per la solennità della... lettera scrittale dalla suprema imperatrice degli angeli, Maria. Fedelissima descrizione composta... dal... P. Domenico Argananzio,...
+Pot pourri arrangé pour quatre clarinettes en si, deux cors et deux bassons...
+Prafecturae saxonicae Wurcensis, Eilenburgensis, Dubensis geographica accuratione...
+Première carte de la Judée ou Terre Sainte divisée en ses douze tribus
+Principes opposés au système financiel, contenu au discours prononcé par M. Necker à l'ouverture des Etats-généraux, le 5 mai 1789
+Proclamation de l'Assemblée nationale, décrétée le 1er septembre 1790
+Profil du principal bâtiment vu en dedans de la cour : [estampe]
+Prolusio qua ad audiendas oratiunculas VI pro barbaris philosophis et contra eosdem in schola Thomana... invitat rector Jo. Augustus Ernesti
+Proverbia regum sapientissimi Salomonis, cum cura enucleata a Martino Geiero. Editio quarta...
+Précis pour le sieur Veron, intimé, servant de réponse au second mémoire de la demoiselle Pollard, appelante
+Psiché. Cantatille nouvelle, avec accompagnem.t de violons et flûtes. Mise en musique par Mr Lemaire...
+Q. D. B. V. Exercitatio moralis de Davide furorem simulante, quam auspiciis serenissimi principis ac domini, dn. Friderici Augusti
+Quadrature du cercle, ou Manière de trouver un quarré égal au cercle donné, et au contraire un cercle égal au quarré, proposé avec la raison de la circonférence au diamètre, par Simon Du Chesne,...
+Quatrième livre de sonates à violon seul avec la basse continue.... Gravées par Mme Leclair.... Oeuvre IXe...
+Québec, ville de l'Amérique septentrionale.. . Elle fut assiégée par les Anglois... l'an 1670, depuis le 16e octobre jusqu'à 22 du même mois... H. v. Leon fecit
+Ragusa
+Rapport sull' Atto di navigazione
+Recreations with the Muses, by William, earle of Sterline. (I. Croesus ; Darius ; the Alexandraean ; Julius Caesar. II. Doomsday ; Jonathan.)
+Recueil de plusieurs pièces concernantes les droits du prieur de Sorbonne
+Recueil général de tous les bénéfices et commanderies de France et de ses dépendances, par ordre alphabétique ; avec leurs noms latins, français, leurs revenus, leurs qualités, leurs diocèses, et le lieu où ils sont situés, ceux qui possèdent les archevêchés et évêchés, leur éloignement de Paris, et combien les bulles et celles des abbayes sont payées en cour de Rome
+Reglement wornach Wir Christian der Sechste, König zu Dännemarck, wollen dasz bey Unserer Regimentern Cavallerie, für Unter-Officiers und Gemeinen, die Gage im Militair-Reglement ein geführet, auch Ober- und Unter-Mundirung angeschaffet werden soll
+Relation de ce qui s'est passé... aux missions... les années 1669 et 1670...
+Religion civile proposée aux républiques pour lien des gouvernemens représentatifs
+Renati Choppini,... Monasticon, seu de Jure coenobitarum libri duo. 2a editio
+Requête des curés d'Amiens, présentée à monseigneur leur évêque le 5 juillet 1658, contre un livre intitulé : "Apologie pour les casuistes". Avec le Factum qu'ils lui ont aussi présenté le 27 du même mois, et les extraits des écrits dictés dans le Collége d'Amiens par trois Jésuites professeurs des cas de conscience, contenant les mêmes ou semblables erreurs que l'"Apologie"
+Respublica Hollandiae et urbes [Hugonis Grotii de Antiquitate reipublicae batavicae liber singularis. Pauli Merulae de Statu reipublicae batavicae diatriba. Decretum ordinum Hollandiae et West-Frisiae de antiquo jure reipublicae batavicae, nunc primum ex vernaculo latine redditum. Lud. Guiciardini Hollandiae Selandiaeque descriptio, ex tertia ac postrema auctoris recognitione italica latinitate donata : inserta sunt elegantissima Casparis Barlaei urbium praecipuarum encomia. Hollandiae Selandiaeque principes desumpti ex Batavia illustrata P. Scriverii. Omnia correctiora ex secundis curis Scriveri]
+Rime di Giuseppe Valentini...
+Romance de Léon ou le Chateau de Montenero..., arrangé pour la harpe par F. Laurent
+Rzeczy kopalnych, osobliwie zdatnieyszych szukanie, poznanie i zazycie... przez X. Krzysztofa Kluka,...
+Règlements et ordonnances concernant l'exercice de la charge de commissaire au grand bureau des pauvres... de Paris
+Réflexions sur la lumière, ou Conjectures sur la part qu'elle a au mouvement des corps célestes, par M. Linguet,...
+Réponse au Memoire sur le bref contre la traduction du Nouveau Testament imprimé à Mons
+Réponse véritable de Mademoiselle [Anne-Marie-Louise d'Orléans, duchesse de Montpensier] à la lettre supposée de l'archiduc Léopold
+S. Hieronymi locus insignis, ab illustrissimo DD. Laelio Ruino episcopo Balneoregiensi, perpensus & emendatus : Cap. I. in Ezechielem.
+Saillies d'esprit, ou choix curieux de traits utiles et agréables pour la conversation etc... [par Gayot de Pitaval]
+Sancti Thomae Aquinatis Summae theologicae Compendium. Authore P. Petro Alagona theologo Societatis Jesu. Cum gemino indice quaestionum ac rerum notabilium.
+Schiedam. (Boxhornii theatrum, 1632)
+Second mémoire pour la demoiselle de la Ferté, intimée, contre le marquis de la Ferté (Philippe-Louis Thibauld de la Carte), appelant.
+Sei Canzoncine con accompagnamento di piano-forte, o chitarra...
+Sentence (de police) qui condamne à l'amende les nommez Lemaire et Le Duc, meneurs de nourrices, pour avoir contrevenu à la déclaration du roy, du 1er mars 1727, concernant les recommandaresses...
+Sentence (du Bureau de la ville) qui ordonne la confiscation d'une voie de bois sur Antoine Duval, marchand de bois, pour l'avoir laissé sortir de son chantier à 6 h 1/2 du matin
+Sentence de police qui condamne la demoiselle Lefranc en 1000 livres d'amende, pour avoir tenu chez elle une assemblée de jeu
+Sentence du lieutenant civil, criminel et de police de Gisors séant à Andely qui déclare le nommé Damiens convaincu d'avoir livré à Pierre Hazard boulanger 10 setiers de blé vicié et mauvais, et le condamne en 500 l. de dommages et intérêts envers ledit Hazard, en 1000 l. d'amende envers le domaine, et en tous les frais de justice
+Seriae ad Deum conversionis & ardentis invocationis suscitabulum Christo auspice jussu & authoritate illustrissimi et celsissimi principis ac domini, domini Friderici haeredis Norvagiae, ducis Schlesv. & Holsat. Storm. & Dithmars. comitis in Old. & Delmenhorst. consilio optimo, piissimo in ducatibus jam dictis ad dies [mercurii jovis] & [veneris] ante dominicam Rogationum proximos, hoc est, 17. 18. 19. maii promulgandum
+Sermons sur tous les jours de quaresme, distinguez en discours théologiques et moraux, preschez en langue italienne... par le R. P. Dom Marcello Ferdinandi de Bari, abbé d'Olivet, et mis en françois par le F. A. S. [Siméon],... 2e édition reveue...
+Signaux de jour, de nuit et de brume, à l'ancre et à la voile... Imprimés par ordre du roi, sous le ministère de M. le Maréchal de Castries... (par E.-J. Burgues de Missiessy.)
+Six Duo à deux mandolines qu'on peut exécuter avec deux violons ou deux pardessus de viole... Oeuvre IIIe. Gravé par Mme Oger...
+Siège du Château des Tuileries par les braves sans culottes et les intrépides marsellois le 10 aoust 1792 : [estampe]
+Sommaire pour le sieur Belot, baillif d'épée, garde et concierge du Palais, contre les présidens et trésoriers de France de la généralité de Paris
+Source miraculeuse et féconde des grâces ouverte et présentée à tous ceux qui sont assaillis des maux de cette vie, qui jaillit aux pieds des autels du glorieux S. Antoine de Padoue. [Par le P. Louis de Boulienne.]
+Squelette du Lynx : [estampe]
+Statuts et règlements des Maîtres cloutiers et lormiers de la ville, fauxbourgs et banlieues de La Rochelle
+Suda et Paleo
+Summula confessionis ♦
+Sussex described and divided into rapes with the situation of Chichester the cheife citie thereof...
+Séparation de Louis XVI d'avec sa famille... : [estampe]
+Tables nouvelles et de nouvelle invention pour tous calculs... Composé par le sieur J. de Beaulieu,...
+Tarif général des droits des sorties et entrées du royaume et des provinces èsquelles les bureaux ne sont établis, ordonnés être levés sur toutes les marchandises et denrées, arrêté au conseil royal...
+Territorii s. rom. imp. lib. civitatis Norimbergensis nova et accurata delineatio geographica et topographica
+The booke of common prayer and administration of the Sacrements, and other Rites and Ceremonies of the Church of England
+The Flight of Flora, a tale. [Signé : Saint-Leu.]
+The Life of... James Usher, late lord archbishop of Armagh,... collected and written by Richard Parr,...
+The Projectors, a comedy...
+The Workes...
+Theologiae moralis R. P. Anacleti Reiffenstuel,... Recentissima editio juri canonico ejusdem authoris potissimum conformata et plurihus novissimis additionibus, praesertim quoad tractatus de legibus, jure, etc.,... nec non compendiosa propositionum damnatarum declaratione illustrata,... authore Fr. Massaeo Kresslinger,...
+Theses sacrae in Actus apostolorum quas, praeside F. Henrico Bukentop,... defendent F. Ludovicus Janssens, F. Petrus Claessens,... die 21. julii...
+Théonis, ou Le toucher, pastorale-héroïque, en un acte
+Token : Etats-Unis, Washington, 1/2 dollar, Philadelphie, 1792
+Tractatus de arbitris et compromissis Lanfranci de Oriano. Additis... apostillis... D. Benedicti de Vadis de Foro Sempronii de novo insertis...
+Traduction de la lettre écrite à S. Ex. M. le prince de Chelamar ambassadeur du Roi catholique auprès du Roi très chrétien, par M. le marquis Grimaldo,... (9 août 1717)
+Traité d'horlogerie pour les montres et les pendules... Traduit de l'anglois de M. Derham,...
+Traité des hernies, contenant une ample déclaration de toutes leurs espèces et autres excellentes parties de la chirurgie, assavoir de la pierre, des cataractes des yeux et autres maladies,... par Pierre Franco,...
+Tratado de la oraciòn y meditaciòn
+Trihorarium annulare a Joanne Martlingen,... demonstratum ac propugnatum in augusta Academia trevirensi, die 21 augusti anni 1621, praeside M. Jacobo Cruickelio,...
+Troisième Lettre de monseigneur l'évêque de Montpellier (Colbert de Croissy) à monseigneur l'évêque de Soissons, au sujet de la VIIe Lettre pastorale de ce prélat, dans laquelle il justifie ce qu'il avait avancé dans sa Lettre pastorale adressée aux fidèles de son diocèse à l'occasion du miracle opéré à Paris dans la paroisse de Sainte-Marguerite. (5 janvier 1727.)
+Télémaque étant dans les Champs Élisées. : [estampe]
+Uranographiae, seu globi caelestis mappa sex chartis caelestibus J. G. Pardies, Societatis Jesu presbiteri ad mappae-mundi... canones revocata
+Vaudeville du bal bourgeois opera comique
+Veromandui. Le Vermandois. Evesché de Noyon où sont les comté et pairrie de Noyon, balliages et prévostés de Noyon, Thaury, St-Quentin, Péronne, Roye, etc., les eslections de Noyon, St Quentin, Péronne, etc.,...
+Veüe de la ville de Langres, Evesché Duché et Pairrie de France, Situé en Champagne dessiné du Costé de l'Occident // 1700
+Vierte Fortzetzung des Verzeichniss aller historisch-juristich-medicinisch-philosophisch-poetisch-prosaisch-und theologischen neuen Bücher, so in der von Johann Godschalk Langen fortgesetzten Pützischen Buchhandlung unter Fetten Hennen im Rosenkranz um beygesetzte Preisen zu haben sind.
+Vita del beato Gio. Batista Tolomei da Siena, dell' ordine de' Predicatori, scritta dal M. R. P. F. Gregorio Lombardelli,...
+Vive la danse et le pas de trois : air : Du serin qui te fait envie. Sans la musique et sans la danse Tout va de travers ici bas. Oui tout dépend de la cadence Pour régir même les états,..., [estampe]
+Voyage du sieur Paul Lucas fait en 1714... dans la Turquie, l'Asie, Sourie, Palestine, Haute et Basse Égypte, etc...
+Vue de la ville electorale de Pirna et de la forteresse de Sonnestein, di côté du Nord, située sur l'Elbe en Saxe, avec ses environs appartenante à sa majesté le Roy de Pologne
+Vûe de l'Arion du côté des Bains : [estampe]
+Wreedheid en grootmoedigheid ["Barbarey und Grösse"], treurspel. Naar het Hoogduitsch van F. W. Ziegler
+Yuan shi : juan 186-210
+Éclaircissement des véritables quatrains de maistre Michel Nostradamus,... [par Étienne Jaubert.]
+Édict... en faveur de plusieurs subjets de S. M., officiers de judicature, police et finances, comptables, fermiers, traitans et autres qui n'ont payé les taxes ou qui ont esté obmis aux roolles faits en conséquence des édicts portans descharge et extinction de la Chambre de Justice, donnez ès années 1625, 1635, 1643, 1645, 1652 et 1655. Vérifié en la Grande Chancellerie de France, le 25 février 1658
+Édit portant création en titre d'office formé de la charge de payeur des bâtimens de Fontainebleau, Boullogne-lez-Paris, Villers-Costeretz, S.-Germain-en-Laye et autres édifices du Roy, à vingt lieues à la ronde autour de Paris, en faveur de Nicolas Picart, qui faisait ledit payement par commission
+Édit... portant création de 2 offices d'auditeurs-examinateurs des comptes pour chaque corps de marchands et pour chaque communauté d'arts et mestiers, avec attribution du droit royal appartenant à S. M. sur chaque aspirant, etc. Registré en Parlement le 5 avril... [1694.]
+Édit... portant restablissement et création des offices de trésoriers de France vaccans aux parties casuelles. Vérifié en la Chambre des Comptes, le 13 mars... [1673.]
+Édit... portant établissement des maires dans les villes de la province de Bretagne où il n'en a point encore esté établi, en éxécution de l'édit ... d'aoust 1692 ; et de création des offices des syndics perpétuels dans chacune des paroisses de ladite province... Registré en Parlement à Rennes le 22 septembre 1702
+Éloge de René Duguay-Trouin,... Discours qui a concouru pour le prix de l'Académie française en 1761
+État des dépenses publiques pour l'année 1791. Publié au nom du comité des finances
+♦ Actionum in Verrem divinatio

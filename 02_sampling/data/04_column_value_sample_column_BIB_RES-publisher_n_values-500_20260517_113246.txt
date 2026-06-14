@@ -1,0 +1,510 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113246
+Input dataset: 01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+Column requested: publisher
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 129011
+Sampled values count: 500
+
+  presso Francesco Bonsignori
+(Leonhard Pachel)
+[A. Estienne]
+[appresso M. Prault]
+[Baptiste Bourguet. - circa 1495 ?]
+[Cailleux]
+[chez le Chevalier de Beaurain]
+[da' torchj di G. Baskerville, per P. e G. Molini]
+[E. Couterot]
+[Fournier le jeune et fils]
+[Gilles II Blaizot ?]
+[Henry Sara, ... et Jean Paslé,... et... les auteurs au Cinge d'Or]
+[impr. des Frères Calembourdiers]
+[In der Homaenisch. Officin.]
+[J. Van der Bruggen]
+[Jean Dupuis]
+[Johannes-Baptista Delespine]
+[Leonhard Achates]
+[Michel Topié]. - [circa 1496]
+[Ottens]
+[Philipp Ulhart]
+[R. Leers]
+[Sibié]
+[Tugerlo en P. Honttuin]
+[Wendelinus de Spira]
+A la porte de l'Académie royale de Musique
+A. Benatius
+A. Cottinet
+A. du Rosne
+A. Gemperlin
+A. Le Roy et la veufve R. Ballard
+A. Pellecchia
+A. Troyel
+A.-M. Lottin aîné
+ad instanza di P. Totti
+Alain Lotrian et Denis Janot
+Ambroise Girault. - Jean Foucher. - Olivier Mallard. - Jacques Regnault
+Annet Brière. - Étienne Groulleau. - Jean Longis
+Antoine, Veuve de
+appresso A. de' Rossi
+appresso Duchesne
+appresso G. de'Rossi
+appresso gl'heredi di Perin Libraro e T. Brunelli
+appresso M. Cargnioni
+appresso V. Timan
+apud A. Cratandrum et J. Bebelium
+apud A. Musnier
+apud Ae. Alliot
+apud B. Coral
+apud Bochetos
+apud C. Haak et S. et J. Luchtmans
+apud Carolum de Vos, Andream de Vos
+apud D. Prince
+apud F. Bielckium
+apud F. Rubeum
+apud G. Antonium
+apud G. Kempensem
+apud Galeotum a Prato, impressatum per magistrum Julium Delfinum de Piemontum
+apud H. Brummerum
+apud H. Wetsteinium
+apud haeredes M. Bevilaquae
+apud Hoeschium
+Apud Isaacum Severinum
+apud J. Balduinum impensis Elzevirii et H. Laurencii
+apud J. Colster
+apud J. F. Mairesse et J. Radix
+apud J. Hernault
+apud J. Luchtmans
+apud J. Pillchotte
+apud J. Valderum
+apud Jacobum Giuneti
+apud Joannem Patrasson
+apud L. Grignanum
+apud M. Dalium (typis Vae L. Rasfeldii)
+apud Matthaeum Becker
+apud Nicolaum Thebaldinum
+apud P. F. Didot juniorem
+apud P. Santandreanum
+Apud Philippum Casimirum Müllerum
+apud S. Cramoisy, typographum
+apud Samuelem Luchtmans, et filios, et Eliam Luzac, jun.
+apud T. Ohrlingium
+apud Vam F. Muguet
+apud Viduam F. Olyvier
+apud Vuam H. a Sande
+Arksée et Merkus. - Jombert
+Au bureau du Journal de musique
+Aug
+aux dépens de la Société
+B. Comino
+B. Mathey
+Bailleux. - Castaud. - Gaudardt
+Basan
+bei Schumann
+Bertier
+bey F. Bachmann und J. H. Gundermann
+bey J. J. Haid
+bey Wilhelm Korn
+Bold Truth
+Brenani
+Butard
+by de wed. van J. Cost
+by Iohannes van Keulen
+by Laurie & Whittle
+bÿ Iacobus Robijn ...
+C. Clouzier
+C. F. Magrii
+C. Hérissant
+C. Morellum
+C. Sweynheym et A. Pannartz impresserunt
+C.-S. Lamort. - Durand neveu
+Catalani
+Charles Caron Hubault
+chez A. Laurens
+chez Barrois l'aîné
+Chez Castor Belle, Imprimeur du Roi, & de Mgneur. L'Evêque
+chez de La Gardette graveur
+chez Estienne Richer
+chez Froullé
+chez Gérard Jollain rue Saint Jacques à la Ville de Cologne
+Chez Iaillot
+chez J. P. Van Ghelen
+chez Jean Covens & Corn. Mortier
+chez l'auteur ; et chez Desnos
+chez l'autheur, le Sr de Beaulieu
+chez la veuve Cl. Thiboust, et. - P. Esclassan
+Chez Lamy, Libr.
+chez le Sr Iaillot, geographe du Roy
+Chez les Heritiers de feu Mr le Docteur Homann
+chez M. E. David. - et A. de Heuqueville
+chez Mlle Duval
+Chez Nicolas Gay
+chez Panckouke. - chez Crepy
+Chez R. & J. Ottens
+chez T'Serstevens
+Christian de Mechel
+chés Mr De la Chevardière
+Claudii Duchetti formis
+Cordier
+cura et sumptibus auctoris
+D. Ciuffetti
+D. Langlois
+da Gio. Iacomo Rossi
+dans son château
+de l'imp. d'Osmont et Delaguette
+de l'imp. de la veuve le Febvre
+de l'impr. de Julian Philippes
+de l'imprimerie de J. Carez. - chez Cellot
+de l'imprimerie du Cercle social, rue du Théâtre françois, n° 4
+de weduwe ende erfghenamen van J. Stelsius
+Denis Janot. - Alain Lotrian
+Det Kongelige Söekort Archiv
+door Willem Jansz Wijngaert, boeck-verkooper inde Gasthuys-steech/aen't Stadt-Huys
+ductu et impensa Johannis Colonie Agripinensis
+Dénos
+e typ. S. Prevosteau, haer. G. Morelii
+E. Couterot
+E. Martini
+edentibus Homan. Heredibus
+Emprenta real
+en la emprenta real
+Enguilbert I de Marnef. - François Regnault
+Eugène Henry Friex
+ex off. Boutesteiniana
+ex off. J. Windet
+ex off. W. Ederi
+ex officina Ae. Diest
+ex officina D. Paulli
+ex officina Grossiana
+ex officina J. C. Nebe
+Ex Officina Joannis Janssonii]
+ex officina Nicolai Visscher
+ex officina R. Calderii
+ex officina typ. W. Ederi
+ex officina zunneriana
+ex typ. Ae. Longhi
+ex typ. H. Verdussen
+ex typ. M. Davidis
+ex typ. Societatis
+ex typogr. B. Javarina
+ex typogr. Raymundiana
+ex typographia Bibliothecae Ambrosianae, apud J. Marellum
+ex typographia L. Ferrarii
+ex typographia Societatis bipontinae
+exc. B. Lippius
+excud. H. Keyser
+excudebant Balfour et Smellie
+excudebat C. Froschauer,)
+excudebat H. Hall
+excudebat J. Meerbecius
+excudebat N. Bohm-Bargen
+excudebat V. Furmannus
+excusa ab Homannianis heredibus
+F-Léonard
+F. de Francischis
+F. Gleditsch
+F. Magni
+F. Sansoni
+Fabio et A. Zoppini fratelli
+for F. Egleffeild
+Francesco Moücke
+fratelli Rossi
+G Scotto
+G. Bassaglia
+G. Ciotti
+G. Desprez et. - P. Cavelier
+G. G. Tartini e S. Franchi
+G. Jounel
+G. Montani
+G. Rossi (G. Monti)
+G. Vaudecraine
+Gabon
+Gay frères
+gedruckt bey F. Hegern
+gedruckt bey M. Henckel
+gedruckt by Wve J. Geldorp
+gedruckt mit sternischen Schriften
+gedrukt voor het kunst-genootschap
+getruckt bey J. H. Clemens
+Gilles Corrozet. - Nicolas Du Chemin. - Jean Foucher
+Giovanni Sinibaldo
+Gosse & Néaulme
+Guiljel. Janssonius excudebat
+Guillaume Vatard
+H. Carsten
+H. Henngman
+H. Rhodes
+H.D. Symonds
+Heidegger und Rahn
+Heredi d'Homann
+Hommanianos Heredes
+Hôtel de Thou, rue des Poitevins
+I. Ibarra
+il Moücke
+imp. d'A. Mounin
+imp. de C. Michel
+imp. de F. Léonard
+Imp. de J. Bouillerot
+imp. de J.-J.-A. Taverne
+imp. de la veuve Moreau
+imp. de Ne Grou
+imp. de Paulus-Dumesnil
+imp. de Ve et M. G. Jouvenel
+imp. de Vve Bachot
+imp. G. Lamesle
+impensa M. Tramezini
+impensis Dyckii
+impensis haeredum H. Grosii junioris
+impensis J. H. Pott
+impensis L. Elzevierii
+impensis schönwetterianis
+impr. aux dépens de l'autheur
+Impr. de A. Bailleul
+impr. de Abraham Joseph
+Impr. de C. Bauduin
+impr. de C.-S. Lamort. - D. Mathieu
+impr. de D. Janot
+impr. de E. Thomas
+Impr. de Fiévée
+Impr. de Girouard
+impr. de J. Antunes
+impr. de J. Gonçalez
+impr. de J. Rouyer
+impr. de J.-J. le Boullenger
+impr. de L. Coignard
+Impr. de la rue Cassette
+impr. de la Vve d'H. Pech
+Impr. de Leseure
+Impr. de Marette
+impr. de N.-J.-B. Peterrinck-Cramé
+impr. de P. Mesnier
+impr. de Perrault
+impr. de Rouzeau-Montaut
+impr. de Valade fils aîné
+impr. de Vve Defay
+impr. de Vve Vivot
+impr. du "Patriote françois"
+impr. G. Jouvenel
+impr. Moller
+impr. Ph. N. Lottin
+impr. Vve Trasseux
+impressum apud C. Jacobum
+imprimebat M. Welack
+imprimeur du Guido de Monte Rochen, "Manipulus curatorum" (IGI 4593)]
+in aedibus academicis, excud. R. Foulis
+in aedibus viduae et haeredum J. Steelsii
+in der Grossischen Handlung
+in off. J. Rosae
+in officina J. F. Gleditsch
+in paltheniana
+in Verlegung S. Latomi
+Israel ex. Avec Privil. du Rou
+J. and A. Arch
+J. B. Widenmann
+J. Boulley
+J. Cailloue
+J. Cronberger
+J. de Manneville
+J. E. Dolz
+J. F. P. Stahl
+J. G. Schönwetter. - J. A. Cholin
+J. H. Blanck et Tschann
+J. J. and P. Knapton
+J. Kamesina
+J. Leistenschneider
+J. Mesnier
+J. Nourse and J. Murdoch
+J. Playfere
+J. Rossius
+J. t'Serstevens
+J. van Milot
+J. Weyssenburger
+J.-B. Elwe en D. M. Langeveld
+J.-Fr. Knapen
+J.-T. Hérissant. - P.-A. Le Prieur
+Jacques Bogard. - Jacques Gazeau. - Charlotte Guillard
+Jaques Desbordes
+Jean Bouds
+Jean Garnier
+Jean Meyssens
+Jehan Bienné
+Joannes de Jonvelle
+Johann Froben
+John Baskerville for J. and R. Tonson
+jouxte la copie imprimée à Lyon
+Kloss, Johann Herbord
+l'auteur, au dépôt de géographie
+l'auteur. - le Duc. - Melle Castagnery
+l'Imprimerie Royale
+L. D. Delatour et P. Simon
+L. Leconte
+L.-A. Sevestre. - N.-F. Le Breton. - P. Huet
+Lambert et Durand
+Le Clerc, Esprit
+Leclerc, etc.
+les héritiers Commelin
+li heredi P. Brea
+literis Bauhofii et Franckii
+literis I. Reumanni
+literis nov. typograph. academ.
+Litt. Marggrafianis
+Litteris i. A. Sigmundi
+litteris viduae Langenhemiae
+Louys Gaucher
+M. Bonnariq et C. Avignon
+M. G. Limpach
+M. Mairesse
+M. Tavernier excudit
+Mancini
+Martinus, Theodoricus [Dirk Martens]
+Mei shu zhu yun ju
+Michel Rodrigues
+Moetter
+Mussard. - Bailleux
+N. et P. Bonfons
+N. Polò
+na officina de A. Rodrigues Galhardo
+nella stamp. Albizziana
+nella Stampa di Giov. Batt. Mayr
+nella stamperia di N. Gavelli
+Nicolas Chesneau et Michel Sonnius
+Nicolini, Francesco
+O. Scotum
+Opus sumtu autoris deri incisum
+P. Bianchi
+P. de Croy
+P. Erialed
+P. Gueau
+P. Leber ?
+P. Nørwig
+P. Schenk ex.
+P.-D. Pierres
+Panckouck [sic]
+par D. Aubery
+par J. Béguin
+Par Jehan Dupre
+par M. Tavernier et à présent chez P. Mariette
+par René Baudry,...
+Payne & Cropley. - J. Walter
+per Adoro
+per C. F. Gagliardum
+per F. di Dino di Jacapo
+per G. Bortoli
+per G. Tomassini
+per gli heredi di D. Rubin
+per il Marescandoli
+per J. Sabatini
+per le stampe di S. Tommaso d'Aquino
+per N. Bryling. et B. Calybaeum
+per Pinzi
+per Victorem filiique Petri de Ravanis et sociorum [sic]
+Ph.-J. Dannbach
+Pierre Gaudoul. - Jean de Gourmont
+Pierre Viallanes
+por A. Marín
+por J. de La Cuesta, á costa de M. Martinez
+por N.-J. Villargordo y Alcaraz
+pour Jacques Androuet du Cerceau
+Prault père, Cavelier, Saugrain et Cellot
+presso C. Costantini
+presso gli heredi d'A. Salicato
+Prevost. - Desenne
+printed by E. Everingham
+printed by J. Reid
+printed by T. Harper for J. Waterson
+printed for and by the editor
+printed for J. Martyn and J. Allestry
+printed for T. Banks
+privilegered Bogtryckerie
+publish'd by Anth.y Molteno
+R. Allott
+R. Fitzsimons
+R. Rigaud
+rec. in offic. viduae A. Kobersteinii
+Reycends frères
+Roland Charpentier. - Galliot Ier Du Pré. - Jean Foucher. - Ambroise Girault. - Arnoul et Charles L'Angelier. - Maurice de La Porte. - Jean Macé. - Pierre Vidoue
+S. Briscoe and D. Dring
+S. Halbmayern
+S. Quinquet
+Samuel Fuller
+sans nom [Wolfgang Hopyl ?]. - Franz Birckmann
+Se Vend à Paris sur le quay Pelletier, a la pomme d'Or, au premier apartement
+Simon de Colines. - Adam Saulnier
+Sold by the proprietor John Rocque, next Door to the Duke of Grafton's Head, in Hide Parck Road
+stamp. dei Turrini
+stamp. di E. Pagliarini
+stamp. di N. Zopino e Vicentio Compagno
+stampa da L. d'Houry
+stamperia di P. Gadaldino
+SUHARAYA Ichibee et SUHARAYA Ihachi
+sumpt. haered. C. Bergeri
+sumpt. M. Birckneri
+sumptibus A. Hierati. - apud haeredes M. Nutii et J. Meursium)
+sumptibus C. Enoch
+Sumptibus et typis J. Hondii
+sumptibus H. Cardon
+sumptibus Hofmanni
+sumptibus J. de Witte
+sumptibus J. P. Richteri
+sumptibus L. Pegoli
+sumptibus P. Ravaud
+sumptibus T. W. E. Güth
+sumt. hered. F. Lanckisii
+sumtibus haered. Plenerianorum
+sumtibus P. Böckmanni
+sumtu T. Felginer
+T. Cadell and C. Dilly
+T. Lee
+Tagier
+Theodorus Galle excudit
+tipogr. M. Landiana
+tryckt uti Historiographi regni tryckerij
+typ. Bartschii
+typ. G. Plachi
+typ. J. P. Kückelhahnii
+typ. P. Koumans
+typ. W. Hoffmanni
+typis A. Zeideiri
+typis Bartholdi Reutheri
+Typis Caroli Allard
+typis E. Tijhoff
+typis et sumptibus H. Mullerii
+typis F. de Falco
+typis G. Ketelii
+typis H. Mainardi
+typis I. F. Pruscha
+typis J. Christiani Hendelii
+typis J. J. Adler
+typis J. Reumauni
+typis Joannis Francisci Le Roux
+typis L. J. Kaliwoda
+typis Massae
+Typis P. D. Schnorrii
+Typis Regiae Celsitudinis
+typis Schadewitzii
+typis variscianis
+Typis wechelianis, sumptibus C. Schleichii et P. de Zetler
+Ulrich Gering, Martin Crantz et Michæl Friburgerr
+V. Schönigk
+Vandenhoeck [ou] und Ruprecht
+Ve H. Pech
+venundantur ab Stephano Gueynard
+Veuve de Gabriel Quinet. - Charles Osmont
+Victor à Rabanis & socii excudebant
+Volcmar Timan
+Vve Bénard
+Vve de François Muguet
+Vve du Carroy
+Vve Guillaume. - Gandouin le jeune
+Vve Leseure et Claude Leseure
+Vve Rouy
+W. Bowyer, J. Nichols, C. Bathurst [and others]
+W. Morden
+wed. G. Scheybels
+Woodfall and Byfield
+Z. Cailloüé et J. Levi
+à l'impr. « A prix-fixe »
+παρὰ Ἀντωνίῳ τῷ Ἰουλιανῷ
+山崎金兵衛
+玉樹園
