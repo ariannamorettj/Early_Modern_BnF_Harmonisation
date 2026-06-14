@@ -1,0 +1,510 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113516
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+Column requested: actor_name
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 103377
+Sampled values count: 500
+
+"Abbaye de Clermont"@fr
+"Bretagne (Duché)"@fr
+"Compagnie d'Occident"@fr
+"Eglise catholique. Diocèse. Nancy"@fr
+"France. Bailliage. Ardres, Pas-de-Calais"@fr
+"France. Conseil des trois ordres de Bugey"@fr
+"France. Intendance de Lorraine-Barrois"@fr
+"Georg-August-Universität. Göttingen, Allemagne"@fr
+"Lorraine (Duché)"@fr
+"Paris. Section du Mail"@fr
+"Société des amis de la constitution. Carpentras, Vaucluse"@fr
+"Vézelise. Meurthe-et-Moselle"@fr
+"Église française réformée. Consistoire. Berlin"@fr
+A Person of distinction
+Aarsens de Sommerdyck
+Abbé de L Aubrussel
+Abbé Goy
+Abbé Taillard
+Abraham Jacquelot
+Acacio March de Velasco
+Adam Uhl
+Adriaan Van Loo
+Adrien Philippe Raoux
+Agostino Fantini
+Albert Cremers
+Albrecht Pfister
+Alessandro Scorza
+Alexander Van Blitterswijk
+Alexandre-Charles Besson
+Alfonso Ordoñez
+Alphonse Dufour
+Ambrosio de Peñalosa
+Andrea Arrivabene
+Andreas Birch
+Andreas Keller
+Andreas Synnerberg
+André Capiglia
+André Wechel
+Angelo Maria Ceneri
+Anne-Jeanne-Félicité Mérard de Saint-Just
+Anthon Albert Schottel
+Antoine Capinaud
+Antoine de Ville
+Antoine La Croix
+Antoine Rabany-Beauregard
+Antoine-Joseph Lemarchant de Gomicourt
+Anton Schweitzer
+Antonio Canestrini
+Antonio Espinosa de Los Monteros y Abadia
+Antonio Maria Lupi
+Antonio Santarelli
+Antonius Genevensius
+Aquilius Julius Cäsar
+Arnault Pasquet
+Ascanio Gesualdo
+Augusta Caterina Piccolomini Petra
+Augustin-Claude-Simon Legrand
+B  Brand
+Balthasar Alff
+Barbe Cochois
+Bartholome Santos de Risoba
+Bartolomeo Cavalieri
+Basilius Monner
+Benedict Wilhelm Munch
+Benjamin Rogers
+Bernard de La Monnoye
+Bernardino Feliciano
+Bernardus Caesius
+Bertrand de La Borderie
+Bonaventura Elzevier
+Burckhard Kurrer
+C.  Hoppach
+Caesare Rato
+Carl Anton Friedrich Reichsgraf von Hohenthal
+Carl Gottlieb Guttenberg
+Carl Wilhelm Weisbrod
+Carlo Guattani
+Carolus Bahrdt
+Carolus Schaaf
+Caspar Knittel
+Cecilio Fuoli
+Chang Liu
+Charles César, de Rochefort
+Charles Deschamps
+Charles Henrion
+Charles Musart
+Charles-Alexandre Vion
+Charles-Michel de L'Épée
+Chr Gottfr  Schütz
+Christian Carl Rolle
+Christian Gilbert de Spaignart
+Christian Ludwig Albrecht Patje
+Christian Wilhelm Schneider
+Christianus Schäfferus
+Christoph Friedrich Giebelhausen
+Christoph Riegel
+Christophe Tachon
+Christophorus Weissius
+Claude Antoine Littret
+Claude de Marne
+Claude Hubert Bazoche
+Claude Quentin La Chiche
+Claude-Gilles Lecamus
+Claudius Örnhiälm
+Comte de Vaublanc
+Conradus Keun
+Cornelis Rogge
+Cosimo Brunetti
+Cte de Rossi
+D  Hoges
+D. Ulastus
+Daniel Dusert
+Daniel Otto Kegel
+David Becher
+David Meise
+De Benesin
+de Favoral
+de La Grange
+De Marconville
+De Roquemont
+Demetrio Franco
+Didericus Fruytier
+Diego Rubin
+Dirk Evertszoon Van Bleiswyk
+Domenico Giacobazio
+Dominicus Beddevole
+Donato Rossetti
+E U  Cardozo
+Edmond Crosnier
+Edward Heynes
+Elia Cavriolo
+Emanuel de Meirelles
+Engelbertus Andreas Otto
+Erich Daniel Liebhaber
+Ernst Gottfried Fischer
+Etienne Godefroy
+Evangelista Fossa
+F G S  Guillemain de Talon
+Fabian Hehne
+Fedor Isakovitch Baïkov
+Ferdinando Davila
+Filippo Acciaiuoli
+Flaminio Scala
+Fr. Cas Tilemann
+Francesco Azopardi
+Francesco di Salustio Buonguglielmi
+Francesco Maria Galluzzi
+Francesco Roseti
+Francis Helouis
+Francisco de Herrera
+Francisco Mateu
+Franciscus Camusius
+Franciscus Paludanus
+Frans Van Mieris
+Franz Pubitschka
+François Blanchard
+François de Barry
+François de Ségusie
+François Granchier
+François Le Maistre
+François Pallu
+François Van Altena
+François-Joseph Böhm
+Frater Peregrinus
+Fridericus Christianus Muller
+Friedrich Christian Brüggeman
+Friedrich Leopold Rehburg
+Friedrich Wilhelm von Schütz
+Félix Mixelle
+G. D. M. de V
+Gabriel de Brioude
+Gabriel Pierre François Moisson-Devaux
+Gaetano Lemer
+Gaspar Placentinus
+Gasparo Visconti
+Georg Anton Volkmann
+Georg Friedrich Brander
+Georg Joachim Mark
+Georg Rudolf Widmann
+Georg. Henr Eisenmann
+George Moore
+Georges Margetts
+Georgius Franke
+Georguis Cragius
+Gerhard Möller
+Gervasius Petrus Franciscus Riboult-Despins
+Giacomo Lauro
+Giammaria Sale
+Giles Fletcher
+Gio Francesco Davico
+Gioseppe Perdicaro
+Giovanni Antonio Carpani
+Giovanni Battista Cenami
+Giovanni Battista Poggio
+Giovanni Colle
+Giovanni Francesco Fossati
+Giovanni Maria Capalli
+Giovanni Pietro Paolo Capello
+Girolamo Badesi
+Girolamo Paponi
+Giulio Cesare Guidetti en religion le P  Onorio dell Assunta
+Giuseppe Bianchi
+Giuseppe Maria Gaetano Casanova
+Giuseppe Zocchi
+Gottfr Christian Lentnern
+Gottfried Winger
+Gottwald Schuster
+Grégoire Petrocha
+Guilielmus Van Lake
+Guillaume de Segaud
+Guillaume Mennens
+Guillermo Massan
+Guy-Joseph de Maugiron
+H.  Ashby
+Hans Staden
+Heinrich Christian Kretsch
+Heinrich Matthias Graf von Thurn Valsassina
+Heinricus Johannes Bergerus
+Henr  Wharton
+Henri Jacq de Montesquieu
+Henrich Pohlmann
+Henricus Michael Missa
+Henry Calen
+Henry Schooten
+Hermann Nitzschewitz
+Hieronymo Cardoso
+Hilarion du Puget de Barbantane
+Horazio Aquila de Santis
+Hugues Thomassin
+I. A. Werdenhagen
+Ignazio Enrico Hugford
+Ioannes Christianus Handteke
+Isaac Bertrand
+Isack Verbiest
+J  Charpentier
+J B  Carburi
+J F M  Herbell
+J.  Bew
+J. Christianus Bothius
+J. M.  Fioravanti
+J.-G. Van der Borcht
+Jacob Degner
+Jacob Montanus
+Jacob-Augustin-Antoine Moreau de Vormes
+Jacobus Gallus
+Jacobus Schäffer
+Jacopo Maria Gianvizio
+Jacques Buus
+Jacques de Mailles
+Jacques Gassot
+Jacques Lenoir Duparc
+Jacques René Tenon
+Jacques-Constantin Périer
+Jakob Maier
+James Keating
+Jan Cornelis Lampsins
+Jan Tesánek
+Jasone Alfeo Orsini
+Jean Baptiste Benoît Monestier
+Jean Baptiste Meurié
+Jean Blavier
+Jean Charpentier
+Jean Danès
+Jean de Lartigue
+Jean Du Bec
+Jean François Du Sauzet
+Jean Grillot
+Jean Jacques Rouveyre Duplan
+Jean Le Raye
+Jean Martin Moye
+Jean Penon
+Jean Rioche
+Jean Trumel
+Jean-Baptiste Alliot
+Jean-Baptiste Gibert
+Jean-Baptiste Souton
+Jean-Charles Maclot
+Jean-François Le Boucher
+Jean-Jacques de Barrett
+Jean-Marie Barrau
+Jean-Raymond Mourraille
+Jeremias Plancius
+Jo Friedrich Schroeer
+Joachim Goetzke
+Joan Biskop
+Joan-Frid Schütz
+Joann Georg Michaelis
+Joannes Bernardus Bousquet
+Joannes del Rio
+Joannes Harduinus
+Joannes Molkenius
+Joannes Spiringh
+Joannes-Henricus Hagenbuch
+Joh Philippus Crollius
+Joh. Conradus Rapp
+Joh. Henricus Scherffius
+Joh. V. Fr. Schülter
+Johan Jacob Dusterhoop
+Johann Adam Vollinger
+Johann August Heinrich Ulrich
+Johann Borcholten
+Johann Christian Eschenbach
+Johann Christoph Eibelhuber
+Johann Clemens Zoller
+Johann Dieter Albert Münter
+Johann Fortmann
+Johann Friedrich Le Bret
+Johann Georg Angerer
+Johann Georg Rhaetus
+Johann Gottfried von Herder
+Johann Heinrich Alberti
+Johann Heinrich Tiemeroth
+Johann Jacob Fugger
+Johann Joachim Bellermann
+Johann Leonhard Will
+Johann Matthaeus Hassencamp
+Johann Nicolaus Fischer
+Johann Philipp Keifflin
+Johann Samuel Hering
+Johann Thaddäus Anton Peithner von Lichtenfels
+Johann Wernher Geiss
+Johann-Georg Walchius
+Johannes Blocius
+Johannes Daniel Alberthal
+Johannes Gabriel Humble
+Johannes Horthemels
+Johannes Marquard
+Johannes Rhenius
+Johannes Van Abkoude
+Johannes-Philippus Glaser
+John Christopher Smith
+John Godolphin
+John Malham
+John Scott Waring
+Jonas Haas
+Josef Čermák
+Joseph Dalmau
+Joseph Friedrich Thierfeldt
+Joseph Marie Flouest
+Joseph Schuster
+Joseph-Louis Goyrand
+Joshua Steele
+José Vela
+Juan de Barrenechea
+Juan Josef de Erice
+Jules Lafon
+Julius Obsequens
+Justus Van Der Hoeve
+Jöran Andersson Nordberg
+Ke fu Zhou
+L C  Leclerc
+Ladislas Chernac
+Laurent Chénart
+Laurenz Pflieger
+Le P  Antonio di Caprarola
+Le P  Francisco Tarazona
+Le P  Lambert de Mospurg
+Le P  Sylvestre de Laval
+Lelio Zaccagni
+Leonor de Mauger
+Lodewijk Van Kinschot
+Lorenzino Palmieri
+Louis Anselme Boyer de Sainte Marthe
+Louis d' Héricourt du Vatier
+Louis Dupuy
+Louis Joubert
+Louis Poncet
+Louis-Benoît Picard
+Louis-Jérôme de Suffren de Saint-Tropez
+Luc-François Lalande
+Lud  Canetus
+Ludovicus Hermannus Combachius
+Ludwig Wachler
+Luis de Torres
+Léonard Robin
+M. de Creusent
+Madeleine de Souvré Sablé
+Manuel de Figueiredo
+Marc Richard
+Marco Antonio Marcello
+Marcus-Anna Poisson
+Marie Nicole Estienne Vve de Jean Thomas Hérissant
+Markus Hasse
+Martin Fustel
+Martin-Philippe Mengin
+Mary Gay
+Mathieu Du Château
+Matthaeus Arragon
+Matthias Daniel Laurens
+Maur Audren
+Meinhardus Plesken
+Mercure Jollat
+Michael Lebegott Marggraff
+Michał Kazimierz Radziwiłł
+Michel Jouin
+Michelangelo Prunetti
+Miguel Zabala
+Mme Gautier Lacépède
+Mr Pellegrin
+N. Bourgueil
+Nic. Casp Elwert
+Nicholas Ridley
+Nicolas Biré
+Nicolas de Malebranche
+Nicolas Guillemain
+Nicolas Oren
+Nicolas-Augustin Delalain
+Nicolaus Ernst Kleemann
+Nicolaus Schaten
+Nicolò Martini
+Noël Michel Jean Renouard
+Olivier Harty
+Oscar Vladislas de Lubicz- Milosz
+Ottone Petrucci
+P J  Delafaye de Belair
+P. V. Benoist
+Paolo Cortesi
+Pasquale Massi
+Paul Gilly
+Paul-Alexandre Dulard
+Paulus Rubeus
+Pedro del Valle y Salazar
+Pelopide Varrialira
+Peter Overradt
+Petrus Buskagrius
+Petrus Holtzeim
+Petrus Porta
+Phanuccius de Phanucciis
+Philipp Dauber
+Philippe d  Azon
+Philippe Van Der Beken
+Philippus Ösler
+Pierre Audouin
+Pierre Camino
+Pierre de Bourdeille seigneur de Brantôme
+Pierre Decan de Villeneuve
+Pierre François Mesaize
+Pierre Jean Baptiste Auguis
+Pierre Louis de Valtan
+Pierre Pelleprat
+Pierre Soulet
+Pierre-Benoît de Jumilhac
+Pierre-Joseph-Denis-Guillaume Faure
+Pieter Gerard Witsen Geysbeek
+Pietro Calepio
+Pietro Martire Taroni
+Placide Petit
+Prospero Petroni
+R. A.  Constantin
+Ranuccio Lupi
+Reinerus Van Drunen
+René Flacé
+Richard Carr
+Richard Tickell
+Robert de Lauge
+Robert Pool
+Rodobaldus Parinus
+Royston Meredith
+S  Fattori
+Salomon Wahl
+Samuel Fisher
+Samuel Prauhutt
+Sauveur-François Morand
+Sebastiano Ammiani
+Sergej Savvič Volčkov
+Sieur L***
+Simon Anthoine Delphin de Lamothe
+Simon Reboulet
+Sophia Barwasser dame Hulsemann
+Steffan Zyrler
+Suffridus Petrus
+Sébastien-Marie-Mathurin Gazon-Dourxigné
+Theobald Fettich
+Theodorus Schalitz
+Thomas Bedingfield
+Thomas Dilke
+Thomas Hutchinson
+Thomas Perfect
+Thomas Uyvari
+Théophile Conrad Pfeffel
+Tobias Knoblochius
+Tommaso Stanzani
+Ullick De Burgh Marquis of Clanricarde
+Urbain-Pierre Salmon
+Valerio de Valeri
+Vicenzo Filippini
+Vincentius Ferrier
+Vincenzo Pribeno
+W. Angus
+Wilhelm Alard
+Wilhelmo-Tiberio Hatting
+William Alingham
+William Enfield
+William More
+William Webster
+Wolfgang Wilhelm Scholl
+Yuan hua Sun
+Zhen heng Zhu
+Étienne Angenoust
+Étienne Le Camus

@@ -1,0 +1,510 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113246
+Input dataset: 01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+Column requested: description
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 237672
+Sampled values count: 500
+
+"102 livraisons ou 337 parties formant 166 vol. et demi de texte et 51 parties renfermant 6439 pl."
+1 atlas, 80 cartes et 19 tables géographiques : 63,1 x 49,5 cm
+1 carte : 18 x 14 cm
+1 carte : 24,5 x 19,5 cm
+1 carte : 32,5 x 24,5 cm
+1 carte : 38 x 55,5m
+1 carte : 44 x 64 cm
+1 carte : 51 x 72 cm, sur feuille 55 x 77 cm
+1 carte : 61 x 114 cm
+1 carte : 95 x 107 cm
+1 carte : col.  ; 49,5 x 56,3 cm, sur cuvette 49,6 x 58,4 cm
+1 carte : contours col.  ; 33 x 50 cm
+1 carte : en coul.  ; 38,5 x 25 cm
+1 carte : en coul. ; 45 x 55 cm sur flle 53 x 60 cm
+1 carte : gr. ; 21,5 x 81 cm
+1 carte : gr. col. et ill. ; 38 x 48 cm
+1 carte : gr. limites col. ; 39 x 56 cm
+1 carte : gravée sur parchemin coloriée ; 96 x 70 cm
+1 carte : ill.  ; 47 x 55 cm
+1 carte : ill. ; 43 x 52 cm, sur flle 49,5 x 64,5 cm
+1 carte : ill., contours col.  ; 50 x 65,5 cm
+1 carte : ill., en coul. ; 54 x 62,5 cm, sur flle 58 x 66 cm
+1 carte : ms. à l'encre noire ; 10 x 17 cm
+1 carte : tracés col. ; 59 x 86,5 cm
+1 carte en 2 flles assemblées : en coul.  ; 79 x 71 cm
+1 carte en 8 flles : gr. ill. ; [Formats divers]
+1 carte gravée : col. : tracés col.  ; 10,5 x 12,4 cm
+1 demi-cercle : ajouré et ciselé en cuivre doré ; 30 cm de diamètre
+1 dess. : encre métallogallique et crayon graphite ; 228 x 161 mm
+1 dess. : plume et encre brune, lavis bleu ; 24,2 x 39,6 cm (filet intérieur)
+1 dess. : plume, lavis, en coul.  ; 19,4 x 37,9 cm (f.)
+1 eau-forte : 25 x 20 cm
+1 est. : 17,2 x 11,5 cm (f.)
+1 est. : aquatinte ; 17,4 x 13,1 cm
+1 est. : burin ; 13,2 x 10,1 cm (feuille)
+1 est. : burin ; 18,1 x 12,6 cm (f.)
+1 est. : burin ; 23,4 x 16,5 cm (f.)
+1 est. : burin ; 31,9 x 24,8 cm
+1 est. : burin ; 42,5 x 47 cm (élément d'impression)
+1 est. : burin ; 90 x 57,5 cm (élément d'impression)
+1 est. : burin, eau-forte ; 22 x 34 cm (tr. c.), 24,7 x 37 cm (élt. d'impr.)
+1 est. : coul. ; 32 x 43 cm (élt d'impr.
+1 est. : eau-forte ; 11,8 x 20,1 cm
+1 est. : eau-forte ; 13,5 x 8 cm (tr. c.), 15 x 9 cm (tr. c. avec lettre)
+1 est. : eau-forte ; 15 x 11,5 cm (tr. c.)
+1 est. : eau-forte ; 16,8 x 22,9 cm (élément d'impression)
+1 est. : eau-forte ; 19,3 x 13,4 cm (élément d'impression)
+1 est. : eau-forte ; 22,3 x 31,4 cm (élément d'impression)
+1 est. : eau-forte ; 26,5 x 33 cm (élt d'impr.)
+1 est. : eau-forte ; 33,1 x 22 cm (tr. c.)
+1 est. : eau-forte ; 40,1 x 26,2 cm
+1 est. : eau-forte ; 5,7 x 7,6 cm (élément d'impression)
+1 est. : eau-forte ; 7,5 x 5 cm (tr. c.)
+1 est. : eau-forte ; dimensions moyennes : 4 x 3 cm (élément d'impression)
+1 est. : eau-forte et burin ; 15,2 x 13,2 cm (élément d'impression)
+1 est. : eau-forte et burin ; 37,7 x 24,8 cm (tr.c.)
+1 est. : eau-forte, aquatinte ; 18,7 x 25,8 cm (trait carré), 22,2 x 27,5 cm (feuille)
+1 est. : eau-forte, burin ; 15 x 11,5 cm (élt d'impr.)
+1 est. : eau-forte, burin ; 19 x 15,2 cm (im.), 27,4 x 23,4 cm (élt. d'impr.), 31,5 x 25 cm (f.)
+1 est. : eau-forte, burin ; 24 x 20 cm (f.)
+1 est. : eau-forte, burin ; 29,5 x 20,5 cm
+1 est. : eau-forte, burin ; 4 x 6,4 cm (im.)
+1 est. : eau-forte, burin ; 7,3 x 10,3 cm (f.)
+1 est. : eau-forte, burin, outils ; 46,5 x 33,5 cm (f.)
+1 est. : eau-forte, col.  ; 28,5 x 58 cm (tr. c.)
+1 est. : eau-forte, col. ; 21,5 x 15 cm (élt d'impr.)
+1 est. : eau-forte, colorié à main levée ; 32,3 x 48,4 cm (élt d'impr.), 30,4 x 46,7 cm (tr. c.)
+1 est. : eau-forte, outils ; 26 x 20,5 cm (tr. c.)
+1 est. : eau-forte, outils, col. au repérage ; ov. 10,5 x 15 cm (im.)
+1 est. : eau-forte, pointillé ; 12 x 8 cm (tr. c.)
+1 est. : eau-forte, pointillé, col. ; diam. 6 cm (im.)
+1 est. : eau-forte, roulette, en coul. ; 16,9 x 48,7 cm (f.)
+1 est. : gravure au pointillé ; 14,7 x 12 cm
+1 est. : gravure en noir, à l'eau-forte et au burin ; 20,3 x 54,2 cm (trait carré)
+1 est. : gravure en taille-douce ; 11,3 x 6,2 cm
+1 est. : gravure en taille-douce ; 12,8 x 9,2 cm
+1 est. : gravure en taille-douce ; 14,1 x 19 cm
+1 est. : gravure en taille-douce ; 15,4 x 9,1 cm
+1 est. : gravure en taille-douce ; 17,2 x 11,4 cm
+1 est. : gravure en taille-douce ; 19,2 x 14,3 cm
+1 est. : gravure en taille-douce ; 21 x 14,9 cm
+1 est. : gravure en taille-douce ; 23,2 x 28,9 cm
+1 est. : gravure en taille-douce ; 26,5 x 35,6 cm
+1 est. : gravure en taille-douce ; 29,7 x 42,8 cm
+1 est. : gravure en taille-douce ; 32,3 x 20,8 cm
+1 est. : gravure en taille-douce ; 35,5 x 21,5 cm
+1 est. : gravure en taille-douce ; 4,5 x 4,5 cm
+1 est. : gravure en taille-douce ; 45,7 x 35,5 cm
+1 est. : gravure en taille-douce ; 56,4 x 42,4 cm
+1 est. : gravure en taille-douce ; 70,6 x 50,3 cm
+1 est. : gravure en taille-douce ; 9,4 x 6,5 cm (élément d'impression)
+1 est. : gravure en taille-douce, impression en couleurs au repérage ; 25,5 x 21 cm
+1 est. : gravure sur bois polychrome ; 39 x 25,9 cm (im.)
+1 est. : gravure à l'eau-forte coloriée ; 25,3 x 42,8 cm (élt d'impr.)
+1 est. : gravure à l'eau-forte, au burin et au pointillé ; 19,3 x 14,5 cm (trait carré)
+1 est. : manière noire ; 19,2 x 24 cm
+1 est. : pointillé ; 16,5 x 11,5 cm (élt d'impr.)
+1 est. : pointillé, eau-forte ; 8,5 x 7,5 cm (élt d'impr.)
+1 est. sur papier rabouté : impression à la planche, 10 coul. sur fond gris foncé, fond lissé ; env. 84 x 54,5 cm (f.) et 53,5 x 27 cm (motif)
+1 est. sur papier rabouté : impression à la planche, fond lissé  ; 55,5 x 40 cm (f.) et 19 cm (largeur bande)
+1 estampe : burin ; 18,2 x 22,6 cm
+1 estampe : burin ; 7,5 x 10,5 cm (feuille)
+1 estampe : eau-forte en quatre planches ; 29,8 x 100 cm (éléments d'impression), 31,5 x 101,7 cm (feuille)
+1 estampe : gravure à l'eau-forte ; 20,9 x 14,8 cm (feuille)
+1 f. (34x45,50cm)
+1 feuille : 47 x 27 cm
+1 flle : 135 x 110
+1 flle : 21, 5 x 29, 5 cm
+1 flle : 28 x 14 cm, circonférence 0 m 265
+1 flle : 33, 7 x 31, 8 cm
+1 flle : 37,8 x 48 cm
+1 flle : 41, 5 x 48 cm
+1 flle : 45, 5 x 60 cm
+1 flle : 490 x 382 . 1 flle 490 x 382
+1 flle : 54,5 x 41,5 cm
+1 flle : 605 x 660
+1 flle : 76 x 52 cm
+1 flle : avec limites col.  ; 63 x 50 cm
+1 flle : avec traces en coul.  ; 53 x 36 cm
+1 flle : col.  ; 56 x 43 cm
+1 flle : en coul.  ; 56 x 40 cm
+1 flle : en noir ; 52 x 39 cm
+1 flle : ms en coul.  ; 105 x 60 cm
+1 flle : ms.  ; 52 x 37 cm
+1 flle avec encadrement : 540 x 450
+1 flle avec tracés : en coul.  ; 27 x 24 cm
+1 flle col. : 37 x 52 cm
+1 flle col. : 45 x 55 cm
+1 flle col. : 58 x 87 cm
+1 flle en coul. : ???58 x 491
+1 flle ms. : 415 x 315
+1 flle ms. au lavis : 440 x 330
+1 flle ms. au trait et au lavis : 230 x 330
+1 flle ms. en coul. : 720 x 510
+1 flle ms. à la plume avec tracés au lavis sur calque : 1240 x 930
+1 fol. limin., VIII-286 [288] p. in-fol., init. ornées
+1 monnaie : 21 mm
+1 monnaie : 42,00 mm
+1 partition (1 fol. limin., 4 p.) : in-4
+1 partition (16 p.) : 15,8 x 21 cm
+1 partition (276 p.) : 29 x 21,5 cm
+1 partition (5 f.) : 21,5 x 27 cm
+1 partition (9 f.) : 22,5 x 30 cm
+1 partition (f. 115-132) : 22,5 x 30,5
+1 partition en 3 vol. (431, 272, 290 p.) : 31 x 23 cm
+1 plan : 28,5 x 36,5 cm
+1 plan : en couleur ; 26,5 x 37 cm
+1 plan en 12 flles : gr. ill. ; [Formats divers]
+1 vol. (108 p.)
+1 vol. (326 p.)
+1 vol. (92 -[2] f.)
+1 vol. ([XVI-] 170 [-1 bl.] p., sign. ⁸, A-K⁸, L⁶)
+1 vol. 153 p.
+1 vol., 912 p.
+10 f. ; in-fol.
+102 p., cartes
+11 t. en 13 vol.
+11p. ; 35 x 27 cm
+12 vol. in-12, pl.
+13 est. : eau-forte
+14 [i.e. 28] p.
+147-[1 bl.]-[2] p.
+156-[4] p.
+16-[8] p.
+175 ff.
+188-140-352-48-76-178-21 p.
+1estampe : burin ; 60,5 x 73 cm (élt d'impr.)
+2 est. : gravure en taille-douce en couleurs
+2 flles : 29,5 x 32 cm (pôle Nord) et 29,5 x 29,5 cm (pôle Sud)
+2 flles assemblées : 1010 x 700
+2 flles. assemblées : coul. ; 70,5 x 100 cm
+2 parties ([126]-588-[44] p. ; 222 p.)
+2 parties (XLIV-[4]-224 p. ; [12]-276 p.)
+2 parties en 1 vol. (99 ; 87 p.)
+2 parties en 1 vol. (XIV-78-[2 bl.]-11-[2] p.
+2 parties en 1 vol. in-4° , 52 p.
+2 parties en 1 vol. in-8° , car. goth., 2 col., 156 et 88 ff., marque de G. Bernard au titre
+2 parties en 1 vol. in-fol., fig. gr. au titre, cartes et plan
+2 parties en un vol. in-4° , front. grav.
+2 t. ([28]-380-[1] ; [4]-406-[2] p.)
+2 t. en 1 vol.  VI, 204 ; XVI, 199 p.
+2 tomes en 1 vol. (162-72 p.)
+2 tomes en 1 vol. in-4°, 26 cm, [16-] 308 p., sign. ⁸, a-t⁸, v² + [6-2bl-] 253 [-3 bl-24 de table] p., sign. ⁴, a-q⁸, r-t⁴, car. rom. et ital., lettres ornées, marque aux titres
+2 tomes, 80 pl. en coul.
+2 vol. (913-[69] ; 837-[49])
+2 vol. ([36]-487-[21] p., [39] p.-p. 491-1197-[26] p.
+2 vol. (LI-[5]-176 p., [6] f. de pl. dépl. ; 173-[6] p., [17] f. pl. dépl.)
+2 vol. (XXII-[2]-520, 536 p.)
+2 vol. in-12, frontisp., pl. et carte gr. au t. I
+2 vol. in-4° , pl. gr., marques aux titres, titre en rouge et en noir et portrait gr. au t. 1
+2 vol. in-8° , portrait d'Homère, fig. gravée au titre du 1er vol., planche
+2 vol.(XXIV, 175, [2] f. de pl. ; 179, [1] p., [1] f. de pl.); 24 °
+20 f. (sign. α-β8, γ4)
+21-[3 bl] p.
+227 f.
+24 p.
+252-[9]-[1 bl.] p., p. 275-342, 3 p.
+274-[12] f.
+294-[1] f. (sig. a⁴, b-z⁶, A-V⁶, X⁸)
+3 flles : mss en coul., échelles et formats divers
+3 parties : 22,5 x 30 cm
+3 parties en 1 vol. in-4° , pl.
+3 parties en 2 vol. in-fol., front. gravés
+3 tomes ([16]-192 p. ; [16]-191-[1 bl.] p. ; [16]-183-[1] p.)
+3 vol. (59, 45, 40 f.) : gravure sur bois en noir ; 11 x 16 cm
+3 vol. 12 °; pl. gr
+3 vol. in-8° , pièces limin., 1129 p. et la table, titre gravé
+30 p. et 2 pl. : gravure en taille-douce
+32 p. ; 8
+343 f. de pl.
+37 est. chiffrées : burin, eau-forte ; formats divers
+396 p. ; pl. dépl. h. t. ; 8 °
+4 ff., 72 p.
+4 p., 16 f. de pl. dépl.
+4 parties en 1 vol. in-fol., 25 p. et la suite foliotée 26-98, portraits, armoiries aux titres
+4 tabl. in-fol.
+4 vol. gd. in-4°
+4 vol. pet. in-fol., fig., cartes
+41 vol.
+44-60 p.
+48 [i.e. 64] p. : in-8
+5 est. : grav. sur cuivre : n. et b.
+5 parties en 4 vol. (254 [i.e.255]-[1] ; 335-[1] ; [8]-454 ; 377-[1] ; 130 f.)
+5 vol. in-8° , portrait d'Homère
+526-[2] p.
+567 p. et l'index ; in-8 °
+6 est. : gravures sur bois : noir et blanc
+6 parties en 1 vol. in-12, sign. A-H, fig. aux titres, pl.
+6 vol. in-4°, 208 x 155 m., 1 fol. limin., 22 p. chacun
+62 pp.
+68 (sic pour 36) p.
+7 parties en 1 vol. (207, 71, 131, 156, 68, 56, 52, 22 p.)
+700 p.
+77 est. : eau-forte ; 14 x 15,5 cm (élt d'impr.)
+8 flles assemblées en 4 bandes sur 2 flles : 12,5 x 44 et 102,5 x 44 cm
+8 °, 120 p.
+85-[2-1 bl.] p.
+9 parties : 23,5 x 30,5 cm
+94-[2] p., [1] f. de pl. dépl.
+[1-1 bl.-19-1 bl.]-470-[71-1 bl.-4]-264-[64] p.
+[10]-119-[1] p., pl.
+[10]-532-[2] p.
+[11]-[1 bl.]-776 p.-[3] p. de pl.
+[12]-174 [i.e. 274] p.
+[12]-370-[1] p.
+[12]-71 p.
+[144] p.
+[14]-463 p., front.
+[15]-[1 bl] f.
+[16]-175-[1 bl] f., sign. *⁸, **⁸, A-Y⁸
+[16]-334 p.
+[16]-551 p.
+[16]-LIIII [i. e. CLIII]-[1] f.
+[191, 1 bl.] f. (sig. A-Z8 &8)
+[1]-[1 bl.]-[38]-XLIX-[1]-43-[1 bl.]-101-[1 bl.]-93-[1 bl.]-127-[1 bl.]-319-[1 bl.]-53-[2] p.
+[20]-353-[7] p.
+[22]-191 p., front.
+[24] f., 602 p., [1] f.)
+[24]-400-[4] p.
+[256] ff.
+[28]-528-[2 bl.-79] p.
+[2]-102 p.
+[2]-21 p. : in-4 oblong
+[2]-384 p.
+[2]-67-[5] p., [1] p. de pl.
+[2]-VI-263-[4] p.
+[30]-557 [i. e. 517]-[3 bl.] p.
+[32]-670-[58] p.
+[36]-95 p., pl.
+[40] p., [1] f. de pl. dépl., 410-160-[4]-48-[42-2 bl.] p.
+[46]-348 p.
+[4], 79, [1 bl.] p. (sig. []², A⁴, B-G⁶) ; 12°, 14 cm.
+[4]-179-[3 bl.] p.
+[4]-309-[1] p.
+[4]-484-[2] p.
+[4]-827 p.
+[4]-XXIV-1015 p., XXV pl., [1] f. de pl. (portrait)
+[5] f., sig. B4, [3] pl. dépl.
+[69 p.]
+[6]-224 p.
+[6]-54-[4] p.
+[7-1 bl.]-293-[15] f.
+[80]-792-[39] p.
+[8]-120-[15] p.
+[8]-194-[4] p.
+[8]-301 [i.e. 304]-[24] f.
+[8]-434 p.
+[8]-66 p.
+[8]-IV-64-[3-1 bl.]-LXXIV p., [3] f. de pl. dépl.
+[In 8 °, fig.]?
+[xii], 72 p. [p. 56 pag. 6]
+Aquarelle : 42,2 x 58,4 cm (f.), 38,4 x 54,5 (tr. c.)
+CLX p.
+Dessin à la pierre noire : 27,8 x 38,7 cm
+Est. : eau-forte, roulette et pointillé, coul.  ; 15 x 9,5 cm (tr. c.)
+Gr in-fol. Plano
+Gr. in-fol., 6 p. et atlas en coul.
+II-62-XII p.
+In 8 °, 158-[2] p.
+In-12, 12 ff.
+In-12, 177 p., table et imprimatur.
+In-12, 240 ff.
+In-12, 331 p.
+In-12, 436 p., table et frontisp. gravé
+In-12, 57 p., frontisp.
+In-12, 72 p. (Lacroix, 68.)
+In-12, approbation et 189 p.
+In-12, III-252 p.
+In-12, la préface, 260 p. ch. et 2 ff. non ch.
+In-12, pièces limin. et 194 p.
+In-12, pièces limin., 149 p.
+In-12, pièces limin., 254 p., table
+In-12, pièces limin., 349 p., et l'index, frontisp.
+In-12, pièces limin., 457 p.
+In-12, pièces limin., 596-CVII p.
+In-12, pièces limin., sign. @ et 224 p.
+In-12, pièces liminaires, 279 p., front. gravé
+In-12, préface, 32 p.
+In-12, VI-290 p.
+In-12, VIII-310 p. et l'index
+In-12, X-89 p. et la table, fig., pl. et front. gravés
+In-12, XII-527 p.
+In-12, XVI-199 p., fig.
+In-12, XXII-264 p., pl.
+In-12, XXVI-378 p. et l'index, frontisp. de Tiedeman, gravé par Mulder
+In-12. (Bengesco, n  1628.)
+In-16, 16 ff. non ch.
+In-16, 394 p.
+In-16, fig. au titre, pl. en noir et en coul.
+In-16, pièces limin., 474 p.
+In-16, XI-120 p.
+In-18, pièces limin., 288 p.
+In-24, pièces limin., 220 p.
+In-32, 72 p.
+In-4 °, 179 p.
+In-4, 20 p. et pl.
+In-4, sign. A-C.
+In-4° , 1059 p.
+In-4° , 138 p.
+In-4° , 174 ff.
+In-4° , 213 ff. chiffrés, car. goth., à 2 col., marque typographique à la fin
+In-4° , 268 p.
+In-4° , 32-IV p., fig. gr. au titre de N. Van der Meer
+In-4° , 4 ff. non ch. et 138 p., pl.
+In-4° , 47 ff.
+In-4° , 58 p. et l'index
+In-4° , 7 ff., non ch.
+In-4° , 80 p., arm. au titre
+In-4° , car. goth., sign. A-T
+In-4° , II-101-148 p.
+In-4° , III-14 p.
+In-4° , IV-370 ff.
+In-4° , LVIII-380 p.
+In-4° , pièces limin. et 116 p., texte encadré
+In-4° , pièces limin. et post-limin., 681 p., fig.
+In-4° , pièces limin., 130 p.
+In-4° , pièces limin., 176 p. et l'index
+In-4° , pièces limin., 230 p. et 1 feuillet d'errata
+In-4° , pièces limin., 287 p. et index
+In-4° , pièces limin., 356 ff.
+In-4° , pièces limin., 424 p., table
+In-4° , pièces limin., 50 p.
+In-4° , pièces limin., 584 p. et table
+In-4° , pièces limin., 70 p., pl. gr. de G. Fontana
+In-4° , pièces limin., 852 p. et les index
+In-4° , pièces limin., LXXVII p.
+In-4° , pièces liminaires et 67 p., portr. gravé de Marie d'Agreda
+In-4° , pièces liminaires, 400 p., index
+In-4° , préface et 988 p.
+In-4° , sign. A-C, fig. gr. au titre
+In-4° , sign. a-m, car. rom., marque typ. de Thomas Anshelm à la fin
+In-4° , sign. X, A-Z, Aa-ZZ, Aaa-Ggg
+In-4° , VI-132 p., index et errata, pl. et frontisp. gr. de François Erlinger
+In-4° , VI-82 p. et theses
+In-4° , VIII-222 (sic pour 221) p., fig., portrait avec armoiries et frontisp. gr.
+In-4° , VIII-719 p.
+In-4° , XII-184 p.
+In-4° , XIV-504 p. et table
+In-4° , XVI-411 p.
+In-4° , XXII-404-3 p. et index, pl. et cartes gr. coloriées. (Mambelli, 1420.)
+In-4° , XXXVI-234 p., titre en rouge et noir
+In-4° . (Hain, *8769.)
+In-4° 72 p., marque typ. au titre
+In-4° à 2 col., pièces limin. et 382 p.
+In-4°, 252 p. et la table
+In-4°, folioté 93-96
+In-4°, pièces limin., 888 p. et la table
+In-8 ° , 15 f., pl.
+In-8 °, quatre séries de feuillets, 12, 96, 134 et 151, deux colonnes
+In-8, 45 p.
+In-8, pièces liminaires, 240 p., tableau et plans gravés
+In-8° (21,5 cm), 25 p., fig. au titre [Don 364-69]
+In-8° , 118 p., index
+In-8° , 140 p., titre gravé
+In-8° , 163 p. et index
+In-8° , 2 ff., 88 p.
+In-8° , 235 p. et l'errata, pl.
+In-8° , 28-68 p.
+In-8° , 32-103-78 p.
+In-8° , 382 p. et l'index
+In-8° , 437 p., fig., tableaux, 6 pl. gr. par J. E. Mansfeld, 2 cartes dont 1 gr. par M. F. Gallioth
+In-8° , 506 p. et la table, cartes
+In-8° , 599 p. et portr.
+In-8° , 68 p., musiq.
+In-8° , 79 p., titre gravé
+In-8° , 88 p., planche
+In-8° , car. rom., CXVI ff., grav. sur bois
+In-8° , II-129 p.
+In-8° , III-123 p.
+In-8° , IV-28 p.
+In-8° , l'index et 662 p.
+In-8° , pag. 1-678
+In-8° , pièces limin. et 215 p., pl.
+In-8° , pièces limin. et l'index
+In-8° , pièces limin., 134 ff. et la table, fig.
+In-8° , pièces limin., 182 p.
+In-8° , pièces limin., 230 p., portrait gravé
+In-8° , pièces limin., 285 p. et tables
+In-8° , pièces limin., 342 p.
+In-8° , pièces limin., 405 p. et les index
+In-8° , pièces limin., 476 p. et index
+In-8° , pièces limin., 552 p. et la table, portrait gr.
+In-8° , pièces limin., 642 p. et tables
+In-8° , pièces limin., 775 p.
+In-8° , pièces limin., 953 p. et index
+In-8° , pièces liminaires et 128 ff.
+In-8° , pièces liminaires, 1218 p. et la table
+In-8° , pièces liminaires, 445 p.
+In-8° , portrait, pl.
+In-8° , sign. a-b, 779 p.
+In-8° , sign. A-Z, Aa-Mm
+In-8° , VI-128 p.
+In-8° , VI-63 p.
+In-8° , VIII-152 p. et pl.
+In-8° , VIII-367 ff. et la table
+In-8° , VIII-96 p.
+In-8° , XI-372 p.
+In-8° , XII-548 p., musique. (Dufour, n  251.)
+In-8° , XIV-414 p., table
+In-8° , XLVIII-840 p.
+In-8° , XVI-271 p., front. gravé
+In-8° , XVI-60 p. et l'index
+In-8° , XX-360 p. et portr.
+In-8° , XXIV-355 p. et l'index
+In-8° , XXX-590 p., pl. gravées
+In-8° , XXXX-223 p.
+In-8° 80 ff. sign Aij-Kij. Fig.
+In-8°, 20 f.
+In-8°, car. goth., 8 ff., marque typ. de Jean de la Tour au verso du dernier feuillet
+In-8°, XVIII-192 p., titre ill.
+In-fol. (Hain-Copinger, *10136 ; Br. Mus., Books pr. XVth c., t. VI, p. 897 ; Polain, III, 2499.)
+In-fol. 4 . (Hain-Copinger, *13114.)
+In-Fol. Pièce
+In-fol., 1 f. 103 p.
+In-fol., 1430 p.
+In-fol., 21 pl., frontisp. gravé
+In-fol., 36 feuillets
+In-fol., 58 cartes, titre gr.
+In-fol., 84 p. et cartes
+In-fol., II p.-63 ff., portrait planche et fig. gr.
+In-fol., IV-99 p., tableaux
+In-fol., pièces limin. et CXXXII ff.
+In-fol., pièces limin., 188 p.
+In-fol., pièces limin., 344 ff.
+In-fol., pièces limin., 496 p.
+In-fol., pièces limin., 670 p. et l'index
+In-fol., pièces limin., 903 p., index, frontisp. gr.
+In-fol., pièces liminaires, 1798 col. et index
+In-fol., préface, 534 p. et la table
+In-fol., VI ff. n. ch., 102 ff. ch., car. goth. à 2 col., marque typ.
+In-fol., X-366 p. et l'index, pl.
+In-fol., XXII-528 p. et l'index, pl. gr., frontisp. encadr. et car. r. et n.
+IV-164 ff. ; in-8 °
+IX-[3]-506-[6] p.
+LXXXXI f.
+P. 172, in-fol.
+P. 457-504
+P. [173]-180
+Pag. 253-272
+Paginé à la main 93-94
+Petit in-4° , préface, paginé 71-169 et corrigenda
+Pièces limin., 130 p., carte et fig. gr.
+Pièces limin., 55 ff.
+Plan : 75 x 85 sur 1 flle 75 x 160
+Sig. A-Bii
+Sig. A-Z12, Aa-Tt12, Uu-Xx2, Yy-Zz12, Aaa-Eee12, Fff6
+sign. a-e
+Signé A-I5
+VI-257 p.
+VII-[1]-62-[1] p.
+VIII-316-[2] p. ; [3-1 bl.]-220 p.
+VIII-[7]-272 p.
+XI-363 f.
+XII-420-[10] p.
+XIV-[2]-170 p.
+XV-[1]-181-[1] p., pl.
+XVI-51 p. - 3 pl.
+XX-531-[1] p.
+XXIV-379-[3] p., 29 f. de pl. dépl.
+XXXII p. de pièces limin. 298 p. et la table

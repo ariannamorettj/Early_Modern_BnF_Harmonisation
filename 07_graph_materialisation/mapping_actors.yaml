@@ -1,0 +1,632 @@
+prefixes:
+  obj: https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/
+  owl: http://www.w3.org/2002/07/owl#
+  rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  xsd: http://www.w3.org/2001/XMLSchema#
+  rdfs: http://www.w3.org/2000/01/rdf-schema#
+  idlab-fn: http://example.com/idlab/function/
+  edtf: http://id.loc.gov/datatypes/edtf/
+mappings:
+  actor_person:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:equal
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(entity_type)
+      - parameter: idlab-fn:otherStr
+        value: https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Person
+    po:
+    - - a
+      - obj:Person
+  actor_group:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:equal
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(entity_type)
+      - parameter: idlab-fn:otherStr
+        value: https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/Organization
+    po:
+    - - a
+      - obj:Organization
+  actor_name_appellation:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_app_fullname)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_name)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Appellation
+    - - obj:hasType
+      - obj:full-name~iri
+    - - obj:hasSymbolicContent
+      - $(actor_name)
+      - xsd:string
+  actor_name_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_name)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:isIdentifiedBy
+      o: $(actor_app_fullname)
+      type: iri
+  actor_firstname_appellation:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_app_firstname)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_first_name)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Appellation
+    - - obj:hasType
+      - obj:first-name~iri
+    - - obj:hasSymbolicContent
+      - $(actor_first_name)
+      - xsd:string
+  actor_firstname_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_first_name)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:isIdentifiedBy
+      o: $(actor_app_firstname)
+      type: iri
+  actor_lastname_appellation:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_app_lastname)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_last_name)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Appellation
+    - - obj:hasType
+      - obj:last-name~iri
+    - - obj:hasSymbolicContent
+      - $(actor_last_name)
+      - xsd:string
+  actor_lastname_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_last_name)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:isIdentifiedBy
+      o: $(actor_app_lastname)
+      type: iri
+  actor_gender_assignment:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_gender_aa)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_gender_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:AttributeAssignment
+    - p: obj:assignsAttributeTo
+      o: $(actor)
+      type: iri
+    - p: obj:assignsPropertyOfType
+      o: obj:gender
+      type: iri
+    - p: obj:assigns
+      o: $(actor_gender_obj)
+      type: iri
+  actor_language_assignment:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_language_aa)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_language)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:AttributeAssignment
+    - p: obj:assignsAttributeTo
+      o: $(actor)
+      type: iri
+    - p: obj:assignsPropertyOfType
+      o: obj:language
+      type: iri
+    - p: obj:assigns
+      o: $(actor_language)
+      type: iri
+  actor_birth_event:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_birth_event)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_birth_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Event
+    - - obj:hasType
+      - obj:birth~iri
+    - p: obj:hasTimeSpan
+      o: $(actor_birth_ts)
+      type: iri
+  actor_birth_timespan:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_birth_ts)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_birth_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Time-Span
+    - - obj:hasStartTime
+      - $(actor_birth_obj)
+      - xsd:dateTime
+    - - obj:hasEndTime
+      - $(actor_birth_obj)
+      - xsd:dateTime
+  actor_birth_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_birth_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:wasPresentAt
+      o: $(actor_birth_event)
+      type: iri
+  actor_death_event:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_death_event)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_death_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Event
+    - - obj:hasType
+      - obj:death~iri
+    - p: obj:hasTimeSpan
+      o: $(actor_death_ts)
+      type: iri
+  actor_death_timespan:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_death_ts)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_death_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Time-Span
+    - - obj:hasStartTime
+      - $(actor_death_obj)
+      - xsd:dateTime
+    - - obj:hasEndTime
+      - $(actor_death_obj)
+      - xsd:dateTime
+  actor_death_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_death_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:wasPresentAt
+      o: $(actor_death_event)
+      type: iri
+  actor_start_event:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_start_event)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_start_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Event
+    - - obj:hasType
+      - obj:foundation~iri
+    - p: obj:hasTimeSpan
+      o: $(actor_start_ts)
+      type: iri
+  actor_start_timespan:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_start_ts)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_start_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Time-Span
+    - - obj:hasStartTime
+      - $(actor_start_obj)
+      - xsd:dateTime
+    - - obj:hasEndTime
+      - $(actor_start_obj)
+      - xsd:dateTime
+  actor_start_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_start_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:wasPresentAt
+      o: $(actor_start_event)
+      type: iri
+  actor_end_event:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_end_event)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_end_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Event
+    - - obj:hasType
+      - obj:dissolution~iri
+    - p: obj:hasTimeSpan
+      o: $(actor_end_ts)
+      type: iri
+  actor_end_timespan:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_end_ts)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_end_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Time-Span
+    - - obj:hasStartTime
+      - $(actor_end_obj)
+      - xsd:dateTime
+    - - obj:hasEndTime
+      - $(actor_end_obj)
+      - xsd:dateTime
+  actor_end_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_end_obj)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:wasPresentAt
+      o: $(actor_end_event)
+      type: iri
+  actor_country_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_country)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:hasResidenceIn
+      o: $(actor_country)
+      type: iri
+  actor_country_place:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_country)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_country)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Place
+  actor_profession_note:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor_profession_lo)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_profession)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:LinguisticObject
+    - - obj:hasType
+      - obj:description~iri
+    - - obj:hasSymbolicContent
+      - $(actor_profession)
+      - xsd:string
+  actor_profession_link:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_profession)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:isReferredToBy
+      o: $(actor_profession_lo)
+      type: iri
+  actor_link_exact_identifier:
+    sources:
+    - input/ready_to_convert/bnf_actors_ready_links_exact.csv~csv
+    s: $(actor_link_exact)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_link_exact)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Identifier
+    - - obj:hasType
+      - obj:uri~iri
+    - - obj:hasSymbolicContent
+      - $(actor_link_exact)
+      - xsd:anyURI
+  actor_link_exact_link:
+    sources:
+    - input/ready_to_convert/bnf_actors_ready_links_exact.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_link_exact)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:isIdentifiedBy
+      o: $(actor_link_exact)
+      type: iri
+  actor_link_close_identifier:
+    sources:
+    - input/ready_to_convert/bnf_actors_ready_links_close.csv~csv
+    s: $(actor_link_close)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_link_close)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Identifier
+    - - obj:hasType
+      - obj:uri~iri
+    - - obj:hasSymbolicContent
+      - $(actor_link_close)
+      - xsd:anyURI
+  actor_link_close_link:
+    sources:
+    - input/ready_to_convert/bnf_actors_ready_links_close.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(actor_link_close)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:isIdentifiedBy
+      o: $(actor_link_close)
+      type: iri
+
+  # ── External authority links (populated by preprocess_enriched_actors) ────────
+
+  actor_viaf_same_as:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(viaf_uri)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: owl:sameAs
+      o: $(viaf_uri)
+      type: iri
+
+  actor_wikidata_same_as:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(wikidata_uri)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: owl:sameAs
+      o: $(wikidata_uri)
+      type: iri
+
+  actor_isni_see_also:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(isni_uri)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: rdfs:seeAlso
+      o: $(isni_uri)
+      type: iri
+
+  actor_lc_see_also:
+    sources:
+    - bnf_actors_ready.csv~csv
+    s: $(actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(lc_uri)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: rdfs:seeAlso
+      o: $(lc_uri)
+      type: iri

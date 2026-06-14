@@ -1,0 +1,10 @@
+ZIP TREE REPORT
+---------------
+Generated at: 20260330_173848
+Input dataset: 01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+
+File counts by extension:
+.csv: 1
+
+Archive tree:
+file: bnf_edition_data_raw.csv

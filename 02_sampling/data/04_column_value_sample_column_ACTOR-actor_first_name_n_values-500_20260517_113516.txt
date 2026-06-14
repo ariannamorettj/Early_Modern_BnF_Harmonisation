@@ -1,0 +1,510 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113516
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+Column requested: actor_first_name
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 27811
+Sampled values count: 500
+
+.
+A W 
+A.-P.-F.
+Abel Théodore Guillaume
+Abraham Van
+Achille Pierre
+Adam Wilhelm
+Adolph. Frider
+Adrianus Henricus
+Aelius
+Agostino Maria de 
+Alberico
+Albertus Philippus
+Aleksandr Petrovič
+Alexander Julius
+Alexandre Roger en religion le P 
+Alexia V. 
+Allard Philip Reinier Carel baron
+Alphonsus de
+Amaro
+Amédée-Bretagne-Malo de
+Andr. Jos
+Andreas Esaias
+Andreas Siegmund
+André Cardinal
+André-Robert
+Angelo-Maria
+Anne Louis
+Annibal de
+Anthon Günther
+Antoine Daniel de
+Antoine Martin
+Antoine-François-Ehrard-Marie-Catherine
+Antoine-René-Constance
+Anton Maria
+Antonio Arighino
+Antonio José dos
+Antonius Joannes
+Apolinario de
+Armand Charles de La Porte
+Arn.
+Arphaxad de
+Attilie
+August Gottfried
+Auguste-Louis
+Augustine
+Ausonius
+B.-M.
+Balthasar Caspar
+Barbe
+Bartholomaeus Amantius
+Bartolino
+Bastiano
+Benedict
+Benjamin Christoph von
+Bern
+Bernardino de
+Bernhard Johann von
+Beyfus
+Bodo Henrich
+Boris Ivanovič
+Buonsignore
+C H 
+C. J.
+Caes
+Can ying
+Carl August
+Carl Gottfried Theodor
+Carl von
+Carlo Gregorio
+Carolus Antonius
+Carolus Leonorus
+Carolus-Nicolaus
+Caspare
+Cayetano
+Ch.-Fr.
+Charles Cte de
+Charles François Gaspard Fidelle de
+Charles Louis Mathias
+Charles-Antoine
+Charles-Guy
+Charles-Nicolas-Sigisbert
+Cher de
+Christ
+Christiaan
+Christian Ferdinand
+Christian Jochum
+Christian, Frederic, Daniel
+Christianus Ludov. 
+Christoph
+Christoph Joachim
+Christoph. Daniel
+Christophorus ab
+chun fang
+Claire dite Rose
+Claude François de
+Claude Saintin
+Claude-Gilles
+Claudio Cornelio
+Clemente Girolamo
+Colley
+Conrad Ludwig
+Constantinus
+Cornelis-Claezoon
+Costantino
+Curtius
+César François
+D Manuel Joseph
+D. Miguel de
+Daniel Abraham
+Daniel Nikolaus
+David Christoph
+David-Carolus
+Denis Clerselier de
+Diamantis
+Dietericus Gebhardus
+Dionisio Jeronimo de
+Domenego
+Dominicus von
+Donatien-Marie-Joseph de Vimeur
+Dugald
+E.-A.
+Edme-Hilaire
+Edward Montagu  Earl of
+Eldan von
+Eliska
+Emeran
+Enea
+Ercolano
+Erik Olufsen
+Ernestus-Christoph Caspar
+Ernst Philip
+Estienne
+Eusebius
+Everhard
+F D d 
+F. C. A. von
+Fabiano Maria
+Federigo Vincenzo di
+Ferdinand Carl
+Fernando Francisco Xavier de
+Filippo Giuseppe
+Florentinus Carolus
+Fr Ange de
+Franc Xav 
+Francesco di Salustio
+Francis Henry
+Francisco Jozé
+Franciscus Ferdinandus de
+Franciscus, Antonius Jacobus
+Frans Volkertszoon
+Franz Ferdinand von
+Franz Wilhelm von
+François Candide
+François Fernandez de
+François Louis Cte de
+François Victor Romain
+François-Emmanuel de
+François-Marie de
+François-Xavier d'Arles de
+Frederik Adam
+Frid. W.
+Fridericus Sigismundus
+Friedrich Benedict
+Friedrich Jacob
+Friedrich Theodor
+Frédéric Ulrich duc de
+Félix sr de
+G. B.
+Gabriel Agustin
+Gabriel-Antoine-Joseph
+Gajus
+Gaspar Melchor de
+Gasparus
+Gellio Bernardino
+Georg Anton
+Georg Friedrich Freiherr von
+Georg Matthäus
+Georg-Heinrich
+George Alexander
+Georges Henri Joseph
+Georgius Bartholdus
+Georgius Ubricus
+Gerard Kalkbrenner dit
+Gerhard von
+Gervais de
+Giacomo Gotifredo
+Gianfrancesco cardinal
+Gilles Benoît
+Gio Francesco
+Giolino
+Giovan Luigi
+Giovanni Battista Carlucci en religion le P 
+Giovanni Filoteo
+Giovanni Niccolò
+Girard
+Giulio di
+Giuseppe Maria Estense
+Godofr. Chr
+Gothard Friedrich
+Gotth. Zeidl. a
+Gottlob Benedict von
+Gratian
+Guang nai
+Guiliam Toussaint
+Guillaume François de
+Guillaume-Marie
+Guo zhi
+Guy-Pierre
+H de
+Haikaido Saikwakuan de
+Hans Konrad
+Harumachi
+Heinrich Clement
+Heinrich Matthias Graf von
+Helicon
+Hendrik Rutger
+Henri de Levis
+Henri-Alexandre
+Henrich Friedrich
+Henricus Nicolai
+Henry
+Hermamus
+Hermannus Fridericus
+Heïyeman
+Hilaire-Bernard de
+Hong
+Hubert François
+Humphry
+I T de
+Ignace Moly de
+Ildefonse
+Io 
+Ioannes Christianis
+Iohannes Christianus
+Isaac-Étienne de
+Israel
+J B
+J Gabriel
+J Samuel
+J. C. J. 
+J. Henricus
+J.-B. Renatus
+J[esper]
+Jacob dit
+Jacob Van Nuys
+Jacobus Hermanus
+Jacobus-Michael
+Jacques Bernard
+Jacques Guillaume Pascal
+Jacques Samuel
+Jacques-François-Marie
+Jacques-Siméon
+James lord
+Jan Frederik
+Jane
+jean
+Jean Baptiste César
+Jean Baptiste-Joseph
+Jean de
+Jean Frédéric Joseph
+Jean Jacques René
+Jean Marceau
+Jean Quentin
+Jean-Amable Foucault
+Jean-Baptiste Poncet
+Jean-Baptiste-Laurent-Herménegilde
+Jean-Claude
+Jean-François-Augustin
+Jean-Henri-Prosper
+Jean-Luc
+Jean-Pierre d'
+Jeanne-Françoise
+Jeremias Ludovicus
+Jin
+Jo Fer 
+Jo. Christian
+Joachim Dieterich
+Joachimus Johannes
+Joan Nicolaus Saulius
+Joan-Godefredus
+Joan. Godardus
+Joan.-Bapt.-Ant.-Gasparus
+Joannes Achatius Felix
+Joannes Chrysippus
+Joannes Guilielmus Christianus
+Joannes Ortwinus
+Joannes, Franciscus
+Joannes-Ludovicus
+Jodocus Petrus
+Joh-Fridericus
+Joh. Conradus
+Joh. Gothofr
+Joh. Paulus
+Joh.-Christ
+Johan Corneliszoon
+Johan Marcus
+Johann Adolph
+Johann Bernard
+Johann Christian Traugott
+Johann Eberhard
+Johann Friederich
+Johann George
+Johann Heinrich von
+Johann Joseph
+Johann Ludwig von
+Johann Paul Aegidius
+Johann Severin
+Johann Wentzl
+Johann-Sigism
+Johannes Baptista
+Johannes Florens
+Johannes Hrabskius
+Johannes Petrus
+Johannes, Gottofredus
+Johannes-Wernerus
+John Hodges
+Jonas Ludwig von
+Josef Carl von
+Joseph Christoph
+Joseph Gottlieb
+Joseph Omer
+Joseph-Barthélémy
+Joseph-Marie-Jean Jouye de
+Josephus-Ferd
+José Francisco
+Ju an
+Juan Guerrero
+Jules César
+Julien-Amable
+Junien
+Justus Friedrich Ludwig
+Jéronimo Ximénez de
+Kamil
+Karl Kaspar von
+Klara
+L academico
+L. F.
+Lambert Bourbonne en religion le P 
+Lauge
+Laurentius G 
+Le Chevalier de
+Le P. minime
+Leonardo da
+Leopoldo Geronimo
+Liborio Mauro
+Lodovic'Antonio
+Lorenzo de
+Louis Balbes de Berton de
+Louis Dominique
+Louis Jean Marie de Bourbon
+Louis Roger d 
+Louis-Basile
+Louis-François-Sébastien
+Louis-Laurent
+Louis-Thomas-Antoine
+Luc Jean Joseph
+Lucius Claudius
+Ludov. Christianus
+Ludovicus Josephus
+Ludwig Georg
+Luis Alfonso de
+Léandre
+M d 
+M. Joh. Godofred
+Mademoiselle d'
+Manauld
+Marbrianus de
+Marc-Ferdinand
+Marco Fabio
+Marguerin de
+Mariano de 
+Marie Madeleine de
+Marie-Louis-Joseph de
+Marquis d 
+Martin Gottlieb
+Martius à
+Mathew
+Matias
+Matthias Georg
+Mauricius
+Maximilien de
+Melchior Montmignon
+Metello
+Michael Mac Quilin dit
+Michel de
+Michel-René
+Mihail Pavlovič
+Mme Le Fournier Wargemont de
+Moyses van
+Médard
+Naldo
+Neriolava
+Niccoló
+Nicolas Augustin
+Nicolas Le Fèvre d'
+Nicolas-Guy
+Nicolaus Christian
+Nicole de
+Nikolaus Joseph
+Noël Michel
+Odet de Coligny
+Olive Claire de Lamoignon présidente de
+Orazio Cammillo
+Ottavio Mirto
+P A C 
+P Tancrède de
+P.-Ch.
+Pandolfo
+Pascal de
+Paul César de
+Paul Tobias
+Paulu
+Pavel Hristianovič
+Pedro Miguel de
+Perrette-Marie de
+Peter von
+Petrus de
+Petrus Theodorus
+Ph. W.
+Philip Dormer
+Philipp Julius
+Philippe Joseph
+Philippine Louise de
+Philips Theodoor
+Pierfrancesco
+Pierre Charpentier de
+Pierre Hilaire
+Pierre Martyr
+Pierre-Anastase
+Pierre-François
+Pierre-Joseph d'
+Pierre-Paul-Sylvain
+Pieter Jacob de
+Pietro Giacomo
+Placidus
+Porporino
+Ptolemeo
+Quinto
+Rafaele
+Raphael
+Reine de Madaillan de Lesparre de
+Renaut d'
+René-Henri-Louis-Jérôme d'Arsac
+Richard-Gontran
+Robert Nichols
+Rodrigo
+Romoaldo
+Rudolf Zacharias
+Rutger Gysbert
+Sabo
+Sam. Gotthelf
+Samuel Joachimus
+Sanson
+Sebastiaan
+Sempronio
+Sextus
+Shunchō
+Sigismondo degli
+Simbertus
+Simon-Charles
+Siro Severino
+Stanfield
+Stepanos
+Styan
+Symon
+T. 
+Teodoro Eugenio di
+Theodor Dirck
+Theoph. Andr
+Thomas Bates
+Thomas Pelham
+Thorbiern
+Tibère Claude
+Tobias Bogislaus
+Tommeso Maria
+Tristano
+Udalvicus
+Uriel
+Valentinus Antonius
+Vedastus du
+Veuve de Mathieu
+Vigilius
+Vincenzo Domenico
+von der
+wang wang
+Werner von
+Wilhelm Gottfried
+Wilhelmus-Aug. Gottlieb
+William Gerard de
+Wolffgang Maximilianus
+Wolterus
+Xing bang
+Ying jing
+Yun
+Zacharie de
+Zhi zao
+Édouard Gundisalve
+Ésaïe
+Étienne-Auguste

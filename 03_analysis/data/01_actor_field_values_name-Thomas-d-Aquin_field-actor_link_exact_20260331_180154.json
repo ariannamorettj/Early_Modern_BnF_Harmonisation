@@ -1,0 +1,17 @@
+{
+  "name_field": "actor_last_name",
+  "name_value": "Thomas d'Aquin",
+  "target_field": "actor_link_exact",
+  "total_matching_rows": 32,
+  "distinct_value_count": 8,
+  "values": {
+    "<http://fr.dbpedia.org/resource/Thomas_d%27Aquin>": 4,
+    "<http://fr.wikipedia.org/wiki/Thomas_d%27Aquin>": 4,
+    "<http://isni.org/isni/0000000453792101>": 4,
+    "<http://viaf.org/viaf/100910166/>": 4,
+    "<http://wikidata.org/entity/Q9438>": 4,
+    "<http://www.idref.fr/086126997>": 4,
+    "<https://data.biblissima.fr/entity/Q7101>": 4,
+    "<https://musicbrainz.org/artist/ea7f0f74-18fc-409c-ba6c-ed1cae12cddc>": 4
+  }
+}

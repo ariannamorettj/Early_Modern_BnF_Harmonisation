@@ -1,0 +1,902 @@
+{
+  "generated_at": "20260520_113205",
+  "input_dataset": "01_data_retrieval/01_editions/data/old_zip/edition_raw_data_by_year.zip",
+  "years_filter": null,
+  "restricted_to_file": null,
+  "total_rows": 1341324,
+  "fields": {
+    "author": {
+      "total_values": 824698,
+      "unique_values": 110440,
+      "fill_rate_percent": 61.4839,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11863754h#about>",
+          "count": 51443
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12495798p#about>",
+          "count": 35298
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11913463s#about>",
+          "count": 16908
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12282451x#about>",
+          "count": 15482
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb118761821#about>",
+          "count": 15190
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12390063q#about>",
+          "count": 9901
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb118691560#about>",
+          "count": 6983
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120081657#about>",
+          "count": 6715
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11913462f#about>",
+          "count": 4284
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11865278m#about>",
+          "count": 3121
+        }
+      ]
+    },
+    "bnf_id": {
+      "total_values": 1341324,
+      "unique_values": 814206,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "47154234",
+          "count": 2352
+        },
+        {
+          "value": "47151509",
+          "count": 1764
+        },
+        {
+          "value": "47151211",
+          "count": 1620
+        },
+        {
+          "value": "30623761",
+          "count": 1344
+        },
+        {
+          "value": "33403046",
+          "count": 1080
+        },
+        {
+          "value": "47629898",
+          "count": 1080
+        },
+        {
+          "value": "30703992",
+          "count": 1008
+        },
+        {
+          "value": "40595738",
+          "count": 756
+        },
+        {
+          "value": "47147584",
+          "count": 686
+        },
+        {
+          "value": "47146845",
+          "count": 672
+        }
+      ]
+    },
+    "description": {
+      "total_values": 1271713,
+      "unique_values": 237671,
+      "fill_rate_percent": 94.8103,
+      "top_10_values": [
+        {
+          "value": "4°",
+          "count": 39752
+        },
+        {
+          "value": "In-fol.",
+          "count": 22737
+        },
+        {
+          "value": "In-4°, 4 p.",
+          "count": 21602
+        },
+        {
+          "value": "In-4°",
+          "count": 20002
+        },
+        {
+          "value": "In-8°",
+          "count": 13931
+        },
+        {
+          "value": "1 monnaie",
+          "count": 13666
+        },
+        {
+          "value": "4 p.",
+          "count": 12122
+        },
+        {
+          "value": "In-8 °. Pièce",
+          "count": 11380
+        },
+        {
+          "value": "8 p.",
+          "count": 11028
+        },
+        {
+          "value": "In-4 °",
+          "count": 10915
+        }
+      ]
+    },
+    "digital_copy_link": {
+      "total_values": 473597,
+      "unique_values": 203656,
+      "fill_rate_percent": 35.3082,
+      "top_10_values": [
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k9121636m>",
+          "count": 2352
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k9121624d>",
+          "count": 1764
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k91216126>",
+          "count": 1620
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k9121606g>",
+          "count": 686
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k9121597z>",
+          "count": 672
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k9121602t>",
+          "count": 600
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k9121601d>",
+          "count": 324
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k9121632z>",
+          "count": 288
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/bpt6k1280009k>",
+          "count": 240
+        },
+        {
+          "value": "<https://gallica.bnf.fr/ark:/12148/btv1b10505545j>",
+          "count": 216
+        }
+      ]
+    },
+    "edition": {
+      "total_values": 1341324,
+      "unique_values": 814206,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47154234g#about>",
+          "count": 2352
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47151509c#about>",
+          "count": 1764
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb471512113#about>",
+          "count": 1620
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb30623761p#about>",
+          "count": 1344
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb33403046h#about>",
+          "count": 1080
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47629898t#about>",
+          "count": 1080
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb307039928#about>",
+          "count": 1008
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb405957381#about>",
+          "count": 756
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47147584c#about>",
+          "count": 686
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb471468452#about>",
+          "count": 672
+        }
+      ]
+    },
+    "editor": {
+      "total_values": 97620,
+      "unique_values": 14554,
+      "fill_rate_percent": 7.2779,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb125155003#about>",
+          "count": 7369
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12091046v#about>",
+          "count": 4439
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12520184v#about>",
+          "count": 3819
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb118638376#about>",
+          "count": 2124
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb16140707b#about>",
+          "count": 1968
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb124528434#about>",
+          "count": 1678
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12238791d#about>",
+          "count": 1391
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb153823339#about>",
+          "count": 1256
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb15304041x#about>",
+          "count": 978
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb123526004#about>",
+          "count": 914
+        }
+      ]
+    },
+    "expression": {
+      "total_values": 1341324,
+      "unique_values": 814206,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47154234g#Expression>",
+          "count": 2352
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47151509c#Expression>",
+          "count": 1764
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb471512113#Expression>",
+          "count": 1620
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb30623761p#Expression>",
+          "count": 1344
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb33403046h#Expression>",
+          "count": 1080
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47629898t#Expression>",
+          "count": 1080
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb307039928#Expression>",
+          "count": 1008
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb405957381#Expression>",
+          "count": 756
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb47147584c#Expression>",
+          "count": 686
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb471468452#Expression>",
+          "count": 672
+        }
+      ]
+    },
+    "illustrator": {
+      "total_values": 18341,
+      "unique_values": 1550,
+      "fill_rate_percent": 1.3674,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb135467010#about>",
+          "count": 1218
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb13743591v#about>",
+          "count": 607
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb13340086g#about>",
+          "count": 568
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14960194z#about>",
+          "count": 446
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120041042#about>",
+          "count": 363
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120740585#about>",
+          "count": 346
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb10673570x#about>",
+          "count": 256
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11905756m#about>",
+          "count": 238
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14960099d#about>",
+          "count": 224
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12121723v#about>",
+          "count": 180
+        }
+      ]
+    },
+    "language": {
+      "total_values": 1216111,
+      "unique_values": 104,
+      "fill_rate_percent": 90.665,
+      "top_10_values": [
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/fre>",
+          "count": 700589
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/lat>",
+          "count": 262812
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/ita>",
+          "count": 71537
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/eng>",
+          "count": 35501
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/frm>",
+          "count": 32851
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/ger>",
+          "count": 31974
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/zxx>",
+          "count": 19233
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/dut>",
+          "count": 15703
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/chi>",
+          "count": 14967
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/spa>",
+          "count": 10791
+        }
+      ]
+    },
+    "place": {
+      "total_values": 1042727,
+      "unique_values": 27527,
+      "fill_rate_percent": 77.7386,
+      "top_10_values": [
+        {
+          "value": "Paris (France)",
+          "count": 286029
+        },
+        {
+          "value": "[Paris] (France)",
+          "count": 63835
+        },
+        {
+          "value": "[S.l.] (inconnu)",
+          "count": 35060
+        },
+        {
+          "value": "(S. l. n. d.) (inconnu)",
+          "count": 29011
+        },
+        {
+          "value": "A Paris (France)",
+          "count": 25378
+        },
+        {
+          "value": "(Paris) (France)",
+          "count": 25170
+        },
+        {
+          "value": "London (Grande-Bretagne)",
+          "count": 21326
+        },
+        {
+          "value": "[S.l.] (France)",
+          "count": 18017
+        },
+        {
+          "value": "Parisiis (France)",
+          "count": 15362
+        },
+        {
+          "value": "Paris",
+          "count": 13683
+        }
+      ]
+    },
+    "publisher": {
+      "total_values": 889047,
+      "unique_values": 128941,
+      "fill_rate_percent": 66.2813,
+      "top_10_values": [
+        {
+          "value": "[s.n.]",
+          "count": 93046
+        },
+        {
+          "value": "Impr. royale",
+          "count": 19368
+        },
+        {
+          "value": "Impr. nationale",
+          "count": 14826
+        },
+        {
+          "value": "Auteur",
+          "count": 7016
+        },
+        {
+          "value": "P.-G. Simon",
+          "count": 6580
+        },
+        {
+          "value": "Imp. royale",
+          "count": 5307
+        },
+        {
+          "value": "imp. royale",
+          "count": 4830
+        },
+        {
+          "value": "P. Simon",
+          "count": 4465
+        },
+        {
+          "value": "P. Prault",
+          "count": 4454
+        },
+        {
+          "value": "l'auteur",
+          "count": 4012
+        }
+      ]
+    },
+    "publisher_2": {
+      "total_values": 65296,
+      "unique_values": 1869,
+      "fill_rate_percent": 4.868,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120740585#about>",
+          "count": 4043
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb10342317j#about>",
+          "count": 1837
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14952775m#about>",
+          "count": 1604
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb13619781r#about>",
+          "count": 1466
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb121222769#about>",
+          "count": 1447
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12081217m#about>",
+          "count": 1410
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12230274h#about>",
+          "count": 1339
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14640246f#about>",
+          "count": 1314
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14957774g#about>",
+          "count": 1198
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14955604j#about>",
+          "count": 1163
+        }
+      ]
+    },
+    "record_type": {
+      "total_values": 1341324,
+      "unique_values": 1069,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "<http://purl.org/dc/dcmitype/Text>",
+          "count": 844387
+        },
+        {
+          "value": "<http://purl.org/dc/dcmitype/StillImage>",
+          "count": 169183
+        },
+        {
+          "value": "<http://purl.org/dc/dcmitype/Image>",
+          "count": 108307
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11976232x>",
+          "count": 35688
+        },
+        {
+          "value": "<http://purl.org/dc/dcmitype/PhysicalObject>",
+          "count": 27446
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119762260>",
+          "count": 20552
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11976032c>",
+          "count": 12506
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119329264>",
+          "count": 10899
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119329384>",
+          "count": 10335
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12238089x>",
+          "count": 9202
+        }
+      ]
+    },
+    "subject_topic": {
+      "total_values": 553476,
+      "unique_values": 24976,
+      "fill_rate_percent": 41.2634,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119762260>",
+          "count": 32543
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11976232x>",
+          "count": 23858
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11976032c>",
+          "count": 21761
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119329384>",
+          "count": 13626
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12238089x>",
+          "count": 12982
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11976227b>",
+          "count": 9754
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119329264>",
+          "count": 9640
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119314762>",
+          "count": 7920
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11975998j>",
+          "count": 7860
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12215119w>",
+          "count": 5895
+        }
+      ]
+    },
+    "title": {
+      "total_values": 1341324,
+      "unique_values": 698224,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "Elogia titulique, quibus tumulum viri magnifici, nobilissimi consultissimique Domini Johann. Ulrici Fridii, JCti excellentissimi, reique publicæ patriæ syndici & consiliarii, de ea singulari fide, prudentia, consilio, operâ, domi forisque per multos annos præclarissime meriti postquam is funesta quidem, beata tamen morte non sine desiderio patriæ universæ deceßisset, 6. idus apriles anni æræ christianæ M DC LXXVIII. Grati memoresque exornaverunt Universitatis literariæ patres, inquilini, cives, quicunque calamitatis hujus sensum ad se pertinere cum luctu profiteri voluerunt.",
+          "count": 2352
+        },
+        {
+          "value": "Ultimi honoris monumenta, quæ viro nobilissimo, amplissimo prudentissimoque, Domino Jo. Balthasari Krauthio, Collegii Quindecimviralis in libera civitate regia Argentoratensi assessori, et collegiatæ ecclesiæ ad D. Thomæ presbytero gravissimo, post praeclara in patriam merita in coelestem evocato patriam die XVI. martii anno M DC XCII. Supremo functuri officio posuerunt Universitatis Argentoratensis proceres, cives, inquilini.",
+          "count": 1764
+        },
+        {
+          "value": "Threni quos super obitu luctuoso viri magnifici, nobilissimi, prudentissimi consultissimique, DN. Joh. Leonharti Froereisenii, consularis, tredecimviri, scholarchæ &c. in inclyta Argentorato per plures annos de republica, de ecclesia, de schola, de singulis deque universis præclarissime meriti, justus expressit dolor proceribus, civibus, inquilinis civitatis academicæ, et, ut pietatis eorum gratique animi monumentum ad posteros essent, affusi busto ejus, quo requiescit à Vto calendas Decembr. anni post Christum natum M DC XC.",
+          "count": 1620
+        },
+        {
+          "value": "Geographiae veteris scriptores Graeci minores",
+          "count": 1344
+        },
+        {
+          "value": "Choix de chansons mises en musique par M. de La Borde, Premier Valet de la chambre ordinaire du Roi, gouverneur du Louvre. Ornées d'estampes par J.-M. Moreau. Dédiées à Madame la Dauphine... Gravées par Moria et Melle Vendôme : Tome I-[IV]",
+          "count": 1176
+        },
+        {
+          "value": "Geographiae veteris scriptores graeci minores",
+          "count": 1080
+        },
+        {
+          "value": "Il Nuovo teatro delle fabriche et edificii in prospettiva di Roma moderna",
+          "count": 1080
+        },
+        {
+          "value": "Theses anatomicæ et chirurgicæ",
+          "count": 1056
+        },
+        {
+          "value": "Positiones anatomicæ et chirurgicæ",
+          "count": 1044
+        },
+        {
+          "value": "Recueil d'airs serieux et a boire de differents auteurs",
+          "count": 1014
+        }
+      ]
+    },
+    "translator": {
+      "total_values": 45679,
+      "unique_values": 9162,
+      "fill_rate_percent": 3.4055,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb104577711#about>",
+          "count": 857
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11912343n#about>",
+          "count": 431
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb16753967q#about>",
+          "count": 357
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11904766p#about>",
+          "count": 355
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12237810m#about>",
+          "count": 338
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb123076129#about>",
+          "count": 320
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120873118#about>",
+          "count": 318
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb10577612t#about>",
+          "count": 317
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb124888525#about>",
+          "count": 313
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb135921482#about>",
+          "count": 312
+        }
+      ]
+    },
+    "work": {
+      "total_values": 139661,
+      "unique_values": 37819,
+      "fill_rate_percent": 10.4122,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120082823#about>",
+          "count": 2004
+        },
+        {
+          "value": "<http://data.bnf.fr/temp-work/4af10e9259288f9417c5fd6664f22753/#about>",
+          "count": 1987
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12008248x#about>",
+          "count": 1975
+        },
+        {
+          "value": "<http://data.bnf.fr/temp-work/fb8c5838cf6c03eeb5e231fe26662834/#about>",
+          "count": 1331
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120082498#about>",
+          "count": 1130
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14999849v#about>",
+          "count": 686
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12008446s#about>",
+          "count": 601
+        },
+        {
+          "value": "<http://data.bnf.fr/temp-work/ae2bb10d27ae83b64dcae015c18214d7/#about>",
+          "count": 513
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12008323v#about>",
+          "count": 260
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb178297559#about>",
+          "count": 252
+        }
+      ]
+    },
+    "year_first": {
+      "total_values": 1341324,
+      "unique_values": 346,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "1790",
+          "count": 25380
+        },
+        {
+          "value": "1789",
+          "count": 23466
+        },
+        {
+          "value": "1791",
+          "count": 19276
+        },
+        {
+          "value": "1798",
+          "count": 16665
+        },
+        {
+          "value": "1793",
+          "count": 16574
+        },
+        {
+          "value": "1792",
+          "count": 15408
+        },
+        {
+          "value": "1799",
+          "count": 14265
+        },
+        {
+          "value": "1794",
+          "count": 14011
+        },
+        {
+          "value": "1797",
+          "count": 13821
+        },
+        {
+          "value": "1784",
+          "count": 13082
+        }
+      ]
+    },
+    "year_range": {
+      "total_values": 1341324,
+      "unique_values": 7291,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "1790",
+          "count": 22124
+        },
+        {
+          "value": "1789",
+          "count": 18805
+        },
+        {
+          "value": "1791",
+          "count": 16737
+        },
+        {
+          "value": "1793",
+          "count": 13437
+        },
+        {
+          "value": "1792",
+          "count": 13166
+        },
+        {
+          "value": "1798",
+          "count": 13151
+        },
+        {
+          "value": "1799",
+          "count": 12503
+        },
+        {
+          "value": "1797",
+          "count": 11741
+        },
+        {
+          "value": "1788",
+          "count": 11186
+        },
+        {
+          "value": "1784",
+          "count": 11157
+        }
+      ]
+    }
+  }
+}

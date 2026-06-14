@@ -1,0 +1,510 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113516
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+Column requested: actor_last_name
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 68912
+Sampled values count: 500
+
+  Åkerren
+Abelius
+Achet
+Aeneae
+Ahmad ibn Mousa
+Albergoni
+Aldenberger
+Algimoni
+Alonso y de los Ruyzes de Fontecha
+Alî Şîr Nevâî
+Ammien
+Andreasy
+Angiviller
+Anthoine
+Apollinaire
+Archer
+Arias Perez
+Arnolfini
+Asconius Pedianus
+Atwood
+Auguié
+Avarna
+Azincourt
+Bachimius
+Bahlmann
+Baldov
+Bandinus
+Barbin
+Barlocci
+Barthel
+Basin
+Bauchet
+Bauyn
+Beaumais
+Becter
+Belat Bonneille
+Bellis
+Benekendorf
+Bercheyck
+Berlendis
+Bernonville
+Bertolotto
+Bettino
+Biard
+Bigot de Sommesnil
+Bircherod
+Blackwood
+Blessebois
+Bobart
+Boel
+Boisgelin de Cucé
+Bolstra
+Bonenfant
+Bonneval
+Borely
+Boscheron
+Boucher d'Argis
+Boullay
+Bourman
+Bovio
+Bragadino
+Brawn
+Bretaigne
+Brillenburg
+Broeder
+Bruckmannus
+Brunswick-Wolfenbuttel
+Bu xiang zi
+Bugnée
+Buosi
+Burnel
+Buxtorfius
+Böbel
+Cabanoeus
+Cagna
+Calignon
+Cambry
+Canalis
+Capasso
+Caradeuc de Keranroi
+Carl Leopold
+Carrelet
+Casellas
+Castellus
+Caubris
+Cazal
+Centurioni
+Chabans
+Chamilly
+Chappuis
+Charîf al Din Ali
+Chauvessaigne
+Chesneau de La Megrière
+Chiris
+Chromace d'Aquilée
+Ciera
+Civieri
+Clavelli
+Closio
+Coco
+Colb
+Colombini
+Compaigne
+Contant Dorville
+Corbera
+Cornianus
+Cosatti
+Coucou
+Coustos
+Crassus
+Criquetot
+Crudop
+Cunigati
+Cyntholtz
+D...
+Dalla Briga
+Danielius
+Daschitsky
+Davila de Lobera
+De Schryver
+Deforis
+Delairas
+Della Bona
+Demondiers Dugue
+Dermott
+Des Roches
+Deshaies Gendron
+Dessaix
+Dezallier
+Diepholdus
+Dionis
+Doesmier
+Dondini
+Doré
+Drayton
+Du Blancard
+Du Fay
+Du Perray
+Du Tillet
+Ducancel
+Dugonics
+Duncon
+Durant de Chazelle
+Duval Villebogard
+Dötsch
+Ediger
+Eiriés
+Ellisenius
+Engelhardt
+Erhardus
+Eskrich
+Etherege
+Expert
+Fabbroni
+Falconetto
+Farini Perite
+Faustino
+Felde
+Ferloni
+Ferrière
+Fiedler
+Finestres y de Monsalvo
+Flandino
+Floris
+Fontaine
+Fornes
+Foulston
+Francesconi
+François D 
+Fresnais de Beaumont
+Fritz
+Fréron
+Fusco Monfloreo
+Gaberot
+Gainsford
+Gallonyé
+Garau
+Garopoli
+Gatto
+Gavard
+Gelida
+Geoffre de Lanxade
+Germberg
+Gherardini
+Gietermaker
+Gioanetti
+Giron
+Gleich
+Godfrey
+Gomain
+Gorallus
+Gouin
+Gozze
+Grandjean de Fouchy
+Graver
+Greydanus
+Griwtonn
+Grugerus
+Guagnini
+Guerrero
+Guilelmus de Rubione
+Guinebaud
+Gutsche
+Gèze
+H. B
+Hagerman
+Hamerster
+Harambure
+Hartcliffe
+Haudiquier
+Hazon
+Heiliger
+Helouis
+Henricus de Sancto Hieronymo
+Hermant de Saint-Benoist
+Hesenthaler
+Heynlin
+Himmelreich
+Hody
+Hollenhagen
+Honoré Bouvet
+Horville
+Huan Kuan
+Hulpeau
+Huygen
+Héret
+I. D. C. F.
+Imbert
+Irrefonds
+Iugis
+Jacobus Florentinus
+Janck
+Jaussaud
+Jean Scot Érigène
+Jewell
+Johannes Glogoviensis
+Joseph de Morlaix
+Juan de la Concepción
+Jurjens
+Kaldenborn
+Kazakov
+Kerkorteurkayladeck
+Kimpton
+Klein
+Knivet
+Komov
+Kreschelius
+Kulczyński
+Köpke
+L'Alemant
+La Baume
+La Condamine
+La Garde de Chambonas
+La Morelle
+La Rochefoucauld Bayers
+La Vergne de Tressan
+Lackmann
+Laguette
+Lambety
+Landmeter
+Lanion
+Larousserie
+Laub
+Lautrige
+Le Bedaut
+Le Coz
+Le Héricy
+Le Nourry
+Le Soyeur
+Lecamus de Mazières
+Legard
+Lemaure
+Leoncillus
+Lesclache
+Leupoldus
+Lhommeau
+Lieutaud
+Linek
+Liutprand de Crémone
+Lodovico da Imola
+Longeville
+Los-Rios
+Lowthorp
+Luckner
+Lupicini
+Lypsius
+López Madera
+M. D. R. 
+MacCaghwell
+Madeyra de Castro
+Mago
+Maisonfleur
+Malfroid
+Mamphrasius
+Mannert
+Maras
+Marcotte
+Marikowsky
+Marquois
+Martineau du Plessis
+Maschi
+Masucci
+Matthieu Cantacuzène
+Mauritii
+Mazzarini
+Mehwald
+Mellinger
+Menher
+Merkman
+Mesuë l'Ancien
+Michaelis
+Mignard
+Milton
+Misaristo
+Moers
+Mollerus
+Monginot
+Montanclos
+Monthières
+Morandet
+Morigny
+Moselagen
+Moureau
+Muhle
+Muscornus
+Méganck
+Mützenbecher
+Nanydre
+Navarra
+Nerio
+Newen
+Nicéron
+Nivarius
+Noortbergh
+Noyen
+O Brien
+Odenwald
+Oldoini
+Onkelos
+Ormoy
+Ostermann
+Oviedo y Baños
+Pachymère
+Palacios Rubios
+Panara
+Papias
+Parkinson
+Passeri
+Paula
+Pechméja
+Pellicciari
+Perault
+Perlinus
+Perussis
+Petrosellini
+Pfauder
+Philippe Camus
+Piart
+Pieracci
+Pigeotte
+Pinelli
+Pirrus
+Place
+Pleyel
+Pointe
+Poltzius
+Pontio
+Portunarius
+Pourchon
+Prebusinus
+Prisbach
+Prunelle
+Pujos
+Pérachon
+Quarti
+Quirinus
+Rademin
+Rainieri
+Rannie
+Rauchmaul
+Rebhan
+Regnaud de Saint-Jean-d'Angély
+Reinser
+Renol
+Reyger
+Riberius
+Riché
+Rilli
+Rivarol
+Robiou
+Rodrigues de Mello
+Rojas Sarmiento
+Roncaglia
+Rosenmuller
+Rothplezius
+Roussineau
+Ruben
+Rulffs
+Ruys
+Römhil
+Saboth
+Saint Aignan
+Saint-Germain-Robin
+Salberg
+Salomon Lévi ben Isaac
+San Giovanni
+Sans de Sainte-Catherine
+Sardus
+Sauter
+Scaguller
+Schafferus
+Schelkes
+Schildhouwer van Hoey
+Schmidtmann
+Schoorl
+Schuckinck
+Schweppe
+Scordilli
+Seedorff
+Selmnitz
+Serdonati
+Seton
+Sheng yong Pu sa
+Sieben
+Simbert
+Sirijanis de Cavaillon
+Smyth
+Solfi
+Sorber
+Soustelle
+Spener
+Sprockhoff
+Stansel
+Steincallenfels
+Stiblinus
+Storch
+Strubius
+Suchon
+Suterus
+Symson
+Sévin
+Taisne
+Tappe
+Tausch
+Tenain
+Testu
+Thevart
+Thomas de Sancto Gervasio
+Thurn und Taxis
+Tiblet
+Tiraboschi
+Tomaso da Bergamo
+Torrenius
+Toussaint de Saint-Luc
+Treffer
+Trincant
+Troyel
+Tullianus
+Tzamen
+Ulner
+Usátegui
+Valauri
+Valles
+Van Berghem
+Van Den Beek
+Van Der Linden
+Van Eyndhoven
+Van Inthiema
+Van Oosten De Bruyn
+Van Torre
+Vanier
+Vasconcillos
+Vechteld
+Venenti
+Vergeer
+Verrius Flaccus
+Vianelli
+Viexmont
+Villavicencio
+Vinezac
+Vitt
+Volbracht
+Voyer
+Wacker
+Wallman
+Wassenbergh
+Weihe
+Wentenius
+Weymar
+Wientzek
+Wilster
+Witsenburgh
+Woolston
+Wölffer
+Yenkwo
+Zahorowski
+Zbaski
+Zhi tong
+Zorgdrager
+Zülich

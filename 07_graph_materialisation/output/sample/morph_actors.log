@@ -1,0 +1,6 @@
+INFO | 2026-06-03 21:18:01,258 | 64 mapping rules retrieved.
+INFO | 2026-06-03 21:18:01,260 | Mapping partition with 1 groups generated.
+INFO | 2026-06-03 21:18:01,263 | Maximum number of rules within mapping group: 64.
+INFO | 2026-06-03 21:18:01,263 | Mappings processed in 1.223 seconds.
+INFO | 2026-06-03 21:18:02,679 | Number of triples generated in total: 179.
+INFO | 2026-06-03 21:18:02,679 | Materialization finished in 1.408 seconds.

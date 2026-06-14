@@ -1,0 +1,665 @@
+prefixes:
+  obj:     https://w3id.org/dharc/ontology/chad-ap/object/development/14/schema/
+  aat:     http://vocab.getty.edu/aat/
+  crm:     http://www.cidoc-crm.org/cidoc-crm/
+  crmdig:  http://www.cidoc-crm.org/extensions/crmdig/
+  lrmoo:   http://iflastandards.info/ns/lrm/lrmoo/
+  dctype:  http://purl.org/dc/dcmitype/
+  owl:     http://www.w3.org/2002/07/owl#
+  rdf:     http://www.w3.org/1999/02/22-rdf-syntax-ns#
+  xsd:     http://www.w3.org/2001/XMLSchema#
+  rdfs:    http://www.w3.org/2000/01/rdf-schema#
+  edtf:    http://id.loc.gov/datatypes/edtf/
+  idlab-fn: http://example.com/idlab/function/
+mappings:
+  edition_manifestation:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    po:
+    - - a
+      - lrmoo:F3_Manifestation
+  edition_record_type:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(record_type)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:hasType
+      o: $(record_type)
+      type: iri
+  edition_bnf_identifier:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_bnf_id)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(bnf_id)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Identifier
+    - - obj:hasType
+      - aat:300404621~iri
+    - - obj:hasSymbolicContent
+      - $(bnf_id)
+      - xsd:string
+  edition_bnf_id_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(bnf_id)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:isIdentifiedBy
+      o: $(edition_bnf_id)
+      type: iri
+  edition_title:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_title)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(title)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crm:E35_Title
+    - - obj:hasType
+      - aat:300417204~iri
+    - - obj:hasSymbolicContent
+      - $(title)
+      - xsd:string
+  edition_title_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(work)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(title)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P102_has_title
+      o: $(edition_title)
+      type: iri
+  edition_year_first_timespan:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_ts_year_first)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(year_first)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Time-Span
+    - - crm:P82a_begin_of_the_begin
+      - $(year_first)
+      - edtf:EDTF
+    - - crm:P82b_end_of_the_end
+      - $(year_first)
+      - edtf:EDTF
+  edition_year_first_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(year_first)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:hasTimeSpan
+      o: $(edition_ts_year_first)
+      type: iri
+  edition_year_range_timespan:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_ts_year_range)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(year_range)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Time-Span
+    - - crm:P82_at_some_time_within
+      - $(year_range)
+      - edtf:EDTF
+  edition_year_range_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(year_range)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: obj:hasTimeSpan
+      o: $(edition_ts_year_range)
+      type: iri
+  edition_description:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(description)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - crm:P3_has_note
+      - $(description)
+      - xsd:string
+  edition_place_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_place)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(place)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Place
+    - p: obj:isIdentifiedBy
+      o: $(edition_pub_place_app)
+      type: iri
+  edition_place_appellation:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_place_app)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(place)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Appellation
+    - - obj:hasSymbolicContent
+      - $(place)
+      - xsd:string
+  edition_place_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(place)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P7_took_place_at
+      o: $(edition_pub_place)
+      type: iri
+  edition_publisher_actor:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publisher)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Actor
+    - p: obj:isIdentifiedBy
+      o: $(edition_pub_actor_app)
+      type: iri
+  edition_publisher_appellation:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_actor_app)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publisher)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Appellation
+    - - obj:hasSymbolicContent
+      - $(publisher)
+      - xsd:string
+  edition_publisher_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publisher)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P14_carried_out_by
+      o: $(edition_pub_actor)
+      type: iri
+  edition_publisher2_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publisher_2)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P14_carried_out_by
+      o: $(publisher_2)
+      type: iri
+  edition_expression_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(expression)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(expression)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - lrmoo:F2_Expression
+  edition_expression_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(expression)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: lrmoo:R4_embodies
+      o: $(expression)
+      type: iri
+  edition_language_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(expression)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(language)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P72_has_language
+      o: $(language)
+      type: iri
+  edition_work_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(work)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(work)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - lrmoo:F1_Work
+  edition_work_expression_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(expression)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(work)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: lrmoo:R3i_realises
+      o: $(work)
+      type: iri
+  edition_digital_object:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_digital_obj)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(digital_copy_link)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crmdig:D9_Data_Object
+    - p: obj:isIdentifiedBy
+      o: $(edition_digital_id)
+      type: iri
+  edition_digital_identifier:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_digital_id)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(digital_copy_link)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Identifier
+    - - obj:hasType
+      - aat:300404630~iri
+    - - obj:hasSymbolicContent
+      - $(digital_copy_link)
+      - xsd:anyURI
+  edition_digital_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(digital_copy_link)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P130i_features_are_also_found_on
+      o: $(edition_digital_obj)
+      type: iri
+  edition_subject_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(subject_topic)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(subject_topic)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crm:E73_Information_Object
+    - - obj:hasType
+      - aat:300404126~iri
+  edition_subject_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(expression)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(subject_topic)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P129_is_about
+      o: $(subject_topic)
+      type: iri
+  expression_creation_event:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation)
+    type: iri
+    po:
+    - - a
+      - lrmoo:F28_Expression_Creation
+    - p: lrmoo:R17_created
+      o: $(expression)
+      type: iri
+  edition_creation_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    po:
+    - p: crm:P16i_was_used_for
+      o: $(edition_expr_creation)
+      type: iri
+  edition_author_activity_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation_author)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(author)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crm:E7_Activity
+    - - obj:hasType
+      - aat:300025492~iri
+    - p: crm:P14_carried_out_by
+      o: $(author)
+      type: iri
+  edition_author_activity_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(author)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P9_consists_of
+      o: $(edition_expr_creation_author)
+      type: iri
+  edition_editor_activity_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation_editor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(editor)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crm:E7_Activity
+    - - obj:hasType
+      - aat:300312355~iri
+    - p: crm:P14_carried_out_by
+      o: $(editor)
+      type: iri
+  edition_editor_activity_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(editor)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P9_consists_of
+      o: $(edition_expr_creation_editor)
+      type: iri
+  edition_translator_activity_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation_translator)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(translator)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crm:E7_Activity
+    - - obj:hasType
+      - aat:300069831~iri
+    - p: crm:P14_carried_out_by
+      o: $(translator)
+      type: iri
+  edition_translator_activity_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(translator)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P9_consists_of
+      o: $(edition_expr_creation_translator)
+      type: iri
+  edition_illustrator_activity_node:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation_illustrator)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(illustrator)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - crm:E7_Activity
+    - - obj:hasType
+      - aat:300025164~iri
+    - p: crm:P14_carried_out_by
+      o: $(illustrator)
+      type: iri
+  edition_illustrator_activity_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_expr_creation)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(illustrator)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P9_consists_of
+      o: $(edition_expr_creation_illustrator)
+      type: iri
+
+  # ── ESTC external authority link (populated by preprocess_enriched_bibliographic) ──
+
+  edition_estc_see_also:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(estc_uri)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: rdfs:seeAlso
+      o: $(estc_uri)
+      type: iri

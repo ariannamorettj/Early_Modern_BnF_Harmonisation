@@ -1126,3 +1126,17 @@ names_analysis/names_results/names_classification_report_flair.json
 names_analysis/names_results/names_dict.json
 names_analysis/names_results/names_review_table.csv
 venv
+
+# Python bytecode
+__pycache__/
+*.pyc
+*.pyo
+
+# large generated data files — module 07
+07_graph_materialisation/input/ready_to_convert/
+07_graph_materialisation/output/full/*.nt
+07_graph_materialisation/output/full/_tmp_*/
+
+# large data files — module 04
+04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/data/bnf_edition_data_raw.csv
+04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/data/data_final/bnf_publication_place.csv

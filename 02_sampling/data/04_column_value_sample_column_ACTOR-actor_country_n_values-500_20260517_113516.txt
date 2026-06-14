@@ -1,0 +1,96 @@
+COLUMN VALUE SAMPLE REPORT
+--------------------------
+Generated at: 20260517_113516
+Input dataset: 01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+Column requested: actor_country
+Years filter: not set
+Restricted to file: no
+Total unique non-empty values found: 86
+Sampled values count: 86
+
+<http://data.bnf.fr/vocabulary/countrycodes/aa>
+<http://data.bnf.fr/vocabulary/countrycodes/cshh>
+<http://data.bnf.fr/vocabulary/countrycodes/csxx>
+<http://data.bnf.fr/vocabulary/countrycodes/ddde>
+<http://data.bnf.fr/vocabulary/countrycodes/sy>
+<http://data.bnf.fr/vocabulary/countrycodes/xdhh>
+<http://data.bnf.fr/vocabulary/countrycodes/xkhh>
+<http://data.bnf.fr/vocabulary/countrycodes/xnhh>
+<http://id.loc.gov/vocabulary/countries/aa>
+<http://id.loc.gov/vocabulary/countries/ag>
+<http://id.loc.gov/vocabulary/countries/ai>
+<http://id.loc.gov/vocabulary/countries/aq>
+<http://id.loc.gov/vocabulary/countries/au>
+<http://id.loc.gov/vocabulary/countries/be>
+<http://id.loc.gov/vocabulary/countries/bl>
+<http://id.loc.gov/vocabulary/countries/bn>
+<http://id.loc.gov/vocabulary/countries/bu>
+<http://id.loc.gov/vocabulary/countries/cc>
+<http://id.loc.gov/vocabulary/countries/ci>
+<http://id.loc.gov/vocabulary/countries/ck>
+<http://id.loc.gov/vocabulary/countries/cl>
+<http://id.loc.gov/vocabulary/countries/cu>
+<http://id.loc.gov/vocabulary/countries/cy>
+<http://id.loc.gov/vocabulary/countries/dk>
+<http://id.loc.gov/vocabulary/countries/ec>
+<http://id.loc.gov/vocabulary/countries/er>
+<http://id.loc.gov/vocabulary/countries/et>
+<http://id.loc.gov/vocabulary/countries/fi>
+<http://id.loc.gov/vocabulary/countries/fr>
+<http://id.loc.gov/vocabulary/countries/gr>
+<http://id.loc.gov/vocabulary/countries/gv>
+<http://id.loc.gov/vocabulary/countries/gw>
+<http://id.loc.gov/vocabulary/countries/ht>
+<http://id.loc.gov/vocabulary/countries/hu>
+<http://id.loc.gov/vocabulary/countries/ic>
+<http://id.loc.gov/vocabulary/countries/ie>
+<http://id.loc.gov/vocabulary/countries/ii>
+<http://id.loc.gov/vocabulary/countries/iq>
+<http://id.loc.gov/vocabulary/countries/ir>
+<http://id.loc.gov/vocabulary/countries/is>
+<http://id.loc.gov/vocabulary/countries/it>
+<http://id.loc.gov/vocabulary/countries/ja>
+<http://id.loc.gov/vocabulary/countries/jm>
+<http://id.loc.gov/vocabulary/countries/kz>
+<http://id.loc.gov/vocabulary/countries/le>
+<http://id.loc.gov/vocabulary/countries/li>
+<http://id.loc.gov/vocabulary/countries/lu>
+<http://id.loc.gov/vocabulary/countries/mc>
+<http://id.loc.gov/vocabulary/countries/ml>
+<http://id.loc.gov/vocabulary/countries/mm>
+<http://id.loc.gov/vocabulary/countries/mr>
+<http://id.loc.gov/vocabulary/countries/mx>
+<http://id.loc.gov/vocabulary/countries/ne>
+<http://id.loc.gov/vocabulary/countries/no>
+<http://id.loc.gov/vocabulary/countries/np>
+<http://id.loc.gov/vocabulary/countries/pe>
+<http://id.loc.gov/vocabulary/countries/pl>
+<http://id.loc.gov/vocabulary/countries/po>
+<http://id.loc.gov/vocabulary/countries/pr>
+<http://id.loc.gov/vocabulary/countries/py>
+<http://id.loc.gov/vocabulary/countries/rb>
+<http://id.loc.gov/vocabulary/countries/rm>
+<http://id.loc.gov/vocabulary/countries/ru>
+<http://id.loc.gov/vocabulary/countries/sa>
+<http://id.loc.gov/vocabulary/countries/sm>
+<http://id.loc.gov/vocabulary/countries/sp>
+<http://id.loc.gov/vocabulary/countries/sq>
+<http://id.loc.gov/vocabulary/countries/su>
+<http://id.loc.gov/vocabulary/countries/sw>
+<http://id.loc.gov/vocabulary/countries/sz>
+<http://id.loc.gov/vocabulary/countries/th>
+<http://id.loc.gov/vocabulary/countries/ti>
+<http://id.loc.gov/vocabulary/countries/tu>
+<http://id.loc.gov/vocabulary/countries/ua>
+<http://id.loc.gov/vocabulary/countries/un>
+<http://id.loc.gov/vocabulary/countries/uz>
+<http://id.loc.gov/vocabulary/countries/vc>
+<http://id.loc.gov/vocabulary/countries/ve>
+<http://id.loc.gov/vocabulary/countries/xo>
+<http://id.loc.gov/vocabulary/countries/xr>
+<http://id.loc.gov/vocabulary/countries/xv>
+<http://id.loc.gov/vocabulary/countries/xx>
+<http://id.loc.gov/vocabulary/countries/xxc>
+<http://id.loc.gov/vocabulary/countries/xxk>
+<http://id.loc.gov/vocabulary/countries/xxu>
+NA

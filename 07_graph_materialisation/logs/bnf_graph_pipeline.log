@@ -1,0 +1,142 @@
+2026-06-03 21:15:22,830 [INFO] [START] command=all profile=sample time=2026-06-03T21:15:22
+2026-06-03 21:15:22,830 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-03 21:15:22,830 [INFO] [PREPROCESS] removing existing ready directory: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert
+2026-06-03 21:15:22,831 [INFO] [PREPROCESS][ACTORS] raw input: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/../01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+2026-06-03 21:15:24,774 [INFO] [PREPROCESS][ACTORS] raw rows read: 20
+2026-06-03 21:15:24,842 [INFO] [PREPROCESS][ACTORS] ready main: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_actors_ready.csv (20 rows)
+2026-06-03 21:15:24,847 [INFO] [PREPROCESS][ACTORS] ready exact links: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_actors_ready_links_exact.csv (20 rows)
+2026-06-03 21:15:24,851 [INFO] [PREPROCESS][ACTORS] ready close links: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_actors_ready_links_close.csv (12 rows)
+2026-06-03 21:15:24,852 [INFO] [PREPROCESS][BIB] raw input: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/../01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+2026-06-03 21:15:38,385 [INFO] [PREPROCESS][BIB] raw rows read: 20
+2026-06-03 21:15:38,533 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in work: 11
+2026-06-03 21:15:38,534 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in language: 1
+2026-06-03 21:15:38,536 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in subject_topic: 6
+2026-06-03 21:15:38,537 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in digital_copy_link: 8
+2026-06-03 21:15:38,537 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in author: 14
+2026-06-03 21:15:38,538 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in editor: 20
+2026-06-03 21:15:38,539 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in translator: 16
+2026-06-03 21:15:38,539 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in illustrator: 20
+2026-06-03 21:15:38,540 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in publisher_2: 20
+2026-06-03 21:15:38,558 [INFO] [PREPROCESS][BIB] ready editions: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_editions_ready.csv (20 rows)
+2026-06-03 21:15:38,558 [INFO] [PREPROCESS] done
+2026-06-03 21:17:43,632 [INFO] [START] command=all profile=sample time=2026-06-03T21:17:43
+2026-06-03 21:17:43,633 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-03 21:17:43,633 [INFO] [PREPROCESS] removing existing ready directory: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert
+2026-06-03 21:17:43,634 [INFO] [PREPROCESS][ACTORS] raw input: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/../01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+2026-06-03 21:17:45,460 [INFO] [PREPROCESS][ACTORS] raw rows read: 20
+2026-06-03 21:17:45,592 [INFO] [PREPROCESS][ACTORS] ready main: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_actors_ready.csv (20 rows)
+2026-06-03 21:17:45,597 [INFO] [PREPROCESS][ACTORS] ready exact links: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_actors_ready_links_exact.csv (20 rows)
+2026-06-03 21:17:45,602 [INFO] [PREPROCESS][ACTORS] ready close links: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_actors_ready_links_close.csv (12 rows)
+2026-06-03 21:17:45,602 [INFO] [PREPROCESS][BIB] raw input: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/../01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+2026-06-03 21:17:58,800 [INFO] [PREPROCESS][BIB] raw rows read: 20
+2026-06-03 21:17:58,989 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in work: 11
+2026-06-03 21:17:58,990 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in language: 1
+2026-06-03 21:17:58,992 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in subject_topic: 6
+2026-06-03 21:17:58,993 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in digital_copy_link: 8
+2026-06-03 21:17:58,993 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in author: 14
+2026-06-03 21:17:58,994 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in editor: 20
+2026-06-03 21:17:58,995 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in translator: 16
+2026-06-03 21:17:58,995 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in illustrator: 20
+2026-06-03 21:17:58,996 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in publisher_2: 20
+2026-06-03 21:17:59,013 [INFO] [PREPROCESS][BIB] ready editions: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/sample_ready_to_convert/bnf_editions_ready.csv (20 rows)
+2026-06-03 21:17:59,013 [INFO] [PREPROCESS] done
+2026-06-03 21:17:59,014 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_sample_actors.ini
+2026-06-03 21:17:59,014 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-03 21:18:02,783 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_actors.nt
+2026-06-03 21:18:02,783 [INFO] [MATERIALIZE] final output: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/sample/knowledge-graph_actors.nt (179 lines)
+2026-06-03 21:18:02,784 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_sample_bibliographic.ini
+2026-06-03 21:18:02,784 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-03 21:18:05,675 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_bibliographic.nt
+2026-06-03 21:18:05,676 [INFO] [MATERIALIZE] final output: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/sample/knowledge-graph_bibliographic.nt (789 lines)
+2026-06-03 21:18:05,676 [INFO] [MATERIALIZE] done
+2026-06-03 21:18:05,677 [INFO] [MERGE] appending knowledge-graph_actors.nt
+2026-06-03 21:18:05,677 [INFO] [MERGE] appending knowledge-graph_bibliographic.nt
+2026-06-03 21:18:05,677 [INFO] [MERGE] output: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/sample/knowledge-graph_merged.nt (968 lines)
+2026-06-03 21:18:05,755 [INFO] [VALIDATE] file: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/sample/knowledge-graph_merged.nt
+2026-06-03 21:18:05,755 [INFO] [VALIDATE] line count: 968
+2026-06-03 21:18:05,791 [INFO] [VALIDATE] sampled valid non-empty lines: 968
+2026-06-03 21:18:05,791 [INFO] [DONE]
+2026-06-03 21:19:02,888 [INFO] [START] command=preprocess profile=full time=2026-06-03T21:19:02
+2026-06-03 21:19:02,888 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-03 21:19:02,889 [INFO] [PREPROCESS] removing existing ready directory: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/ready_to_convert
+2026-06-03 21:19:02,889 [INFO] [PREPROCESS][ACTORS] raw input: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/../01_data_retrieval/02_actors/data/old_zip/actor_data.zip
+2026-06-03 21:19:04,799 [INFO] [PREPROCESS][ACTORS] raw rows read: 403973
+2026-06-03 21:20:43,955 [INFO] [PREPROCESS][ACTORS] ready main: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/ready_to_convert/bnf_actors_ready.csv (403973 rows)
+2026-06-03 21:20:52,638 [INFO] [PREPROCESS][ACTORS] ready exact links: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_exact.csv (318921 rows)
+2026-06-03 21:20:57,525 [INFO] [PREPROCESS][ACTORS] ready close links: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/ready_to_convert/bnf_actors_ready_links_close.csv (189683 rows)
+2026-06-03 21:20:57,712 [INFO] [PREPROCESS][BIB] raw input: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/../01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip
+2026-06-03 21:21:09,432 [INFO] [PREPROCESS][BIB] raw rows read: 1341324
+2026-06-03 21:22:18,781 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in work: 1201663
+2026-06-03 21:22:38,549 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in language: 125213
+2026-06-03 21:23:36,435 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in subject_topic: 787848
+2026-06-03 21:23:53,860 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in digital_copy_link: 867727
+2026-06-03 21:24:15,994 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in author: 516626
+2026-06-03 21:24:32,872 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in editor: 1243704
+2026-06-03 21:24:38,401 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in translator: 1295645
+2026-06-03 21:24:42,977 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in illustrator: 1322983
+2026-06-03 21:24:47,594 [WARNING] [PREPROCESS][BIB] cleared invalid optional IRI values in publisher_2: 1276028
+2026-06-03 21:29:45,484 [INFO] [PREPROCESS][BIB] ready editions: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/input/ready_to_convert/bnf_editions_ready.csv (1341324 rows)
+2026-06-03 21:29:47,763 [INFO] [PREPROCESS] done
+2026-06-03 21:29:47,767 [INFO] [DONE]
+2026-06-04 01:36:56,108 [INFO] [START] command=materialize profile=full time=2026-06-04T01:36:56
+2026-06-04 01:36:56,108 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 01:36:56,110 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_full_actors.ini
+2026-06-04 01:36:56,110 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 01:39:35,430 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_actors.nt
+2026-06-04 01:39:39,655 [INFO] [MATERIALIZE] final output: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/full/knowledge-graph_actors.nt (6527075 lines)
+2026-06-04 01:39:39,659 [INFO] [MATERIALIZE] done
+2026-06-04 01:39:39,659 [INFO] [DONE]
+2026-06-04 01:44:13,094 [INFO] [START] command=materialize profile=full time=2026-06-04T01:44:13
+2026-06-04 01:44:13,095 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 01:44:13,098 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_full_actors.ini
+2026-06-04 01:44:13,098 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 01:46:48,968 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_actors.nt
+2026-06-04 01:46:52,002 [INFO] [MATERIALIZE] final output: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/full/knowledge-graph_actors.nt (6527075 lines)
+2026-06-04 01:46:52,002 [INFO] [MATERIALIZE] done
+2026-06-04 01:46:52,002 [INFO] [DONE]
+2026-06-04 06:48:22,181 [INFO] [START] command=validate profile=full time=2026-06-04T06:48:22
+2026-06-04 06:48:22,182 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 06:48:24,078 [INFO] [VALIDATE] file: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/full/knowledge-graph_actors.nt
+2026-06-04 06:48:24,079 [INFO] [VALIDATE] line count: 6527075
+2026-06-04 06:48:24,446 [INFO] [VALIDATE] sampled valid non-empty lines: 10000
+2026-06-04 06:48:24,446 [INFO] [DONE]
+2026-06-04 06:52:58,808 [INFO] [START] command=materialize profile=full time=2026-06-04T06:52:58
+2026-06-04 06:52:58,809 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 06:52:58,810 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_full_bibliographic.ini
+2026-06-04 06:52:58,810 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 07:10:46,213 [INFO] [START] command=validate profile=full time=2026-06-04T07:10:46
+2026-06-04 07:10:46,214 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 07:10:48,125 [INFO] [VALIDATE] file: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/full/knowledge-graph_actors.nt
+2026-06-04 07:10:48,126 [INFO] [VALIDATE] line count: 6527075
+2026-06-04 07:10:48,551 [INFO] [VALIDATE] sampled valid non-empty lines: 10000
+2026-06-04 07:10:48,552 [INFO] [DONE]
+2026-06-04 07:17:04,713 [INFO] [START] command=materialize profile=full time=2026-06-04T07:17:04
+2026-06-04 07:17:04,713 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 07:17:04,716 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_full_bibliographic.ini
+2026-06-04 07:17:04,716 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 07:21:01,343 [INFO] [START] command=materialize profile=full time=2026-06-04T07:21:01
+2026-06-04 07:21:01,343 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 07:21:01,344 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_full_bibliographic.ini
+2026-06-04 07:21:01,345 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 07:25:27,669 [INFO] [START] command=materialize profile=full time=2026-06-04T07:25:27
+2026-06-04 07:25:27,670 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 07:25:27,672 [INFO] [RUN] /Users/ariannamorettj/miniforge3/bin/python3.12 -m morph_kgc /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/runtime_configs/morph_full_bibliographic.ini
+2026-06-04 07:25:27,672 [INFO] [RUN] cwd=/Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 18:19:06,757 [INFO] [START] command=validate profile=full time=2026-06-04T18:19:06
+2026-06-04 18:19:06,758 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 18:19:16,258 [INFO] [VALIDATE] file: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/full/knowledge-graph_bibliographic.nt
+2026-06-04 18:19:16,259 [INFO] [VALIDATE] line count: 41748844
+2026-06-04 18:19:16,888 [INFO] [VALIDATE] sampled valid non-empty lines: 10000
+2026-06-04 18:19:16,888 [INFO] [DONE]
+2026-06-04 18:21:03,736 [INFO] [START] command=merge profile=full time=2026-06-04T18:21:03
+2026-06-04 18:21:03,738 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 18:21:03,738 [INFO] [MERGE] appending knowledge-graph_actors.nt
+2026-06-04 18:21:05,509 [INFO] [MERGE] appending knowledge-graph_bibliographic.nt
+2026-06-04 18:21:46,803 [INFO] [MERGE] output: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/full/knowledge-graph_merged.nt (48275919 lines)
+2026-06-04 18:21:46,818 [INFO] [DONE]
+2026-06-04 18:21:48,352 [INFO] [START] command=validate profile=full time=2026-06-04T18:21:48
+2026-06-04 18:21:48,352 [INFO] [PROJECT] /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation
+2026-06-04 18:21:59,482 [INFO] [VALIDATE] file: /Users/ariannamorettj/Documents/GitHub/New-BnF-Data-Analysis-2/07_graph_materialisation/output/full/knowledge-graph_merged.nt
+2026-06-04 18:21:59,482 [INFO] [VALIDATE] line count: 48275919
+2026-06-04 18:21:59,997 [INFO] [VALIDATE] sampled valid non-empty lines: 10000
+2026-06-04 18:21:59,997 [INFO] [DONE]
