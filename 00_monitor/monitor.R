@@ -22,14 +22,59 @@ create_report_file <- function() {
   file.path(OUTPUT_DIR, sprintf("%s_%s_R.txt", caller_name, timestamp))
 }
 
-read_resume_log <- function() {
-  if (file.exists(RESUME_LOG)) {
-    lines <- readLines(RESUME_LOG, warn = FALSE)
-    content <- trimws(paste(lines, collapse = " "))
-    if (nzchar(content)) {
-      cat(sprintf("\n[RESUME] %s\n\n", content))
-    }
+parse_resume_log <- function() {
+  if (!file.exists(RESUME_LOG)) return(NULL)
+  lines <- readLines(RESUME_LOG, warn = FALSE)
+  if (length(lines) == 0) return(NULL)
+  result <- list()
+  for (line in lines) {
+    sep <- regexpr("=", line)
+    if (sep == -1) next
+    key <- trimws(substr(line, 1, sep - 1))
+    val <- trimws(substr(line, sep + 1, nchar(line)))
+    if (nzchar(key)) result[[key]] <- val
   }
+  if (length(result) == 0) return(NULL)
+  result
+}
+
+write_resume_log <- function(script, report_path, started, status, last_context = NULL, ended = NULL) {
+  lines <- c(
+    paste0("script=", script),
+    paste0("report=", report_path),
+    paste0("started=", format(started, "%Y-%m-%d %H:%M:%S")),
+    paste0("status=", status)
+  )
+  if (!is.null(last_context) && nzchar(last_context)) {
+    lines <- c(lines, paste0("last_context=", last_context))
+  }
+  if (!is.null(ended)) {
+    lines <- c(lines, paste0("ended=", format(ended, "%Y-%m-%d %H:%M:%S")))
+  }
+  writeLines(lines, RESUME_LOG)
+}
+
+read_resume_log <- function() {
+  info <- parse_resume_log()
+  if (is.null(info)) return(invisible(NULL))
+
+  prev_status <- if (!is.null(info$status)) info$status else "UNKNOWN"
+  brutally_interrupted <- identical(prev_status, "RUNNING")
+
+  cat("\n[RESUME] Previous run detected:\n")
+  if (!is.null(info$script))       cat(sprintf("  Script:          %s\n", info$script))
+  if (!is.null(info$report))       cat(sprintf("  Report:          %s\n", info$report))
+  if (!is.null(info$started))      cat(sprintf("  Started:         %s\n", info$started))
+  if (!is.null(info$last_context)) cat(sprintf("  Last checkpoint: %s\n", info$last_context))
+  if (brutally_interrupted) {
+    cat("  Status:          BRUTALLY INTERRUPTED (no clean exit detected)\n")
+  } else {
+    cat(sprintf("  Status:          %s\n", prev_status))
+    if (!is.null(info$ended)) cat(sprintf("  Ended:           %s\n", info$ended))
+  }
+  cat("\n")
+
+  invisible(info)
 }
 
 read_proc_stat <- function() {
@@ -290,7 +335,8 @@ write_report_header <- function(
   start_time,
   interval_seconds = NULL,
   interface_name,
-  sampling_mode = NULL
+  sampling_mode = NULL,
+  resume_info = NULL
 ) {
   writeLines(strrep("=", 70), con)
   writeLines("SYSTEM MONITORING REPORT - R", con)
@@ -316,6 +362,26 @@ write_report_header <- function(
     con
   )
   writeLines("Network Speed Source: passive delta from /proc/net/dev", con)
+
+  if (!is.null(resume_info)) {
+    writeLines("", con)
+    writeLines(strrep("-", 70), con)
+    writeLines("", con)
+    writeLines("Previous run detected:", con)
+    prev_status <- if (!is.null(resume_info$status)) resume_info$status else "UNKNOWN"
+    brutally_interrupted <- identical(prev_status, "RUNNING")
+    if (!is.null(resume_info$script))       writeLines(sprintf("  Script:          %s", resume_info$script), con)
+    if (!is.null(resume_info$report))       writeLines(sprintf("  Report:          %s", resume_info$report), con)
+    if (!is.null(resume_info$started))      writeLines(sprintf("  Started:         %s", resume_info$started), con)
+    if (!is.null(resume_info$last_context)) writeLines(sprintf("  Last checkpoint: %s", resume_info$last_context), con)
+    if (brutally_interrupted) {
+      writeLines("  Status:          BRUTALLY INTERRUPTED (no clean exit detected)", con)
+    } else {
+      writeLines(sprintf("  Status:          %s", prev_status), con)
+      if (!is.null(resume_info$ended)) writeLines(sprintf("  Ended:           %s", resume_info$ended), con)
+    }
+  }
+
   writeLines("", con)
   writeLines(strrep("-", 70), con)
   writeLines("", con)
@@ -368,11 +434,12 @@ start_monitor_state <- function(
   sampling_mode = NULL,
   print_start_message = TRUE
 ) {
-  read_resume_log()
+  resume_info <- read_resume_log()
 
   report_path <- create_report_file()
   start_time <- Sys.time()
   pid <- Sys.getpid()
+  script_name <- get_entry_script_name()
   interface <- get_default_interface()
   clock_ticks <- get_clock_ticks()
 
@@ -388,7 +455,15 @@ start_monitor_state <- function(
     start_time = start_time,
     interval_seconds = interval_seconds,
     interface_name = interface,
-    sampling_mode = sampling_mode
+    sampling_mode = sampling_mode,
+    resume_info = resume_info
+  )
+
+  write_resume_log(
+    script = script_name,
+    report_path = report_path,
+    started = start_time,
+    status = "RUNNING"
   )
 
   if (isTRUE(print_start_message)) {
@@ -401,6 +476,7 @@ start_monitor_state <- function(
     report_con = report_con,
     start_time = start_time,
     pid = pid,
+    script_name = script_name,
     interface = interface,
     clock_ticks = clock_ticks,
     prev_cpu = prev_cpu,
@@ -408,6 +484,7 @@ start_monitor_state <- function(
     prev_net = prev_net,
     prev_wall_time = prev_wall_time,
     cycle = 0,
+    last_context = NULL,
     closed = FALSE
   )
 }
@@ -510,6 +587,17 @@ advance_monitor_state <- function(
   state$prev_wall_time <- snapshot$curr_wall_time
   state$cycle <- cycle
 
+  if (!is.null(context) && nzchar(context)) {
+    state$last_context <- context
+    write_resume_log(
+      script = state$script_name,
+      report_path = state$report_path,
+      started = state$start_time,
+      status = "RUNNING",
+      last_context = context
+    )
+  }
+
   state
 }
 
@@ -529,7 +617,8 @@ update_monitor_state <- function(
 
 stop_monitor_state <- function(
   state,
-  print_stop_message = TRUE
+  print_stop_message = TRUE,
+  status = "COMPLETED"
 ) {
   if (is.null(state) || isTRUE(state$closed)) {
     return(invisible(state))
@@ -542,6 +631,15 @@ stop_monitor_state <- function(
     start_time = state$start_time,
     end_time = end_time,
     cycle = state$cycle
+  )
+
+  write_resume_log(
+    script = state$script_name,
+    report_path = state$report_path,
+    started = state$start_time,
+    status = status,
+    last_context = state$last_context,
+    ended = end_time
   )
 
   safe_close_connection(state$report_con)

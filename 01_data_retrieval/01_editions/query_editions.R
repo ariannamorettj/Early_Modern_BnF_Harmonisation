@@ -3,6 +3,50 @@
 library(SPARQL)
 library(tidyverse)
 
+format_duration <- function(secs) {
+  secs <- max(0, round(secs))
+  h <- secs %/% 3600
+  m <- (secs %% 3600) %/% 60
+  s <- secs %% 60
+  if (h > 0) sprintf("%dh %02dm %02ds", h, m, s)
+  else if (m > 0) sprintf("%dm %02ds", m, s)
+  else sprintf("%ds", s)
+}
+
+print_progress <- function(current, total, start_time, step_times) {
+  pct <- current / total
+  bar_width <- 40
+  filled <- round(pct * bar_width)
+
+  if (filled >= bar_width) {
+    bar_inner <- strrep("=", bar_width)
+  } else if (filled == 0) {
+    bar_inner <- paste0(">", strrep(" ", bar_width - 1))
+  } else {
+    bar_inner <- paste0(strrep("=", filled), ">", strrep(" ", bar_width - filled - 1))
+  }
+  bar <- paste0("[", bar_inner, "]")
+
+  elapsed <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+  elapsed_str <- format_duration(elapsed)
+
+  if (length(step_times) > 0) {
+    avg_step <- mean(tail(step_times, 10))
+    eta_secs <- avg_step * (total - current)
+    eta_str <- format_duration(eta_secs)
+  } else {
+    eta_str <- "--"
+  }
+
+  cat(sprintf(
+    "\r%s %3.0f%%  %d/%d  elapsed: %s  ETA: %s   ",
+    bar, pct * 100, current, total, elapsed_str, eta_str
+  ))
+
+  if (current >= total) cat("\n")
+  flush.console()
+}
+
 make_paths <- function(base_dir = "01_data_retrieval/01_editions") {
   output_dir <- file.path(base_dir, "data")
   yearly_output_dir <- file.path(output_dir, "edition_raw_data_by_year")
@@ -192,7 +236,8 @@ run_query_editions <- function(
         if (!is.null(monitor_state) && !isTRUE(monitor_state$closed)) {
           monitor_env$stop_monitor_state(
             state = monitor_state,
-            print_stop_message = TRUE
+            print_stop_message = TRUE,
+            status = "INTERRUPTED"
           )
         }
       },
@@ -200,7 +245,13 @@ run_query_editions <- function(
     )
   }
 
+  total_steps <- last_year - first_year + 1
+  loop_start <- Sys.time()
+  step_times <- numeric(0)
+
   for (i in start_year:last_year) {
+    step_start <- Sys.time()
+
     get_bnf_edition_data(
       year = i,
       yearly_output_dir = paths$yearly_output_dir,
@@ -208,7 +259,8 @@ run_query_editions <- function(
       sleep = sleep
     )
 
-    print(i)
+    step_times <- c(step_times, as.numeric(difftime(Sys.time(), step_start, units = "secs")))
+    print_progress(i - first_year + 1, total_steps, loop_start, step_times)
     gc()
 
     if (use_monitor) {

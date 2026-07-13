@@ -190,6 +190,37 @@ Computes basic descriptive counts on the compiled edition dataset, including:
 - number of editions with author information;
 - number of editions with language information.
 
+### `format_duration(secs)`
+
+Converts a numeric value in seconds to a human-readable string.
+
+Output format:
+
+- `Xh MMm SSs` when hours are present;
+- `Mm SSs` when only minutes and seconds are present;
+- `Ss` for durations under one minute.
+
+### `print_progress(current, total, start_time, step_times)`
+
+Prints a single-line progress bar to the console, updated in place via `\r`.
+
+Parameters:
+
+- `current`: position in the full sequence (1-based);
+- `total`: total number of steps in the full sequence;
+- `start_time`: `Sys.time()` value captured before the loop started;
+- `step_times`: numeric vector of elapsed seconds for each completed step in the current session.
+
+Output format:
+
+```
+[=============>                          ]  38%  132/346  elapsed: 22m 14s  ETA: 36m 05s
+```
+
+The ETA is computed as the mean of the last 10 completed step durations multiplied by the number of remaining steps.
+
+When `current` equals `total`, a final newline is printed to end the overwriting line.
+
 ### `load_monitor_env(monitor_script = "00_monitor/monitor.R")`
 
 Loads the shared monitor code into a dedicated environment using `sys.source()`.
@@ -217,13 +248,16 @@ The function:
 2. optionally writes session info;
 3. determines the start year;
 4. optionally starts the monitor;
-5. loops through the target years;
-6. writes yearly CSV files;
-7. compiles the yearly files;
-8. writes the compiled edition dataset;
-9. computes descriptive statistics;
-10. optionally writes monitor checkpoints and stops the monitor;
-11. returns an invisible list with paths, data, stats, start year, compiled output file, and monitor report path if enabled.
+5. initialises loop timing variables (`loop_start`, `step_times`);
+6. loops through the target years;
+7. records per-step elapsed time;
+8. prints a progress bar with ETA after each step;
+9. writes yearly CSV files;
+10. compiles the yearly files;
+11. writes the compiled edition dataset;
+12. computes descriptive statistics;
+13. optionally writes monitor checkpoints and stops the monitor;
+14. returns an invisible list with paths, data, stats, start year, compiled output file, and monitor report path if enabled.
 
 ---
 
@@ -414,6 +448,37 @@ Reads all actor CSV files from the intermediate output directory, row-binds them
 
 If no actor CSV files are found, it raises an error.
 
+### `format_duration(secs)`
+
+Converts a numeric value in seconds to a human-readable string.
+
+Output format:
+
+- `Xh MMm SSs` when hours are present;
+- `Mm SSs` when only minutes and seconds are present;
+- `Ss` for durations under one minute.
+
+### `print_progress(current, total, start_time, step_times)`
+
+Prints a single-line progress bar to the console, updated in place via `\r`.
+
+Parameters:
+
+- `current`: current actor index (`i` in the loop, 1-based in the full actor list);
+- `total`: total number of distinct actors (`nrow(actors_df)`);
+- `start_time`: `Sys.time()` value captured before the loop started;
+- `step_times`: numeric vector of elapsed seconds for each completed step in the current session.
+
+Output format:
+
+```
+[=============>                          ]  38%  4201/11000  elapsed: 1h 45m 12s  ETA: 2h 51m 30s
+```
+
+The ETA is computed as the mean of the last 10 completed step durations multiplied by the number of remaining steps.
+
+When `current` equals `total`, a final newline is printed to end the overwriting line.
+
 ### `load_monitor_env(monitor_script = "00_monitor/monitor.R")`
 
 Loads the shared monitor code into a dedicated environment using `sys.source()`.
@@ -439,13 +504,16 @@ The function:
 4. checks that at least one actor is available;
 5. computes the start index from the progress file;
 6. optionally starts the monitor;
-7. loops over the actors from the resume point onward;
-8. queries one actor at a time;
-9. writes progress after successful processing;
-10. updates the monitor at each checkpoint;
-11. merges all actor CSV files into `actor_data.csv`;
-12. writes a final monitor checkpoint and stops the monitor;
-13. returns an invisible list with paths, actors, merged data, output file, start index, and monitor report path if enabled.
+7. initialises loop timing variables (`loop_start`, `step_times`);
+8. loops over the actors from the resume point onward;
+9. records per-step elapsed time;
+10. prints a progress bar with ETA after each step;
+11. queries one actor at a time;
+12. writes progress after successful processing;
+13. updates the monitor at each checkpoint;
+14. merges all actor CSV files into `actor_data.csv`;
+15. writes a final monitor checkpoint and stops the monitor;
+16. returns an invisible list with paths, actors, merged data, output file, start index, and monitor report path if enabled.
 
 ---
 
@@ -528,7 +596,18 @@ This keeps the retrieval scripts independent while still reusing the central mon
 
 - `start_monitor_state()`
 - `update_monitor_state()`
-- `stop_monitor_state()`
+- `stop_monitor_state(status = ...)`
+
+### Interruption status tracking
+
+Both scripts pass an explicit `status` parameter to `stop_monitor_state()` to distinguish normal completion from clean interruption:
+
+- the `on.exit()` hook passes `status = "INTERRUPTED"` — this fires on R errors and Ctrl+C;
+- the explicit call at the end of the normal flow uses the default `status = "COMPLETED"`.
+
+If the process is killed brutally (SIGKILL, power loss, OS crash), neither call runs. The monitor's `resume_info.log` retains `status = "RUNNING"`, which the next run detects and reports as `BRUTALLY INTERRUPTED`.
+
+In all three cases, the **next run's report header** includes a "Previous run detected" block with the previous script name, report path, start time, last completed checkpoint, status, and end time (when available). This creates an explicit cross-reference chain between successive runs.
 
 ### Monitor output location
 
@@ -566,21 +645,57 @@ This means they can also be safely sourced during tests or reused as libraries w
 
 ## Recommended Execution Order
 
-### Step 1: retrieve edition data
+Both commands must be run from the **project root directory**. Step 2 cannot start before Step 1 has completed, because it reads the compiled editions CSV produced by Step 1.
 
-From the project root:
+### Step 1: retrieve edition data
 
 ```bash
 Rscript 01_data_retrieval/01_editions/query_editions.R
 ```
 
-### Step 2: retrieve actor data
+Queries the BnF SPARQL endpoint year by year from 1454 to 1799 (346 steps). Each step includes a random sleep of 5–10 seconds. Estimated duration: approximately 40–60 minutes depending on endpoint response time.
 
-From the project root:
+During execution the console shows a live progress bar:
+
+```
+[=============>                          ]  38%  132/346  elapsed: 22m 14s  ETA: 36m 05s
+```
+
+Output written to:
+
+- `01_data_retrieval/01_editions/data/edition_raw_data_by_year/` — one CSV per year
+- `01_data_retrieval/01_editions/data/bnf_edition_data_raw.csv` — compiled dataset
+- `00_monitor/report/query_editions_<timestamp>_R.txt` — monitoring report
+
+### Step 2: retrieve actor data
 
 ```bash
 Rscript 01_data_retrieval/02_actors/query_agents.R
 ```
+
+Reads the compiled editions dataset, extracts distinct actor URIs, and queries the BnF endpoint for each actor. Each step includes a random sleep of 1–2 seconds. Duration depends on the number of distinct actors found in Step 1.
+
+During execution the console shows a live progress bar:
+
+```
+[=============>                          ]  38%  4201/11000  elapsed: 1h 45m 12s  ETA: 2h 51m 30s
+```
+
+Output written to:
+
+- `01_data_retrieval/02_actors/data/actor_queries_results/` — one CSV per actor
+- `01_data_retrieval/02_actors/data/actor_data.csv` — merged actor dataset
+- `01_data_retrieval/02_actors/data/last_processed_index.txt` — resume checkpoint
+- `00_monitor/report/query_agents_<timestamp>_R.txt` — monitoring report
+
+### Resuming after interruption
+
+Both scripts resume automatically if interrupted:
+
+- **editions**: resumes from the last detected yearly CSV file
+- **actors**: resumes from `last_processed_index + 1`
+
+Simply re-run the same command from the project root to continue.
 
 ---
 

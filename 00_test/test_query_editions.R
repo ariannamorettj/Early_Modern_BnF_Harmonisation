@@ -175,7 +175,7 @@ test_that("load_monitor_env loads a monitor script into an environment", {
       '  state$cycle <- state$cycle + 1',
       '  state',
       '}',
-      'stop_monitor_state <- function(state, print_stop_message = TRUE) {',
+      'stop_monitor_state <- function(state, print_stop_message = TRUE, status = "COMPLETED") {',
       '  state$closed <- TRUE',
       '  state',
       '}'
@@ -268,7 +268,7 @@ test_that("run_query_editions can use the embedded monitor API", {
       '  state$cycle <- state$cycle + 1',
       '  state',
       '}',
-      'stop_monitor_state <- function(state, print_stop_message = TRUE) {',
+      'stop_monitor_state <- function(state, print_stop_message = TRUE, status = "COMPLETED") {',
       '  cat("stop\\n", file = monitor_log_path, append = TRUE)',
       '  file.create(state$report_path)',
       '  state$closed <- TRUE',
@@ -323,4 +323,35 @@ test_that("run_query_editions can use the embedded monitor API", {
   expect_true("start" %in% log_lines)
   expect_true("stop" %in% log_lines)
   expect_equal(sum(grepl("^update:", log_lines)), 3)
+})
+
+# ---------------------------------------------------------------------------
+# New tests: format_duration and print_progress from query_editions.R
+# ---------------------------------------------------------------------------
+
+test_that("format_duration formats seconds only", {
+  expect_equal(test_env$format_duration(45), "45s")
+})
+
+test_that("format_duration formats minutes and seconds", {
+  expect_equal(test_env$format_duration(125), "2m 05s")
+})
+
+test_that("format_duration formats hours minutes seconds", {
+  expect_equal(test_env$format_duration(3723), "1h 02m 03s")
+})
+
+test_that("print_progress outputs a progress bar line", {
+  output <- capture.output(
+    test_env$print_progress(
+      current = 1,
+      total = 10,
+      start_time = Sys.time(),
+      step_times = c(5.0)
+    )
+  )
+
+  combined <- paste(output, collapse = "\n")
+  expect_true(nchar(combined) > 0)
+  expect_true(grepl("%", combined))
 })
