@@ -1,0 +1,71 @@
+======================================================================
+BnF DATASET OPTIMISATION REPORT
+======================================================================
+
+BASIC STATISTICS
+----------------------------------------------------------------------
+Total source rows processed: 403,973
+Exact duplicate rows: 0
+Net rows (excluding duplicates): 403,973
+Total unique entities (actors): 124,446
+Entities with merged records: 36,990
+Merge rate: 29.72%
+Average records per entity: 3.25
+
+======================================================================
+FIELD STATISTICS (ALL FIELDS)
+----------------------------------------------------------------------
+(All fields can have multiple values after merge)
+
+Field                     Filled          Fill Rate       Avg/Entity
+----------------------------------------------------------------------
+actor_name                 110,355         88.7%       0.8872
+actor_first_name           107,865         86.7%       0.8668
+actor_last_name            121,956         98.0%       0.9800
+actor_birth                 40,620         32.6%       0.3264
+actor_death                 40,694         32.7%       0.3270
+actor_start                 28,989         23.3%       0.2329
+actor_end                   30,516         24.5%       0.2452
+first_year                  28,989         23.3%       0.2329
+entity_type                124,446        100.0%       1.0000
+actor_gender                37,741         30.3%       0.3033
+actor_profession            37,684         30.3%       0.3708
+actor_country               39,491         31.7%       0.3173
+actor_language              37,802         30.4%       0.3089
+actor_link_exact            42,153         33.9%       1.4243
+actor_link_close            12,705         10.2%       0.2455
+
+======================================================================
+OVERALL AVERAGE
+----------------------------------------------------------------------
+Average items per entity (across all fields): 0.5379
+
+AVERAGE ITEMS PER ENTITY (BY FIELD)
+----------------------------------------------------------------------
+actor_name                  0.8872
+actor_first_name            0.8668
+actor_last_name             0.9800
+actor_birth                 0.3264
+actor_death                 0.3270
+actor_start                 0.2329
+actor_end                   0.2452
+first_year                  0.2329
+entity_type                 1.0000
+actor_gender                0.3033
+actor_profession            0.3708
+actor_country               0.3173
+actor_language              0.3089
+actor_link_exact            1.4243
+actor_link_close            0.2455
+
+======================================================================
+MERGE DETAILS - FIELDS WITH VARIATIONS
+----------------------------------------------------------------------
+Field                     Entities with variations
+----------------------------------------------------------------------
+actor_profession             5,502
+actor_language                 534
+actor_link_exact            36,537
+actor_link_close            10,145
+
+======================================================================

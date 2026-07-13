@@ -1,5 +1,49 @@
 # 01_data_retrieval/02_actors/query_agents.R
 
+format_duration <- function(secs) {
+  secs <- max(0, round(secs))
+  h <- secs %/% 3600
+  m <- (secs %% 3600) %/% 60
+  s <- secs %% 60
+  if (h > 0) sprintf("%dh %02dm %02ds", h, m, s)
+  else if (m > 0) sprintf("%dm %02ds", m, s)
+  else sprintf("%ds", s)
+}
+
+print_progress <- function(current, total, start_time, step_times) {
+  pct <- current / total
+  bar_width <- 40
+  filled <- round(pct * bar_width)
+
+  if (filled >= bar_width) {
+    bar_inner <- strrep("=", bar_width)
+  } else if (filled == 0) {
+    bar_inner <- paste0(">", strrep(" ", bar_width - 1))
+  } else {
+    bar_inner <- paste0(strrep("=", filled), ">", strrep(" ", bar_width - filled - 1))
+  }
+  bar <- paste0("[", bar_inner, "]")
+
+  elapsed <- as.numeric(difftime(Sys.time(), start_time, units = "secs"))
+  elapsed_str <- format_duration(elapsed)
+
+  if (length(step_times) > 0) {
+    avg_step <- mean(tail(step_times, 10))
+    eta_secs <- avg_step * (total - current)
+    eta_str <- format_duration(eta_secs)
+  } else {
+    eta_str <- "--"
+  }
+
+  cat(sprintf(
+    "\r%s %3.0f%%  %d/%d  elapsed: %s  ETA: %s   ",
+    bar, pct * 100, current, total, elapsed_str, eta_str
+  ))
+
+  if (current >= total) cat("\n")
+  flush.console()
+}
+
 make_actor_paths <- function(
   base_dir = "01_data_retrieval/02_actors",
   editions_input = "01_data_retrieval/01_editions/data/bnf_edition_data_raw.csv"
@@ -186,7 +230,8 @@ run_query_agents <- function(
         if (!is.null(monitor_state) && !isTRUE(monitor_state$closed)) {
           monitor_env$stop_monitor_state(
             state = monitor_state,
-            print_stop_message = TRUE
+            print_stop_message = TRUE,
+            status = "INTERRUPTED"
           )
         }
       },
@@ -194,8 +239,14 @@ run_query_agents <- function(
     )
   }
 
+  total_actors <- nrow(actors_df)
+  loop_start <- Sys.time()
+  step_times <- numeric(0)
+
   if (start_index <= nrow(actors_df)) {
     for (i in start_index:nrow(actors_df)) {
+      step_start <- Sys.time()
+
       success <- tryCatch(
         {
           get_bnf_data_for_actor(
@@ -216,7 +267,8 @@ run_query_agents <- function(
         writeLines(as.character(i), paths$progress_file)
       }
 
-      print(i)
+      step_times <- c(step_times, as.numeric(difftime(Sys.time(), step_start, units = "secs")))
+      print_progress(i, total_actors, loop_start, step_times)
 
       if (use_monitor) {
         actor_label <- as.character(actors_df$actor[i])
