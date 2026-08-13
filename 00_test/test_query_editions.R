@@ -38,7 +38,11 @@ sys.source(script_path, envir = test_env)
 
 make_paths <- test_env$make_paths
 ensure_output_dirs <- test_env$ensure_output_dirs
-write_session_info_file <- test_env$write_session_info_file
+format_session_timestamp <- test_env$format_session_timestamp
+get_session_info_path <- test_env$get_session_info_path
+write_session_info_header <- test_env$write_session_info_header
+append_batch_log_entry <- test_env$append_batch_log_entry
+append_total_time_summary <- test_env$append_total_time_summary
 get_start_year <- test_env$get_start_year
 build_bnf_edition_query <- test_env$build_bnf_edition_query
 get_bnf_edition_data <- test_env$get_bnf_edition_data
@@ -235,14 +239,117 @@ test_that("run_query_editions performs an end-to-end run with mocked queries", {
 
   session_files <- list.files(
     file.path(tmp_base, "data"),
-    pattern = "^sessionInfo_of_the_bnf_data_acquisition_run_of_.*\\.txt$"
+    pattern = "^sessionInfo_data_acquisition_[0-9]{8}_[0-9]{6}\\.txt$"
   )
   expect_true(length(session_files) == 1)
+
+  session_content <- readLines(file.path(tmp_base, "data", session_files[1]))
+  expect_true(any(grepl("^Batch years 1454-1455", session_content)))
+  expect_true(any(grepl("status: COMPLETED", session_content)))
 
   expect_equal(result$start_year, 1454)
   expect_true(nrow(result$data) == 2)
   expect_true(result$stats$n_unique_editions == 2)
   expect_null(result$monitor_report)
+})
+
+test_that("run_query_editions skips a batch already covered and logs it as SKIPPED", {
+  tmp_base <- file.path(tempdir(), "query_editions_skip_batch")
+
+  mock_query_fun <- function(query) {
+    year <- sub(".*FILTER\\(\\?year_first = ([0-9]{4})\\).*", "\\1", query)
+    data.frame(
+      edition = paste0("http://example.org/edition/", year),
+      bnf_id = paste0("id_", year),
+      title = paste("Title", year),
+      year_first = year,
+      year_range = year,
+      description = "", place = "", publisher = "", work = "",
+      digital_copy_link = "", subject_topic = "", expression = "",
+      language = "", record_type = "", author = "", editor = "",
+      translator = "", publisher_2 = "", illustrator = "",
+      stringsAsFactors = FALSE
+    )
+  }
+
+  ts <- format_session_timestamp()
+
+  first <- run_query_editions(
+    base_dir = tmp_base,
+    first_year = 1454,
+    last_year = 1455,
+    query_fun = mock_query_fun,
+    sleep = FALSE,
+    compile_output = FALSE,
+    session_timestamp = ts
+  )
+
+  second <- run_query_editions(
+    base_dir = tmp_base,
+    first_year = 1454,
+    last_year = 1454,
+    query_fun = mock_query_fun,
+    sleep = FALSE,
+    compile_output = FALSE,
+    session_timestamp = ts
+  )
+
+  expect_equal(first$start_year, 1454)
+  expect_equal(second$start_year, 1455)
+  expect_null(second$data)
+
+  session_path <- get_session_info_path(file.path(tmp_base, "data"), ts)
+  session_content <- readLines(session_path)
+
+  expect_true(any(grepl("^Batch years 1454-1455.*status: COMPLETED$", session_content)))
+  expect_true(any(grepl("status: SKIPPED", session_content)))
+})
+
+test_that("run_query_editions shares one session-info file across restarted batches", {
+  tmp_base <- file.path(tempdir(), "query_editions_batched_session")
+
+  mock_query_fun <- function(query) {
+    year <- sub(".*FILTER\\(\\?year_first = ([0-9]{4})\\).*", "\\1", query)
+    data.frame(
+      edition = paste0("http://example.org/edition/", year),
+      bnf_id = paste0("id_", year),
+      title = paste("Title", year),
+      year_first = year,
+      year_range = year,
+      description = "", place = "", publisher = "", work = "",
+      digital_copy_link = "", subject_topic = "", expression = "",
+      language = "", record_type = "", author = "", editor = "",
+      translator = "", publisher_2 = "", illustrator = "",
+      stringsAsFactors = FALSE
+    )
+  }
+
+  ts <- format_session_timestamp()
+
+  run_query_editions(
+    base_dir = tmp_base, first_year = 1700, last_year = 1701,
+    query_fun = mock_query_fun, sleep = FALSE,
+    compile_output = FALSE, session_timestamp = ts
+  )
+
+  run_query_editions(
+    base_dir = tmp_base, first_year = 1700, last_year = 1703,
+    query_fun = mock_query_fun, sleep = FALSE,
+    compile_output = TRUE, session_timestamp = ts
+  )
+
+  session_files <- list.files(
+    file.path(tmp_base, "data"),
+    pattern = "^sessionInfo_data_acquisition_.*\\.txt$"
+  )
+  expect_equal(length(session_files), 1)
+
+  session_content <- readLines(file.path(tmp_base, "data", session_files[1]))
+  batch_lines <- grep("^Batch years", session_content, value = TRUE)
+
+  expect_equal(length(batch_lines), 2)
+  expect_true(grepl("^Batch years 1700-1701", batch_lines[1]))
+  expect_true(grepl("^Batch years 1701-1703", batch_lines[2]))
 })
 
 test_that("run_query_editions can use the embedded monitor API", {
@@ -339,6 +446,116 @@ test_that("format_duration formats minutes and seconds", {
 
 test_that("format_duration formats hours minutes seconds", {
   expect_equal(test_env$format_duration(3723), "1h 02m 03s")
+})
+
+# ---------------------------------------------------------------------------
+# New tests: session-info helpers (shared file + batch log)
+# ---------------------------------------------------------------------------
+
+test_that("format_session_timestamp produces a YYYYMMDD_HHMMSS string", {
+  ts <- format_session_timestamp(as.POSIXct("2026-07-14 02:49:27", tz = "UTC"))
+  expect_equal(ts, "20260714_024927")
+})
+
+test_that("get_session_info_path builds the expected file name", {
+  path <- get_session_info_path("some/output/dir", "20260714_024927")
+  expect_equal(path, file.path("some/output/dir", "sessionInfo_data_acquisition_20260714_024927.txt"))
+})
+
+test_that("write_session_info_header writes sessionInfo() plus a batch log section", {
+  tmp_file <- file.path(tempdir(), "session_header_test.txt")
+  on.exit(unlink(tmp_file), add = TRUE)
+
+  write_session_info_header(tmp_file)
+  content <- readLines(tmp_file)
+
+  expect_true(any(grepl("SESSION INFO", content)))
+  expect_true(any(grepl("^R version", content)))
+  expect_true(any(grepl("^Batch log", content)))
+})
+
+test_that("append_batch_log_entry appends a formatted line without touching prior content", {
+  tmp_file <- file.path(tempdir(), "session_batch_log_test.txt")
+  on.exit(unlink(tmp_file), add = TRUE)
+
+  writeLines("existing header line", tmp_file)
+
+  append_batch_log_entry(
+    path = tmp_file,
+    requested_last_year = 1455,
+    start_year_used = 1454,
+    batch_start = as.POSIXct("2026-07-14 02:49:27", tz = "UTC"),
+    batch_end = as.POSIXct("2026-07-14 02:49:30", tz = "UTC"),
+    status = "COMPLETED"
+  )
+
+  content <- readLines(tmp_file)
+
+  expect_equal(content[1], "existing header line")
+  expect_true(any(grepl(
+    "^Batch years 1454-1455 \\| started .* \\| ended .* \\| duration 3s \\| status: COMPLETED$",
+    content
+  )))
+})
+
+test_that("append_total_time_summary appends a total-duration footer", {
+  tmp_file <- file.path(tempdir(), "editions_total_time_summary_test.txt")
+  on.exit(unlink(tmp_file), add = TRUE)
+
+  writeLines("existing content", tmp_file)
+
+  append_total_time_summary(
+    path = tmp_file,
+    total_start = as.POSIXct("2026-07-14 05:41:25", tz = "UTC"),
+    total_end = as.POSIXct("2026-07-14 08:57:55", tz = "UTC")
+  )
+
+  content <- readLines(tmp_file)
+
+  expect_equal(content[1], "existing content")
+  expect_true(any(grepl(
+    "^TOTAL ACQUISITION TIME: 3h 16m 30s \\(from 2026-07-14 05:41:25 to 2026-07-14 08:57:55\\)$",
+    content
+  )))
+})
+
+test_that("run_query_editions writes a TOTAL ACQUISITION TIME summary on the final compile batch", {
+  tmp_base <- file.path(tempdir(), "query_editions_total_time")
+
+  mock_query_fun <- function(query) {
+    year <- sub(".*FILTER\\(\\?year_first = ([0-9]{4})\\).*", "\\1", query)
+    data.frame(
+      edition = paste0("http://example.org/edition/", year),
+      bnf_id = paste0("id_", year),
+      title = paste("Title", year),
+      year_first = year,
+      year_range = year,
+      description = "", place = "", publisher = "", work = "",
+      digital_copy_link = "", subject_topic = "", expression = "",
+      language = "", record_type = "", author = "", editor = "",
+      translator = "", publisher_2 = "", illustrator = "",
+      stringsAsFactors = FALSE
+    )
+  }
+
+  ts <- test_env$format_session_timestamp()
+
+  run_query_editions(
+    base_dir = tmp_base, first_year = 1454, last_year = 1454,
+    query_fun = mock_query_fun, sleep = FALSE,
+    compile_output = FALSE, session_timestamp = ts
+  )
+
+  run_query_editions(
+    base_dir = tmp_base, first_year = 1454, last_year = 1455,
+    query_fun = mock_query_fun, sleep = FALSE,
+    compile_output = TRUE, session_timestamp = ts
+  )
+
+  session_path <- get_session_info_path(file.path(tmp_base, "data"), ts)
+  content <- readLines(session_path)
+
+  expect_true(any(grepl("^TOTAL ACQUISITION TIME:", content)))
 })
 
 test_that("print_progress outputs a progress bar line", {

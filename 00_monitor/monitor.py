@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
+import ctypes
 import os
+import shutil
 import sys
 import time
 import subprocess
@@ -9,6 +11,77 @@ import __main__
 
 RESUME_LOG = "resume_info.log"
 OUTPUT_DIR = "00_monitor/report"
+
+IS_WINDOWS = os.name == "nt"
+
+if IS_WINDOWS:
+    import ctypes.wintypes as wintypes
+
+    class FILETIME(ctypes.Structure):
+        _fields_ = [("dwLowDateTime", wintypes.DWORD), ("dwHighDateTime", wintypes.DWORD)]
+
+    def _filetime_to_int(ft):
+        return (ft.dwHighDateTime << 32) | ft.dwLowDateTime
+
+    class MEMORYSTATUSEX(ctypes.Structure):
+        _fields_ = [
+            ("dwLength", wintypes.DWORD),
+            ("dwMemoryLoad", wintypes.DWORD),
+            ("ullTotalPhys", ctypes.c_uint64),
+            ("ullAvailPhys", ctypes.c_uint64),
+            ("ullTotalPageFile", ctypes.c_uint64),
+            ("ullAvailPageFile", ctypes.c_uint64),
+            ("ullTotalVirtual", ctypes.c_uint64),
+            ("ullAvailVirtual", ctypes.c_uint64),
+            ("ullAvailExtendedVirtual", ctypes.c_uint64),
+        ]
+
+    class PROCESS_MEMORY_COUNTERS(ctypes.Structure):
+        _fields_ = [
+            ("cb", wintypes.DWORD),
+            ("PageFaultCount", wintypes.DWORD),
+            ("PeakWorkingSetSize", ctypes.c_size_t),
+            ("WorkingSetSize", ctypes.c_size_t),
+            ("QuotaPeakPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaPeakNonPagedPoolUsage", ctypes.c_size_t),
+            ("QuotaNonPagedPoolUsage", ctypes.c_size_t),
+            ("PagefileUsage", ctypes.c_size_t),
+            ("PeakPagefileUsage", ctypes.c_size_t),
+        ]
+
+    class MIB_IFROW(ctypes.Structure):
+        _fields_ = [
+            ("wszName", ctypes.c_wchar * 256),
+            ("dwIndex", wintypes.DWORD),
+            ("dwType", wintypes.DWORD),
+            ("dwMtu", wintypes.DWORD),
+            ("dwSpeed", wintypes.DWORD),
+            ("dwPhysAddrLen", wintypes.DWORD),
+            ("bPhysAddr", ctypes.c_byte * 8),
+            ("dwAdminStatus", wintypes.DWORD),
+            ("dwOperStatus", wintypes.DWORD),
+            ("dwLastChange", wintypes.DWORD),
+            ("dwInOctets", wintypes.DWORD),
+            ("dwInUcastPkts", wintypes.DWORD),
+            ("dwInNUcastPkts", wintypes.DWORD),
+            ("dwInDiscards", wintypes.DWORD),
+            ("dwInErrors", wintypes.DWORD),
+            ("dwInUnknownProtos", wintypes.DWORD),
+            ("dwOutOctets", wintypes.DWORD),
+            ("dwOutUcastPkts", wintypes.DWORD),
+            ("dwOutNUcastPkts", wintypes.DWORD),
+            ("dwOutDiscards", wintypes.DWORD),
+            ("dwOutErrors", wintypes.DWORD),
+            ("dwOutQLen", wintypes.DWORD),
+            ("dwDescrLen", wintypes.DWORD),
+            ("bDescr", ctypes.c_byte * 256),
+        ]
+
+    _kernel32 = ctypes.windll.kernel32
+    _psapi = ctypes.windll.psapi
+    _iphlpapi = ctypes.windll.iphlpapi
+    _ws2_32 = ctypes.windll.ws2_32
 
 
 def get_entry_script_name():
@@ -43,7 +116,27 @@ def read_resume_log():
                 print(f"\n[RESUME] {content}\n")
 
 
+def get_clock_ticks():
+    if IS_WINDOWS:
+        return 10_000_000  # FILETIME units are 100ns intervals
+
+    return os.sysconf(os.sysconf_names["SC_CLK_TCK"])
+
+
 def read_proc_stat():
+    if IS_WINDOWS:
+        idle_time = FILETIME()
+        kernel_time = FILETIME()
+        user_time = FILETIME()
+        _kernel32.GetSystemTimes(
+            ctypes.byref(idle_time), ctypes.byref(kernel_time), ctypes.byref(user_time)
+        )
+
+        idle = _filetime_to_int(idle_time)
+        total = _filetime_to_int(kernel_time) + _filetime_to_int(user_time)
+
+        return total, idle
+
     with open("/proc/stat", "r", encoding="utf-8") as f:
         first_line = f.readline().strip()
 
@@ -67,6 +160,15 @@ def compute_system_cpu_percent(prev_total, prev_idle, curr_total, curr_idle):
 
 
 def read_mem_percent():
+    if IS_WINDOWS:
+        try:
+            status = MEMORYSTATUSEX()
+            status.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
+            _kernel32.GlobalMemoryStatusEx(ctypes.byref(status))
+            return float(status.dwMemoryLoad)
+        except Exception:
+            return 0.0
+
     mem_total_kb = None
     mem_available_kb = None
 
@@ -89,23 +191,27 @@ def read_mem_percent():
 
 def read_disk_percent():
     try:
-        result = subprocess.run(
-            ["df", "-P", "/"],
-            capture_output=True,
-            text=True,
-            check=True,
-        )
-        lines = result.stdout.strip().splitlines()
-        if len(lines) < 2:
+        usage = shutil.disk_usage(os.path.abspath(os.sep))
+        if usage.total <= 0:
             return 0.0
-
-        parts = lines[1].split()
-        return float(parts[4].rstrip("%"))
+        return (usage.used / usage.total) * 100.0
     except Exception:
         return 0.0
 
 
 def get_default_interface():
+    if IS_WINDOWS:
+        try:
+            dest_addr = _ws2_32.inet_addr(b"8.8.8.8")
+            if_index = wintypes.DWORD()
+            result = _iphlpapi.GetBestInterface(dest_addr, ctypes.byref(if_index))
+            if result == 0:
+                return str(if_index.value)
+        except Exception:
+            pass
+
+        return None
+
     try:
         with open("/proc/net/route", "r", encoding="utf-8") as f:
             next(f)
@@ -131,6 +237,18 @@ def get_default_interface():
 
 def read_net_bytes(interface):
     if not interface:
+        return 0, 0
+
+    if IS_WINDOWS:
+        try:
+            if_row = MIB_IFROW()
+            if_row.dwIndex = int(interface)
+            result = _iphlpapi.GetIfEntry(ctypes.byref(if_row))
+            if result == 0:
+                return if_row.dwOutOctets, if_row.dwInOctets
+        except Exception:
+            pass
+
         return 0, 0
 
     try:
@@ -184,6 +302,34 @@ def read_gpu_metrics():
 
 
 def read_process_cpu_jiffies(pid):
+    if IS_WINDOWS:
+        PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+        try:
+            handle = _kernel32.OpenProcess(PROCESS_QUERY_LIMITED_INFORMATION, False, pid)
+            if not handle:
+                return 0
+
+            try:
+                creation_time = FILETIME()
+                exit_time = FILETIME()
+                kernel_time = FILETIME()
+                user_time = FILETIME()
+                ok = _kernel32.GetProcessTimes(
+                    handle,
+                    ctypes.byref(creation_time),
+                    ctypes.byref(exit_time),
+                    ctypes.byref(kernel_time),
+                    ctypes.byref(user_time),
+                )
+                if not ok:
+                    return 0
+
+                return _filetime_to_int(kernel_time) + _filetime_to_int(user_time)
+            finally:
+                _kernel32.CloseHandle(handle)
+        except Exception:
+            return 0
+
     try:
         with open(f"/proc/{pid}/stat", "r", encoding="utf-8") as f:
             content = f.read().strip()
@@ -200,6 +346,39 @@ def read_process_cpu_jiffies(pid):
 
 
 def read_process_mem_percent(pid):
+    if IS_WINDOWS:
+        PROCESS_QUERY_LIMITED_INFORMATION = 0x1000
+        PROCESS_VM_READ = 0x0010
+        try:
+            status = MEMORYSTATUSEX()
+            status.dwLength = ctypes.sizeof(MEMORYSTATUSEX)
+            _kernel32.GlobalMemoryStatusEx(ctypes.byref(status))
+            total_phys = status.ullTotalPhys
+
+            if not total_phys:
+                return 0.0
+
+            handle = _kernel32.OpenProcess(
+                PROCESS_QUERY_LIMITED_INFORMATION | PROCESS_VM_READ, False, pid
+            )
+            if not handle:
+                return 0.0
+
+            try:
+                counters = PROCESS_MEMORY_COUNTERS()
+                counters.cb = ctypes.sizeof(PROCESS_MEMORY_COUNTERS)
+                ok = _psapi.GetProcessMemoryInfo(
+                    handle, ctypes.byref(counters), counters.cb
+                )
+                if not ok:
+                    return 0.0
+
+                return (counters.WorkingSetSize / total_phys) * 100.0
+            finally:
+                _kernel32.CloseHandle(handle)
+        except Exception:
+            return 0.0
+
     try:
         mem_total_kb = None
         with open("/proc/meminfo", "r", encoding="utf-8") as f:
@@ -317,7 +496,7 @@ def start_monitor_state(interval_seconds=None, sampling_mode=None, print_start_m
     start_time = datetime.now()
     pid = os.getpid()
     interface = get_default_interface()
-    clock_ticks = os.sysconf(os.sysconf_names["SC_CLK_TCK"])
+    clock_ticks = get_clock_ticks()
 
     prev_total, prev_idle = read_proc_stat()
     prev_proc_jiffies = read_process_cpu_jiffies(pid)

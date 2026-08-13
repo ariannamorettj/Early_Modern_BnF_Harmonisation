@@ -10,7 +10,7 @@ format_duration <- function(secs) {
   else sprintf("%ds", s)
 }
 
-print_progress <- function(current, total, start_time, step_times) {
+print_progress <- function(current, total, start_time, step_times, label = NULL, force_newline = FALSE) {
   pct <- current / total
   bar_width <- 40
   filled <- round(pct * bar_width)
@@ -35,13 +35,98 @@ print_progress <- function(current, total, start_time, step_times) {
     eta_str <- "--"
   }
 
+  prefix <- if (!is.null(label) && nzchar(label)) sprintf("%s ", label) else ""
+
   cat(sprintf(
-    "\r%s %3.0f%%  %d/%d  elapsed: %s  ETA: %s   ",
-    bar, pct * 100, current, total, elapsed_str, eta_str
+    "\r%s%s %3.0f%%  %d/%d  elapsed: %s  ETA: %s   ",
+    prefix, bar, pct * 100, current, total, elapsed_str, eta_str
   ))
 
-  if (current >= total) cat("\n")
+  if (current >= total || force_newline) cat("\n")
   flush.console()
+}
+
+format_session_timestamp <- function(t = Sys.time()) {
+  format(t, "%Y%m%d_%H%M%S")
+}
+
+get_session_info_path <- function(output_dir, session_timestamp) {
+  file.path(output_dir, paste0("sessionInfo_data_acquisition_", session_timestamp, ".txt"))
+}
+
+# One session-info file is shared across all sub-batches of a single actor
+# acquisition (see run_query_agents_batched.ps1, which restarts Rscript every
+# N actors to bound virtual memory growth - the same leak observed in
+# query_editions.R applies here too). The header + sessionInfo() are written
+# once; every batch, including the first, appends one line to the batch log.
+write_session_info_header <- function(path) {
+  writeLines(
+    c(
+      strrep("=", 70),
+      "BnF ACTORS ACQUISITION - SESSION INFO",
+      strrep("=", 70),
+      "",
+      capture.output(sessionInfo()),
+      "",
+      strrep("-", 70),
+      "Batch log (one entry per completed batch; the acquisition may be split",
+      "into several restarted Rscript batches to bound virtual memory growth.",
+      "A batch that crashes/is killed before finishing will not appear here -",
+      "check the console output or 00_monitor/report/ for those):",
+      strrep("-", 70),
+      ""
+    ),
+    path
+  )
+}
+
+append_batch_log_entry <- function(
+  path,
+  requested_last_index,
+  start_index_used,
+  batch_start,
+  batch_end,
+  status
+) {
+  duration <- as.numeric(difftime(batch_end, batch_start, units = "secs"))
+
+  con <- file(path, open = "at", encoding = "UTF-8")
+  on.exit(close(con), add = TRUE)
+
+  writeLines(
+    sprintf(
+      "Batch actors %d-%d | started %s | ended %s | duration %s | status: %s",
+      start_index_used,
+      requested_last_index,
+      format(batch_start, "%Y-%m-%d %H:%M:%S"),
+      format(batch_end, "%Y-%m-%d %H:%M:%S"),
+      format_duration(duration),
+      status
+    ),
+    con
+  )
+}
+
+append_total_time_summary <- function(path, total_start, total_end) {
+  duration <- as.numeric(difftime(total_end, total_start, units = "secs"))
+
+  con <- file(path, open = "at", encoding = "UTF-8")
+  on.exit(close(con), add = TRUE)
+
+  writeLines(
+    c(
+      "",
+      strrep("-", 70),
+      sprintf(
+        "TOTAL ACQUISITION TIME: %s (from %s to %s)",
+        format_duration(duration),
+        format(total_start, "%Y-%m-%d %H:%M:%S"),
+        format(total_end, "%Y-%m-%d %H:%M:%S")
+      ),
+      strrep("-", 70)
+    ),
+    con
+  )
 }
 
 make_actor_paths <- function(
@@ -121,6 +206,15 @@ run_actor_sparql_query <- function(query, url = "https://data.bnf.fr/sparql") {
   if (!requireNamespace("SPARQL", quietly = TRUE)) {
     stop("The 'SPARQL' package is required only for live endpoint queries.")
   }
+
+  # SPARQL::SPARQL() calls RCurl's getURL() unqualified, so RCurl must be
+  # attached to the search path (not just loaded via requireNamespace) for
+  # it to resolve - requireNamespace() alone loads the SPARQL namespace but
+  # does not attach its Depends (RCurl, XML), causing
+  # "object 'getURL' not found" on every call.
+  suppressPackageStartupMessages(library(RCurl))
+  suppressPackageStartupMessages(library(SPARQL))
+
   SPARQL::SPARQL(url = url, query = query)$results
 }
 
@@ -169,6 +263,31 @@ extract_distinct_actors <- function(editions_df) {
   data.frame(actor = actor_values, stringsAsFactors = FALSE)
 }
 
+get_actor_cache_path <- function(output_dir) {
+  file.path(output_dir, "distinct_actors_cache.csv")
+}
+
+# Re-parsing the full compiled editions CSV (hundreds of MB, well over a
+# million rows) on every restarted batch is the dominant cost of each
+# Rscript invocation when run_query_agents_batched.ps1 is used - far more
+# than the actual per-actor SPARQL query. The distinct actor list never
+# changes during an acquisition, so it is computed once and cached to disk;
+# every subsequent batch reads the small cache file instead.
+get_or_extract_distinct_actors <- function(editions_input, output_dir) {
+  cache_path <- get_actor_cache_path(output_dir)
+
+  if (file.exists(cache_path)) {
+    return(read.csv(cache_path, stringsAsFactors = FALSE))
+  }
+
+  editions_df <- read_editions_input(editions_input)
+  actors_df <- extract_distinct_actors(editions_df)
+
+  write.csv(actors_df, cache_path, row.names = FALSE)
+
+  actors_df
+}
+
 merge_actor_csvs <- function(intermediate_output_dir, output_dir) {
   list_actors <- list.files(intermediate_output_dir, pattern = "\\.csv$", full.names = TRUE)
 
@@ -200,19 +319,49 @@ run_query_agents <- function(
   query_fun = run_actor_sparql_query,
   sleep = TRUE,
   use_monitor = FALSE,
-  monitor_script = "00_monitor/monitor.R"
+  monitor_script = "00_monitor/monitor.R",
+  last_index = NULL,
+  merge_output = TRUE,
+  write_session_info = TRUE,
+  session_timestamp = NULL,
+  overall_last_index = NULL
 ) {
   paths <- make_actor_paths(base_dir = base_dir, editions_input = editions_input)
   ensure_actor_output_dirs(paths)
 
-  editions_df <- read_editions_input(paths$editions_input)
-  actors_df <- extract_distinct_actors(editions_df)
+  batch_start_time <- Sys.time()
+
+  if (is.null(session_timestamp)) {
+    session_timestamp <- format_session_timestamp(batch_start_time)
+  }
+
+  session_info_path <- get_session_info_path(paths$output_dir, session_timestamp)
+
+  if (write_session_info && !file.exists(session_info_path)) {
+    write_session_info_header(session_info_path)
+  }
+
+  actors_df <- get_or_extract_distinct_actors(paths$editions_input, paths$output_dir)
 
   if (nrow(actors_df) == 0) {
     stop("No actors found in the editions input.")
   }
 
+  total_actors <- nrow(actors_df)
+  resolved_last_index <- if (is.null(last_index)) total_actors else min(last_index, total_actors)
+
   start_index <- get_start_index(paths$progress_file)
+  has_pending_work <- start_index <= resolved_last_index
+
+  # Parsed once here (not just when there is pending work) since it is also
+  # used for the final TOTAL ACQUISITION TIME summary on the last batch.
+  overall_start_time <- tryCatch(
+    {
+      parsed <- as.POSIXct(session_timestamp, format = "%Y%m%d_%H%M%S")
+      if (is.na(parsed)) batch_start_time else parsed
+    },
+    error = function(e) batch_start_time
+  )
 
   monitor_env <- NULL
   monitor_state <- NULL
@@ -239,12 +388,20 @@ run_query_agents <- function(
     )
   }
 
-  total_actors <- nrow(actors_df)
-  loop_start <- Sys.time()
-  step_times <- numeric(0)
+  if (has_pending_work) {
+    # Block-local bar: progress within *this* Rscript invocation only.
+    total_steps <- resolved_last_index - start_index + 1
+    loop_start <- Sys.time()
+    step_times <- numeric(0)
 
-  if (start_index <= nrow(actors_df)) {
-    for (i in start_index:nrow(actors_df)) {
+    # Overall bar: progress across the whole actor list (actor indices always
+    # start at 1; overall_last_index is the true final index, e.g. passed by
+    # run_query_agents_batched.ps1). Only shown when overall_last_index is
+    # supplied, so a plain single-shot run is unaffected.
+    show_overall <- !is.null(overall_last_index)
+    overall_total <- if (show_overall) overall_last_index else NA
+
+    for (i in start_index:resolved_last_index) {
       step_start <- Sys.time()
 
       success <- tryCatch(
@@ -268,7 +425,18 @@ run_query_agents <- function(
       }
 
       step_times <- c(step_times, as.numeric(difftime(Sys.time(), step_start, units = "secs")))
-      print_progress(i, total_actors, loop_start, step_times)
+      print_progress(i - start_index + 1, total_steps, loop_start, step_times, label = "[BLOCK]  ")
+
+      if (show_overall) {
+        print_progress(
+          current = i,
+          total = overall_total,
+          start_time = overall_start_time,
+          step_times = step_times,
+          label = "[OVERALL]",
+          force_newline = TRUE
+        )
+      }
 
       if (use_monitor) {
         actor_label <- as.character(actors_df$actor[i])
@@ -286,14 +454,46 @@ run_query_agents <- function(
         )
       }
     }
+  } else {
+    cat(sprintf(
+      "Nothing new to acquire: existing data already covers up to actor index %d (requested last_index = %d).\n",
+      start_index - 1, resolved_last_index
+    ))
   }
 
-  merged <- merge_actor_csvs(paths$intermediate_output_dir, paths$output_dir)
+  if (write_session_info) {
+    append_batch_log_entry(
+      path = session_info_path,
+      requested_last_index = resolved_last_index,
+      start_index_used = start_index,
+      batch_start = batch_start_time,
+      batch_end = Sys.time(),
+      status = if (has_pending_work) "COMPLETED" else "SKIPPED (already up to date)"
+    )
+  }
+
+  merged <- NULL
+
+  if (merge_output) {
+    merged <- merge_actor_csvs(paths$intermediate_output_dir, paths$output_dir)
+
+    if (write_session_info) {
+      append_total_time_summary(
+        path = session_info_path,
+        total_start = overall_start_time,
+        total_end = Sys.time()
+      )
+    }
+  }
 
   if (use_monitor) {
     monitor_state <- monitor_env$update_monitor_state(
       state = monitor_state,
-      context = "Completed actor CSV merge and final output writing",
+      context = if (merge_output) {
+        "Completed actor CSV merge and final output writing"
+      } else {
+        paste("Completed acquisition batch up to actor index", resolved_last_index)
+      },
       print_console = TRUE
     )
 
@@ -306,13 +506,26 @@ run_query_agents <- function(
   invisible(list(
     paths = paths,
     actors = actors_df,
-    data = merged$data,
-    out_file = merged$out_file,
+    data = if (!is.null(merged)) merged$data else NULL,
+    out_file = if (!is.null(merged)) merged$out_file else NULL,
     start_index = start_index,
     monitor_report = if (use_monitor) monitor_state$report_path else NULL
   ))
 }
 
 if (sys.nframe() == 0) {
-  run_query_agents(use_monitor = TRUE)
+  cli_args <- commandArgs(trailingOnly = TRUE)
+
+  cli_last_index <- if (length(cli_args) >= 1 && nzchar(cli_args[1])) as.integer(cli_args[1]) else NULL
+  cli_merge_output <- if (length(cli_args) >= 2 && nzchar(cli_args[2])) as.logical(cli_args[2]) else TRUE
+  cli_session_timestamp <- if (length(cli_args) >= 3 && nzchar(cli_args[3])) cli_args[3] else NULL
+  cli_overall_last_index <- if (length(cli_args) >= 4 && nzchar(cli_args[4])) as.integer(cli_args[4]) else NULL
+
+  run_query_agents(
+    use_monitor = TRUE,
+    last_index = cli_last_index,
+    merge_output = cli_merge_output,
+    session_timestamp = cli_session_timestamp,
+    overall_last_index = cli_overall_last_index
+  )
 }

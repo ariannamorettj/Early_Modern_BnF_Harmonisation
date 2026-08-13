@@ -3,6 +3,148 @@
 RESUME_LOG <- "resume_info.log"
 OUTPUT_DIR <- "00_monitor/report"
 
+IS_WINDOWS <- .Platform$OS.type == "windows"
+
+run_powershell <- function(script) {
+  tryCatch(
+    system2(
+      "powershell",
+      c("-NoProfile", "-NonInteractive", "-Command", script),
+      stdout = TRUE,
+      stderr = FALSE
+    ),
+    error = function(e) character(0)
+  )
+}
+
+# On Windows, each of read_proc_stat/read_mem_percent/read_disk_percent/
+# read_net_bytes/read_process_cpu_jiffies/read_process_mem_percent spawns its
+# own powershell.exe process. Called once per monitoring cycle each, that is
+# 6 subprocess spawns + WMI/CIM queries per cycle - with runs sampling once
+# per year/actor (hundreds to hundreds of thousands of cycles), this adds up
+# to a large, avoidable share of total wall-clock time. All 6 metrics are
+# fetched together in a single PowerShell invocation and cached for a short
+# TTL, so the 5 calls that follow the first one in the same cycle reuse it
+# instead of spawning their own process. The cache is intentionally
+# time-based (not tied to collect_monitor_snapshot's call sequence) so it
+# needs no changes to collect_monitor_snapshot and cannot go stale across
+# real monitoring cycles, which are always well over a second apart.
+.monitor_runtime_state <- new.env(parent = emptyenv())
+WINDOWS_METRICS_CACHE_TTL <- 3.0
+
+set_current_interface <- function(interface) {
+  assign("interface", interface, envir = .monitor_runtime_state)
+}
+
+get_current_interface <- function() {
+  if (exists("interface", envir = .monitor_runtime_state, inherits = FALSE)) {
+    get("interface", envir = .monitor_runtime_state, inherits = FALSE)
+  } else {
+    NULL
+  }
+}
+
+read_windows_metrics_once <- function(pid, drive, interface) {
+  net_line <- if (!is.null(interface) && nzchar(interface)) {
+    sprintf(
+      "$net = Get-NetAdapterStatistics -Name '%s' -ErrorAction SilentlyContinue",
+      interface
+    )
+  } else {
+    "$net = $null"
+  }
+
+  script <- paste(
+    "$cpu = Get-CimInstance Win32_PerfRawData_PerfOS_Processor | Where-Object { $_.Name -eq '_Total' }",
+    "$os = Get-CimInstance Win32_OperatingSystem",
+    sprintf(
+      "$disk = Get-CimInstance Win32_LogicalDisk | Where-Object { $_.DeviceID -eq '%s' }",
+      drive
+    ),
+    net_line,
+    sprintf(
+      "$proc = Get-CimInstance Win32_PerfRawData_PerfProc_Process | Where-Object { $_.IDProcess -eq %d }",
+      pid
+    ),
+    sprintf(
+      "$procMem = Get-CimInstance Win32_Process | Where-Object { $_.ProcessId -eq %d }",
+      pid
+    ),
+    paste0(
+      "'{0}|{1}|{2}|{3}|{4}|{5}|{6}|{7}|{8}|{9}' -f ",
+      "$cpu.Timestamp_Sys100NS,$cpu.PercentIdleTime,",
+      "$os.TotalVisibleMemorySize,$os.FreePhysicalMemory,",
+      "$disk.Size,$disk.FreeSpace,",
+      "$net.SentBytes,$net.ReceivedBytes,",
+      "$proc.PercentProcessorTime,$procMem.WorkingSetSize"
+    ),
+    sep = "; "
+  )
+
+  out <- run_powershell(script)
+
+  as_num <- function(x) {
+    v <- suppressWarnings(as.numeric(x))
+    if (length(v) == 0 || is.na(v)) 0 else v
+  }
+
+  empty_bundle <- list(
+    cpu_total = 0, cpu_idle = 0, mem_total_kb = 0, mem_free_kb = 0,
+    disk_size = 0, disk_free = 0, net_sent = 0, net_recv = 0,
+    proc_cpu_raw = 0, proc_working_set = 0
+  )
+
+  if (length(out) == 0) {
+    return(empty_bundle)
+  }
+
+  parts <- strsplit(trimws(out[1]), "\\|")[[1]]
+
+  if (length(parts) < 10) {
+    return(empty_bundle)
+  }
+
+  list(
+    cpu_total = as_num(parts[1]),
+    cpu_idle = as_num(parts[2]),
+    mem_total_kb = as_num(parts[3]),
+    mem_free_kb = as_num(parts[4]),
+    disk_size = as_num(parts[5]),
+    disk_free = as_num(parts[6]),
+    net_sent = as_num(parts[7]),
+    net_recv = as_num(parts[8]),
+    proc_cpu_raw = as_num(parts[9]),
+    proc_working_set = as_num(parts[10])
+  )
+}
+
+get_windows_metrics_bundle <- function() {
+  cached_at <- if (exists("cached_at", envir = .monitor_runtime_state, inherits = FALSE)) {
+    get("cached_at", envir = .monitor_runtime_state, inherits = FALSE)
+  } else {
+    -Inf
+  }
+
+  # cached_at must be stamped *after* the fetch completes, not before: the
+  # fetch itself (a single PowerShell process running ~6 CIM/adapter
+  # queries) takes over a second even warm, so timestamping at the start
+  # made the cache look stale to the very next call in the same cycle -
+  # each of the 6 read_* calls ended up doing its own full fetch, which is
+  # exactly the 6-spawns-per-cycle cost this cache exists to avoid.
+  if ((unclass(Sys.time()) - cached_at) > WINDOWS_METRICS_CACHE_TTL) {
+    data <- read_windows_metrics_once(
+      pid = Sys.getpid(),
+      drive = substr(normalizePath(getwd()), 1, 2),
+      interface = get_current_interface()
+    )
+
+    assign("windows_metrics", data, envir = .monitor_runtime_state)
+    assign("cached_at", unclass(Sys.time()), envir = .monitor_runtime_state)
+  }
+
+  get("windows_metrics", envir = .monitor_runtime_state, inherits = FALSE)
+}
+
 get_entry_script_name <- function() {
   args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", args, value = TRUE)
@@ -78,6 +220,11 @@ read_resume_log <- function() {
 }
 
 read_proc_stat <- function() {
+  if (IS_WINDOWS) {
+    m <- get_windows_metrics_bundle()
+    return(list(total = m$cpu_total, idle = m$cpu_idle))
+  }
+
   line <- readLines("/proc/stat", n = 1, warn = FALSE)
   parts <- strsplit(trimws(line), "\\s+")[[1]]
   values <- as.numeric(parts[-1])
@@ -101,6 +248,16 @@ compute_system_cpu_percent <- function(prev_total, prev_idle, curr_total, curr_i
 }
 
 read_mem_percent <- function() {
+  if (IS_WINDOWS) {
+    m <- get_windows_metrics_bundle()
+
+    if (m$mem_total_kb <= 0) {
+      return(0.0)
+    }
+
+    return(((m$mem_total_kb - m$mem_free_kb) / m$mem_total_kb) * 100)
+  }
+
   lines <- readLines("/proc/meminfo", warn = FALSE)
 
   mem_total_line <- grep("^MemTotal:", lines, value = TRUE)
@@ -118,6 +275,16 @@ read_mem_percent <- function() {
 }
 
 read_disk_percent <- function() {
+  if (IS_WINDOWS) {
+    m <- get_windows_metrics_bundle()
+
+    if (m$disk_size <= 0) {
+      return(0.0)
+    }
+
+    return(((m$disk_size - m$disk_free) / m$disk_size) * 100)
+  }
+
   out <- tryCatch(
     system("df -P / | tail -1", intern = TRUE),
     error = function(e) character(0)
@@ -132,6 +299,18 @@ read_disk_percent <- function() {
 }
 
 get_default_interface <- function() {
+  if (IS_WINDOWS) {
+    out <- run_powershell(
+      "Get-NetRoute -DestinationPrefix '0.0.0.0/0' | Sort-Object RouteMetric | Select-Object -First 1 -ExpandProperty InterfaceAlias"
+    )
+
+    if (length(out) == 0 || !nzchar(trimws(out[1]))) {
+      return(NULL)
+    }
+
+    return(trimws(out[1]))
+  }
+
   route_lines <- tryCatch(
     readLines("/proc/net/route", warn = FALSE),
     error = function(e) character(0)
@@ -166,6 +345,11 @@ get_default_interface <- function() {
 read_net_bytes <- function(interface) {
   if (is.null(interface) || !nzchar(interface)) {
     return(list(sent = 0, recv = 0))
+  }
+
+  if (IS_WINDOWS) {
+    m <- get_windows_metrics_bundle()
+    return(list(sent = m$net_sent, recv = m$net_recv))
   }
 
   lines <- tryCatch(
@@ -232,6 +416,11 @@ read_gpu_metrics <- function() {
 }
 
 read_process_cpu_jiffies <- function(pid) {
+  if (IS_WINDOWS) {
+    m <- get_windows_metrics_bundle()
+    return(m$proc_cpu_raw)
+  }
+
   path <- sprintf("/proc/%d/stat", pid)
   line <- tryCatch(
     readLines(path, n = 1, warn = FALSE),
@@ -256,6 +445,16 @@ read_process_cpu_jiffies <- function(pid) {
 }
 
 read_process_mem_percent <- function(pid) {
+  if (IS_WINDOWS) {
+    m <- get_windows_metrics_bundle()
+
+    if (m$mem_total_kb <= 0) {
+      return(0.0)
+    }
+
+    return((m$proc_working_set / (m$mem_total_kb * 1024)) * 100)
+  }
+
   status_path <- sprintf("/proc/%d/status", pid)
   status_lines <- tryCatch(
     readLines(status_path, warn = FALSE),
@@ -288,6 +487,10 @@ read_process_mem_percent <- function(pid) {
 }
 
 get_clock_ticks <- function() {
+  if (IS_WINDOWS) {
+    return(10000000)  # FILETIME / perf-counter raw units are 100ns intervals
+  }
+
   out <- tryCatch(
     system("getconf CLK_TCK", intern = TRUE),
     error = function(e) character(0)
@@ -441,6 +644,7 @@ start_monitor_state <- function(
   pid <- Sys.getpid()
   script_name <- get_entry_script_name()
   interface <- get_default_interface()
+  set_current_interface(interface)
   clock_ticks <- get_clock_ticks()
 
   prev_cpu <- read_proc_stat()

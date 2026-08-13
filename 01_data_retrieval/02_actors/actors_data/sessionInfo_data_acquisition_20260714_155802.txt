@@ -1,0 +1,52 @@
+======================================================================
+BnF ACTORS ACQUISITION - SESSION INFO
+======================================================================
+
+R version 4.6.1 (2026-06-24 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+  LAPACK version 3.12.1
+
+locale:
+[1] LC_COLLATE=French_France.utf8  LC_CTYPE=French_France.utf8   
+[3] LC_MONETARY=French_France.utf8 LC_NUMERIC=C                  
+[5] LC_TIME=French_France.utf8    
+
+time zone: Europe/Rome
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.6.1
+
+----------------------------------------------------------------------
+Batch log (one entry per completed batch; the acquisition may be split
+into several restarted Rscript batches to bound virtual memory growth.
+A batch that crashes/is killed before finishing will not appear here -
+check the console output or 00_monitor/report/ for those):
+----------------------------------------------------------------------
+
+Batch actors 101-2000 | started 2026-07-14 15:58:02 | ended 2026-07-14 17:22:52 | duration 1h 24m 50s | status: COMPLETED
+Batch actors 2001-4000 | started 2026-07-14 17:22:53 | ended 2026-07-14 18:52:32 | duration 1h 29m 39s | status: COMPLETED
+Batch actors 4001-6000 | started 2026-07-14 18:52:34 | ended 2026-07-14 20:22:29 | duration 1h 29m 55s | status: COMPLETED
+Batch actors 6001-8000 | started 2026-07-14 20:22:30 | ended 2026-07-14 22:02:31 | duration 1h 40m 01s | status: COMPLETED
+Batch actors 8001-10000 | started 2026-07-14 22:02:31 | ended 2026-07-14 23:34:23 | duration 1h 31m 52s | status: COMPLETED
+Batch actors 10001-12000 | started 2026-07-14 23:34:24 | ended 2026-07-15 01:06:15 | duration 1h 31m 51s | status: COMPLETED
+Batch actors 12001-14000 | started 2026-07-15 01:06:17 | ended 2026-07-15 02:54:33 | duration 1h 48m 16s | status: COMPLETED
+Batch actors 14001-16000 | started 2026-07-15 02:54:34 | ended 2026-07-15 04:35:04 | duration 1h 40m 30s | status: COMPLETED
+Batch actors 16001-18000 | started 2026-07-15 04:35:04 | ended 2026-07-15 06:17:06 | duration 1h 42m 02s | status: COMPLETED
+Batch actors 18001-20000 | started 2026-07-15 06:17:07 | ended 2026-07-15 07:47:23 | duration 1h 30m 16s | status: COMPLETED
+Batch actors 20001-22000 | started 2026-07-15 07:47:24 | ended 2026-07-15 09:16:39 | duration 1h 29m 15s | status: COMPLETED
+Batch actors 22001-24000 | started 2026-07-15 09:16:40 | ended 2026-07-15 10:45:47 | duration 1h 29m 07s | status: COMPLETED
+Batch actors 24001-26000 | started 2026-07-15 10:45:48 | ended 2026-07-15 12:14:04 | duration 1h 28m 16s | status: COMPLETED
+Batch actors 26001-28000 | started 2026-07-15 12:14:05 | ended 2026-07-15 13:42:54 | duration 1h 28m 50s | status: COMPLETED
+Batch actors 28001-30000 | started 2026-07-15 13:42:55 | ended 2026-07-15 15:12:29 | duration 1h 29m 34s | status: COMPLETED
+Batch actors 30001-32000 | started 2026-07-15 15:12:32 | ended 2026-07-15 16:57:22 | duration 1h 44m 50s | status: COMPLETED
+Batch actors 32001-34000 | started 2026-07-15 16:57:23 | ended 2026-07-15 18:26:00 | duration 1h 28m 37s | status: COMPLETED
+Batch actors 34001-36000 | started 2026-07-15 18:26:00 | ended 2026-07-15 19:54:56 | duration 1h 28m 56s | status: COMPLETED
+Batch actors 36001-38000 | started 2026-07-15 19:54:58 | ended 2026-07-15 21:25:48 | duration 1h 30m 49s | status: COMPLETED
+Batch actors 38001-40000 | started 2026-07-15 21:25:48 | ended 2026-07-15 23:01:24 | duration 1h 35m 35s | status: COMPLETED

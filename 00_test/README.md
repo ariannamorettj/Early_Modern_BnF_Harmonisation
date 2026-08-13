@@ -11,6 +11,7 @@ This directory contains the test suite for the project. Tests are organised by s
 | `test_monitor_R.R` | R | `00_monitor/monitor.R` |
 | `test_query_editions.R` | R | `01_data_retrieval/01_editions/query_editions.R` |
 | `test_query_actors.R` | R | `01_data_retrieval/02_actors/query_agents.R` |
+| `test_recover_missing_acquisitions.R` | R | `01_data_retrieval/recover_missing_acquisitions.R` |
 | `test_monitor_py.py` | Python | `00_monitor/monitor.py` |
 | `test_place_harmonisation.py` | Python | `04_harmonisation_and_evaluation/.../bnf_place_harmonisation.py` |
 
@@ -48,6 +49,7 @@ Rscript -e 'testthat::test_dir("00_test", reporter = testthat::ProgressReporter$
 Rscript -e 'testthat::test_file("00_test/test_monitor_R.R")'
 Rscript -e 'testthat::test_file("00_test/test_query_editions.R")'
 Rscript -e 'testthat::test_file("00_test/test_query_actors.R")'
+Rscript -e 'testthat::test_file("00_test/test_recover_missing_acquisitions.R")'
 ```
 
 ### Python

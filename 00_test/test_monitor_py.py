@@ -166,7 +166,7 @@ def test_start_monitor_state_creates_report_and_writes_header(tmp_path, monkeypa
     monkeypatch.setattr(monitor, "read_proc_stat", lambda: (1000, 200))
     monkeypatch.setattr(monitor, "read_process_cpu_jiffies", lambda pid: 1000)
     monkeypatch.setattr(monitor, "read_net_bytes", lambda interface: (100, 200))
-    monkeypatch.setattr(monitor.os, "sysconf", lambda name: 100)
+    monkeypatch.setattr(monitor, "get_clock_ticks", lambda: 100)
 
     state = monitor.start_monitor_state(
         interval_seconds=5.0,
@@ -380,7 +380,7 @@ def test_stop_monitor_state_writes_footer_and_closes_report(tmp_path, monkeypatc
     monkeypatch.setattr(monitor, "read_proc_stat", lambda: (1000, 200))
     monkeypatch.setattr(monitor, "read_process_cpu_jiffies", lambda pid: 1000)
     monkeypatch.setattr(monitor, "read_net_bytes", lambda interface: (100, 200))
-    monkeypatch.setattr(monitor.os, "sysconf", lambda name: 100)
+    monkeypatch.setattr(monitor, "get_clock_ticks", lambda: 100)
 
     state = monitor.start_monitor_state(
         interval_seconds=5.0,
