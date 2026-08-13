@@ -1,16 +1,20 @@
 # BnF Data Retrieval Scripts
 
-This directory contains two coordinated R scripts for retrieving and structuring data from the BnF SPARQL endpoint:
+This directory contains three coordinated R scripts for retrieving and structuring data from the BnF SPARQL endpoint:
 
 - `01_data_retrieval/01_editions/query_editions.R`
 - `01_data_retrieval/02_actors/query_agents.R`
+- `01_data_retrieval/recover_missing_acquisitions.R`
 
 The first script retrieves **edition-level bibliographic data** year by year.  
-The second script uses the compiled editions dataset to extract **distinct actors** and retrieve actor-level metadata.
+The second script uses the compiled editions dataset to extract **distinct actors** and retrieve actor-level metadata.  
+The third script detects and re-acquires anything the first two silently skipped, and is meant to be run precautionarily after every editions+actors acquisition.
 
-Both scripts can optionally use the shared monitor implemented in:
+Both acquisition scripts can optionally use the shared monitor implemented in:
 
 - `00_monitor/monitor.R`
+
+The recovery script always uses it, since the monitor report is both its source of truth for what was skipped and the place it records what it fixed.
 
 ---
 
@@ -19,12 +23,14 @@ Both scripts can optionally use the shared monitor implemented in:
 The intended execution order is:
 
 1. run `query_editions.R` to retrieve yearly edition data and compile it into a single CSV;
-2. run `query_agents.R` to read the compiled edition dataset, extract distinct actors, query actor metadata, and merge the actor results into a single CSV.
+2. run `query_agents.R` to read the compiled edition dataset, extract distinct actors, query actor metadata, and merge the actor results into a single CSV;
+3. run `recover_missing_acquisitions.R` to check both stages for skipped years/actors and re-acquire them.
 
-This creates a two-stage acquisition pipeline:
+This creates a three-stage acquisition pipeline:
 
 - **stage 1:** edition acquisition
 - **stage 2:** actor acquisition based on the edition results
+- **stage 3:** recovery of anything stages 1-2 skipped
 
 ---
 
@@ -619,9 +625,84 @@ using the report-naming logic defined in `00_monitor/monitor.R`.
 
 ---
 
+## Script 3: `recover_missing_acquisitions.R`
+
+### Purpose
+
+`query_editions.R` and `query_agents.R` do not retry an individual item that fails mid-run - see [Actors Resume Behaviour](#actors-resume-behaviour) and the note below on why editions and actors need different detection strategies. `recover_missing_acquisitions.R` is a precautionary third stage: it scans for what stages 1 and 2 skipped, re-acquires it, and updates the monitor report with what it did.
+
+It is meant to be run **after every editions + actors acquisition**, whether or not the run was interrupted - it is a no-op (beyond a quick scan) when nothing was skipped.
+
+### Why detection differs between editions and actors
+
+- **editions**: `get_bnf_edition_data()` always writes a yearly CSV, even when the SPARQL result is empty, and the editions loop has no per-year `tryCatch` - a query error crashes the whole `Rscript` process, which `run_query_editions_batched.ps1` then retries at the block level. So a missing yearly CSV file is unambiguous proof that the year was never completed, and gap detection can simply check for missing files.
+- **actors**: `get_bnf_data_for_actor()` only writes a CSV when the SPARQL result is non-empty, and the actor loop wraps each query in `tryCatch` so a failure is swallowed and the loop moves on without ever revisiting that index (see [Actors Resume Behaviour](#actors-resume-behaviour)). A missing `actor_file_N.csv` is therefore **not** proof of a skipped actor - it may be a legitimate zero-result actor. The only reliable signal is the `Failed acquisition for actor index N` line the monitor writes to `00_monitor/report/query_agents_*_R.txt` for that index, so actor gap detection is log-based, not file-based.
+
+### Main responsibilities
+
+The script:
+
+- scans `01_data_retrieval/01_editions/data/edition_raw_data_by_year` for missing yearly CSV files in the requested year range and re-queries each missing year (up to `max_attempts` tries, with a delay between attempts);
+- recompiles `bnf_edition_data_raw.csv` if any edition year was recovered;
+- if any edition year was recovered, syncs `distinct_actors_cache.csv` append-only (see note below) and logs every newly appended actor to `actor_cache_additions_log.csv`;
+- scans all `00_monitor/report/query_agents_*_R.txt` and its own past `recover_missing_acquisitions_*_R.txt` reports for actor indices logged as failed (`Failed acquisition for actor index N` / `RECOVERY FAILED for actor index N`), excluding any already marked `RECOVERED actor index N` in a previous run;
+- re-queries every candidate actor index - previously-failed ones and newly-appended ones alike (up to `max_attempts` tries each), or simply relabels it recovered if a CSV already exists for it;
+- re-merges `actor_data.csv` if any actor index was recovered;
+- writes one monitor checkpoint per recovered/still-failing item, each including the recovering script's name, why it was being recovered, and the item's processing duration, plus a final summary checkpoint with totals and total recovery duration.
+
+### Important note: how editions recovery extends the actor list safely
+
+`get_or_extract_distinct_actors()` in `query_agents.R` caches the distinct actor list to `distinct_actors_cache.csv` the first time actor acquisition runs, and every later run reads that cache instead of recomputing it - because `extract_distinct_actors()` orders actors by first occurrence while scanning the editions data column by column, and recomputing it from an editions dataset with newly-inserted rows could shift the position of actors that were already downloaded, silently misaligning existing `actor_file_N.csv` files against the wrong actor.
+
+`recover_missing_acquisitions.R` avoids this by never recomputing the cache from scratch. When it recovers at least one edition year, `sync_actor_cache_append_only()`:
+
+1. recomputes the full current distinct-actor list from the updated editions data;
+2. diffs it against the existing cache by actor value (not position);
+3. appends only the actors that are genuinely new, at new indices strictly after the old end of the cache - every existing row keeps its original index and value.
+
+Every appended actor is recorded in `01_data_retrieval/02_actors/data/actor_cache_additions_log.csv` with its index, the actor URI, a timestamp, the recovering script's name, and which edition year(s) triggered it - a durable trace, independent of the (timestamped, per-run) monitor reports. The newly appended indices are then queried the same way as any other recovery candidate.
+
+### `run_recovery(...)`
+
+This is the main orchestration function.
+
+Parameters:
+
+- `editions_base_dir`, `actors_base_dir`, `editions_input`
+- `first_year`, `last_year` (editions range to check, defaults `1454`-`1799`)
+- `report_dir` (defaults to `00_monitor/report`, must match `monitor.R`'s `OUTPUT_DIR`)
+- `monitor_script`, `use_monitor`
+- `max_attempts`, `retry_delay_seconds` (per-item retry policy, defaults `3` and `5`)
+- `edition_query_fun`, `actor_query_fun`, `sleep`
+
+Returns invisibly a list containing:
+
+- `missing_years`, `edition_recovery` (`recovered` / `still_missing` year vectors)
+- `new_actor_indices` (indices appended to `distinct_actors_cache.csv` this run, if any)
+- `candidate_actor_indices` (every actor index processed this run - previously-failed and newly-appended combined), `actor_recovery` (`recovered` / `still_failing` index vectors)
+- `duration_seconds`
+- `monitor_report` when monitoring is enabled
+
+### Recovery Monitor Integration
+
+Like the two acquisition scripts, `recover_missing_acquisitions.R` loads `00_monitor/monitor.R` and uses `start_monitor_state()` / `update_monitor_state()` / `stop_monitor_state()`. Because the monitor's `Entry Script:` header is derived from the running script's own filename, every recovery report is self-identifying as having come from `recover_missing_acquisitions`, and `resume_info.log`'s "Previous run detected" cross-reference picks it up the same way it does for the two acquisition scripts.
+
+Typical context lines written to the report:
+
+```
+RECOVERED edition year 1512 (previously missing) via recover_missing_acquisitions | duration: 6s
+Actor cache sync after edition recovery: 2 new actor(s) appended to distinct_actors_cache.csv (indices 124696-124697), logged to actor_cache_additions_log.csv
+RECOVERED actor index 69151 - <http://data.bnf.fr/ark:/12148/cb124205436#about> (previously failed) via recover_missing_acquisitions | duration: 1s
+RECOVERED actor index 124696 - <http://data.bnf.fr/ark:/12148/cbXXXXXXXXX#about> (new actor introduced by recovered edition year(s)) via recover_missing_acquisitions | duration: 1s
+RECOVERY FAILED for actor index 9165 - <...> (previously failed) via recover_missing_acquisitions after 3 attempt(s) | duration: 12s
+Recovery summary via recover_missing_acquisitions: editions 1/1 recovered; 2 new actor(s) discovered from recovered editions; actors 671/672 recovered (1 still failing after 3 attempt(s) each); total duration 18m 04s
+```
+
+---
+
 ## Default Execution Behaviour
 
-Both retrieval scripts run automatically only when executed directly.
+All three retrieval scripts run automatically only when executed directly.
 
 ### Editions
 
@@ -639,13 +720,21 @@ if (sys.nframe() == 0) {
 }
 ```
 
-This means they can also be safely sourced during tests or reused as libraries without automatically launching the acquisition.
+### Recovery
+
+```r
+if (sys.nframe() == 0) {
+  run_recovery(use_monitor = TRUE)
+}
+```
+
+This means they can also be safely sourced during tests or reused as libraries without automatically launching the acquisition. `recover_missing_acquisitions.R` itself loads `query_editions.R` and `query_agents.R` via `sys.source(..., envir = globalenv())` at the top of the file - the same mechanism `load_monitor_env()` uses - so their functions become available without triggering their own `if (sys.nframe() == 0)` blocks.
 
 ---
 
 ## Recommended Execution Order
 
-Both commands must be run from the **project root directory**. Step 2 cannot start before Step 1 has completed, because it reads the compiled editions CSV produced by Step 1.
+All commands must be run from the **project root directory**. Step 2 cannot start before Step 1 has completed, because it reads the compiled editions CSV produced by Step 1. Step 3 should run after Step 2, every time, as a precaution - it is cheap when there is nothing to recover.
 
 ### Step 1: retrieve edition data
 
@@ -688,12 +777,33 @@ Output written to:
 - `01_data_retrieval/02_actors/data/last_processed_index.txt` — resume checkpoint
 - `00_monitor/report/query_agents_<timestamp>_R.txt` — monitoring report
 
+### Step 3: recover skipped years and actors
+
+```bash
+Rscript 01_data_retrieval/recover_missing_acquisitions.R
+```
+
+PowerShell, if `Rscript` is not on `PATH`:
+
+```powershell
+& "C:\Program Files\R\R-4.6.1\bin\Rscript.exe" 01_data_retrieval/recover_missing_acquisitions.R
+```
+
+Scans the editions output directory for missing yearly CSV files and `00_monitor/report/query_agents_*_R.txt` for actor indices logged as failed, then re-queries anything found. **Always run this command to close out an editions + actors acquisition** - whether or not Step 1/2 were interrupted - as the final guarantee that the whole process actually completed and nothing was silently lost; it is cheap when there is nothing to recover.
+
+Output written to:
+
+- (only if editions years were recovered) updated `01_data_retrieval/01_editions/data/edition_raw_data_by_year/` and `bnf_edition_data_raw.csv`
+- (only if actor indices were recovered) updated `01_data_retrieval/02_actors/data/actor_queries_results/` and `actor_data.csv`
+- `00_monitor/report/recover_missing_acquisitions_<timestamp>_R.txt` — monitoring report, doubling as the recovery ledger read by future recovery runs
+
 ### Resuming after interruption
 
-Both scripts resume automatically if interrupted:
+All three scripts resume automatically if interrupted:
 
 - **editions**: resumes from the last detected yearly CSV file
 - **actors**: resumes from `last_processed_index + 1`
+- **recovery**: re-running it simply re-scans for what is still missing; already-recovered actor indices are skipped via the ledger described in [Script 3](#script-3-recover_missing_acquisitionsr)
 
 Simply re-run the same command from the project root to continue.
 
@@ -731,6 +841,25 @@ Simply re-run the same command from the project root to continue.
 - updated progress file
 - optional monitor report
 
+### `recover_missing_acquisitions.R`
+
+**Inputs**
+
+- existing yearly edition CSV files (to find gaps)
+- `01_data_retrieval/01_editions/data/bnf_edition_data_raw.csv` (re-read after any edition recompile, to detect new actors)
+- `01_data_retrieval/02_actors/data/distinct_actors_cache.csv` (extended append-only, never reordered - see the note above)
+- `00_monitor/report/query_agents_*_R.txt` (to find failed actor indices)
+- `00_monitor/report/recover_missing_acquisitions_*_R.txt` (its own ledger, to avoid re-recovering already-handled indices)
+- the BnF SPARQL endpoint
+
+**Outputs**
+
+- any missing yearly edition CSV file, plus a recompiled `bnf_edition_data_raw.csv` if at least one was recovered
+- `01_data_retrieval/02_actors/data/distinct_actors_cache.csv`, extended with any newly discovered actors (only when at least one edition year was recovered)
+- `01_data_retrieval/02_actors/data/actor_cache_additions_log.csv`, one row per newly appended actor (index, actor URI, timestamp, recovering script, triggering edition year(s))
+- any missing actor CSV file, plus a re-merged `actor_data.csv` if at least one was recovered
+- a monitor report
+
 ---
 
 ## Important Behavioural Notes
@@ -764,7 +893,11 @@ It does not clean the report directory.
 
 ### 5. Empty actor query results are considered processed
 
-An actor query that returns zero rows still counts as processed if no error occurred.
+An actor query that returns zero rows still counts as processed if no error occurred. This is exactly why `recover_missing_acquisitions.R` cannot use file-existence to detect skipped actors - see [Script 3](#script-3-recover_missing_acquisitionsr).
+
+### 6. A failed actor acquisition is silently skipped, not retried, by `query_agents.R`
+
+If `get_bnf_data_for_actor()` errors for a given index, the actor loop logs it, moves on, and never revisits that index within the same run - `last_processed_index.txt` only ever advances forward on success, so a later successful index permanently overwrites any chance of resuming at the failed one. `recover_missing_acquisitions.R` (Step 3) exists specifically to close this gap; run it after every actor acquisition.
 
 ---
 
@@ -786,6 +919,16 @@ Use this script to:
 - extract distinct actor URIs;
 - retrieve actor-level metadata;
 - build the final actor dataset.
+
+### `recover_missing_acquisitions.R`
+
+Use this script to:
+
+- detect edition years and actor indices that stages 1-2 skipped;
+- re-acquire them without disturbing already-processed data;
+- record what was recovered, how long it took, and which script did it, in the shared monitor report.
+
+Run it as a precaution after every editions + actors acquisition.
 
 ### Shared monitor
 
@@ -827,6 +970,13 @@ source("01_data_retrieval/02_actors/query_agents.R")
 result <- run_query_agents(use_monitor = TRUE)
 ```
 
+### Recovery
+
+```r
+source("01_data_retrieval/recover_missing_acquisitions.R")
+result <- run_recovery(use_monitor = TRUE)
+```
+
 ---
 
 ## Returned Objects
@@ -853,6 +1003,17 @@ Returns invisibly a list containing:
 - `start_index`
 - `monitor_report` when monitoring is enabled
 
+### `run_recovery()`
+
+Returns invisibly a list containing:
+
+- `missing_years`
+- `edition_recovery` (a list with `recovered` and `still_missing` year vectors)
+- `candidate_actor_indices`
+- `actor_recovery` (a list with `recovered` and `still_failing` index vectors)
+- `duration_seconds`
+- `monitor_report` when monitoring is enabled
+
 ---
 
 ## Dependency Summary
@@ -864,6 +1025,8 @@ These scripts rely on:
 - base R functionality for file management, resume handling, and CSV writing
 - `00_monitor/monitor.R` when embedded monitoring is enabled
 
+`recover_missing_acquisitions.R` additionally relies on `query_editions.R` and `query_agents.R` themselves (loaded via `sys.source()` for their helper functions).
+
 They also rely on:
 
 - network access to the BnF SPARQL endpoint
@@ -873,9 +1036,10 @@ They also rely on:
 
 ## Final Notes
 
-These two scripts are designed to work together as a reproducible acquisition pipeline:
+These three scripts are designed to work together as a reproducible acquisition pipeline:
 
 - `query_editions.R` builds the bibliographic edition dataset;
-- `query_agents.R` enriches that pipeline by retrieving metadata for the distinct actors referenced in the editions dataset.
+- `query_agents.R` enriches that pipeline by retrieving metadata for the distinct actors referenced in the editions dataset;
+- `recover_missing_acquisitions.R` closes the loop by catching and re-acquiring whatever the first two silently skipped.
 
-The shared monitor integration allows both scripts to produce system-monitoring reports without embedding duplicate monitoring code inside the acquisition logic.
+The shared monitor integration allows all three scripts to produce system-monitoring reports without embedding duplicate monitoring code inside the acquisition logic.

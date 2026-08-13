@@ -1,0 +1,99 @@
+======================================================================
+BnF ACTORS ACQUISITION - SESSION INFO
+======================================================================
+
+R version 4.6.1 (2026-06-24 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+  LAPACK version 3.12.1
+
+locale:
+[1] LC_COLLATE=French_France.utf8  LC_CTYPE=French_France.utf8   
+[3] LC_MONETARY=French_France.utf8 LC_NUMERIC=C                  
+[5] LC_TIME=French_France.utf8    
+
+time zone: Europe/Rome
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.6.1
+
+----------------------------------------------------------------------
+Batch log (one entry per completed batch; the acquisition may be split
+into several restarted Rscript batches to bound virtual memory growth.
+A batch that crashes/is killed before finishing will not appear here -
+check the console output or 00_monitor/report/ for those):
+----------------------------------------------------------------------
+
+Batch actors 41864-2000 | started 2026-07-17 00:15:47 | ended 2026-07-17 00:16:02 | duration 15s | status: SKIPPED (already up to date)
+Batch actors 41864-4000 | started 2026-07-17 00:16:02 | ended 2026-07-17 00:16:06 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-6000 | started 2026-07-17 00:16:06 | ended 2026-07-17 00:16:10 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-8000 | started 2026-07-17 00:16:11 | ended 2026-07-17 00:16:14 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-10000 | started 2026-07-17 00:16:15 | ended 2026-07-17 00:16:19 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-12000 | started 2026-07-17 00:16:19 | ended 2026-07-17 00:16:23 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-14000 | started 2026-07-17 00:16:23 | ended 2026-07-17 00:16:27 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-16000 | started 2026-07-17 00:16:27 | ended 2026-07-17 00:16:31 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-18000 | started 2026-07-17 00:16:31 | ended 2026-07-17 00:16:35 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-20000 | started 2026-07-17 00:16:36 | ended 2026-07-17 00:16:39 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-22000 | started 2026-07-17 00:16:40 | ended 2026-07-17 00:16:44 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-24000 | started 2026-07-17 00:16:44 | ended 2026-07-17 00:16:48 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-26000 | started 2026-07-17 00:16:48 | ended 2026-07-17 00:16:52 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-28000 | started 2026-07-17 00:16:53 | ended 2026-07-17 00:16:56 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-30000 | started 2026-07-17 00:16:57 | ended 2026-07-17 00:17:00 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-32000 | started 2026-07-17 00:17:01 | ended 2026-07-17 00:17:05 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-34000 | started 2026-07-17 00:17:05 | ended 2026-07-17 00:17:09 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-36000 | started 2026-07-17 00:17:09 | ended 2026-07-17 00:17:13 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-38000 | started 2026-07-17 00:17:13 | ended 2026-07-17 00:17:17 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-40000 | started 2026-07-17 00:17:18 | ended 2026-07-17 00:17:21 | duration 4s | status: SKIPPED (already up to date)
+Batch actors 41864-42000 | started 2026-07-17 00:17:22 | ended 2026-07-17 00:23:50 | duration 6m 28s | status: COMPLETED
+Batch actors 42001-44000 | started 2026-07-17 00:23:51 | ended 2026-07-17 01:51:38 | duration 1h 27m 47s | status: COMPLETED
+Batch actors 44001-46000 | started 2026-07-17 01:51:39 | ended 2026-07-17 03:18:26 | duration 1h 26m 47s | status: COMPLETED
+Batch actors 46001-48000 | started 2026-07-17 03:18:27 | ended 2026-07-17 04:48:35 | duration 1h 30m 08s | status: COMPLETED
+Batch actors 48001-50000 | started 2026-07-17 04:48:35 | ended 2026-07-17 06:20:19 | duration 1h 31m 43s | status: COMPLETED
+Batch actors 50001-52000 | started 2026-07-17 06:20:19 | ended 2026-07-17 07:47:15 | duration 1h 26m 56s | status: COMPLETED
+Batch actors 52001-54000 | started 2026-07-17 07:47:16 | ended 2026-07-17 09:14:20 | duration 1h 27m 05s | status: COMPLETED
+Batch actors 54001-56000 | started 2026-07-17 09:14:21 | ended 2026-07-17 10:49:40 | duration 1h 35m 20s | status: COMPLETED
+Batch actors 56001-58000 | started 2026-07-17 10:49:41 | ended 2026-07-17 12:19:40 | duration 1h 29m 58s | status: COMPLETED
+Batch actors 58001-60000 | started 2026-07-17 12:19:40 | ended 2026-07-17 13:47:52 | duration 1h 28m 12s | status: COMPLETED
+Batch actors 60001-62000 | started 2026-07-17 13:47:54 | ended 2026-07-17 15:17:18 | duration 1h 29m 24s | status: COMPLETED
+Batch actors 62001-64000 | started 2026-07-17 15:17:20 | ended 2026-07-17 16:49:06 | duration 1h 31m 46s | status: COMPLETED
+Batch actors 64001-66000 | started 2026-07-17 16:49:06 | ended 2026-07-17 18:23:22 | duration 1h 34m 15s | status: COMPLETED
+Batch actors 66001-68000 | started 2026-07-17 18:23:22 | ended 2026-07-17 19:53:06 | duration 1h 29m 43s | status: COMPLETED
+Batch actors 68001-70000 | started 2026-07-17 19:53:06 | ended 2026-07-17 21:07:46 | duration 1h 14m 40s | status: COMPLETED
+Batch actors 70001-72000 | started 2026-07-17 21:07:47 | ended 2026-07-17 22:35:24 | duration 1h 27m 37s | status: COMPLETED
+Batch actors 72001-74000 | started 2026-07-17 22:35:24 | ended 2026-07-18 00:02:47 | duration 1h 27m 23s | status: COMPLETED
+Batch actors 74001-76000 | started 2026-07-18 00:02:49 | ended 2026-07-18 01:30:34 | duration 1h 27m 45s | status: COMPLETED
+Batch actors 76001-78000 | started 2026-07-18 01:30:35 | ended 2026-07-18 02:58:32 | duration 1h 27m 58s | status: COMPLETED
+Batch actors 78001-80000 | started 2026-07-18 02:58:34 | ended 2026-07-18 04:26:15 | duration 1h 27m 41s | status: COMPLETED
+Batch actors 80001-82000 | started 2026-07-18 04:26:16 | ended 2026-07-18 05:54:10 | duration 1h 27m 54s | status: COMPLETED
+Batch actors 82001-84000 | started 2026-07-18 05:54:11 | ended 2026-07-18 07:22:07 | duration 1h 27m 56s | status: COMPLETED
+Batch actors 84001-86000 | started 2026-07-18 07:22:07 | ended 2026-07-18 08:50:12 | duration 1h 28m 05s | status: COMPLETED
+Batch actors 86001-88000 | started 2026-07-18 08:50:13 | ended 2026-07-18 10:18:05 | duration 1h 27m 52s | status: COMPLETED
+Batch actors 88001-90000 | started 2026-07-18 10:18:06 | ended 2026-07-18 11:46:41 | duration 1h 28m 36s | status: COMPLETED
+Batch actors 90001-92000 | started 2026-07-18 11:46:42 | ended 2026-07-18 13:14:48 | duration 1h 28m 06s | status: COMPLETED
+Batch actors 92001-94000 | started 2026-07-18 13:14:49 | ended 2026-07-18 14:43:05 | duration 1h 28m 16s | status: COMPLETED
+Batch actors 94001-96000 | started 2026-07-18 14:43:07 | ended 2026-07-18 16:27:30 | duration 1h 44m 23s | status: COMPLETED
+Batch actors 96001-98000 | started 2026-07-18 16:27:31 | ended 2026-07-18 17:56:02 | duration 1h 28m 32s | status: COMPLETED
+Batch actors 98001-100000 | started 2026-07-18 17:56:03 | ended 2026-07-18 19:20:35 | duration 1h 24m 33s | status: COMPLETED
+Batch actors 99896-102000 | started 2026-07-18 19:20:36 | ended 2026-07-18 20:42:50 | duration 1h 22m 14s | status: COMPLETED
+Batch actors 102001-104000 | started 2026-07-18 20:42:51 | ended 2026-07-18 22:11:32 | duration 1h 28m 41s | status: COMPLETED
+Batch actors 104001-106000 | started 2026-07-18 22:11:32 | ended 2026-07-18 23:40:50 | duration 1h 29m 18s | status: COMPLETED
+Batch actors 106001-108000 | started 2026-07-18 23:40:52 | ended 2026-07-19 01:09:49 | duration 1h 28m 57s | status: COMPLETED
+Batch actors 108001-110000 | started 2026-07-19 01:09:49 | ended 2026-07-19 02:39:09 | duration 1h 29m 20s | status: COMPLETED
+Batch actors 110001-112000 | started 2026-07-19 02:39:10 | ended 2026-07-19 04:07:59 | duration 1h 28m 49s | status: COMPLETED
+Batch actors 112001-114000 | started 2026-07-19 04:08:00 | ended 2026-07-19 05:36:36 | duration 1h 28m 36s | status: COMPLETED
+Batch actors 114001-116000 | started 2026-07-19 05:36:36 | ended 2026-07-19 07:04:58 | duration 1h 28m 22s | status: COMPLETED
+Batch actors 116001-118000 | started 2026-07-19 07:04:59 | ended 2026-07-19 08:35:02 | duration 1h 30m 03s | status: COMPLETED
+Batch actors 118001-120000 | started 2026-07-19 08:35:02 | ended 2026-07-19 10:06:26 | duration 1h 31m 24s | status: COMPLETED
+Batch actors 120001-122000 | started 2026-07-19 10:06:27 | ended 2026-07-19 11:36:34 | duration 1h 30m 07s | status: COMPLETED
+Batch actors 122001-124000 | started 2026-07-19 11:36:35 | ended 2026-07-19 13:09:10 | duration 1h 32m 36s | status: COMPLETED
+Batch actors 124001-124695 | started 2026-07-19 13:09:11 | ended 2026-07-19 13:40:37 | duration 31m 26s | status: COMPLETED
+
+----------------------------------------------------------------------
+TOTAL ACQUISITION TIME: 62h 00m 41s (from 2026-07-17 00:15:45 to 2026-07-19 14:16:26)
+----------------------------------------------------------------------

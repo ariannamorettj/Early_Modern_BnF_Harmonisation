@@ -13,7 +13,7 @@ format_duration <- function(secs) {
   else sprintf("%ds", s)
 }
 
-print_progress <- function(current, total, start_time, step_times) {
+print_progress <- function(current, total, start_time, step_times, label = NULL, force_newline = FALSE) {
   pct <- current / total
   bar_width <- 40
   filled <- round(pct * bar_width)
@@ -38,12 +38,14 @@ print_progress <- function(current, total, start_time, step_times) {
     eta_str <- "--"
   }
 
+  prefix <- if (!is.null(label) && nzchar(label)) sprintf("%s ", label) else ""
+
   cat(sprintf(
-    "\r%s %3.0f%%  %d/%d  elapsed: %s  ETA: %s   ",
-    bar, pct * 100, current, total, elapsed_str, eta_str
+    "\r%s%s %3.0f%%  %d/%d  elapsed: %s  ETA: %s   ",
+    prefix, bar, pct * 100, current, total, elapsed_str, eta_str
   ))
 
-  if (current >= total) cat("\n")
+  if (current >= total || force_newline) cat("\n")
   flush.console()
 }
 
@@ -63,13 +65,87 @@ ensure_output_dirs <- function(paths) {
   dir.create(paths$yearly_output_dir, recursive = TRUE, showWarnings = FALSE)
 }
 
-write_session_info_file <- function(output_dir) {
+format_session_timestamp <- function(t = Sys.time()) {
+  format(t, "%Y%m%d_%H%M%S")
+}
+
+get_session_info_path <- function(output_dir, session_timestamp) {
+  file.path(output_dir, paste0("sessionInfo_data_acquisition_", session_timestamp, ".txt"))
+}
+
+# One session-info file is shared across all sub-batches of a single acquisition
+# (see run_query_editions_batched.ps1, which restarts Rscript every N years to
+# bound virtual memory growth). The header + sessionInfo() are written once,
+# the first time the file is created; every batch, including the first, then
+# appends one line to the batch log below so the file documents how the
+# acquisition was actually split into restarted Rscript processes.
+write_session_info_header <- function(path) {
   writeLines(
-    capture.output(sessionInfo()),
-    file.path(
-      output_dir,
-      paste0("sessionInfo_of_the_bnf_data_acquisition_run_of_", as.character(Sys.Date()), ".txt")
-    )
+    c(
+      strrep("=", 70),
+      "BnF DATA ACQUISITION - SESSION INFO",
+      strrep("=", 70),
+      "",
+      capture.output(sessionInfo()),
+      "",
+      strrep("-", 70),
+      "Batch log (one entry per completed batch; the acquisition may be split",
+      "into several restarted Rscript batches to bound virtual memory growth.",
+      "A batch that crashes/is killed before finishing will not appear here -",
+      "check the console output or 00_monitor/report/ for those):",
+      strrep("-", 70),
+      ""
+    ),
+    path
+  )
+}
+
+append_batch_log_entry <- function(
+  path,
+  requested_last_year,
+  start_year_used,
+  batch_start,
+  batch_end,
+  status
+) {
+  duration <- as.numeric(difftime(batch_end, batch_start, units = "secs"))
+
+  con <- file(path, open = "at", encoding = "UTF-8")
+  on.exit(close(con), add = TRUE)
+
+  writeLines(
+    sprintf(
+      "Batch years %d-%d | started %s | ended %s | duration %s | status: %s",
+      start_year_used,
+      requested_last_year,
+      format(batch_start, "%Y-%m-%d %H:%M:%S"),
+      format(batch_end, "%Y-%m-%d %H:%M:%S"),
+      format_duration(duration),
+      status
+    ),
+    con
+  )
+}
+
+append_total_time_summary <- function(path, total_start, total_end) {
+  duration <- as.numeric(difftime(total_end, total_start, units = "secs"))
+
+  con <- file(path, open = "at", encoding = "UTF-8")
+  on.exit(close(con), add = TRUE)
+
+  writeLines(
+    c(
+      "",
+      strrep("-", 70),
+      sprintf(
+        "TOTAL ACQUISITION TIME: %s (from %s to %s)",
+        format_duration(duration),
+        format(total_start, "%Y-%m-%d %H:%M:%S"),
+        format(total_end, "%Y-%m-%d %H:%M:%S")
+      ),
+      strrep("-", 70)
+    ),
+    con
   )
 }
 
@@ -209,16 +285,54 @@ run_query_editions <- function(
   sleep = TRUE,
   write_session_info = TRUE,
   use_monitor = FALSE,
-  monitor_script = "00_monitor/monitor.R"
+  monitor_script = "00_monitor/monitor.R",
+  compile_output = TRUE,
+  session_timestamp = NULL,
+  overall_last_year = NULL
 ) {
   paths <- make_paths(base_dir)
   ensure_output_dirs(paths)
 
-  if (write_session_info) {
-    write_session_info_file(paths$output_dir)
+  batch_start_time <- Sys.time()
+
+  if (is.null(session_timestamp)) {
+    session_timestamp <- format_session_timestamp(batch_start_time)
+  }
+
+  session_info_path <- get_session_info_path(paths$output_dir, session_timestamp)
+
+  if (write_session_info && !file.exists(session_info_path)) {
+    write_session_info_header(session_info_path)
   }
 
   start_year <- get_start_year(paths$yearly_output_dir, first_year = first_year)
+
+  if (start_year > last_year) {
+    cat(sprintf(
+      "Nothing to do: existing data already covers up to year %d (requested last_year = %d).\n",
+      start_year, last_year
+    ))
+
+    if (write_session_info) {
+      append_batch_log_entry(
+        path = session_info_path,
+        requested_last_year = last_year,
+        start_year_used = start_year,
+        batch_start = batch_start_time,
+        batch_end = Sys.time(),
+        status = "SKIPPED (already up to date)"
+      )
+    }
+
+    return(invisible(list(
+      paths = paths,
+      data = NULL,
+      stats = NULL,
+      start_year = start_year,
+      compiled_out_file = NULL,
+      monitor_report = NULL
+    )))
+  }
 
   monitor_env <- NULL
   monitor_state <- NULL
@@ -245,9 +359,24 @@ run_query_editions <- function(
     )
   }
 
-  total_steps <- last_year - first_year + 1
+  # Block-local bar: progress within *this* Rscript invocation only.
+  total_steps <- last_year - start_year + 1
   loop_start <- Sys.time()
   step_times <- numeric(0)
+
+  # Overall bar: progress across the whole acquisition (first_year is the
+  # fixed overall start in every batch; overall_last_year is the true final
+  # year, e.g. passed by run_query_editions_batched.ps1). Only shown when
+  # overall_last_year is supplied, so a plain single-shot run is unaffected.
+  show_overall <- !is.null(overall_last_year)
+  overall_total <- if (show_overall) overall_last_year - first_year + 1 else NA
+  overall_start_time <- tryCatch(
+    {
+      parsed <- as.POSIXct(session_timestamp, format = "%Y%m%d_%H%M%S")
+      if (is.na(parsed)) loop_start else parsed
+    },
+    error = function(e) loop_start
+  )
 
   for (i in start_year:last_year) {
     step_start <- Sys.time()
@@ -260,7 +389,19 @@ run_query_editions <- function(
     )
 
     step_times <- c(step_times, as.numeric(difftime(Sys.time(), step_start, units = "secs")))
-    print_progress(i - first_year + 1, total_steps, loop_start, step_times)
+    print_progress(i - start_year + 1, total_steps, loop_start, step_times, label = "[BLOCK]  ")
+
+    if (show_overall) {
+      print_progress(
+        current = i - first_year + 1,
+        total = overall_total,
+        start_time = overall_start_time,
+        step_times = step_times,
+        label = "[OVERALL]",
+        force_newline = TRUE
+      )
+    }
+
     gc()
 
     if (use_monitor) {
@@ -272,14 +413,43 @@ run_query_editions <- function(
     }
   }
 
-  compiled <- compile_edition_data(paths$yearly_output_dir)
-  compiled_out_file <- write_compiled_edition_data(compiled, paths$output_dir)
-  stats <- compute_edition_stats(compiled)
+  if (write_session_info) {
+    append_batch_log_entry(
+      path = session_info_path,
+      requested_last_year = last_year,
+      start_year_used = start_year,
+      batch_start = batch_start_time,
+      batch_end = Sys.time(),
+      status = "COMPLETED"
+    )
+  }
+
+  compiled <- NULL
+  compiled_out_file <- NULL
+  stats <- NULL
+
+  if (compile_output) {
+    compiled <- compile_edition_data(paths$yearly_output_dir)
+    compiled_out_file <- write_compiled_edition_data(compiled, paths$output_dir)
+    stats <- compute_edition_stats(compiled)
+
+    if (write_session_info) {
+      append_total_time_summary(
+        path = session_info_path,
+        total_start = overall_start_time,
+        total_end = Sys.time()
+      )
+    }
+  }
 
   if (use_monitor) {
     monitor_state <- monitor_env$update_monitor_state(
       state = monitor_state,
-      context = "Completed compiled CSV writing and statistics computation",
+      context = if (compile_output) {
+        "Completed compiled CSV writing and statistics computation"
+      } else {
+        paste("Completed acquisition batch up to year", last_year)
+      },
       print_console = TRUE
     )
 
@@ -300,5 +470,20 @@ run_query_editions <- function(
 }
 
 if (sys.nframe() == 0) {
-  run_query_editions(use_monitor = TRUE)
+  cli_args <- commandArgs(trailingOnly = TRUE)
+
+  cli_first_year <- if (length(cli_args) >= 1) as.integer(cli_args[1]) else 1454
+  cli_last_year <- if (length(cli_args) >= 2) as.integer(cli_args[2]) else 1799
+  cli_compile_output <- if (length(cli_args) >= 3) as.logical(cli_args[3]) else TRUE
+  cli_session_timestamp <- if (length(cli_args) >= 4 && nzchar(cli_args[4])) cli_args[4] else NULL
+  cli_overall_last_year <- if (length(cli_args) >= 5 && nzchar(cli_args[5])) as.integer(cli_args[5]) else NULL
+
+  run_query_editions(
+    first_year = cli_first_year,
+    last_year = cli_last_year,
+    use_monitor = TRUE,
+    compile_output = cli_compile_output,
+    session_timestamp = cli_session_timestamp,
+    overall_last_year = cli_overall_last_year
+  )
 }

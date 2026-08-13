@@ -1,0 +1,6 @@
+script=recover_missing_acquisitions
+report=00_monitor/report/recover_missing_acquisitions_20260805_115752_R.txt
+started=2026-08-05 11:57:52
+status=COMPLETED
+last_context=Recovery summary via recover_missing_acquisitions: editions 0/0 recovered; 0 new actor(s) discovered from recovered editions; actors 670/670 recovered (0 still failing after 3 attempt(s) each); total duration 1h 16m 08s
+ended=2026-08-05 13:14:01

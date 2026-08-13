@@ -213,10 +213,156 @@ test_that("run_query_agents performs an end-to-end full run with mocked queries"
   expect_true(file.exists(file.path(tmp_base, "data", "actor_queries_results", "actor_file_2.csv")))
   expect_true(file.exists(file.path(tmp_base, "data", "last_processed_index.txt")))
 
+  session_files <- list.files(
+    file.path(tmp_base, "data"),
+    pattern = "^sessionInfo_data_acquisition_[0-9]{8}_[0-9]{6}\\.txt$"
+  )
+  expect_true(length(session_files) == 1)
+
+  session_content <- readLines(file.path(tmp_base, "data", session_files[1]))
+  expect_true(any(grepl("^Batch actors 1-2", session_content)))
+  expect_true(any(grepl("status: COMPLETED", session_content)))
+
   expect_equal(result$start_index, 1)
   expect_equal(nrow(result$actors), 2)
   expect_equal(nrow(result$data), 2)
   expect_null(result$monitor_report)
+})
+
+test_that("run_query_agents skips a batch already covered and logs it as SKIPPED", {
+  tmp_base <- file.path(tempdir(), "query_agents_skip_batch")
+  editions_input <- normalizePath(
+    file.path("data", "actors_data", "bnf_edition_data_raw.csv"),
+    mustWork = TRUE
+  )
+
+  mock_query_fun <- function(query) {
+    data.frame(
+      actor_birth = "1700", actor_name = "A", actor_first_name = "A",
+      actor_last_name = "A", entity_type = "Person", first_year = "1720",
+      actor_country = "France", actor_language = "fr", actor_gender = "unknown",
+      actor_profession = "Writer", actor_death = "1760", actor_start = "1720",
+      actor_end = "1760", actor_link_exact = "", actor_link_close = "",
+      stringsAsFactors = FALSE
+    )
+  }
+
+  ts <- format_session_timestamp()
+
+  first <- run_query_agents(
+    base_dir = tmp_base,
+    editions_input = editions_input,
+    query_fun = mock_query_fun,
+    sleep = FALSE,
+    last_index = 1,
+    merge_output = FALSE,
+    session_timestamp = ts
+  )
+
+  second <- run_query_agents(
+    base_dir = tmp_base,
+    editions_input = editions_input,
+    query_fun = mock_query_fun,
+    sleep = FALSE,
+    last_index = 1,
+    merge_output = FALSE,
+    session_timestamp = ts
+  )
+
+  expect_equal(first$start_index, 1)
+  expect_equal(second$start_index, 2)
+  expect_null(second$data)
+
+  session_path <- get_session_info_path(file.path(tmp_base, "data"), ts)
+  session_content <- readLines(session_path)
+
+  expect_true(any(grepl("^Batch actors 1-1.*status: COMPLETED$", session_content)))
+  expect_true(any(grepl("status: SKIPPED", session_content)))
+})
+
+test_that("run_query_agents shares one session-info file across restarted batches", {
+  tmp_base <- file.path(tempdir(), "query_agents_batched_session")
+  editions_input <- normalizePath(
+    file.path("data", "actors_data", "bnf_edition_data_raw.csv"),
+    mustWork = TRUE
+  )
+
+  mock_query_fun <- function(query) {
+    data.frame(
+      actor_birth = "1700", actor_name = "A", actor_first_name = "A",
+      actor_last_name = "A", entity_type = "Person", first_year = "1720",
+      actor_country = "France", actor_language = "fr", actor_gender = "unknown",
+      actor_profession = "Writer", actor_death = "1760", actor_start = "1720",
+      actor_end = "1760", actor_link_exact = "", actor_link_close = "",
+      stringsAsFactors = FALSE
+    )
+  }
+
+  ts <- format_session_timestamp()
+
+  run_query_agents(
+    base_dir = tmp_base, editions_input = editions_input,
+    query_fun = mock_query_fun, sleep = FALSE,
+    last_index = 1, merge_output = FALSE, session_timestamp = ts
+  )
+
+  run_query_agents(
+    base_dir = tmp_base, editions_input = editions_input,
+    query_fun = mock_query_fun, sleep = FALSE,
+    last_index = 2, merge_output = TRUE, session_timestamp = ts
+  )
+
+  session_files <- list.files(
+    file.path(tmp_base, "data"),
+    pattern = "^sessionInfo_data_acquisition_.*\\.txt$"
+  )
+  expect_equal(length(session_files), 1)
+
+  session_content <- readLines(file.path(tmp_base, "data", session_files[1]))
+  batch_lines <- grep("^Batch actors", session_content, value = TRUE)
+
+  expect_equal(length(batch_lines), 2)
+  expect_true(grepl("^Batch actors 1-1", batch_lines[1]))
+  expect_true(grepl("^Batch actors 2-2", batch_lines[2]))
+})
+
+test_that("run_query_agents caches the distinct actor list across batches", {
+  tmp_base <- file.path(tempdir(), "query_agents_actor_cache")
+  editions_input <- normalizePath(
+    file.path("data", "actors_data", "bnf_edition_data_raw.csv"),
+    mustWork = TRUE
+  )
+
+  mock_query_fun <- function(query) {
+    data.frame(
+      actor_birth = "1700", actor_name = "A", actor_first_name = "A",
+      actor_last_name = "A", entity_type = "Person", first_year = "1720",
+      actor_country = "France", actor_language = "fr", actor_gender = "unknown",
+      actor_profession = "Writer", actor_death = "1760", actor_start = "1720",
+      actor_end = "1760", actor_link_exact = "", actor_link_close = "",
+      stringsAsFactors = FALSE
+    )
+  }
+
+  first <- run_query_agents(
+    base_dir = tmp_base, editions_input = editions_input,
+    query_fun = mock_query_fun, sleep = FALSE,
+    last_index = 1, merge_output = FALSE
+  )
+
+  cache_path <- get_actor_cache_path(file.path(tmp_base, "data"))
+  expect_true(file.exists(cache_path))
+
+  # Point editions_input at a non-existent file to prove the second batch
+  # reads the cached actor list instead of re-parsing the editions CSV.
+  second <- run_query_agents(
+    base_dir = tmp_base, editions_input = file.path(tmp_base, "does_not_exist.csv"),
+    query_fun = mock_query_fun, sleep = FALSE,
+    last_index = 2, merge_output = FALSE
+  )
+
+  expect_equal(nrow(second$actors), nrow(first$actors))
+  expect_equal(second$start_index, 2)
 })
 
 test_that("run_query_agents resumes automatically from the next actor index", {
@@ -387,6 +533,115 @@ test_that("format_duration formats minutes and seconds", {
 
 test_that("format_duration formats hours minutes seconds", {
   expect_equal(format_duration(3723), "1h 02m 03s")
+})
+
+# ---------------------------------------------------------------------------
+# New tests: session-info helpers (shared file + batch log)
+# ---------------------------------------------------------------------------
+
+test_that("format_session_timestamp produces a YYYYMMDD_HHMMSS string", {
+  ts <- format_session_timestamp(as.POSIXct("2026-07-14 02:49:27", tz = "UTC"))
+  expect_equal(ts, "20260714_024927")
+})
+
+test_that("get_session_info_path builds the expected file name", {
+  path <- get_session_info_path("some/output/dir", "20260714_024927")
+  expect_equal(path, file.path("some/output/dir", "sessionInfo_data_acquisition_20260714_024927.txt"))
+})
+
+test_that("write_session_info_header writes sessionInfo() plus a batch log section", {
+  tmp_file <- file.path(tempdir(), "actors_session_header_test.txt")
+  on.exit(unlink(tmp_file), add = TRUE)
+
+  write_session_info_header(tmp_file)
+  content <- readLines(tmp_file)
+
+  expect_true(any(grepl("SESSION INFO", content)))
+  expect_true(any(grepl("^R version", content)))
+  expect_true(any(grepl("^Batch log", content)))
+})
+
+test_that("append_batch_log_entry appends a formatted line without touching prior content", {
+  tmp_file <- file.path(tempdir(), "actors_session_batch_log_test.txt")
+  on.exit(unlink(tmp_file), add = TRUE)
+
+  writeLines("existing header line", tmp_file)
+
+  append_batch_log_entry(
+    path = tmp_file,
+    requested_last_index = 2,
+    start_index_used = 1,
+    batch_start = as.POSIXct("2026-07-14 02:49:27", tz = "UTC"),
+    batch_end = as.POSIXct("2026-07-14 02:49:30", tz = "UTC"),
+    status = "COMPLETED"
+  )
+
+  content <- readLines(tmp_file)
+
+  expect_equal(content[1], "existing header line")
+  expect_true(any(grepl(
+    "^Batch actors 1-2 \\| started .* \\| ended .* \\| duration 3s \\| status: COMPLETED$",
+    content
+  )))
+})
+
+test_that("append_total_time_summary appends a total-duration footer", {
+  tmp_file <- file.path(tempdir(), "actors_total_time_summary_test.txt")
+  on.exit(unlink(tmp_file), add = TRUE)
+
+  writeLines("existing content", tmp_file)
+
+  append_total_time_summary(
+    path = tmp_file,
+    total_start = as.POSIXct("2026-07-14 05:41:25", tz = "UTC"),
+    total_end = as.POSIXct("2026-07-14 08:57:55", tz = "UTC")
+  )
+
+  content <- readLines(tmp_file)
+
+  expect_equal(content[1], "existing content")
+  expect_true(any(grepl(
+    "^TOTAL ACQUISITION TIME: 3h 16m 30s \\(from 2026-07-14 05:41:25 to 2026-07-14 08:57:55\\)$",
+    content
+  )))
+})
+
+test_that("run_query_agents writes a TOTAL ACQUISITION TIME summary on the final merge batch", {
+  tmp_base <- file.path(tempdir(), "query_agents_total_time")
+  editions_input <- normalizePath(
+    file.path("data", "actors_data", "bnf_edition_data_raw.csv"),
+    mustWork = TRUE
+  )
+
+  mock_query_fun <- function(query) {
+    data.frame(
+      actor_birth = "1700", actor_name = "A", actor_first_name = "A",
+      actor_last_name = "A", entity_type = "Person", first_year = "1720",
+      actor_country = "France", actor_language = "fr", actor_gender = "unknown",
+      actor_profession = "Writer", actor_death = "1760", actor_start = "1720",
+      actor_end = "1760", actor_link_exact = "", actor_link_close = "",
+      stringsAsFactors = FALSE
+    )
+  }
+
+  ts <- format_session_timestamp()
+
+  run_query_agents(
+    base_dir = tmp_base, editions_input = editions_input,
+    query_fun = mock_query_fun, sleep = FALSE,
+    last_index = 1, merge_output = FALSE, session_timestamp = ts
+  )
+
+  run_query_agents(
+    base_dir = tmp_base, editions_input = editions_input,
+    query_fun = mock_query_fun, sleep = FALSE,
+    last_index = 2, merge_output = TRUE, session_timestamp = ts
+  )
+
+  session_path <- get_session_info_path(file.path(tmp_base, "data"), ts)
+  content <- readLines(session_path)
+
+  expect_true(any(grepl("^TOTAL ACQUISITION TIME:", content)))
 })
 
 test_that("print_progress outputs a progress bar line", {

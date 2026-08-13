@@ -1,6 +1,6 @@
 data/bnf_edition_data/edition_raw_data
 old_extra
-01_data_retrieval/01_editions/data/old_zip
+01_data_retrieval/01_editions/data/
 01_data_retrieval/02_actors/data/old_zip
 .idea/
 */.DS_Store
@@ -1140,3 +1140,19 @@ __pycache__/
 # large data files — module 04
 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/data/bnf_edition_data_raw.csv
 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/data/data_final/bnf_publication_place.csv
+
+# monitor run reports
+00_monitor/report/query_agents_*
+00_monitor/report/query_editions_*
+00_monitor/report/recover_missing_acquisitions_*
+
+# actor query result batches — too many/large files for GitHub
+01_data_retrieval/02_actors/actors_data/actor_queries_results/
+
+# monitor run reports (root copy)
+monitor_data/query_agents_*
+monitor_data/query_editions_*
+monitor_data/recover_missing_acquisitions_*
+
+# zipped archives
+*.zip

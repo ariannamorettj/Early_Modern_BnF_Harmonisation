@@ -30,7 +30,10 @@ test_that("create_report_file uses caller name, timestamp, output dir and R suff
   report_path <- env$create_report_file()
   report_name <- basename(report_path)
 
-  expect_equal(dirname(report_path), tmp_out)
+  expect_equal(
+    normalizePath(dirname(report_path), winslash = "/"),
+    normalizePath(tmp_out, winslash = "/")
+  )
   expect_true(grepl("^launcher_script_[0-9]{8}_[0-9]{6}_R\\.txt$", report_name))
 })
 

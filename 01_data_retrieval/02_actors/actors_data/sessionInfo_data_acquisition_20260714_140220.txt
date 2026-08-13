@@ -1,0 +1,37 @@
+======================================================================
+BnF ACTORS ACQUISITION - SESSION INFO
+======================================================================
+
+R version 4.6.1 (2026-06-24 ucrt)
+Platform: x86_64-w64-mingw32/x64
+Running under: Windows 11 x64 (build 26200)
+
+Matrix products: default
+  LAPACK version 3.12.1
+
+locale:
+[1] LC_COLLATE=French_France.utf8  LC_CTYPE=French_France.utf8   
+[3] LC_MONETARY=French_France.utf8 LC_NUMERIC=C                  
+[5] LC_TIME=French_France.utf8    
+
+time zone: Europe/Rome
+tzcode source: internal
+
+attached base packages:
+[1] stats     graphics  grDevices utils     datasets  methods   base     
+
+loaded via a namespace (and not attached):
+[1] compiler_4.6.1
+
+----------------------------------------------------------------------
+Batch log (one entry per completed batch; the acquisition may be split
+into several restarted Rscript batches to bound virtual memory growth.
+A batch that crashes/is killed before finishing will not appear here -
+check the console output or 00_monitor/report/ for those):
+----------------------------------------------------------------------
+
+Batch actors 1-100 | started 2026-07-14 14:02:20 | ended 2026-07-14 14:19:34 | duration 17m 14s | status: COMPLETED
+
+----------------------------------------------------------------------
+TOTAL ACQUISITION TIME: 17m 16s (from 2026-07-14 14:02:20 to 2026-07-14 14:19:35)
+----------------------------------------------------------------------
