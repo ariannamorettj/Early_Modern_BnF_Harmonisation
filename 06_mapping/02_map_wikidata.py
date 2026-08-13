@@ -17,8 +17,8 @@ Pass 1 (ID-based):
 
 Pass 2 (SPARQL label search, actors without QID):
     A SPARQL query is submitted to the Wikidata Query Service (WQDS)
-    using the actor name as a rdfs:label filter, combined with birth year
-    when available.  Top candidate accepted if similarity ≥ threshold.
+    using the actor name as a rdfs:label filter, combined with birth and/or
+    death year when available.  Top candidate accepted if similarity ≥ threshold.
 
 Outputs
 -------
@@ -27,6 +27,15 @@ output/wikidata_mapping.csv
     bnf_ark, viaf_id, isni, lc_id, confidence
 
 report/wikidata_mapping_report.json
+
+Monitoring
+----------
+By default, resource-usage checkpoints are written via the shared
+00_monitor/monitor.py "embedded state-based monitoring" API (same mechanism
+used by module 1's query_agents.R / query_editions.R): one checkpoint per
+processed actor, plus a final checkpoint on completion. Reports land in
+00_monitor/report/02_map_wikidata_<timestamp>_py.txt. Disable with
+--no-monitor.
 
 Usage
 -----
@@ -38,11 +47,18 @@ python 06_mapping/02_map_wikidata.py \\
     --viaf-mapping 06_mapping/output/viaf_mapping.csv \\
     --threshold 0.82 \\
     --sleep 0.6
+
+# disable the monitor report
+python 06_mapping/02_map_wikidata.py --no-monitor
 """
 
-import os, csv, sys, json, time, re, argparse, urllib.request, urllib.parse, urllib.error
+import os, csv, sys, json, time, re, argparse, importlib.util
+import urllib.request, urllib.parse, urllib.error
 from difflib import SequenceMatcher
+from pathlib import Path
 from typing import Optional
+
+MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
 
 INPUT_DEFAULT        = "05_subset_optimisation/output/bnf_actors_optimised.csv"
 VIAF_MAPPING_DEFAULT = "06_mapping/output/viaf_mapping.csv"
@@ -159,24 +175,29 @@ def fetch_wikidata_entity(qid: str, sleep: float) -> dict:
 # ── SPARQL name search ────────────────────────────────────────────────────────
 
 def search_wikidata_by_name(name: str, birth_year: Optional[str],
+                            death_year: Optional[str],
                             sleep: float) -> list[dict]:
     """
     SPARQL query against WQDS.
     Returns up to 5 candidates {qid, wikidata_label, birth_date, death_date}.
+    Filters on birth and/or death year (whichever is available, ±2 years);
+    candidates with no bound date for a given predicate are still admitted.
     """
-    birth_filter = ""
+    conditions = []
     if birth_year:
-        birth_filter = f"""
-        OPTIONAL {{ ?item wdt:P569 ?bd. }}
-        FILTER(!BOUND(?bd) || (YEAR(?bd) >= {int(birth_year)-2}
-                             && YEAR(?bd) <= {int(birth_year)+2}))"""
+        conditions.append(f"""(!BOUND(?bd) || (YEAR(?bd) >= {int(birth_year)-2}
+                             && YEAR(?bd) <= {int(birth_year)+2}))""")
+    if death_year:
+        conditions.append(f"""(!BOUND(?dd) || (YEAR(?dd) >= {int(death_year)-2}
+                             && YEAR(?dd) <= {int(death_year)+2}))""")
+    date_filter = f"FILTER({' && '.join(conditions)})" if conditions else ""
 
     sparql = f"""
 SELECT DISTINCT ?item ?itemLabel ?bd ?dd WHERE {{
   ?item rdfs:label "{name}"@fr .
   OPTIONAL {{ ?item wdt:P569 ?bd. }}
   OPTIONAL {{ ?item wdt:P570 ?dd. }}
-  {birth_filter}
+  {date_filter}
   SERVICE wikibase:label {{ bd:serviceParam wikibase:language "fr,en". }}
 }} LIMIT 5
 """
@@ -220,10 +241,34 @@ def load_viaf_qids(viaf_path: str) -> dict[str, str]:
     return mapping
 
 
+# ── Monitor integration (embedded state-based monitoring, module 06_monitor) ──
+
+def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
+    """Load 00_monitor/monitor.py as a module, mirroring load_monitor_env() in
+    query_agents.R / query_editions.R (module 1)."""
+    project_root = Path(__file__).resolve().parents[1]
+    resolved = (project_root / monitor_script).resolve()
+    spec = importlib.util.spec_from_file_location("monitor_wikidata", resolved)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _monitor_checkpoint(monitor_module, monitor_state, index, total, rec):
+    if monitor_module is None:
+        return monitor_state
+    context = (f"Processed actor {rec['BnF_ID']} (index {index}/{total}) "
+              f"- match_type={rec['match_type'] or 'unmatched'}")
+    return monitor_module.update_monitor_state(
+        state=monitor_state, context=context, print_console=True,
+    )
+
+
 # ── Main ─────────────────────────────────────────────────────────────────────
 
 def run_mapping(input_path, viaf_mapping_path, output_path, report_path,
-                threshold, sleep):
+                threshold, sleep, use_monitor=False,
+                monitor_script=MONITOR_SCRIPT_DEFAULT):
 
     actors = []
     with open(input_path, "r", encoding="utf-8", newline="") as f:
@@ -234,6 +279,15 @@ def run_mapping(input_path, viaf_mapping_path, output_path, report_path,
 
     results = []
     stats = {"total": len(actors), "pass1": 0, "pass2": 0, "unmatched": 0}
+
+    monitor_module = None
+    monitor_state = None
+    if use_monitor:
+        monitor_module = load_monitor_module(monitor_script)
+        monitor_state = monitor_module.start_monitor_state(
+            sampling_mode="checkpoint-based updates during 02_map_wikidata.py execution",
+            print_start_message=True,
+        )
 
     for i, actor in enumerate(actors):
         if (i + 1) % 500 == 0:
@@ -264,6 +318,8 @@ def run_mapping(input_path, viaf_mapping_path, output_path, report_path,
                 rec["confidence"] = "1.0"
                 stats["pass1"] += 1
                 results.append(rec)
+                monitor_state = _monitor_checkpoint(
+                    monitor_module, monitor_state, i + 1, len(actors), rec)
                 continue
 
         # ── Pass 2: name-based SPARQL ────────────────────────────────────────
@@ -274,10 +330,14 @@ def run_mapping(input_path, viaf_mapping_path, output_path, report_path,
         if not name:
             stats["unmatched"] += 1
             results.append(rec)
+            monitor_state = _monitor_checkpoint(
+                monitor_module, monitor_state, i + 1, len(actors), rec)
             continue
 
         birth_year = extract_year(normalise(actor.get("actor_birth", "")))
-        candidates = search_wikidata_by_name(name, birth_year or None, sleep)
+        death_year = extract_year(normalise(actor.get("actor_death", "")))
+        candidates = search_wikidata_by_name(name, birth_year or None,
+                                             death_year or None, sleep)
 
         best, best_score = None, 0.0
         for cand in candidates:
@@ -298,6 +358,18 @@ def run_mapping(input_path, viaf_mapping_path, output_path, report_path,
             stats["unmatched"] += 1
 
         results.append(rec)
+        monitor_state = _monitor_checkpoint(
+            monitor_module, monitor_state, i + 1, len(actors), rec)
+
+    if use_monitor:
+        monitor_state = monitor_module.update_monitor_state(
+            state=monitor_state,
+            context="Completed Wikidata mapping run",
+            print_console=True,
+        )
+        monitor_state = monitor_module.stop_monitor_state(
+            state=monitor_state, print_stop_message=True,
+        )
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
     with open(output_path, "w", newline="", encoding="utf-8") as f:
@@ -323,9 +395,14 @@ def main():
     parser.add_argument("--report",       default=REPORT_DEFAULT)
     parser.add_argument("--threshold",    type=float, default=THRESHOLD_DEFAULT)
     parser.add_argument("--sleep",        type=float, default=SLEEP_DEFAULT)
+    parser.add_argument("--monitor-script", default=MONITOR_SCRIPT_DEFAULT)
+    parser.add_argument("--no-monitor",   action="store_true",
+                        help="Disable the 00_monitor/monitor.py resource-usage report.")
     args = parser.parse_args()
     run_mapping(args.input, args.viaf_mapping, args.output, args.report,
-                args.threshold, args.sleep)
+                args.threshold, args.sleep,
+                use_monitor=not args.no_monitor,
+                monitor_script=args.monitor_script)
 
 if __name__ == "__main__":
     main()

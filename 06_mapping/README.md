@@ -105,8 +105,20 @@ or from the VIAF mapping's `wikidata_id` column. The MediaWiki Entity API
 (BnF ARK P268, VIAF P214, ISNI P213, LC P244).
 
 **Pass 2 (SPARQL label search):** A SPARQL query against the Wikidata Query
-Service filters `rdfs:label` in French, optionally constrained by birth year
-(±2 years). Top candidate accepted if similarity ≥ `--threshold`.
+Service filters `rdfs:label` in French, constrained by birth year and/or
+death year (±2 years each), whichever the BnF actor record has available:
+- both known → both constraints apply (`AND`);
+- only one known (birth *or* death) → only that constraint applies;
+- neither known → no date filter, name match only.
+
+A candidate is never rejected solely because *it* lacks a birth or death date
+on Wikidata — the constraint only excludes candidates whose known date falls
+outside the ±2-year window. This means an actor with only a death year
+recorded in the BnF data (a common case, since death years are generally
+better attested than birth years for early-modern figures) still benefits
+from a date-narrowed search, instead of falling back to an unconstrained
+name-only lookup as in earlier versions of this script.
+Top candidate accepted if similarity ≥ `--threshold`.
 
 ### Output fields
 `BnF_ID, qid, match_type, wikidata_label, birth_date, death_date, bnf_ark, viaf_id, isni, lc_id, confidence`
@@ -117,6 +129,39 @@ Service filters `rdfs:label` in French, optionally constrained by birth year
 | `--viaf-mapping` | `06_mapping/output/viaf_mapping.csv` | Supplementary QID source |
 | `--threshold` | `0.85` | Min. similarity for pass-2 acceptance |
 | `--sleep` | `0.5` | Seconds between API calls |
+| `--monitor-script` | `00_monitor/monitor.py` | Path to the resource-monitoring module (see below) |
+| `--no-monitor` | off | Disable the resource-usage monitor report |
+
+### Resource-usage monitoring
+
+`02_map_wikidata.py` is integrated with the same "embedded state-based
+monitoring" mechanism used by module 1's `query_agents.R` and
+`query_editions.R` (see `00_monitor/README.md` for the full mechanism
+description). Concretely:
+
+- when run from the command line, monitoring is **on by default** (pass
+  `--no-monitor` to disable it — mirrors module 1, where the R scripts also
+  default the CLI entry point to `use_monitor = TRUE`);
+- at start-up it loads `00_monitor/monitor.py` and opens a monitoring state
+  (`start_monitor_state`);
+- one checkpoint is written per processed actor (`update_monitor_state`),
+  tagged with a context string identifying the `BnF_ID` and the resulting
+  `match_type` (`id`, `name`, or `unmatched`), plus one final checkpoint on
+  completion;
+- the state is closed cleanly at the end of the run (`stop_monitor_state`).
+
+Each checkpoint records system CPU/memory/disk, GPU utilisation (if
+available), network throughput, and process CPU/memory — the same metrics
+described in `00_monitor/README.md`. Reports are written to:
+
+```
+00_monitor/report/02_map_wikidata_<YYYYMMDD_HHMMSS>_py.txt
+```
+
+If called programmatically (e.g. from tests or another script) via
+`run_mapping(...)`, monitoring defaults to **off** (`use_monitor=False`) and
+must be opted into explicitly — again matching the function-level default
+used by the R equivalents in module 1.
 
 ---
 
