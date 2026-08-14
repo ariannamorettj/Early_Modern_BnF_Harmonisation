@@ -182,17 +182,33 @@ ESTC author record, a direct year-constrained join is performed.  This pass
 is currently scaffolded and requires the ESTC author authority table with
 VIAF IDs to be loaded via `--viaf-author-table` (forthcoming).
 
-**Pass 2 (heuristic):**
+**Pass 2 (heuristic — "same edition in both catalogues"):**
 1. Year filter: only ESTC editions within ±`--year-window` years are candidates.
 2. Author similarity ≥ `--author-threshold` (default 0.80).
 3. Title similarity ≥ `--title-threshold` (default 0.75).
-Both checks must pass; confidence = mean of the two scores.
+Both checks must pass; confidence = mean of the two scores; `match_type = "heuristic"`.
+The year filter makes sense here because it targets the *same* print run
+appearing in both catalogues, which is necessarily close in time. A Pass-2
+match always takes priority over anything found in Pass 3.
 
 **Pass 3 (LLM translation check, optional):**
-When author similarity passes but title similarity fails AND the two datasets
-report different languages, a Claude API call asks whether the BnF title is a
-translation of the ESTC title.  Requires `ANTHROPIC_API_KEY` in the
-environment; silently skipped if absent.
+A translation can be published decades — or centuries — after the original
+work, so this pass does **not** reuse the year-windowed Pass-2 candidate
+pool. It searches two candidate pools instead:
+- the Pass-2 year-windowed candidates whose title didn't match (still
+  checked, in case the translation *does* happen to fall within the window);
+- a **year-unconstrained** pool retrieved via `author_index`, an index built
+  by blocking ESTC records on the first token of the normalised author name
+  (the standard library-authority "Surname, Firstname" convention). This
+  lets Pass 3 find a translation published at any distance in time from the
+  BnF edition, as long as the author name matches (similarity ≥
+  `--author-threshold`) — capped at `--max-author-candidates` records per
+  BnF edition for performance.
+
+For every candidate in either pool whose author matches, whose title does
+not, and whose language differs from the BnF edition's, a single Claude API
+call asks whether the BnF title is a translation of the ESTC title.  Requires
+`ANTHROPIC_API_KEY` in the environment; silently skipped if absent.
 
 The LLM prompt:
 ```
@@ -201,8 +217,23 @@ of "<estc_title>" (language: <estc_lang>)?
 Answer ONLY with valid JSON: {"match": true or false, "confidence": 0.0 to 1.0}
 ```
 
+**Ambiguous translations:** if the LLM check accepts (match=true, confidence
+≥ `--llm-threshold`) more than one ESTC candidate for the *same* BnF edition,
+the match is not auto-resolved. This is expected for prolific or classical
+authors with several independent translations — e.g. a French and an English
+translation of a Latin original are not translations of *each other*, even
+though both would independently pass the author-match + language-mismatch
+check against the BnF edition. In that case `match_type = "ambiguous_translation"`:
+the highest-confidence candidate is still recorded in the output row
+(`estc_id`, `confidence`, etc.), but the `notes` field lists the discarded
+alternates, and the row is meant for manual review rather than being treated
+as a confident link. When exactly one candidate is accepted, `match_type = "llm"`
+as before.
+
 ### Output fields
 `BnF_edition_id, estc_id, match_type, confidence, estc_title, estc_author, estc_year, estc_language, bnf_title, bnf_year, bnf_language, notes`
+
+`match_type` is one of: `heuristic`, `llm`, `ambiguous_translation`, `unmatched`.
 
 ### Parameters
 | Param | Default | Description |
@@ -210,8 +241,24 @@ Answer ONLY with valid JSON: {"match": true or false, "confidence": 0.0 to 1.0}
 | `--author-threshold` | `0.80` | Min. author name similarity |
 | `--title-threshold` | `0.75` | Min. title similarity |
 | `--llm-threshold` | `0.80` | Min. LLM confidence for pass-3 acceptance |
-| `--year-window` | `2` | ±years around BnF publication year |
+| `--year-window` | `2` | ±years around BnF publication year (Pass 2 only) |
+| `--max-author-candidates` | `2000` | Cap on ESTC candidates per BnF edition retrieved via `author_index` (Pass 3) |
 | `--sleep` | `0.3` | Seconds between calls |
+| `--monitor-script` | `00_monitor/monitor.py` | Path to the resource-monitoring module (see below) |
+| `--no-monitor` | off | Disable the resource-usage monitor report |
+
+### Resource-usage monitoring
+
+Same "embedded state-based monitoring" mechanism as module 1
+(`query_agents.R` / `query_editions.R`) and `02_map_wikidata.py` (see
+`00_monitor/README.md`): one checkpoint per processed BnF edition plus a
+final checkpoint, on by default from the CLI (`--no-monitor` to disable),
+off by default when `run_mapping(...)` is called programmatically. Reports
+are written to:
+
+```
+00_monitor/report/03_map_estc_ecco_<YYYYMMDD_HHMMSS>_py.txt
+```
 
 ---
 

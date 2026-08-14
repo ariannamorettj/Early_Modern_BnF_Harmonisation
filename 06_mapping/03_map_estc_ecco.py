@@ -23,25 +23,46 @@ Pass 1 — Identifier bridge (lossless):
     may carry VIAF IDs too (via the COMHIS harmonised author table).  A direct
     join on VIAF ID + publication year provides high-confidence edition links.
 
-Pass 2 — Heuristic field matching (editions without a shared ID):
+Pass 2 — Heuristic field matching, "same edition in both catalogues"
+(editions without a shared ID):
     For each BnF edition:
       (a) Year filter  — only ESTC editions within ±2 years are candidates.
       (b) Author match — Levenshtein ratio on normalised author names ≥ 0.80.
       (c) Title match  — Levenshtein ratio on normalised, lowercased, stripped
                          titles ≥ 0.75.
-    If (b) and (c) both pass → ACCEPTED (confidence = mean of the two scores).
-    If (b) passes but (c) does not, and the two dataset languages differ
-    (BnF lang ≠ ESTC lang, both detected):
-      → LLM-assisted translation check (Pass 3).
+    If (b) and (c) both pass → ACCEPTED, match_type = "heuristic"
+    (confidence = mean of the two scores). The year filter is appropriate
+    here because it targets the *same* print run appearing in both
+    catalogues, which is necessarily close in time.
 
 Pass 3 — LLM translation disambiguation (optional, requires API key):
-    When a plausible author match exists but the titles diverge because one is
-    in French/Latin and the other in English (or vice versa), a single call to
-    the Anthropic Claude API is issued to ask:
+    A translation can be published decades after the original work, so this
+    pass does NOT use the year-windowed candidate pool from Pass 2. Instead
+    it searches two candidate pools for the same BnF edition:
+      - the Pass-2 year-windowed candidates whose title failed the Pass-2
+        check (kept, for translations that do happen to fall in the window);
+      - a year-unconstrained pool retrieved via an author-only index
+        (`author_index`, blocked on the first token of the normalised author
+        name — the library-authority "Surname, Firstname" convention), so a
+        translation published at any distance in time from the BnF edition
+        can still be found, as long as the author name matches
+        (Levenshtein ratio ≥ author_threshold).
+    For every candidate in either pool whose author matches but whose title
+    does not, and whose language differs from the BnF edition's, a single
+    call to the Anthropic Claude API asks:
         "Is '<title_bnf>' a translation of '<title_estc>'?
          Answer with JSON: {\"match\": true/false, \"confidence\": 0.0-1.0}"
-    If match=true and confidence ≥ llm_threshold → ACCEPTED with
-    match_type = "llm".
+    Candidates where match=true and confidence ≥ llm_threshold are collected
+    as "accepted". If exactly one candidate is accepted → ACCEPTED with
+    match_type = "llm". If MORE THAN ONE candidate is accepted for the same
+    BnF edition, the match is not auto-resolved: this is common for prolific
+    / classical authors with several independent translations (e.g. a French
+    and an English translation of a Latin original are not translations of
+    *each other*, even though both pass the author + language-mismatch
+    check). In that case match_type = "ambiguous_translation" — the
+    highest-confidence candidate is still recorded in the output row, but
+    the `notes` field lists the alternates and the case is meant for manual
+    review rather than being treated as a confident link.
 
     The API key is read from the environment variable ANTHROPIC_API_KEY.
     If the key is absent, Pass 3 is silently skipped.
@@ -56,6 +77,16 @@ output/estc_mapping.csv
 report/estc_mapping_report.json
     summary statistics
 
+Monitoring
+----------
+By default, resource-usage checkpoints are written via the shared
+00_monitor/monitor.py "embedded state-based monitoring" API (same mechanism
+used by module 1's query_agents.R / query_editions.R, and by
+02_map_wikidata.py): one checkpoint per processed BnF edition, plus a final
+checkpoint on completion. Reports land in
+00_monitor/report/03_map_estc_ecco_<timestamp>_py.txt. Disable with
+--no-monitor.
+
 Usage
 -----
 python 06_mapping/03_map_estc_ecco.py \\
@@ -68,11 +99,15 @@ python 06_mapping/03_map_estc_ecco.py \\
     --llm-threshold    0.80 \\
     --year-window   2 \\
     --sleep         0.3
+
+# disable the monitor report
+python 06_mapping/03_map_estc_ecco.py --no-monitor
 """
 
-import os, csv, sys, json, re, time, argparse, unicodedata
+import os, csv, sys, json, re, time, argparse, unicodedata, importlib.util
 from difflib import SequenceMatcher
 from collections import defaultdict
+from pathlib import Path
 from typing import Optional
 import urllib.request, urllib.parse, urllib.error
 
@@ -86,6 +121,8 @@ TITLE_THRESHOLD       = 0.75
 LLM_THRESHOLD         = 0.80
 YEAR_WINDOW           = 2
 SLEEP_DEFAULT         = 0.3
+MAX_AUTHOR_CANDIDATES_DEFAULT = 2000
+MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
 
 CLAUDE_API_URL = "https://api.anthropic.com/v1/messages"
 CLAUDE_MODEL   = "claude-sonnet-4-6"
@@ -127,6 +164,14 @@ def similarity(a: str, b: str) -> float:
 def extract_year(s: str) -> Optional[int]:
     m = re.search(r"\b(1[0-9]{3}|[0-9]{3})\b", str(s))
     return int(m.group(1)) if m else None
+
+def author_block_key(author: str) -> str:
+    """Coarse blocking key for author-based (year-unconstrained) candidate
+    retrieval: the first token of the normalised author string. Assumes the
+    common library authority convention "Surname, Firstname" (VIAF/BnF/ESTC
+    author fields), so the first token is usually the surname/main entry."""
+    tokens = normalise_text(author).split()
+    return tokens[0] if tokens else ""
 
 
 # ── ESTC index builder ────────────────────────────────────────────────────────
@@ -223,10 +268,68 @@ def get_estc_candidates(bnf_year: Optional[int],
     return list(indices)
 
 
+# ── Author index (year-unconstrained candidate pool for translation search) ───
+#
+# A translation can be published decades (or centuries) after the original
+# work, so the year-windowed candidate pool above is not appropriate for
+# translation detection (Pass 3). This index instead blocks candidates by
+# author only, so Pass 3 can search across the full ESTC time range.
+
+def build_author_index(estc_records: list[dict], author_col: str) -> dict[str, list[int]]:
+    index: dict[str, list[int]] = defaultdict(list)
+    for i, rec in enumerate(estc_records):
+        author = normalise(rec.get(author_col, ""))
+        if not author:
+            continue
+        key = author_block_key(author)
+        if key:
+            index[key].append(i)
+    return index
+
+
+def get_estc_author_candidates(bnf_author: str,
+                               author_index: dict[str, list[int]],
+                               max_candidates: int) -> list[int]:
+    """Return row indices of ESTC records sharing an author block key with
+    bnf_author, capped at max_candidates (mirrors the existing "first 5k"
+    cap used by get_estc_candidates for year-less BnF editions)."""
+    if not bnf_author:
+        return []
+    key = author_block_key(bnf_author)
+    if not key:
+        return []
+    return author_index.get(key, [])[:max_candidates]
+
+
+# ── Monitor integration (embedded state-based monitoring, module 06_monitor) ──
+
+def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
+    """Load 00_monitor/monitor.py as a module, mirroring load_monitor_env() in
+    query_agents.R / query_editions.R (module 1) and 02_map_wikidata.py."""
+    project_root = Path(__file__).resolve().parents[1]
+    resolved = (project_root / monitor_script).resolve()
+    spec = importlib.util.spec_from_file_location("monitor_estc_ecco", resolved)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
+def _monitor_checkpoint(monitor_module, monitor_state, index, total, rec):
+    if monitor_module is None:
+        return monitor_state
+    context = (f"Processed edition {rec['BnF_edition_id']} (index {index}/{total}) "
+              f"- match_type={rec['match_type'] or 'unmatched'}")
+    return monitor_module.update_monitor_state(
+        state=monitor_state, context=context, print_console=True,
+    )
+
+
 # ── Main pipeline ─────────────────────────────────────────────────────────────
 
 def run_mapping(bnf_path, estc_path, output_path, report_path,
-                author_thr, title_thr, llm_thr, year_window, sleep):
+                author_thr, title_thr, llm_thr, year_window, sleep,
+                max_author_candidates=MAX_AUTHOR_CANDIDATES_DEFAULT,
+                use_monitor=False, monitor_script=MONITOR_SCRIPT_DEFAULT):
 
     # Load BnF editions
     bnf_editions = []
@@ -246,18 +349,30 @@ def run_mapping(bnf_path, estc_path, output_path, report_path,
     estc_lang_col   = next((c for c in sample if "lang" in c.lower()), "language")
     estc_id_col     = next((c for c in ["estc_id","record_id","id"] if c in sample), "estc_id")
 
+    author_index = build_author_index(estc_records, estc_author_col)
+
     results = []
     stats = {
         "total": len(bnf_editions),
         "pass1_id": 0,
         "pass2_heuristic": 0,
         "pass3_llm": 0,
+        "pass3_llm_ambiguous": 0,
         "unmatched": 0,
     }
 
     api_key_available = bool(os.environ.get("ANTHROPIC_API_KEY"))
     if not api_key_available:
         print("  [info] ANTHROPIC_API_KEY not set — LLM pass disabled.")
+
+    monitor_module = None
+    monitor_state = None
+    if use_monitor:
+        monitor_module = load_monitor_module(monitor_script)
+        monitor_state = monitor_module.start_monitor_state(
+            sampling_mode="checkpoint-based updates during 03_map_estc_ecco.py execution",
+            print_start_message=True,
+        )
 
     for i, bnf in enumerate(bnf_editions):
         if (i + 1) % 1000 == 0:
@@ -283,11 +398,32 @@ def run_mapping(bnf_path, estc_path, output_path, report_path,
         viaf_match = normalise(bnf.get("viaf_author_id", ""))
         # (VIAF-based join logic to be extended when ESTC author table available)
 
-        # ── Pass 2: heuristic ─────────────────────────────────────────────────
-        candidates = get_estc_candidates(bnf_year, estc_records, year_index, year_window)
-        best_rec, best_conf, best_type = None, 0.0, ""
+        # ── Pass 2: heuristic (same-edition match, year-windowed) ────────────
+        year_candidates = get_estc_candidates(bnf_year, estc_records, year_index, year_window)
+        year_candidates_set = set(year_candidates)
+        best_rec, best_conf = None, 0.0
 
-        for idx in candidates:
+        # Pass-3 candidates that passed the LLM translation check, collected
+        # across BOTH pools (year-windowed + author-indexed) so that multiple
+        # plausible independent translations (e.g. of a classical author) can
+        # be recognised as ambiguous rather than one being silently picked.
+        llm_accepted = []  # list of (estc_record, confidence)
+        llm_checked_idx = set()
+
+        def try_llm_translation_check(idx, estc, auth_score):
+            estc_lang = normalise(estc.get(estc_lang_col, "")).lower()
+            estc_title = normalise(estc.get(estc_title_col, ""))
+            if not (bnf_lang and estc_lang and bnf_lang != estc_lang
+                   and bnf_title and estc_title):
+                return
+            is_match, llm_conf = llm_translation_check(
+                bnf_title, estc_title, bnf_lang, estc_lang, sleep
+            )
+            if is_match and llm_conf >= llm_thr:
+                conf = (auth_score + llm_conf) / 2
+                llm_accepted.append((estc, conf))
+
+        for idx in year_candidates:
             estc = estc_records[idx]
             estc_author = normalise(estc.get(estc_author_col, ""))
             estc_title  = normalise(estc.get(estc_title_col, ""))
@@ -312,41 +448,87 @@ def run_mapping(bnf_path, estc_path, output_path, report_path,
                 if conf > best_conf:
                     best_conf = conf
                     best_rec  = estc
-                    best_type = "heuristic"
                 continue
 
-            # ── Pass 3: LLM translation check ────────────────────────────────
-            if not api_key_available:
-                continue
-            estc_lang = normalise(estc.get(estc_lang_col, "")).lower()
-            if bnf_lang and estc_lang and bnf_lang != estc_lang and bnf_title and estc_title:
-                is_match, llm_conf = llm_translation_check(
-                    bnf_title, estc_title, bnf_lang, estc_lang, sleep
-                )
-                if is_match and llm_conf >= llm_thr:
-                    conf = (auth_score + llm_conf) / 2
-                    if conf > best_conf:
-                        best_conf = conf
-                        best_rec  = estc
-                        best_type = "llm"
+            # ── Pass 3: LLM translation check (in-window candidates) ────────
+            if api_key_available:
+                llm_checked_idx.add(idx)
+                try_llm_translation_check(idx, estc, auth_score)
+
+        # ── Pass 3 continued: author-indexed candidates, no year constraint ──
+        # Translations can be published long after the original, so this
+        # second pool is not restricted to year_candidates.
+        if api_key_available and bnf_author:
+            author_candidates = get_estc_author_candidates(
+                bnf_author, author_index, max_author_candidates)
+            for idx in author_candidates:
+                if idx in year_candidates_set or idx in llm_checked_idx:
+                    continue  # already checked above
+                estc = estc_records[idx]
+                estc_author = normalise(estc.get(estc_author_col, ""))
+                if not estc_author:
+                    continue
+                auth_score = similarity(bnf_author, estc_author)
+                if auth_score < author_thr:
+                    continue
+                try_llm_translation_check(idx, estc, auth_score)
 
         if best_rec:
+            # A Pass-2 heuristic match (title similarity, not just author +
+            # LLM judgement) is stronger evidence than a Pass-3 translation
+            # guess, so it always takes priority when one exists.
             rec["estc_id"]       = normalise(best_rec.get(estc_id_col, ""))
-            rec["match_type"]    = best_type
+            rec["match_type"]    = "heuristic"
             rec["confidence"]    = f"{best_conf:.3f}"
             rec["estc_title"]    = normalise(best_rec.get(estc_title_col, ""))
             rec["estc_author"]   = normalise(best_rec.get(estc_author_col, ""))
             rec["estc_year"]     = normalise(best_rec.get(estc_year_col, ""))
             rec["estc_language"] = normalise(best_rec.get(estc_lang_col, ""))
-            if best_type == "heuristic":
-                stats["pass2_heuristic"] += 1
-            elif best_type == "llm":
+            stats["pass2_heuristic"] += 1
+        elif llm_accepted:
+            llm_accepted.sort(key=lambda pair: pair[1], reverse=True)
+            top_rec, top_conf = llm_accepted[0]
+            rec["estc_id"]       = normalise(top_rec.get(estc_id_col, ""))
+            rec["confidence"]    = f"{top_conf:.3f}"
+            rec["estc_title"]    = normalise(top_rec.get(estc_title_col, ""))
+            rec["estc_author"]   = normalise(top_rec.get(estc_author_col, ""))
+            rec["estc_year"]     = normalise(top_rec.get(estc_year_col, ""))
+            rec["estc_language"] = normalise(top_rec.get(estc_lang_col, ""))
+            if len(llm_accepted) > 1:
+                # Multiple plausible translation candidates for the same
+                # author (typical of classical authors with several
+                # independent translations): don't silently guess — flag for
+                # manual review instead of asserting a direct link.
+                rec["match_type"] = "ambiguous_translation"
+                alt_ids = ", ".join(
+                    normalise(alt_rec.get(estc_id_col, "")) or "?"
+                    for alt_rec, _ in llm_accepted[1:4]
+                )
+                rec["notes"] = (
+                    f"{len(llm_accepted)} candidate translations passed the "
+                    f"LLM check; picked highest-confidence, alternates: {alt_ids}"
+                )
+                stats["pass3_llm_ambiguous"] += 1
+            else:
+                rec["match_type"] = "llm"
                 stats["pass3_llm"] += 1
         else:
             rec["match_type"] = "unmatched"
             stats["unmatched"] += 1
 
         results.append(rec)
+        monitor_state = _monitor_checkpoint(
+            monitor_module, monitor_state, i + 1, len(bnf_editions), rec)
+
+    if use_monitor:
+        monitor_state = monitor_module.update_monitor_state(
+            state=monitor_state,
+            context="Completed ESTC/ECCO mapping run",
+            print_console=True,
+        )
+        monitor_state = monitor_module.stop_monitor_state(
+            state=monitor_state, print_stop_message=True,
+        )
 
     # Write CSV
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
@@ -364,6 +546,7 @@ def run_mapping(bnf_path, estc_path, output_path, report_path,
     print(f"  Pass-1 (ID)         : {stats['pass1_id']:,}")
     print(f"  Pass-2 (heuristic)  : {stats['pass2_heuristic']:,}")
     print(f"  Pass-3 (LLM)        : {stats['pass3_llm']:,}")
+    print(f"  Pass-3 (ambiguous)  : {stats['pass3_llm_ambiguous']:,}")
     print(f"  Unmatched           : {stats['unmatched']:,}")
 
 
@@ -382,12 +565,21 @@ def main():
     parser.add_argument("--llm-threshold",    type=float, default=LLM_THRESHOLD)
     parser.add_argument("--year-window",      type=int,   default=YEAR_WINDOW)
     parser.add_argument("--sleep",            type=float, default=SLEEP_DEFAULT)
+    parser.add_argument("--max-author-candidates", type=int, default=MAX_AUTHOR_CANDIDATES_DEFAULT,
+                        help="Cap on ESTC candidates retrieved per BnF edition via the "
+                             "year-unconstrained author index (Pass 3 translation search).")
+    parser.add_argument("--monitor-script", default=MONITOR_SCRIPT_DEFAULT)
+    parser.add_argument("--no-monitor",   action="store_true",
+                        help="Disable the 00_monitor/monitor.py resource-usage report.")
     args = parser.parse_args()
     run_mapping(
         args.bnf_editions, args.estc_csv,
         args.output, args.report,
         args.author_threshold, args.title_threshold, args.llm_threshold,
         args.year_window, args.sleep,
+        max_author_candidates=args.max_author_candidates,
+        use_monitor=not args.no_monitor,
+        monitor_script=args.monitor_script,
     )
 
 if __name__ == "__main__":
