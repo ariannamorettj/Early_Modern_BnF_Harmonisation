@@ -27,6 +27,16 @@ import argparse
 from collections import defaultdict
 from typing import Dict, Set, List, Tuple
 
+# Windows consoles default stdout to a legacy codepage (e.g. cp1252) that
+# cannot encode characters such as U+2713 (✓) or U+2192 (→) used below,
+# raising UnicodeEncodeError. Reconfigure to UTF-8 up front.
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 # ── Default paths ─────────────────────────────────────────────────────────────
 ACTORS_ZIP_DEFAULT  = "data/bnf_agents_data_querying/actor_queries_results.zip"
 EDITIONS_ZIP_DEFAULT = "data/bnf_edition_data/bnf_edition_data_raw.zip"

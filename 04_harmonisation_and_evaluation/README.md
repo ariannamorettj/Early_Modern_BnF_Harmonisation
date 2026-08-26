@@ -80,7 +80,7 @@ Each normalisation script produces a CSV with the following core schema:
 
 | File | Status | Function |
 |---|---|---|
-| `name_normaliser.py` | 📋 to be completed | Main normaliser: regex, particle handling, bracket stripping, alias detection → CSV |
+| `name_normaliser.py` | 🔄 In progress — `derive_from_first_last` rule implemented; regex/particle/bracket/alias rules still TODO | Fills `actor_name` from `actor_first_name`/`actor_last_name` when empty (e.g. actors like "Lucretius" whose BnF record only carries `actor_last_name`) → `actor_name_harmonised.csv`. Consumed by `05_subset_optimisation` to fill `actor_name` in the optimised actor dataset. |
 | `actors_id_matching.py` | ✅ Implemented | Groups rows by actor URI (`actor` column); for each repeated URI, aggregates distinct values per field with counts → JSON in `data/actors_matched_ids/` |
 | `actors_name_matching.py` | ✅ Implemented | Same logic as `actors_id_matching.py` but keyed on normalised name (case/punctuation insensitive) → JSON in `data/actors_matched_names/` |
 | `actors_deduplication.py` | 📋 Placeholder | Deduplication based on results from the two preceding matching scripts |
@@ -614,7 +614,7 @@ python -m 04_harmonisation_and_evaluation.02_evaluation.run_evaluation \
 
 | Field | Dataset | Heuristic normaliser | LLM normaliser | Evaluator | Notes |
 |---|---|---|---|---|---|
-| `actor_name`/`first_name`/`last_name` | actor\_data | 📋 to be completed (`name_normaliser.py`) | 📋 to be completed | ✅ Complete (`PersonNameEvaluation`) | Matching scripts implemented |
+| `actor_name`/`first_name`/`last_name` | actor\_data | 🔄 In progress (`name_normaliser.py` — derive-from-first-last only) | 📋 to be completed | ✅ Complete (`PersonNameEvaluation`) | Matching scripts implemented; output consumed by module 05 |
 | `actor_birth`/`death`/`start`/`end` | actor\_data | 📋 to be completed (`dates_normaliser.py`) | 📋 to be completed | 🔄 Skeleton | Target: EDTF |
 | `actor_link_close`/`exact` | actor\_data | 📋 to be completed (`external_links_normaliser.py`) | — | 🔄 Skeleton | No LLM approach planned |
 | `place` | bnf\_edition\_data | — (empty) | — | 🔄 Skeleton | TGN approach implemented |

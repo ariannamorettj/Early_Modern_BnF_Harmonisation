@@ -58,6 +58,16 @@ from difflib import SequenceMatcher
 from pathlib import Path
 from typing import Optional
 
+# Windows consoles default stdout to a legacy codepage (e.g. cp1252) that
+# cannot encode characters such as U+2713 (✓) or U+2192 (→) used below,
+# raising UnicodeEncodeError. Reconfigure to UTF-8 up front.
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
 
 INPUT_DEFAULT        = "05_subset_optimisation/output/bnf_actors_optimised.csv"

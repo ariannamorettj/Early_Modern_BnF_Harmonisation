@@ -1,6 +1,17 @@
 import os
 import csv
+import sys
 from datetime import datetime
+
+# Windows consoles default stdout to a legacy codepage (e.g. cp1252) that
+# cannot encode characters such as U+2192 (→) used below, raising
+# UnicodeEncodeError. Reconfigure to UTF-8 up front.
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
 
 # list all columns names
 source_path = "data/results_bnf"

@@ -111,6 +111,16 @@ from pathlib import Path
 from typing import Optional
 import urllib.request, urllib.parse, urllib.error
 
+# Windows consoles default stdout to a legacy codepage (e.g. cp1252) that
+# cannot encode characters such as U+2713 (✓) or U+2192 (→) used below,
+# raising UnicodeEncodeError. Reconfigure to UTF-8 up front.
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 # ── Defaults ──────────────────────────────────────────────────────────────────
 BNF_EDITIONS_DEFAULT  = "data/bnf_edition_data/bnf_editions_ready.csv"
 ESTC_CSV_DEFAULT      = "data/estc/estc_raw_sane.csv"

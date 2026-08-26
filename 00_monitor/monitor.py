@@ -9,6 +9,18 @@ import subprocess
 from datetime import datetime
 import __main__
 
+# Windows consoles default stdout/stderr to a legacy codepage (e.g. cp1252)
+# that cannot encode characters such as U+2713 (checkmark) or U+2192 (arrow)
+# used in this module's and its callers' console output, raising
+# UnicodeEncodeError. Reconfiguring to UTF-8 here fixes it for every caller
+# that imports this module, not just for monitor.py's own standalone run.
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 RESUME_LOG = "resume_info.log"
 OUTPUT_DIR = "00_monitor/report"
 
