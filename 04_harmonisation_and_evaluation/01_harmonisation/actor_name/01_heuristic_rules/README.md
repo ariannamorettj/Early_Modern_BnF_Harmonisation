@@ -28,7 +28,7 @@ Heuristic rules based on:
 | `actors_name_matching.py` | Groups actor rows by normalised `actor_name`, identifying actors appearing with multiple name variants. Pre-existing file. |
 | `actors_id_matching.py` | Groups actor rows by BnF `actor` URI, identifying actors appearing with multiple metadata values. Pre-existing file. |
 | `actors_deduplication.py` | **[PLACEHOLDER]** Implements deduplication logic: merges rows referring to the same actor based on ID and name matching results. |
-| `name_normaliser.py` | **[TODO]** Main normalisation script: applies regex cleaning, particle handling, bracket stripping, and alias detection to produce a corrected `actor_name` value. |
+| `name_normaliser.py` | **[IN PROGRESS]** Only the `derive_from_first_last` rule is implemented: fills `actor_name` from `actor_first_name`/`actor_last_name` when `actor_name` is empty (e.g. "Lucretius", stored only in `actor_last_name`). Regex cleaning, particle handling, bracket stripping, and alias detection are still **[TODO]**. |
 | `name_correction_dict.json` | **[TODO]** JSON lookup dictionary mapping known erroneous name strings to their corrected form. |
 
 ## Expected Output
@@ -39,3 +39,18 @@ A CSV with columns:
 - `actor_name_harmonised` — corrected value after rule application
 - `correction_type` — label of the rule that triggered the correction (e.g., `strip_brackets`, `remove_title`, `alias_split`)
 - `confidence` — `high` / `medium` / `low` depending on rule certainty
+
+## Consumers
+
+The output (`actor_name_harmonised.csv`) is read by
+`05_subset_optimisation/gen_subset_optm.py` (`--actor-name-harmonised`) to
+fill `actor_name` when empty in the optimised actor dataset.
+
+## Monitoring
+
+`name_normaliser.py` uses the same "embedded state-based monitoring"
+mechanism as module 1 (`query_agents.R` / `query_editions.R`) and the
+`06_mapping` scripts — see `00_monitor/README.md`. One checkpoint is written
+per processed actor, plus a final checkpoint, on by default from the CLI
+(`--no-monitor` to disable). Reports land in
+`00_monitor/report/name_normaliser_<timestamp>_py.txt`.

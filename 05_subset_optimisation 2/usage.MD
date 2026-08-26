@@ -143,12 +143,46 @@ python 05_subset_optimisation/gen_subset_optm.py \
 |-----------|---------|-------------|
 | `--input-zip` | `data/bnf_agents_data_querying/actor_queries_results.zip` | ZIP with actor CSVs |
 | `--roles-mapping` | `id_roles/actor_roles_links.csv` | CSV from Step 1 |
+| `--actor-name-harmonised` | `04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/output/actor_name_harmonised.csv` | Output of module 4's `name_normaliser.py`; fills `actor_name` when empty. Pass `''` to disable. |
 | `--output-dir` | `output` | Output directory for CSVs |
 | `--report-dir` | `report` | Output directory for reports |
 | `--output-filename` | `bnf_actors_optimised.csv` | Full output CSV filename |
 | `--year-from` | *(none)* | Retain only actors in editions from this year |
 | `--year-to` | *(none)* | Retain only actors in editions up to this year |
 | `--dedup-field` | *(none)* | Field to use as deduplication key |
+| `--monitor-script` | `00_monitor/monitor.py` | Path to the resource-monitoring module (see below) |
+| `--no-monitor` | off | Disable the resource-usage monitor report |
+
+### Resource-usage monitoring
+
+`gen_subset_optm.py` uses the same "embedded state-based monitoring"
+mechanism as module 1 (`query_agents.R` / `query_editions.R`) and the
+`06_mapping` scripts (see `00_monitor/README.md`): a checkpoint is written
+every 20,000 rows while reading the actor ZIP, plus a final checkpoint, on
+by default from the CLI (`--no-monitor` to disable). Reports are written to:
+
+```
+00_monitor/report/gen_subset_optm_<YYYYMMDD_HHMMSS>_py.txt
+```
+
+---
+
+## 1.1 Dependency on module 4 (actor_name harmonisation)
+
+`gen_subset_optm.py` reads `actor_name` from the raw actor dataset, but some
+BnF actor records carry the name only in `actor_first_name`/`actor_last_name`
+(e.g. "Lucretius"), leaving `actor_name` empty at the source. Before running
+Step 2, run module 4's derive-from-first-last rule so those names are filled
+in the final output instead of staying blank:
+
+```bash
+python 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/name_normaliser.py \
+    --input  01_data_retrieval/02_actors/actors_data/actor_data.csv \
+    --output 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/output
+```
+
+`gen_subset_optm.py` picks up that output automatically (default path above);
+if it's missing, `actor_name` is left as-is and a warning is printed.
 
 ---
 

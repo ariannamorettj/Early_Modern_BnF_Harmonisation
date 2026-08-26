@@ -12,6 +12,16 @@ import csv
 import sys
 import argparse
 
+# Windows consoles default stdout to a legacy codepage (e.g. cp1252) that
+# cannot encode characters such as U+2713 (✓) or U+2192 (→) used below,
+# raising UnicodeEncodeError. Reconfigure to UTF-8 up front.
+if hasattr(sys.stdout, "reconfigure"):
+    try:
+        sys.stdout.reconfigure(encoding="utf-8", errors="replace")
+        sys.stderr.reconfigure(encoding="utf-8", errors="replace")
+    except Exception:
+        pass
+
 try:
     csv.field_size_limit(sys.maxsize)
 except OverflowError:
