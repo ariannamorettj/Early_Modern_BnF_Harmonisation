@@ -7,7 +7,33 @@ Contains information from the J. Paul Getty Trust, Getty Research Institute, the
 We also acnknowledge the sources and contributors of Getty Thesaurus of Geographic Names (TGN), from which our information also indirectly comes from. If the user is interested about invidual names, geographical facts etc. that are part of the information used here and obtained from the TGN, we encourage them to follow the TGN-sourced ids (links) to TGN for the original sources and contributors. 
 
 ## scripts
-The commented script to implement the harmonisation (bnf\_place\_harmonisation.R)
+The Python implementation (`bnf_place_harmonisation.py`) and its R
+counterpart (`bnf_place_harmonisation.R`, not yet updated to the current
+repo layout — see below).
+
+### Integration notes (Python)
+
+`bnf_place_harmonisation.py` was ported from the original pandas-based
+version to a stdlib-only implementation (same algorithm: city/country
+split, city string cleaning, TGN lookup with country-table fallback) and
+integrated into this repo's conventions:
+
+- CLI-parameterised paths (`--input`, `--place-table`, `--country-table`,
+  `--output`, `--report`) instead of the original hardcoded
+  `os.chdir()`/relative-path logic, which no longer matched the current
+  module-numbered repo layout.
+- A JSON report (`--report`) with match-rate statistics.
+- The project's standard monitor integration
+  (`00_monitor/monitor.py`, same mechanism as module 1's
+  `query_agents.R`/`query_editions.R`) — clearly delimited in the source
+  with `MONITOR INTEGRATION` comment blocks so it's obvious what was added
+  on top of the original harmonisation logic. On by default via CLI,
+  `--no-monitor` to disable.
+- Unit + end-to-end tests in `00_test/test_place_harmonisation.py`.
+
+The R version (`bnf_place_harmonisation.R`) still has the original
+hardcoded `setwd("D:/...")` and has not been updated — it is not run as
+part of this pipeline currently.
 
 ## data\_final
 The final data set (bnf\_publication\_place.csv). Includes the following fields:

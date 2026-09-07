@@ -10,6 +10,14 @@ GEN_SUBSET_OPTM_PATH = (
     PROJECT_ROOT / "05_subset_optimisation 2" / "gen_subset_optm.py"
 )
 
+ACTOR_FIELDNAMES = ["actor"] + [
+    "actor_name", "actor_first_name", "actor_last_name",
+    "actor_birth", "actor_death", "actor_start", "actor_end",
+    "first_year", "entity_type", "actor_gender",
+    "actor_country", "actor_language",
+    "actor_link_exact", "actor_link_close",
+]
+
 
 def load_gen_subset_optm_module():
     spec = importlib.util.spec_from_file_location("gen_subset_optm", GEN_SUBSET_OPTM_PATH)
@@ -19,114 +27,77 @@ def load_gen_subset_optm_module():
     return module
 
 
-def _write_actor_zip(zip_path, rows):
-    fieldnames = ["actor"] + [
-        "actor_name", "actor_first_name", "actor_last_name",
-        "actor_birth", "actor_death", "actor_start", "actor_end",
-        "first_year", "entity_type", "actor_gender",
-        "actor_country", "actor_language",
-        "actor_link_exact", "actor_link_close",
-    ]
-    csv_text_path = zip_path.with_suffix(".csv.tmp")
-    with open(csv_text_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
+def _write_actor_csv(csv_path, rows):
+    with open(csv_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=ACTOR_FIELDNAMES)
         writer.writeheader()
         for row in rows:
-            writer.writerow({**{k: "" for k in fieldnames}, **row})
+            writer.writerow({**{k: "" for k in ACTOR_FIELDNAMES}, **row})
+
+
+def _write_actor_zip(zip_path, rows):
+    csv_text_path = zip_path.with_suffix(".csv.tmp")
+    _write_actor_csv(csv_text_path, rows)
     with zipfile.ZipFile(zip_path, "w") as zf:
         zf.write(csv_text_path, arcname="actor_data.csv")
     csv_text_path.unlink()
 
 
-def _write_harmonised_csv(path, rows):
-    fieldnames = ["actor_uri", "actor_name_original", "actor_name_harmonised",
-                 "correction_type", "confidence"]
-    with open(path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=fieldnames)
-        writer.writeheader()
-        for row in rows:
-            writer.writerow({**{k: "" for k in fieldnames}, **row})
+# ── read_actor_data() ─────────────────────────────────────────────────────────
 
-
-# ── load_actor_name_harmonised() ─────────────────────────────────────────────
-
-def test_load_actor_name_harmonised_keeps_only_derived_rows(tmp_path):
+def test_read_actor_data_aggregates_by_bnf_id(tmp_path):
+    """gen_subset_optm.py no longer applies any actor_name correction itself
+    — that now happens upstream in assemble_actors_ready.py. This just
+    confirms the plain aggregation still works on its input."""
     gso = load_gen_subset_optm_module()
-    path = tmp_path / "harmonised.csv"
-    _write_harmonised_csv(path, [
-        {"actor_uri": "A1", "actor_name_harmonised": "Lucretius",
-         "correction_type": "derived_from_first_last"},
-        {"actor_uri": "A2", "actor_name_harmonised": "Voltaire",
-         "correction_type": "none"},
-        {"actor_uri": "A3", "actor_name_harmonised": "",
-         "correction_type": "unresolved_missing"},
+    csv_path = tmp_path / "actors_ready.csv"
+    _write_actor_csv(csv_path, [
+        {"actor": "A1", "actor_name": "Lucrèce", "actor_link_exact": "<uri1>"},
+        {"actor": "A1", "actor_name": "Lucrèce", "actor_link_exact": "<uri2>"},
+        {"actor": "A2", "actor_name": "Voltaire"},
     ])
 
-    mapping = gso.load_actor_name_harmonised(str(path))
-
-    assert mapping == {"A1": "Lucretius"}
-
-
-def test_load_actor_name_harmonised_missing_file_returns_empty(tmp_path):
-    gso = load_gen_subset_optm_module()
-    mapping = gso.load_actor_name_harmonised(str(tmp_path / "does_not_exist.csv"))
-    assert mapping == {}
-
-
-# ── read_actor_data() wiring ─────────────────────────────────────────────────
-
-def test_read_actor_data_fills_empty_actor_name_from_harmonised_mapping(tmp_path):
-    gso = load_gen_subset_optm_module()
-    zip_path = tmp_path / "actors.zip"
-    _write_actor_zip(zip_path, [
-        {"actor": "A1", "actor_last_name": "Lucretius"},  # actor_name empty
-        {"actor": "A2", "actor_name": "Voltaire"},          # already present
-    ])
-
-    records, merge_tracking, total_rows, dup_rows, filled, _ = gso.read_actor_data(
-        zip_path=str(zip_path),
+    records, merge_tracking, total_rows, dup_rows, _ = gso.read_actor_data(
+        input_path=str(csv_path),
         roles_mapping={},
         year_filter_active=False,
-        actor_name_harmonised={"A1": "Lucretius", "A2": "Should Not Be Used"},
     )
 
     by_id = {r["BnF_ID"]: r for r in records}
-    assert by_id["A1"]["actor_name"] == "Lucretius"
-    assert by_id["A2"]["actor_name"] == "Voltaire"  # not overwritten
-    assert filled == 1
+    assert by_id["A1"]["actor_name"] == "Lucrèce"
+    assert by_id["A1"]["actor_link_exact"] == "<uri1>; <uri2>"
+    assert by_id["A2"]["actor_name"] == "Voltaire"
+    assert total_rows == 3
 
 
-def test_read_actor_data_leaves_actor_name_empty_without_harmonised_entry(tmp_path):
+def test_read_actor_data_accepts_zip_input(tmp_path):
     gso = load_gen_subset_optm_module()
     zip_path = tmp_path / "actors.zip"
-    _write_actor_zip(zip_path, [{"actor": "A1"}])  # nothing filled in at all
+    _write_actor_zip(zip_path, [{"actor": "A1", "actor_name": "Voltaire"}])
 
-    records, _, _, _, filled, _ = gso.read_actor_data(
-        zip_path=str(zip_path),
-        roles_mapping={},
-        year_filter_active=False,
-        actor_name_harmonised={},
-    )
-
-    assert records[0]["actor_name"] == ""
-    assert filled == 0
-
-
-def test_read_actor_data_without_harmonised_mapping_is_unaffected(tmp_path):
-    """actor_name_harmonised=None (the default) must behave exactly like
-    before this change."""
-    gso = load_gen_subset_optm_module()
-    zip_path = tmp_path / "actors.zip"
-    _write_actor_zip(zip_path, [{"actor": "A1", "actor_last_name": "Lucretius"}])
-
-    records, _, _, _, filled, _ = gso.read_actor_data(
-        zip_path=str(zip_path),
+    records, _, total_rows, _, _ = gso.read_actor_data(
+        input_path=str(zip_path),
         roles_mapping={},
         year_filter_active=False,
     )
 
-    assert records[0]["actor_name"] == ""
-    assert filled == 0
+    assert total_rows == 1
+    assert records[0]["actor_name"] == "Voltaire"
+
+
+def test_read_actor_data_accepts_plain_csv_input(tmp_path):
+    gso = load_gen_subset_optm_module()
+    csv_path = tmp_path / "actors_ready.csv"
+    _write_actor_csv(csv_path, [{"actor": "A1", "actor_name": "Voltaire"}])
+
+    records, _, total_rows, _, _ = gso.read_actor_data(
+        input_path=str(csv_path),
+        roles_mapping={},
+        year_filter_active=False,
+    )
+
+    assert total_rows == 1
+    assert records[0]["actor_name"] == "Voltaire"
 
 
 # ── Monitor integration ──────────────────────────────────────────────────────
@@ -156,8 +127,8 @@ def test_read_actor_data_writes_periodic_monitor_checkpoints(tmp_path):
     monkeypatch_every = gso.MONITOR_CHECKPOINT_EVERY
     gso.MONITOR_CHECKPOINT_EVERY = 2  # small cadence so the test stays fast
     try:
-        zip_path = tmp_path / "actors.zip"
-        _write_actor_zip(zip_path, [
+        csv_path = tmp_path / "actors_ready.csv"
+        _write_actor_csv(csv_path, [
             {"actor": "A1"}, {"actor": "A2"}, {"actor": "A3"}, {"actor": "A4"},
         ])
 
@@ -165,7 +136,7 @@ def test_read_actor_data_writes_periodic_monitor_checkpoints(tmp_path):
         fake_state = fake_monitor.start_monitor_state()
 
         gso.read_actor_data(
-            zip_path=str(zip_path),
+            input_path=str(csv_path),
             roles_mapping={},
             year_filter_active=False,
             monitor_module=fake_monitor,
@@ -180,17 +151,16 @@ def test_read_actor_data_writes_periodic_monitor_checkpoints(tmp_path):
 def test_main_starts_and_stops_monitor_by_default(monkeypatch, tmp_path):
     gso = load_gen_subset_optm_module()
 
-    zip_path = tmp_path / "actors.zip"
-    _write_actor_zip(zip_path, [{"actor": "A1", "actor_name": "Voltaire"}])
+    csv_path = tmp_path / "actors_ready.csv"
+    _write_actor_csv(csv_path, [{"actor": "A1", "actor_name": "Voltaire"}])
 
     fake_monitor = FakeMonitorModule()
     monkeypatch.setattr(gso, "load_monitor_module", lambda monitor_script: fake_monitor)
-    monkeypatch.setattr(gso, "load_actor_name_harmonised", lambda path: {})
     monkeypatch.setattr(gso, "load_roles_mapping", lambda path: {})
 
     monkeypatch.setattr(sys, "argv", [
         "gen_subset_optm.py",
-        "--input-zip", str(zip_path),
+        "--input", str(csv_path),
         "--output-dir", str(tmp_path / "out"),
         "--report-dir", str(tmp_path / "report"),
     ])
@@ -205,19 +175,18 @@ def test_main_starts_and_stops_monitor_by_default(monkeypatch, tmp_path):
 def test_main_skips_monitor_with_no_monitor_flag(monkeypatch, tmp_path):
     gso = load_gen_subset_optm_module()
 
-    zip_path = tmp_path / "actors.zip"
-    _write_actor_zip(zip_path, [{"actor": "A1", "actor_name": "Voltaire"}])
+    csv_path = tmp_path / "actors_ready.csv"
+    _write_actor_csv(csv_path, [{"actor": "A1", "actor_name": "Voltaire"}])
 
     def fail_if_called(monitor_script):
         raise AssertionError("load_monitor_module should not be called with --no-monitor")
 
     monkeypatch.setattr(gso, "load_monitor_module", fail_if_called)
-    monkeypatch.setattr(gso, "load_actor_name_harmonised", lambda path: {})
     monkeypatch.setattr(gso, "load_roles_mapping", lambda path: {})
 
     monkeypatch.setattr(sys, "argv", [
         "gen_subset_optm.py",
-        "--input-zip", str(zip_path),
+        "--input", str(csv_path),
         "--output-dir", str(tmp_path / "out"),
         "--report-dir", str(tmp_path / "report"),
         "--no-monitor",

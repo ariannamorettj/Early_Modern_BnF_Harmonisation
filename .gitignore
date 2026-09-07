@@ -1140,6 +1140,11 @@ __pycache__/
 # large data files — module 04
 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/data/bnf_edition_data_raw.csv
 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/data/data_final/bnf_publication_place.csv
+04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/report/
+04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/output/
+04_harmonisation_and_evaluation/03_ready_dataset_assembly/report/
+04_harmonisation_and_evaluation/output/
+data/bnf_edition_data/bnf_editions_ready.csv
 
 # monitor run reports
 00_monitor/report/query_agents_*

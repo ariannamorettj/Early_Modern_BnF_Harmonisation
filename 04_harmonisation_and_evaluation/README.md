@@ -11,9 +11,9 @@ Here is the English translation of the report:
 
 ## 1. Purpose and Position in the Pipeline
 
-Module 04 is the core of the data cleaning and quality control pipeline. It receives as input the raw datasets produced by the acquisition stage (module 01) and sampled/analysed in modules 02 and 03, and produces harmonised datasets that will subsequently be optimised (05), enriched with external authority records (06), and materialised as an RDF graph (07).
+Module 04 is the core of the data cleaning and quality control pipeline. It receives as input the raw datasets produced by the acquisition stage (module 01) and sampled/analysed in modules 02 and 03, and produces harmonised, integrated "ready" datasets that module 05 optimises into a research-oriented subset, and that module 06 (mapping) and everything downstream can also read directly when the full/extended data is needed rather than module 05's subset.
 
-The module is divided into two symmetric sub-modules operating in cascade:
+The module has three sub-modules:
 
 ```
 01_data_retrieval (raw CSV)
@@ -25,11 +25,19 @@ The module is divided into two symmetric sub-modules operating in cascade:
     │           ├── 01_heuristic_rules/   ← Deterministic approach (regex, lookup, parsing)
     │           └── 02_llm_based/         ← LLM approach (low-confidence residuals)
     │
-    └── 02_evaluation/            ← QA on the output of each normaliser
-            [per field]
-            └── <field>_evaluation.py    ← Child class of Evaluation
-
-        Output: <field>_summary.csv | <field>_warnings.csv | <field>_errors.csv
+    ├── 02_evaluation/            ← QA on the output of each normaliser
+    │       [per field]
+    │       └── <field>_evaluation.py    ← Child class of Evaluation
+    │
+    │       Output: <field>_summary.csv | <field>_warnings.csv | <field>_errors.csv
+    │
+    └── 03_ready_dataset_assembly/ ← Integrates ALL available field-level
+            assemble_actors_ready.py     harmonisations on top of the raw data
+            assemble_editions_ready.py   into one traceable "ready" dataset
+                                          per entity (actors, editions) — see
+                                          section 7 below. This is what
+                                          module 05 (and, when the full
+                                          dataset is needed, module 06+) reads.
 ```
 
 **General principle:**
@@ -618,7 +626,7 @@ python -m 04_harmonisation_and_evaluation.02_evaluation.run_evaluation \
 | `actor_birth`/`death`/`start`/`end` | actor\_data | 📋 to be completed (`dates_normaliser.py`) | 📋 to be completed | 🔄 Skeleton | Target: EDTF |
 | `actor_link_close`/`exact` | actor\_data | 📋 to be completed (`external_links_normaliser.py`) | — | 🔄 Skeleton | No LLM approach planned |
 | `place` | bnf\_edition\_data | — (empty) | — | 🔄 Skeleton | TGN approach implemented |
-| `place` (TGN lookup) | bnf\_edition\_data | ✅ Complete (`bnf_place_harmonisation.py`/`.R`) | — | 🔄 Skeleton | Output ready in `bnf_publication_place.csv` |
+| `place` (TGN lookup) | bnf\_edition\_data | ✅ Complete (`bnf_place_harmonisation.py`, integrated with monitor/report/tests; `.R` version not yet updated) | — | 🔄 Skeleton | Output in `bnf_publication_place.csv`; consumed by `03_ready_dataset_assembly/assemble_editions_ready.py` |
 | `language` | bnf\_edition\_data | 📋 to be completed (`language_normaliser.py`) | — | 🔄 Skeleton (basic logic) | Lookup dict to be built |
 | `publisher_1` | bnf\_edition\_data | 📋 to be completed (`publisher_normaliser.py`) | 📋 to be completed (folder present) | 🔄 Skeleton | Fuzzy matching planned |
 
@@ -651,4 +659,53 @@ Input:
   ├── <field>_summary.csv                   (+ llm_explanation column)
   ├── <field>_warnings.csv
   └── <field>_errors.csv
+```
+
+Once a `<field>_harmonised.csv` (or, for `place`, `bnf_publication_place.csv`) exists for a
+field, `03_ready_dataset_assembly/` (see section 7) picks it up automatically
+on the next run — no code changes needed elsewhere.
+
+---
+
+## 7. Sub-module `03_ready_dataset_assembly` — Assembling the Ready Datasets
+
+**Status:** 🔄 In progress — assembles whichever field-level harmonisations
+exist so far; the output becomes "practically perfect" as more of the
+`01_harmonisation/<field>/` normalisers get implemented.
+
+**Purpose:** there is no separate merge step elsewhere that combines the
+raw acquisition data with every field-level harmonisation output into one
+integrated, traceable dataset per entity. This sub-module is that step —
+it runs *after* `01_harmonisation` and *before* module 05, so that "the
+optimisation happens starting from an already-harmonised dataset" and every
+correction stays traceable back to its own `<field>_harmonised.csv` /
+`<field>_original` mapping (the audit trail lives in those per-field files;
+this assembly only integrates the *current best value* per field).
+
+| File | Entity | Behaviour |
+|---|---|---|
+| `assemble_editions_ready.py` | editions | Deduplicates/aggregates the raw rows to one row per edition (there is no module-5 equivalent for editions — this is the only place that happens) + overlays `publication_place`/`publication_country`/`tgn_id`/coordinates/uncertainty flags from `bnf_publication_place.csv`. Writes `data/bnf_edition_data/bnf_editions_ready.csv`, the path module 6 already expects. |
+| `assemble_actors_ready.py` | actors | Preserves raw row-level granularity (deduplication is module 5's job) + overlays `actor_name` from `actor_name_harmonised.csv` wherever it was empty. Writes `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv`, read by `05_subset_optimisation/gen_subset_optm.py`. |
+
+Both scripts:
+- register their harmonisation overlays in a `HARMONISATION_SOURCES` list at
+  the top of the file — extend this as `language_normaliser.py`,
+  `publisher_normaliser.py`, `dates_normaliser.py`, and
+  `external_links_normaliser.py` get implemented;
+- write a JSON report (`report/*_ready_report.json`) recording row/entity
+  counts and, per field, whether it was harmonised or is still carrying raw
+  values;
+- use the same `00_monitor/monitor.py` embedded monitoring mechanism as the
+  rest of the pipeline (periodic checkpoints + a final checkpoint, on by
+  default via CLI, `--no-monitor` to disable);
+- are covered by tests in `00_test/test_assemble_editions_ready.py` and
+  `00_test/test_assemble_actors_ready.py`.
+
+Run order (after the relevant `01_harmonisation` normalisers):
+
+```bash
+python 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/name_normaliser.py
+python 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/bnf_place_harmonisation.py
+python 04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_actors_ready.py
+python 04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_editions_ready.py
 ```

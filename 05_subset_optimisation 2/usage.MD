@@ -86,7 +86,7 @@ python 05_subset_optimisation/gen_subset_optm.py --dedup-field actor_name
 
 # Full custom run
 python 05_subset_optimisation/gen_subset_optm.py \
-    --input-zip  data/bnf_agents_data_querying/actor_queries_results.zip \
+    --input  04_harmonisation_and_evaluation/output/bnf_actors_ready.csv \
     --roles-mapping 05_subset_optimisation/id_roles/actor_roles_links.csv \
     --output-dir 05_subset_optimisation/output \
     --report-dir 05_subset_optimisation/report \
@@ -141,9 +141,8 @@ python 05_subset_optimisation/gen_subset_optm.py \
 
 | Parameter | Default | Description |
 |-----------|---------|-------------|
-| `--input-zip` | `data/bnf_agents_data_querying/actor_queries_results.zip` | ZIP with actor CSVs |
+| `--input` | `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv` | Actors-ready dataset from module 4's `assemble_actors_ready.py` (CSV or ZIP) |
 | `--roles-mapping` | `id_roles/actor_roles_links.csv` | CSV from Step 1 |
-| `--actor-name-harmonised` | `04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/output/actor_name_harmonised.csv` | Output of module 4's `name_normaliser.py`; fills `actor_name` when empty. Pass `''` to disable. |
 | `--output-dir` | `output` | Output directory for CSVs |
 | `--report-dir` | `report` | Output directory for reports |
 | `--output-filename` | `bnf_actors_optimised.csv` | Full output CSV filename |
@@ -167,22 +166,28 @@ by default from the CLI (`--no-monitor` to disable). Reports are written to:
 
 ---
 
-## 1.1 Dependency on module 4 (actor_name harmonisation)
+## 1.1 Dependency on module 4 (ready dataset assembly)
 
-`gen_subset_optm.py` reads `actor_name` from the raw actor dataset, but some
-BnF actor records carry the name only in `actor_first_name`/`actor_last_name`
-(e.g. "Lucretius"), leaving `actor_name` empty at the source. Before running
-Step 2, run module 4's derive-from-first-last rule so those names are filled
-in the final output instead of staying blank:
+`gen_subset_optm.py` no longer reads the raw actor acquisition data or any
+individual field-harmonisation output directly. It reads
+`04_harmonisation_and_evaluation/output/bnf_actors_ready.csv`, produced by
+module 4's `03_ready_dataset_assembly/assemble_actors_ready.py`, which
+patches in every available actors-side harmonisation (currently:
+actor_name, via `01_harmonisation/actor_name/01_heuristic_rules/
+name_normaliser.py`) on top of the raw rows, while preserving the raw
+row-level granularity — deduplication/aggregation into one row per actor is
+still this script's own job.
+
+Run before Step 2:
 
 ```bash
-python 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/name_normaliser.py \
-    --input  01_data_retrieval/02_actors/actors_data/actor_data.csv \
-    --output 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/output
+python 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/name_normaliser.py
+python 04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_actors_ready.py
 ```
 
-`gen_subset_optm.py` picks up that output automatically (default path above);
-if it's missing, `actor_name` is left as-is and a warning is printed.
+If `bnf_actors_ready.csv` is missing, `gen_subset_optm.py` will fail to find
+its default input — pass `--input` explicitly (e.g. pointing at the raw
+acquisition ZIP) to bypass module 4 entirely if needed.
 
 ---
 

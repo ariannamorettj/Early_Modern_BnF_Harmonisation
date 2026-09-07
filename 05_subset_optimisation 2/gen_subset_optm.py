@@ -2,8 +2,11 @@
 """
 gen_subset_optm.py  –  Step 2 of the BnF subset-optimisation pipeline.
 
-Reads the actor ZIP dataset and the roles mapping produced by roles_enricher.py,
-then produces:
+Reads the actors-ready dataset (module 4's
+04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_actors_ready.py
+— raw acquisition rows with every available field-level harmonisation
+already patched in, e.g. actor_name filled where derivable) and the roles
+mapping produced by roles_enricher.py, then produces:
 
 1. output/bnf_actors_optimised.csv          – full dataset, one row per actor
 2. output/bnf_actors_optimised_minimal.csv  – BnF_ID + actor_name + link_exact + link_close
@@ -66,12 +69,8 @@ except OverflowError:
     csv.field_size_limit(10 ** 9)
 
 # ── Configuration ─────────────────────────────────────────────────────────────
-INPUT_ZIP_DEFAULT      = "data/bnf_agents_data_querying/actor_queries_results.zip"
+INPUT_DEFAULT          = "04_harmonisation_and_evaluation/output/bnf_actors_ready.csv"
 ROLES_MAPPING_DEFAULT  = "id_roles/actor_roles_links.csv"
-ACTOR_NAME_HARMONISED_DEFAULT = (
-    "04_harmonisation_and_evaluation/01_harmonisation/actor_name/"
-    "01_heuristic_rules/output/actor_name_harmonised.csv"
-)
 OUTPUT_DIR_DEFAULT     = "output"
 REPORT_DIR_DEFAULT     = "report"
 OUTPUT_FILENAME        = "bnf_actors_optimised.csv"
@@ -104,16 +103,19 @@ def normalise(v: Any) -> str:
     return "" if s.upper() in {"NA", "N/A", "NULL", "NONE", ""} else s
 
 
-def iter_csv_in_zip(zip_path: str):
-    with zipfile.ZipFile(zip_path, "r") as zf:
-        for name in zf.namelist():
-            if not name.lower().endswith(".csv"):
-                continue
-            with zf.open(name, "r") as f:
-                lines = (line.decode("utf-8", errors="replace") for line in f)
-                reader = csv.DictReader(lines)
-                for row in reader:
-                    yield name, row
+def iter_actor_rows(path: str):
+    """Yield row dicts from a plain CSV, or from every CSV inside a ZIP."""
+    if path.lower().endswith(".zip"):
+        with zipfile.ZipFile(path, "r") as zf:
+            for name in zf.namelist():
+                if not name.lower().endswith(".csv"):
+                    continue
+                with zf.open(name, "r") as f:
+                    lines = (line.decode("utf-8", errors="replace") for line in f)
+                    yield from csv.DictReader(lines)
+    else:
+        with open(path, "r", encoding="utf-8", newline="", errors="replace") as f:
+            yield from csv.DictReader(f)
 
 
 # ── Roles mapping loader ──────────────────────────────────────────────────────
@@ -144,37 +146,6 @@ def load_roles_mapping(mapping_path: str) -> Dict[str, Dict[str, str]]:
     return mapping
 
 
-# ── Module-4 actor_name harmonised mapping loader ──────────────────────────────
-
-def load_actor_name_harmonised(path: str) -> Dict[str, str]:
-    """
-    Reads the output of module 4's name_normaliser.py
-    (actor_uri | actor_name_original | actor_name_harmonised | correction_type | confidence)
-    and returns {actor_uri: actor_name_harmonised}, restricted to rows where a
-    name was actually derived (correction_type == "derived_from_first_last").
-    Rows with correction_type == "none" carry no new information (actor_name
-    was already present) and are not needed here.
-    """
-    mapping: Dict[str, str] = {}
-    if not path or not os.path.exists(path):
-        print(f"  [warn] Actor-name harmonised mapping not found at {path!r}. "
-             f"Skipping actor_name fill (run name_normaliser.py first).")
-        return mapping
-
-    print(f"  Loading actor_name harmonised mapping from: {path}")
-    with open(path, "r", encoding="utf-8", newline="") as f:
-        reader = csv.DictReader(f)
-        for row in reader:
-            if row.get("correction_type") != "derived_from_first_last":
-                continue
-            uri  = normalise(row.get("actor_uri", ""))
-            name = normalise(row.get("actor_name_harmonised", ""))
-            if uri and name:
-                mapping[uri] = name
-    print(f"  Loaded {len(mapping):,} derived actor names.")
-    return mapping
-
-
 # ── Monitor integration (embedded state-based monitoring, module 06_monitor) ──
 
 def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
@@ -191,29 +162,24 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 # ── Actor data reader ─────────────────────────────────────────────────────────
 
 def read_actor_data(
-    zip_path: str,
+    input_path: str,
     roles_mapping: Dict[str, Dict[str, str]],
     year_filter_active: bool,
-    actor_name_harmonised: Dict[str, str] | None = None,
     monitor_module=None,
     monitor_state=None,
-) -> Tuple[List[Dict[str, str]], Dict[str, Any], int, int, int, Any]:
+) -> Tuple[List[Dict[str, str]], Dict[str, Any], int, int, Any]:
     """
-    Reads the actor ZIP and aggregates by BnF_ID.
+    Reads the actors-ready dataset (CSV or ZIP) and aggregates by BnF_ID.
 
     If year_filter_active is True, only actors present in roles_mapping
     (which was built from year-filtered editions) are retained.
-
-    If actor_name_harmonised is given ({actor_uri: derived_name}, from
-    module 4's name_normaliser.py) and an actor's aggregated actor_name is
-    empty, the derived name is used to fill it.
 
     If monitor_module is given, a checkpoint is written every
     MONITOR_CHECKPOINT_EVERY rows (same cadence as the existing progress
     print below).
 
     Returns (flat_records, merge_tracking, total_rows, duplicate_rows,
-    filled_from_harmonised_count, monitor_state)
+    monitor_state)
     """
     # actor_id -> field -> set of values
     actors_db: Dict[str, Dict[str, Set[str]]] = {}
@@ -223,8 +189,8 @@ def read_actor_data(
     total_rows = 0
     dup_rows   = 0
 
-    print(f"  Reading actor ZIP: {zip_path}")
-    for _, row in iter_csv_in_zip(zip_path):
+    print(f"  Reading actors-ready dataset: {input_path}")
+    for row in iter_actor_rows(input_path):
         total_rows += 1
         if total_rows % MONITOR_CHECKPOINT_EVERY == 0:
             print(f"    … {total_rows:,} rows, {len(actors_db):,} actors")
@@ -276,26 +242,16 @@ def read_actor_data(
 
     # Flatten
     flat: List[Dict[str, str]] = []
-    filled_from_harmonised = 0
     for bnf_id, fields in sorted(actors_db.items()):
         rec: Dict[str, str] = {"BnF_ID": bnf_id}
         for f in ALL_DATA_FIELDS:
             rec[f] = "; ".join(sorted(fields[f]))
-        if not rec["actor_name"] and actor_name_harmonised:
-            derived_name = actor_name_harmonised.get(bnf_id, "")
-            if derived_name:
-                rec["actor_name"] = derived_name
-                filled_from_harmonised += 1
         rm = roles_mapping.get(bnf_id, {})
         rec["role_edition_map"] = rm.get("role_edition_map", "")
         rec["roles"]            = rm.get("roles", "")
         flat.append(rec)
 
-    if actor_name_harmonised:
-        print(f"  Filled actor_name from module-4 harmonised mapping: "
-             f"{filled_from_harmonised:,} actor(s)")
-
-    return flat, merge_tracking, total_rows, dup_rows, filled_from_harmonised, monitor_state
+    return flat, merge_tracking, total_rows, dup_rows, monitor_state
 
 
 # ── Deduplication ─────────────────────────────────────────────────────────────
@@ -382,7 +338,6 @@ def generate_report(
     dup_rows: int,
     report_path: str,
     dedup_field: str | None,
-    filled_from_harmonised: int = 0,
 ):
     os.makedirs(os.path.dirname(report_path) or ".", exist_ok=True)
     n = len(records)
@@ -401,8 +356,7 @@ def generate_report(
             f.write(f"Deduplication field         : {dedup_field}\n")
         f.write(f"Actors with merged records  : {merged_n:,}\n")
         rate = merged_n / n * 100 if n else 0
-        f.write(f"Merge rate                  : {rate:.2f}%\n")
-        f.write(f"actor_name filled from module-4 mapping : {filled_from_harmonised:,}\n\n")
+        f.write(f"Merge rate                  : {rate:.2f}%\n\n")
 
         f.write(sep + "\nFIELD STATISTICS\n" + "-" * 70 + "\n")
         f.write(f"{'Field':<25} {'Filled':>8}  {'Fill%':>7}  {'Avg/actor':>10}\n")
@@ -438,11 +392,10 @@ def main():
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog=__doc__,
     )
-    parser.add_argument("--input-zip",      default=INPUT_ZIP_DEFAULT)
+    parser.add_argument("--input",          default=INPUT_DEFAULT,
+                        help="Actors-ready dataset from module 4's "
+                             "assemble_actors_ready.py (CSV or ZIP).")
     parser.add_argument("--roles-mapping",  default=ROLES_MAPPING_DEFAULT)
-    parser.add_argument("--actor-name-harmonised", default=ACTOR_NAME_HARMONISED_DEFAULT,
-                        help="Path to module 4's actor_name_harmonised.csv "
-                             "(fills actor_name when empty). Pass '' to disable.")
     parser.add_argument("--output-dir",     default=OUTPUT_DIR_DEFAULT)
     parser.add_argument("--report-dir",     default=REPORT_DIR_DEFAULT)
     parser.add_argument("--output-filename", default=OUTPUT_FILENAME)
@@ -477,7 +430,6 @@ def main():
     print("=" * 60)
 
     roles_mapping = load_roles_mapping(args.roles_mapping)
-    actor_name_harmonised = load_actor_name_harmonised(args.actor_name_harmonised)
 
     use_monitor = not args.no_monitor
     monitor_module = None
@@ -489,11 +441,10 @@ def main():
             print_start_message=True,
         )
 
-    records, merge_tracking, total_rows, dup_rows, filled_from_harmonised, monitor_state = read_actor_data(
-        zip_path=args.input_zip,
+    records, merge_tracking, total_rows, dup_rows, monitor_state = read_actor_data(
+        input_path=args.input,
         roles_mapping=roles_mapping,
         year_filter_active=year_filter_active,
-        actor_name_harmonised=actor_name_harmonised,
         monitor_module=monitor_module,
         monitor_state=monitor_state,
     )
@@ -532,7 +483,7 @@ def main():
     # ── Write stats report ────────────────────────────────────────────────────
     report_path = os.path.join(args.report_dir, REPORT_FILENAME)
     generate_report(records, merge_tracking, total_rows, dup_rows,
-                    report_path, args.dedup_field, filled_from_harmonised)
+                    report_path, args.dedup_field)
     print(f"  ✓ Stats report      → {report_path}")
 
     if use_monitor:
@@ -571,7 +522,7 @@ With deduplication on actor_name:
 
 Full custom run – medieval, dedup on BnF_ID:
     python 05_subset_optimisation/gen_subset_optm.py \\
-        --input-zip  data/bnf_agents_data_querying/actor_queries_results.zip \\
+        --input  04_harmonisation_and_evaluation/output/bnf_actors_ready.csv \\
         --roles-mapping 05_subset_optimisation/id_roles/actor_roles_links.csv \\
         --output-dir 05_subset_optimisation/output \\
         --report-dir 05_subset_optimisation/report \\
