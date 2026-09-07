@@ -14,27 +14,41 @@ row-level granularity (including the duplicate rows per actor URI coming
 from multi-valued external links) and only patches in field-level
 corrections from whichever harmonisation outputs are available.
 
-Currently the only actors-side harmonisation is actor_name (via
+Two actors-side harmonisations are wired in so far: actor_name (via
 04_harmonisation_and_evaluation/01_harmonisation/actor_name/
-01_heuristic_rules/name_normaliser.py). Fields without a harmoniser yet
-(actor_dates, external_links) are carried through unchanged — this script
-picks up more harmonisations automatically as they get implemented, without
-code changes, as long as they're registered in HARMONISATION_SOURCES below.
+01_heuristic_rules/name_normaliser.py) and actor_dates (via
+04_harmonisation_and_evaluation/01_harmonisation/actor_dates/
+01_heuristic_rules/dates_normaliser.py). Fields without a harmoniser yet
+(external_links) are carried through unchanged — this script picks up more
+harmonisations automatically as they get implemented, without code changes,
+as long as they're registered in HARMONISATION_SOURCES below.
+
+actor_name and actor_dates use different overlay semantics, on purpose:
+  - actor_name only FILLS a field that was empty at the source (a name that
+    already exists is never second-guessed by a heuristic rule).
+  - actor_dates REPLACES the raw value whenever a harmonised EDTF form is
+    available, even if the raw field was already populated — harmonising a
+    date always means reformatting it (e.g. "17.." -> "17XX", "-43" ->
+    "-0043"), so the raw value is never itself the canonical target the way
+    an existing actor_name can be.
 
 Input
 -----
 Raw actor dataset (module 1's acquisition output):
     01_data_retrieval/02_actors/actors_data/actor_data.csv (or .zip)
 
-Harmonisation overlays (only actor_name exists so far):
+Harmonisation overlays:
     04_harmonisation_and_evaluation/01_harmonisation/actor_name/
     01_heuristic_rules/output/actor_name_harmonised.csv
+    04_harmonisation_and_evaluation/01_harmonisation/actor_dates/
+    01_heuristic_rules/output/actor_dates_harmonised.csv
 
 Output
 ------
 04_harmonisation_and_evaluation/output/bnf_actors_ready.csv:
     same columns and same row-level granularity as the raw input, with
-    actor_name filled in wherever a correction was available.
+    actor_name filled in and actor_birth/actor_death/actor_start/actor_end
+    replaced with their EDTF form wherever a correction was available.
 
 report/actors_ready_report.json:
     row counts, and which fields were harmonised vs still raw/pending.
@@ -50,6 +64,7 @@ Usage
 python assemble_actors_ready.py \\
     --input 01_data_retrieval/02_actors/actors_data/actor_data.csv \\
     --actor-name-harmonised 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/output/actor_name_harmonised.csv \\
+    --actor-dates-harmonised 04_harmonisation_and_evaluation/01_harmonisation/actor_dates/01_heuristic_rules/output/actor_dates_harmonised.csv \\
     --output 04_harmonisation_and_evaluation/output/bnf_actors_ready.csv \\
     --report 04_harmonisation_and_evaluation/03_ready_dataset_assembly/report/actors_ready_report.json
 """
@@ -77,6 +92,10 @@ ACTOR_NAME_HARMONISED_DEFAULT = (
     "04_harmonisation_and_evaluation/01_harmonisation/actor_name/"
     "01_heuristic_rules/output/actor_name_harmonised.csv"
 )
+ACTOR_DATES_HARMONISED_DEFAULT = (
+    "04_harmonisation_and_evaluation/01_harmonisation/actor_dates/"
+    "01_heuristic_rules/output/actor_dates_harmonised.csv"
+)
 OUTPUT_DEFAULT = "04_harmonisation_and_evaluation/output/bnf_actors_ready.csv"
 REPORT_DEFAULT = "04_harmonisation_and_evaluation/03_ready_dataset_assembly/report/actors_ready_report.json"
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
@@ -89,7 +108,9 @@ RAW_FIELDS = [
     "actor_end", "actor_link_exact", "actor_link_close",
 ]
 
-HARMONISATION_SOURCES = ["actor_name"]
+DATE_FIELDS = ["actor_birth", "actor_death", "actor_start", "actor_end"]
+
+HARMONISATION_SOURCES = ["actor_name", "actor_dates"]
 
 
 def normalise(v) -> str:
@@ -136,6 +157,33 @@ def load_actor_name_harmonised(path: str) -> dict[str, str]:
     return mapping
 
 
+def load_actor_dates_harmonised(path: str) -> dict[str, dict[str, str]]:
+    """actor_uri -> {field: date_harmonised}, restricted to rows where the
+    heuristic/LLM normaliser actually produced an EDTF value (i.e. skips
+    'missing' and 'non_parseable' rows, which carry an empty
+    date_harmonised — see dates_normaliser.py). Unlike actor_name, every
+    field present here is meant to REPLACE the raw value, not just fill an
+    empty one (see module docstring)."""
+    mapping: dict[str, dict[str, str]] = {}
+    if not path or not os.path.exists(path):
+        print(f"  [warn] Actor-dates harmonised mapping not found at {path!r}. "
+             f"Run dates_normaliser.py first — actors_ready will carry actor_birth/"
+             f"actor_death/actor_start/actor_end as-is.")
+        return mapping
+
+    rows_loaded = 0
+    with open(path, "r", encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            uri = normalise(row.get("actor_uri", ""))
+            field = normalise(row.get("field", ""))
+            harmonised = normalise(row.get("date_harmonised", ""))
+            if uri and field in DATE_FIELDS and harmonised:
+                mapping.setdefault(uri, {})[field] = harmonised
+                rows_loaded += 1
+    print(f"  Loaded {rows_loaded:,} harmonised date values for {len(mapping):,} actors.")
+    return mapping
+
+
 # ── Monitor integration (embedded state-based monitoring, module 06_monitor) ──
 
 def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
@@ -149,10 +197,12 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 
 # ── Main pipeline ─────────────────────────────────────────────────────────────
 
-def run(input_path: str, actor_name_harmonised_path: str, output_path: str, report_path: str,
+def run(input_path: str, actor_name_harmonised_path: str, actor_dates_harmonised_path: str,
+       output_path: str, report_path: str,
        use_monitor: bool = False, monitor_script: str = MONITOR_SCRIPT_DEFAULT) -> str:
 
     name_overlay = load_actor_name_harmonised(actor_name_harmonised_path)
+    dates_overlay = load_actor_dates_harmonised(actor_dates_harmonised_path)
 
     monitor_module = None
     monitor_state = None
@@ -165,6 +215,7 @@ def run(input_path: str, actor_name_harmonised_path: str, output_path: str, repo
 
     total_rows = 0
     filled_actor_name = 0
+    replaced_dates = {field: 0 for field in DATE_FIELDS}
     seen_actors: set[str] = set()
 
     os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
@@ -194,6 +245,13 @@ def run(input_path: str, actor_name_harmonised_path: str, output_path: str, repo
                     rec["actor_name"] = derived_name
                     filled_actor_name += 1
 
+            if actor_uri:
+                actor_dates = dates_overlay.get(actor_uri)
+                if actor_dates:
+                    for field, harmonised_value in actor_dates.items():
+                        rec[field] = harmonised_value
+                        replaced_dates[field] += 1
+
             writer.writerow(rec)
 
     report = {
@@ -204,9 +262,12 @@ def run(input_path: str, actor_name_harmonised_path: str, output_path: str, repo
                 "status": "harmonised" if name_overlay else "pending (source not found)",
                 "rows_filled": filled_actor_name,
             },
+            "actor_dates": {
+                "status": "harmonised" if dates_overlay else "pending (source not found)",
+                "rows_replaced": replaced_dates,
+            },
         },
         "raw_fields_pending_harmonisation": [
-            "actor_birth", "actor_death", "actor_start", "actor_end",
             "actor_link_exact", "actor_link_close",
         ],
     }
@@ -226,6 +287,8 @@ def run(input_path: str, actor_name_harmonised_path: str, output_path: str, repo
 
     print(f"\n✓ Wrote {total_rows:,} rows ({len(seen_actors):,} actors) -> {output_path}")
     print(f"  actor_name filled: {filled_actor_name:,}")
+    for field, count in replaced_dates.items():
+        print(f"  {field} replaced: {count:,}")
     print(f"✓ Report -> {report_path}")
 
     return output_path
@@ -241,13 +304,15 @@ def main():
     )
     parser.add_argument("--input",                  default=INPUT_DEFAULT)
     parser.add_argument("--actor-name-harmonised",  default=ACTOR_NAME_HARMONISED_DEFAULT)
+    parser.add_argument("--actor-dates-harmonised", default=ACTOR_DATES_HARMONISED_DEFAULT)
     parser.add_argument("--output",                 default=OUTPUT_DEFAULT)
     parser.add_argument("--report",                 default=REPORT_DEFAULT)
     parser.add_argument("--monitor-script",         default=MONITOR_SCRIPT_DEFAULT)
     parser.add_argument("--no-monitor",             action="store_true",
                         help="Disable the 00_monitor/monitor.py resource-usage report.")
     args = parser.parse_args()
-    run(args.input, args.actor_name_harmonised, args.output, args.report,
+    run(args.input, args.actor_name_harmonised, args.actor_dates_harmonised,
+        args.output, args.report,
         use_monitor=not args.no_monitor, monitor_script=args.monitor_script)
 
 

@@ -47,6 +47,26 @@ The module has three sub-modules:
 3. Cases with low or medium confidence, or unresolved by the heuristic normaliser, are forwarded to the LLM normaliser.
 4. The LLM output follows the same schema as the heuristic output, with the additional column `llm_explanation`.
 
+**Deterministic-first, LLM-as-last-resort — and why this matters for cost and
+reproducibility, not just design taste.** The heuristic step is meant to be
+exhaustive: every anomaly category with a clear, rule-based resolution
+(regex, lookup table, structural pattern) is handled deterministically
+first, and only the residual that genuinely cannot be resolved without
+external judgement — free text, ambiguous phrasing, missing context — is
+sent to an LLM. Concretely for `actor_dates` (see 3.2 below): the heuristic
+rule alone resolves 99.98% of all non-empty date values (1,731,680 of
+1,731,972, verified over the full raw dataset); only the
+`non_parseable` residual (~0.013%, a few hundred rows) is a candidate for
+the LLM step. A heuristic rule is deterministic, free, instant, and its
+output is exactly reproducible on re-run — an LLM call is none of those.
+Where the LLM step is implemented, it is planned to run **by default** as
+the next stage after the heuristic step (so the pipeline stays "one command
+= fully harmonised, as far as automatically possible" without a manual
+second invocation), with a `--no-llm` flag to skip it — this keeps the
+LLM step opt-out rather than opt-in specifically *because* the heuristic
+step already carries the vast majority of the load; the LLM is there to
+close the small remaining gap, not to be the primary mechanism.
+
 ---
 
 ## 2. Output Conventions Common to All Normalisers
@@ -134,44 +154,71 @@ Each normalisation script produces a CSV with the following core schema:
 
 **Dataset:** actor\_data
 **Fields:** `actor_birth`, `actor_death`, `actor_start`, `actor_end`
-**Overall status:** 📋 Planned
+**Overall status:** In progress — heuristic rule implemented
 
 **Target output format:** EDTF (Extended Date/Time Format, extended ISO 8601)
 
-| EDTF Format | Example |
-|---|---|
-| Exact year | `1750` |
-| Approximate year | `1750~` |
-| Uncertain year | `1750?` |
-| Range | `1700/1800` |
-| Partial decade/century | `17XX` |
+**Real anomaly categories (superseding the free-text categories originally
+speculated here — see note below)**
 
-**Categories of anomalies to handle**
+A full scan of the raw dataset (~1.73M non-empty date values across the
+four fields) found the BnF source already uses a structured *numeric*
+convention, not free text ("ca. 1750", "vers 1720", "XVIIIe siècle" etc. do
+not occur at all):
 
-| Category | Examples |
-|---|---|
-| Dates with qualifiers | `ca. 1750`, `vers 1720`, `ante 1700`, `après 1700` |
-| Century-level expressions | `18th century`, `XVIIIe siècle`, `début XIXe` |
-| Decade-level expressions | `1750s`, `années 1750` |
-| Uncertain/qualified | `1750?`, `[1750]`, `(1750)`, `1750 environ` |
-| Ranges | `1750-1800`, `1750/1800` |
-| Non-parseable | `actif au XVIIIe`, `flourished c.1700`, `***`, empty strings |
+| Category | Examples | EDTF output | Confidence | Meaning | Share (of all values incl. missing) |
+|---|---|---|---|---|---|
+| `exact_year` | `1750`, `43`, `-43`/`- 43` (1-4 digits, optional BCE sign, no zero-padding) | `1750`, `0043`, `-0043` | high — pure zero-padding, no digit invented | Full year known, day/month not recorded | 50.6% |
+| `exact_date` | `1594-06-14` | `1594-06-14` | high — year zero-padded, month/day pass through | Exact day known | 22.8% |
+| `missing` | `NA`, empty | *(empty)* | low — nothing to harmonise | Source has no value at all (not a parsing failure) | 21.5% |
+| `masked_precision` | `17..`, `1...`, `17XX` (trailing `.`/`X` mask unspecified digits) | `17XX`, `1XXX` | high — digit-for-digit `.`/`X` → EDTF `X` substitution | Only century/decade/millennium known; source never recorded the rest (structural gap, not an approximation — see below) | 4.1% |
+| `year_month` | `1564-04` | `1564-04` | high — year zero-padded, month passes through | Month known, day not recorded | 0.9% |
+| `non_parseable` | `150.-02-20`, `1799-03-2.`, `14??` (mask char inside a full date, masked day instead of year, unexpected mask char, etc.) | *(empty)* | low — deliberately not attempted | Real but rare hybrid/malformed forms; left for future LLM step / manual review rather than special-cased | 0.013% |
 
-**01\_heuristic\_rules/**
+**Why `masked_precision` maps to EDTF's `X` and not `~`/`?`:** EDTF's `~`
+(approximate) and `?` (uncertain) qualifiers express epistemic doubt about a
+value that IS known but imprecisely so. `masked_precision` is different: the
+BnF source structurally never recorded those trailing digits at all — it is
+a gap in the record, not a judgement call about an otherwise-known date.
+EDTF Level 2 defines `X` as the standard "unspecified digit" character for
+exactly this case, so the `.`/`X` → `X` substitution here is a faithful
+transcription of what the source already expresses, not an inference.
 
-`dates_normaliser.py` — Placeholder/to be completed
+**01\_heuristic\_rules/ — Implemented**
 
-Planned functions:
+`dates_normaliser.py`:
 
-- `detect_date_format(raw_value)` → classifies into: `exact_year`, `approximate`, `uncertain`, `century`, `decade`, `range`, `qualified_activity`, `non_parseable`
+- `detect_date_format(raw_value)` → classifies into the six categories above
 - `normalise_date(raw_value)` → converts to EDTF, returns `{harmonised, format_detected, confidence}`
-- `run(input_path, output_dir)` → processes full CSV/ZIP
+- `run(input_path, output_dir)` → processes full CSV/ZIP, one output row per (actor, field)
 
 Output schema: `actor_uri | field | date_original | date_harmonised | date_format_detected | confidence`
 
+**BCE (negative year) handling:** the source marks BCE years with a leading
+`-` (e.g. `-43`, `- 43`). Strict EDTF/ISO 8601-2 negative years use
+*astronomical* numbering (year `0000` = 1 BCE, so 43 BCE would be `-0042`).
+This implementation does **not** apply that offset — it zero-pads the
+digits already present and keeps the sign as-is (43 BCE → `-0043`). This
+was verified empirically: one actor has `actor_birth="- 384"`,
+`actor_death="- 322"` — Aristotle's well-known dates (384–322 BCE) match
+those digits exactly with no shift, which astronomical numbering would not
+produce. The source already uses ordinary historical BCE counting (common
+in GLAM/library linked data), so applying an unverified astronomical offset
+would introduce a silent one-year error rather than fix one. See the
+`dates_normaliser.py` module docstring for the full reasoning.
+
+Monitoring, CLI (`--input`/`--output`/`--no-monitor`) and tests
+(`00_test/test_dates_normaliser.py`) follow the same conventions as
+`actor_name/01_heuristic_rules/name_normaliser.py`.
+
+Not yet implemented: this heuristic rule does not attempt `non_parseable`
+values (~0.02%, left as low-confidence/empty pending future work — see
+02_llm_based below).
+
 **02\_llm\_based/**
 
-`llm_dates_normaliser.py` — Placeholder/to be completed
+`llm_dates_normaliser.py` — Placeholder/to be completed (unchanged; not in
+scope for the heuristic-rule work above)
 
 Target: values classified as `non_parseable` or with `low` confidence by the heuristic normaliser. The LLM must:
 
@@ -623,7 +670,7 @@ python -m 04_harmonisation_and_evaluation.02_evaluation.run_evaluation \
 | Field | Dataset | Heuristic normaliser | LLM normaliser | Evaluator | Notes |
 |---|---|---|---|---|---|
 | `actor_name`/`first_name`/`last_name` | actor\_data | 🔄 In progress (`name_normaliser.py` — derive-from-first-last only) | 📋 to be completed | ✅ Complete (`PersonNameEvaluation`) | Matching scripts implemented; output consumed by module 05 |
-| `actor_birth`/`death`/`start`/`end` | actor\_data | 📋 to be completed (`dates_normaliser.py`) | 📋 to be completed | 🔄 Skeleton | Target: EDTF |
+| `actor_birth`/`death`/`start`/`end` | actor\_data | 🔄 In progress (`dates_normaliser.py` — numeric BnF convention → EDTF; `non_parseable` ~0.02% not yet handled) | 📋 to be completed (planned: default-on after the heuristic step, `--no-llm` to disable — see section 1) | 🔄 Skeleton | Target: EDTF; output consumed by `03_ready_dataset_assembly/assemble_actors_ready.py` |
 | `actor_link_close`/`exact` | actor\_data | 📋 to be completed (`external_links_normaliser.py`) | — | 🔄 Skeleton | No LLM approach planned |
 | `place` | bnf\_edition\_data | — (empty) | — | 🔄 Skeleton | TGN approach implemented |
 | `place` (TGN lookup) | bnf\_edition\_data | ✅ Complete (`bnf_place_harmonisation.py`, integrated with monitor/report/tests; `.R` version not yet updated) | — | 🔄 Skeleton | Output in `bnf_publication_place.csv`; consumed by `03_ready_dataset_assembly/assemble_editions_ready.py` |
@@ -685,13 +732,14 @@ this assembly only integrates the *current best value* per field).
 | File | Entity | Behaviour |
 |---|---|---|
 | `assemble_editions_ready.py` | editions | Deduplicates/aggregates the raw rows to one row per edition (there is no module-5 equivalent for editions — this is the only place that happens) + overlays `publication_place`/`publication_country`/`tgn_id`/coordinates/uncertainty flags from `bnf_publication_place.csv`. Writes `data/bnf_edition_data/bnf_editions_ready.csv`, the path module 6 already expects. |
-| `assemble_actors_ready.py` | actors | Preserves raw row-level granularity (deduplication is module 5's job) + overlays `actor_name` from `actor_name_harmonised.csv` wherever it was empty. Writes `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv`, read by `05_subset_optimisation/gen_subset_optm.py`. |
+| `assemble_actors_ready.py` | actors | Preserves raw row-level granularity (deduplication is module 5's job) + overlays two fields: `actor_name` from `actor_name_harmonised.csv` (fills only when empty at the source — an existing name is never second-guessed) and `actor_birth`/`actor_death`/`actor_start`/`actor_end` from `actor_dates_harmonised.csv` (**replaces** the raw value whenever an EDTF form is available, even if the raw field was already populated — harmonising a date always means reformatting it, e.g. `"17.."` → `"17XX"`, so unlike a name the raw value is never itself the canonical target). Writes `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv`, read by `05_subset_optimisation/gen_subset_optm.py`. |
 
 Both scripts:
 - register their harmonisation overlays in a `HARMONISATION_SOURCES` list at
   the top of the file — extend this as `language_normaliser.py`,
-  `publisher_normaliser.py`, `dates_normaliser.py`, and
-  `external_links_normaliser.py` get implemented;
+  `publisher_normaliser.py`, and `external_links_normaliser.py` get
+  implemented (`actor_name` and `actor_dates` are already wired in for
+  `assemble_actors_ready.py`);
 - write a JSON report (`report/*_ready_report.json`) recording row/entity
   counts and, per field, whether it was harmonised or is still carrying raw
   values;
@@ -705,6 +753,7 @@ Run order (after the relevant `01_harmonisation` normalisers):
 
 ```bash
 python 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/name_normaliser.py
+python 04_harmonisation_and_evaluation/01_harmonisation/actor_dates/01_heuristic_rules/dates_normaliser.py
 python 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/bnf_place_harmonisation.py
 python 04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_actors_ready.py
 python 04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_editions_ready.py
