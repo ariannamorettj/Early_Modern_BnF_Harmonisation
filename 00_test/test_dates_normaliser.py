@@ -1,5 +1,6 @@
 import csv
 import importlib.util
+import sys
 import zipfile
 from pathlib import Path
 
@@ -285,3 +286,74 @@ def test_load_monitor_module_resolves_real_monitor_script():
     assert hasattr(monitor, "start_monitor_state")
     assert hasattr(monitor, "update_monitor_state")
     assert hasattr(monitor, "stop_monitor_state")
+
+
+def test_load_llm_module_resolves_real_llm_script():
+    dn = load_dates_normaliser_module()
+    llm_module = dn.load_llm_module()
+
+    assert hasattr(llm_module, "run")
+    assert hasattr(llm_module, "CACHE_PATH_DEFAULT")
+
+
+# ── main() orchestration: LLM step wiring ────────────────────────────────────
+
+class FakeLLMModule:
+    def __init__(self):
+        self.run_calls = []
+        self.CACHE_PATH_DEFAULT = "fake/cache/path.json"
+
+    def run(self, **kwargs):
+        self.run_calls.append(kwargs)
+
+
+def test_main_runs_llm_step_by_default(monkeypatch, tmp_path):
+    dn = load_dates_normaliser_module()
+    fake_llm = FakeLLMModule()
+    monkeypatch.setattr(dn, "load_llm_module", lambda: fake_llm)
+
+    input_path = tmp_path / "actors.csv"
+    _write_actor_csv(input_path, [{"actor": "A1", "actor_birth": "1750"}])
+    output_dir = tmp_path / "out"
+
+    monkeypatch.setattr(sys, "argv", [
+        "dates_normaliser.py",
+        "--input", str(input_path),
+        "--output", str(output_dir),
+        "--no-monitor",
+    ])
+    dn.main()
+
+    assert len(fake_llm.run_calls) == 1
+    call = fake_llm.run_calls[0]
+    expected_output = str(output_dir / dn.OUTPUT_FILENAME_DEFAULT)
+    assert call["heuristic_output_csv"] == expected_output
+    assert call["output_path"] == expected_output
+    assert call["cache_path"] == fake_llm.CACHE_PATH_DEFAULT
+    assert call["model"] == "claude-opus-5"
+    assert call["effort"] == "low"
+    assert call["use_monitor"] is False
+
+
+def test_main_no_llm_flag_skips_llm_step(monkeypatch, tmp_path):
+    dn = load_dates_normaliser_module()
+
+    def fail_if_called():
+        raise AssertionError("load_llm_module should not be called when --no-llm is passed")
+
+    monkeypatch.setattr(dn, "load_llm_module", fail_if_called)
+
+    input_path = tmp_path / "actors.csv"
+    _write_actor_csv(input_path, [{"actor": "A1", "actor_birth": "1750"}])
+    output_dir = tmp_path / "out"
+
+    monkeypatch.setattr(sys, "argv", [
+        "dates_normaliser.py",
+        "--input", str(input_path),
+        "--output", str(output_dir),
+        "--no-monitor",
+        "--no-llm",
+    ])
+    dn.main()  # must not raise -> load_llm_module was never called
+
+    assert (output_dir / dn.OUTPUT_FILENAME_DEFAULT).exists()

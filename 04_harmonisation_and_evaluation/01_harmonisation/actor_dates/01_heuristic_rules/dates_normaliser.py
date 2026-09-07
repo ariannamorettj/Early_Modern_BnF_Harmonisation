@@ -316,6 +316,21 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
     return module
 
 
+def load_llm_module():
+    """Load the sibling 02_llm_based/llm_dates_normaliser.py module. Kept as
+    a plain file-path import (mirroring load_monitor_module above) rather
+    than a package import, since none of 04_harmonisation_and_evaluation's
+    subfolders are set up as importable packages. Only used from main() —
+    run() above stays a pure, heuristic-only function with no dependency on
+    this module, so importing this file never requires anthropic/pydantic
+    to be installed unless the CLI's LLM step actually runs."""
+    script_path = Path(__file__).resolve().parent.parent / "02_llm_based" / "llm_dates_normaliser.py"
+    spec = importlib.util.spec_from_file_location("llm_dates_normaliser", script_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
+
+
 def _monitor_checkpoint(monitor_module, monitor_state, index, total, actor_uri):
     if monitor_module is None:
         return monitor_state
@@ -431,16 +446,45 @@ def run(input_path: str, output_dir: str,
 def main():
     parser = argparse.ArgumentParser(
         description="actor_dates heuristic normaliser "
-                    "(numeric BnF date convention -> EDTF; see module docstring)")
+                    "(numeric BnF date convention -> EDTF; see module docstring). "
+                    "By default also runs the 02_llm_based residual step "
+                    "afterwards (see --no-llm).")
     parser.add_argument("--input", default=INPUT_DEFAULT)
     parser.add_argument("--output", default=OUTPUT_DIR_DEFAULT, help="Output directory")
     parser.add_argument("--output-filename", default=OUTPUT_FILENAME_DEFAULT)
     parser.add_argument("--monitor-script", default=MONITOR_SCRIPT_DEFAULT)
     parser.add_argument("--no-monitor", action="store_true",
                         help="Disable the 00_monitor/monitor.py resource-usage report.")
+    parser.add_argument("--no-llm", action="store_true",
+                        help="Skip the 02_llm_based/llm_dates_normaliser.py residual step "
+                            "that otherwise runs by default right after this heuristic "
+                            "step, resolving the small non_parseable residual via an LLM "
+                            "call (see 04_harmonisation_and_evaluation/README.md section 1 "
+                            "for why default-on is still 'prefer the lighter resolution' "
+                            "in practice: the heuristic step already resolves 99.98% of "
+                            "values deterministically before the LLM step is ever reached).")
+    parser.add_argument("--llm-model", default="claude-opus-5")
+    parser.add_argument("--llm-effort", default="low",
+                        choices=["low", "medium", "high", "xhigh", "max"])
+    parser.add_argument("--llm-cache", default=None,
+                        help="Override the LLM response cache path "
+                            "(default: llm_dates_normaliser.py's own CACHE_PATH_DEFAULT).")
     args = parser.parse_args()
-    run(args.input, args.output, args.output_filename,
+
+    output_path = run(args.input, args.output, args.output_filename,
         use_monitor=not args.no_monitor, monitor_script=args.monitor_script)
+
+    if not args.no_llm:
+        llm_module = load_llm_module()
+        llm_module.run(
+            heuristic_output_csv=output_path,
+            output_path=output_path,
+            cache_path=args.llm_cache or llm_module.CACHE_PATH_DEFAULT,
+            model=args.llm_model,
+            effort=args.llm_effort,
+            use_monitor=not args.no_monitor,
+            monitor_script=args.monitor_script,
+        )
 
 
 if __name__ == "__main__":

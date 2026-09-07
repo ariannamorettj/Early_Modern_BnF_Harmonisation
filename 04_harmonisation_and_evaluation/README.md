@@ -211,21 +211,39 @@ Monitoring, CLI (`--input`/`--output`/`--no-monitor`) and tests
 (`00_test/test_dates_normaliser.py`) follow the same conventions as
 `actor_name/01_heuristic_rules/name_normaliser.py`.
 
-Not yet implemented: this heuristic rule does not attempt `non_parseable`
-values (~0.02%, left as low-confidence/empty pending future work — see
-02_llm_based below).
+This heuristic rule deliberately does not attempt `non_parseable` values
+(~0.02%) — see 02_llm_based below, which resolves that residual.
 
-**02\_llm\_based/**
+**02\_llm\_based/ — Implemented**
 
-`llm_dates_normaliser.py` — Placeholder/to be completed (unchanged; not in
-scope for the heuristic-rule work above)
+`llm_dates_normaliser.py` resolves the `non_parseable` residual left by the
+heuristic rule above (only that residual — never the 99.98% the heuristic
+step already resolved with high confidence). Deduplicated by raw value
+(many non_parseable rows share the same malformed source string) and cached
+to disk, so re-running the pipeline never re-queries an already-resolved
+value. Uses Claude Opus 5 with structured output (a Pydantic schema via
+`client.messages.parse()`, not free-text JSON parsing) so the response is
+always a parseable `{harmonised, confidence, explanation}` triple; the
+system prompt gives the model the same EDTF conventions documented above
+(mask characters -> `X`, BCE sign kept literal with no astronomical
+offset), so its output stays consistent with the heuristic step's.
 
-Target: values classified as `non_parseable` or with `low` confidence by the heuristic normaliser. The LLM must:
+By default, running `dates_normaliser.py` also runs this step immediately
+afterwards (single command = fully harmonised, as far as automatically
+possible) and merges the result back into the same output file, adding an
+`llm_explanation` column; pass `--no-llm` to skip it and get the
+heuristic-only output. This default-on choice is still "prefer the lighter
+resolution" in practice — see section 1 above — because the LLM step only
+ever processes the small residual (currently a few hundred rows, deduplicated
+to under two dozen unique raw values) the heuristic step could not resolve;
+it never re-processes anything already resolved deterministically.
 
-1. Identify the type of temporal expression
-2. Extract year(s) or century
-3. Apply EDTF modifiers for approximation/uncertainty
-4. Return a structured JSON response
+Monitoring, CLI (`--heuristic-output`/`--output`/`--cache`/`--model`/
+`--effort`/`--no-monitor`) and tests (`00_test/test_llm_dates_normaliser.py`,
+10 tests using a fake client — no real API calls) follow the same
+conventions as the rest of the pipeline. Requires the `anthropic` package
+(added to `pyproject.toml`) and an Anthropic API credential to actually run
+against the API — see the script's module docstring.
 
 ---
 
@@ -670,7 +688,7 @@ python -m 04_harmonisation_and_evaluation.02_evaluation.run_evaluation \
 | Field | Dataset | Heuristic normaliser | LLM normaliser | Evaluator | Notes |
 |---|---|---|---|---|---|
 | `actor_name`/`first_name`/`last_name` | actor\_data | 🔄 In progress (`name_normaliser.py` — derive-from-first-last only) | 📋 to be completed | ✅ Complete (`PersonNameEvaluation`) | Matching scripts implemented; output consumed by module 05 |
-| `actor_birth`/`death`/`start`/`end` | actor\_data | 🔄 In progress (`dates_normaliser.py` — numeric BnF convention → EDTF; `non_parseable` ~0.02% not yet handled) | 📋 to be completed (planned: default-on after the heuristic step, `--no-llm` to disable — see section 1) | 🔄 Skeleton | Target: EDTF; output consumed by `03_ready_dataset_assembly/assemble_actors_ready.py` |
+| `actor_birth`/`death`/`start`/`end` | actor\_data | 🔄 In progress (`dates_normaliser.py` — numeric BnF convention → EDTF, 99.98% of values) | Implemented (`llm_dates_normaliser.py` — resolves the `non_parseable` residual via Claude Opus 5; default-on after the heuristic step, `--no-llm` to disable — see section 1) | 🔄 Skeleton | Target: EDTF; output consumed by `03_ready_dataset_assembly/assemble_actors_ready.py` |
 | `actor_link_close`/`exact` | actor\_data | 📋 to be completed (`external_links_normaliser.py`) | — | 🔄 Skeleton | No LLM approach planned |
 | `place` | bnf\_edition\_data | — (empty) | — | 🔄 Skeleton | TGN approach implemented |
 | `place` (TGN lookup) | bnf\_edition\_data | ✅ Complete (`bnf_place_harmonisation.py`, integrated with monitor/report/tests; `.R` version not yet updated) | — | 🔄 Skeleton | Output in `bnf_publication_place.csv`; consumed by `03_ready_dataset_assembly/assemble_editions_ready.py` |
