@@ -1,4 +1,13 @@
 data/bnf_edition_data/edition_raw_data
+
+# COMHIS/estcr raw exports (Jonas, 2026-09-21) — too large for the LFS free
+# quota alongside everything already tracked (~264MB / ~314MB); kept locally
+# under data/estc/ and used directly by 06_mapping/05_map_estc_actors.py, but
+# not committed. Small samples for tests live in 00_test/data/estc_samples/.
+# estc_actors.csv (~34MB) is NOT ignored — comparable to other CSVs already
+# tracked via LFS in this repo, so it is committed directly.
+data/estc/estc_core.csv
+data/estc/estc_actor_links.csv
 old_extra
 01_data_retrieval/01_editions/data/
 01_data_retrieval/02_actors/data/old_zip
@@ -1150,6 +1159,9 @@ data/bnf_edition_data/bnf_editions_ready.csv
 00_monitor/report/query_agents_*
 00_monitor/report/query_editions_*
 00_monitor/report/recover_missing_acquisitions_*
+00_monitor/report/gen_subset_optm_*
+00_monitor/report/actors_deduplication_*
+00_monitor/report/05_map_estc_actors_*
 
 # actor query result batches — too many/large files for GitHub
 01_data_retrieval/02_actors/actors_data/actor_queries_results/

@@ -230,8 +230,8 @@ Divided into two sub-modules:
 
 | **Folder** | **Field(s)** | **Status** |
 | --- | --- | --- |
-| `actor_name/` | `actor_name`, `actor_first_name`, `actor_last_name` | 🔄 In progress |
-| `actor_dates/` | `actor_birth`, `actor_death`, `actor_start`, `actor_end` | 📋 Planned |
+| `actor_name/` | `actor_name`, `actor_first_name`, `actor_last_name` | 🔄 In progress — `derive_from_first_last` rule + `actors_deduplication.py` (identity resolution across distinct BnF URIs sharing a name, via shared external link or matching dates) implemented; regex/particle/alias cleaning still pending. |
+| `actor_dates/` | `actor_birth`, `actor_death`, `actor_start`, `actor_end` | ✅ Heuristic normaliser implemented (BnF numeric convention → EDTF); LLM fallback for the non-parseable residual also implemented. |
 | `external_links/` | `actor_link_close`, `actor_link_exact` | 📋 Planned |
 | `publication_place/` | `place` | ✅ Approach 02 complete |
 | `publisher/` | `publisher_1` | 📋 Planned |
@@ -319,7 +319,8 @@ Links the BnF dataset to three external authority catalogues.
 | --- | --- | --- |
 | **`01_map_viaf.py`** | VIAF | ID lookup → SRU name search (Levenshtein ≥ 0.85) |
 | **`02_map_wikidata.py`** | Wikidata | QID lookup → SPARQL label search |
-| **`03_map_estc_ecco.py`** | ESTC/ECCO | Heuristic field matching + LLM translation check |
+| **`03_map_estc_ecco.py`** | ESTC/ECCO (editions) | Heuristic field matching + LLM translation check |
+| **`05_map_estc_actors.py`** | ESTC actor authority (`estcr` package) | VIAF ID bridge → order-invariant name + date matching (actor-level overlap, independent of the edition pipeline) |
 | **`04_merge_mappings.py`** | — | Join of all mappings → final enriched datasets |
 
 ### **Algorithm details**

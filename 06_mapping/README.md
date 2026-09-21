@@ -8,7 +8,8 @@ Module 06 bridges the BnF dataset with three external authoritative catalogues:
 |--------|--------|--------|
 | `01_map_viaf.py` | VIAF | ID lookup → name-based SRU search |
 | `02_map_wikidata.py` | Wikidata | QID lookup → SPARQL label search |
-| `03_map_estc_ecco.py` | ESTC / ECCO | Heuristic field matching → LLM translation check |
+| `03_map_estc_ecco.py` | ESTC / ECCO (editions) | Heuristic field matching → LLM translation check |
+| `05_map_estc_actors.py` | ESTC actor authority (`estcr` package) | VIAF ID bridge → order-invariant name + date matching |
 | `04_merge_mappings.py` | — | Joins all mapping outputs into enriched datasets |
 
 ---
@@ -20,13 +21,15 @@ Module 06 bridges the BnF dataset with three external authoritative catalogues:
 ├── 01_map_viaf.py
 ├── 02_map_wikidata.py
 ├── 03_map_estc_ecco.py
+├── 05_map_estc_actors.py
 ├── 04_merge_mappings.py
-├── usage.MD
+├── README.md
 │
 ├── output/
 │   ├── viaf_mapping.csv
 │   ├── wikidata_mapping.csv
 │   ├── estc_mapping.csv
+│   ├── estc_actor_mapping.csv        ← BnF actor <-> ESTC actor overlap
 │   ├── bnf_actors_enriched.csv       ← final enriched actor dataset
 │   └── bnf_editions_enriched.csv     ← final enriched edition dataset
 │
@@ -34,6 +37,7 @@ Module 06 bridges the BnF dataset with three external authoritative catalogues:
     ├── viaf_mapping_report.json
     ├── wikidata_mapping_report.json
     ├── estc_mapping_report.json
+    ├── estc_actor_mapping_report.json
     └── merge_report.json
 ```
 
@@ -58,6 +62,14 @@ python 06_mapping/03_map_estc_ecco.py \
 
 # Step 4 — Merge all
 python 06_mapping/04_merge_mappings.py
+
+# Step 5 — ESTC actor-authority overlap (independent of steps 1-4: only
+# needs the two actor tables, so it can be run as soon as an actors dataset
+# and data/estc/estc_actors.csv are available, e.g. for an early
+# author-level deliverable before the edition/translation pipeline is done)
+python 06_mapping/05_map_estc_actors.py \
+    --bnf-actors  "05_subset_optimisation 2/output/bnf_actors_optimised.csv" \
+    --estc-actors data/estc/estc_actors.csv
 ```
 
 ---
@@ -262,16 +274,74 @@ are written to:
 
 ---
 
-## 7. Script 4 — `04_merge_mappings.py`
+## 7. Script 5 — `05_map_estc_actors.py` (author-level overlap)
 
-Joins all three mapping CSVs onto the base actor and edition datasets,
-producing two enriched CSVs ready for graph materialisation (module 07).
+Matches BnF actors directly against the ESTC **actor-authority** table
+(`estc_actors.csv`, from the COMHIS `estcr` R package —
+https://github.com/COMHIS/estcr — distinct from `estc_raw_sane.csv`, which is
+edition-level and consumed by script 03 above). This is the standalone
+deliverable for an author-level BnF/ESTC overlap: it only needs the two
+actor-side tables, so it can be produced before the edition/translation
+pipeline (script 03) is complete.
 
-### Actor enrichment adds columns
-`viaf_id, viaf_name, viaf_birth_date, viaf_death_date, mapping_confidence_viaf, qid, wikidata_label, isni, lc_id, bnf_ark_wikidata, mapping_confidence_wikidata`
+### Inputs
+- Any BnF actor dataset — module 4's ready dataset (id column `actor`) or
+  module 5's optimised subset (id column `BnF_ID`); both accepted.
+- `data/estc/estc_actors.csv` — the ESTC actor-authority table.
 
-### Edition enrichment adds columns
-`estc_id, estc_title, estc_author, estc_year, estc_language, estc_match_type, estc_confidence`
+### Algorithm
+**Pass 1 (VIAF ID bridge):** both sides can carry a VIAF URI (BnF's
+`actor_link_exact`/`actor_link_close`; ESTC's `viaf_link`, or `actor_id`
+itself when `actor_id_type == "viaf"`). A shared numeric VIAF ID is treated
+as certain identity — `match_type = "viaf_id"`, confidence 1.0.
+
+**Pass 2 (order-invariant name + date fallback):** BnF names are typically
+"Given Family" while ESTC's `name_unified` is typically the library-
+authority "Family, Given" — comparing raw strings would treat identical
+names as different people. Both sides are reduced to a normalised **token
+set** instead (preferring structured first/last-name fields when both
+datasets have them), so naming-convention order doesn't matter. Within a
+token-set match, birth/death years are compared with a ±`--year-window`
+(default 2) tolerance:
+- a comparable year pair falling outside the window discards that candidate
+  (same name, conflicting lifespan → different person, not ambiguous);
+- exactly one candidate surviving → `match_type = "name_and_dates"`;
+- more than one surviving → `match_type = "ambiguous_name_and_dates"`
+  (alternates listed in `notes`, never auto-resolved);
+- none surviving but some had no comparable date at all →
+  `match_type = "ambiguous_name_only"` (same name, no evidence either way);
+- no name-token overlap, or every same-name candidate had conflicting
+  dates → `match_type = "unmatched"`.
+
+ESTC rows with `is_organization == TRUE` are excluded (persons only).
+
+### Output fields
+`BnF_ID, estc_actor_id, match_type, confidence, bnf_actor_name, estc_actor_name, estc_viaf_link, bnf_birth_year, bnf_death_year, estc_birth_year, estc_death_year, notes`
+
+### Parameters
+| Param | Default | Description |
+|-------|---------|-------------|
+| `--bnf-actors` | `05_subset_optimisation 2/output/bnf_actors_optimised.csv` | BnF actor dataset (either ID schema) |
+| `--estc-actors` | `data/estc/estc_actors.csv` | ESTC actor-authority table |
+| `--year-window` | `2` | ±years tolerance for birth/death comparison |
+| `--monitor-script` / `--no-monitor` | — | Same monitoring mechanism as the rest of this module |
+
+### Resource-usage monitoring
+Same "embedded state-based monitoring" mechanism as the rest of module 06:
+one checkpoint per processed BnF actor plus a final checkpoint, on by
+default from the CLI. Reports land in
+`00_monitor/report/05_map_estc_actors_<YYYYMMDD_HHMMSS>_py.txt`.
+
+### On the `estcr` data files
+`data/estc/estc_core.csv` (~264MB) and `data/estc/estc_actor_links.csv`
+(~314MB) are **not committed** (gitignored) — too large for this repo's
+git-lfs quota alongside everything already tracked. They are not needed by
+this script (only `estc_actors.csv`, ~34MB, is — and it *is* committed).
+Small samples of all three (a few hundred rows each) live in
+`00_test/data/estc_samples/` for tests. `estc_core.csv` /
+`estc_actor_links.csv` become relevant once the edition-level crosswalk
+(attaching editions/roles to the actor overlap) is tackled — not yet
+implemented.
 
 ---
 
@@ -287,7 +357,24 @@ for script 03.  Contact the COMHIS group (University of Helsinki) or consult
 
 ---
 
-## 9. LLM pass — notes for reproducibility
+## 9. Script 4 — `04_merge_mappings.py`
+
+Joins all three mapping CSVs onto the base actor and edition datasets,
+producing two enriched CSVs ready for graph materialisation (module 07).
+
+### Actor enrichment adds columns
+`viaf_id, viaf_name, viaf_birth_date, viaf_death_date, mapping_confidence_viaf, qid, wikidata_label, isni, lc_id, bnf_ark_wikidata, mapping_confidence_wikidata`
+
+### Edition enrichment adds columns
+`estc_id, estc_title, estc_author, estc_year, estc_language, estc_match_type, estc_confidence`
+
+Note: `estc_actor_mapping.csv` (script 05, above) is not yet joined in by
+this script — actor-level ESTC overlap is currently a separate output,
+consumed directly rather than merged into `bnf_actors_enriched.csv`.
+
+---
+
+## 10. LLM pass — notes for reproducibility
 
 The LLM translation check introduces a non-deterministic element.  To ensure
 reproducibility:
