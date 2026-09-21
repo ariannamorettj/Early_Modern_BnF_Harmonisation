@@ -7,7 +7,7 @@ from pathlib import Path
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 GEN_SUBSET_OPTM_PATH = (
-    PROJECT_ROOT / "05_subset_optimisation 2" / "gen_subset_optm.py"
+    PROJECT_ROOT / "05_subset_optimisation" / "gen_subset_optm.py"
 )
 
 ACTOR_FIELDNAMES = ["actor"] + [

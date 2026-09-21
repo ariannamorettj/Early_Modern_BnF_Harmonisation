@@ -1,0 +1,12 @@
+{
+  "actors": {
+    "total": 92780,
+    "viaf_matched": 0,
+    "wikidata_matched": 0,
+    "estc_actor_matched": 5590
+  },
+  "editions": {
+    "total": 20,
+    "estc_matched": 0
+  }
+}

@@ -4,25 +4,68 @@ name_normaliser.py  —  Module 04, actor_name heuristic rules.
 
 Scope of this implementation
 -----------------------------
-Only ONE rule is implemented so far: derive_from_first_last.
+When actor_name is empty/missing (including the "***" / "NAN" null markers,
+not just blank) but actor_first_name and/or actor_last_name are present,
+actor_name is derived from them (correction_type = "derived_from_first_last")
+— fixing cases such as "Lucretius", whose BnF record carries the name only
+in actor_last_name. When all three fields are empty, the row is left empty
+(correction_type = "unresolved_missing").
 
-    When actor_name is empty/missing but actor_first_name and/or
-    actor_last_name are present, derive actor_name from them. This fixes
-    cases such as "Lucretius", whose BnF record carries the name only in
-    actor_last_name while actor_name and actor_first_name are NA — making
-    the actor effectively unsearchable by name downstream.
+When actor_name IS present, a cascade of deterministic cleanup rules is
+applied, matching the anomaly categories detected by this module's own QA
+evaluator (04_harmonisation_and_evaluation/02_evaluation/actor_name_evaluation.py
+— PersonNameEvaluation — reimplemented here as corrections rather than mere
+detection, so the two intentionally share vocabulary/logic; see each helper
+function below for the exact rule):
 
-    When actor_name is already present, this script currently passes it
-    through unchanged (correction_type = "none").
+    1. stripped_rdf_literal_tag — the RDF quoted-literal-with-language-tag
+       syntax leaking through into actor_name for some records (e.g.
+       '"William Blake trust"@fr' -> "William Blake trust") is unwrapped.
+       Found empirically to account for 2,507 of 2,519 cases (99.5%) that
+       would otherwise hit rule 2 below and come out only half-cleaned
+       (closing quote and "@fr" both left in place) — see
+       strip_rdf_literal_tag()'s docstring.
+    2. stripped_brackets_or_separators — wrapping [], (), {}, «», <>, quotes
+       removed (e.g. "[Voltaire]" -> "Voltaire"), but ONLY when doing so
+       fully resolves the anomaly (no bracket/quote character left behind);
+       otherwise the bracket/quote doesn't wrap the whole string (e.g. a
+       book title quoted mid-sentence) and stripping would leave a stray,
+       unbalanced character — flagged instead as
+       "unresolved_brackets_or_separators" (low confidence, unchanged).
+    3. alias_split — text from a recognised alias marker onward is dropped,
+       keeping the primary name (e.g. "Jean Petit, dit le Grand" ->
+       "Jean Petit"). Which name is "primary" vs. "alias" is a convention,
+       not a certainty — confidence is medium, not high.
+    4. stripped_title_role — an embedded title/role token is removed,
+       keeping the remaining name (e.g. "Sieur de Malherbe" -> "Malherbe").
+       Also medium confidence: stripping the wrong token would corrupt the
+       name.
+    5. unresolved_multiple_values — an internal conjunction suggests the
+       cell holds more than one name (e.g. "Jean et Pierre Dupont").
+       Deliberately NOT auto-split: picking one name over the other would
+       be a guess, not a correction (same "never silently guess" stance as
+       this module's actors_deduplication.py and 06_mapping's
+       ambiguous_translation handling) — flagged, left unchanged, low
+       confidence.
+    6. preferred_first_last_over_initials — when actor_name looks like bare
+       initials or a dotted abbreviation ("M D", "Th.") AND
+       actor_first_name/actor_last_name together give something more
+       informative, the latter is preferred. Without a better alternative,
+       the value is left as-is (correction_type =
+       "initials_or_abbreviation_unresolved", low confidence) — there is
+       nothing to derive the full name from.
+    7. none — no anomaly detected; value passed through unchanged, high
+       confidence.
 
-    When all three fields are empty, the row is left empty
-    (correction_type = "unresolved_missing") — nothing to derive from.
+The first rule to fire wins (checked in the order above); a value can only
+have one correction_type per run.
 
-All OTHER anomalies documented in this module's README (initials-only,
-embedded titles/roles, aliases, multi-value cells, bracket/encoding noise,
-Roman numerals — see 04_harmonisation_and_evaluation/README.md section 3.1)
-are NOT implemented yet. They are intentionally left as future incremental
-work rather than attempted here.
+NOT implemented (left for future work, deliberately — see this module's
+README): a curated name_correction_dict.json for known-erroneous strings
+with no rule-based fix (that requires manual annotation of real cases, not
+fabricated here), and Roman-numeral suffix handling (e.g. "Julien I" —
+detected by the evaluator as a warning, but genuinely ambiguous whether "I"
+is part of the name or noise, so left untouched rather than guessed at).
 
 Input
 -----
@@ -61,7 +104,7 @@ python name_normaliser.py \\
 python name_normaliser.py --no-monitor
 """
 
-import os, csv, sys, zipfile, argparse, importlib.util
+import os, csv, re, sys, zipfile, argparse, importlib.util
 from pathlib import Path
 
 # Windows consoles default stdout to a legacy codepage (e.g. cp1252) that
@@ -115,11 +158,210 @@ def _monitor_checkpoint(monitor_module, monitor_state, index, total, actor_uri, 
     )
 
 
+NULL_MARKERS = {"NA", "N/A", "NULL", "NONE", "NAN", "***", ""}
+
+
 def normalise(v) -> str:
     if v is None:
         return ""
     s = str(v).strip()
-    return "" if s.upper() in {"NA", "N/A", "NULL", "NONE", ""} else s
+    return "" if s.upper() in NULL_MARKERS else s
+
+
+# ── Name-cleanup rule vocabulary ──────────────────────────────────────────────
+# Shares its categories/vocabulary by design with PersonNameEvaluation
+# (04_harmonisation_and_evaluation/02_evaluation/actor_name_evaluation.py),
+# reimplemented here as corrections rather than detection-only. Duplicated
+# rather than imported: that module is QA tooling with its own package
+# structure (relative imports), and this codebase's convention is to keep
+# each script's small helpers self-contained (see e.g. normalise() above,
+# duplicated across every script in this pipeline) rather than share a
+# cross-module dependency for a handful of constants.
+
+PARTICLES = {"de", "da", "di", "del", "van", "von", "y", "e", "et", "und"}
+CONJUNCTIONS = {"e", "and", "et", "y", "und"}
+
+_BRACKET_PAIRS = {"[": "]", "(": ")", "{": "}", "«": "»", "<": ">",
+                 '"': '"', "'": "'"}
+
+_ALIAS_MARKER_RE = re.compile(
+    r"\b(alias|dit\s+le|dit\s+la|dit\s+il|detto\s+il|detto\s+lo|detto\s+la|"
+    r"detta\s+la|called|also\s+known\s+as|known\s+as|surnomm[ée]e?|"
+    r"llamad[oa]|conocid[oa]\s+como|apodad[oa]|genannt|bekannt\s+als)\b",
+    re.IGNORECASE,
+)
+
+_SINGLE_WORD_TITLES = {
+    "veuve", "vve", "seigneur", "sieur", "prince", "chevalier", "comte",
+    "comtesse", "duque", "duc", "cardinal", "officier", "officer", "colonel",
+    "dame", "madame", "mme", "abbé", "abbe", "abate", "abbot", "herr",
+    "frau", "rey", "reina", "king", "queen",
+}
+_MULTI_WORD_TITLES = [
+    "vve de", "veuve de", "widow of", "vedova di", "viuda de", "witwe von",
+    "sieur de", "le fils du", "fils de", "son of", "hijo de", "figlio di",
+    "homme de lettres",
+]
+_TITLE_PHRASES = (sorted(_MULTI_WORD_TITLES, key=len, reverse=True)
+                 + sorted(_SINGLE_WORD_TITLES, key=len, reverse=True))
+_TITLE_RE = re.compile(
+    r"\b(" + "|".join(re.escape(t) for t in _TITLE_PHRASES) + r")\b",
+    re.IGNORECASE,
+)
+
+
+_RDF_LITERAL_RE = re.compile(r'^"(.*)"@[a-z]{2,3}$')
+
+
+def strip_rdf_literal_tag(value: str):
+    """Returns (inner_text, found). Handles the RDF quoted-literal-with-
+    language-tag syntax (e.g. '"William Blake trust"@fr') that leaks
+    through into actor_name for some records — found empirically to
+    account for the overwhelming majority (2,507 of 2,519 in a full-dataset
+    validation run) of what would otherwise fall into the generic
+    stripped_brackets_or_separators rule below. That generic rule's
+    trailing-non-alnum trim only strips symmetric wrapping (checked via
+    contains_brackets_or_separators()/_BRACKET_PAIRS), so it left the
+    closing quote AND the "@fr" tag both in place — checked here first,
+    as a dedicated, well-defined pattern, instead."""
+    m = _RDF_LITERAL_RE.match(value.strip())
+    if m:
+        inner = m.group(1).strip()
+        if inner:
+            return inner, True
+    return value, False
+
+
+def contains_brackets_or_separators(value: str) -> bool:
+    """Gate for strip_wrapping_punctuation(): mirrors
+    PersonNameEvaluation._contains_brackets_or_separators exactly. Without
+    this gate, strip_wrapping_punctuation()'s trailing-non-alnum trim would
+    also eat the period off a plain abbreviation like "Th." — the trim is
+    only appropriate once we know a real bracket/quote/separator is present."""
+    separators = "[](){}\"<>"
+    return any(ch in value for ch in separators) or "//" in value
+
+
+def strip_wrapping_punctuation(value: str) -> str:
+    """Remove a matched wrapping bracket/quote pair, then any remaining
+    non-alphanumeric characters at either end. Mirrors
+    PersonNameEvaluation._strip_wrapping_punctuation exactly."""
+    s = value.strip()
+    if not s:
+        return s
+    first, last = s[0], s[-1]
+    if first in _BRACKET_PAIRS and last == _BRACKET_PAIRS[first]:
+        s = s[1:-1].strip()
+    while s and not s[0].isalnum():
+        s = s[1:].lstrip()
+    while s and not s[-1].isalnum():
+        s = s[:-1].rstrip()
+    return s
+
+
+def split_on_alias_marker(value: str):
+    """Returns (primary_name, found). The text from the first recognised
+    alias marker onward (e.g. ", dit le Grand") is dropped; only the
+    portion before it is kept as the primary name."""
+    m = _ALIAS_MARKER_RE.search(value)
+    if not m:
+        return value, False
+    primary = value[:m.start()].strip(" ,;.")
+    if primary:
+        return primary, True
+    return value, False
+
+
+def strip_title_or_role(value: str):
+    """Returns (remainder, found). Removes the first recognised title/role
+    token or phrase (checked longest-first so e.g. "sieur de" matches
+    whole rather than leaving a dangling "de"), joining what remains."""
+    m = _TITLE_RE.search(value)
+    if not m:
+        return value, False
+    remainder = (value[:m.start()] + " " + value[m.end():])
+    remainder = re.sub(r"\s+", " ", remainder).strip(" ,;")
+    if remainder:
+        return remainder, True
+    return value, False
+
+
+def _looks_like_bare_initial(token: str) -> bool:
+    return bool(re.fullmatch(r"[A-Za-z]\.?", token))
+
+
+def looks_like_multiple_values(value: str) -> bool:
+    """Conservative subset of PersonNameEvaluation._contains_multiple_values:
+    an internal (not first, not last token) bare conjunction suggests two
+    concatenated names, unless:
+    - the tokens instead match a compound-surname pattern ("... de|del|di|
+      da|of ... e|and|et|y|und ...", e.g. "Fernando Álvarez de Toledo y
+      Pimentel"), legitimately one name; or
+    - the conjunction is the SECOND-TO-LAST token with at least two tokens
+      ahead of it (a given name and a first surname), e.g. "Juan Melo y
+      Girón", "Friedrich ... von Zinzendorf und Pottendorf" — the standard
+      Iberian/German double-surname convention. Found empirically (full-
+      dataset validation run) to be by far the dominant shape of what would
+      otherwise be flagged: unlike a real "Name1 CONJ Name2 Surname"
+      concatenation (conjunction near the START), a compound surname has
+      the conjunction near the END, immediately before the second surname; or
+    - the conjunction candidate sits next to a bare single-letter token
+      (e.g. "A E Crous", "F E Louys") — found empirically to be a middle
+      initial, not the Italian conjunction "e", in every sampled case. A
+      real conjunction joins two names, not an initial and a name."""
+    tokens = [t.strip(".,;") for t in value.split()]
+    if len(tokens) < 3:
+        return False
+    lower = [t.lower() for t in tokens]
+
+    preps = {"de", "del", "di", "da", "of"}
+    for i, tok in enumerate(lower[:-2]):
+        if tok in preps:
+            for j in range(i + 1, len(lower) - 1):
+                if lower[j] in CONJUNCTIONS:
+                    return False  # compound-surname pattern, not multiple values
+
+    if len(lower) >= 4 and lower[-2] in CONJUNCTIONS:
+        return False  # "Given [Given...] Surname1 CONJ Surname2" pattern
+
+    for i in range(1, len(lower) - 1):
+        if lower[i] not in CONJUNCTIONS:
+            continue
+        # A single UPPERCASE letter in the conjunction slot itself is a
+        # middle initial, not the word "e"/"y" (e.g. "Eric E Edner",
+        # "Sherman E. Lee") — case is the signal: a real conjunction reads
+        # lowercase in running prose even mid-name-string, an initial is
+        # capitalised. Checked case-sensitively (tokens[i], not lower[i]).
+        if len(tokens[i]) == 1 and tokens[i].isupper():
+            continue
+        if _looks_like_bare_initial(tokens[i - 1]) or _looks_like_bare_initial(tokens[i + 1]):
+            continue  # adjacent to a bare initial too (e.g. "A E Crous")
+        return True
+
+    return False
+
+
+def looks_like_initials_or_abbreviation(value: str) -> bool:
+    """Conservative subset of PersonNameEvaluation's
+    is_dotted_initials_only / is_initials_only / is_possible_abbreviation:
+    a single dotted abbreviation ("Th.", "M."), an all-dotted-initials
+    string ("M. B. L."), or bare short tokens ("M D", "M D P", particles
+    ignored)."""
+    tokens = value.split()
+    if not tokens:
+        return False
+
+    if len(tokens) == 1 and re.fullmatch(r"[A-Za-z]{1,3}\.", tokens[0]):
+        return True
+
+    if all(re.fullmatch(r"[A-Za-z]\.", t) for t in tokens):
+        return True
+
+    significant = [t for t in tokens if t.strip(".").lower() not in PARTICLES]
+    if len(tokens) >= 2 and significant and all(len(t.strip(".")) <= 2 for t in significant):
+        return True
+
+    return False
 
 
 def iter_actor_rows(path: str):
@@ -137,20 +379,64 @@ def iter_actor_rows(path: str):
             yield from csv.DictReader(f)
 
 
+def apply_name_cleanup_rules(actor_name: str, first_name: str, last_name: str):
+    """
+    Cascade of deterministic cleanup rules applied when actor_name is
+    non-empty (see module docstring for the full rationale per rule). The
+    first rule to fire wins. Returns (harmonised, correction_type, confidence).
+    """
+    rdf_inner, found_rdf = strip_rdf_literal_tag(actor_name)
+    if found_rdf:
+        return rdf_inner, "stripped_rdf_literal_tag", "high"
+
+    if contains_brackets_or_separators(actor_name):
+        cleaned = strip_wrapping_punctuation(actor_name)
+        # Only accept the strip if it fully removed the offending
+        # character(s) — found empirically (full-dataset validation run)
+        # that a bracket/quote NOT wrapping the whole string (e.g. a book
+        # title quoted mid-sentence, "Un Prêtre ... [de l'oratoire ...]"
+        # missing its closing "]") leaves a stray, unbalanced character
+        # behind, actively corrupting the value rather than cleaning it.
+        if cleaned and cleaned != actor_name and not contains_brackets_or_separators(cleaned):
+            return cleaned, "stripped_brackets_or_separators", "high"
+        return actor_name, "unresolved_brackets_or_separators", "low"
+
+    primary, found_alias = split_on_alias_marker(actor_name)
+    if found_alias:
+        return primary, "alias_split", "medium"
+
+    remainder, found_title = strip_title_or_role(actor_name)
+    if found_title:
+        return remainder, "stripped_title_role", "medium"
+
+    if looks_like_multiple_values(actor_name):
+        return actor_name, "unresolved_multiple_values", "low"
+
+    if looks_like_initials_or_abbreviation(actor_name):
+        derived = " ".join(part for part in (first_name, last_name) if part)
+        if derived and derived.lower() != actor_name.lower():
+            return derived, "preferred_first_last_over_initials", "high"
+        return actor_name, "initials_or_abbreviation_unresolved", "low"
+
+    return actor_name, "none", "high"
+
+
 def derive_actor_name(actor_name: str, first_name: str, last_name: str) -> dict:
     """
-    Apply the derive_from_first_last rule to one actor's already-deduplicated
-    field values (all three already normalise()'d — empty string means
-    absent).
+    Apply the full name-harmonisation cascade to one actor's already-
+    deduplicated field values (all three already normalise()'d — empty
+    string means absent): derive_from_first_last when actor_name is empty,
+    otherwise apply_name_cleanup_rules() (see module docstring for the
+    full list of correction_type values this can return).
 
-    Returns a dict with keys:
-        - harmonised: str
-        - correction_type: str ('none', 'derived_from_first_last',
-          or 'unresolved_missing')
-        - confidence: str ('high' or 'low')
+    Returns a dict with keys: harmonised (str), correction_type (str),
+    confidence ('high' / 'medium' / 'low').
     """
     if actor_name:
-        return {"harmonised": actor_name, "correction_type": "none", "confidence": "high"}
+        harmonised, correction_type, confidence = apply_name_cleanup_rules(
+            actor_name, first_name, last_name)
+        return {"harmonised": harmonised, "correction_type": correction_type,
+                "confidence": confidence}
 
     derived = " ".join(part for part in (first_name, last_name) if part)
     if derived:
@@ -198,7 +484,7 @@ def run(input_path: str, output_dir: str,
     os.makedirs(output_dir, exist_ok=True)
     output_path = os.path.join(output_dir, output_filename)
 
-    stats = {"none": 0, "derived_from_first_last": 0, "unresolved_missing": 0}
+    stats: dict = {}
 
     monitor_module = None
     monitor_state = None
@@ -238,16 +524,15 @@ def run(input_path: str, output_dir: str,
         )
 
     print(f"\n✓ Wrote {len(actors):,} actors -> {output_path}")
-    print(f"  derived_from_first_last : {stats['derived_from_first_last']:,}")
-    print(f"  none (already present)  : {stats['none']:,}")
-    print(f"  unresolved_missing      : {stats['unresolved_missing']:,}")
+    for correction_type, n in sorted(stats.items(), key=lambda x: -x[1]):
+        print(f"  {correction_type:<35} {n:,}")
     return output_path
 
 
 def main():
     parser = argparse.ArgumentParser(
         description="actor_name heuristic normaliser "
-                    "(derive-from-first-last rule only — see module docstring)")
+                    "(see module docstring for the full rule cascade)")
     parser.add_argument("--input", default=INPUT_DEFAULT)
     parser.add_argument("--output", default=OUTPUT_DIR_DEFAULT, help="Output directory")
     parser.add_argument("--output-filename", default=OUTPUT_FILENAME_DEFAULT)

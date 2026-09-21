@@ -1,10 +1,12 @@
 {
-  "total_bnf_actors": 92780,
+  "total_bnf_actor_records": 92780,
+  "distinct_actors_after_dedup": 92688,
+  "duplicates_collapsed": 92,
   "by_match_type": {
-    "unmatched": 81994,
-    "viaf_id": 5291,
-    "ambiguous_name_only": 5193,
-    "name_and_dates": 282,
+    "unmatched": 81939,
+    "viaf_id": 5290,
+    "ambiguous_name_only": 5159,
+    "name_and_dates": 280,
     "ambiguous_name_and_dates": 20
   }
 }

@@ -230,7 +230,7 @@ Divided into two sub-modules:
 
 | **Folder** | **Field(s)** | **Status** |
 | --- | --- | --- |
-| `actor_name/` | `actor_name`, `actor_first_name`, `actor_last_name` | 🔄 In progress — `derive_from_first_last` rule + `actors_deduplication.py` (identity resolution across distinct BnF URIs sharing a name, via shared external link or matching dates) implemented; regex/particle/alias cleaning still pending. |
+| `actor_name/` | `actor_name`, `actor_first_name`, `actor_last_name` | ✅ Heuristic normaliser implemented (derive-from-first-last, RDF-literal/bracket/alias/title cleanup, multiple-values flagging, initials resolution — validated against the full raw dataset) + `actors_deduplication.py` (identity resolution across distinct BnF URIs sharing a name). Remaining: `name_correction_dict.json` (curated known-error lookup — needs manual annotation, not attempted). |
 | `actor_dates/` | `actor_birth`, `actor_death`, `actor_start`, `actor_end` | ✅ Heuristic normaliser implemented (BnF numeric convention → EDTF); LLM fallback for the non-parseable residual also implemented. |
 | `external_links/` | `actor_link_close`, `actor_link_exact` | 📋 Planned |
 | `publication_place/` | `place` | ✅ Approach 02 complete |
@@ -355,7 +355,7 @@ Links the BnF dataset to three external authority catalogues.
 
 **Final outputs (04):**
 
-- `bnf_actors_enriched.csv` — actors with additional columns: `viaf_id`, `qid`, `isni`, `lc_id`, etc. (does not yet include the 05 actor-authority overlap — that output, `estc_actor_mapping.csv`, is currently separate, not merged in)
+- `bnf_actors_enriched.csv` — actors with additional columns: `viaf_id`, `qid`, `isni`, `lc_id`, `estc_actor_id`, `estc_actor_match_type`, etc. (the last two from script 05's actor-authority overlap, merged in by `BnF_ID`)
 - `bnf_editions_enriched.csv` — editions with additional columns: `estc_id`, `estc_title`, `estc_confidence`, etc.
 
 ---

@@ -197,6 +197,125 @@ def test_load_estc_actors_excludes_organisations(tmp_path):
     assert [r["actor_id"] for r in rows] == ["e1"]
 
 
+# ── load_viaf_mapping() / match_actor() enrichment ───────────────────────────
+
+def test_load_viaf_mapping_reads_bnf_id_to_viaf_id(tmp_path):
+    m = load_module()
+    path = tmp_path / "viaf_mapping.csv"
+    _write_csv(path, ["BnF_ID", "viaf_id", "match_type"], [
+        {"BnF_ID": "A1", "viaf_id": "67750325", "match_type": "name"},
+    ])
+    assert m.load_viaf_mapping(str(path)) == {"A1": "67750325"}
+
+
+def test_load_viaf_mapping_missing_file_returns_empty(tmp_path):
+    m = load_module()
+    assert m.load_viaf_mapping(str(tmp_path / "nope.csv")) == {}
+
+
+def test_match_actor_uses_supplementary_viaf_id_from_mapping():
+    """The BnF row itself carries no VIAF link, but 01_map_viaf.py found one
+    by name — that supplementary ID should still bridge to the ESTC actor."""
+    m = load_module()
+    bnf_row = {"actor": "A1", "actor_name": "Someone Else"}  # no VIAF link on the row
+    estc_actors = [{
+        "actor_id": "viaf_67750325", "viaf_link": "https://viaf.org/viaf/67750325",
+        "name_unified": "Charles I", "is_organization": "FALSE",
+    }]
+    viaf_index, name_index = m.build_estc_indexes(estc_actors)
+    result = m.match_actor(bnf_row, viaf_index, name_index, estc_actors, year_window=2,
+                           viaf_mapping={"A1": "67750325"})
+    assert result["match_type"] == "viaf_id"
+    assert result["estc_actor_id"] == "viaf_67750325"
+
+
+def test_match_actor_ignores_viaf_mapping_for_other_actors():
+    m = load_module()
+    bnf_row = {"actor": "A1", "actor_name": "Nobody Matching"}
+    estc_actors = [{"actor_id": "e1", "name_unified": "Someone Unrelated", "is_organization": "FALSE"}]
+    viaf_index, name_index = m.build_estc_indexes(estc_actors)
+    result = m.match_actor(bnf_row, viaf_index, name_index, estc_actors, year_window=2,
+                           viaf_mapping={"A2": "99999"})  # keyed to a different actor
+    assert result["match_type"] == "unmatched"
+
+
+# ── load_dedup_mapping() / collapse_by_canonical() ───────────────────────────
+
+def test_load_dedup_mapping_reads_actor_to_canonical(tmp_path):
+    m = load_module()
+    path = tmp_path / "dedup.csv"
+    _write_csv(path, ["actor_uri", "canonical_actor_uri"], [
+        {"actor_uri": "A1", "canonical_actor_uri": "A1"},
+        {"actor_uri": "A2", "canonical_actor_uri": "A1"},
+    ])
+    assert m.load_dedup_mapping(str(path)) == {"A1": "A1", "A2": "A1"}
+
+
+def test_load_dedup_mapping_missing_file_returns_empty(tmp_path):
+    m = load_module()
+    assert m.load_dedup_mapping(str(tmp_path / "nope.csv")) == {}
+
+
+def test_collapse_by_canonical_keeps_highest_confidence_match():
+    m = load_module()
+    results = [
+        {"BnF_ID": "A1", "match_type": "unmatched", "confidence": 0.0, "notes": ""},
+        {"BnF_ID": "A2", "match_type": "viaf_id", "confidence": 1.0, "notes": ""},
+    ]
+    collapsed = m.collapse_by_canonical(results, {"A1": "A1", "A2": "A1"})
+    assert len(collapsed) == 1
+    assert collapsed[0]["BnF_ID"] == "A1"
+    assert collapsed[0]["match_type"] == "viaf_id"
+    assert "A2" in collapsed[0]["notes"]
+
+
+def test_collapse_by_canonical_prefers_higher_confidence_within_same_match_type():
+    m = load_module()
+    results = [
+        {"BnF_ID": "A1", "match_type": "ambiguous_name_and_dates", "confidence": 0.5, "notes": ""},
+        {"BnF_ID": "A2", "match_type": "ambiguous_name_and_dates", "confidence": 0.9, "notes": ""},
+    ]
+    collapsed = m.collapse_by_canonical(results, {"A1": "A1", "A2": "A1"})
+    assert collapsed[0]["confidence"] == 0.9
+
+
+def test_collapse_by_canonical_is_noop_when_mapping_empty():
+    m = load_module()
+    results = [{"BnF_ID": "A1", "match_type": "unmatched", "confidence": 0.0, "notes": ""}]
+    assert m.collapse_by_canonical(results, {}) == results
+
+
+def test_collapse_by_canonical_leaves_unmapped_actors_untouched():
+    m = load_module()
+    results = [{"BnF_ID": "A9", "match_type": "unmatched", "confidence": 0.0, "notes": ""}]
+    collapsed = m.collapse_by_canonical(results, {"A1": "A0"})  # A9 absent from mapping
+    assert collapsed == results
+
+
+# ── split_by_confidence() ─────────────────────────────────────────────────────
+
+def test_split_by_confidence_buckets_correctly():
+    m = load_module()
+    results = [
+        {"BnF_ID": "A1", "match_type": "viaf_id"},
+        {"BnF_ID": "A2", "match_type": "name_and_dates"},
+        {"BnF_ID": "A3", "match_type": "ambiguous_name_only"},
+        {"BnF_ID": "A4", "match_type": "ambiguous_name_and_dates"},
+        {"BnF_ID": "A5", "match_type": "unmatched"},
+    ]
+    confident, review = m.split_by_confidence(results)
+    assert [r["BnF_ID"] for r in confident] == ["A1", "A2"]
+    assert [r["BnF_ID"] for r in review] == ["A3", "A4"]
+
+
+def test_split_by_confidence_excludes_unmatched_from_both():
+    m = load_module()
+    results = [{"BnF_ID": "A1", "match_type": "unmatched"}]
+    confident, review = m.split_by_confidence(results)
+    assert confident == []
+    assert review == []
+
+
 # ── run_mapping() end-to-end ──────────────────────────────────────────────────
 
 def test_run_mapping_writes_csv_and_report_with_expected_schema(tmp_path):
@@ -226,9 +345,131 @@ def test_run_mapping_writes_csv_and_report_with_expected_schema(tmp_path):
 
     with open(report_path, encoding="utf-8") as f:
         report = json.load(f)
-    assert report["total_bnf_actors"] == 2
+    assert report["total_bnf_actor_records"] == 2
+    assert report["distinct_actors_after_dedup"] == 2
+    assert report["duplicates_collapsed"] == 0
     assert report["by_match_type"]["name_and_dates"] == 1
     assert report["by_match_type"]["unmatched"] == 1
+
+
+def test_run_mapping_writes_confident_and_review_subset_files(tmp_path):
+    m = load_module()
+    bnf_path = tmp_path / "bnf.csv"
+    _write_csv(bnf_path, BNF_FIELDS, [
+        {"BnF_ID": "A1", "actor_name": "Joseph Warner",
+         "actor_birth": "1717", "actor_death": "1801"},  # -> name_and_dates
+        {"BnF_ID": "A2", "actor_name": "Jean Petit"},     # -> ambiguous_name_only
+        {"BnF_ID": "A3", "actor_name": "Nobody Matching"},  # -> unmatched
+    ])
+    estc_path = tmp_path / "estc_actors.csv"
+    _write_csv(estc_path, ESTC_FIELDS, [
+        {"actor_id": "e1", "name_unified": "Warner, Joseph", "is_organization": "FALSE",
+         "year_birth": "1717", "year_death": "1801"},
+        {"actor_id": "e2", "name_unified": "Petit, Jean", "is_organization": "FALSE"},
+    ])
+
+    output_path, _ = m.run_mapping(
+        str(bnf_path), str(estc_path), str(tmp_path / "out" / "mapping.csv"),
+        str(tmp_path / "report" / "report.json"),
+    )
+
+    confident_path = m._with_suffix(output_path, "_confident")
+    review_path = m._with_suffix(output_path, "_review")
+
+    with open(confident_path, newline="", encoding="utf-8") as f:
+        confident_rows = list(csv.DictReader(f))
+    assert [r["BnF_ID"] for r in confident_rows] == ["A1"]
+
+    with open(review_path, newline="", encoding="utf-8") as f:
+        review_rows = list(csv.DictReader(f))
+    assert [r["BnF_ID"] for r in review_rows] == ["A2"]
+
+    with open(output_path, newline="", encoding="utf-8") as f:
+        full_rows = list(csv.DictReader(f))
+    assert len(full_rows) == 3  # unmatched A3 still present in the full mapping
+
+
+def test_run_mapping_with_dedup_mapping_collapses_duplicate_bnf_actors(tmp_path):
+    m = load_module()
+    bnf_path = tmp_path / "bnf.csv"
+    _write_csv(bnf_path, BNF_FIELDS, [
+        # A1 and A2 are the same real person under two BnF URIs: A1 alone
+        # has no dates to match on, A2 does.
+        {"BnF_ID": "A1", "actor_name": "Joseph Warner"},
+        {"BnF_ID": "A2", "actor_name": "Joseph Warner",
+         "actor_birth": "1717", "actor_death": "1801"},
+    ])
+    estc_path = tmp_path / "estc_actors.csv"
+    _write_csv(estc_path, ESTC_FIELDS, [
+        {"actor_id": "e1", "name_unified": "Warner, Joseph", "is_organization": "FALSE",
+         "year_birth": "1717", "year_death": "1801"},
+    ])
+    dedup_path = tmp_path / "dedup.csv"
+    _write_csv(dedup_path, ["actor_uri", "canonical_actor_uri"], [
+        {"actor_uri": "A1", "canonical_actor_uri": "A1"},
+        {"actor_uri": "A2", "canonical_actor_uri": "A1"},
+    ])
+
+    output_path, report_path = m.run_mapping(
+        str(bnf_path), str(estc_path), str(tmp_path / "out.csv"), str(tmp_path / "report.json"),
+        dedup_mapping_path=str(dedup_path),
+    )
+
+    with open(output_path, newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 1
+    assert rows[0]["BnF_ID"] == "A1"
+    assert rows[0]["match_type"] == "name_and_dates"
+
+    with open(report_path, encoding="utf-8") as f:
+        report = json.load(f)
+    assert report["total_bnf_actor_records"] == 2
+    assert report["distinct_actors_after_dedup"] == 1
+    assert report["duplicates_collapsed"] == 1
+
+
+def test_run_mapping_without_dedup_mapping_path_keeps_duplicates_separate(tmp_path):
+    """dedup_mapping_path defaults to None programmatically (matching this
+    module's monitoring convention) — duplicates are not collapsed unless a
+    path is explicitly given."""
+    m = load_module()
+    bnf_path = tmp_path / "bnf.csv"
+    _write_csv(bnf_path, BNF_FIELDS, [
+        {"BnF_ID": "A1", "actor_name": "Joseph Warner"},
+        {"BnF_ID": "A2", "actor_name": "Joseph Warner",
+         "actor_birth": "1717", "actor_death": "1801"},
+    ])
+    estc_path = tmp_path / "estc_actors.csv"
+    _write_csv(estc_path, ESTC_FIELDS, [])
+
+    output_path, _ = m.run_mapping(str(bnf_path), str(estc_path), str(tmp_path / "out.csv"),
+                                   str(tmp_path / "report.json"))
+    with open(output_path, newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    assert len(rows) == 2
+
+
+def test_run_mapping_with_viaf_mapping_finds_matches_bnf_data_alone_would_miss(tmp_path):
+    m = load_module()
+    bnf_path = tmp_path / "bnf.csv"
+    _write_csv(bnf_path, BNF_FIELDS, [
+        {"BnF_ID": "A1", "actor_name": "Someone Else"},  # no VIAF link on the raw row
+    ])
+    estc_path = tmp_path / "estc_actors.csv"
+    _write_csv(estc_path, ESTC_FIELDS, [
+        {"actor_id": "viaf_67750325", "viaf_link": "https://viaf.org/viaf/67750325",
+         "name_unified": "Charles I", "is_organization": "FALSE"},
+    ])
+    viaf_path = tmp_path / "viaf_mapping.csv"
+    _write_csv(viaf_path, ["BnF_ID", "viaf_id"], [{"BnF_ID": "A1", "viaf_id": "67750325"}])
+
+    output_path, _ = m.run_mapping(
+        str(bnf_path), str(estc_path), str(tmp_path / "out.csv"), str(tmp_path / "report.json"),
+        viaf_mapping_path=str(viaf_path),
+    )
+    with open(output_path, newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    assert rows[0]["match_type"] == "viaf_id"
 
 
 # ── format_human_report() ────────────────────────────────────────────────────
@@ -298,8 +539,14 @@ class FakeMonitorModule:
         return state
 
 
-def test_run_mapping_writes_monitor_checkpoint_per_actor_and_stops_cleanly(monkeypatch, tmp_path):
+def test_run_mapping_writes_monitor_checkpoint_periodically_and_at_end(monkeypatch, tmp_path):
+    """Checkpoints fire every MONITOR_CHECKPOINT_EVERY actors, not one per
+    actor (that was the previous, much slower behaviour) — verified here by
+    lowering the cadence to 2 so a 3-actor run produces exactly two
+    progress checkpoints (at record 2, and at the final record 3) plus the
+    completion checkpoint."""
     m = load_module()
+    monkeypatch.setattr(m, "MONITOR_CHECKPOINT_EVERY", 2)
     fake_monitor = FakeMonitorModule()
     monkeypatch.setattr(m, "load_monitor_module", lambda monitor_script: fake_monitor)
 
@@ -307,6 +554,7 @@ def test_run_mapping_writes_monitor_checkpoint_per_actor_and_stops_cleanly(monke
     _write_csv(bnf_path, BNF_FIELDS, [
         {"BnF_ID": "A1", "actor_name": "Voltaire"},
         {"BnF_ID": "A2", "actor_name": "Nobody"},
+        {"BnF_ID": "A3", "actor_name": "Someone Else"},
     ])
     estc_path = tmp_path / "estc_actors.csv"
     _write_csv(estc_path, ESTC_FIELDS, [])
@@ -315,9 +563,9 @@ def test_run_mapping_writes_monitor_checkpoint_per_actor_and_stops_cleanly(monke
                  str(tmp_path / "report.json"), use_monitor=True)
 
     assert len(fake_monitor.start_calls) == 1
-    assert len(fake_monitor.update_calls) == 2 + 1
-    assert "A1" in fake_monitor.update_calls[0]
-    assert "A2" in fake_monitor.update_calls[1]
+    assert len(fake_monitor.update_calls) == 2 + 1  # record 2, record 3 (final), completion
+    assert "A2" in fake_monitor.update_calls[0]
+    assert "A3" in fake_monitor.update_calls[1]
     assert fake_monitor.update_calls[-1] == "Completed ESTC actor mapping run"
     assert fake_monitor.stop_calls == [True]
 

@@ -28,8 +28,8 @@ Heuristic rules based on:
 | `actors_name_matching.py` | Groups actor rows by normalised `actor_name`, identifying actors appearing with multiple name variants. Pre-existing file. |
 | `actors_id_matching.py` | Groups actor rows by BnF `actor` URI, identifying actors appearing with multiple metadata values. Pre-existing file. |
 | `actors_deduplication.py` | Identity-resolution across distinct BnF actor URIs that share the same normalised `actor_name`: two records are merged when they also share an external link (`actor_link_exact`/`actor_link_close`) or identical `actor_birth`+`actor_death` values; same-name pairs with no such evidence are flagged `ambiguous_name_only` and left unmerged for manual review. See its module docstring for the full algorithm. |
-| `name_normaliser.py` | **[IN PROGRESS]** Only the `derive_from_first_last` rule is implemented: fills `actor_name` from `actor_first_name`/`actor_last_name` when `actor_name` is empty (e.g. "Lucretius", stored only in `actor_last_name`). Regex cleaning, particle handling, bracket stripping, and alias detection are still **[TODO]**. |
-| `name_correction_dict.json` | **[TODO]** JSON lookup dictionary mapping known erroneous name strings to their corrected form. |
+| `name_normaliser.py` | `derive_from_first_last` (fills `actor_name` from `actor_first_name`/`actor_last_name` when empty) plus a full cleanup cascade for non-empty values: RDF-literal-with-language-tag unwrapping, bracket/separator stripping (only when it fully resolves — see module docstring), alias splitting, title/role stripping, multiple-values flagging (never auto-split — see module docstring), and initials/abbreviation resolution via first/last name. Validated against the full raw dataset (124,695 actors) during development, with three real precision issues found and fixed along the way — see module docstring for what each rule does and why. |
+| `name_correction_dict.json` | **[TODO]** JSON lookup dictionary mapping known erroneous name strings (with no rule-based fix) to their corrected form — requires manual annotation of real cases, not attempted here. |
 
 ## Expected Output
 
@@ -37,14 +37,14 @@ A CSV with columns:
 - `actor_uri` — original BnF actor URI
 - `actor_name_original` — original raw value
 - `actor_name_harmonised` — corrected value after rule application
-- `correction_type` — label of the rule that triggered the correction (e.g., `strip_brackets`, `remove_title`, `alias_split`)
+- `correction_type` — label of the rule that triggered the correction: `none`, `derived_from_first_last`, `stripped_rdf_literal_tag`, `stripped_brackets_or_separators`, `unresolved_brackets_or_separators`, `alias_split`, `stripped_title_role`, `unresolved_multiple_values`, `preferred_first_last_over_initials`, `initials_or_abbreviation_unresolved`, or `unresolved_missing` — see `name_normaliser.py`'s module docstring for what each one does
 - `confidence` — `high` / `medium` / `low` depending on rule certainty
 
 ## Deduplication output (`actors_deduplication.py`)
 
 Input: the actors-ready dataset (`04_harmonisation_and_evaluation/output/bnf_actors_ready.csv`,
 id column `actor`) **or** module 5's optimised subset
-(`05_subset_optimisation 2/output/bnf_actors_optimised.csv`, id column
+(`05_subset_optimisation/output/bnf_actors_optimised.csv`, id column
 `BnF_ID`) — both id-column schemas are auto-detected (`get_actor_id()`).
 
 `output/actor_dedup_mapping.csv` — one row per actor URI that shares its

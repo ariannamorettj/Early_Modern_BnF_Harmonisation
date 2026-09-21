@@ -63,12 +63,15 @@ python 06_mapping/03_map_estc_ecco.py \
 # Step 4 — Merge all
 python 06_mapping/04_merge_mappings.py
 
-# Step 5 — ESTC actor-authority overlap (independent of steps 1-4: only
-# needs the two actor tables, so it can be run as soon as an actors dataset
-# and data/estc/estc_actors.csv are available, e.g. for an early
-# author-level deliverable before the edition/translation pipeline is done)
+# Step 5 — ESTC actor-authority overlap (usable independently of steps 2-4:
+# only needs the two actor tables, so it can be run as soon as an actors
+# dataset and data/estc/estc_actors.csv are available, e.g. for an early
+# author-level deliverable before the edition/translation pipeline is done.
+# Running Step 1 first is recommended, not required: this script defaults
+# to reading its viaf_mapping.csv for additional VIAF IDs Pass 1 would
+# otherwise miss, but proceeds fine without it if that file isn't there yet)
 python 06_mapping/05_map_estc_actors.py \
-    --bnf-actors  "05_subset_optimisation 2/output/bnf_actors_optimised.csv" \
+    --bnf-actors  "05_subset_optimisation/output/bnf_actors_optimised.csv" \
     --estc-actors data/estc/estc_actors.csv
 ```
 
@@ -77,10 +80,7 @@ python 06_mapping/05_map_estc_actors.py \
 ## 4. Script 1 — `01_map_viaf.py`
 
 ### Inputs
-- `05_subset_optimisation/output/bnf_actors_optimised.csv` (the script's
-  hardcoded default; the actual directory in this repo is currently
-  `05_subset_optimisation 2/output/...` — pass `--input` explicitly until
-  the folder is renamed / the default is fixed to match)
+- `05_subset_optimisation/output/bnf_actors_optimised.csv`
 
 ### Algorithm
 **Pass 1 (ID-based):** VIAF URIs already present in `actor_link_exact` /
@@ -110,8 +110,7 @@ accepted if the Levenshtein similarity ratio ≥ `--threshold` (default 0.85).
 ## 5. Script 2 — `02_map_wikidata.py`
 
 ### Inputs
-- `05_subset_optimisation/output/bnf_actors_optimised.csv` (same stale
-  hardcoded default as script 1 above — pass `--input` explicitly)
+- `05_subset_optimisation/output/bnf_actors_optimised.csv`
 - `06_mapping/output/viaf_mapping.csv` (optional, supplies additional QIDs)
 
 ### Algorithm
@@ -319,26 +318,67 @@ token-set match, birth/death years are compared with a ±`--year-window`
 
 ESTC rows with `is_organization == TRUE` are excluded (persons only).
 
-### Output fields
+### VIAF-mapping enrichment (Pass 1)
+
+`01_map_viaf.py` can resolve a VIAF ID for a BnF actor via name-based SRU
+search even when the raw BnF record carries none in
+`actor_link_exact`/`actor_link_close`. Its output (`viaf_mapping.csv`) is
+fed in as an additional per-`BnF_ID` VIAF-ID source for Pass 1 — the same
+role `viaf_mapping.csv` already plays for `02_map_wikidata.py`. Enabled by
+default from the CLI (`--viaf-mapping`); off by default when
+`run_mapping(...)` is called programmatically. A missing mapping file is
+not an error — matching simply relies only on the VIAF IDs already present
+in the BnF data. To get the fullest benefit, run `01_map_viaf.py` on the
+same actor dataset before this script.
+
+### Deduplication of BnF-side duplicates
+
+Each BnF actor row is matched independently, so a BnF actor duplicated
+under two or more URIs (see `actors_deduplication.py`) would otherwise
+appear as separate — possibly conflicting — rows in the output.
+`collapse_by_canonical()` folds duplicates identified by that script's
+`actor_dedup_mapping.csv` onto a single row per canonical actor, keeping
+whichever duplicate found the highest-confidence match (ranked by
+`MATCH_TYPE_PRIORITY`: `viaf_id` > `name_and_dates` >
+`ambiguous_name_and_dates` > `ambiguous_name_only` > `unmatched`). Enabled
+by default from the CLI (`--dedup-mapping`); off by default when
+`run_mapping(...)` is called programmatically (pass a path to opt in). A
+missing mapping file is not an error — collapsing is silently skipped.
+
+### Output files (same columns in all three, one row per distinct actor)
 `BnF_ID, estc_actor_id, match_type, confidence, bnf_actor_name, estc_actor_name, estc_viaf_link, bnf_birth_year, bnf_death_year, estc_birth_year, estc_death_year, notes`
 
-Alongside `estc_actor_mapping_report.json`, a plain-language
-`estc_actor_mapping_report.txt` is written automatically on every run
-(template-filled from the same counts, not LLM-generated) — a per-match-type
-breakdown plus a short summary paragraph, for checking the outcome without
-parsing JSON.
+| File | Contents |
+|------|----------|
+| `estc_actor_mapping.csv` | Every distinct actor, including `unmatched` |
+| `estc_actor_mapping_confident.csv` | `viaf_id` + `name_and_dates` only — safe to use directly |
+| `estc_actor_mapping_review.csv` | `ambiguous_name_only` + `ambiguous_name_and_dates` only — needs manual confirmation before use |
+
+`unmatched` rows appear only in the full file, never in either split.
+
+`estc_actor_mapping_report.json` carries `total_bnf_actor_records`
+(pre-dedup), `distinct_actors_after_dedup`, `duplicates_collapsed`, and
+per-match_type counts over the distinct actors.
+`estc_actor_mapping_report.txt` — the same numbers as plain-language
+sentences, written automatically on every run (template-filled from the
+counts already computed, not LLM-generated), for checking the outcome
+without parsing JSON.
 
 ### Parameters
 | Param | Default | Description |
 |-------|---------|-------------|
-| `--bnf-actors` | `05_subset_optimisation 2/output/bnf_actors_optimised.csv` | BnF actor dataset (either ID schema) |
-| `--estc-actors` | `data/estc/estc_actors.csv` | ESTC actor-authority table |
+| `--bnf-actors` | `05_subset_optimisation/output/bnf_actors_optimised.csv` | BnF actor dataset (either ID schema) |
+| `--estc-actors` | `data/estc/estc_actors.csv` | ESTC actor-authority table (a sample or the full COMHIS export — this script makes no assumption about completeness) |
 | `--year-window` | `2` | ±years tolerance for birth/death comparison |
+| `--viaf-mapping` | `06_mapping/output/viaf_mapping.csv` | `01_map_viaf.py` output; supplies additional VIAF IDs for Pass 1; pass `''` to disable |
+| `--dedup-mapping` | `.../actor_name/01_heuristic_rules/output/actor_dedup_mapping.csv` | `actors_deduplication.py` output; pass `''` to disable collapsing |
 | `--monitor-script` / `--no-monitor` | — | Same monitoring mechanism as the rest of this module |
 
 ### Resource-usage monitoring
-Same "embedded state-based monitoring" mechanism as the rest of module 06:
-one checkpoint per processed BnF actor plus a final checkpoint, on by
+Same "embedded state-based monitoring" mechanism as the rest of module 06,
+but checkpointed every `MONITOR_CHECKPOINT_EVERY` (1,000) processed BnF
+actor records rather than every single one — per-record checkpointing was
+the main bottleneck on a ~93k-actor run — plus a final checkpoint, on by
 default from the CLI. Reports land in
 `00_monitor/report/05_map_estc_actors_<YYYYMMDD_HHMMSS>_py.txt`.
 
@@ -369,18 +409,28 @@ for script 03.  Contact the COMHIS group (University of Helsinki) or consult
 
 ## 9. Script 4 — `04_merge_mappings.py`
 
-Joins all three mapping CSVs onto the base actor and edition datasets,
-producing two enriched CSVs ready for graph materialisation (module 07).
+Joins all mapping CSVs onto the base actor and edition datasets, producing
+two enriched CSVs ready for graph materialisation (module 07).
 
 ### Actor enrichment adds columns
-`viaf_id, viaf_name, viaf_birth_date, viaf_death_date, mapping_confidence_viaf, qid, wikidata_label, isni, lc_id, bnf_ark_wikidata, mapping_confidence_wikidata`
+`viaf_id, viaf_name, viaf_birth_date, viaf_death_date, mapping_confidence_viaf, qid, wikidata_label, isni, lc_id, bnf_ark_wikidata, mapping_confidence_wikidata, estc_actor_id, estc_actor_name, estc_actor_match_type, estc_actor_confidence`
+
+The last four columns join in script 5's actor-level ESTC overlap
+(`estc_actor_mapping.csv`, keyed by `BnF_ID`) — decided to merge it in
+rather than leave it standalone, so `bnf_actors_enriched.csv` stays the
+single "actor + all known external authorities" dataset, matching how
+VIAF/Wikidata are already merged rather than left separate. A missing
+`estc_actor_mapping.csv` (script 5 not run yet) is not an error — those
+four columns are simply empty, same behaviour as a missing VIAF/Wikidata
+mapping.
 
 ### Edition enrichment adds columns
 `estc_id, estc_title, estc_author, estc_year, estc_language, estc_match_type, estc_confidence`
 
-Note: `estc_actor_mapping.csv` (script 05, above) is not yet joined in by
-this script — actor-level ESTC overlap is currently a separate output,
-consumed directly rather than merged into `bnf_actors_enriched.csv`.
+### Parameters (new)
+| Param | Default | Description |
+|-------|---------|-------------|
+| `--estc-actors` | `06_mapping/output/estc_actor_mapping.csv` | `05_map_estc_actors.py` output |
 
 ---
 

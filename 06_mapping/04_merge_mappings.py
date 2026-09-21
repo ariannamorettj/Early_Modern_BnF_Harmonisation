@@ -8,6 +8,7 @@ Inputs
 - 05_subset_optimisation/output/bnf_actors_optimised.csv   (base actor dataset)
 - 06_mapping/output/viaf_mapping.csv
 - 06_mapping/output/wikidata_mapping.csv
+- 06_mapping/output/estc_actor_mapping.csv                 (05_map_estc_actors.py)
 - 06_mapping/output/estc_mapping.csv
 - data/bnf_edition_data/bnf_editions_ready.csv             (base edition dataset)
 
@@ -15,7 +16,12 @@ Outputs
 -------
 output/bnf_actors_enriched.csv
     All original actor columns + viaf_id, viaf_name, qid, wikidata_label,
-    isni, lc_id, bnf_ark, mapping_confidence_viaf, mapping_confidence_wikidata
+    isni, lc_id, bnf_ark, mapping_confidence_viaf, mapping_confidence_wikidata,
+    estc_actor_id, estc_actor_name, estc_actor_match_type,
+    estc_actor_confidence (from 05_map_estc_actors.py — decided here, rather
+    than left standalone, so this file stays the single "actor + all known
+    external authorities" dataset consumed downstream, same rationale as
+    already merging in VIAF/Wikidata rather than leaving those separate)
 
 output/bnf_editions_enriched.csv
     All original edition columns + estc_id, estc_title, estc_author,
@@ -29,11 +35,12 @@ Usage
 python 06_mapping/04_merge_mappings.py
 
 python 06_mapping/04_merge_mappings.py \\
-    --actors    05_subset_optimisation/output/bnf_actors_optimised.csv \\
-    --viaf      06_mapping/output/viaf_mapping.csv \\
-    --wikidata  06_mapping/output/wikidata_mapping.csv \\
-    --editions  data/bnf_edition_data/bnf_editions_ready.csv \\
-    --estc      06_mapping/output/estc_mapping.csv \\
+    --actors     05_subset_optimisation/output/bnf_actors_optimised.csv \\
+    --viaf       06_mapping/output/viaf_mapping.csv \\
+    --wikidata   06_mapping/output/wikidata_mapping.csv \\
+    --estc-actors 06_mapping/output/estc_actor_mapping.csv \\
+    --editions   data/bnf_edition_data/bnf_editions_ready.csv \\
+    --estc       06_mapping/output/estc_mapping.csv \\
     --out-actors   06_mapping/output/bnf_actors_enriched.csv \\
     --out-editions 06_mapping/output/bnf_editions_enriched.csv \\
     --report    06_mapping/report/merge_report.json
@@ -58,11 +65,12 @@ except OverflowError:
     csv.field_size_limit(10 ** 9)
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
-ACTORS_DEFAULT    = "05_subset_optimisation/output/bnf_actors_optimised.csv"
-VIAF_DEFAULT      = "06_mapping/output/viaf_mapping.csv"
-WIKIDATA_DEFAULT  = "06_mapping/output/wikidata_mapping.csv"
-EDITIONS_DEFAULT  = "data/bnf_edition_data/bnf_editions_ready.csv"
-ESTC_DEFAULT      = "06_mapping/output/estc_mapping.csv"
+ACTORS_DEFAULT       = "05_subset_optimisation/output/bnf_actors_optimised.csv"
+VIAF_DEFAULT         = "06_mapping/output/viaf_mapping.csv"
+WIKIDATA_DEFAULT     = "06_mapping/output/wikidata_mapping.csv"
+ESTC_ACTORS_DEFAULT  = "06_mapping/output/estc_actor_mapping.csv"
+EDITIONS_DEFAULT     = "data/bnf_edition_data/bnf_editions_ready.csv"
+ESTC_DEFAULT         = "06_mapping/output/estc_mapping.csv"
 OUT_ACTORS        = "06_mapping/output/bnf_actors_enriched.csv"
 OUT_EDITIONS      = "06_mapping/output/bnf_editions_enriched.csv"
 REPORT_DEFAULT    = "06_mapping/report/merge_report.json"
@@ -99,15 +107,18 @@ def write_csv(records, path, fields):
 
 def run_merge(actors_path, viaf_path, wikidata_path,
               editions_path, estc_path,
-              out_actors, out_editions, report_path):
+              out_actors, out_editions, report_path,
+              estc_actors_path=ESTC_ACTORS_DEFAULT):
 
     # ── Actor enrichment ──────────────────────────────────────────────────────
-    viaf_idx  = load_index(viaf_path,     "BnF_ID")
-    wd_idx    = load_index(wikidata_path, "BnF_ID")
+    viaf_idx        = load_index(viaf_path,        "BnF_ID")
+    wd_idx          = load_index(wikidata_path,    "BnF_ID")
+    estc_actor_idx  = load_index(estc_actors_path, "BnF_ID")
 
     actor_records = []
     actor_fields  = None
-    stats_actors  = {"total": 0, "viaf_matched": 0, "wikidata_matched": 0}
+    stats_actors  = {"total": 0, "viaf_matched": 0, "wikidata_matched": 0,
+                     "estc_actor_matched": 0}
 
     if os.path.exists(actors_path):
         with open(actors_path, "r", encoding="utf-8", newline="") as f:
@@ -138,6 +149,15 @@ def run_merge(actors_path, viaf_path, wikidata_path,
                 if row["qid"]:
                     stats_actors["wikidata_matched"] += 1
 
+                # Merge ESTC actor-authority overlap (05_map_estc_actors.py)
+                erow = estc_actor_idx.get(bnf_id, {})
+                row["estc_actor_id"]            = normalise(erow.get("estc_actor_id", ""))
+                row["estc_actor_name"]          = normalise(erow.get("estc_actor_name", ""))
+                row["estc_actor_match_type"]    = normalise(erow.get("match_type", ""))
+                row["estc_actor_confidence"]    = normalise(erow.get("confidence", ""))
+                if row["estc_actor_id"]:
+                    stats_actors["estc_actor_matched"] += 1
+
                 actor_records.append(row)
 
     # Build final actor fieldnames
@@ -146,6 +166,8 @@ def run_merge(actors_path, viaf_path, wikidata_path,
         "mapping_confidence_viaf",
         "qid", "wikidata_label", "isni", "lc_id", "bnf_ark_wikidata",
         "mapping_confidence_wikidata",
+        "estc_actor_id", "estc_actor_name", "estc_actor_match_type",
+        "estc_actor_confidence",
     ]
     final_actor_fields = (actor_fields or []) + [
         c for c in extra_actor_cols if c not in (actor_fields or [])
@@ -154,6 +176,7 @@ def run_merge(actors_path, viaf_path, wikidata_path,
     print(f"\n✓ Enriched actors   → {out_actors}")
     print(f"  VIAF matched      : {stats_actors['viaf_matched']:,} / {stats_actors['total']:,}")
     print(f"  Wikidata matched  : {stats_actors['wikidata_matched']:,} / {stats_actors['total']:,}")
+    print(f"  ESTC actor matched: {stats_actors['estc_actor_matched']:,} / {stats_actors['total']:,}")
 
     # ── Edition enrichment ────────────────────────────────────────────────────
     estc_idx = load_index(estc_path, "BnF_edition_id")
@@ -208,6 +231,8 @@ def main():
     parser.add_argument("--actors",       default=ACTORS_DEFAULT)
     parser.add_argument("--viaf",         default=VIAF_DEFAULT)
     parser.add_argument("--wikidata",     default=WIKIDATA_DEFAULT)
+    parser.add_argument("--estc-actors",  default=ESTC_ACTORS_DEFAULT,
+                        help="05_map_estc_actors.py output (actor-level ESTC overlap)")
     parser.add_argument("--editions",     default=EDITIONS_DEFAULT)
     parser.add_argument("--estc",         default=ESTC_DEFAULT)
     parser.add_argument("--out-actors",   default=OUT_ACTORS)
@@ -218,6 +243,7 @@ def main():
         args.actors, args.viaf, args.wikidata,
         args.editions, args.estc,
         args.out_actors, args.out_editions, args.report,
+        estc_actors_path=args.estc_actors,
     )
 
 if __name__ == "__main__":

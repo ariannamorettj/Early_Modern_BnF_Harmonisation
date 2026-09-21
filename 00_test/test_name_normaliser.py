@@ -28,6 +28,259 @@ def _write_actor_csv(path, rows):
             writer.writerow({**{k: "" for k in fieldnames}, **row})
 
 
+# ── strip_rdf_literal_tag() ──────────────────────────────────────────────────
+
+def test_strip_rdf_literal_tag_unwraps_quoted_literal_with_language_tag():
+    nn = load_name_normaliser_module()
+    inner, found = nn.strip_rdf_literal_tag('"William Blake trust"@fr')
+    assert found is True
+    assert inner == "William Blake trust"
+
+
+def test_strip_rdf_literal_tag_noop_on_clean_name():
+    nn = load_name_normaliser_module()
+    inner, found = nn.strip_rdf_literal_tag("Voltaire")
+    assert found is False
+    assert inner == "Voltaire"
+
+
+def test_derive_actor_name_prefers_rdf_literal_rule_over_generic_brackets():
+    """Regression test for the real-data finding: a plain bracket-strip
+    left the closing quote and '@fr' tag both in place (99.5% of cases in
+    this bucket on the full raw dataset were this exact pattern)."""
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name('"William Blake trust"@fr', "", "")
+    assert result["harmonised"] == "William Blake trust"
+    assert result["correction_type"] == "stripped_rdf_literal_tag"
+    assert '"' not in result["harmonised"]
+    assert "@fr" not in result["harmonised"]
+
+
+# ── strip_wrapping_punctuation() ─────────────────────────────────────────────
+
+def test_strip_wrapping_punctuation_removes_matched_brackets():
+    nn = load_name_normaliser_module()
+    assert nn.strip_wrapping_punctuation("[Voltaire]") == "Voltaire"
+    assert nn.strip_wrapping_punctuation("(Voltaire)") == "Voltaire"
+    assert nn.strip_wrapping_punctuation('"Voltaire"') == "Voltaire"
+
+
+def test_strip_wrapping_punctuation_strips_stray_leading_trailing_punctuation():
+    nn = load_name_normaliser_module()
+    assert nn.strip_wrapping_punctuation("- Voltaire -") == "Voltaire"
+
+
+def test_strip_wrapping_punctuation_noop_on_clean_name():
+    nn = load_name_normaliser_module()
+    assert nn.strip_wrapping_punctuation("Voltaire") == "Voltaire"
+
+
+def test_contains_brackets_or_separators_gates_the_cascade_rule():
+    """Regression test: strip_wrapping_punctuation()'s trailing-non-alnum
+    trim would otherwise eat the period off a plain abbreviation like 'Th.'
+    before the initials/abbreviation rule ever runs — it must only fire
+    when a real bracket/quote/separator is present."""
+    nn = load_name_normaliser_module()
+    assert nn.contains_brackets_or_separators("Th.") is False
+    assert nn.contains_brackets_or_separators("[Voltaire]") is True
+
+
+# ── split_on_alias_marker() ──────────────────────────────────────────────────
+
+def test_split_on_alias_marker_drops_alias_text():
+    nn = load_name_normaliser_module()
+    primary, found = nn.split_on_alias_marker("Jean Petit, dit le Grand")
+    assert found is True
+    assert primary == "Jean Petit"
+
+
+def test_split_on_alias_marker_handles_alias_keyword():
+    nn = load_name_normaliser_module()
+    primary, found = nn.split_on_alias_marker("Giovanni Rossi alias Il Moro")
+    assert found is True
+    assert primary == "Giovanni Rossi"
+
+
+def test_split_on_alias_marker_noop_when_no_marker():
+    nn = load_name_normaliser_module()
+    primary, found = nn.split_on_alias_marker("Voltaire")
+    assert found is False
+    assert primary == "Voltaire"
+
+
+# ── strip_title_or_role() ─────────────────────────────────────────────────────
+
+def test_strip_title_or_role_removes_multi_word_title():
+    nn = load_name_normaliser_module()
+    remainder, found = nn.strip_title_or_role("Sieur de Malherbe")
+    assert found is True
+    assert remainder == "Malherbe"
+
+
+def test_strip_title_or_role_removes_single_word_title():
+    nn = load_name_normaliser_module()
+    remainder, found = nn.strip_title_or_role("Veuve Duval")
+    assert found is True
+    assert remainder == "Duval"
+
+
+def test_strip_title_or_role_noop_when_no_title():
+    nn = load_name_normaliser_module()
+    remainder, found = nn.strip_title_or_role("Voltaire")
+    assert found is False
+    assert remainder == "Voltaire"
+
+
+# ── looks_like_multiple_values() ─────────────────────────────────────────────
+
+def test_looks_like_multiple_values_detects_internal_conjunction():
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_multiple_values("Jean et Pierre Dupont") is True
+
+
+def test_looks_like_multiple_values_false_for_compound_surname():
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_multiple_values("Fernando Alvarez de Toledo y Pimentel") is False
+
+
+def test_looks_like_multiple_values_false_for_clean_name():
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_multiple_values("Voltaire") is False
+
+
+def test_looks_like_multiple_values_false_for_iberian_double_surname():
+    """Regression test for a real-data finding: the Iberian/German
+    double-surname convention ('Given Surname1 y|und Surname2') was the
+    dominant false-positive pattern once the middle-initial case was
+    fixed — hundreds of genuine single-person names like this one were
+    being flagged as concatenated multiple values."""
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_multiple_values("Juan Melo y Girón") is False
+    assert nn.looks_like_multiple_values(
+        "Friedrich August, Graf von Zinzendorf und Pottendorf") is False
+
+
+def test_looks_like_multiple_values_still_true_for_genuine_concatenation_near_start():
+    """The distinguishing signal is POSITION: a real concatenation of two
+    people has the conjunction near the start (two given names sharing a
+    surname), not second-to-last (a compound surname)."""
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_multiple_values("Peter et John Dollond") is True
+    assert nn.looks_like_multiple_values("Jean et Pierre Dupont") is True
+
+
+def test_looks_like_multiple_values_false_for_middle_initial_pattern():
+    """Regression test for a real-data finding: dozens of names like
+    'A E Crous' were false-positived as 'X and Crous' because a bare
+    uppercase 'E' middle initial case-folds to the Italian conjunction
+    'e'. A real conjunction joins two full names, not an initial and a
+    name."""
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_multiple_values("A E Crous") is False
+    assert nn.looks_like_multiple_values("F E Louys") is False
+
+
+def test_looks_like_multiple_values_false_when_conjunction_slot_itself_is_an_initial():
+    """Regression test for a second real-data finding: 'Eric E Edner' was
+    still flagged after the previous fix, because that fix only checked
+    the NEIGHBOURS of the conjunction slot for bare-initial shape, not the
+    slot itself. Case is the signal here: a capitalised single letter in
+    that slot is an initial ('E'), a real conjunction reads lowercase in
+    running prose ('e')."""
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_multiple_values("Eric E Edner") is False
+    assert nn.looks_like_multiple_values("Sherman E. Lee") is False
+    assert nn.looks_like_multiple_values("Flavio e Flaminio Bartoli") is True
+
+
+# ── looks_like_initials_or_abbreviation() ────────────────────────────────────
+
+def test_looks_like_initials_or_abbreviation_detects_dotted_abbreviation():
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_initials_or_abbreviation("Th.") is True
+
+
+def test_looks_like_initials_or_abbreviation_detects_bare_initials():
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_initials_or_abbreviation("M D") is True
+
+
+def test_looks_like_initials_or_abbreviation_false_for_clean_name():
+    nn = load_name_normaliser_module()
+    assert nn.looks_like_initials_or_abbreviation("Voltaire") is False
+
+
+# ── apply_name_cleanup_rules() / derive_actor_name() cascade ────────────────
+
+def test_derive_actor_name_strips_brackets():
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name("[Voltaire]", "", "")
+    assert result == {"harmonised": "Voltaire",
+                      "correction_type": "stripped_brackets_or_separators",
+                      "confidence": "high"}
+
+
+def test_derive_actor_name_flags_unresolvable_brackets_instead_of_corrupting():
+    """Regression test for a real-data finding: a quote/bracket that only
+    wraps part of the string (a book title quoted mid-sentence) must not be
+    naively stripped — that leaves a stray, unbalanced character behind,
+    which is worse than the original value."""
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name('Le Redacteur de la Morale de "Moise"', "", "")
+    assert result["harmonised"] == 'Le Redacteur de la Morale de "Moise"'
+    assert result["correction_type"] == "unresolved_brackets_or_separators"
+    assert result["confidence"] == "low"
+
+
+def test_derive_actor_name_splits_alias():
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name("Jean Petit, dit le Grand", "", "")
+    assert result["harmonised"] == "Jean Petit"
+    assert result["correction_type"] == "alias_split"
+    assert result["confidence"] == "medium"
+
+
+def test_derive_actor_name_strips_title_role():
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name("Sieur de Malherbe", "", "")
+    assert result["harmonised"] == "Malherbe"
+    assert result["correction_type"] == "stripped_title_role"
+    assert result["confidence"] == "medium"
+
+
+def test_derive_actor_name_flags_multiple_values_without_guessing():
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name("Jean et Pierre Dupont", "", "")
+    assert result["harmonised"] == "Jean et Pierre Dupont"
+    assert result["correction_type"] == "unresolved_multiple_values"
+    assert result["confidence"] == "low"
+
+
+def test_derive_actor_name_prefers_first_last_over_initials():
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name("Th.", "Thomas", "Hobbes")
+    assert result == {"harmonised": "Thomas Hobbes",
+                      "correction_type": "preferred_first_last_over_initials",
+                      "confidence": "high"}
+
+
+def test_derive_actor_name_leaves_initials_unresolved_without_alternative():
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name("Th.", "", "")
+    assert result == {"harmonised": "Th.",
+                      "correction_type": "initials_or_abbreviation_unresolved",
+                      "confidence": "low"}
+
+
+def test_derive_actor_name_treats_triple_star_as_missing():
+    """'***' is the BnF null marker used by PersonNameEvaluation's
+    missing-value error case, not just blank/NA/NULL."""
+    nn = load_name_normaliser_module()
+    result = nn.derive_actor_name("", "", "")  # normalise() already turns "***" into ""
+    assert result["correction_type"] == "unresolved_missing"
+    assert nn.normalise("***") == ""
+
+
 # ── derive_actor_name() ──────────────────────────────────────────────────────
 
 def test_derive_actor_name_passes_through_when_actor_name_present():
