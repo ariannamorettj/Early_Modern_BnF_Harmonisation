@@ -77,7 +77,10 @@ python 06_mapping/05_map_estc_actors.py \
 ## 4. Script 1 — `01_map_viaf.py`
 
 ### Inputs
-- `05_subset_optimisation/output/bnf_actors_optimised.csv`
+- `05_subset_optimisation/output/bnf_actors_optimised.csv` (the script's
+  hardcoded default; the actual directory in this repo is currently
+  `05_subset_optimisation 2/output/...` — pass `--input` explicitly until
+  the folder is renamed / the default is fixed to match)
 
 ### Algorithm
 **Pass 1 (ID-based):** VIAF URIs already present in `actor_link_exact` /
@@ -107,7 +110,8 @@ accepted if the Levenshtein similarity ratio ≥ `--threshold` (default 0.85).
 ## 5. Script 2 — `02_map_wikidata.py`
 
 ### Inputs
-- `05_subset_optimisation/output/bnf_actors_optimised.csv`
+- `05_subset_optimisation/output/bnf_actors_optimised.csv` (same stale
+  hardcoded default as script 1 above — pass `--input` explicitly)
 - `06_mapping/output/viaf_mapping.csv` (optional, supplies additional QIDs)
 
 ### Algorithm
@@ -317,6 +321,12 @@ ESTC rows with `is_organization == TRUE` are excluded (persons only).
 
 ### Output fields
 `BnF_ID, estc_actor_id, match_type, confidence, bnf_actor_name, estc_actor_name, estc_viaf_link, bnf_birth_year, bnf_death_year, estc_birth_year, estc_death_year, notes`
+
+Alongside `estc_actor_mapping_report.json`, a plain-language
+`estc_actor_mapping_report.txt` is written automatically on every run
+(template-filled from the same counts, not LLM-generated) — a per-match-type
+breakdown plus a short summary paragraph, for checking the outcome without
+parsing JSON.
 
 ### Parameters
 | Param | Default | Description |

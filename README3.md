@@ -307,6 +307,13 @@ Aggregates the actor dataset (one row per actor), enriches with roles, optionall
 
 `actor_profession` is not a direct field in the output: the bibliographic role (from `role_edition_map`) is considered the most reliable proxy for the agent's professional function in the Early Modern book trade.
 
+`gen_subset_optm.py --dedup-field` collapses rows sharing an identical value
+on one field (e.g. exact-`BnF_ID` aggregation) — it is not identity
+resolution. Actual cross-record identity duplicates (same real person under
+different BnF URIs, same name) are handled separately by module 04's
+`actors_deduplication.py` (see that module's README), which is not yet
+wired into this pipeline step.
+
 ---
 
 ### **`06_mapping` — Enrichment with External Authorities**
@@ -333,17 +340,22 @@ Links the BnF dataset to three external authority catalogues.
 **Wikidata (02):**
 
 - Pass 1 (ID-based): QID from existing links or from VIAF mapping → MediaWiki Entity API (labels, dates, BnF ARK authority P268, VIAF P214, ISNI P213, LC P244)
-- Pass 2 (SPARQL label): Wikidata Query Service query with filter on `rdfs:label` in French (±2 years birth date)
+- Pass 2 (SPARQL label): Wikidata Query Service query with filter on `rdfs:label` in French; date-constrained by whichever of birth/death year the BnF actor has (both → both checked ±2 years; only one known → only that one; neither → name-only)
 
-**ESTC/ECCO (03):**
+**ESTC/ECCO (03) — editions:**
 
 - Pass 1 (ID bridge): via VIAF ID shared between BnF and ESTC (scaffolded; requires ESTC authority table with VIAF ID)
-- Pass 2 (heuristic): year filter ±`year_window`, author similarity ≥ 0.80, title similarity ≥ 0.75
-- Pass 3 (LLM, optional): if author passes but title does not, and languages differ → Claude prompt to verify whether it is a translation. Requires `ANTHROPIC_API_KEY`. Output logged in `report/llm_calls.jsonl` for reproducibility.
+- Pass 2 (heuristic): year filter ±`year_window`, author similarity ≥ 0.80, title similarity ≥ 0.75 — same-edition matches, always take priority over Pass 3
+- Pass 3 (LLM, optional): a year-unconstrained author-blocked candidate pool (translations can appear decades after the original) is checked whenever author matches but title/language don't; Claude decides translation-or-not. More than one accepted candidate for the same BnF edition → `match_type = "ambiguous_translation"` (never auto-resolved to one). Requires `ANTHROPIC_API_KEY`. Output logged in `report/llm_calls.jsonl` for reproducibility.
+
+**ESTC actor authority (05) — actors, independent of the edition pipeline:**
+
+- Pass 1 (VIAF ID bridge): shared numeric VIAF ID between a BnF actor's links and an ESTC actor's `viaf_link`/`actor_id`
+- Pass 2 (name-token + date fallback): names compared as order-invariant token sets (BnF "Given Family" vs ESTC's "Family, Given" convention), then birth/death years checked ±`year_window`; more than one surviving candidate → `match_type = "ambiguous_name_and_dates"`, none but some without comparable dates → `ambiguous_name_only` — never auto-resolved
 
 **Final outputs (04):**
 
-- `bnf_actors_enriched.csv` — actors with additional columns: `viaf_id`, `qid`, `isni`, `lc_id`, etc.
+- `bnf_actors_enriched.csv` — actors with additional columns: `viaf_id`, `qid`, `isni`, `lc_id`, etc. (does not yet include the 05 actor-authority overlap — that output, `estc_actor_mapping.csv`, is currently separate, not merged in)
 - `bnf_editions_enriched.csv` — editions with additional columns: `estc_id`, `estc_title`, `estc_confidence`, etc.
 
 ---

@@ -1,0 +1,13 @@
+ACTOR DEDUPLICATION REPORT
+======================================================================
+
+Total actors read from input                : 92,780
+Name-groups with a name shared by >1 actor  : 5,005
+Clusters merged (confident duplicates)      : 74
+Actors merged into those clusters           : 166 (0.18%)
+Actors left ambiguous (not merged)          : 11,644 (12.55%)
+Actors in oversized groups (>200, not compared) : 0 (0.00%)
+
+Summary
+----------------------------------------------------------------------
+Out of 92,780 actors, 166 (0.18%) were confidently merged into 74 duplicate cluster(s), each backed by a shared external link or matching birth/death dates. A further 11,644 (12.55%) actors share a name with at least one other actor but could not be confirmed as the same person, and were left unmerged for manual review rather than guessed at.

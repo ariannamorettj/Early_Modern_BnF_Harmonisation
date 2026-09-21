@@ -61,6 +61,10 @@ normalised name with at least one other actor URI:
 `oversized_groups`, and summary `stats`, for manual review of the cases that
 were not auto-resolved.
 
+`report/actor_dedup_report.txt` — a plain-language rendering of the same
+`stats` (template-filled, not LLM-generated) written automatically on every
+run, so the outcome can be checked without parsing JSON.
+
 **Not yet wired downstream**: unlike `actor_name_harmonised.csv` (below),
 this mapping is not currently consumed by `assemble_actors_ready.py` or
 `gen_subset_optm.py` — it is a standalone diagnostic/resolution step.
@@ -70,8 +74,10 @@ before subset optimisation) is future work.
 ## Consumers
 
 The `actor_name_harmonised.csv` output of `name_normaliser.py` is read by
-`05_subset_optimisation/gen_subset_optm.py` (`--actor-name-harmonised`) to
-fill `actor_name` when empty in the optimised actor dataset.
+`04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_actors_ready.py`
+(`--actor-name-harmonised`) to fill `actor_name` when empty in the
+actors-ready dataset (`bnf_actors_ready.csv`), which module 5's
+`gen_subset_optm.py` then reads in turn.
 
 ## Monitoring
 

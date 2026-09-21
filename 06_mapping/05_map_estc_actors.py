@@ -340,6 +340,52 @@ def match_actor(bnf_row: dict, viaf_index: dict, name_index: dict,
     return _build_result(bnf_id, bnf_name, bnf_birth, bnf_death, None, "unmatched", 0.0, "")
 
 
+CONFIDENT_MATCH_TYPES = {"viaf_id", "name_and_dates"}
+
+
+def format_human_report(stats: dict, total: int) -> str:
+    """Plain-text, template-filled summary of one run — no LLM involved,
+    just the same `stats` counts already computed by run_mapping() rendered
+    as readable sentences. Written alongside the machine-readable JSON
+    report on every run so a human can check the outcome without parsing
+    JSON."""
+    lines = [
+        "ESTC ACTOR-AUTHORITY MATCHING REPORT",
+        "=" * 70,
+        "",
+        f"Total BnF actors processed : {total:,}",
+        "",
+        "Match type breakdown:",
+    ]
+    for match_type, count in sorted(stats.items(), key=lambda x: -x[1]):
+        pct = (count / total * 100) if total else 0.0
+        lines.append(f"  {match_type:<28} {count:>8,}   ({pct:5.2f}%)")
+
+    confident = sum(n for mt, n in stats.items() if mt in CONFIDENT_MATCH_TYPES)
+    ambiguous = sum(n for mt, n in stats.items() if mt.startswith("ambiguous"))
+    unmatched = stats.get("unmatched", 0)
+    pct_confident = (confident / total * 100) if total else 0.0
+    pct_ambiguous = (ambiguous / total * 100) if total else 0.0
+    pct_unmatched = (unmatched / total * 100) if total else 0.0
+
+    lines += [
+        "",
+        "Summary",
+        "-" * 70,
+        (
+            f"Of the {total:,} BnF actors processed, {confident:,} ({pct_confident:.2f}%) were "
+            "matched to an ESTC actor record with high confidence (a shared VIAF identifier, "
+            "or a matching name together with matching birth/death dates). A further "
+            f"{ambiguous:,} ({pct_ambiguous:.2f}%) actors share a name with an ESTC actor but "
+            "could not be confirmed via dates and are flagged as ambiguous rather than matched. "
+            f"The remaining {unmatched:,} ({pct_unmatched:.2f}%) actors had no candidate in the "
+            "ESTC actor-authority table."
+        ),
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def run_mapping(bnf_path: str, estc_actors_path: str, output_path: str, report_path: str,
                 year_window: int = YEAR_WINDOW_DEFAULT,
                 use_monitor: bool = False, monitor_script: str = MONITOR_SCRIPT_DEFAULT) -> tuple:
@@ -377,6 +423,10 @@ def run_mapping(bnf_path: str, estc_actors_path: str, output_path: str, report_p
         json.dump({"total_bnf_actors": total, "by_match_type": stats}, f,
                  ensure_ascii=False, indent=2)
 
+    report_txt_path = os.path.splitext(report_path)[0] + ".txt"
+    with open(report_txt_path, "w", encoding="utf-8") as f:
+        f.write(format_human_report(stats, total))
+
     if use_monitor:
         monitor_state = monitor_module.update_monitor_state(
             state=monitor_state, context="Completed ESTC actor mapping run", print_console=True,
@@ -390,6 +440,7 @@ def run_mapping(bnf_path: str, estc_actors_path: str, output_path: str, report_p
         print(f"  {mt:<28} {n:,}")
     print(f"✓ Wrote mapping -> {output_path}")
     print(f"✓ Wrote report  -> {report_path}")
+    print(f"✓ Wrote human-readable report -> {report_txt_path}")
     return output_path, report_path
 
 

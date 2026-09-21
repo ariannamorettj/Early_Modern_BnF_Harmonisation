@@ -1,0 +1,10 @@
+{
+  "total_bnf_actors": 92780,
+  "by_match_type": {
+    "unmatched": 81994,
+    "viaf_id": 5291,
+    "ambiguous_name_only": 5193,
+    "name_and_dates": 282,
+    "ambiguous_name_and_dates": 20
+  }
+}

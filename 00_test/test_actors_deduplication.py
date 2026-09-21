@@ -272,6 +272,52 @@ def test_run_respects_max_pairwise_group_size(tmp_path):
     assert all(r["match_type"] == "group_too_large_to_compare" for r in rows)
 
 
+# ── format_human_report() ────────────────────────────────────────────────────
+
+def test_format_human_report_contains_key_numbers():
+    dd = load_dedup_module()
+    stats = {
+        "name_groups_with_collisions": 5005,
+        "clusters_merged": 74,
+        "actors_merged": 166,
+        "actors_ambiguous": 11644,
+        "actors_in_oversized_groups": 0,
+    }
+    text = dd.format_human_report(stats, total_actors=92780, max_pairwise_group_size=200)
+    assert "92,780" in text
+    assert "74" in text
+    assert "166" in text
+    assert "11,644" in text
+    assert "0.18%" in text  # 166 / 92780
+
+
+def test_format_human_report_handles_zero_actors_without_dividing_by_zero():
+    dd = load_dedup_module()
+    stats = {
+        "name_groups_with_collisions": 0, "clusters_merged": 0,
+        "actors_merged": 0, "actors_ambiguous": 0, "actors_in_oversized_groups": 0,
+    }
+    text = dd.format_human_report(stats, total_actors=0, max_pairwise_group_size=200)
+    assert "0.00%" in text
+
+
+def test_run_writes_human_readable_txt_report_alongside_json(tmp_path):
+    dd = load_dedup_module()
+    input_path = tmp_path / "actors_ready.csv"
+    _write_actor_csv(input_path, [
+        {"actor": "A1", "actor_name": "Moliere", "actor_link_exact": "<http://viaf.org/viaf/1>"},
+        {"actor": "A2", "actor_name": "Moliere", "actor_link_close": "<http://viaf.org/viaf/1>"},
+    ])
+
+    _, report_path = dd.run(str(input_path), str(tmp_path / "out"), report_dir=str(tmp_path / "report"))
+
+    txt_path = report_path[:-len(".json")] + ".txt"
+    assert Path(txt_path).exists()
+    text = Path(txt_path).read_text(encoding="utf-8")
+    assert "ACTOR DEDUPLICATION REPORT" in text
+    assert "2" in text  # total actors
+
+
 # ── Monitor integration ──────────────────────────────────────────────────────
 
 class FakeMonitorModule:

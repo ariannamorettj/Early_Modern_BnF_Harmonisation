@@ -1,0 +1,15 @@
+ESTC ACTOR-AUTHORITY MATCHING REPORT
+======================================================================
+
+Total BnF actors processed : 92,780
+
+Match type breakdown:
+  unmatched                      81,994   (88.37%)
+  viaf_id                         5,291   ( 5.70%)
+  ambiguous_name_only             5,193   ( 5.60%)
+  name_and_dates                    282   ( 0.30%)
+  ambiguous_name_and_dates           20   ( 0.02%)
+
+Summary
+----------------------------------------------------------------------
+Of the 92,780 BnF actors processed, 5,573 (6.01%) were matched to an ESTC actor record with high confidence (a shared VIAF identifier, or a matching name together with matching birth/death dates). A further 5,213 (5.62%) actors share a name with an ESTC actor but could not be confirmed via dates and are flagged as ambiguous rather than matched. The remaining 81,994 (88.37%) actors had no candidate in the ESTC actor-authority table.

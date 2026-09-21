@@ -333,6 +333,42 @@ def dedup_group(name: str, rows: list[dict], max_pairwise_group_size: int) -> di
     return {"clusters": clusters, "ambiguous": ambiguous, "oversized": False}
 
 
+def format_human_report(stats: dict, total_actors: int, max_pairwise_group_size: int) -> str:
+    """Plain-text, template-filled summary of one run — no LLM involved,
+    just the same `stats` dict already computed by run() rendered as
+    readable sentences. Written alongside the machine-readable JSON report
+    on every run so a human can check the outcome without parsing JSON."""
+    pct_merged = (stats["actors_merged"] / total_actors * 100) if total_actors else 0.0
+    pct_ambiguous = (stats["actors_ambiguous"] / total_actors * 100) if total_actors else 0.0
+    pct_oversized = (stats["actors_in_oversized_groups"] / total_actors * 100) if total_actors else 0.0
+
+    lines = [
+        "ACTOR DEDUPLICATION REPORT",
+        "=" * 70,
+        "",
+        f"Total actors read from input                : {total_actors:,}",
+        f"Name-groups with a name shared by >1 actor  : {stats['name_groups_with_collisions']:,}",
+        f"Clusters merged (confident duplicates)      : {stats['clusters_merged']:,}",
+        f"Actors merged into those clusters           : {stats['actors_merged']:,} ({pct_merged:.2f}%)",
+        f"Actors left ambiguous (not merged)          : {stats['actors_ambiguous']:,} ({pct_ambiguous:.2f}%)",
+        f"Actors in oversized groups (>{max_pairwise_group_size}, not compared) : "
+        f"{stats['actors_in_oversized_groups']:,} ({pct_oversized:.2f}%)",
+        "",
+        "Summary",
+        "-" * 70,
+        (
+            f"Out of {total_actors:,} actors, {stats['actors_merged']:,} ({pct_merged:.2f}%) were "
+            f"confidently merged into {stats['clusters_merged']:,} duplicate cluster(s), each "
+            "backed by a shared external link or matching birth/death dates. A further "
+            f"{stats['actors_ambiguous']:,} ({pct_ambiguous:.2f}%) actors share a name with at "
+            "least one other actor but could not be confirmed as the same person, and were left "
+            "unmerged for manual review rather than guessed at."
+        ),
+        "",
+    ]
+    return "\n".join(lines)
+
+
 def run(input_path: str, output_dir: str,
        output_filename: str = OUTPUT_FILENAME_DEFAULT,
        report_dir: str = REPORT_DIR_DEFAULT,
@@ -437,6 +473,10 @@ def run(input_path: str, output_dir: str,
             "stats": stats,
         }, f, ensure_ascii=False, indent=2)
 
+    report_txt_path = os.path.splitext(report_path)[0] + ".txt"
+    with open(report_txt_path, "w", encoding="utf-8") as f:
+        f.write(format_human_report(stats, len(actors), max_pairwise_group_size))
+
     if use_monitor:
         monitor_state = monitor_module.update_monitor_state(
             state=monitor_state,
@@ -455,6 +495,7 @@ def run(input_path: str, output_dir: str,
          f"{stats['actors_in_oversized_groups']:,} actors")
     print(f"✓ Wrote mapping -> {output_path}")
     print(f"✓ Wrote report  -> {report_path}")
+    print(f"✓ Wrote human-readable report -> {report_txt_path}")
     return output_path, report_path
 
 

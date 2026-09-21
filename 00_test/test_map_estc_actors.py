@@ -231,6 +231,51 @@ def test_run_mapping_writes_csv_and_report_with_expected_schema(tmp_path):
     assert report["by_match_type"]["unmatched"] == 1
 
 
+# ── format_human_report() ────────────────────────────────────────────────────
+
+def test_format_human_report_contains_key_numbers():
+    m = load_module()
+    stats = {
+        "unmatched": 81994, "viaf_id": 5291,
+        "ambiguous_name_only": 5193, "name_and_dates": 282,
+        "ambiguous_name_and_dates": 20,
+    }
+    text = m.format_human_report(stats, total=92780)
+    assert "92,780" in text
+    assert "5,291" in text
+    assert "81,994" in text
+    assert "6.01%" in text  # (5291+282)/92780 confident
+
+
+def test_format_human_report_handles_zero_total():
+    m = load_module()
+    text = m.format_human_report({}, total=0)
+    assert "0.00%" in text
+
+
+def test_run_mapping_writes_human_readable_txt_report_alongside_json(tmp_path):
+    m = load_module()
+    bnf_path = tmp_path / "bnf.csv"
+    _write_csv(bnf_path, BNF_FIELDS, [
+        {"BnF_ID": "A1", "actor_name": "Joseph Warner",
+         "actor_birth": "1717", "actor_death": "1801"},
+    ])
+    estc_path = tmp_path / "estc_actors.csv"
+    _write_csv(estc_path, ESTC_FIELDS, [
+        {"actor_id": "e1", "name_unified": "Warner, Joseph", "is_organization": "FALSE",
+         "year_birth": "1717", "year_death": "1801"},
+    ])
+
+    _, report_path = m.run_mapping(
+        str(bnf_path), str(estc_path), str(tmp_path / "out.csv"), str(tmp_path / "report.json"),
+    )
+
+    txt_path = report_path[:-len(".json")] + ".txt"
+    assert Path(txt_path).exists()
+    text = Path(txt_path).read_text(encoding="utf-8")
+    assert "ESTC ACTOR-AUTHORITY MATCHING REPORT" in text
+
+
 # ── Monitor integration ──────────────────────────────────────────────────────
 
 class FakeMonitorModule:
