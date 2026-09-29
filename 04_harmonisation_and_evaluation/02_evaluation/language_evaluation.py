@@ -18,9 +18,12 @@ Output files (in output_reports/):
     language_warnings.csv
     language_errors.csv
 
-[TODO] The evaluate_value() method uses a hard-coded set of known ISO 639-2
-       codes as a quick validation check. Replace with a full ISO 639-2 lookup
-       once the language_lookup.json dictionary is finalised.
+Known-code set verified against the real raw dataset (see
+01_harmonisation/language/01_heuristic_rules/language_normaliser.py's
+module docstring): 106 distinct non-empty raw values found across
+1,344,914 rows, every single one an
+"<http://id.loc.gov/vocabulary/iso639-2/XXX>" URI with 0 exceptions — these
+106 codes are exactly what the source actually uses, not a guessed subset.
 """
 
 from typing import Optional, Tuple, List, Dict
@@ -29,16 +32,21 @@ import re
 from .evaluation_base import Evaluation
 
 
-# Subset of ISO 639-2 bibliographic codes most relevant to BnF data
-# [TODO] Replace with full ISO 639-2 table loaded from a JSON file
+# All 106 ISO 639-2 codes actually observed in the raw dataset's `language`
+# field (see language_normaliser.py's module docstring for the full
+# verification). Not a guessed subset — this is the complete real set.
 KNOWN_ISO_639_2 = {
-    "fre", "lat", "ita", "spa", "eng", "ger", "dut", "por",
-    "grc", "heb", "ara", "rus", "pol", "swe", "dan", "nor",
-    "gla", "wel", "bre", "oci", "pro", "fro", "frm",  # Old/Middle French, Occitan
-    "cat", "baq", "cor", "glg", "hun", "cze", "slo",
-    "und",  # undetermined
-    "mul",  # multiple languages
-    "zxx",  # no linguistic content
+    "afr", "alb", "alg", "ang", "ara", "arc", "arm", "art", "baq", "ben",
+    "bos", "bre", "car", "cat", "cel", "chi", "chu", "cop", "cos", "cze",
+    "dan", "dum", "dut", "eng", "enm", "epo", "est", "fin", "fre", "frm",
+    "fro", "fry", "gem", "geo", "ger", "gez", "gla", "gle", "gmh", "goh",
+    "got", "grc", "gre", "grn", "gsw", "heb", "hin", "hrv", "hsb", "hun",
+    "ice", "iku", "iro", "ita", "jav", "jpn", "kon", "lad", "lat", "lav",
+    "lit", "mal", "map", "may", "mis", "mlg", "mnc", "mul", "mus", "nds",
+    "nog", "non", "nor", "oci", "ota", "peo", "per", "pol", "por", "pro",
+    "roa", "roh", "rum", "rus", "sai", "sam", "sga", "sin", "sla", "slv",
+    "smi", "spa", "srp", "swe", "syc", "syr", "tam", "tat", "tel", "tgl",
+    "tur", "urd", "wel", "wen", "yid", "zxx",
 }
 
 
@@ -81,7 +89,7 @@ class LanguageEvaluation(Evaluation):
         super().__init__(config, csv_filepath, field_name=field_name)
 
     def evaluate_value(
-        self, value: Optional[str]
+        self, value: Optional[str], row: Optional[Dict[str, str]] = None
     ) -> Tuple[List[str], Dict[str, str]]:
         warnings: List[str] = []
         errors: Dict[str, str] = {}

@@ -90,63 +90,64 @@ Each normalisation script produces a CSV with the following core schema:
 
 **Dataset:** actor\_data
 **Fields:** `actor_name`, `actor_first_name`, `actor_last_name`
-**Overall status:** 🔄 In progress
+**Overall status:** ✅ Heuristic normaliser + LLM residual step both implemented.
 
-**Anomalies identified (from 03\_analysis)**
+**Real anomaly categories (superseding the anomaly table originally listed
+here, which predates the full implementation)** — from a full run of
+`name_normaliser.py` against the real dataset (124,695 unique actors,
+deduplicated by actor URI from the raw dataset's 551,622 rows):
 
-| Category | Examples |
-|---|---|
-| Initials-only | `M D`, `G.`, `M. B. L.` |
-| Abbreviations | `Th.`, `J.` |
-| Embedded titles/roles | `Veuve de`, `Sieur de`, `Abbé`, `Chevalier` |
-| Aliases/alternative names | `dit le`, `alias`, `detto il`, `surnommé` |
-| Multiple values in cell | `Pietro and Giovanni`, `Martinus Et` |
-| Encoding / noise | `[Dumas]`, `(Voltaire)`, `***`, `null`, `nan` |
-| Roman numerals | `Julien I`, `Louis XIV` |
+| `correction_type` | Count | Meaning |
+|---|---:|---|
+| `none` | 106,538 | No anomaly — value passed through unchanged |
+| `derived_from_first_last` | 14,046 | `actor_name` was empty; filled from `actor_first_name`/`actor_last_name` |
+| `stripped_rdf_literal_tag` | 2,507 | RDF quoted-literal-with-language-tag syntax leaking through (e.g. `'"William Blake trust"@fr'`) |
+| `stripped_title_role` | 1,460 | Embedded title/role removed (e.g. `"Sieur de Malherbe"` → `"Malherbe"`) |
+| `initials_or_abbreviation_unresolved` | 59 | Bare initials/abbreviation, no fuller form available — **LLM residual** |
+| `unresolved_multiple_values` | 47 | Looks like two concatenated names — **LLM residual** |
+| `alias_split` | 17 | Alias marker found (e.g. `"dit le"`), primary name kept |
+| `unresolved_brackets_or_separators` | 16 | Bracket/quote present but doesn't cleanly wrap the whole string — **LLM residual** |
+| `preferred_first_last_over_initials` | 3 | Initials-only `actor_name` replaced by a more informative `first_name`+`last_name` |
+| `unresolved_missing` | 2 | All three source fields empty — nothing to derive from |
 
-**01\_heuristic\_rules/**
+**01\_heuristic\_rules/ — Implemented**
 
-| File | Status | Function |
-|---|---|---|
-| `name_normaliser.py` | 🔄 In progress — `derive_from_first_last` rule implemented; regex/particle/bracket/alias rules still TODO | Fills `actor_name` from `actor_first_name`/`actor_last_name` when empty (e.g. actors like "Lucretius" whose BnF record only carries `actor_last_name`) → `actor_name_harmonised.csv`. Consumed by `05_subset_optimisation` to fill `actor_name` in the optimised actor dataset. |
-| `actors_id_matching.py` | ✅ Implemented | Groups rows by actor URI (`actor` column); for each repeated URI, aggregates distinct values per field with counts → JSON in `data/actors_matched_ids/` |
-| `actors_name_matching.py` | ✅ Implemented | Same logic as `actors_id_matching.py` but keyed on normalised name (case/punctuation insensitive) → JSON in `data/actors_matched_names/` |
-| `actors_deduplication.py` | 📋 Placeholder | Deduplication based on results from the two preceding matching scripts |
-| `name_correction_dict.json` | 📋 to be completed | Lookup dictionary: erroneous string → correct form |
+`name_normaliser.py`: a 7-rule cascade (RDF-literal unwrap → bracket/quote
+stripping, only when it fully resolves the anomaly → alias-marker split →
+title/role stripping → multiple-values flagging (never auto-split) →
+initials/abbreviation preference for a fuller first/last-name form →
+passthrough), plus the empty-`actor_name` derivation above. See the
+module's own docstring for the exact rule order and the empirical
+justification behind each (e.g. why `stripped_rdf_literal_tag` is checked
+before the generic bracket rule: it accounts for 2,507 of 2,519 cases that
+would otherwise come out only half-cleaned).
 
-**`actors_id_matching.py` — Detailed implementation:**
+`actors_id_matching.py` / `actors_name_matching.py` / `actors_deduplication.py`
+— ✅ Implemented (identity resolution across distinct BnF URIs sharing a
+name; see that script's own docs).
 
-- Reads CSVs from `data/unified_agents/`
-- Relevant columns considered: `year`, `actor`, `actor_birth`, `actor_country`, `actor_death`, `actor_end`, `actor_gender`, `actor_language`, `actor_link_close`, `actor_link_exact`, `actor_name`, `actor_profession`, `actor_start`
-- Identifies URIs appearing more than once
-- For each repeated URI: for each other relevant column, computes the frequency of each distinct value (sorted by count descending, then value ascending for determinism)
-- Ignores empty/whitespace-only values
-- Output: `actors_<role>.json` for each role
+`name_correction_dict.json` — **NOT implemented, not planned for
+automation**: a curated known-error lookup requires manual annotation of
+real cases, which is out of scope for this codebase to fabricate.
 
-**Implementation plan for `name_normaliser.py`:**
+**02\_llm\_based/ — Implemented**
 
-1. Strip null markers (`***`, `null`, `nan`) → flag `MISSING`
-2. Remove wrapping brackets/separators → extract inner value
-3. Split multiple values → flag `multi_value` or split
-4. Remove embedded titles/roles → extract clean name
-5. Handle initials → flag or expand via lookup dict
-
-**02\_llm\_based/**
-
-| File | Status | Function |
-|---|---|---|
-| `llm_name_normaliser.py` | 📋 to be completed | Filters rows with confidence ≠ `high` from heuristic output → calls LLM → writes final CSV |
-| `prompt_templates.py` | 📋 to be completed | Structured prompt templates for `actor_name`, `actor_first_name`, `actor_last_name` |
-| `llm_responses_cache/` | 📋 to be completed | JSON cache of LLM responses (avoids re-querying) |
-
-**LLM flow (once implemented):**
-
-1. Load heuristic output
-2. Filter rows where `confidence != 'high'`
-3. Build structured prompt per row (raw value + warning/error labels + context: actor URI, year)
-4. Call LLM API; parse JSON response: `{"harmonised": str, "confidence": str, "explanation": str}`
-5. Light post-validation (regex check) on the returned value
-6. Write `actor_name_harmonised_llm.csv`
+`llm_name_normaliser.py` resolves the three genuinely-unresolved residual
+categories marked above (`unresolved_brackets_or_separators`,
+`unresolved_multiple_values`, `initials_or_abbreviation_unresolved` — 122
+rows total on the real dataset, a small and cheap residual). Deliberately
+does NOT revisit `alias_split`/`stripped_title_role` (medium confidence,
+but already resolved by a clear rule match) or `unresolved_missing` (no
+source value at all to derive from) — same "never re-touch an
+already-resolved value, never invent from nothing" principle as
+`llm_dates_normaliser.py`/`llm_publisher_normaliser.py`. Same conventions
+throughout: deduplicated by `(raw value, correction_type)` pair, JSON
+response cache, Claude Opus 5 via structured output
+(`client.messages.parse()`), default-on after the heuristic step
+(`--no-llm` to skip). For `initials_or_abbreviation_unresolved` specifically,
+the system prompt explicitly forbids guessing a historical identity from
+outside knowledge — that is authority-linking's job (module 06), not this
+step's.
 
 ---
 
@@ -251,32 +252,55 @@ against the API — see the script's module docstring.
 
 **Dataset:** actor\_data
 **Fields:** `actor_link_close`, `actor_link_exact`
-**Overall status:** 📋 Planned
+**Overall status:** ✅ Heuristic normaliser implemented. No LLM step (nothing ambiguous for an LLM to add — see below).
 
-**Anomalies to handle**
+**Real anomaly categories (superseding the speculative categories
+originally listed here — see note below)**
 
-| Category | Examples |
-|---|---|
-| Mixed URIs (http/https) | `http://viaf.org/viaf/12345` vs `https://viaf.org/viaf/12345` |
-| www / no-www variants | `www.viaf.org` vs `viaf.org` |
-| Non-URIs (free text, local IDs, partial paths) | — |
-| Deprecated/redirected URIs | Old merged VIAF clusters |
-| Multi-value in cell | URIs separated by `;` or `\|` |
+A full scan of the real raw dataset (01\_data\_retrieval/02\_actors/actors\_data/actor\_data.csv,
+551,622 rows) found a much simpler and more regular picture than what was
+originally speculated:
 
-**01\_heuristic\_rules/**
+| Category | Examples | Share |
+|---|---|---|
+| Every non-empty value RDF-wrapped | `<http://viaf.org/viaf/23356192/>` | 100% — 0 exceptions |
+| Multi-value cells | none — each `skos:exactMatch`/`closeMatch` binding is already its own row (see the row-multiplicity note in 01\_data\_retrieval's README) | 0 |
+| Distinct domains | VIAF, Wikidata, ISNI, LC Name Authority, DNB/GND, IdRef, BNE, Wikipedia, DBpedia, IMSLP, MusicBrainz, Biblissima, FranceArchives, Persée, GeoNames, INSEE, Archives Nationales, POP-Culture, FAO-AIMS, PURL, ORCID | 23 total |
+| Scheme inconsistency | only `fr.wikipedia.org` and `imslp.org` show both `http` and `https` in the data — every other domain (viaf.org, wikidata.org, isni.org, id.loc.gov, d-nb.info, www.idref.fr, datos.bne.es, ...) appears with exactly one scheme only | 2/23 domains |
+| Malformed (empty scheme + host) | `<://43102>` | ~1,006 rows on a full run |
 
-`external_links_normaliser.py` — Placeholder/to be completed
+None of the originally speculated "www vs no-www" or "deprecated/redirect
+URI" anomalies occur in the data — `www.idref.fr` always carries `www.`
+with no bare-domain form present, and there is no evidence of a deprecated
+URI pattern to resolve.
 
-Implementation plan:
+**01\_heuristic\_rules/ — Implemented**
 
-1. Parse URIs with `urllib.parse`
-2. Schema normalisation: `http` → `https` for known authorities
-3. `www.` prefix normalisation (removal if known authority uses bare domain)
-4. Detection and splitting of multi-value cells
-5. Flagging non-URI values for manual review
-6. Resolution of deprecated URI patterns via lookup table
+`external_links_normaliser.py`:
 
-Output schema: `actor_uri | field | link_original | link_harmonised | authority | correction_type | confidence`
+- `strip_wrapping(raw)` → removes the RDF `<...>` wrapper (the single most
+  important step; not part of the original plan)
+- `normalise_link(raw)` → classifies into `missing` / `malformed` /
+  `scheme_upgraded_https` (only the two evidenced domains) /
+  `passthrough` (known authority, single observed scheme) /
+  `unknown_authority` (well-formed URI, domain not yet in `AUTHORITY_TABLE`)
+- No `http`→`https` upgrade is applied to a domain unless the raw data
+  itself demonstrates both schemes resolve — same "don't invent digits"
+  principle as `actor_dates`' BCE-offset decision (see 3.2 below):
+  upgrading a domain never observed as https would be guessing, not
+  harmonising.
+
+A full run against the real dataset: 224,184 `passthrough`, 7,922
+`scheme_upgraded_https`, 1,006 `malformed`, **0 `unknown_authority`** —
+confirming `AUTHORITY_TABLE` covers every domain actually present.
+
+**02\_llm\_based/ — not implemented, not planned**
+
+A link either resolves against a known authority structurally or it
+doesn't; unlike `actor_dates`' `non_parseable` residual, there is no
+ambiguous natural-language judgement call here for an LLM to usefully add.
+
+Output schema: `actor_uri | field | link_original | link_harmonised | authority | correction_type | confidence` (one row per distinct raw value actually present — see module docstring for why there is no "missing" placeholder row per actor the way `actor_dates` emits one)
 
 ---
 
@@ -326,78 +350,139 @@ Final output: `data/data_final/bnf_publication_place.csv`
 
 **Dataset:** bnf\_edition\_data
 **Field:** `language` (language of the bibliographic Expression)
-**Overall status:** 📋 Planned
+**Overall status:** ✅ Heuristic normaliser implemented — 100% deterministic coverage, no lookup dictionary or LLM step needed.
 
 **Target output format:** Three-letter ISO 639-2 codes (BnF standard)
 
-**Anomalies to handle**
+**IMPORTANT — this supersedes the free-text anomaly categories originally
+speculated here.** A full scan of the real raw dataset
+(01\_data\_retrieval/01\_editions/data/bnf\_edition\_data\_raw.csv, 1,344,914
+rows) found that none of the speculated free-text forms ("français",
+"vieux français", "Latin et français", "???", etc.) occur at all. Every one
+of the 106 distinct non-empty raw values is instead an RDF-wrapped LOC
+vocabulary URI:
 
-| Category | Examples |
-|---|---|
-| Language names in free text (multilingual) | `français`, `latin`, `French`, `Latein`, `italiano` |
-| ISO codes already present (but mixed) | `fre`, `lat`, `fr`, `la` (ISO 639-1 and 639-2) |
-| Multi-language expressions | `Latin et français`, `en français et en latin` |
-| Archaic languages or dialects | `vieux français`, `moyen français`, `occitan`, `picard` |
-| Placeholders/encoding errors | `???`, `inconnu`, `unknown`, empty strings |
+    "<http://id.loc.gov/vocabulary/iso639-2/fre>"
+    "<http://id.loc.gov/vocabulary/iso639-2/lat>"
 
-**Target mappings:**
+— 0 exceptions. "mul" (multiple languages) and "zxx" (no linguistic
+content) are already the source's own controlled codes for those cases, so
+multi-language expressions are already handled upstream, not left as
+concatenated free text.
 
-| Raw | ISO 639-2 |
-|---|---|
-| `français` | `fre` |
-| `Latin` | `lat` |
-| `greek` | `grc` |
-| `vieux français` | `fro` |
-| `occitan` | `oci` |
+Because of this, the whole field reduces to one deterministic rule: strip
+the `<...>` wrapper, take the URI's trailing path segment, validate it is 3
+lowercase letters. **No `language_lookup.json` is needed** — the originally
+planned lookup-dictionary approach does not apply here.
 
-**01\_heuristic\_rules/**
+**01\_heuristic\_rules/ — Implemented**
 
-`language_normaliser.py` — Placeholder/to be completed
+`language_normaliser.py`:
 
-Implementation plan:
+- `detect_language_format(raw)` → `iso_code_uri` / `missing` /
+  `non_parseable` (safety net for future data — 0/106 currently)
+- `normalise_language(raw)` → strips the wrapper, extracts the code,
+  returns `{harmonised, correction_type, confidence}`
 
-1. Build `language_lookup.json` (raw string → ISO 639-2 code) using the most frequent values (from 03\_analysis profiling)
-2. Apply the lookup (case-insensitive, stripped)
-3. Detect multi-language expressions and split them
-4. Flag unmappable strings for LLM or manual review
+A full run against the real dataset: 748,624 `iso_code_uri` (high
+confidence), 65,407 `missing`, **0 `non_parseable`** — 100% deterministic
+resolution of every non-empty value.
 
-Output schema: `edition_uri | language_original | language_harmonised | correction_type | confidence`
+**02\_llm\_based/ — not implemented, not planned**
+
+Nothing is left unresolved to route to an LLM.
+
+Output schema: `edition | language_original | language_harmonised | correction_type | confidence`
 
 ---
 
 ### 3.6 publisher/ — Publisher
 
 **Dataset:** bnf\_edition\_data
-**Field:** `publisher_1` (free text; distinct from `publisher_2` which is a URI)
-**Overall status:** 📋 Planned
+**Field:** `publisher` (free text; distinct from `publisher_2` which is a URI)
+**Overall status:** ✅ Heuristic normaliser + LLM residual step implemented.
 
-**Anomalies to handle**
+Unlike `external_links` and `language` above, this field's originally
+speculated anomaly categories ARE confirmed by the real raw dataset
+(01\_data\_retrieval/01\_editions/data/bnf\_edition\_data\_raw.csv, 128,811
+distinct non-empty values):
 
-| Category | Examples |
+| Category | Real examples found |
 |---|---|
-| Spelling variants of the same publisher | `Imprimerie royale`, `Impr. royale`, `Impr. Royale` |
-| Abbreviations and partial names | `Impr.`, `Lib.`, `s.n.` (sine nomine) |
-| Embedded geographic information | `Chaignieau aîné (Paris)`, `Renard, Bordeaux` |
-| Embedded date spans | `J. Smith [1750-1780]` |
-| Multiple publishers concatenated | `Baudouin et Renard`, `Smith ; Jones` |
-| Non-publisher content (notes, print descriptions) | — |
+| Sine-nomine markers | `[s.n.]` (93,251×), `[sans nom]` (2,730×) |
+| Self-published markers (agent known, not a formal publisher — kept distinct from sine-nomine) | `Auteur` (7,016×), `l'auteur` (4,006×), `chez l'auteur` (2,438×) |
+| Abbreviation + case variants of the same publisher | `Impr. royale` (19,364×), `Imp. royale` (5,305×), `imp. royale` (4,827×) — all collapse to `Imprimerie royale` |
+| Bracketed, editorially-supplied names | `[G. L. Le Rouge]`, `[J. Audran et F. Chéreau]` |
+| Multiple publishers concatenated in one cell | `Vve F. Muguet et H. Muguet`, `Vve Saugrain et. - P. Prault` |
 
-**01\_heuristic\_rules/**
+128,811 distinct values makes full pairwise fuzzy-distance clustering
+impractical to get right in one pass, and the project's existing
+fuzzy-matching convention is stdlib `difflib`/normalised-key comparison
+(see `06_mapping/01_map_viaf.py`'s Levenshtein-ratio use via
+`difflib.SequenceMatcher`), not a new dependency like RapidFuzz. This
+implementation uses **normalised-key clustering** instead (accent/case/
+punctuation-insensitive key, merging onto the dataset's most frequent
+literal form) — cheap, and it already resolves the case/abbreviation
+variants shown above. True fuzzy-distance clustering (catching genuine
+misspellings that don't share a normalised key) is intentionally NOT
+attempted — documented as a follow-up, same incremental philosophy as
+`actor_name`'s `derive_from_first_last`-only first cut.
 
-`publisher_normaliser.py` — Placeholder/to be completed
+**01\_heuristic\_rules/ — Implemented**
 
-Implementation plan:
+`publisher_normaliser.py` + `publisher_abbreviations.json`:
 
-1. Detection and normalisation of known abbreviations via lookup dict (`publisher_abbreviations.json`)
-2. Strip embedded geographic information (city/country in parentheses)
-3. Detection and flagging of multi-publisher cells for splitting
-4. Identification of *sine nomine* and null-equivalent patterns
-5. Fuzzy string matching (e.g. RapidFuzz) to cluster spelling variants into canonical names
+1. Sine-nomine / self-published detection (kept as two distinct categories)
+2. Multi-value delimiter flagging (`;` / ` - ` / `\bet\b`) — **flagged, not
+   split**: guessing which of two concatenated names is "the" publisher
+   would invent information; known false-positive risk documented in the
+   module docstring (an idiomatic single-firm name using "et" would also
+   be flagged)
+3. Trailing-location stripping (`"Chaignieau aîné (Paris)"` →
+   `"Chaignieau aîné"`), careful not to strip a year-range parenthesis
+   (`"J. Smith (1750-1780)"` is left alone)
+4. Abbreviation expansion via `publisher_abbreviations.json`
+   (Impr./Imp./imp. → Imprimerie, Éd./Ed. → Éditeur, Lib. → Libraire,
+   Vve → Veuve, etc.)
+5. Normalised-key clustering onto the most frequent literal form (pass 2.5,
+   `cluster_by_canonical_key()`)
+6. Fuzzy-similarity clustering (pass 2.6, `cluster_by_fuzzy_similarity()`):
+   among the distinct canonical keys pass 5 left standing, values are
+   blocked by a 4-character canonical-key prefix and compared pairwise with
+   `difflib.SequenceMatcher` (threshold 0.87 by default, `--fuzzy-threshold`
+   to override), merged via a small union-find for transitive matches
+   (A~B~C merge even without a direct A~C match). Catches genuine
+   near-misses — a typo, an OCR-style substitution — that an exact
+   canonical key can't. `correction_type='fuzzy_clustered'` carries
+   `confidence='medium'`, deliberately lower than pass 5's `'high'`, since
+   fuzzy matching risks merging two different but similar-looking names.
+   `--no-fuzzy-clustering` restores the exact-key-only behaviour.
 
-Output schema: `edition_uri | publisher_original | publisher_harmonised | correction_type | confidence`
+A full heuristic-only run against the real dataset (814,031 editions,
+128,809 distinct values, with fuzzy clustering enabled): 275,799
+`passthrough`, 264,479 `missing`, 98,681 `abbreviation_expanded`, 48,627
+`sine_nomine`, 33,683 `bracketed_uncertain`, 22,336 `canonical_clustered`,
+**16,186 `fuzzy_clustered`** (8,411 distinct raw values relabelled; 25
+oversized blocks skipped rather than compared, see `MAX_FUZZY_BLOCK_SIZE`),
+5,891 `self_published`, 1,008 `location_stripped`, and **47,341
+`multi_value`** (flagged for the LLM residual step below, or manual
+review).
 
-**02\_llm\_based/**
-Folder present but content to be defined after the heuristic approach is implemented.
+Output schema: `edition | publisher_original | publisher_harmonised | correction_type | confidence`
+
+**02\_llm\_based/ — Implemented**
+
+`llm_publisher_normaliser.py` resolves the `multi_value` residual left by
+the heuristic step (only that residual — `missing`/`sine_nomine`/
+`self_published` rows are already definitive and are never sent to the
+LLM). Same conventions as `actor_dates`' LLM step: deduplicated by raw
+value, JSON response cache, Claude Opus 5 via structured output
+(`client.messages.parse()`), default-on after the heuristic step (`--no-llm`
+to skip). **Not yet run against the real residual** — 47,341 editions carry
+a `multi_value` value, but deduplicated by distinct raw string (the LLM is
+only called once per unique value, see module docstring) that is 18,334
+API calls; run it deliberately rather than as an automatic side effect of
+this session.
 
 ---
 
@@ -410,9 +495,9 @@ The evaluation system is built on an abstract base class from which all field-sp
 ```
 Evaluation (evaluation_base.py)          — abstract base class
 ├── PersonNameEvaluation                 — actor_name_evaluation.py    ✅ Complete
-├── ActorDatesEvaluation                 — actor_dates_evaluation.py   🔄 Skeleton
+├── ActorDatesEvaluation                 — actor_dates_evaluation.py   ✅ Complete
 ├── ExternalLinksEvaluation              — external_links_evaluation.py 🔄 Skeleton
-├── PublicationPlaceEvaluation           — publication_place_evaluation.py 🔄 Skeleton
+├── PublicationPlaceEvaluation           — publication_place_evaluation.py ✅ Complete
 ├── PublisherEvaluation                  — publisher_evaluation.py     🔄 Skeleton
 └── LanguageEvaluation                   — language_evaluation.py      🔄 Skeleton
 
@@ -447,7 +532,11 @@ Evaluation(config: dict, csv_filepath: str, field_name: Optional[str] = None)
 **Method to implement in child classes**
 
 ```python
-def evaluate_value(self, value: Optional[str]) -> Tuple[List[str], Dict[str, str]]:
+def evaluate_value(self, value: Optional[str], row: Optional[Dict[str, str]] = None) -> Tuple[List[str], Dict[str, str]]:
+    # `row` is the full current CSV row as {header: value}, for evaluators
+    # that need to cross-validate multiple columns together (see
+    # ActorDatesEvaluation, PublicationPlaceEvaluation). Ignored by
+    # evaluators that only validate one isolated field.
     # Returns:
     #   warnings: list of warning labels
     #   errors: dict { label: substitution_value }
@@ -457,7 +546,7 @@ def evaluate_value(self, value: Optional[str]) -> Tuple[List[str], Dict[str, str
 
 1. Iterates over CSVs (single file or all CSVs within a ZIP)
 2. For each file: reads header, identifies index of the target column
-3. For each row: calls `evaluate_value(value)`
+3. For each row: calls `evaluate_value(value, row_dict)` (`row_dict` is the whole row as `{header: value}`)
 4. Accumulates:
    - `case_counter`: `Counter[(label, type)]` → count
    - `warnings_detail`: `{value → Counter[label → count]}`
@@ -529,23 +618,43 @@ Works on fields `actor_name`, `actor_first_name`, `actor_last_name`. Configurati
 
 ### 4.4 ActorDatesEvaluation — `actor_dates_evaluation.py`
 
-**Status:** 🔄 Skeleton — awaiting output schema from `dates_normaliser`
+**Status:** ✅ Complete
 
-Validates that harmonised values are valid EDTF strings.
+Validates that harmonised values match one of the four real shapes
+`dates_normaliser.py` actually produces (`exact_year`, `exact_date`,
+`year_month`, `masked_precision`) — the original placeholder's EDTF regex
+matched *none* of `exact_date`/`year_month` and only a single-'X' subset of
+`masked_precision`, so it would have misclassified the majority of real
+output as errors. Uses `row['date_format_detected']` to tell an *expected*
+empty value (`missing` — nothing to convert) apart from a documented,
+still-unresolved one (`non_parseable` — a warning, not an error) apart from
+a genuinely wrong one (any other empty case — `missing_value` error).
 
-**Warnings (detected on EDTF qualifiers)**
+**Warnings**
 
-- `approximate_date` — presence of `~`
-- `uncertain_date` — presence of `?`
-- `date_range` — presence of `/`
-- `century_level` — presence of `XX`
-- `decade_level` — (to be fully implemented)
+- `decade_level` / `century_level` / `millennium_level` — masked_precision's
+  1/2/3 trailing `X`s respectively (this is what the `decade_level` TODO
+  asked for)
+- `approximate_date` / `uncertain_date` / `date_range` — `~`/`?`/`/`,
+  defensive checks: this project's normaliser deliberately never emits
+  these (see `dates_normaliser.py`'s own docstring), so seeing one flags a
+  likely regression, not a currently-expected case
+- `unresolved_residual` — empty value where `date_format_detected ==
+  'non_parseable'`, i.e. the heuristic step's own documented residual
 
 **Errors**
 
-- `missing_value` — null/empty value
-- `non_edtf_format` — does not match the base EDTF pattern: `^-?\d{4}[X~?%]?(?:/(-?\d{4}[X~?%]?))?$`
-- `non_parseable` — (to be fully implemented)
+- `missing_value` — empty value that isn't explained by `missing`/
+  `non_parseable` in `date_format_detected`
+- `non_edtf_format` — non-empty value matching none of the four real shapes
+
+**Verified against the real harmonised output** (124,695 actors × 4 date
+fields, 498,780 rows): `century_level` 22,553 + `millennium_level` 405 +
+`decade_level` 1 = 22,959, exactly matching `dates_normaliser.py`'s own
+`masked_precision` count; `unresolved_residual` 24, exactly matching its
+`non_parseable` count. **0** `non_edtf_format` errors — confirming the
+rewrite, unlike the placeholder it replaced, actually recognises every real
+shape the normaliser produces.
 
 ---
 
@@ -575,25 +684,50 @@ Implemented logic: uses `urllib.parse.urlparse` to extract scheme and domain.
 
 ### 4.6 PublicationPlaceEvaluation — `publication_place_evaluation.py`
 
-**Status:** 🔄 Skeleton
+**Status:** ✅ Complete
 
-Validates the output of the `02_tgn_lookup` harmoniser against the schema: `edition | place_original | tgn_id | publication_place | publication_country | longitude | latitude | uncertainty_*`
+Row-level validation (`row['tgn_id']`/`publication_country`/`longitude`/
+`latitude` alongside `publication_place`) via `evaluation_base.py`'s
+`evaluate_value(value, row)` contract — the placeholder's own architectural
+note asked for exactly this. Also fixes the placeholder's column names
+(`uncertainty_expressions_brackets` etc.), which didn't match the real
+`bnf_place_harmonisation.py` output (`place_uncertainty_brackets` etc.).
 
 **Warnings**
 
-- `uncertainty_bracket` — residual presence of `[` or `]` in the normalised value
-- `uncertainty_question_mark` — residual presence of `?`
-- `uncertainty_parentheses` — residual presence of `(` or `)`
-- `missing_coordinates` — missing coordinates
+- `unmatched_place` — `place_original` had a value but TGN lookup *and*
+  country fallback both failed — the harmoniser's own documented
+  "unmatched" outcome, expected to happen, not a defect
+- `missing_coordinates` — `tgn_id` present but longitude/latitude aren't
 
-**Errors**
+**Errors** (row-level contract checks: `bnf_place_harmonisation.py`'s own
+logic always sets city/tgn_id/country together from one TGN-table lookup,
+so these combinations should never occur on a correctly-behaving run)
 
-- `missing_tgn_id` — no TGN ID assigned
-- `missing_publication_place` — empty city name
-- `missing_publication_country` — empty country name
-- `missing_value` — null/empty value
+- `missing_value` — no raw place and nothing resolved
+- `missing_tgn_id` — `publication_place` resolved without a `tgn_id`
+- `missing_publication_country` — `publication_place` resolved without a country
+- `invalid_coordinates` — longitude/latitude outside [-180,180]/[-90,90]
+- `residual_bracket_in_harmonised` / `_parenthesis_in_harmonised` /
+  `_question_mark_in_harmonised` — a `[`/`]`/`(`/`)`/`?` character survived
+  inside the harmonised `publication_place` string, which
+  `harmonise_city_string()` should always have stripped
 
-**Architectural note:** For complete row-level validation (TGN ID + coordinates + city + country together), `run()` must be overridden to pass additional columns to `evaluate_value()`. The current implementation validates only the `publication_place` field in isolation.
+**Known, accepted limitation:** the uncertainty *boolean columns*
+(`place_uncertainty_brackets` etc.) are computed by the harmoniser from the
+city portion only, after its own `str_after_last_parentheses()` split —
+fully cross-validating those flag columns against the raw `place_original`
+would mean re-deriving that split here. Not attempted; the
+`residual_*_in_harmonised` checks above are the part that's verifiable
+without duplicating that parsing logic.
+
+**Verified against the real harmonised output** (200k-row sample of
+`bnf_publication_place.csv`): `unmatched_place` 5.33%, `missing_value`
+12.94% — both expected outcome sizes. Two small, genuine findings the old
+single-field check couldn't have surfaced: `residual_parenthesis_in_harmonised`
+on 0.68% of resolved rows, and `missing_tgn_id` on 0.02% — real, if minor,
+gaps in `bnf_place_harmonisation.py`'s own output, worth a look but outside
+this evaluator's job to fix.
 
 ---
 
@@ -687,13 +821,13 @@ python -m 04_harmonisation_and_evaluation.02_evaluation.run_evaluation \
 
 | Field | Dataset | Heuristic normaliser | LLM normaliser | Evaluator | Notes |
 |---|---|---|---|---|---|
-| `actor_name`/`first_name`/`last_name` | actor\_data | 🔄 In progress (`name_normaliser.py` — derive-from-first-last only) | 📋 to be completed | ✅ Complete (`PersonNameEvaluation`) | Matching scripts implemented; output consumed by module 05 |
-| `actor_birth`/`death`/`start`/`end` | actor\_data | 🔄 In progress (`dates_normaliser.py` — numeric BnF convention → EDTF, 99.98% of values) | Implemented (`llm_dates_normaliser.py` — resolves the `non_parseable` residual via Claude Opus 5; default-on after the heuristic step, `--no-llm` to disable — see section 1) | 🔄 Skeleton | Target: EDTF; output consumed by `03_ready_dataset_assembly/assemble_actors_ready.py` |
-| `actor_link_close`/`exact` | actor\_data | 📋 to be completed (`external_links_normaliser.py`) | — | 🔄 Skeleton | No LLM approach planned |
+| `actor_name`/`first_name`/`last_name` | actor\_data | ✅ Complete (`name_normaliser.py` — 7-rule cascade, validated against the full 124,695-actor dataset) | Implemented (`llm_name_normaliser.py` — resolves the ~122-row unresolved-brackets/multiple-values/initials residual via Claude Opus 5; default-on, `--no-llm` to disable) | ✅ Complete (`PersonNameEvaluation`) | `name_correction_dict.json` (manual curation) not attempted; matching/dedup scripts implemented; output consumed by module 05 |
+| `actor_birth`/`death`/`start`/`end` | actor\_data | ✅ Complete (`dates_normaliser.py` — numeric BnF convention → EDTF, 99.98% of values) | Implemented (`llm_dates_normaliser.py` — resolves the `non_parseable` residual via Claude Opus 5; default-on after the heuristic step, `--no-llm` to disable — see section 1) | ✅ Complete (validates all 4 real EDTF shapes + decade/century/millennium precision, cross-checked against 498,780 real rows) | Target: EDTF; output consumed by `03_ready_dataset_assembly/assemble_actors_ready.py` |
+| `actor_link_close`/`exact` | actor\_data | ✅ Complete (`external_links_normaliser.py` — RDF-wrapper stripping + known-authority classification; 0 `unknown_authority` on a full run) | — | 🔄 Skeleton (domain list synced to the real 23-domain set) | No LLM approach planned/needed; consumed by `03_ready_dataset_assembly/assemble_actors_ready.py` |
 | `place` | bnf\_edition\_data | — (empty) | — | 🔄 Skeleton | TGN approach implemented |
-| `place` (TGN lookup) | bnf\_edition\_data | ✅ Complete (`bnf_place_harmonisation.py`, integrated with monitor/report/tests; `.R` version not yet updated) | — | 🔄 Skeleton | Output in `bnf_publication_place.csv`; consumed by `03_ready_dataset_assembly/assemble_editions_ready.py` |
-| `language` | bnf\_edition\_data | 📋 to be completed (`language_normaliser.py`) | — | 🔄 Skeleton (basic logic) | Lookup dict to be built |
-| `publisher_1` | bnf\_edition\_data | 📋 to be completed (`publisher_normaliser.py`) | 📋 to be completed (folder present) | 🔄 Skeleton | Fuzzy matching planned |
+| `place` (TGN lookup) | bnf\_edition\_data | ✅ Complete (`bnf_place_harmonisation.py`, integrated with monitor/report/tests; `.R` version not yet updated) | — | ✅ Complete (row-level: tgn_id + coordinates + city + country together, cross-checked against real data) | Output in `bnf_publication_place.csv`; consumed by `03_ready_dataset_assembly/assemble_editions_ready.py` |
+| `language` | bnf\_edition\_data | ✅ Complete (`language_normaliser.py` — LOC iso639-2 URI → code; 100% deterministic, 0 `non_parseable` on a full run) | — (not needed) | 🔄 Skeleton (code set synced to the real 106-code set) | No lookup dict needed (data is already URI-typed, not free text); consumed by `03_ready_dataset_assembly/assemble_editions_ready.py` |
+| `publisher` | bnf\_edition\_data | ✅ Complete (`publisher_normaliser.py` — sine-nomine/self-published detection, abbreviation expansion, location stripping, normalised-key + fuzzy-similarity clustering) | Implemented (`llm_publisher_normaliser.py` — resolves the `multi_value` residual; default-on, `--no-llm` to disable; not yet run against the full 18,334-distinct-value residual) | 🔄 Skeleton | Consumed by `03_ready_dataset_assembly/assemble_editions_ready.py` |
 
 **Fields NOT requiring harmonisation (documented in README):**
 
@@ -749,15 +883,17 @@ this assembly only integrates the *current best value* per field).
 
 | File | Entity | Behaviour |
 |---|---|---|
-| `assemble_editions_ready.py` | editions | Deduplicates/aggregates the raw rows to one row per edition (there is no module-5 equivalent for editions — this is the only place that happens) + overlays `publication_place`/`publication_country`/`tgn_id`/coordinates/uncertainty flags from `bnf_publication_place.csv`. Writes `data/bnf_edition_data/bnf_editions_ready.csv`, the path module 6 already expects. |
-| `assemble_actors_ready.py` | actors | Preserves raw row-level granularity (deduplication is module 5's job) + overlays two fields: `actor_name` from `actor_name_harmonised.csv` (fills only when empty at the source — an existing name is never second-guessed) and `actor_birth`/`actor_death`/`actor_start`/`actor_end` from `actor_dates_harmonised.csv` (**replaces** the raw value whenever an EDTF form is available, even if the raw field was already populated — harmonising a date always means reformatting it, e.g. `"17.."` → `"17XX"`, so unlike a name the raw value is never itself the canonical target). Writes `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv`, read by `05_subset_optimisation/gen_subset_optm.py`. |
+| `assemble_editions_ready.py` | editions | Deduplicates/aggregates the raw rows to one row per edition (there is no module-5 equivalent for editions — this is the only place that happens) + overlays three fields as new columns alongside the raw ones (never replacing `place`/`language`/`publisher` in place, since each overlay carries its own `correction_type`/`confidence` audit trail): `publication_place`/`publication_country`/`tgn_id`/coordinates/uncertainty flags from `bnf_publication_place.csv`, `language_harmonised`/`language_correction_type`/`language_confidence` from `language_harmonised.csv`, and `publisher_harmonised`/`publisher_correction_type`/`publisher_confidence` from `publisher_harmonised.csv`. Writes `data/bnf_edition_data/bnf_editions_ready.csv`, the path module 6 already expects. |
+| `assemble_actors_ready.py` | actors | Preserves raw row-level granularity (deduplication is module 5's job) + overlays three fields: `actor_name` from `actor_name_harmonised.csv` (fills only when empty at the source — an existing name is never second-guessed); `actor_birth`/`actor_death`/`actor_start`/`actor_end` from `actor_dates_harmonised.csv` (**replaces** the raw value whenever an EDTF form is available, even if the raw field was already populated — harmonising a date always means reformatting it, e.g. `"17.."` → `"17XX"`); and `actor_link_exact`/`actor_link_close` from `external_links_harmonised.csv` (**replaces**, but keyed per `(actor_uri, field, raw value)` rather than per actor, since a single actor can carry multiple distinct links per field — see that normaliser's row-multiplicity note). Writes `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv`, read by `05_subset_optimisation/gen_subset_optm.py`. |
 
 Both scripts:
 - register their harmonisation overlays in a `HARMONISATION_SOURCES` list at
-  the top of the file — extend this as `language_normaliser.py`,
-  `publisher_normaliser.py`, and `external_links_normaliser.py` get
-  implemented (`actor_name` and `actor_dates` are already wired in for
-  `assemble_actors_ready.py`);
+  the top of the file — all fields with an implemented normaliser are now
+  wired in (`actor_name`, `actor_dates`, `external_links` for
+  `assemble_actors_ready.py`; `publication_place`, `language`, `publisher`
+  for `assemble_editions_ready.py`); only edition-side `dates` and the
+  role/agent-URI columns remain unregistered, since no normaliser exists
+  for those yet;
 - write a JSON report (`report/*_ready_report.json`) recording row/entity
   counts and, per field, whether it was harmonised or is still carrying raw
   values;
@@ -772,7 +908,10 @@ Run order (after the relevant `01_harmonisation` normalisers):
 ```bash
 python 04_harmonisation_and_evaluation/01_harmonisation/actor_name/01_heuristic_rules/name_normaliser.py
 python 04_harmonisation_and_evaluation/01_harmonisation/actor_dates/01_heuristic_rules/dates_normaliser.py
+python 04_harmonisation_and_evaluation/01_harmonisation/external_links/01_heuristic_rules/external_links_normaliser.py
 python 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/bnf_place_harmonisation.py
+python 04_harmonisation_and_evaluation/01_harmonisation/language/01_heuristic_rules/language_normaliser.py
+python 04_harmonisation_and_evaluation/01_harmonisation/publisher/01_heuristic_rules/publisher_normaliser.py
 python 04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_actors_ready.py
 python 04_harmonisation_and_evaluation/03_ready_dataset_assembly/assemble_editions_ready.py
 ```

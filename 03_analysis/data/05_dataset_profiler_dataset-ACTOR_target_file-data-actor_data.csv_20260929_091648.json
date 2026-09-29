@@ -1,0 +1,697 @@
+{
+  "generated_at": "20260929_091648",
+  "input_dataset": "01_data_retrieval/02_actors/actor_data.zip",
+  "years_filter": null,
+  "restricted_to_file": "data/actor_data.csv",
+  "total_rows": 551622,
+  "fields": {
+    "actor": {
+      "total_values": 551622,
+      "unique_values": 124695,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12340814p#about>",
+          "count": 350
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12515994c#about>",
+          "count": 288
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb120286175#about>",
+          "count": 216
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb119157157#about>",
+          "count": 180
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb14527487p#about>",
+          "count": 126
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb121835680#about>",
+          "count": 120
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11903378b#about>",
+          "count": 120
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb12038246v#about>",
+          "count": 120
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb11886277x#about>",
+          "count": 120
+        },
+        {
+          "value": "<http://data.bnf.fr/ark:/12148/cb13611203n#about>",
+          "count": 120
+        }
+      ]
+    },
+    "actor_birth": {
+      "total_values": 456261,
+      "unique_values": 14053,
+      "fill_rate_percent": 82.7126,
+      "top_10_values": [
+        {
+          "value": "15..",
+          "count": 14980
+        },
+        {
+          "value": "17..",
+          "count": 9964
+        },
+        {
+          "value": "16..",
+          "count": 9719
+        },
+        {
+          "value": "14..",
+          "count": 6739
+        },
+        {
+          "value": "1530",
+          "count": 1806
+        },
+        {
+          "value": "1520",
+          "count": 1777
+        },
+        {
+          "value": "1500",
+          "count": 1711
+        },
+        {
+          "value": "1510",
+          "count": 1637
+        },
+        {
+          "value": "1550",
+          "count": 1522
+        },
+        {
+          "value": "12..",
+          "count": 1507
+        }
+      ]
+    },
+    "actor_country": {
+      "total_values": 435315,
+      "unique_values": 85,
+      "fill_rate_percent": 78.9155,
+      "top_10_values": [
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/fr>",
+          "count": 192007
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/it>",
+          "count": 76791
+        },
+        {
+          "value": "<http://data.bnf.fr/vocabulary/countrycodes/xdhh>",
+          "count": 46211
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/xxk>",
+          "count": 36722
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/sp>",
+          "count": 16419
+        },
+        {
+          "value": "<http://data.bnf.fr/vocabulary/countrycodes/xnhh>",
+          "count": 16134
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/sz>",
+          "count": 7583
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/ne>",
+          "count": 5651
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/po>",
+          "count": 3607
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/countries/au>",
+          "count": 3282
+        }
+      ]
+    },
+    "actor_death": {
+      "total_values": 456595,
+      "unique_values": 18840,
+      "fill_rate_percent": 82.7732,
+      "top_10_values": [
+        {
+          "value": "17..",
+          "count": 8430
+        },
+        {
+          "value": "16..",
+          "count": 7824
+        },
+        {
+          "value": "15..",
+          "count": 7476
+        },
+        {
+          "value": "18..",
+          "count": 4659
+        },
+        {
+          "value": "14..",
+          "count": 1078
+        },
+        {
+          "value": "03..",
+          "count": 911
+        },
+        {
+          "value": "01..",
+          "count": 883
+        },
+        {
+          "value": "04..",
+          "count": 814
+        },
+        {
+          "value": "13..",
+          "count": 675
+        },
+        {
+          "value": "1580",
+          "count": 652
+        }
+      ]
+    },
+    "actor_end": {
+      "total_values": 416515,
+      "unique_values": 1304,
+      "fill_rate_percent": 75.5073,
+      "top_10_values": [
+        {
+          "value": "1794",
+          "count": 4045
+        },
+        {
+          "value": "1793",
+          "count": 3265
+        },
+        {
+          "value": "1799",
+          "count": 2696
+        },
+        {
+          "value": "1804",
+          "count": 2684
+        },
+        {
+          "value": "1807",
+          "count": 2631
+        },
+        {
+          "value": "1792",
+          "count": 2601
+        },
+        {
+          "value": "1800",
+          "count": 2500
+        },
+        {
+          "value": "1814",
+          "count": 2476
+        },
+        {
+          "value": "1812",
+          "count": 2408
+        },
+        {
+          "value": "1809",
+          "count": 2365
+        }
+      ]
+    },
+    "actor_first_name": {
+      "total_values": 482548,
+      "unique_values": 27639,
+      "fill_rate_percent": 87.478,
+      "top_10_values": [
+        {
+          "value": "Jean",
+          "count": 11962
+        },
+        {
+          "value": "Pierre",
+          "count": 9201
+        },
+        {
+          "value": "John",
+          "count": 6881
+        },
+        {
+          "value": "François",
+          "count": 5962
+        },
+        {
+          "value": "Thomas",
+          "count": 5632
+        },
+        {
+          "value": "Jacques",
+          "count": 5380
+        },
+        {
+          "value": "Nicolas",
+          "count": 5110
+        },
+        {
+          "value": "William",
+          "count": 4533
+        },
+        {
+          "value": "Antoine",
+          "count": 4181
+        },
+        {
+          "value": "Jean-Baptiste",
+          "count": 4014
+        }
+      ]
+    },
+    "actor_gender": {
+      "total_values": 432899,
+      "unique_values": 2,
+      "fill_rate_percent": 78.4775,
+      "top_10_values": [
+        {
+          "value": "male",
+          "count": 424271
+        },
+        {
+          "value": "female",
+          "count": 8628
+        }
+      ]
+    },
+    "actor_language": {
+      "total_values": 414490,
+      "unique_values": 88,
+      "fill_rate_percent": 75.1402,
+      "top_10_values": [
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/fre>",
+          "count": 156030
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/lat>",
+          "count": 85678
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/ita>",
+          "count": 47756
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/eng>",
+          "count": 31590
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/ger>",
+          "count": 29992
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/spa>",
+          "count": 12671
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/frm>",
+          "count": 10653
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/grc>",
+          "count": 10500
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/dut>",
+          "count": 7537
+        },
+        {
+          "value": "<http://id.loc.gov/vocabulary/iso639-2/chi>",
+          "count": 3193
+        }
+      ]
+    },
+    "actor_last_name": {
+      "total_values": 540197,
+      "unique_values": 69082,
+      "fill_rate_percent": 97.9288,
+      "top_10_values": [
+        {
+          "value": "Clément",
+          "count": 681
+        },
+        {
+          "value": "Charles",
+          "count": 625
+        },
+        {
+          "value": "Louis",
+          "count": 495
+        },
+        {
+          "value": "Müller",
+          "count": 473
+        },
+        {
+          "value": "Martin",
+          "count": 465
+        },
+        {
+          "value": "Smith",
+          "count": 439
+        },
+        {
+          "value": "Lassus",
+          "count": 409
+        },
+        {
+          "value": "Martini",
+          "count": 384
+        },
+        {
+          "value": "Morel",
+          "count": 337
+        },
+        {
+          "value": "Grégoire",
+          "count": 335
+        }
+      ]
+    },
+    "actor_link_close": {
+      "total_values": 428376,
+      "unique_values": 72826,
+      "fill_rate_percent": 77.6575,
+      "top_10_values": [
+        {
+          "value": "<http://datos.bne.es/resource/XX860568>",
+          "count": 72
+        },
+        {
+          "value": "<http://id.loc.gov/authorities/n86828753>",
+          "count": 72
+        },
+        {
+          "value": "<https://fr.wikipedia.org/wiki/Jean-Jacques_Boissard>",
+          "count": 72
+        },
+        {
+          "value": "<http://d-nb.info/gnd/104277009>",
+          "count": 72
+        },
+        {
+          "value": "<https://imslp.org/wiki/Category:Lassus%2C_Orlande_de>",
+          "count": 70
+        },
+        {
+          "value": "<https://fr.wikipedia.org/wiki/Roland_de_Lassus>",
+          "count": 70
+        },
+        {
+          "value": "<http://datos.bne.es/resource/XX4583901>",
+          "count": 70
+        },
+        {
+          "value": "<http://id.loc.gov/authorities/n81037013>",
+          "count": 70
+        },
+        {
+          "value": "<http://d-nb.info/gnd/118569945>",
+          "count": 70
+        },
+        {
+          "value": "<https://fr.wikipedia.org/wiki/Dimitrie_Cantemir>",
+          "count": 54
+        }
+      ]
+    },
+    "actor_link_exact": {
+      "total_values": 468872,
+      "unique_values": 160009,
+      "fill_rate_percent": 84.9988,
+      "top_10_values": [
+        {
+          "value": "<http://www.idref.fr/032364296>",
+          "count": 50
+        },
+        {
+          "value": "<https://data.biblissima.fr/entity/Q32615>",
+          "count": 50
+        },
+        {
+          "value": "<https://musicbrainz.org/artist/853f1c0a-4b59-4957-9c05-c3a8d3a4d5ef>",
+          "count": 50
+        },
+        {
+          "value": "<https://musicbrainz.org/artist/b617896b-945e-41ad-a19b-955671afdd78>",
+          "count": 50
+        },
+        {
+          "value": "<http://wikidata.org/entity/Q154792>",
+          "count": 50
+        },
+        {
+          "value": "<http://isni.org/isni/0000000120223832>",
+          "count": 50
+        },
+        {
+          "value": "<http://viaf.org/viaf/23356192/>",
+          "count": 50
+        },
+        {
+          "value": "<http://viaf.org/viaf/14879685/>",
+          "count": 48
+        },
+        {
+          "value": "<http://wikidata.org/entity/Q714988>",
+          "count": 48
+        },
+        {
+          "value": "<http://isni.org/isni/0000000121216474>",
+          "count": 48
+        }
+      ]
+    },
+    "actor_name": {
+      "total_values": 493973,
+      "unique_values": 103703,
+      "fill_rate_percent": 89.5492,
+      "top_10_values": [
+        {
+          "value": "Roland de Lassus",
+          "count": 350
+        },
+        {
+          "value": "Jean-Jacques Boissard",
+          "count": 288
+        },
+        {
+          "value": "Dimitrie Cantemir",
+          "count": 216
+        },
+        {
+          "value": "Marin Mersenne",
+          "count": 180
+        },
+        {
+          "value": "Johann Benedikt Carpzov",
+          "count": 125
+        },
+        {
+          "value": "François de Harlay de Champvallon",
+          "count": 122
+        },
+        {
+          "value": "Adamantios Coray",
+          "count": 120
+        },
+        {
+          "value": "François de Fénelon",
+          "count": 120
+        },
+        {
+          "value": "Giovanni Battista Martini",
+          "count": 109
+        },
+        {
+          "value": "Jean-Baptiste Stuck",
+          "count": 108
+        }
+      ]
+    },
+    "actor_profession": {
+      "total_values": 448380,
+      "unique_values": 33170,
+      "fill_rate_percent": 81.2839,
+      "top_10_values": [
+        {
+          "value": "A aussi écrit en latin",
+          "count": 18543
+        },
+        {
+          "value": "Poète",
+          "count": 3670
+        },
+        {
+          "value": "Compositeur",
+          "count": 3623
+        },
+        {
+          "value": "Écrivit aussi en latin",
+          "count": 2799
+        },
+        {
+          "value": "A écrit aussi en latin",
+          "count": 2766
+        },
+        {
+          "value": "Médecin",
+          "count": 2568
+        },
+        {
+          "value": "Écrivait aussi en latin",
+          "count": 2082
+        },
+        {
+          "value": "Historien",
+          "count": 1838
+        },
+        {
+          "value": "Jésuite",
+          "count": 1541
+        },
+        {
+          "value": "Théologien",
+          "count": 1415
+        }
+      ]
+    },
+    "actor_start": {
+      "total_values": 402601,
+      "unique_values": 1207,
+      "fill_rate_percent": 72.9849,
+      "top_10_values": [
+        {
+          "value": "1754",
+          "count": 3192
+        },
+        {
+          "value": "1755",
+          "count": 3034
+        },
+        {
+          "value": "1750",
+          "count": 2984
+        },
+        {
+          "value": "1753",
+          "count": 2914
+        },
+        {
+          "value": "1740",
+          "count": 2905
+        },
+        {
+          "value": "1752",
+          "count": 2813
+        },
+        {
+          "value": "1756",
+          "count": 2803
+        },
+        {
+          "value": "1742",
+          "count": 2760
+        },
+        {
+          "value": "1745",
+          "count": 2743
+        },
+        {
+          "value": "1741",
+          "count": 2737
+        }
+      ]
+    },
+    "entity_type": {
+      "total_values": 551622,
+      "unique_values": 2,
+      "fill_rate_percent": 100.0,
+      "top_10_values": [
+        {
+          "value": "<http://xmlns.com/foaf/0.1/Person>",
+          "count": 540197
+        },
+        {
+          "value": "<http://xmlns.com/foaf/0.1/Organization>",
+          "count": 11425
+        }
+      ]
+    },
+    "first_year": {
+      "total_values": 402601,
+      "unique_values": 1207,
+      "fill_rate_percent": 72.9849,
+      "top_10_values": [
+        {
+          "value": "1754",
+          "count": 3192
+        },
+        {
+          "value": "1755",
+          "count": 3034
+        },
+        {
+          "value": "1750",
+          "count": 2984
+        },
+        {
+          "value": "1753",
+          "count": 2914
+        },
+        {
+          "value": "1740",
+          "count": 2905
+        },
+        {
+          "value": "1752",
+          "count": 2813
+        },
+        {
+          "value": "1756",
+          "count": 2803
+        },
+        {
+          "value": "1742",
+          "count": 2760
+        },
+        {
+          "value": "1745",
+          "count": 2743
+        },
+        {
+          "value": "1741",
+          "count": 2737
+        }
+      ]
+    }
+  }
+}

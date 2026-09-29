@@ -14,14 +14,19 @@ responsible for BOTH:
      SPARQL multi-valued fields — same pattern as the actor dataset).
      Distinct non-empty values per field are joined with "; ", same
      convention as 05_subset_optimisation/gen_subset_optm.py.
-  2. Overlaying every available field-level harmonisation output on top
-     (currently: publication_place, from
-     04_harmonisation_and_evaluation/01_harmonisation/publication_place/
-     02_tgn_lookup/bnf_place_harmonisation.py). Fields without a harmoniser
-     yet (language, publisher, dates, external_links roles) are carried
-     through as their raw aggregated values — this script picks up more
-     harmonisations automatically as they get implemented, without code
-     changes, as long as they're registered in HARMONISATION_SOURCES below.
+  2. Overlaying every available field-level harmonisation output on top:
+     publication_place (04_harmonisation_and_evaluation/01_harmonisation/
+     publication_place/02_tgn_lookup/bnf_place_harmonisation.py), language
+     (04_harmonisation_and_evaluation/01_harmonisation/language/
+     01_heuristic_rules/language_normaliser.py), and publisher
+     (04_harmonisation_and_evaluation/01_harmonisation/publisher/
+     01_heuristic_rules/publisher_normaliser.py). Fields without a
+     harmoniser yet (dates, external_links roles — these are edition-side
+     role/agent URI columns, not the actor-side fields module 04 already
+     harmonises) are carried through as their raw aggregated values — this
+     script picks up more harmonisations automatically as they get
+     implemented, without code changes, as long as they're registered in
+     HARMONISATION_SOURCES below.
 
 This keeps every harmonisation step's own output (the <field>_original /
 <field>_harmonised / correction_type / confidence mapping) as the audit
@@ -33,9 +38,13 @@ Input
 Raw edition dataset (module 1's acquisition output):
     01_data_retrieval/01_editions/data/bnf_edition_data_raw.csv
 
-Harmonisation overlays (only publication_place exists so far):
+Harmonisation overlays:
     04_harmonisation_and_evaluation/01_harmonisation/publication_place/
     02_tgn_lookup/data/data_final/bnf_publication_place.csv
+    04_harmonisation_and_evaluation/01_harmonisation/language/
+    01_heuristic_rules/output/language_harmonised.csv
+    04_harmonisation_and_evaluation/01_harmonisation/publisher/
+    01_heuristic_rules/output/publisher_harmonised.csv
 
 Output
 ------
@@ -45,7 +54,16 @@ data/bnf_edition_data/bnf_editions_ready.csv:
     record_type, author, editor, translator, publisher_2, illustrator,
     publication_place, publication_country, tgn_id, longitude, latitude,
     place_uncertainty_brackets, place_uncertainty_parentheses,
-    place_uncertainty_question_marks
+    place_uncertainty_question_marks, language_harmonised,
+    language_correction_type, language_confidence, publisher_harmonised,
+    publisher_correction_type, publisher_confidence
+
+Same additive-overlay convention as publication_place: the raw `language`
+and `publisher` columns are left untouched, and the harmonised form is
+added as new columns alongside them (rather than replacing in place),
+since language_harmonised/publisher_harmonised carry their own
+correction_type/confidence audit trail that a plain in-place replacement
+would lose.
 
 report/editions_ready_report.json:
     row counts, and which fields were harmonised vs still raw/pending.
@@ -62,6 +80,8 @@ Usage
 python assemble_editions_ready.py \\
     --input 01_data_retrieval/01_editions/data/bnf_edition_data_raw.csv \\
     --publication-place 04_harmonisation_and_evaluation/01_harmonisation/publication_place/02_tgn_lookup/data/data_final/bnf_publication_place.csv \\
+    --language 04_harmonisation_and_evaluation/01_harmonisation/language/01_heuristic_rules/output/language_harmonised.csv \\
+    --publisher 04_harmonisation_and_evaluation/01_harmonisation/publisher/01_heuristic_rules/output/publisher_harmonised.csv \\
     --output data/bnf_edition_data/bnf_editions_ready.csv \\
     --report 04_harmonisation_and_evaluation/03_ready_dataset_assembly/report/editions_ready_report.json
 """
@@ -90,6 +110,14 @@ PUBLICATION_PLACE_DEFAULT = (
     "04_harmonisation_and_evaluation/01_harmonisation/publication_place/"
     "02_tgn_lookup/data/data_final/bnf_publication_place.csv"
 )
+LANGUAGE_HARMONISED_DEFAULT = (
+    "04_harmonisation_and_evaluation/01_harmonisation/language/"
+    "01_heuristic_rules/output/language_harmonised.csv"
+)
+PUBLISHER_HARMONISED_DEFAULT = (
+    "04_harmonisation_and_evaluation/01_harmonisation/publisher/"
+    "01_heuristic_rules/output/publisher_harmonised.csv"
+)
 OUTPUT_DEFAULT = "data/bnf_edition_data/bnf_editions_ready.csv"
 REPORT_DEFAULT = "04_harmonisation_and_evaluation/03_ready_dataset_assembly/report/editions_ready_report.json"
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
@@ -109,13 +137,22 @@ PLACE_HARMONISED_FIELDS = [
     "place_uncertainty_question_marks",
 ]
 
-# Registry of harmonisation overlays applied on top of the raw aggregation.
-# Extend this as more editions-side normalisers get implemented (language,
-# publisher, dates, external_links) — no other code changes needed as long
-# as the loader returns {edition_uri: {new_column: value, ...}}.
-HARMONISATION_SOURCES = ["publication_place"]
+LANGUAGE_HARMONISED_FIELDS = [
+    "language_harmonised", "language_correction_type", "language_confidence",
+]
 
-OUTPUT_FIELDS = ["edition"] + RAW_DATA_FIELDS + PLACE_HARMONISED_FIELDS
+PUBLISHER_HARMONISED_FIELDS = [
+    "publisher_harmonised", "publisher_correction_type", "publisher_confidence",
+]
+
+# Registry of harmonisation overlays applied on top of the raw aggregation.
+# Extend this as more editions-side normalisers get implemented (dates,
+# external_links roles) — no other code changes needed as long as the
+# loader returns {edition_uri: {new_column: value, ...}}.
+HARMONISATION_SOURCES = ["publication_place", "language", "publisher"]
+
+OUTPUT_FIELDS = (["edition"] + RAW_DATA_FIELDS + PLACE_HARMONISED_FIELDS
+                 + LANGUAGE_HARMONISED_FIELDS + PUBLISHER_HARMONISED_FIELDS)
 
 
 def normalise(v) -> str:
@@ -146,6 +183,56 @@ def load_publication_place_overlay(path: str) -> dict[str, dict[str, str]]:
     return overlay
 
 
+def load_language_overlay(path: str) -> dict[str, dict[str, str]]:
+    """edition_uri -> {language_harmonised, language_correction_type,
+    language_confidence}, from language_normaliser.py's output (columns
+    edition/language_original/language_harmonised/correction_type/confidence
+    — renamed here to the language_-prefixed overlay column names)."""
+    overlay: dict[str, dict[str, str]] = {}
+    if not path or not os.path.exists(path):
+        print(f"  [warn] language harmonisation not found at {path!r}. "
+             f"Run language_normaliser.py first — editions_ready will carry "
+             f"only the raw 'language' field.")
+        return overlay
+
+    with open(path, "r", encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            edition = normalise(row.get("edition", ""))
+            if not edition:
+                continue
+            overlay[edition] = {
+                "language_harmonised": normalise(row.get("language_harmonised", "")),
+                "language_correction_type": normalise(row.get("correction_type", "")),
+                "language_confidence": normalise(row.get("confidence", "")),
+            }
+    print(f"  Loaded language harmonisation for {len(overlay):,} editions.")
+    return overlay
+
+
+def load_publisher_overlay(path: str) -> dict[str, dict[str, str]]:
+    """edition_uri -> {publisher_harmonised, publisher_correction_type,
+    publisher_confidence}, from publisher_normaliser.py's output."""
+    overlay: dict[str, dict[str, str]] = {}
+    if not path or not os.path.exists(path):
+        print(f"  [warn] publisher harmonisation not found at {path!r}. "
+             f"Run publisher_normaliser.py first — editions_ready will carry "
+             f"only the raw 'publisher' field.")
+        return overlay
+
+    with open(path, "r", encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            edition = normalise(row.get("edition", ""))
+            if not edition:
+                continue
+            overlay[edition] = {
+                "publisher_harmonised": normalise(row.get("publisher_harmonised", "")),
+                "publisher_correction_type": normalise(row.get("correction_type", "")),
+                "publisher_confidence": normalise(row.get("confidence", "")),
+            }
+    print(f"  Loaded publisher harmonisation for {len(overlay):,} editions.")
+    return overlay
+
+
 # ── Monitor integration (embedded state-based monitoring, module 06_monitor) ──
 
 def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
@@ -160,9 +247,13 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 # ── Main pipeline ─────────────────────────────────────────────────────────────
 
 def run(input_path: str, publication_place_path: str, output_path: str, report_path: str,
+       language_path: str = LANGUAGE_HARMONISED_DEFAULT,
+       publisher_path: str = PUBLISHER_HARMONISED_DEFAULT,
        use_monitor: bool = False, monitor_script: str = MONITOR_SCRIPT_DEFAULT) -> str:
 
     place_overlay = load_publication_place_overlay(publication_place_path)
+    language_overlay = load_language_overlay(language_path)
+    publisher_overlay = load_publisher_overlay(publisher_path)
 
     monitor_module = None
     monitor_state = None
@@ -204,17 +295,23 @@ def run(input_path: str, publication_place_path: str, output_path: str, report_p
 
     # Pass 2: flatten + overlay harmonised fields.
     results = []
-    harmonised_counts = {field: 0 for field in PLACE_HARMONISED_FIELDS}
+    all_harmonised_fields = PLACE_HARMONISED_FIELDS + LANGUAGE_HARMONISED_FIELDS + PUBLISHER_HARMONISED_FIELDS
+    harmonised_counts = {field: 0 for field in all_harmonised_fields}
     for edition, fields in sorted(editions_db.items()):
         rec = {"edition": edition}
         for f in RAW_DATA_FIELDS:
             rec[f] = "; ".join(sorted(fields[f]))
 
-        overlay = place_overlay.get(edition, {})
-        for f in PLACE_HARMONISED_FIELDS:
-            rec[f] = overlay.get(f, "")
-            if rec[f]:
-                harmonised_counts[f] += 1
+        for overlay_source, overlay_fields in (
+            (place_overlay, PLACE_HARMONISED_FIELDS),
+            (language_overlay, LANGUAGE_HARMONISED_FIELDS),
+            (publisher_overlay, PUBLISHER_HARMONISED_FIELDS),
+        ):
+            overlay = overlay_source.get(edition, {})
+            for f in overlay_fields:
+                rec[f] = overlay.get(f, "")
+                if rec[f]:
+                    harmonised_counts[f] += 1
 
         results.append(rec)
 
@@ -232,9 +329,17 @@ def run(input_path: str, publication_place_path: str, output_path: str, report_p
                 "status": "harmonised" if place_overlay else "pending (source not found)",
                 "editions_with_value": harmonised_counts["publication_place"],
             },
+            "language": {
+                "status": "harmonised" if language_overlay else "pending (source not found)",
+                "editions_with_value": harmonised_counts["language_harmonised"],
+            },
+            "publisher": {
+                "status": "harmonised" if publisher_overlay else "pending (source not found)",
+                "editions_with_value": harmonised_counts["publisher_harmonised"],
+            },
         },
         "raw_fields_pending_harmonisation": [
-            "language", "publisher", "publisher_2", "author", "editor",
+            "publisher_2", "author", "editor",
             "translator", "illustrator", "year_first", "year_range",
         ],
     }
@@ -254,6 +359,8 @@ def run(input_path: str, publication_place_path: str, output_path: str, report_p
 
     print(f"\n✓ Wrote {len(results):,} editions -> {output_path}")
     print(f"  publication_place coverage: {harmonised_counts['publication_place']:,}/{len(results):,}")
+    print(f"  language coverage: {harmonised_counts['language_harmonised']:,}/{len(results):,}")
+    print(f"  publisher coverage: {harmonised_counts['publisher_harmonised']:,}/{len(results):,}")
     print(f"✓ Report -> {report_path}")
 
     return output_path
@@ -268,6 +375,8 @@ def main():
     )
     parser.add_argument("--input",             default=INPUT_DEFAULT)
     parser.add_argument("--publication-place", default=PUBLICATION_PLACE_DEFAULT)
+    parser.add_argument("--language",          default=LANGUAGE_HARMONISED_DEFAULT)
+    parser.add_argument("--publisher",         default=PUBLISHER_HARMONISED_DEFAULT)
     parser.add_argument("--output",            default=OUTPUT_DEFAULT)
     parser.add_argument("--report",            default=REPORT_DEFAULT)
     parser.add_argument("--monitor-script",    default=MONITOR_SCRIPT_DEFAULT)
@@ -275,6 +384,7 @@ def main():
                         help="Disable the 00_monitor/monitor.py resource-usage report.")
     args = parser.parse_args()
     run(args.input, args.publication_place, args.output, args.report,
+        language_path=args.language, publisher_path=args.publisher,
         use_monitor=not args.no_monitor, monitor_script=args.monitor_script)
 
 

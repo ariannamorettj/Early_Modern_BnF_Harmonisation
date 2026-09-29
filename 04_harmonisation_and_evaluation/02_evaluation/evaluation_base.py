@@ -61,9 +61,16 @@ class Evaluation:
                 raise ValueError(f"Formato di caso non supportato: {entry!r}")
         return cases
 
-    def evaluate_value(self, value: Optional[str]) -> Tuple[List[str], Dict[str, str]]:
+    def evaluate_value(
+        self, value: Optional[str], row: Optional[Dict[str, str]] = None
+    ) -> Tuple[List[str], Dict[str, str]]:
         """
         Da implementare nelle classi figlie.
+
+        `row` e' l'intera riga corrente come {header: valore}, per le
+        validazioni che devono incrociare piu' colonne (es. ActorDatesEvaluation,
+        PublicationPlaceEvaluation). Le classi figlie che valutano un solo
+        campo isolato possono ignorare questo parametro.
         """
         raise NotImplementedError
 
@@ -116,7 +123,8 @@ class Evaluation:
                 value = row[idx]
                 total_entities += 1
 
-                warnings, errors = self.evaluate_value(value)
+                row_dict = dict(zip(header, row))
+                warnings, errors = self.evaluate_value(value, row_dict)
 
                 for w in warnings:
                     case_counter[(w, "warning")] += 1

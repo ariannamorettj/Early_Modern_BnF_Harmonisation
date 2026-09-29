@@ -19,9 +19,12 @@ Output files (in output_reports/):
     external_links_warnings.csv
     external_links_errors.csv
 
-[TODO] This evaluator is a placeholder. The evaluate_value() method contains
-       a skeleton implementation. Full validation requires the lookup table
-       of known authority URI patterns to be finalised.
+Known-domain list verified against the real raw dataset (see
+01_harmonisation/external_links/01_heuristic_rules/external_links_normaliser.py's
+AUTHORITY_TABLE and module docstring): 23 distinct domains found across
+551,622 rows, 0 exceptions to the RDF '<...>' wrapper convention. This
+evaluator is meant to run against the normaliser's link_harmonised output
+(wrapper already stripped), not the raw wrapped values.
 """
 
 from typing import Optional, Tuple, List, Dict
@@ -31,25 +34,41 @@ from urllib.parse import urlparse
 from .evaluation_base import Evaluation
 
 
-# Known external authority domains (extend as needed)
+# Known external authority domains — kept in sync with
+# external_links_normaliser.py's AUTHORITY_TABLE (all 23 domains actually
+# observed in the raw dataset; see that module's docstring).
 KNOWN_AUTHORITY_DOMAINS = {
     "viaf.org",
-    "www.wikidata.org",
-    "id.loc.gov",
+    "wikidata.org",
     "isni.org",
-    "www.isni.org",
-    "dbpedia.org",
-    "data.bnf.fr",
+    "id.loc.gov",
     "d-nb.info",
-    "catalogue.bnf.fr",
+    "www.idref.fr",
+    "datos.bne.es",
+    "fr.wikipedia.org",
+    "data.biblissima.fr",
+    "fr.dbpedia.org",
+    "imslp.org",
+    "francearchives.gouv.fr",
+    "musicbrainz.org",
+    "www.persee.fr",
+    "data.persee.fr",
+    "sws.geonames.org",
+    "www.insee.fr",
+    "www.siv.archives-nationales.culture.gouv.fr",
+    "www.pop.culture.gouv.fr",
+    "aims.fao.org",
+    "purl.org",
+    "orcid.org",
 }
 
-# Authorities that should use HTTPS
+# Authorities directly observed with BOTH http and https in the raw dataset
+# (see external_links_normaliser.py's SCHEME_UPGRADE_DOMAINS) — every other
+# known authority above is observed with exactly one scheme only, so it is
+# NOT flagged here as "should be https" without that evidence.
 HTTPS_ONLY_AUTHORITIES = {
-    "www.wikidata.org",
-    "viaf.org",
-    "isni.org",
-    "www.isni.org",
+    "fr.wikipedia.org",
+    "imslp.org",
 }
 
 
@@ -93,7 +112,7 @@ class ExternalLinksEvaluation(Evaluation):
         super().__init__(config, csv_filepath, field_name=field_name)
 
     def evaluate_value(
-        self, value: Optional[str]
+        self, value: Optional[str], row: Optional[Dict[str, str]] = None
     ) -> Tuple[List[str], Dict[str, str]]:
         warnings: List[str] = []
         errors: Dict[str, str] = {}

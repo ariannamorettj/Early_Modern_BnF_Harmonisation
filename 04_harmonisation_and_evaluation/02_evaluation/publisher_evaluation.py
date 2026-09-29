@@ -74,7 +74,7 @@ class PublisherEvaluation(Evaluation):
         super().__init__(config, csv_filepath, field_name=field_name)
 
     def evaluate_value(
-        self, value: Optional[str]
+        self, value: Optional[str], row: Optional[Dict[str, str]] = None
     ) -> Tuple[List[str], Dict[str, str]]:
         warnings: List[str] = []
         errors: Dict[str, str] = {}

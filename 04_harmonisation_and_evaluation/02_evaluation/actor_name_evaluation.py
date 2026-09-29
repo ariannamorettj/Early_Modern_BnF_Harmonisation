@@ -77,7 +77,9 @@ class PersonNameEvaluation(Evaluation):
     # API chiamata dalla classe base per ciascun valore
     # ------------------------------------------------------------------ #
 
-    def evaluate_value(self, value: Optional[str]) -> Tuple[List[str], Dict[str, str]]:
+    def evaluate_value(
+        self, value: Optional[str], row: Optional[Dict[str, str]] = None
+    ) -> Tuple[List[str], Dict[str, str]]:
         warnings: List[str] = []
         errors: Dict[str, str] = {}
 

@@ -32,6 +32,13 @@ def _write_raw_editions_csv(path, rows):
             writer.writerow({**{k: "" for k in fieldnames}, **row})
 
 
+def _no_overlay(tmp_path, name):
+    """Path to a file that deliberately does not exist, so overlay-loading
+    tests stay hermetic regardless of what real harmonisation outputs (if
+    any) happen to exist on disk at the module's own default paths."""
+    return str(tmp_path / name)
+
+
 def _write_place_overlay_csv(path, rows):
     fieldnames = ["edition", "place_original", "place_uncertainty_brackets",
                  "place_uncertainty_parentheses", "place_uncertainty_question_marks",
@@ -53,7 +60,9 @@ def test_run_aggregates_duplicate_rows_per_edition(tmp_path):
     ])
 
     mod.run(str(input_path), str(tmp_path / "no_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           language_path=_no_overlay(tmp_path, "no_language.csv"),
+           publisher_path=_no_overlay(tmp_path, "no_publisher.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
@@ -77,7 +86,9 @@ def test_run_overlays_publication_place(tmp_path):
     ])
 
     mod.run(str(input_path), str(overlay_path),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           language_path=_no_overlay(tmp_path, "no_language.csv"),
+           publisher_path=_no_overlay(tmp_path, "no_publisher.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         row = next(csv.DictReader(f))
@@ -93,7 +104,9 @@ def test_run_leaves_place_columns_empty_when_overlay_missing(tmp_path):
     _write_raw_editions_csv(input_path, [{"edition": "E1", "place": "Paris (France)"}])
 
     mod.run(str(input_path), str(tmp_path / "does_not_exist.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           language_path=_no_overlay(tmp_path, "no_language.csv"),
+           publisher_path=_no_overlay(tmp_path, "no_publisher.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         row = next(csv.DictReader(f))
@@ -110,14 +123,23 @@ def test_run_writes_report_with_field_status(tmp_path):
     ])
 
     mod.run(str(input_path), str(overlay_path),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           language_path=_no_overlay(tmp_path, "no_language.csv"),
+           publisher_path=_no_overlay(tmp_path, "no_publisher.csv"))
 
     with open(tmp_path / "report.json", encoding="utf-8") as f:
         report = json.load(f)
 
     assert report["unique_editions"] == 1
     assert report["harmonised_fields"]["publication_place"]["editions_with_value"] == 1
-    assert "language" in report["raw_fields_pending_harmonisation"]
+    # language/publisher are now wired in too (see language_normaliser.py /
+    # publisher_normaliser.py); with no overlay source given here they're
+    # "pending (source not found)" rather than pre-emptively resolved, but
+    # they're no longer unregistered fields either way.
+    assert "language" not in report["raw_fields_pending_harmonisation"]
+    assert "publisher" not in report["raw_fields_pending_harmonisation"]
+    assert report["harmonised_fields"]["language"]["status"] == "pending (source not found)"
+    assert report["harmonised_fields"]["publisher"]["status"] == "pending (source not found)"
 
 
 # ── Monitor integration ──────────────────────────────────────────────────────
@@ -154,7 +176,9 @@ def test_run_writes_periodic_monitor_checkpoints_and_stops_cleanly(monkeypatch, 
     ])
 
     mod.run(str(input_path), str(tmp_path / "no_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=True)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=True,
+           language_path=_no_overlay(tmp_path, "no_language.csv"),
+           publisher_path=_no_overlay(tmp_path, "no_publisher.csv"))
 
     assert len(fake_monitor.start_calls) == 1
     assert len(fake_monitor.update_calls) == 2 + 1  # one per row + final
@@ -174,7 +198,9 @@ def test_run_skips_monitor_when_disabled(monkeypatch, tmp_path):
     _write_raw_editions_csv(input_path, [{"edition": "E1"}])
 
     mod.run(str(input_path), str(tmp_path / "no_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           language_path=_no_overlay(tmp_path, "no_language.csv"),
+           publisher_path=_no_overlay(tmp_path, "no_publisher.csv"))
 
 
 def test_load_monitor_module_resolves_real_monitor_script():

@@ -1,0 +1,19 @@
+{
+  "total_editions": 814031,
+  "distinct_raw_values": 128809,
+  "clustered_values": 9592,
+  "fuzzy_clustered_count": 8411,
+  "fuzzy_blocks_skipped_oversized": 25,
+  "category_counts": {
+    "passthrough": 275799,
+    "missing": 264479,
+    "fuzzy_clustered": 16186,
+    "canonical_clustered": 22336,
+    "multi_value": 47341,
+    "abbreviation_expanded": 98681,
+    "sine_nomine": 48627,
+    "self_published": 5891,
+    "bracketed_uncertain": 33683,
+    "location_stripped": 1008
+  }
+}

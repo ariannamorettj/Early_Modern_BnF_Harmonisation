@@ -230,12 +230,12 @@ Divided into two sub-modules:
 
 | **Folder** | **Field(s)** | **Status** |
 | --- | --- | --- |
-| `actor_name/` | `actor_name`, `actor_first_name`, `actor_last_name` | ✅ Heuristic normaliser implemented (derive-from-first-last, RDF-literal/bracket/alias/title cleanup, multiple-values flagging, initials resolution — validated against the full raw dataset) + `actors_deduplication.py` (identity resolution across distinct BnF URIs sharing a name). Remaining: `name_correction_dict.json` (curated known-error lookup — needs manual annotation, not attempted). |
+| `actor_name/` | `actor_name`, `actor_first_name`, `actor_last_name` | ✅ Heuristic normaliser implemented (derive-from-first-last, RDF-literal/bracket/alias/title cleanup, multiple-values flagging, initials resolution — validated against the full raw dataset) + `actors_deduplication.py` (identity resolution across distinct BnF URIs sharing a name) + LLM residual step (`llm_name_normaliser.py`, resolves the ~122-row unresolved-brackets/multiple-values/initials residual via Claude Opus 5). Remaining: `name_correction_dict.json` (curated known-error lookup — needs manual annotation, not attempted). |
 | `actor_dates/` | `actor_birth`, `actor_death`, `actor_start`, `actor_end` | ✅ Heuristic normaliser implemented (BnF numeric convention → EDTF); LLM fallback for the non-parseable residual also implemented. |
-| `external_links/` | `actor_link_close`, `actor_link_exact` | 📋 Planned |
+| `external_links/` | `actor_link_close`, `actor_link_exact` | ✅ Heuristic normaliser implemented (RDF-wrapper stripping + known-authority classification against the real 23-domain set; 0 unresolved-authority rows on a full run). No LLM step (nothing ambiguous for one to add). |
 | `publication_place/` | `place` | ✅ Approach 02 complete |
-| `publisher/` | `publisher_1` | 📋 Planned |
-| `language/` | `language` | 📋 Planned |
+| `publisher/` | `publisher` | ✅ Heuristic normaliser implemented (sine-nomine/self-published detection, abbreviation expansion, location stripping, normalised-key + fuzzy-similarity clustering) + LLM residual step for flagged multi-value cells (implemented, not yet run against the real ~18k-value residual). |
+| `language/` | `language` | ✅ Heuristic normaliser implemented — the field turned out to be a fully structured LOC vocabulary URI in the real data (not free text as originally assumed), so a single deterministic rule gives 100% coverage; no lookup dictionary or LLM step needed. |
 
 **Output of each normaliser:**
 
@@ -255,9 +255,9 @@ Divided into two sub-modules:
 ```
 Evaluation (base)
 ├── PersonNameEvaluation       → actor_name_evaluation.py       ✅
-├── ActorDatesEvaluation       → actor_dates_evaluation.py      🔄
+├── ActorDatesEvaluation       → actor_dates_evaluation.py      ✅
 ├── ExternalLinksEvaluation    → external_links_evaluation.py   🔄
-├── PublicationPlaceEvaluation → publication_place_evaluation.py 🔄
+├── PublicationPlaceEvaluation → publication_place_evaluation.py ✅
 ├── PublisherEvaluation        → publisher_evaluation.py        🔄
 └── LanguageEvaluation         → language_evaluation.py         🔄
 ```

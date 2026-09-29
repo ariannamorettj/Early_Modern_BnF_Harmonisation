@@ -67,6 +67,15 @@ fabricated here), and Roman-numeral suffix handling (e.g. "Julien I" —
 detected by the evaluator as a warning, but genuinely ambiguous whether "I"
 is part of the name or noise, so left untouched rather than guessed at).
 
+By default, running this script also runs the 02_llm_based residual step
+immediately afterwards (single command = fully harmonised, as far as
+automatically possible, same convention as dates_normaliser.py and
+publisher_normaliser.py) — resolving the unresolved_brackets_or_separators /
+unresolved_multiple_values / initials_or_abbreviation_unresolved residual
+via an LLM (see 02_llm_based/llm_name_normaliser.py's module docstring for
+exactly which correction_type values are and are not sent to it). Pass
+--no-llm to skip it and get the heuristic-only output.
+
 Input
 -----
 Raw actor dataset (CSV, or ZIP containing one or more CSVs) with columns:
@@ -156,6 +165,20 @@ def _monitor_checkpoint(monitor_module, monitor_state, index, total, actor_uri, 
     return monitor_module.update_monitor_state(
         state=monitor_state, context=context, print_console=True,
     )
+
+
+def load_llm_module():
+    """Load the sibling 02_llm_based/llm_name_normaliser.py module, mirroring
+    dates_normaliser.py's/publisher_normaliser.py's load_llm_module(). Only
+    used from main() — run() above stays a pure, heuristic-only function
+    with no dependency on this module, so importing this file never
+    requires anthropic/pydantic to be installed unless the CLI's LLM step
+    actually runs."""
+    script_path = Path(__file__).resolve().parent.parent / "02_llm_based" / "llm_name_normaliser.py"
+    spec = importlib.util.spec_from_file_location("llm_name_normaliser", script_path)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module
 
 
 NULL_MARKERS = {"NA", "N/A", "NULL", "NONE", "NAN", "***", ""}
@@ -532,16 +555,43 @@ def run(input_path: str, output_dir: str,
 def main():
     parser = argparse.ArgumentParser(
         description="actor_name heuristic normaliser "
-                    "(see module docstring for the full rule cascade)")
+                    "(see module docstring for the full rule cascade). "
+                    "By default also runs the 02_llm_based residual step "
+                    "afterwards (see --no-llm).")
     parser.add_argument("--input", default=INPUT_DEFAULT)
     parser.add_argument("--output", default=OUTPUT_DIR_DEFAULT, help="Output directory")
     parser.add_argument("--output-filename", default=OUTPUT_FILENAME_DEFAULT)
     parser.add_argument("--monitor-script", default=MONITOR_SCRIPT_DEFAULT)
     parser.add_argument("--no-monitor", action="store_true",
                         help="Disable the 00_monitor/monitor.py resource-usage report.")
+    parser.add_argument("--no-llm", action="store_true",
+                        help="Skip the 02_llm_based/llm_name_normaliser.py residual step "
+                            "that otherwise runs by default right after this heuristic "
+                            "step, resolving the unresolved_brackets_or_separators / "
+                            "unresolved_multiple_values / initials_or_abbreviation_unresolved "
+                            "residual via an LLM call.")
+    parser.add_argument("--llm-model", default="claude-opus-5")
+    parser.add_argument("--llm-effort", default="low",
+                        choices=["low", "medium", "high", "xhigh", "max"])
+    parser.add_argument("--llm-cache", default=None,
+                        help="Override the LLM response cache path "
+                            "(default: llm_name_normaliser.py's own CACHE_PATH_DEFAULT).")
     args = parser.parse_args()
-    run(args.input, args.output, args.output_filename,
+
+    output_path = run(args.input, args.output, args.output_filename,
         use_monitor=not args.no_monitor, monitor_script=args.monitor_script)
+
+    if not args.no_llm:
+        llm_module = load_llm_module()
+        llm_module.run(
+            heuristic_output_csv=output_path,
+            output_path=output_path,
+            cache_path=args.llm_cache or llm_module.CACHE_PATH_DEFAULT,
+            model=args.llm_model,
+            effort=args.llm_effort,
+            use_monitor=not args.no_monitor,
+            monitor_script=args.monitor_script,
+        )
 
 
 if __name__ == "__main__":

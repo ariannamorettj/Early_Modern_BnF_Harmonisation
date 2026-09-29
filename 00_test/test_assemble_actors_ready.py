@@ -43,6 +43,13 @@ def _write_name_overlay_csv(path, rows):
             writer.writerow({**{k: "" for k in fieldnames}, **row})
 
 
+def _no_overlay(tmp_path, name):
+    """Path to a file that deliberately does not exist, so overlay-loading
+    tests stay hermetic (and fast) regardless of what real harmonisation
+    outputs happen to exist on disk at the module's own default paths."""
+    return str(tmp_path / name)
+
+
 def _write_dates_overlay_csv(path, rows):
     fieldnames = ["actor_uri", "field", "date_original", "date_harmonised",
                  "date_format_detected", "confidence"]
@@ -64,7 +71,8 @@ def test_run_preserves_raw_row_granularity_no_deduplication(tmp_path):
     ])
 
     mod.run(str(input_path), str(tmp_path / "no_name_overlay.csv"), str(tmp_path / "no_dates_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
@@ -87,7 +95,8 @@ def test_run_fills_empty_actor_name_from_overlay(tmp_path):
     ])
 
     mod.run(str(input_path), str(overlay_path), str(tmp_path / "no_dates_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         rows = {r["actor"]: r for r in csv.DictReader(f)}
@@ -113,7 +122,8 @@ def test_run_replaces_actor_dates_from_overlay_even_when_raw_present(tmp_path):
     ])
 
     mod.run(str(input_path), str(tmp_path / "no_name_overlay.csv"), str(dates_overlay_path),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         rows = {r["actor"]: r for r in csv.DictReader(f)}
@@ -136,7 +146,8 @@ def test_run_ignores_dates_overlay_rows_with_empty_harmonised_value(tmp_path):
     ])
 
     mod.run(str(input_path), str(tmp_path / "no_name_overlay.csv"), str(dates_overlay_path),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         rows = {r["actor"]: r for r in csv.DictReader(f)}
@@ -152,7 +163,8 @@ def test_run_accepts_zip_input(tmp_path):
         zf.write(csv_inner, arcname="actor_data.csv")
 
     mod.run(str(zip_path), str(tmp_path / "no_name_overlay.csv"), str(tmp_path / "no_dates_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
     with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
@@ -177,7 +189,8 @@ def test_run_writes_report(tmp_path):
     ])
 
     mod.run(str(input_path), str(overlay_path), str(dates_overlay_path),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
     with open(tmp_path / "report.json", encoding="utf-8") as f:
         report = json.load(f)
@@ -187,7 +200,9 @@ def test_run_writes_report(tmp_path):
     assert report["harmonised_fields"]["actor_name"]["rows_filled"] == 1
     assert report["harmonised_fields"]["actor_dates"]["rows_replaced"]["actor_birth"] == 1
     assert report["harmonised_fields"]["actor_dates"]["rows_replaced"]["actor_death"] == 0
-    assert "actor_link_exact" in report["raw_fields_pending_harmonisation"]
+    # external_links is now wired in too (see external_links_normaliser.py),
+    # so nothing remains in raw_fields_pending_harmonisation.
+    assert report["raw_fields_pending_harmonisation"] == []
     assert "actor_birth" not in report["raw_fields_pending_harmonisation"]
 
 
@@ -223,7 +238,8 @@ def test_run_writes_periodic_monitor_checkpoints_and_stops_cleanly(monkeypatch, 
     _write_raw_actors_csv(input_path, [{"actor": "A1"}, {"actor": "A2"}])
 
     mod.run(str(input_path), str(tmp_path / "no_name_overlay.csv"), str(tmp_path / "no_dates_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=True)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=True,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
     assert len(fake_monitor.start_calls) == 1
     assert len(fake_monitor.update_calls) == 2 + 1
@@ -243,7 +259,8 @@ def test_run_skips_monitor_when_disabled(monkeypatch, tmp_path):
     _write_raw_actors_csv(input_path, [{"actor": "A1"}])
 
     mod.run(str(input_path), str(tmp_path / "no_name_overlay.csv"), str(tmp_path / "no_dates_overlay.csv"),
-           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False)
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links_overlay.csv"))
 
 
 def test_load_monitor_module_resolves_real_monitor_script():
