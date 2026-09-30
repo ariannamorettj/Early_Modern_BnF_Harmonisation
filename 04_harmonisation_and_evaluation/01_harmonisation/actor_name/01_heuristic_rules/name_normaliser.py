@@ -98,8 +98,10 @@ Monitoring
 By default, resource-usage checkpoints are written via the shared
 00_monitor/monitor.py "embedded state-based monitoring" API — the same
 mechanism used by module 1's query_agents.R / query_editions.R and by
-06_mapping/02_map_wikidata.py: one checkpoint per processed actor, plus a
-final checkpoint on completion. Reports land in
+06_mapping/02_map_wikidata.py: one checkpoint every MONITOR_CHECKPOINT_EVERY
+(1,000) actors and at the last one, plus a final checkpoint on completion.
+(A checkpoint costs ~55 ms, mostly the nvidia-smi GPU read, so one per
+actor added about two hours to a 124,695-actor run.) Reports land in
 00_monitor/report/name_normaliser_<timestamp>_py.txt. Disable with
 --no-monitor.
 
@@ -137,6 +139,10 @@ OUTPUT_DIR_DEFAULT = (
 )
 OUTPUT_FILENAME_DEFAULT = "actor_name_harmonised.csv"
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
+# One checkpoint per record cost ~55 ms each (mostly the nvidia-smi GPU read),
+# about two hours over 124,695 actors; checkpoint every N records plus the
+# last one instead, like 06_mapping/05_map_estc_actors.py.
+MONITOR_CHECKPOINT_EVERY = 1_000
 
 OUTPUT_FIELDS = [
     "actor_uri", "actor_name_original", "actor_name_harmonised",
@@ -159,6 +165,8 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 
 def _monitor_checkpoint(monitor_module, monitor_state, index, total, actor_uri, correction_type):
     if monitor_module is None:
+        return monitor_state
+    if index % MONITOR_CHECKPOINT_EVERY and index != total:
         return monitor_state
     context = (f"Processed actor {actor_uri} (index {index}/{total}) "
               f"- correction_type={correction_type}")

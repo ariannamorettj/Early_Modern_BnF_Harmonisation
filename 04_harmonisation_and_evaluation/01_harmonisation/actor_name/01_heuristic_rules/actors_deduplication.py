@@ -86,9 +86,9 @@ Monitoring
 By default, resource-usage checkpoints are written via the shared
 00_monitor/monitor.py "embedded state-based monitoring" API — the same
 mechanism used by module 1's query_agents.R / query_editions.R and by
-name_normaliser.py / 06_mapping's scripts: one checkpoint per processed
-name-group (only groups with more than one actor produce a checkpoint),
-plus a final checkpoint on completion. Reports land in
+name_normaliser.py / 06_mapping's scripts: one checkpoint every
+MONITOR_CHECKPOINT_EVERY (1,000) processed name-groups and at the last
+one, plus a final checkpoint on completion. Reports land in
 00_monitor/report/actors_deduplication_<timestamp>_py.txt. Disable with
 --no-monitor.
 
@@ -131,6 +131,10 @@ REPORT_DIR_DEFAULT = (
 )
 REPORT_FILENAME_DEFAULT = "actor_dedup_report.json"
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
+# One checkpoint per record cost ~55 ms each (mostly the nvidia-smi GPU read),
+# about two hours over 124,695 actors; checkpoint every N records plus the
+# last one instead, like 06_mapping/05_map_estc_actors.py.
+MONITOR_CHECKPOINT_EVERY = 1_000
 MAX_PAIRWISE_GROUP_SIZE_DEFAULT = 200
 
 CORE_FIELDS = [
@@ -163,6 +167,8 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 
 def _monitor_checkpoint(monitor_module, monitor_state, index, total, name, group_size):
     if monitor_module is None:
+        return monitor_state
+    if index % MONITOR_CHECKPOINT_EVERY and index != total:
         return monitor_state
     context = (f"Processed name-group {index}/{total} "
               f"('{name}', {group_size} actors)")

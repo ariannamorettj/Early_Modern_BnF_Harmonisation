@@ -147,8 +147,12 @@ def test_run_mapping_passes_actor_death_to_name_search(monkeypatch, tmp_path):
     assert captured["death_year"] == "1650"
 
 
-def test_run_mapping_writes_monitor_checkpoint_per_actor_and_stops_cleanly(monkeypatch, tmp_path):
+def test_run_mapping_writes_monitor_checkpoint_periodically_and_stops_cleanly(monkeypatch, tmp_path):
+    """Checkpoints fire every MONITOR_CHECKPOINT_EVERY records and at the last
+    one, not per record: with the cadence lowered to 2, a 2-record run skips
+    record 1 and checkpoints record 2, then the completion checkpoint."""
     wikidata = load_wikidata_module()
+    monkeypatch.setattr(wikidata, "MONITOR_CHECKPOINT_EVERY", 2)
 
     input_path = tmp_path / "actors.csv"
     _write_actors_csv(input_path, [
@@ -172,9 +176,8 @@ def test_run_mapping_writes_monitor_checkpoint_per_actor_and_stops_cleanly(monke
 
     assert len(fake_monitor.start_calls) == 1
     # one checkpoint per actor + one final "run completed" checkpoint
-    assert len(fake_monitor.update_calls) == 2 + 1
-    assert "A1" in fake_monitor.update_calls[0]
-    assert "A2" in fake_monitor.update_calls[1]
+    assert len(fake_monitor.update_calls) == 1 + 1  # record 2 (last), completion
+    assert "A2" in fake_monitor.update_calls[0]
     assert fake_monitor.update_calls[-1] == "Completed Wikidata mapping run"
     assert fake_monitor.stop_calls == [True]
 

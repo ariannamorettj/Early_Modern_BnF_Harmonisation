@@ -1,0 +1,73 @@
+<http://id.loc.gov/vocabulary/countries/aa> <http://www.w3.org/2004/02/skos/core#prefLabel> "Albania"@en .
+<http://id.loc.gov/vocabulary/countries/ag> <http://www.w3.org/2004/02/skos/core#prefLabel> "Argentina"@en .
+<http://id.loc.gov/vocabulary/countries/ai> <http://www.w3.org/2004/02/skos/core#prefLabel> "Armenia (Republic)"@en .
+<http://id.loc.gov/vocabulary/countries/aq> <http://www.w3.org/2004/02/skos/core#prefLabel> "Antigua and Barbuda"@en .
+<http://id.loc.gov/vocabulary/countries/au> <http://www.w3.org/2004/02/skos/core#prefLabel> "Austria"@en .
+<http://id.loc.gov/vocabulary/countries/be> <http://www.w3.org/2004/02/skos/core#prefLabel> "Belgium"@en .
+<http://id.loc.gov/vocabulary/countries/bl> <http://www.w3.org/2004/02/skos/core#prefLabel> "Brazil"@en .
+<http://id.loc.gov/vocabulary/countries/bn> <http://www.w3.org/2004/02/skos/core#prefLabel> "Bosnia and Herzegovina"@en .
+<http://id.loc.gov/vocabulary/countries/bu> <http://www.w3.org/2004/02/skos/core#prefLabel> "Bulgaria"@en .
+<http://id.loc.gov/vocabulary/countries/cc> <http://www.w3.org/2004/02/skos/core#prefLabel> "China"@en .
+<http://id.loc.gov/vocabulary/countries/ci> <http://www.w3.org/2004/02/skos/core#prefLabel> "Croatia"@en .
+<http://id.loc.gov/vocabulary/countries/ck> <http://www.w3.org/2004/02/skos/core#prefLabel> "Colombia"@en .
+<http://id.loc.gov/vocabulary/countries/cl> <http://www.w3.org/2004/02/skos/core#prefLabel> "Chile"@en .
+<http://id.loc.gov/vocabulary/countries/cu> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cuba"@en .
+<http://id.loc.gov/vocabulary/countries/cy> <http://www.w3.org/2004/02/skos/core#prefLabel> "Cyprus"@en .
+<http://id.loc.gov/vocabulary/countries/dk> <http://www.w3.org/2004/02/skos/core#prefLabel> "Denmark"@en .
+<http://id.loc.gov/vocabulary/countries/ec> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ecuador"@en .
+<http://id.loc.gov/vocabulary/countries/er> <http://www.w3.org/2004/02/skos/core#prefLabel> "Estonia"@en .
+<http://id.loc.gov/vocabulary/countries/fi> <http://www.w3.org/2004/02/skos/core#prefLabel> "Finland"@en .
+<http://id.loc.gov/vocabulary/countries/fr> <http://www.w3.org/2004/02/skos/core#prefLabel> "France"@en .
+<http://id.loc.gov/vocabulary/countries/gr> <http://www.w3.org/2004/02/skos/core#prefLabel> "Greece"@en .
+<http://id.loc.gov/vocabulary/countries/gv> <http://www.w3.org/2004/02/skos/core#prefLabel> "Guinea"@en .
+<http://id.loc.gov/vocabulary/countries/gw> <http://www.w3.org/2004/02/skos/core#prefLabel> "Germany"@en .
+<http://id.loc.gov/vocabulary/countries/ht> <http://www.w3.org/2004/02/skos/core#prefLabel> "Haiti"@en .
+<http://id.loc.gov/vocabulary/countries/hu> <http://www.w3.org/2004/02/skos/core#prefLabel> "Hungary"@en .
+<http://id.loc.gov/vocabulary/countries/ic> <http://www.w3.org/2004/02/skos/core#prefLabel> "Iceland"@en .
+<http://id.loc.gov/vocabulary/countries/ie> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ireland"@en .
+<http://id.loc.gov/vocabulary/countries/ii> <http://www.w3.org/2004/02/skos/core#prefLabel> "India"@en .
+<http://id.loc.gov/vocabulary/countries/iq> <http://www.w3.org/2004/02/skos/core#prefLabel> "Iraq"@en .
+<http://id.loc.gov/vocabulary/countries/ir> <http://www.w3.org/2004/02/skos/core#prefLabel> "Iran"@en .
+<http://id.loc.gov/vocabulary/countries/is> <http://www.w3.org/2004/02/skos/core#prefLabel> "Israel"@en .
+<http://id.loc.gov/vocabulary/countries/it> <http://www.w3.org/2004/02/skos/core#prefLabel> "Italy"@en .
+<http://id.loc.gov/vocabulary/countries/ja> <http://www.w3.org/2004/02/skos/core#prefLabel> "Japan"@en .
+<http://id.loc.gov/vocabulary/countries/jm> <http://www.w3.org/2004/02/skos/core#prefLabel> "Jamaica"@en .
+<http://id.loc.gov/vocabulary/countries/kz> <http://www.w3.org/2004/02/skos/core#prefLabel> "Kazakhstan"@en .
+<http://id.loc.gov/vocabulary/countries/le> <http://www.w3.org/2004/02/skos/core#prefLabel> "Lebanon"@en .
+<http://id.loc.gov/vocabulary/countries/li> <http://www.w3.org/2004/02/skos/core#prefLabel> "Lithuania"@en .
+<http://id.loc.gov/vocabulary/countries/lu> <http://www.w3.org/2004/02/skos/core#prefLabel> "Luxembourg"@en .
+<http://id.loc.gov/vocabulary/countries/mc> <http://www.w3.org/2004/02/skos/core#prefLabel> "Monaco"@en .
+<http://id.loc.gov/vocabulary/countries/ml> <http://www.w3.org/2004/02/skos/core#prefLabel> "Mali"@en .
+<http://id.loc.gov/vocabulary/countries/mm> <http://www.w3.org/2004/02/skos/core#prefLabel> "Malta"@en .
+<http://id.loc.gov/vocabulary/countries/mr> <http://www.w3.org/2004/02/skos/core#prefLabel> "Morocco"@en .
+<http://id.loc.gov/vocabulary/countries/mx> <http://www.w3.org/2004/02/skos/core#prefLabel> "Mexico"@en .
+<http://id.loc.gov/vocabulary/countries/ne> <http://www.w3.org/2004/02/skos/core#prefLabel> "Netherlands"@en .
+<http://id.loc.gov/vocabulary/countries/no> <http://www.w3.org/2004/02/skos/core#prefLabel> "Norway"@en .
+<http://id.loc.gov/vocabulary/countries/np> <http://www.w3.org/2004/02/skos/core#prefLabel> "Nepal"@en .
+<http://id.loc.gov/vocabulary/countries/pe> <http://www.w3.org/2004/02/skos/core#prefLabel> "Peru"@en .
+<http://id.loc.gov/vocabulary/countries/pl> <http://www.w3.org/2004/02/skos/core#prefLabel> "Poland"@en .
+<http://id.loc.gov/vocabulary/countries/po> <http://www.w3.org/2004/02/skos/core#prefLabel> "Portugal"@en .
+<http://id.loc.gov/vocabulary/countries/py> <http://www.w3.org/2004/02/skos/core#prefLabel> "Paraguay"@en .
+<http://id.loc.gov/vocabulary/countries/rb> <http://www.w3.org/2004/02/skos/core#prefLabel> "Serbia"@en .
+<http://id.loc.gov/vocabulary/countries/rm> <http://www.w3.org/2004/02/skos/core#prefLabel> "Romania"@en .
+<http://id.loc.gov/vocabulary/countries/ru> <http://www.w3.org/2004/02/skos/core#prefLabel> "Russia (Federation)"@en .
+<http://id.loc.gov/vocabulary/countries/sa> <http://www.w3.org/2004/02/skos/core#prefLabel> "South Africa"@en .
+<http://id.loc.gov/vocabulary/countries/sm> <http://www.w3.org/2004/02/skos/core#prefLabel> "San Marino"@en .
+<http://id.loc.gov/vocabulary/countries/sp> <http://www.w3.org/2004/02/skos/core#prefLabel> "Spain"@en .
+<http://id.loc.gov/vocabulary/countries/su> <http://www.w3.org/2004/02/skos/core#prefLabel> "Saudi Arabia"@en .
+<http://id.loc.gov/vocabulary/countries/sw> <http://www.w3.org/2004/02/skos/core#prefLabel> "Sweden"@en .
+<http://id.loc.gov/vocabulary/countries/sz> <http://www.w3.org/2004/02/skos/core#prefLabel> "Switzerland"@en .
+<http://id.loc.gov/vocabulary/countries/th> <http://www.w3.org/2004/02/skos/core#prefLabel> "Thailand"@en .
+<http://id.loc.gov/vocabulary/countries/tu> <http://www.w3.org/2004/02/skos/core#prefLabel> "Turkey"@en .
+<http://id.loc.gov/vocabulary/countries/ua> <http://www.w3.org/2004/02/skos/core#prefLabel> "Egypt"@en .
+<http://id.loc.gov/vocabulary/countries/un> <http://www.w3.org/2004/02/skos/core#prefLabel> "Ukraine"@en .
+<http://id.loc.gov/vocabulary/countries/uz> <http://www.w3.org/2004/02/skos/core#prefLabel> "Uzbekistan"@en .
+<http://id.loc.gov/vocabulary/countries/vc> <http://www.w3.org/2004/02/skos/core#prefLabel> "Vatican City"@en .
+<http://id.loc.gov/vocabulary/countries/ve> <http://www.w3.org/2004/02/skos/core#prefLabel> "Venezuela"@en .
+<http://id.loc.gov/vocabulary/countries/xo> <http://www.w3.org/2004/02/skos/core#prefLabel> "Slovakia"@en .
+<http://id.loc.gov/vocabulary/countries/xr> <http://www.w3.org/2004/02/skos/core#prefLabel> "Czech Republic"@en .
+<http://id.loc.gov/vocabulary/countries/xv> <http://www.w3.org/2004/02/skos/core#prefLabel> "Slovenia"@en .
+<http://id.loc.gov/vocabulary/countries/xx> <http://www.w3.org/2004/02/skos/core#prefLabel> "No place, unknown, or undetermined"@en .
+<http://id.loc.gov/vocabulary/countries/xxc> <http://www.w3.org/2004/02/skos/core#prefLabel> "Canada"@en .
+<http://id.loc.gov/vocabulary/countries/xxk> <http://www.w3.org/2004/02/skos/core#prefLabel> "United Kingdom"@en .
+<http://id.loc.gov/vocabulary/countries/xxu> <http://www.w3.org/2004/02/skos/core#prefLabel> "United States"@en .

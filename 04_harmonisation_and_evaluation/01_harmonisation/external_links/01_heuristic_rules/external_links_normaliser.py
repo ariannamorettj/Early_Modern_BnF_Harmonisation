@@ -83,8 +83,9 @@ Monitoring
 ----------
 By default, resource-usage checkpoints are written via the shared
 00_monitor/monitor.py "embedded state-based monitoring" API — the same
-mechanism used by dates_normaliser.py: one checkpoint per processed actor,
-plus a final checkpoint on completion. Reports land in
+mechanism used by dates_normaliser.py: one checkpoint every
+MONITOR_CHECKPOINT_EVERY (1,000) actors and at the last one, plus a final
+checkpoint on completion. Reports land in
 00_monitor/report/external_links_normaliser_<timestamp>_py.txt. Disable
 with --no-monitor.
 
@@ -123,6 +124,10 @@ OUTPUT_DIR_DEFAULT = (
 )
 OUTPUT_FILENAME_DEFAULT = "external_links_harmonised.csv"
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
+# One checkpoint per record cost ~55 ms each (mostly the nvidia-smi GPU read),
+# about two hours over 124,695 actors; checkpoint every N records plus the
+# last one instead, like 06_mapping/05_map_estc_actors.py.
+MONITOR_CHECKPOINT_EVERY = 1_000
 
 LINK_FIELDS = ["actor_link_close", "actor_link_exact"]
 
@@ -246,6 +251,8 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 
 def _monitor_checkpoint(monitor_module, monitor_state, index, total, actor_uri):
     if monitor_module is None:
+        return monitor_state
+    if index % MONITOR_CHECKPOINT_EVERY and index != total:
         return monitor_state
     context = f"Processed actor {actor_uri} (index {index}/{total})"
     return monitor_module.update_monitor_state(

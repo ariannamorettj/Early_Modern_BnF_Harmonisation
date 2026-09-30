@@ -9,7 +9,7 @@ body{margin:0;}
 img{max-width:100%;}
 [hidden]{display:none!important;}
 </style>
-<title>Catalogue of Corrections</title>
+<title>Early Modern BnF Data Harmonisation Workflow</title>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
 <style>
@@ -514,7 +514,7 @@ a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); out
 
 <nav class="rail" aria-label="Module navigation">
   <div class="rail-brand">
-    <span class="mark">Catalogue <em>of</em> Corrections</span>
+    <span class="mark">Early Modern BnF Data Harmonisation Workflow</span>
     <span class="sub">BnF harmonisation pipeline</span>
   </div>
   <ul class="rail-list" id="railList">
@@ -548,8 +548,8 @@ a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); out
       <em>English Short Title Catalogue</em>, and materialises the result as
       a linked open data knowledge graph built to the <strong>CHAD-AP</strong>
       application profile — not itself called "CHAD-AP": that name belongs
-      to the profile the graph conforms to, not the graph. On top of it, a
-      <strong>SAMPO</strong>-style discovery portal (module 08) is planned next.
+      to the profile the graph conforms to, not the graph. On top of it sits
+      a <strong>Sampo</strong> faceted-search portal (module 08).
     </p>
 
     <div class="stat-row">
@@ -591,7 +591,7 @@ a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); out
   </p>
 
   <figure class="diagram-figure reveal pending">
-    <svg viewBox="0 0 720 1010" role="img" aria-label="Vertical flow diagram of the nine pipeline modules, from raw SPARQL retrieval at data.bnf.fr down to a merged RDF knowledge graph built to the CHAD-AP application profile, and on to a planned SAMPO-style discovery portal, with the row/record count flowing between each stage.">
+    <svg viewBox="0 0 720 1010" role="img" aria-label="Vertical flow diagram of the nine pipeline modules, from raw SPARQL retrieval at data.bnf.fr down to a merged RDF knowledge graph built to the CHAD-AP application profile, and on to a Sampo faceted-search portal, with the row/record count flowing between each stage.">
       <defs>
         <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
           <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
@@ -655,7 +655,7 @@ a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); out
       <text x="198" y="590" class="node-num">06</text>
       <text x="228" y="590" class="node-label">External mapping</text>
       <text x="228" y="606" class="node-sub">VIAF &middot; Wikidata &middot; ESTC / ECCO</text>
-      <text x="228" y="622" class="node-sub">5,590 actors linked to ESTC authority</text>
+      <text x="228" y="622" class="node-sub">5,570 actors linked to ESTC authority</text>
       <line x1="360" y1="634" x2="360" y2="662" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrow)"/>
       <text x="374" y="652" class="flow-label">enriched actor + edition CSVs</text>
 
@@ -669,14 +669,14 @@ a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); out
 
       <text x="360" y="778" text-anchor="middle" class="node-label">BnF knowledge graph</text>
       <text x="360" y="794" text-anchor="middle" class="node-sub">a new graph, built to the CHAD-AP application profile</text>
-      <line x1="360" y1="804" x2="360" y2="832" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="4 3" marker-end="url(#arrow)"/>
+      <line x1="360" y1="804" x2="360" y2="832" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrow)"/>
 
-      <!-- 08 (planned) -->
-      <rect x="150" y="834" width="420" height="66" rx="4" fill="none" stroke="var(--accent)" stroke-width="1.4" stroke-dasharray="5 4"/>
+      <!-- 08 -->
+      <rect x="150" y="834" width="420" height="66" rx="4" fill="none" stroke="currentColor" stroke-width="1.2"/>
       <text x="168" y="856" class="node-num">08</text>
-      <text x="198" y="856" class="node-label">SAMPO portal</text>
-      <text x="198" y="872" class="node-sub">discovery portal, built on the graph above</text>
-      <text x="198" y="888" class="node-sub">planned &middot; design to follow</text>
+      <text x="198" y="856" class="node-label">Sampo portal</text>
+      <text x="198" y="872" class="node-sub">Oxigraph endpoint &middot; Sampo-UI v4 configs</text>
+      <text x="198" y="888" class="node-sub">editions + actors &middot; facets, map, charts</text>
 
       <!-- side rail: 00 spans modules 01-07 -->
       <rect x="40" y="60" width="90" height="670" rx="4" fill="none" stroke="currentColor" stroke-width="1" stroke-dasharray="3 3" opacity=".55"/>
@@ -686,8 +686,8 @@ a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); out
     <figcaption>
       Data flows top to bottom, module 01 through 07, into a knowledge graph
       built to the CHAD-AP application profile — that profile's name is not
-      the graph's own name. Module 08, the planned SAMPO-style portal on top
-      of it, is shown dashed: designed but not yet built. Module 00
+      the graph's own name. Module 08, the Sampo portal, reads that graph
+      from a SPARQL endpoint rebuilt after every run. Module 00
       (monitoring and the automated test suite) runs alongside every other
       stage rather than before or after it.
     </figcaption>
@@ -1426,14 +1426,14 @@ bnf_death_year: 1726                    estc_death_year: 1726</pre>
     <div class="stat"><span class="n tnum">92,780</span><span class="l">BnF actors checked against the ESTC actor authority</span></div>
     <div class="stat"><span class="n tnum">5,570</span><span class="l">matched with confidence — usable without manual review</span></div>
   </div>
-  <p class="body-text" style="margin-top:8px; font-size:.85rem; color:var(--ink-muted);">Counted directly from <code>estc_actor_mapping_confident.csv</code> (5,290 <code>viaf_id</code> + 280 <code>name_and_dates</code>). The script's own <code>merge_report.json</code> instead logs 5,590 for this same figure — a small, unreconciled gap between the two real reports, not a number this page is smoothing over.</p>
+  <p class="body-text" style="margin-top:8px; font-size:.85rem; color:var(--ink-muted);">Counted from <code>estc_actor_mapping_confident.csv</code>: 5,290 <code>viaf_id</code> + 280 <code>name_and_dates</code>. The 20 <code>ambiguous_name_and_dates</code> rows still carry their best candidate, but <code>04_merge_mappings.py</code> writes it to separate <code>estc_actor_candidate_id</code>/<code>_name</code> columns, never to <code>estc_actor_id</code> — so <code>merge_report.json</code> logs the same 5,570 matched, plus 20 ambiguous, and nothing downstream can mistake a candidate for a match.</p>
 </section>
 
 <!-- ============================================================ 07 -->
 <section id="mod-07" class="module wrap">
   <p class="eyebrow"><span class="num-badge">07</span>Python &middot; morph-kgc &middot; YARRRML</p>
   <h2 class="title">Graph materialisation</h2>
-  <p class="lede">The 1454 indulgence letter from the very first specimen, one full pipeline pass later, as real triples pulled straight from the actor and bibliographic N-Triples graphs on disk.</p>
+  <p class="lede">Three YARRRML mappings turn the enriched CSVs into CHAD-AP triples, first on a linked sample, then on the full tables.</p>
 
   <div class="dataset reveal pending">
     <div class="dataset-head">
@@ -1454,10 +1454,10 @@ estc_id:   <span style="color:var(--ink-faint); font-style:italic;">(empty — n
   <div class="dataset reveal pending">
     <div class="dataset-head">
       <span class="dataset-name">bnf_actors_enriched.csv</span>
-      <span class="dataset-meta">module 06 output &middot; 92,780 rows &middot; 32 columns</span>
+      <span class="dataset-meta">module 06 output &middot; 92,780 rows &middot; 34 columns</span>
     </div>
     <p class="dataset-desc">Module 07's other real input — François Le Gentil again, this time with the ESTC match folded in and the still-empty VIAF/Wikidata columns (those two mapping scripts haven't been run this session either).</p>
-    <p class="dataset-cols"><span class="lbl">Columns (selected)</span><code>BnF_ID, actor_name, ..., role_edition_map, roles, viaf_id, viaf_name, qid, wikidata_label, isni, lc_id, estc_actor_id, estc_actor_name, estc_actor_match_type, estc_actor_confidence</code></p>
+    <p class="dataset-cols"><span class="lbl">Columns (selected)</span><code>BnF_ID, actor_name, ..., role_edition_map, roles, viaf_id, viaf_name, qid, wikidata_label, isni, lc_id, estc_actor_id, estc_actor_name, estc_actor_match_type, estc_actor_confidence, estc_actor_candidate_id, estc_actor_candidate_name</code></p>
     <div class="term">
 <pre>BnF_ID:      &lt;...cb10017347j#about&gt;
 actor_name:  François Le Gentil
@@ -1466,22 +1466,25 @@ estc_actor_id: viaf_17211219    estc_actor_match_type: <span class="hl">viaf_id<
     </div>
   </div>
 
-  <span class="term-label">knowledge-graph_bibliographic.nt + _actors.nt — real triples, this specimen (sample profile)</span>
+  <span class="term-label">knowledge-graph_merged.nt — real triples from the linked sample (Henry Isaacson's life of Lancelot Andrewes, London, 1650)</span>
   <div class="term reveal pending">
-<pre>&lt;...cb31015462k#Expression&gt;
-    a <span class="k">lrmoo:F2_Expression</span> ;
-    <span class="k">cidoc-crm:P72_has_language</span> &lt;http://id.loc.gov/vocabulary/iso639-2/lat&gt; .
+<pre>&lt;...cb30636138f#about&gt;
+    <span class="k">crm:P102_has_title</span>       &lt;...cb30636138f#title&gt; ;
+    <span class="k">crm:P7_took_place_at</span>     &lt;...cb30636138f#pub_place&gt; ;
+    <span class="k">crm:P16i_was_used_for</span>    &lt;...cb30636138f#expr_creation&gt; .
 
-&lt;...cb31015462k#title&gt;
-    a <span class="k">cidoc-crm:E35_Title</span> ;
-    <span class="k">cidoc-crm:P190_has_symbolic_content</span> "[Indulgentiarum litterae Nicolai V pro regno Cypri]" .
+&lt;...cb30636138f#pub_place_norm_app&gt; <span class="k">obj:hasSymbolicContent</span> "London" .   <span class="hl"># module 04, harmonised</span>
+&lt;...cb30636138f#pub_place&gt;
+    <span class="k">crm:P168_place_is_defined_by</span> "POINT(-0.093145 51.514248)"^^geo:wktLiteral .
 
-&lt;...cb124434672#about&gt;                                    <span class="hl"># Pope Nicholas V, module 01</span>
-    <span class="k">obj:isIdentifiedBy</span> &lt;http://fr.dbpedia.org/resource/Nicolas_V&gt; .</pre>
+&lt;...cb30636138f#expr_creation_author&gt;
+    <span class="k">crm:P14_carried_out_by</span>   &lt;...cb103573634#about&gt; .   <span class="hl"># Henry Isaacson, actor graph</span></pre>
   </div>
-  <p class="body-text" style="font-size:.85rem; color:var(--ink-muted);"><strong>Known gap:</strong> this <em>sample</em>-profile run predates module 04's place/publisher harmonisation being wired into <code>07</code>'s inputs — the place string above is still the raw, bracketed <code>"[Mainz] (Allemagne avant 1945)"</code>, with no TGN link, not the harmonised <code>Mainz</code>/TGN triple module 04 already produces. The ontology mix itself is real and current: CIDOC-CRM/LRMoo for bibliographic classes, the CHAD-AP <code>obj:</code> wrapper for actor-side properties — not Dublin Core or RDA, which this page previously (and wrongly) showed here.</p>
+  <p class="body-text">Each edition keeps the place and publisher as recorded next to module 04's harmonised values, and the TGN coordinates become a WKT point. CIDOC-CRM and LRMoo cover the bibliographic classes; CHAD-AP's <code>obj:</code> wrapper covers actor-side properties.</p>
 
-  <p class="body-text">Three YARRRML mapping files, one per CHAD-AP concern &mdash; actors, bibliographic entities, and the role arcs connecting them &mdash; are compiled by morph-kgc into up to three <code>.nt</code> shards and one merged graph. The <code>roles</code> shard only materialises when a <code>role_edition_map</code> column survives into the ready CSVs; on disk right now, only <code>_actors.nt</code>, <code>_bibliographic.nt</code> and the merged file exist for the sample profile — no <code>_roles.nt</code> yet.</p>
+  <p class="body-text">Three YARRRML mapping files, one per CHAD-AP concern &mdash; actors, bibliographic entities, and the role arcs connecting them &mdash; are compiled by morph-kgc into three <code>.nt</code> shards and one merged graph. The sample profile is <em>linked</em>: seed actors drawn with a fixed seed, every edition they are credited on, and every other actor those editions credit. The current sample holds 309 actors and 220 editions in 18,334 distinct triples, with no role edge pointing outside the sample.</p>
+
+  <p class="body-text">Three problems turned up while wiring the portal and are fixed in preprocess. <code>role_edition_map</code> stores the bare FRBNF number, while the ARK carries a check character (<code>31015462</code> vs <code>cb31015462k</code>); ids are now resolved through the editions table instead of being guessed. morph-kgc ignores YARRRML <code>condition</code> blocks, which had typed every actor as both Person and Organization and minted empty birth and death events; fragment columns are now emptied wherever their condition column is empty. And the enriched actors' angle-bracketed <code>BnF_ID</code> no longer drops every actor.</p>
 
   <p class="body-text">The preprocess step picks its own upstream source automatically: module 06's enriched actors first, falling back to module 05's optimised actors if the enriched file isn't there; editions always come straight from module 04's <code>bnf_editions_ready.csv</code>, since there's no module-05 equivalent for editions to fall back through.</p>
 
@@ -1496,11 +1499,55 @@ estc_actor_id: viaf_17211219    estc_actor_match_type: <span class="hl">viaf_id<
 
 <!-- ============================================================ 08 -->
 <section id="mod-08" class="module wrap">
-  <p class="eyebrow"><span class="num-badge">08</span>Planned &middot; SAMPO</p>
-  <h2 class="title">SAMPO portal</h2>
-  <span class="field-badge planned" style="margin-top:14px; display:inline-block;">design pending</span>
-  <p class="lede" style="margin-top:16px;">A discovery portal for the graph module 07 produces — not the graph itself, and not named after the CHAD-AP profile it's built from.</p>
-  <p class="body-text">SAMPO-style portals (in the tradition of projects like <em>WarSampo</em> and <em>LitterSampo</em>) pair a SPARQL endpoint with faceted search and browsing views over a linked-data graph. Which facets, which views, and how this specific portal will be built is not yet decided — this section will be filled in once that design work happens.</p>
+  <p class="eyebrow"><span class="num-badge">08</span>Python &middot; Oxigraph &middot; Sampo-UI v4</p>
+  <h2 class="title">Sampo portal</h2>
+  <span class="field-badge complete" style="margin-top:14px; display:inline-block;">running on the sample graph</span>
+  <p class="lede" style="margin-top:16px;">A faceted-search portal over the graph module 07 produces, rebuilt from whatever that module wrote last.</p>
+
+  <div class="card-grid reveal pending">
+    <div class="card">
+      <span class="k">portal.py load</span>
+      <span class="t">Triplestore</span>
+      <span class="d">Loads the merged graph unchanged into its own named graph in Oxigraph, adds vocabulary labels, then runs <code>derived.ru</code>. The new store replaces the old one only once it is complete.</span>
+      <p class="io"><span class="io-label">Input</span> <code>knowledge-graph_merged.nt</code> (sample or full)</p>
+      <p class="io"><span class="io-label">Output</span> a read-only SPARQL endpoint on <code>localhost:7878</code></p>
+    </div>
+    <div class="card">
+      <span class="k">derived.ru</span>
+      <span class="t">Portal layer</span>
+      <span class="d">CHAD-AP gives each edition its own place and publisher node and keeps names inside appellations. Facets need shared, labelled entities, so this SPARQL Update derives them in a separate named graph: shared places with coordinates, publishers, years, decades, and contributors by role.</span>
+      <p class="io"><span class="io-label">Input</span> the CHAD-AP graph</p>
+      <p class="io"><span class="io-label">Output</span> <code>bnfp:place</code>, <code>bnfp:author</code>, <code>bnfp:year</code>, <code>skos:prefLabel</code>, ...</p>
+    </div>
+    <div class="card">
+      <span class="k">configs/</span>
+      <span class="t">Sampo-UI portal</span>
+      <span class="d">The whole portal is configuration: two perspectives (editions, actors), their SPARQL templates, labels and layout, mounted into a pinned Sampo-UI v4 clone.</span>
+      <p class="io"><span class="io-label">Input</span> the endpoint above</p>
+      <p class="io"><span class="io-label">Output</span> facets, result table, map, charts per decade, instance pages, SPARQL export</p>
+    </div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Perspective</th><th>Facets</th><th>Views</th></tr></thead>
+      <tbody>
+        <tr><td class="mono">editions</td><td>title, author, other contributors, year, place, publisher, language</td><td>table &middot; map of places of publication &middot; editions per decade &middot; export</td></tr>
+        <tr><td class="mono">actors</td><td>name, type, role, gender, country, birth year, death year</td><td>table &middot; births per decade &middot; export</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ol class="cmdlist">
+    <li><div><code>portal.py setup</code>
+      <p class="io">Downloads the pinned Oxigraph binary and checks its SHA-256, clones Sampo-UI at the pinned commit, links <code>configs/</code> into it, and installs its npm dependencies.</p></div></li>
+    <li><div><code>portal.py load --profile sample</code>
+      <p class="io">Rebuilds the store after any module 07 run.</p></div></li>
+    <li><div><code>portal.py dev</code>
+      <p class="io">Starts the endpoint, the Sampo-UI server and the client (<code>localhost:8080</code>).</p></div></li>
+  </ol>
+
+  <p class="body-text" style="font-size:.85rem; color:var(--ink-muted);"><strong>Known gaps:</strong> the top-bar full-text search and the network view are off, because they need a Jena text index and Sampo's external network service. Building the portal also surfaced three upstream data problems. About 2,100 organisation names still arrive as serialised literals (<code>"France"@fr</code>), some with broken encoding. Module 04's TGN table places Bordeaux at <code>tgn:7659881</code>, a different place, which affects 1,153 editions. The actor mapping types a person's start and end years as foundation and dissolution.</p>
 </section>
 
 <footer class="colophon">

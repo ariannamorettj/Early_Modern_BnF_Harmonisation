@@ -10,7 +10,7 @@ mappings:
   actor_person:
     sources:
     - bnf_actors_ready.csv~csv
-    s: $(actor)
+    s: $(actor_if_person)
     type: iri
     condition:
       function: idlab-fn:equal
@@ -25,7 +25,7 @@ mappings:
   actor_group:
     sources:
     - bnf_actors_ready.csv~csv
-    s: $(actor)
+    s: $(actor_if_organization)
     type: iri
     condition:
       function: idlab-fn:equal

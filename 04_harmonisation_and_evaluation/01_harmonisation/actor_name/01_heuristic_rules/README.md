@@ -84,10 +84,11 @@ actors-ready dataset (`bnf_actors_ready.csv`), which module 5's
 `name_normaliser.py` and `actors_deduplication.py` use the same "embedded
 state-based monitoring" mechanism as module 1 (`query_agents.R` /
 `query_editions.R`) and the `06_mapping` scripts — see
-`00_monitor/README.md`. `name_normaliser.py` writes one checkpoint per
-processed actor; `actors_deduplication.py` writes one checkpoint per
-processed name-group (only groups with more than one actor). Both write a
-final checkpoint on completion, on by default from the CLI (`--no-monitor`
+`00_monitor/README.md`. `name_normaliser.py` writes a checkpoint every
+1,000 actors and `actors_deduplication.py` every 1,000 name-groups
+(`MONITOR_CHECKPOINT_EVERY`), each also at the last record. A checkpoint
+costs ~55 ms, mostly the `nvidia-smi` GPU read, so one per actor added
+about two hours to a full run. Both write a final checkpoint on completion, on by default from the CLI (`--no-monitor`
 to disable). Reports land in
 `00_monitor/report/name_normaliser_<timestamp>_py.txt` and
 `00_monitor/report/actors_deduplication_<timestamp>_py.txt` respectively.

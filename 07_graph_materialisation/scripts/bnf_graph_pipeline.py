@@ -284,7 +284,7 @@ def clean_object_columns(df: pd.DataFrame) -> pd.DataFrame:
 
 def resolve_actor_iri(bnf_id: str) -> str:
     """Convert a BnF_ID to a full actor IRI (http://data.bnf.fr/ark:/12148/...)."""
-    s = bnf_id.strip()
+    s = strip_angle_brackets(bnf_id)
     if not s:
         return ""
     if s.startswith("http://") or s.startswith("https://"):
@@ -297,8 +297,14 @@ def resolve_actor_iri(bnf_id: str) -> str:
 
 
 def resolve_edition_iri(edition_id: str) -> str:
-    """Convert an edition ID to a full edition IRI."""
-    s = edition_id.strip()
+    """Convert an edition ID to a full edition IRI.
+
+    Note: role_edition_map stores the bare numeric FRBNF id (e.g. 31015462),
+    while the real ARK carries a trailing check character (cb31015462k).
+    The digit-only fallback below therefore yields a non-existent IRI; callers
+    that have an edition table should resolve through load_edition_iri_map().
+    """
+    s = strip_angle_brackets(edition_id)
     if not s:
         return ""
     if s.startswith("http://") or s.startswith("https://"):
@@ -350,50 +356,150 @@ def _add_authority_uris(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
+MAPPINGS_DIR = Path(__file__).resolve().parent.parent
+
+
+def ensure_mapping_columns(df: pd.DataFrame, mapping_file: str, logger: logging.Logger) -> pd.DataFrame:
+    """Add as empty every $(column) the YARRRML mapping references but df lacks.
+
+    Upstream modules drop fields on purpose (module 05 does not carry
+    actor_profession forward); morph-kgc refuses a source missing a referenced
+    column, while an empty cell simply produces no triple.
+    """
+    text = (MAPPINGS_DIR / mapping_file).read_text(encoding="utf-8")
+    referenced = set(re.findall(r"\$\(([A-Za-z0-9_]+)\)", text))
+    missing = sorted(referenced - set(df.columns))
+    for col in missing:
+        df[col] = ""
+    if missing:
+        logger.info(f"[PREPROCESS] {mapping_file}: added empty columns {missing}")
+    return df
+
+
+def dedicated_condition_columns(mapping_file: str) -> dict[str, str]:
+    """Return {column: condition column} for columns used under one condition only.
+
+    morph-kgc does not evaluate YARRRML `condition` blocks: a triple is dropped
+    only when a column it references is empty. A fragment column such as
+    actor_birth_event is always populated, so the event node would be minted
+    for every actor. When every mapping that references a column Y is guarded
+    by the same `notEqual $(X)` condition, Y is dedicated to X and can be
+    emptied wherever X is empty, which reproduces the intended condition.
+    """
+    import yaml
+
+    mappings = yaml.safe_load((MAPPINGS_DIR / mapping_file).read_text(encoding="utf-8"))["mappings"]
+    guards: dict[str, set] = {}
+    for spec in mappings.values():
+        cond = spec.get("condition") or {}
+        guard = None
+        if cond.get("function", "").endswith("notEqual"):
+            m = re.fullmatch(r"\$\(([A-Za-z0-9_]+)\)", str(cond["parameters"][0]["value"]))
+            guard = m.group(1) if m else None
+        refs = set(re.findall(r"\$\(([A-Za-z0-9_]+)\)", yaml.safe_dump({k: v for k, v in spec.items() if k != "condition"})))
+        for col in refs:
+            guards.setdefault(col, set()).add(guard)
+    return {col: next(iter(g)) for col, g in guards.items()
+            if len(g) == 1 and None not in g and next(iter(g)) != col}
+
+
+def finalise_for_mapping(df: pd.DataFrame, mapping_file: str, logger: logging.Logger) -> pd.DataFrame:
+    """Derive mapping-only columns, add missing ones, and enforce conditions."""
+    if mapping_file == "mapping_actors.yaml" and "entity_type" in df.columns:
+        person = ENTITY_TYPE_MAP["http://xmlns.com/foaf/0.1/Person"]
+        org = ENTITY_TYPE_MAP["http://xmlns.com/foaf/0.1/Organization"]
+        df["actor_if_person"] = df["actor"].where(df["entity_type"] == person, "")
+        df["actor_if_organization"] = df["actor"].where(df["entity_type"] == org, "")
+    if mapping_file == "mapping_bibliographic.yaml" and "edition_base" in df.columns:
+        for out_col, fragment in [("edition_pub_place_norm_app", "pub_place_norm_app"),
+                                  ("edition_pub_actor_norm_app", "pub_actor_norm_app")]:
+            df[out_col] = df["edition_base"].apply(lambda v, frag=fragment: add_fragment(v, frag))
+        if {"longitude", "latitude"} <= set(df.columns):
+            lon = pd.to_numeric(df["longitude"], errors="coerce")
+            lat = pd.to_numeric(df["latitude"], errors="coerce")
+            df["place_wkt"] = [f"POINT({x} {y})" if pd.notna(x) and pd.notna(y) else ""
+                               for x, y in zip(lon, lat)]
+
+    df = ensure_mapping_columns(df, mapping_file, logger)
+
+    blanked = 0
+    for col, guard in dedicated_condition_columns(mapping_file).items():
+        if col in df.columns and guard in df.columns:
+            empty = df[guard].apply(clean_cell) == ""
+            blanked += int((empty & (df[col].astype(str) != "")).sum())
+            df.loc[empty, col] = ""
+    logger.info(f"[PREPROCESS] {mapping_file}: emptied {blanked} fragment cells whose condition column is empty")
+    return df
+
+
+def load_edition_iri_map(editions_path: Path, logger: logging.Logger) -> dict[str, str]:
+    """Return {bnf_id: edition IRI} read from an editions table (two columns only)."""
+    df = pd.read_csv(editions_path, usecols=["edition", "bnf_id"], dtype=str,
+                     keep_default_na=False, encoding="utf-8")
+    df["edition"] = df["edition"].apply(clean_required_iri)
+    df["bnf_id"] = df["bnf_id"].apply(clean_cell)
+    df = df[(df["edition"] != "") & (df["bnf_id"] != "")].drop_duplicates("bnf_id")
+    logger.info(f"[PREPROCESS][ROLES] edition id map: {len(df)} bnf_id -> IRI from {editions_path.name}")
+    return dict(zip(df["bnf_id"], df["edition"]))
+
+
 def _build_and_save_roles(
     df: pd.DataFrame,
     ready_dir: Path,
     logger: logging.Logger,
+    edition_iri_map: dict[str, str] | None = None,
 ) -> None:
-    """Explode role_edition_map into a ready CSV for mapping_roles.yaml."""
+    """Explode role_edition_map into a ready CSV for mapping_roles.yaml.
+
+    With edition_iri_map, ids are resolved to the real edition IRI and ids
+    absent from the map are skipped (and counted) rather than turned into a
+    guessed IRI. The activity IRI is <edition>#expr_creation_<role>, the same
+    node mapping_bibliographic.yaml builds from the edition side, so both
+    graphs converge on one activity per edition and role.
+    """
     if "role_edition_map" not in df.columns:
         logger.info("[PREPROCESS][ROLES] no role_edition_map column — skipping roles CSV")
         return
 
     rows: list[dict] = []
-    for _, row in df.iterrows():
-        actor_iri = clean_cell(row.get("actor", ""))
+    unresolved = 0
+    for actor_iri_raw, role_map in zip(df["actor"], df["role_edition_map"]):
+        actor_iri = clean_cell(actor_iri_raw)
         if not actor_iri:
             continue
-        actor_base = make_base_iri(actor_iri)
-        role_pairs = parse_role_edition_map(clean_cell(row.get("role_edition_map", "")))
-        role_counts: dict[str, int] = {}
-        for role, edition_id in role_pairs:
+        for role, edition_id in parse_role_edition_map(clean_cell(role_map)):
             aat = ROLE_AAT_MAP.get(role, "")
             if not aat:
                 continue
-            edition_iri = resolve_edition_iri(edition_id)
+            if edition_iri_map is not None:
+                edition_iri = edition_iri_map.get(edition_id, "")
+                if not edition_iri:
+                    unresolved += 1
+                    continue
+            else:
+                edition_iri = resolve_edition_iri(edition_id)
             edition_base = make_base_iri(edition_iri)
             if not edition_iri or not edition_base:
                 continue
-            idx = role_counts.get(role, 0) + 1
-            role_counts[role] = idx
             rows.append({
                 "actor_iri":            actor_iri,
                 "edition_iri":          edition_iri,
                 "edition_base":         edition_base,
                 "edition_expr_creation": f"{edition_base}#expr_creation",
                 "role":                 role,
-                "role_activity_iri":    f"{edition_base}#expr_creation_{role}_{idx}",
+                "role_activity_iri":    f"{edition_base}#expr_creation_{role}",
                 "role_aat":             aat,
             })
 
     roles_df = pd.DataFrame(rows) if rows else pd.DataFrame(
         columns=["actor_iri", "edition_iri", "edition_base",
                  "edition_expr_creation", "role", "role_activity_iri", "role_aat"])
+    roles_df = roles_df.drop_duplicates()
     roles_path = ready_dir / READY_FILES["roles"]
     save_csv(roles_df, roles_path)
     logger.info(f"[PREPROCESS][ROLES] {roles_path} ({len(roles_df)} rows)")
+    if unresolved:
+        logger.info(f"[PREPROCESS][ROLES] skipped {unresolved} role edges whose edition id is not in the edition table")
 
 
 def _find_enriched_inputs(config: configparser.ConfigParser, proj: Path) -> dict[str, Path | None]:
@@ -409,7 +515,89 @@ def _find_enriched_inputs(config: configparser.ConfigParser, proj: Path) -> dict
         "editions_enriched": _resolve("ENRICHED_INPUTS", "editions_enriched_csv"),
         "actors_optimised": _resolve("ENRICHED_INPUTS", "actors_optimised_csv"),
         "actors_minimal":   _resolve("ENRICHED_INPUTS", "actors_minimal_csv"),
+        "editions_ready":   _resolve("ENRICHED_INPUTS", "editions_ready_csv"),
     }
+
+
+def merge_estc_columns(editions: pd.DataFrame, enriched_path: Path | None,
+                       logger: logging.Logger) -> pd.DataFrame:
+    """Add module 06's estc_* columns to an editions table, keyed on `edition`.
+
+    Module 06's bnf_editions_enriched.csv is module 04's editions table plus
+    the ESTC columns; reading module 04's table and merging those columns in
+    keeps every edition even when the enriched file only covers some.
+    """
+    if enriched_path is None:
+        return editions
+    enriched = pd.read_csv(enriched_path, dtype=str, keep_default_na=False, encoding="utf-8")
+    estc_cols = [c for c in enriched.columns if c.startswith("estc_")]
+    if not estc_cols:
+        return editions
+    enriched["edition"] = enriched["edition"].apply(strip_angle_brackets)
+    editions["edition"] = editions["edition"].apply(strip_angle_brackets)
+    editions = editions.drop(columns=[c for c in estc_cols if c in editions.columns])
+    editions = editions.merge(enriched[["edition"] + estc_cols].drop_duplicates("edition"),
+                              on="edition", how="left")
+    for c in estc_cols:
+        editions[c] = editions[c].fillna("")
+    matched = int((editions["estc_id"] != "").sum()) if "estc_id" in editions.columns else 0
+    logger.info(f"[PREPROCESS][BIB] estc columns from {enriched_path.name}: "
+                f"{len(enriched)} enriched rows, {matched} editions with an estc_id")
+    return editions
+
+
+def select_linked_sample(
+    actors_path: Path,
+    editions_path: Path,
+    editions_enriched_path: Path | None,
+    n_actors: int,
+    max_editions_per_actor: int,
+    seed: int,
+    logger: logging.Logger,
+) -> tuple[pd.DataFrame, pd.DataFrame]:
+    """Draw a self-contained sample: seed actors, their editions, and co-actors.
+
+    1. n_actors seed actors (named, with 1..max_editions_per_actor editions)
+       are drawn with a fixed seed, so the sample is reproducible;
+    2. every edition in their role_edition_map is pulled from editions_path;
+    3. every other actor those editions credit is added, so role edges on
+       both sides resolve to nodes inside the sample.
+    Estc_* columns from the module 06 enriched editions are merged in when
+    that file covers any of the sampled editions.
+    """
+    actors = pd.read_csv(actors_path, dtype=str, keep_default_na=False, encoding="utf-8")
+    actors["_iri"] = actors["BnF_ID"].apply(resolve_actor_iri)
+    actors["_n_ed"] = actors["role_edition_map"].apply(lambda v: len(parse_role_edition_map(v)))
+    eligible = actors[
+        (actors["_n_ed"] >= 1)
+        & (actors["_n_ed"] <= max_editions_per_actor)
+        & (actors["actor_name"].apply(clean_cell) != "")
+    ]
+    seeds = eligible.sample(n=min(n_actors, len(eligible)), random_state=seed)
+    edition_ids = {eid for m in seeds["role_edition_map"] for _, eid in parse_role_edition_map(m)}
+    logger.info(f"[SAMPLE] {len(seeds)} seed actors (of {len(eligible)} eligible) -> {len(edition_ids)} edition ids")
+
+    parts = []
+    for chunk in pd.read_csv(editions_path, dtype=str, keep_default_na=False,
+                             encoding="utf-8", chunksize=200_000):
+        parts.append(chunk[chunk["bnf_id"].isin(edition_ids)])
+    editions = pd.concat(parts, ignore_index=True)
+    logger.info(f"[SAMPLE] editions pulled from {editions_path.name}: {len(editions)}")
+
+    editions = merge_estc_columns(editions, editions_enriched_path, logger)
+
+    credited: set[str] = set()
+    for col in ["author", "editor", "translator", "illustrator", "publisher_2"]:
+        if col in editions.columns:
+            for cell in editions[col]:
+                for part in re.split(r"\s*;\s*", clean_cell(cell)):
+                    iri = clean_required_iri(part)
+                    if iri:
+                        credited.add(iri)
+    sample_iris = set(seeds["_iri"]) | credited
+    sample_actors = actors[actors["_iri"].isin(sample_iris)].drop(columns=["_iri", "_n_ed"])
+    logger.info(f"[SAMPLE] actors in sample (seeds + co-credited): {len(sample_actors)}")
+    return sample_actors, editions
 
 
 def preprocess_actors(raw_path: Path, ready_dir: Path, sample: int, logger: logging.Logger) -> None:
@@ -476,8 +664,12 @@ def preprocess_actors(raw_path: Path, ready_dir: Path, sample: int, logger: logg
     df = df.drop(columns=["__internal_csv_path", "link_idx"], errors="ignore")
 
     ready_dir.mkdir(parents=True, exist_ok=True)
+    df = finalise_for_mapping(df, "mapping_actors.yaml", logger)
     main_path = ready_dir / READY_FILES["actors"]
-    save_csv(df, main_path)
+    # Links can sit "; "-joined in one cell; the exploded link files below
+    # carry them one per row, so the main file must not expose the joined
+    # string to mappings that would mint it as a single IRI.
+    save_csv(df.assign(**{c: "" for c in ACTOR_LINK_COLS if c in df.columns}), main_path)
     logger.info(f"[PREPROCESS][ACTORS] ready main: {main_path} ({len(df)} rows)")
 
     if "actor_link_exact" in df.columns:
@@ -563,6 +755,7 @@ def preprocess_bibliographic(raw_path: Path, ready_dir: Path, sample: int, logge
     df = df.dropna(axis=1, how="all")
 
     ready_dir.mkdir(parents=True, exist_ok=True)
+    df = finalise_for_mapping(df, "mapping_bibliographic.yaml", logger)
     out_path = ready_dir / READY_FILES["editions"]
     save_csv(df, out_path)
     logger.info(f"[PREPROCESS][BIB] ready editions: {out_path} ({len(df)} rows)")
@@ -574,10 +767,17 @@ def preprocess_enriched_actors(
     ready_dir: Path,
     sample: int,
     logger: logging.Logger,
+    df: pd.DataFrame | None = None,
+    edition_iri_map: dict[str, str] | None = None,
 ) -> None:
-    """Preprocess actors from enriched CSV (module 06 primary / module 05 fallback)."""
+    """Preprocess actors from enriched CSV (module 06 primary / module 05 fallback).
+
+    Pass df to preprocess an already-selected frame (linked sample) instead of
+    reading actors_path.
+    """
     logger.info(f"[PREPROCESS][ACTORS] enriched input: {actors_path}")
-    df = read_csv_safe(actors_path, sample=sample)
+    if df is None:
+        df = read_csv_safe(actors_path, sample=sample)
     logger.info(f"[PREPROCESS][ACTORS] rows read: {len(df)}")
 
     # Merge link columns from minimal CSV if missing from the enriched CSV
@@ -663,14 +863,18 @@ def preprocess_enriched_actors(
             df[f"{date_col}_obj"] = df[date_col].apply(normalize_date)
 
     # Generate roles CSV from role_edition_map before column clean-up
-    _build_and_save_roles(df, ready_dir, logger)
+    _build_and_save_roles(df, ready_dir, logger, edition_iri_map)
 
     df = clean_object_columns(df)
     df = df.drop(columns=["__internal_csv_path", "link_idx"], errors="ignore")
 
     ready_dir.mkdir(parents=True, exist_ok=True)
+    df = finalise_for_mapping(df, "mapping_actors.yaml", logger)
     main_path = ready_dir / READY_FILES["actors"]
-    save_csv(df, main_path)
+    # Links can sit "; "-joined in one cell; the exploded link files below
+    # carry them one per row, so the main file must not expose the joined
+    # string to mappings that would mint it as a single IRI.
+    save_csv(df.assign(**{c: "" for c in ACTOR_LINK_COLS if c in df.columns}), main_path)
     logger.info(f"[PREPROCESS][ACTORS] ready main: {main_path} ({len(df)} rows)")
 
     if "actor_link_exact" in df.columns:
@@ -693,10 +897,16 @@ def preprocess_enriched_bibliographic(
     ready_dir: Path,
     sample: int,
     logger: logging.Logger,
+    df: pd.DataFrame | None = None,
 ) -> None:
-    """Preprocess editions from enriched CSV (module 06 primary / module 05 fallback)."""
+    """Preprocess editions from enriched CSV (module 06 primary / module 05 fallback).
+
+    Pass df to preprocess an already-selected frame (linked sample) instead of
+    reading editions_path.
+    """
     logger.info(f"[PREPROCESS][BIB] enriched input: {editions_path}")
-    df = read_csv_safe(editions_path, sample=sample)
+    if df is None:
+        df = read_csv_safe(editions_path, sample=sample)
     logger.info(f"[PREPROCESS][BIB] rows read: {len(df)}")
 
     # Build estc_uri from estc_id
@@ -761,6 +971,7 @@ def preprocess_enriched_bibliographic(
     df = df.dropna(axis=1, how="all")
 
     ready_dir.mkdir(parents=True, exist_ok=True)
+    df = finalise_for_mapping(df, "mapping_bibliographic.yaml", logger)
     out_path = ready_dir / READY_FILES["editions"]
     save_csv(df, out_path)
     logger.info(f"[PREPROCESS][BIB] ready editions: {out_path} ({len(df)} rows)")
@@ -778,6 +989,31 @@ def require_ready_files(ready_dir: Path, target: str = "all") -> None:
     missing = [name for name in required if not (ready_dir / name).exists()]
     if missing:
         raise FileNotFoundError(f"Missing ready CSV files in {ready_dir}: {missing}. Run preprocess first.")
+
+
+def runtime_mapping(
+    config: configparser.ConfigParser,
+    mapping_file: str,
+    ready_dir: Path,
+    runtime_dir: Path,
+    profile: str,
+) -> Path:
+    """Copy a YARRRML mapping with every CSV source pointed at ready_dir.
+
+    The mappings name their sources by bare file name or by a hard-coded
+    input/ready_to_convert/ path; rewriting them to absolute paths in the
+    active profile's ready directory keeps sample runs off the full inputs.
+    """
+    text = (project_dir(config) / mapping_file).read_text(encoding="utf-8")
+    ready = ready_dir.resolve().as_posix()
+    text = re.sub(
+        r"(-\s+)(?:[^\s~]*/)?([A-Za-z0-9_.-]+\.csv)~csv",
+        lambda m: f"{m.group(1)}{ready}/{m.group(2)}~csv",
+        text,
+    )
+    out = runtime_dir / f"{Path(mapping_file).stem}_{profile}.yaml"
+    out.write_text(text, encoding="utf-8")
+    return out.resolve()
 
 
 def write_morph_config(
@@ -809,7 +1045,7 @@ def write_morph_config(
 
     if target == "actors":
         cfg["DataSource1"] = {
-            "mappings": str((project_dir(config) / "mapping_actors.yaml").resolve()),
+            "mappings": str(runtime_mapping(config, "mapping_actors.yaml", ready_dir, runtime_dir, profile)),
             "mapping_format": "YARRRML",
             "file_path": str((ready_dir / READY_FILES["actors"]).resolve()),
             "ready_input_dir": str(ready_dir.resolve()),
@@ -819,7 +1055,7 @@ def write_morph_config(
         }
     elif target == "bibliographic":
         cfg["DataSource1"] = {
-            "mappings": str((project_dir(config) / "mapping_bibliographic.yaml").resolve()),
+            "mappings": str(runtime_mapping(config, "mapping_bibliographic.yaml", ready_dir, runtime_dir, profile)),
             "mapping_format": "YARRRML",
             "file_path": str((ready_dir / READY_FILES["editions"]).resolve()),
             "ready_input_dir": str(ready_dir.resolve()),
@@ -829,7 +1065,7 @@ def write_morph_config(
         }
     elif target == "roles":
         cfg["DataSource1"] = {
-            "mappings": str((project_dir(config) / "mapping_roles.yaml").resolve()),
+            "mappings": str(runtime_mapping(config, "mapping_roles.yaml", ready_dir, runtime_dir, profile)),
             "mapping_format": "YARRRML",
             "file_path": str((ready_dir / READY_FILES["roles"]).resolve()),
             "ready_input_dir": str(ready_dir.resolve()),
@@ -903,7 +1139,10 @@ def materialize_target(args, config: configparser.ConfigParser, target: str, log
     clean_target_tmp_dir(tmp_dir)
 
     cfg_path = write_morph_config(config, args.profile, target, ready_dir, tmp_dir, runtime_dir)
-    python_bin = config["PYTHON"].get("python_bin", sys.executable)
+    python_bin = config["PYTHON"].get("python_bin", "") or sys.executable
+    if not Path(python_bin).exists():
+        logger.info(f"[RUN] configured python_bin not found ({python_bin}); using {sys.executable}")
+        python_bin = sys.executable
     log_path = output_dir / f"morph_{target}.log"
 
     run_command([python_bin, "-m", "morph_kgc", str(cfg_path)], log_path, project_dir(config), logger)
@@ -1007,18 +1246,40 @@ def cmd_preprocess(args, config: configparser.ConfigParser, logger: logging.Logg
 
     sample = args.sample if args.profile == "sample" else 0
     enriched = _find_enriched_inputs(config, project_dir(config))
+    actors_src = enriched.get("actors_enriched") or enriched.get("actors_optimised")
+    editions_ready = enriched.get("editions_ready")
+
+    # ── Linked sample: actors, their editions and co-actors, all resolvable ──
+    if (args.profile == "sample" and getattr(args, "sample_mode", "linked") == "linked"
+            and actors_src and editions_ready):
+        actors_df, editions_df = select_linked_sample(
+            actors_src, editions_ready, enriched.get("editions_enriched"),
+            n_actors=sample, max_editions_per_actor=args.max_editions_per_actor,
+            seed=args.seed, logger=logger,
+        )
+        edition_iri_map = {
+            clean_cell(b): clean_required_iri(e)
+            for b, e in zip(editions_df["bnf_id"], editions_df["edition"])
+            if clean_cell(b) and clean_required_iri(e)
+        }
+        preprocess_enriched_actors(actors_src, enriched.get("actors_minimal"), ready_dir,
+                                   0, logger, df=actors_df, edition_iri_map=edition_iri_map)
+        preprocess_enriched_bibliographic(editions_ready, ready_dir, 0, logger, df=editions_df)
+        logger.info("[PREPROCESS] done (linked sample)")
+        return
 
     # ── Actors ────────────────────────────────────────────────────────────────
-    actors_src = enriched.get("actors_enriched") or enriched.get("actors_optimised")
     if actors_src:
         source_label = "module 06 enriched" if enriched.get("actors_enriched") else "module 05 optimised"
         logger.info(f"[PREPROCESS] actors source: {source_label} ({actors_src.name})")
+        edition_iri_map = load_edition_iri_map(editions_ready, logger) if editions_ready else None
         preprocess_enriched_actors(
             actors_src,
             enriched.get("actors_minimal"),
             ready_dir,
             sample,
             logger,
+            edition_iri_map=edition_iri_map,
         )
     else:
         actors_zip = resolve_in_project(config, config["RAW_INPUTS"]["actors_zip"])
@@ -1026,8 +1287,17 @@ def cmd_preprocess(args, config: configparser.ConfigParser, logger: logging.Logg
         preprocess_actors(actors_zip, ready_dir, sample, logger)
 
     # ── Editions ──────────────────────────────────────────────────────────────
+    # Module 04's table carries every edition; module 06's enriched file only
+    # adds estc_* columns (and is still a 20-row fixture until the ESTC
+    # editions mapping runs), so it contributes those columns, not the rows.
     editions_src = enriched.get("editions_enriched")
-    if editions_src:
+    if editions_ready:
+        logger.info(f"[PREPROCESS] editions source: module 04 ready ({editions_ready.name})"
+                    + (f" + estc columns from {editions_src.name}" if editions_src else ""))
+        editions_df = read_csv_safe(editions_ready, sample=sample)
+        editions_df = merge_estc_columns(editions_df, editions_src, logger)
+        preprocess_enriched_bibliographic(editions_ready, ready_dir, 0, logger, df=editions_df)
+    elif editions_src:
         logger.info(f"[PREPROCESS] editions source: module 06 enriched ({editions_src.name})")
         preprocess_enriched_bibliographic(editions_src, ready_dir, sample, logger)
     else:
@@ -1068,9 +1338,18 @@ def main() -> None:
     parser.add_argument("--config", default="pipeline_config.ini", help="Config file inside 07_graph_materialisation")
     sub = parser.add_subparsers(dest="command", required=True)
 
+    def add_sample_args(p: argparse.ArgumentParser) -> None:
+        p.add_argument("--sample", type=int, default=20,
+                       help="Sample profile only: seed actors (linked mode) or rows per dataset (head mode)")
+        p.add_argument("--sample-mode", choices=["linked", "head"], default="linked",
+                       help="linked: seed actors + their editions + co-credited actors; head: first N rows of each table")
+        p.add_argument("--max-editions-per-actor", type=int, default=25,
+                       help="Linked mode: skip seed actors credited on more editions than this")
+        p.add_argument("--seed", type=int, default=42, help="Linked mode: random seed for actor selection")
+
     p = sub.add_parser("preprocess")
     p.add_argument("--profile", choices=["sample", "full"], default="full")
-    p.add_argument("--sample", type=int, default=20, help="Rows per raw dataset for sample profile only")
+    add_sample_args(p)
     p.add_argument("--force", action="store_true", help="Delete the selected ready directory before preprocessing")
 
     p = sub.add_parser("materialize")
@@ -1087,7 +1366,7 @@ def main() -> None:
 
     p = sub.add_parser("all")
     p.add_argument("--profile", choices=["sample", "full"], default="sample")
-    p.add_argument("--sample", type=int, default=20)
+    add_sample_args(p)
     p.add_argument("--force", action="store_true")
     p.add_argument("--sample-lines", type=int, default=10000)
 

@@ -96,9 +96,17 @@ including the roles table and authority URI columns.
 # Full dataset
 python3.12 scripts/bnf_graph_pipeline.py preprocess --profile full --force
 
-# Sample (20 rows per dataset)
+# Linked sample (default): 20 seed actors, their editions, and every co-credited actor
 python3.12 scripts/bnf_graph_pipeline.py preprocess --profile sample --sample 20 --force
 ```
+
+The sample profile draws a self-contained subset (`--sample-mode linked`, the
+default): `--sample` seed actors credited on 1 to `--max-editions-per-actor`
+editions are chosen with a fixed `--seed`, their editions are pulled from
+`data/bnf_edition_data/bnf_editions_ready.csv`, and every other actor those
+editions credit is added. Every role edge therefore links two nodes inside
+the sample. `--sample-mode head` keeps the old behaviour (the first N rows of
+each table, which are unrelated to each other).
 
 ### 2 — Materialise
 
@@ -159,4 +167,10 @@ python3.12 scripts/bnf_graph_pipeline.py all --profile sample --sample 20 --forc
 - morph-kgc temporary files (e.g. `0-0-0-0.nt`) are written into target-specific tmp folders, then concatenated and renamed automatically.
 - Output filenames from `run_full_pipeline.py` are timestamped so no existing file is ever overwritten.
 - `role_edition_map` format expected from module 05: `author:id1,id2;editor:id3` — role names must be one of `author`, `editor`, `translator`, `illustrator` (others are skipped).
-- Edition IDs inside `role_edition_map` can be full IRIs, ARK fragments (`cb…`), or bare numeric BnF IDs.
+- Edition IDs inside `role_edition_map` are bare FRBNF numbers (`31015462`), while the edition ARK carries a check character (`cb31015462k`). Preprocess resolves them through the `bnf_id` → `edition` pairs of `editions_ready_csv` and skips ids missing from it, so no edge points at a guessed IRI.
+- A role activity is `<edition>#expr_creation_<role>`, the same node `mapping_bibliographic.yaml` builds from the edition side, so both mappings converge on one activity per edition and role.
+- morph-kgc does not evaluate YARRRML `condition` blocks: it drops a triple only when a column the triple references is empty. Preprocess therefore empties every fragment column used under a single `notEqual` condition (for example `actor_birth_event` under `actor_birth_obj`) wherever that condition's column is empty, and types actors through `actor_if_person` / `actor_if_organization` rather than an `equal` condition. Without this, every actor was typed both Person and Organization and received empty birth/death/foundation events.
+- Columns a mapping references but the input lacks (module 05 drops `actor_profession` on purpose) are added empty.
+- Each run writes profile-specific copies of the mappings to `output/runtime_configs/mapping_*_<profile>.yaml`, with every CSV source pointed at that profile's ready directory.
+- Editions carry module 04's harmonised place (second appellation plus a `crm:P168_place_is_defined_by` WKT point from the TGN coordinates) and harmonised publisher name next to the recorded ones, and the title also hangs off the manifestation (`crm:P102_has_title`), not only off the work.
+- Known modelling issue: `actor_start`/`actor_end` are typed as foundation/dissolution events for every actor, although for persons BnF fills them with the life years.

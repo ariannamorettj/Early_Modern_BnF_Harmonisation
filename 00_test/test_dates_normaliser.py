@@ -244,8 +244,12 @@ class FakeMonitorModule:
         return state
 
 
-def test_run_writes_monitor_checkpoint_per_actor_and_stops_cleanly(monkeypatch, tmp_path):
+def test_run_writes_monitor_checkpoint_periodically_and_stops_cleanly(monkeypatch, tmp_path):
+    """Checkpoints fire every MONITOR_CHECKPOINT_EVERY records and at the last
+    one, not per record: with the cadence lowered to 2, a 2-record run skips
+    record 1 and checkpoints record 2, then the completion checkpoint."""
     dn = load_dates_normaliser_module()
+    monkeypatch.setattr(dn, "MONITOR_CHECKPOINT_EVERY", 2)
     fake_monitor = FakeMonitorModule()
     monkeypatch.setattr(dn, "load_monitor_module", lambda monitor_script: fake_monitor)
 
@@ -258,9 +262,8 @@ def test_run_writes_monitor_checkpoint_per_actor_and_stops_cleanly(monkeypatch, 
     dn.run(str(input_path), str(tmp_path / "out"), use_monitor=True)
 
     assert len(fake_monitor.start_calls) == 1
-    assert len(fake_monitor.update_calls) == 2 + 1  # one per actor + final
-    assert "A1" in fake_monitor.update_calls[0]
-    assert "A2" in fake_monitor.update_calls[1]
+    assert len(fake_monitor.update_calls) == 1 + 1  # record 2 (last), completion
+    assert "A2" in fake_monitor.update_calls[0]
     assert fake_monitor.update_calls[-1] == "Completed actor_dates harmonisation run"
     assert fake_monitor.stop_calls == [True]
 

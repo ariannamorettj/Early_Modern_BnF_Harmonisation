@@ -32,8 +32,9 @@ Monitoring
 ----------
 By default, resource-usage checkpoints are written via the shared
 00_monitor/monitor.py "embedded state-based monitoring" API (same mechanism
-used by module 1's query_agents.R / query_editions.R): one checkpoint per
-processed actor, plus a final checkpoint on completion. Reports land in
+used by module 1's query_agents.R / query_editions.R): one checkpoint every
+MONITOR_CHECKPOINT_EVERY (100) actors and at the last one, plus a final
+checkpoint on completion. Reports land in
 00_monitor/report/02_map_wikidata_<timestamp>_py.txt. Disable with
 --no-monitor.
 
@@ -69,6 +70,11 @@ if hasattr(sys.stdout, "reconfigure"):
         pass
 
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
+# One checkpoint per record cost ~55 ms each (mostly the nvidia-smi GPU read);
+# checkpoint every N records plus the last one instead, like
+# 06_mapping/05_map_estc_actors.py. N is lower than in the local scripts
+# because each record here waits on a network call.
+MONITOR_CHECKPOINT_EVERY = 100
 
 INPUT_DEFAULT        = "05_subset_optimisation/output/bnf_actors_optimised.csv"
 VIAF_MAPPING_DEFAULT = "06_mapping/output/viaf_mapping.csv"
@@ -266,6 +272,8 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 
 def _monitor_checkpoint(monitor_module, monitor_state, index, total, rec):
     if monitor_module is None:
+        return monitor_state
+    if index % MONITOR_CHECKPOINT_EVERY and index != total:
         return monitor_state
     context = (f"Processed actor {rec['BnF_ID']} (index {index}/{total}) "
               f"- match_type={rec['match_type'] or 'unmatched'}")

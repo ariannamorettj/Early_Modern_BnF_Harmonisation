@@ -1,0 +1,20 @@
+{
+  "sampo_ui": {
+    "repository": "https://github.com/SemanticComputing/sampo-ui.git",
+    "commit": "d611321",
+    "note": "v4 framework; configs/ in this module are mounted into it, the framework itself is not vendored"
+  },
+  "oxigraph": {
+    "version": "v0.5.11",
+    "assets": {
+      "windows-x86_64": {
+        "file": "oxigraph_v0.5.11_x86_64_windows_msvc.exe",
+        "sha256": "b067013a4d4202031199e56c5ef5cf91a3644824db554aabff8e1980ab38ede5"
+      }
+    }
+  },
+  "node": {
+    "major": 22,
+    "note": "same major as sampo-ui's Dockerfiles (node:22.20)"
+  }
+}

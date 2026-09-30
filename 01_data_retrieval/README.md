@@ -563,10 +563,19 @@ The monitor is started once at the beginning of the run.
 
 A monitoring checkpoint is written:
 
-- after each actor attempt;
+- after every failed actor attempt;
+- after every `monitor_checkpoint_every`-th successful attempt (default 100)
+  and after the last index of the run;
 - after the final merged actor CSV is produced.
 
-For each actor step, the monitor context records either:
+Failures are never batched: `recover_missing_acquisitions.R` finds the actors
+to re-acquire through their `Failed acquisition` lines. Successes are, because
+a checkpoint costs a round of system reads (about 55 ms in Python, mostly the
+`nvidia-smi` call). Resuming is unaffected: it reads `last_processed_index.txt`,
+which is still written after every successful actor; `last_context` in
+`resume_info.log` can lag by up to 99 successful actors.
+
+The monitor context records either:
 
 - `Completed acquisition for actor index <i> - <actor>`
 - `Failed acquisition for actor index <i> - <actor>`

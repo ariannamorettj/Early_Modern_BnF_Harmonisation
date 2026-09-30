@@ -3,10 +3,11 @@
     "total": 92780,
     "viaf_matched": 0,
     "wikidata_matched": 0,
-    "estc_actor_matched": 5590
+    "estc_actor_matched": 5570,
+    "estc_actor_ambiguous": 20
   },
   "editions": {
-    "total": 20,
+    "total": 814031,
     "estc_matched": 0
   }
 }

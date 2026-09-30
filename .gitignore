@@ -1173,3 +1173,9 @@ monitor_data/recover_missing_acquisitions_*
 
 # zipped archives
 *.zip
+
+# 08_sampo_portal: tools, framework clone and triplestore are rebuilt by portal.py
+08_sampo_portal/.tools/
+08_sampo_portal/.sampo-ui/
+08_sampo_portal/.data/
+.venv/

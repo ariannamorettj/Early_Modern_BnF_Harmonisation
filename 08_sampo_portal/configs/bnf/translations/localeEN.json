@@ -1,0 +1,294 @@
+{
+  "languageLabel": "English",
+  "html": {
+    "title": "Early Modern BnF Portal",
+    "description": "Faceted search over the harmonised BnF early modern editions and actors knowledge graph"
+  },
+  "appTitle": {
+    "short": "Early Modern BnF",
+    "mobile": "EM BnF",
+    "long": "Early Modern BnF Portal",
+    "subheading": "Editions and actors from data.bnf.fr, harmonised and linked as a CHAD-AP knowledge graph"
+  },
+  "appDescription1": "This portal searches the knowledge graph produced by the Early Modern BnF Harmonisation pipeline: editions retrieved from data.bnf.fr, their places, publishers and languages harmonised, and the people and organisations who wrote, edited, translated or illustrated them.",
+  "appDescription2": "Choose a perspective, then narrow the results with the facets on the left. Every table, map and chart reflects the active filters.",
+  "selectPerspective": "Select a perspective to search and browse the knowledge graph:",
+  "mainPageImageLicence": "",
+  "backendErrorText": "One of the backend services is not available at the moment. Please try again later.",
+  "infoHeader": {
+    "toggleInstructions": "Click to show or hide instructions"
+  },
+  "topBar": {
+    "feedback": "feedback",
+    "info": {
+      "info": "Info",
+      "blog": "Project blog",
+      "blogUrl": "https://seco.cs.aalto.fi/tools/sampo-ui/",
+      "aboutThePortal": "About the Portal"
+    },
+    "searchBarPlaceHolder": "Search all content",
+    "searchBarPlaceHolderShort": "Search",
+    "instructions": "instructions"
+  },
+  "facetBar": {
+    "results": "Results",
+    "filters": "Filters",
+    "activeFilters": "Active filters:",
+    "removeAllFilters": "Remove all",
+    "narrowDownBy": "Narrow down by",
+    "filterOptions": "Filter options",
+    "filterByName": "Filter by name",
+    "filterByBoundingBox": "Filter by bounding box",
+    "selectionOptions": "Selection options",
+    "selectAlsoSubconcepts": "Automatically select all subconcepts",
+    "doNotSelectSubconcepts": "Do not select subconcepts",
+    "sortingOptions": "Sorting options",
+    "sortAlphabetically": "Sort alphabetically",
+    "sortByNumberOfSearchResults": "Sort by number of search results",
+    "useDisjunction": "Use logical OR between selections",
+    "useConjunction": "Use logical AND between selections",
+    "minYear": "Min year",
+    "maxYear": "Max year",
+    "min": "Min",
+    "max": "Max",
+    "facetSearchFieldPlaceholder": "Search...",
+    "applyFacetSelection": "apply",
+    "pieChart": {
+      "tooltip": "Pie chart"
+    },
+    "barChart": {
+      "tooltip": "Bar chart",
+      "language": {
+        "title": "Language",
+        "xaxisTitle": "Language",
+        "yaxisTitle": "Manuscript count",
+        "seriesTitle": "Manuscript count"
+      }
+    },
+    "lineChart": {
+      "tooltip": "Line chart",
+      "productionTimespan": {
+        "title": "Manuscript production by decade",
+        "xaxisTitle": "Decade",
+        "yaxisTitle": "Manuscript count",
+        "seriesTitle": "Manuscript count"
+      }
+    }
+  },
+  "tabs": {
+    "table": "table",
+    "map": "map",
+    "production_places": "production places",
+    "production_places_heatmap": "production heatmap",
+    "last_known_locations": "last known locations",
+    "migrations": "migrations",
+    "network": "network",
+    "export": "export",
+    "production_dates": "production dates",
+    "event_dates": "event dates",
+    "map_clusters": "clustered map",
+    "map_markers": "map",
+    "heatmap": "heatmap",
+    "statistics": "statistics",
+    "emloLetterNetwork": "Network of letters",
+    "emloSentReceived": "Sent and received letters",
+    "download": "download",
+    "recommendations": "recommendations",
+    "share": "share",
+    "by_decade": "by decade",
+    "births_by_decade": "births by decade"
+  },
+  "table": {
+    "rowsPerPage": "Rows per page",
+    "of": "of"
+  },
+  "exportToYasgui": "open the result table query in yasgui sparql editor",
+  "openInLinkedDataBrowser": "open in linked data browser",
+  "resultsAsCSV": "download the search results as a CSV table",
+  "facets": {
+    "dateFacet": {
+      "invalidDate": "Epäkelpo päivämäärä.",
+      "toBeforeFrom": "Alkupäivämäärän täytyy olla ennen loppupäivämäärää.",
+      "minDate": "Aikaisin sallittu päivämäärä on {minDate}",
+      "maxDate": "Myöhäisin sallittu päivämäärä on {maxDate}",
+      "cancel": "Peruuta",
+      "fromLabel": "Alku",
+      "toLabel": "Loppu"
+    },
+    "textFacet": {
+      "inputLabel": "Etsi nimellä"
+    },
+    "sliderFacet": {
+      "invalidStartOrEnd": "Min value must be smaller than max value. The smallest value can be {min} and the largest value can be {max}."
+    }
+  },
+  "leafletMap": {
+    "basemaps": {
+      "mapbox": {
+        "light-v10": "Mapbox Light (OpenStreetMap)"
+      },
+      "openStreetMap": "OpenStreetMap",
+      "googleRoadmap": "Google Maps",
+      "topographicalMapNLS": "Topographical map (National Land Survey of Finland)",
+      "backgroundMapNLS": "Background map (National Land Survey of Finland)",
+      "airMapNLS": "Aerial map (National Land Survey of Finland)"
+    },
+    "externalLayers": {
+      "WFS_MV_Kulttuuriymparisto:Arkeologiset_kohteet_alue": "Register of Archaeological Sites, areas (Finnish Heritage Agency)",
+      "WFS_MV_Kulttuuriymparisto:Arkeologiset_kohteet_piste": "Register of Archaeological Sites, points (Finnish Heritage Agency)",
+      "WFS_MV_KulttuuriymparistoSuojellut:Muinaisjaannokset_alue": "Register of Archaeological Sites, areas (Finnish Heritage Agency)",
+      "WFS_MV_KulttuuriymparistoSuojellut:Muinaisjaannokset_piste": "Register of Archaeological Sites, points (Finnish Heritage Agency)",
+      "fhaLidar": "Elevation model (Finnish Heritage Agency)",
+      "karelianMaps": "Karelian maps, 1:100 000 topographic (SeCo)",
+      "senateAtlas": "Senate atlas, 1:21 000 topographic (SeCo)",
+      "kotus:pitajat": "Finnish parishes in 1938 (Institute for the Languages of Finland)",
+      "kotus:rajat-sms-alueet": "Dialectical regions in Finland (Institute for the Languages of Finland)",
+      "kotus:rajat-sms-alueosat": "Dialectical subregions in Finland (Institute for the Languages of Finland)",
+      "kotus:rajat-lansi-ita": "Border between western and eastern dialects in Finland (Institute for the Languages of Finland)"
+    },
+    "mapModeButtons": {
+      "markers": "Markers",
+      "heatmap": "Heatmap"
+    },
+    "wrongZoomLevel": "The map zoom level has to at least 11",
+    "wrongZoomLevelFHA": "The map zoom level has to be at least 13 in order to show this layer",
+    "tooManyResults": "More than 500 results, please use clustered map or heatmap"
+  },
+  "instancePageGeneral": {
+    "introduction": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> This landing page provides a human-readable summary of the data points that link to this {entity}. The data included in this summary reflect only those data points used in the MMM Portal. Click the Open in Linked Data Browser on button on the Export tab to view the complete set of classes and properties linked to this record. </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> To cite this record, use its url. You can use also use the url to return directly to the record at any time. </p>",
+    "repetition": "<h6 class=\"MuiTypography-root MuiTypography-h6\"> Repetition of data </h6> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> The same or similar data may appear within a single data field multiple times. This repetition occurs due to the merging of multiple records from different datasets to create the MMM record. </p>"
+  },
+  "aboutThePortalPartOne": "<h1 class=\"MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom\">About the portal</h1><p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">The data comes from module 07 of the Early Modern BnF Harmonisation pipeline, a knowledge graph built to the <a href='https://dharc-org.github.io/chad-ap/current/chad-ap.html' target='_blank' rel='noopener noreferrer'>CHAD-AP</a> application profile from data.bnf.fr records, after module 04 harmonised places, publishers, languages, names and dates and module 06 linked actors to external authorities.</p>",
+  "aboutThePortalPartTwo": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">Shared places and publishers, year values and role shortcuts are a portal layer derived from that graph each time it is loaded; the CHAD-AP triples themselves are unchanged. The graph is rebuilt whenever the pipeline runs again, so counts here follow the latest run.</p>",
+  "instructions": "<h1 class=\"MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom\">Instructions</h1><p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">Pick a perspective. Facets on the left filter the results; the tabs switch between table, map, chart and export views of the same filtered set.</p>",
+  "feedback": "<h1 class=\"MuiTypography-root MuiTypography-h2 MuiTypography-gutterBottom\"> Feedback </h1> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> This semantic portal has been developed by ... </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> We are interested in your feedback on the functionality, coverage, and usefulness of the portal and its data. </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Please complete our <a href=\"\" target='_blank' rel='noopener noreferrer'>Feedback Survey Form (add link).</a> </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> You can also contact us via email: ... or DM us on Twitter: ... </p> <p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\"> Please be aware that this portal’s response times may be affected by the size and complexity of the underlying knowledge graph. </p>",
+  "exportLink": {
+    "viewLabel": "Tab",
+    "viewInstructions": "Choose the tab in which the query will open",
+    "fieldLabel": "Generated link (read-only)",
+    "infoBody": "You can share the query you made by using the link below. The link is generated based on what you have selected for different facets and will open the search view of this perspective with those choices on the selected tab. You can change the opened tab to any of the supported ones using the dropdown menu below. If you make additional choices while on this page, the link will be automatically updated to include those.",
+    "warningTitle": "Generated link might be too long for some browsers",
+    "warningBody": "The current length of the generated link is more than 2,000 characters. Browsers have different limits for the maximum lengths of links they can handle. <strong>This link might not work on all browsers</strong> — you can reduce the length of the link by deselecting some facet options.",
+    "errorTitle": "Generated link is too long",
+    "errorBody": "The current length of the generated link is more than 15,800 characters. <strong>The server will refuse to handle requests that go over certain length limits</strong> — you can reduce the length of the link by deselecting some facet options.",
+    "copyLinkToClipboard": "Copy link to clipboard"
+  },
+  "perspectives": {
+    "editions": {
+      "label": "Editions",
+      "facetResultsType": "editions",
+      "shortDescription": "Printed editions catalogued by the BnF, with harmonised place, publisher and language",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">Each row is one edition (an LRMoo manifestation). Place and publisher are module 04's harmonised values; the place as recorded in the catalogue is kept on the edition page. The map shows editions by harmonised place of publication; the chart counts editions per decade of first publication.</p>",
+      "instancePage": {
+        "label": "Edition",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">An edition as described in the knowledge graph.</p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": "The edition's identifier at data.bnf.fr."
+        },
+        "prefLabel": {
+          "label": "Title",
+          "description": "Title of the edition (shortened in the table)."
+        },
+        "fullTitle": {
+          "label": "Full title",
+          "description": "The complete title as catalogued."
+        },
+        "author": {
+          "label": "Author",
+          "description": "Actors credited with authorship."
+        },
+        "contributor": {
+          "label": "Other contributors",
+          "description": "Editors, translators and illustrators, with their role."
+        },
+        "year": {
+          "label": "Year",
+          "description": "Year of first publication."
+        },
+        "place": {
+          "label": "Place",
+          "description": "Harmonised place of publication (module 04, TGN-resolved)."
+        },
+        "placeAsRecorded": {
+          "label": "Place as recorded",
+          "description": "The place statement as it appears in the BnF record."
+        },
+        "publisher": {
+          "label": "Publisher",
+          "description": "Harmonised publisher name, or the recorded one when no harmonised value exists."
+        },
+        "language": {
+          "label": "Language",
+          "description": "Language of the text (ISO 639-2)."
+        },
+        "description": {
+          "label": "Physical description",
+          "description": "Extent and format notes from the record."
+        },
+        "frbnf": {
+          "label": "FRBNF number",
+          "description": "BnF catalogue record number."
+        },
+        "digitalCopy": {
+          "label": "Digital copy",
+          "description": "Link to a digitised copy, for example on Gallica."
+        }
+      }
+    },
+    "actors": {
+      "label": "Actors",
+      "facetResultsType": "actors",
+      "shortDescription": "People and organisations credited on those editions, linked to external authorities",
+      "longDescription": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">Each row is one BnF authority record for a person or an organisation. Roles come from the editions they are credited on; external links are the authority identifiers (VIAF, Wikidata, ISNI and others) carried by the BnF record.</p>",
+      "instancePage": {
+        "label": "Actor",
+        "description": "<p class=\"MuiTypography-root MuiTypography-body1 MuiTypography-paragraph\">A person or organisation as described in the knowledge graph.</p>"
+      },
+      "properties": {
+        "uri": {
+          "label": "URI",
+          "description": "The actor's identifier at data.bnf.fr."
+        },
+        "prefLabel": {
+          "label": "Name",
+          "description": "Full name, or surname when no full name is recorded."
+        },
+        "type": {
+          "label": "Type",
+          "description": "Person or organisation."
+        },
+        "birthYear": {
+          "label": "Born",
+          "description": "Year of birth."
+        },
+        "deathYear": {
+          "label": "Died",
+          "description": "Year of death."
+        },
+        "gender": {
+          "label": "Gender",
+          "description": "Gender as recorded by the BnF."
+        },
+        "country": {
+          "label": "Country",
+          "description": "Country associated with the actor (LOC country code)."
+        },
+        "role": {
+          "label": "Role",
+          "description": "Roles held on at least one edition."
+        },
+        "edition": {
+          "label": "Editions",
+          "description": "Editions the actor is credited on, in any role."
+        },
+        "externalLink": {
+          "label": "External links",
+          "description": "Authority records for the same actor elsewhere."
+        }
+      }
+    }
+  }
+}

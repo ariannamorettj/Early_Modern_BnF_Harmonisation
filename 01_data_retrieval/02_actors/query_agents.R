@@ -324,7 +324,8 @@ run_query_agents <- function(
   merge_output = TRUE,
   write_session_info = TRUE,
   session_timestamp = NULL,
-  overall_last_index = NULL
+  overall_last_index = NULL,
+  monitor_checkpoint_every = 100L
 ) {
   paths <- make_actor_paths(base_dir = base_dir, editions_input = editions_input)
   ensure_actor_output_dirs(paths)
@@ -438,7 +439,16 @@ run_query_agents <- function(
         )
       }
 
-      if (use_monitor) {
+      # A checkpoint costs a round of system reads (nvidia-smi included), so
+      # successes are logged every monitor_checkpoint_every actors and at the
+      # last index. Failures are always logged: recover_missing_acquisitions.R
+      # finds the actors to re-acquire through their "Failed acquisition for
+      # actor index N" lines in this report.
+      log_this_actor <- !isTRUE(success) ||
+        i %% monitor_checkpoint_every == 0 ||
+        i == resolved_last_index
+
+      if (use_monitor && log_this_actor) {
         actor_label <- as.character(actors_df$actor[i])
 
         context <- if (isTRUE(success)) {

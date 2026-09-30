@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="452" height="262" viewBox="0 0 452 262">
+  <rect width="452" height="262" fill="#EDEFE3"/>
+  <rect x="16" y="16" width="420" height="230" fill="none" stroke="#B9BDA9"/>
+  <text x="226" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="40" fill="#1B2027">Actors</text>
+  <line x1="176" y1="152" x2="276" y2="152" stroke="#A32B1F" stroke-width="2"/>
+  <text x="226" y="184" text-anchor="middle" font-family="Georgia, serif" font-style="italic" font-size="16" fill="#5B6259">obj:Person · obj:Organization</text>
+</svg>

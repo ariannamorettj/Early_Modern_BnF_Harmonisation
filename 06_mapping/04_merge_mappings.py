@@ -18,7 +18,11 @@ output/bnf_actors_enriched.csv
     All original actor columns + viaf_id, viaf_name, qid, wikidata_label,
     isni, lc_id, bnf_ark, mapping_confidence_viaf, mapping_confidence_wikidata,
     estc_actor_id, estc_actor_name, estc_actor_match_type,
-    estc_actor_confidence (from 05_map_estc_actors.py — decided here, rather
+    estc_actor_confidence, estc_actor_candidate_id, estc_actor_candidate_name
+    (from 05_map_estc_actors.py; estc_actor_id/name are filled only for the
+    confident match types viaf_id and name_and_dates, while an ambiguous
+    match's best candidate goes to the *_candidate_* columns so no downstream
+    step mistakes it for a match — decided here, rather
     than left standalone, so this file stays the single "actor + all known
     external authorities" dataset consumed downstream, same rationale as
     already merging in VIAF/Wikidata rather than leaving those separate)
@@ -75,6 +79,10 @@ OUT_ACTORS        = "06_mapping/output/bnf_actors_enriched.csv"
 OUT_EDITIONS      = "06_mapping/output/bnf_editions_enriched.csv"
 REPORT_DEFAULT    = "06_mapping/report/merge_report.json"
 
+# 05_map_estc_actors.py match types resolved automatically; the ambiguous_*
+# types keep a candidate id but stay unresolved pending review.
+ESTC_ACTOR_CONFIDENT_TYPES = {"viaf_id", "name_and_dates"}
+
 
 def normalise(v) -> str:
     if v is None: return ""
@@ -118,7 +126,7 @@ def run_merge(actors_path, viaf_path, wikidata_path,
     actor_records = []
     actor_fields  = None
     stats_actors  = {"total": 0, "viaf_matched": 0, "wikidata_matched": 0,
-                     "estc_actor_matched": 0}
+                     "estc_actor_matched": 0, "estc_actor_ambiguous": 0}
 
     if os.path.exists(actors_path):
         with open(actors_path, "r", encoding="utf-8", newline="") as f:
@@ -151,12 +159,20 @@ def run_merge(actors_path, viaf_path, wikidata_path,
 
                 # Merge ESTC actor-authority overlap (05_map_estc_actors.py)
                 erow = estc_actor_idx.get(bnf_id, {})
-                row["estc_actor_id"]            = normalise(erow.get("estc_actor_id", ""))
-                row["estc_actor_name"]          = normalise(erow.get("estc_actor_name", ""))
-                row["estc_actor_match_type"]    = normalise(erow.get("match_type", ""))
-                row["estc_actor_confidence"]    = normalise(erow.get("confidence", ""))
+                match_type = normalise(erow.get("match_type", ""))
+                estc_id    = normalise(erow.get("estc_actor_id", ""))
+                estc_name  = normalise(erow.get("estc_actor_name", ""))
+                confident  = match_type in ESTC_ACTOR_CONFIDENT_TYPES
+                row["estc_actor_id"]             = estc_id if confident else ""
+                row["estc_actor_name"]           = estc_name if confident else ""
+                row["estc_actor_candidate_id"]   = "" if confident else estc_id
+                row["estc_actor_candidate_name"] = "" if confident else estc_name
+                row["estc_actor_match_type"]     = match_type
+                row["estc_actor_confidence"]     = normalise(erow.get("confidence", ""))
                 if row["estc_actor_id"]:
                     stats_actors["estc_actor_matched"] += 1
+                elif row["estc_actor_candidate_id"]:
+                    stats_actors["estc_actor_ambiguous"] += 1
 
                 actor_records.append(row)
 
@@ -167,7 +183,8 @@ def run_merge(actors_path, viaf_path, wikidata_path,
         "qid", "wikidata_label", "isni", "lc_id", "bnf_ark_wikidata",
         "mapping_confidence_wikidata",
         "estc_actor_id", "estc_actor_name", "estc_actor_match_type",
-        "estc_actor_confidence",
+        "estc_actor_confidence", "estc_actor_candidate_id",
+        "estc_actor_candidate_name",
     ]
     final_actor_fields = (actor_fields or []) + [
         c for c in extra_actor_cols if c not in (actor_fields or [])
@@ -177,6 +194,7 @@ def run_merge(actors_path, viaf_path, wikidata_path,
     print(f"  VIAF matched      : {stats_actors['viaf_matched']:,} / {stats_actors['total']:,}")
     print(f"  Wikidata matched  : {stats_actors['wikidata_matched']:,} / {stats_actors['total']:,}")
     print(f"  ESTC actor matched: {stats_actors['estc_actor_matched']:,} / {stats_actors['total']:,}")
+    print(f"  ESTC actor ambiguous (candidate only): {stats_actors['estc_actor_ambiguous']:,}")
 
     # ── Edition enrichment ────────────────────────────────────────────────────
     estc_idx = load_index(estc_path, "BnF_edition_id")

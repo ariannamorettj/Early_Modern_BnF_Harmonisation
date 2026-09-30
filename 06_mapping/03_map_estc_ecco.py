@@ -82,8 +82,8 @@ Monitoring
 By default, resource-usage checkpoints are written via the shared
 00_monitor/monitor.py "embedded state-based monitoring" API (same mechanism
 used by module 1's query_agents.R / query_editions.R, and by
-02_map_wikidata.py): one checkpoint per processed BnF edition, plus a final
-checkpoint on completion. Reports land in
+02_map_wikidata.py): one checkpoint every MONITOR_CHECKPOINT_EVERY (100)
+BnF editions and at the last one, plus a final checkpoint on completion. Reports land in
 00_monitor/report/03_map_estc_ecco_<timestamp>_py.txt. Disable with
 --no-monitor.
 
@@ -133,6 +133,11 @@ YEAR_WINDOW           = 2
 SLEEP_DEFAULT         = 0.3
 MAX_AUTHOR_CANDIDATES_DEFAULT = 2000
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
+# One checkpoint per record cost ~55 ms each (mostly the nvidia-smi GPU read);
+# checkpoint every N records plus the last one instead, like
+# 06_mapping/05_map_estc_actors.py. N is lower than in the local scripts
+# because each record here waits on a network call.
+MONITOR_CHECKPOINT_EVERY = 100
 
 CLAUDE_API_URL = "https://api.anthropic.com/v1/messages"
 CLAUDE_MODEL   = "claude-sonnet-4-6"
@@ -326,6 +331,8 @@ def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
 
 def _monitor_checkpoint(monitor_module, monitor_state, index, total, rec):
     if monitor_module is None:
+        return monitor_state
+    if index % MONITOR_CHECKPOINT_EVERY and index != total:
         return monitor_state
     context = (f"Processed edition {rec['BnF_edition_id']} (index {index}/{total}) "
               f"- match_type={rec['match_type'] or 'unmatched'}")

@@ -11,6 +11,7 @@ prefixes:
   rdfs:    http://www.w3.org/2000/01/rdf-schema#
   edtf:    http://id.loc.gov/datatypes/edtf/
   idlab-fn: http://example.com/idlab/function/
+  geo:     http://www.opengis.net/ont/geosparql#
 mappings:
   edition_manifestation:
     sources:
@@ -96,6 +97,24 @@ mappings:
     sources:
     - bnf_editions_ready.csv~csv
     s: $(work)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(title)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P102_has_title
+      o: $(edition_title)
+      type: iri
+  # The title also hangs off the manifestation itself: $(work) is empty for
+  # most editions, so edition_title_link alone leaves titles unreachable.
+  edition_manifestation_title_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
     type: iri
     condition:
       function: idlab-fn:notEqual
@@ -246,6 +265,133 @@ mappings:
     po:
     - p: crm:P7_took_place_at
       o: $(edition_pub_place)
+      type: iri
+  # Module 04 harmonised place: a second, normalised appellation on the same
+  # place node, plus a WKT point from the TGN lookup coordinates.
+  edition_place_harmonised_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_place)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publication_place)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Place
+    - p: obj:isIdentifiedBy
+      o: $(edition_pub_place_norm_app)
+      type: iri
+  edition_place_harmonised_appellation:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_place_norm_app)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publication_place)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Appellation
+    - - obj:hasType
+      - aat:300404670~iri
+    - - obj:hasSymbolicContent
+      - $(publication_place)
+      - xsd:string
+  edition_place_harmonised_edition_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publication_place)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P7_took_place_at
+      o: $(edition_pub_place)
+      type: iri
+  edition_place_geometry:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_place)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(place_wkt)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - crm:P168_place_is_defined_by
+      - $(place_wkt)
+      - geo:wktLiteral
+  # Module 04 harmonised publisher name, alongside the raw appellation.
+  edition_publisher_harmonised_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_actor)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publisher_harmonised)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Actor
+    - p: obj:isIdentifiedBy
+      o: $(edition_pub_actor_norm_app)
+      type: iri
+  edition_publisher_harmonised_appellation:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition_pub_actor_norm_app)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publisher_harmonised)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - - a
+      - obj:Appellation
+    - - obj:hasType
+      - aat:300404670~iri
+    - - obj:hasSymbolicContent
+      - $(publisher_harmonised)
+      - xsd:string
+  edition_publisher_harmonised_edition_link:
+    sources:
+    - bnf_editions_ready.csv~csv
+    s: $(edition)
+    type: iri
+    condition:
+      function: idlab-fn:notEqual
+      parameters:
+      - parameter: idlab-fn:str
+        value: $(publisher_harmonised)
+      - parameter: idlab-fn:otherStr
+        value: null
+    po:
+    - p: crm:P14_carried_out_by
+      o: $(edition_pub_actor)
       type: iri
   edition_publisher_actor:
     sources:

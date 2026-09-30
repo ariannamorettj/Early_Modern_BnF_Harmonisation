@@ -1,0 +1,309 @@
+{
+    "id": "editions",
+    "endpoint": {
+        "url": "SPARQL_ENDPOINT",
+        "useAuth": false,
+        "prefixesFile": "SparqlQueriesPrefixes.js"
+    },
+    "sparqlQueriesFile": "SparqlQueriesEditions.js",
+    "baseURI": "http://data.bnf.fr/ark:/12148",
+    "URITemplate": "<BASE_URI>/<LOCAL_ID>#about",
+    "facetClass": "lrmoo:F3_Manifestation",
+    "frontPageImage": "main_page/editions.svg",
+    "searchMode": "faceted-search",
+    "enableDynamicLanguageChange": false,
+    "defaultActiveFacets": [
+        "prefLabel"
+    ],
+    "defaultTab": "table",
+    "defaultInstancePageTab": "table",
+    "resultClasses": {
+        "editions": {
+            "paginatedResultsConfig": {
+                "tabID": 0,
+                "component": "ResultTable",
+                "tabPath": "table",
+                "tabIcon": "CalendarViewDay",
+                "propertiesQueryBlock": "editionProperties",
+                "pagesize": 20,
+                "sortBy": "year",
+                "sortDirection": "asc"
+            },
+            "instanceConfig": {
+                "propertiesQueryBlock": "editionProperties",
+                "instancePageResultClasses": {
+                    "instancePageTable": {
+                        "tabID": 0,
+                        "component": "InstancePageTable",
+                        "tabPath": "table",
+                        "tabIcon": "CalendarViewDay"
+                    },
+                    "instancePageExport": {
+                        "tabID": 1,
+                        "component": "Export",
+                        "tabPath": "export",
+                        "tabIcon": "CloudDownload",
+                        "pageType": "instancePage"
+                    }
+                }
+            }
+        },
+        "editionPlaces": {
+            "tabID": 1,
+            "component": "LeafletMap",
+            "tabPath": "map",
+            "tabIcon": "AddLocation",
+            "sparqlQuery": "editionPlacesQuery",
+            "facetClass": "editions",
+            "filterTarget": "edition",
+            "resultMapper": "mapPlaces",
+            "facetID": "place",
+            "instanceConfig": {
+                "propertiesQueryBlock": "placePropertiesInfoWindow",
+                "relatedInstances": "editionsPublishedAt",
+                "filterTarget": "related__id",
+                "createPopUpContent": "createPopUpContentDefault"
+            }
+        },
+        "editionsByDecade": {
+            "tabID": 2,
+            "component": "ApexCharts",
+            "tabPath": "by_decade",
+            "tabIcon": "ShowChart",
+            "sparqlQuery": "editionsByDecadeQuery",
+            "facetClass": "editions",
+            "filterTarget": "edition",
+            "resultMapper": "mapLineChart",
+            "resultMapperConfig": {
+                "fillEmptyValues": false
+            },
+            "createChartData": "createSingleLineChartData",
+            "title": "Editions by decade of first publication",
+            "xaxisTitle": "Decade",
+            "xaxisType": "category",
+            "xaxisTickAmount": 30,
+            "yaxisTitle": "Editions",
+            "seriesTitle": "Editions",
+            "stroke": {
+                "curve": "straight",
+                "width": 2
+            }
+        },
+        "export": {
+            "tabID": 3,
+            "component": "Export",
+            "tabPath": "export",
+            "tabIcon": "CloudDownload",
+            "resultClass": "editions",
+            "facetClass": "editions"
+        }
+    },
+    "maps": {
+        "editionPlaces": {
+            "center": [
+                48.5,
+                8.0
+            ],
+            "zoom": 4
+        }
+    },
+    "properties": [
+        {
+            "id": "uri",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "prefLabel",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 280
+        },
+        {
+            "id": "fullTitle",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "author",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 180
+        },
+        {
+            "id": "contributor",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 180
+        },
+        {
+            "id": "year",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 70
+        },
+        {
+            "id": "place",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 120
+        },
+        {
+            "id": "placeAsRecorded",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "publisher",
+            "valueType": "object",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 160
+        },
+        {
+            "id": "language",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": true,
+            "numberedList": false,
+            "minWidth": 100
+        },
+        {
+            "id": "description",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "frbnf",
+            "valueType": "string",
+            "makeLink": false,
+            "externalLink": false,
+            "sortValues": false,
+            "numberedList": false,
+            "onlyOnInstancePage": true
+        },
+        {
+            "id": "digitalCopy",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 120
+        }
+    ],
+    "facets": {
+        "prefLabel": {
+            "containerClass": "one",
+            "facetType": "text",
+            "filterType": "textFilter",
+            "textQueryType": "regex",
+            "textQueryProperty": "skos:prefLabel",
+            "sortByPredicate": "skos:prefLabel"
+        },
+        "author": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "bnfp:author",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bnfp:author/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "contributor": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "bnfp:editor|bnfp:translator|bnfp:illustrator",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "(bnfp:editor|bnfp:translator|bnfp:illustrator)/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "year": {
+            "containerClass": "five",
+            "facetType": "integer",
+            "filterType": "integerFilterRange",
+            "predicate": "bnfp:year",
+            "sortByPredicate": "bnfp:year",
+            "unit": ""
+        },
+        "place": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "bnfp:place",
+            "searchField": true,
+            "sortButton": true,
+            "barChartButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bnfp:place/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "publisher": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "bnfp:publisher",
+            "searchField": true,
+            "sortButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bnfp:publisher/skos:prefLabel",
+            "sortDirection": "desc"
+        },
+        "language": {
+            "containerClass": "ten",
+            "facetType": "list",
+            "filterType": "uriFilter",
+            "predicate": "bnfp:language",
+            "searchField": true,
+            "sortButton": true,
+            "pieChartButton": true,
+            "barChartButton": true,
+            "sortBy": "instanceCount",
+            "sortByPredicate": "bnfp:language/skos:prefLabel",
+            "sortDirection": "desc",
+            "labelPattern": "OPTIONAL { ?id skos:prefLabel ?prefLabel_ } BIND(COALESCE(STR(?prefLabel_), REPLACE(STR(?id), \"^.*/\", \"\")) AS ?prefLabel)"
+        },
+        "digitalCopy": {
+            "sortByPredicate": "crm:P130i_features_are_also_found_on/obj:isIdentifiedBy/obj:hasSymbolicContent"
+        }
+    }
+}

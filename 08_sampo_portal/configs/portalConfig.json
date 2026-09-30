@@ -1,0 +1,110 @@
+{
+    "portalID": "bnf",
+    "rootUrl": "",
+    "staticsUrl": "",
+    "perspectives": {
+        "searchPerspectives": [
+            "editions",
+            "actors"
+        ],
+        "onlyInstancePages": []
+    },
+    "localeConfig": {
+        "defaultLocale": "en",
+        "readTranslationsFromGoogleSheets": false,
+        "availableLocales": [
+            {
+                "id": "en",
+                "label": "English",
+                "filename": "localeEN.json"
+            }
+        ]
+    },
+    "knowledgeGraphMetadataConfig": {
+        "showTable": false,
+        "perspective": "editions"
+    },
+    "layoutConfig": {
+        "colorPalette": {
+            "primary": {
+                "main": "#1B2027"
+            },
+            "secondary": {
+                "main": "#A32B1F"
+            }
+        },
+        "hundredPercentHeightBreakPoint": 900,
+        "reducedHeightBreakpoint": 1920,
+        "tabHeight": 58,
+        "paginationToolbarHeight": 37,
+        "tableFontSize": "0.8rem",
+        "topBar": {
+            "logoTextTransform": "none",
+            "hideLogoTextOnMobile": true,
+            "showLanguageButton": false,
+            "showSearchField": false,
+            "externalInstructions": false,
+            "externalAboutPage": false,
+            "reducedHeight": 48,
+            "defaultHeight": 64,
+            "mobileMenuBreakpoint": 1360,
+            "infoDropdown": [
+                {
+                    "id": "about",
+                    "translatedText": "aboutThePortal",
+                    "internalLink": "/about"
+                }
+            ]
+        },
+        "mainPage": {
+            "bannerImage": "main_page/banner.svg",
+            "bannerBackground": "url(<BANNER_IMAGE_URL>)",
+            "bannerMobileHeight": 150,
+            "bannerReducedHeight": 220,
+            "bannerDefaultHeight": 300,
+            "wrapSubheading": true,
+            "perspectives": [
+                {
+                    "id": "part1",
+                    "cardsPerRow": 2,
+                    "perspectives": [
+                        "editions",
+                        "actors"
+                    ]
+                }
+            ]
+        },
+        "infoHeader": {
+            "default": {
+                "height": 49,
+                "expandedContentHeight": 160,
+                "headingVariant": "h4",
+                "infoIconFontSize": 40
+            },
+            "reducedHeight": {
+                "height": 40,
+                "expandedContentHeight": 100,
+                "headingVariant": "h6",
+                "infoIconFontSize": 32
+            }
+        },
+        "footer": {
+            "reducedHeight": 44,
+            "defaultHeight": 64,
+            "images": []
+        }
+    },
+    "yasguiConfig": {
+        "yasguiBaseURL": "https://yasgui.triply.cc",
+        "yasguiParams": {
+            "contentTypeConstruct": "text/turtle",
+            "contentTypeSelect": "application/sparql-results+json",
+            "endpoint": "http://localhost:7878/query",
+            "requestMethod": "POST",
+            "tabTitle": "Exported query"
+        }
+    },
+    "documentFinderConfig": {
+        "apiURL": ""
+    }
+}

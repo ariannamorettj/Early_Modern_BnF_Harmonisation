@@ -266,8 +266,8 @@ as before.
 
 Same "embedded state-based monitoring" mechanism as module 1
 (`query_agents.R` / `query_editions.R`) and `02_map_wikidata.py` (see
-`00_monitor/README.md`): one checkpoint per processed BnF edition plus a
-final checkpoint, on by default from the CLI (`--no-monitor` to disable),
+`00_monitor/README.md`): one checkpoint every 100 BnF editions
+(`MONITOR_CHECKPOINT_EVERY`) and at the last one, plus a final checkpoint, on by default from the CLI (`--no-monitor` to disable),
 off by default when `run_mapping(...)` is called programmatically. Reports
 are written to:
 

@@ -266,8 +266,12 @@ class FakeMonitorModule:
         return state
 
 
-def test_run_mapping_writes_monitor_checkpoint_per_edition_and_stops_cleanly(monkeypatch, tmp_path):
+def test_run_mapping_writes_monitor_checkpoint_periodically_and_stops_cleanly(monkeypatch, tmp_path):
+    """Checkpoints fire every MONITOR_CHECKPOINT_EVERY records and at the last
+    one, not per record: with the cadence lowered to 2, a 2-record run skips
+    record 1 and checkpoints record 2, then the completion checkpoint."""
     estc = load_estc_module()
+    monkeypatch.setattr(estc, "MONITOR_CHECKPOINT_EVERY", 2)
     monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
 
     fake_monitor = FakeMonitorModule()
@@ -296,9 +300,9 @@ def test_run_mapping_writes_monitor_checkpoint_per_edition_and_stops_cleanly(mon
     )
 
     assert len(fake_monitor.start_calls) == 1
-    assert len(fake_monitor.update_calls) == 2 + 1  # one per edition + final
-    assert "B1" in fake_monitor.update_calls[0]
-    assert "B2" in fake_monitor.update_calls[1]
+    assert len(fake_monitor.update_calls) == 1 + 1  # record 2 (last), completion
+    assert "B2" in fake_monitor.update_calls[0]
+    assert not any("B1" in call for call in fake_monitor.update_calls)
     assert fake_monitor.update_calls[-1] == "Completed ESTC/ECCO mapping run"
     assert fake_monitor.stop_calls == [True]
 

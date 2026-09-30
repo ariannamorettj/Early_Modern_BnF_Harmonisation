@@ -516,7 +516,69 @@ test_that("run_query_agents can use the embedded monitor API", {
   log_lines <- readLines(monitor_log, warn = FALSE)
   expect_true("start" %in% log_lines)
   expect_true("stop" %in% log_lines)
-  expect_equal(sum(grepl("^update:", log_lines)), 3)
+  # Successes are checkpointed every monitor_checkpoint_every (100) actors and
+  # at the last index: here the last actor (2) plus the final merge checkpoint.
+  expect_equal(sum(grepl("^update:", log_lines)), 2)
+})
+
+test_that("run_query_agents always checkpoints failed actors, batching only successes", {
+  tmp_base <- file.path(tempdir(), "query_agents_e2e_monitor_failures")
+  unlink(tmp_base, recursive = TRUE)
+  editions_input <- normalizePath(
+    file.path("data", "actors_data", "bnf_edition_data_raw.csv"),
+    mustWork = TRUE
+  )
+
+  monitor_dir <- file.path(tmp_base, "monitor")
+  dir.create(monitor_dir, recursive = TRUE, showWarnings = FALSE)
+  monitor_script <- file.path(monitor_dir, "mock_monitor.R")
+  monitor_log <- file.path(monitor_dir, "monitor_calls.txt")
+  monitor_report <- file.path(monitor_dir, "mock_report.txt")
+
+  writeLines(
+    c(
+      sprintf('monitor_log_path <- "%s"', gsub("\\\\", "/", monitor_log)),
+      sprintf('monitor_report_path <- "%s"', gsub("\\\\", "/", monitor_report)),
+      'start_monitor_state <- function(sampling_mode = NULL, print_start_message = TRUE) {',
+      '  list(report_path = monitor_report_path, closed = FALSE, cycle = 0)',
+      '}',
+      'update_monitor_state <- function(state, context = NULL, print_console = TRUE) {',
+      '  write(context, file = monitor_log_path, append = TRUE)',
+      '  state',
+      '}',
+      'stop_monitor_state <- function(state, print_stop_message = TRUE, status = "COMPLETED") {',
+      '  file.create(state$report_path)',
+      '  state',
+      '}'
+    ),
+    monitor_script
+  )
+
+  call_count <- 0
+  failing_then_ok <- function(query) {
+    call_count <<- call_count + 1
+    if (call_count == 1) stop("simulated SPARQL failure")
+    data.frame(actor_name = paste("Actor", call_count), stringsAsFactors = FALSE)
+  }
+
+  run_query_agents(
+    base_dir = tmp_base,
+    editions_input = editions_input,
+    query_fun = failing_then_ok,
+    sleep = FALSE,
+    use_monitor = TRUE,
+    monitor_script = monitor_script,
+    merge_output = FALSE,
+    write_session_info = FALSE,
+    monitor_checkpoint_every = 100L
+  )
+
+  contexts <- readLines(monitor_log, warn = FALSE)
+  # The failure at index 1 is logged even though 1 is not a multiple of 100:
+  # recover_missing_acquisitions.R depends on exactly this line.
+  expect_true(any(grepl("^Failed acquisition for actor index 1 - ", contexts)))
+  expect_true(any(grepl("^Completed acquisition for actor index 2 - ", contexts)))
+  expect_length(grep("acquisition for actor index", contexts), 2)
 })
 
 # ---------------------------------------------------------------------------

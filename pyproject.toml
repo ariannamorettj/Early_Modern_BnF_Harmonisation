@@ -18,6 +18,12 @@ rdflib = "^7.0"
 flair = "^0.13"
 nameparser = "^1.1"
 anthropic = "^1.4"
+morph-kgc = "^2.10"
+pyyaml = "^6.0"
+# morph-kgc 2.10 requires pyoxigraph < 0.4; module 08 uses it only in tests
+# (its SPARQL endpoint is the standalone Oxigraph server pinned in portal.lock.json).
+pyoxigraph = ">=0.3,<0.4"
+pycountry = ">=24.6"
 
 
 [build-system]

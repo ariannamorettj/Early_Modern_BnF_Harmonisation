@@ -48,8 +48,8 @@ correction_type = 'multi_value' and get llm_explanation explaining why.
 Monitoring
 ----------
 Same 00_monitor/monitor.py "embedded state-based monitoring" mechanism as
-the rest of the pipeline: one checkpoint per unique raw value resolved,
-plus a final checkpoint. On by default via CLI, --no-monitor to disable.
+the rest of the pipeline: one checkpoint every MONITOR_CHECKPOINT_EVERY
+(100) unique raw values and at the last one, plus a final checkpoint. On by default via CLI, --no-monitor to disable.
 
 Requirements
 ------------
@@ -94,6 +94,10 @@ CACHE_PATH_DEFAULT = (
     "02_llm_based/llm_responses_cache/publisher_responses_cache.json"
 )
 MONITOR_SCRIPT_DEFAULT = "00_monitor/monitor.py"
+# One checkpoint per value cost ~55 ms each (mostly the nvidia-smi GPU read),
+# which dominated re-runs where every value comes from the cache; checkpoint
+# every N values plus the last one instead.
+MONITOR_CHECKPOINT_EVERY = 100
 MODEL_DEFAULT = "claude-opus-5"
 EFFORT_DEFAULT = "low"
 
@@ -266,7 +270,7 @@ def run(heuristic_output_csv: str = HEURISTIC_OUTPUT_DEFAULT,
             save_cache(cache_path, cache)  # persist incrementally: safe to interrupt/resume
         if cache[raw_value]["harmonised"]:
             resolved_count += 1
-        if use_monitor:
+        if use_monitor and ((i + 1) % MONITOR_CHECKPOINT_EVERY == 0 or i + 1 == total):
             monitor_state = monitor_module.update_monitor_state(
                 state=monitor_state,
                 context=f"Resolved value {i + 1}/{total} ({raw_value!r})",
