@@ -106,19 +106,26 @@ Input
 
 Output
 ------
-Same columns in all three CSVs below (one row per DISTINCT actor once
-duplicates are collapsed):
-    BnF_ID, estc_actor_id, match_type, confidence, bnf_actor_name,
-    estc_actor_name, estc_viaf_link, bnf_birth_year, bnf_death_year,
-    estc_birth_year, estc_death_year, notes
+The ESTC tables are licensed COMHIS data that may not be published, so the
+files in 06_mapping/output/ (tracked in git) carry only what the match
+itself needs, for actors with a match or an ambiguous candidate (one row per
+DISTINCT actor once duplicates are collapsed; no "unmatched" rows):
+    PUBLIC_FIELDS = BnF_ID, estc_actor_id, estc_actor_name, bnf_birth_year,
+    bnf_death_year, estc_birth_year, estc_death_year, match_type, confidence
+(the four years are the dates the name + dates pass compares).
 
-- 06_mapping/output/estc_actor_mapping.csv — every distinct actor,
-  including "unmatched".
+- 06_mapping/output/estc_actor_mapping.csv — confident and ambiguous rows.
 - 06_mapping/output/estc_actor_mapping_confident.csv — CONFIDENT_MATCH_TYPES
   only (viaf_id, name_and_dates): safe to use directly.
 - 06_mapping/output/estc_actor_mapping_review.csv — REVIEW_MATCH_TYPES only
   (ambiguous_name_only, ambiguous_name_and_dates): needs a human to confirm
-  or reject before use. "unmatched" rows appear in neither split file.
+  or reject before use. An ambiguous_name_only row names no ESTC candidate.
+
+The full mapping (every distinct actor including "unmatched", with all
+OUTPUT_FIELDS: also bnf_actor_name, estc_viaf_link and notes listing the
+alternative candidates) goes to --full-output, by default
+data/estc/derived/estc_actor_mapping_full.csv, next to the ESTC tables and
+git-ignored like them.
 
 06_mapping/report/estc_actor_mapping_report.json: total_bnf_actor_records
 (pre-dedup), distinct_actors_after_dedup, duplicates_collapsed, and
@@ -206,6 +213,13 @@ OUTPUT_FIELDS = [
     "bnf_birth_year", "bnf_death_year", "estc_birth_year", "estc_death_year",
     "notes",
 ]
+# Columns of the published files in 06_mapping/output/ (see "Output").
+PUBLIC_FIELDS = [
+    "BnF_ID", "estc_actor_id", "estc_actor_name",
+    "bnf_birth_year", "bnf_death_year", "estc_birth_year", "estc_death_year",
+    "match_type", "confidence",
+]
+FULL_OUTPUT_DEFAULT = "data/estc/derived/estc_actor_mapping_full.csv"
 
 _name_norm_re = re.compile(r"[\s.,]+", re.UNICODE)
 
@@ -579,8 +593,13 @@ def run_mapping(bnf_path: str, estc_actors_path: str, output_path: str, report_p
                 year_window: int = YEAR_WINDOW_DEFAULT,
                 dedup_mapping_path: str = None,
                 viaf_mapping_path: str = None,
-                use_monitor: bool = False, monitor_script: str = MONITOR_SCRIPT_DEFAULT) -> tuple:
+                use_monitor: bool = False, monitor_script: str = MONITOR_SCRIPT_DEFAULT,
+                full_output_path: str = None) -> tuple:
     """
+    full_output_path: where to write the full mapping (all actors, all
+    OUTPUT_FIELDS); None writes none. The published output_path and its
+    _confident / _review splits carry PUBLIC_FIELDS for matched and
+    ambiguous actors only.
     dedup_mapping_path: path to actors_deduplication.py's actor_dedup_mapping.csv.
     viaf_mapping_path: path to 01_map_viaf.py's viaf_mapping.csv, supplying
     additional VIAF IDs for Pass 1 beyond what the raw BnF data carries.
@@ -622,18 +641,22 @@ def run_mapping(bnf_path: str, estc_actors_path: str, output_path: str, report_p
     for r in results:
         stats[r["match_type"]] = stats.get(r["match_type"], 0) + 1
 
-    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
-    with open(output_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS)
-        writer.writeheader()
-        writer.writerows(results)
+    if full_output_path:
+        os.makedirs(os.path.dirname(full_output_path) or ".", exist_ok=True)
+        with open(full_output_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS)
+            writer.writeheader()
+            writer.writerows(results)
 
     confident_rows, review_rows = split_by_confidence(results)
+    matched_rows = [r for r in results if r["match_type"] != "unmatched"]
     output_confident_path = _with_suffix(output_path, "_confident")
     output_review_path = _with_suffix(output_path, "_review")
-    for path, rows in ((output_confident_path, confident_rows), (output_review_path, review_rows)):
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+    for path, rows in ((output_path, matched_rows), (output_confident_path, confident_rows),
+                       (output_review_path, review_rows)):
         with open(path, "w", newline="", encoding="utf-8") as f:
-            writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS)
+            writer = csv.DictWriter(f, fieldnames=PUBLIC_FIELDS, extrasaction="ignore")
             writer.writeheader()
             writer.writerows(rows)
 
@@ -664,7 +687,9 @@ def run_mapping(bnf_path: str, estc_actors_path: str, output_path: str, report_p
              f"({duplicates_collapsed:,} duplicates merged via actor deduplication)")
     for mt, n in sorted(stats.items(), key=lambda x: -x[1]):
         print(f"  {mt:<28} {n:,}")
-    print(f"✓ Wrote full mapping      -> {output_path}")
+    if full_output_path:
+        print(f"✓ Wrote full mapping      -> {full_output_path} (not published)")
+    print(f"✓ Wrote matched subset    -> {output_path} ({len(matched_rows):,} rows)")
     print(f"✓ Wrote confident subset  -> {output_confident_path} ({len(confident_rows):,} rows)")
     print(f"✓ Wrote review subset     -> {output_review_path} ({len(review_rows):,} rows)")
     print(f"✓ Wrote report            -> {report_path}")
@@ -677,7 +702,12 @@ def main():
         description="BnF actors -> ESTC actor-authority matching (author-level overlap)")
     parser.add_argument("--bnf-actors", default=BNF_ACTORS_DEFAULT)
     parser.add_argument("--estc-actors", default=ESTC_ACTORS_DEFAULT)
-    parser.add_argument("--output", default=OUTPUT_DEFAULT)
+    parser.add_argument("--output", default=OUTPUT_DEFAULT,
+                        help="Published matched subset (PUBLIC_FIELDS); also writes "
+                             "its _confident and _review splits.")
+    parser.add_argument("--full-output", default=FULL_OUTPUT_DEFAULT,
+                        help="Full mapping with every actor and column, kept out of git "
+                             "next to the ESTC tables. Pass '' to skip.")
     parser.add_argument("--report", default=REPORT_DEFAULT)
     parser.add_argument("--year-window", type=int, default=YEAR_WINDOW_DEFAULT,
                         help="±years tolerance when comparing birth/death years.")
@@ -694,7 +724,8 @@ def main():
     run_mapping(args.bnf_actors, args.estc_actors, args.output, args.report,
                year_window=args.year_window, dedup_mapping_path=args.dedup_mapping or None,
                viaf_mapping_path=args.viaf_mapping or None,
-               use_monitor=not args.no_monitor, monitor_script=args.monitor_script)
+               use_monitor=not args.no_monitor, monitor_script=args.monitor_script,
+               full_output_path=args.full_output or None)
 
 
 if __name__ == "__main__":

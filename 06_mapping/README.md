@@ -287,7 +287,16 @@ translations of *each other*. When exactly one candidate is accepted,
 `match_type = "llm"`.
 
 ### Output fields
-`BnF_edition_id, estc_id, match_type, confidence, estc_title, estc_author, estc_year, estc_language, bnf_title, bnf_year, bnf_language, notes`
+The ESTC tables are licensed data that may not be published, so the script
+writes two files:
+
+| File | Rows | Columns |
+|---|---|---|
+| `06_mapping/output/estc_mapping.csv` (published) | editions with a match or an ambiguous candidate | `BnF_edition_id, estc_id, match_type, confidence` |
+| `data/estc/derived/estc_mapping_full.csv` (`--full-output`, git-ignored) | every in-scope edition | also `estc_title, estc_author, estc_year, estc_language, bnf_title, bnf_year, bnf_language, notes` |
+
+The full file is the resumable working file; the published one is rewritten
+from it at the end of every run.
 
 `match_type` is one of: `actor_bridge`, `heuristic`, `llm`, `ambiguous_actor_bridge`,
 `ambiguous_heuristic`, `ambiguous_translation`, `unmatched`.
@@ -396,16 +405,24 @@ by default from the CLI (`--dedup-mapping`); off by default when
 `run_mapping(...)` is called programmatically (pass a path to opt in). A
 missing mapping file is not an error — collapsing is silently skipped.
 
-### Output files (same columns in all three, one row per distinct actor)
-`BnF_ID, estc_actor_id, match_type, confidence, bnf_actor_name, estc_actor_name, estc_viaf_link, bnf_birth_year, bnf_death_year, estc_birth_year, estc_death_year, notes`
+### Output files (one row per distinct actor)
+The three published files in `06_mapping/output/` carry only what the match
+needs, because the ESTC tables are licensed data that may not be published:
+
+`BnF_ID, estc_actor_id, estc_actor_name, bnf_birth_year, bnf_death_year, estc_birth_year, estc_death_year, match_type, confidence`
+
+(the four years are the dates the name + dates pass compares).
 
 | File | Contents |
 |------|----------|
-| `estc_actor_mapping.csv` | Every distinct actor, including `unmatched` |
+| `estc_actor_mapping.csv` | Matched and ambiguous actors (no `unmatched` rows) |
 | `estc_actor_mapping_confident.csv` | `viaf_id` + `name_and_dates` only — safe to use directly |
-| `estc_actor_mapping_review.csv` | `ambiguous_name_only` + `ambiguous_name_and_dates` only — needs manual confirmation before use |
+| `estc_actor_mapping_review.csv` | `ambiguous_name_only` + `ambiguous_name_and_dates` only — needs manual confirmation before use; an `ambiguous_name_only` row names no ESTC candidate |
 
-`unmatched` rows appear only in the full file, never in either split.
+The full mapping, with every actor including `unmatched` and the extra
+columns `bnf_actor_name, estc_viaf_link, notes` (the alternative candidates
+of an ambiguous match), goes to `--full-output`, by default
+`data/estc/derived/estc_actor_mapping_full.csv`, which is git-ignored.
 
 `estc_actor_mapping_report.json` carries `total_bnf_actor_records`
 (pre-dedup), `distinct_actors_after_dedup`, `duplicates_collapsed`, and
@@ -420,6 +437,8 @@ without parsing JSON.
 |-------|---------|-------------|
 | `--bnf-actors` | `05_subset_optimisation/output/bnf_actors_optimised.csv` | BnF actor dataset (either ID schema) |
 | `--estc-actors` | `data/estc/estc_actors.csv` | ESTC actor-authority table (a sample or the full COMHIS export — this script makes no assumption about completeness) |
+| `--output` | `06_mapping/output/estc_actor_mapping.csv` | Published matched subset (also writes `_confident` / `_review`) |
+| `--full-output` | `data/estc/derived/estc_actor_mapping_full.csv` | Full mapping, git-ignored; pass `''` to skip |
 | `--year-window` | `2` | ±years tolerance for birth/death comparison |
 | `--viaf-mapping` | `06_mapping/output/viaf_mapping.csv` | `01_map_viaf.py` output; supplies additional VIAF IDs for Pass 1; pass `''` to disable |
 | `--dedup-mapping` | `.../actor_name/01_heuristic_rules/output/actor_dedup_mapping.csv` | `actors_deduplication.py` output; pass `''` to disable collapsing |
@@ -434,15 +453,16 @@ default from the CLI. Reports land in
 `00_monitor/report/05_map_estc_actors_<YYYYMMDD_HHMMSS>_py.txt`.
 
 ### On the `estcr` data files
-`data/estc/estc_core.csv` (~264MB) and `data/estc/estc_actor_links.csv`
-(~314MB) are **not committed** (gitignored) — too large for this repo's
-git-lfs quota alongside everything already tracked. They are not needed by
-this script (only `estc_actors.csv`, ~34MB, is — and it *is* committed).
-Small samples of all three (a few hundred rows each) live in
-`00_test/data/estc_samples/` for tests. `estc_core.csv` /
-`estc_actor_links.csv` become relevant once the edition-level crosswalk
-(attaching editions/roles to the actor overlap) is tackled — not yet
-implemented.
+The COMHIS ESTC tables (`estc_core.csv`, `estc_actor_links.csv`,
+`estc_actors.csv`) are licensed data that may not be published without
+authorisation. They are kept locally in `data/estc/`, which is git-ignored
+as a whole; this script needs `estc_actors.csv`, and `03_map_estc_ecco.py`
+all three. (`estc_actors.csv` was committed by mistake on 2026-09-21 and
+removed from the repository history on 2026-10-01.)
+
+The files in `00_test/data/estc_samples/` are synthetic: same columns as the
+three tables, invented values, regenerated by `make_synthetic_samples.py`
+in that folder.
 
 ---
 

@@ -332,16 +332,28 @@ def test_run_mapping_writes_csv_and_report_with_expected_schema(tmp_path):
          "year_birth": "1717", "year_death": "1801"},
     ])
 
+    full_path = tmp_path / "private" / "full.csv"
     output_path, report_path = m.run_mapping(
         str(bnf_path), str(estc_path), str(tmp_path / "out" / "mapping.csv"),
-        str(tmp_path / "report" / "report.json"),
+        str(tmp_path / "report" / "report.json"), full_output_path=str(full_path),
     )
 
+    # Published file: only the match columns, no unmatched rows.
     with open(output_path, newline="", encoding="utf-8") as f:
-        rows = {r["BnF_ID"]: r for r in csv.DictReader(f)}
-    assert set(rows["A1"].keys()) == set(m.OUTPUT_FIELDS)
+        reader = csv.DictReader(f)
+        rows = {r["BnF_ID"]: r for r in reader}
+    assert reader.fieldnames == m.PUBLIC_FIELDS
+    assert "estc_viaf_link" not in reader.fieldnames and "notes" not in reader.fieldnames
+    assert list(rows) == ["A1"]
     assert rows["A1"]["match_type"] == "name_and_dates"
-    assert rows["A2"]["match_type"] == "unmatched"
+    assert rows["A1"]["estc_actor_name"] == "Warner, Joseph"
+    assert rows["A1"]["estc_birth_year"] == "1717"
+
+    # Full mapping (kept out of git): every actor, every column.
+    with open(full_path, newline="", encoding="utf-8") as f:
+        full = {r["BnF_ID"]: r for r in csv.DictReader(f)}
+    assert set(full["A1"].keys()) == set(m.OUTPUT_FIELDS)
+    assert full["A2"]["match_type"] == "unmatched"
 
     with open(report_path, encoding="utf-8") as f:
         report = json.load(f)
@@ -368,9 +380,10 @@ def test_run_mapping_writes_confident_and_review_subset_files(tmp_path):
         {"actor_id": "e2", "name_unified": "Petit, Jean", "is_organization": "FALSE"},
     ])
 
+    full_path = tmp_path / "private" / "full.csv"
     output_path, _ = m.run_mapping(
         str(bnf_path), str(estc_path), str(tmp_path / "out" / "mapping.csv"),
-        str(tmp_path / "report" / "report.json"),
+        str(tmp_path / "report" / "report.json"), full_output_path=str(full_path),
     )
 
     confident_path = m._with_suffix(output_path, "_confident")
@@ -385,6 +398,9 @@ def test_run_mapping_writes_confident_and_review_subset_files(tmp_path):
     assert [r["BnF_ID"] for r in review_rows] == ["A2"]
 
     with open(output_path, newline="", encoding="utf-8") as f:
+        published = [r["BnF_ID"] for r in csv.DictReader(f)]
+    assert published == ["A1", "A2"]  # matched + ambiguous, no unmatched A3
+    with open(full_path, newline="", encoding="utf-8") as f:
         full_rows = list(csv.DictReader(f))
     assert len(full_rows) == 3  # unmatched A3 still present in the full mapping
 
@@ -442,9 +458,10 @@ def test_run_mapping_without_dedup_mapping_path_keeps_duplicates_separate(tmp_pa
     estc_path = tmp_path / "estc_actors.csv"
     _write_csv(estc_path, ESTC_FIELDS, [])
 
-    output_path, _ = m.run_mapping(str(bnf_path), str(estc_path), str(tmp_path / "out.csv"),
-                                   str(tmp_path / "report.json"))
-    with open(output_path, newline="", encoding="utf-8") as f:
+    full_path = tmp_path / "full.csv"
+    m.run_mapping(str(bnf_path), str(estc_path), str(tmp_path / "out.csv"),
+                  str(tmp_path / "report.json"), full_output_path=str(full_path))
+    with open(full_path, newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     assert len(rows) == 2
 

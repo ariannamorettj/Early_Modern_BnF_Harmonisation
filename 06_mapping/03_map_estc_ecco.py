@@ -81,17 +81,26 @@ Pass 3 — LLM translation disambiguation (optional, requires API key):
 
 Outputs
 -------
-output/estc_mapping.csv
+The ESTC tables are licensed COMHIS data that may not be published, so the
+working file and the published file are separate:
+
+data/estc/derived/estc_mapping_full.csv  (--full-output; git-ignored)
+    every in-scope edition, matched or not, with all OUTPUT_FIELDS:
     BnF_edition_id, estc_id, match_type, confidence,
     estc_title, estc_author, estc_year, estc_language,
     bnf_title, bnf_year, bnf_language, notes
 
+output/estc_mapping.csv  (--output; published)
+    PUBLIC_FIELDS = BnF_edition_id, estc_id, match_type, confidence, for the
+    editions with a match or an ambiguous candidate only; rewritten from the
+    full file at the end of every run
+
 report/estc_mapping_report.json
-    counts per match_type, computed from the whole output file
+    counts per match_type, computed from the whole full file
 
 Resilience
 ----------
-Results are appended to the output CSV as they are produced
+Results are appended to the full CSV as they are produced
 (06_mapping/resumable.py): re-running the same command resumes at the
 first edition not yet written, --restart starts over.
 
@@ -153,6 +162,9 @@ DEDUP_MAPPING_DEFAULT = (
     "01_heuristic_rules/output/actor_dedup_mapping.csv"
 )
 OUTPUT_DEFAULT        = "06_mapping/output/estc_mapping.csv"
+FULL_OUTPUT_DEFAULT   = "data/estc/derived/estc_mapping_full.csv"
+# Columns of the published file (see "Outputs").
+PUBLIC_FIELDS = ["BnF_edition_id", "estc_id", "match_type", "confidence"]
 REPORT_DEFAULT        = "06_mapping/report/estc_mapping_report.json"
 AUTHOR_THRESHOLD      = 0.80
 TITLE_THRESHOLD       = 0.75
@@ -714,7 +726,13 @@ def run_mapping(bnf_path, estc_path, output_path, report_path,
                 max_author_candidates=MAX_AUTHOR_CANDIDATES_DEFAULT,
                 use_monitor=False, monitor_script=MONITOR_SCRIPT_DEFAULT,
                 bnf_actors_path=None, estc_actor_mapping_path=None,
-                dedup_mapping_path=None, restart=False):
+                dedup_mapping_path=None, restart=False, full_output_path=None):
+    """output_path receives PUBLIC_FIELDS for matched and ambiguous
+    editions; full_output_path (default: output_path with a _full suffix)
+    is the resumable working file with every in-scope edition."""
+    if not full_output_path:
+        root, ext = os.path.splitext(output_path)
+        full_output_path = f"{root}_full{ext}"
 
     with open(bnf_path, "r", encoding="utf-8", newline="", errors="replace") as f:
         bnf_editions = list(csv.DictReader(f))
@@ -752,10 +770,10 @@ def run_mapping(bnf_path, estc_path, output_path, report_path,
 
     total = len(bnf_editions)
     out_of_scope = 0
-    with ResumableCsvWriter(output_path, OUTPUT_FIELDS, "BnF_edition_id",
+    with ResumableCsvWriter(full_output_path, OUTPUT_FIELDS, "BnF_edition_id",
                             restart=restart) as writer:
         if writer.done_keys:
-            print(f"  Resuming: {len(writer.done_keys):,} editions already in {output_path}")
+            print(f"  Resuming: {len(writer.done_keys):,} editions already in {full_output_path}")
         for i, bnf in enumerate(bnf_editions):
             if (i + 1) % 50000 == 0:
                 print(f"  … {i+1:,}/{total:,}")
@@ -779,10 +797,17 @@ def run_mapping(bnf_path, estc_path, output_path, report_path,
         monitor_state = monitor_module.stop_monitor_state(
             state=monitor_state, print_stop_message=True,
         )
-    print(f"\n✓ Mapping CSV → {output_path}")
-
     # Counts from the whole file, so a resumed run reports every edition.
-    counts = Counter(row["match_type"] for row in read_rows(output_path))
+    full_rows = read_rows(full_output_path)
+    counts = Counter(row["match_type"] for row in full_rows)
+    published = [row for row in full_rows if row["match_type"] != "unmatched"]
+    os.makedirs(os.path.dirname(output_path) or ".", exist_ok=True)
+    with open(output_path, "w", newline="", encoding="utf-8") as f:
+        public_writer = csv.DictWriter(f, fieldnames=PUBLIC_FIELDS, extrasaction="ignore")
+        public_writer.writeheader()
+        public_writer.writerows(published)
+    print(f"\n✓ Full mapping → {full_output_path} (not published)")
+    print(f"✓ Mapping CSV  → {output_path} ({len(published):,} matched or ambiguous editions)")
     stats = {
         "total": total,
         "written": sum(counts.values()),
@@ -818,7 +843,11 @@ def main():
     parser.add_argument("--estc-actor-mapping", default=ESTC_ACTOR_MAPPING_DEFAULT,
                         help="05_map_estc_actors.py confident output (Pass 1).")
     parser.add_argument("--dedup-mapping",   default=DEDUP_MAPPING_DEFAULT)
-    parser.add_argument("--output",          default=OUTPUT_DEFAULT)
+    parser.add_argument("--output",          default=OUTPUT_DEFAULT,
+                        help="Published file: PUBLIC_FIELDS, matched and ambiguous editions only.")
+    parser.add_argument("--full-output",     default=FULL_OUTPUT_DEFAULT,
+                        help="Resumable working file with every in-scope edition and all "
+                             "columns, kept out of git next to the ESTC tables.")
     parser.add_argument("--report",          default=REPORT_DEFAULT)
     parser.add_argument("--author-threshold", type=float, default=AUTHOR_THRESHOLD)
     parser.add_argument("--title-threshold",  type=float, default=TITLE_THRESHOLD)
@@ -846,6 +875,7 @@ def main():
         estc_actor_mapping_path=args.estc_actor_mapping,
         dedup_mapping_path=args.dedup_mapping,
         restart=args.restart,
+        full_output_path=args.full_output,
     )
 
 if __name__ == "__main__":

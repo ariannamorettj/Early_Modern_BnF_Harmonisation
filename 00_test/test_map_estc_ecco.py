@@ -123,10 +123,12 @@ def test_run_mapping_no_translation_match_without_author_overlap(monkeypatch, tm
         year_window=2, sleep=0,
     )
 
-    with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
+    # Unmatched editions are kept in the full (unpublished) file only.
+    with open(tmp_path / "out_full.csv", newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
-
     assert rows[0]["match_type"] == "unmatched"
+    with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
+        assert list(csv.DictReader(f)) == []
 
 
 # ── Ambiguity detection (the colleague's point 2) ────────────────────────────
@@ -161,7 +163,7 @@ def test_run_mapping_flags_ambiguous_translation_for_multiple_sibling_candidates
         year_window=2, sleep=0,
     )
 
-    with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
+    with open(tmp_path / "out_full.csv", newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     with open(tmp_path / "report.json", encoding="utf-8") as f:
         import json
@@ -404,8 +406,15 @@ def _run(estc, tmp_path, estc_dir, bnf_path, actors_path, mapping_path=None, **k
 
 
 def _rows(tmp_path):
-    with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
+    # The full working file: every column, notes included.
+    with open(tmp_path / "out_full.csv", newline="", encoding="utf-8") as f:
         return list(csv.DictReader(f))
+
+
+def _published(tmp_path):
+    with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
+        reader = csv.DictReader(f)
+        return reader.fieldnames, list(reader)
 
 
 def test_heuristic_matches_names_in_either_order_and_skips_out_of_scope(monkeypatch, tmp_path):
@@ -495,3 +504,19 @@ def test_title_similarity_rejects_shared_boilerplate_and_expands_ligatures():
     assert estc.title_similarity("Historia naturae, variis experimentis",
                                  "Antonii le Grand Historia naturae, variis experimentis") > 0.5
     assert estc.title_similarity("Phaedra and Hippolitus, a tragedy", "Phædra and Hippolitus") > 0.75
+
+
+def test_published_file_keeps_only_match_columns_and_matched_rows(monkeypatch, tmp_path):
+    """The ESTC record metadata (title, author, year, language) and the notes
+    stay in the unpublished full file; the published one names the match only."""
+    estc = load_estc_module()
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    estc_dir, bnf_path, actors_path = _setup_swift(tmp_path, [
+        {"estc_id": "T1", "primary_language": "English", "publication_year": "1726",
+         "short_title": "Travels into several remote nations of the world"},
+    ])
+    _run(estc, tmp_path, estc_dir, bnf_path, actors_path)
+    header, rows = _published(tmp_path)
+    assert header == estc.PUBLIC_FIELDS == ["BnF_edition_id", "estc_id", "match_type", "confidence"]
+    assert [(r["BnF_edition_id"], r["estc_id"], r["match_type"]) for r in rows] == [("1", "T1", "heuristic")]
+    assert _rows(tmp_path)[0]["estc_title"]  # still available in the full file

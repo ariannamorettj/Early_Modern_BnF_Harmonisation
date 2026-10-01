@@ -1,13 +1,14 @@
 data/bnf_edition_data/edition_raw_data
 
-# COMHIS/estcr raw exports (Jonas, 2026-09-21) — too large for the LFS free
-# quota alongside everything already tracked (~264MB / ~314MB); kept locally
-# under data/estc/ and used directly by 06_mapping/05_map_estc_actors.py, but
-# not committed. Small samples for tests live in 00_test/data/estc_samples/.
-# estc_actors.csv (~34MB) is NOT ignored — comparable to other CSVs already
-# tracked via LFS in this repo, so it is committed directly.
-data/estc/estc_core.csv
-data/estc/estc_actor_links.csv
+# COMHIS ESTC tables (estc_core.csv, estc_actor_links.csv, estc_actors.csv):
+# licensed data that may not be published without authorisation. They are
+# kept locally under data/estc/, where 06_mapping/03_map_estc_ecco.py and
+# 05_map_estc_actors.py read them, and the whole folder is ignored, including
+# the full mapping outputs those scripts write to data/estc/derived/.
+# estc_actors.csv was committed by mistake on 2026-09-21 and removed from the
+# repository history on 2026-10-01. The test samples in
+# 00_test/data/estc_samples/ are synthetic (see the README there).
+data/estc/
 old_extra
 01_data_retrieval/01_editions/data/
 01_data_retrieval/02_actors/data/old_zip
