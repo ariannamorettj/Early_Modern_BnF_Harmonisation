@@ -1,0 +1,9 @@
+{
+  "property_aliases": {
+    "crm:R32_used_general_technique": "crm:P32_used_general_technique",
+    "crm:R129_is_about": "crm:P129_is_about"
+  },
+  "target_aliases": {
+    "lrmoo:F1_Item": "lrmoo:F1_Work"
+  }
+}

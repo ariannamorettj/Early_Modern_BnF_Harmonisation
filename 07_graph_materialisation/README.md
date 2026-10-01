@@ -18,6 +18,8 @@ All generated artefacts stay inside this folder:
   logs/                            # pipeline script logs
   scripts/bnf_graph_pipeline.py    # low-level pipeline commands
   run_full_pipeline.py             # high-level orchestrator
+  shacl_validation/                # SHACL validation against CHAD-AP (see its README)
+  report/shacl/                    # timestamped SHACL reports (generated)
   mapping_actors.yaml              # YARRRML: actors + authority links
   mapping_bibliographic.yaml       # YARRRML: editions + ESTC seeAlso
   mapping_roles.yaml               # YARRRML: edition–actor role edges
@@ -79,6 +81,8 @@ cd /path/to/07_graph_materialisation
 #   --skip-bib      reuse latest existing bibliographic .nt
 #   --skip-roles    omit roles materialisation from this run
 #   --sample-lines  lines to validate per graph (default 10 000)
+#   --shacl         also run the SHACL validation of the merged graph
+#                   (off by default; see step 6 below)
 ```
 
 ---
@@ -143,6 +147,45 @@ python3.12 scripts/bnf_graph_pipeline.py merge --profile full
 ```bash
 python3.12 scripts/bnf_graph_pipeline.py all --profile sample --sample 20 --force
 ```
+
+### 6 — SHACL validation (optional)
+
+Step 3 checks that every line is valid N-Triples. `shacl_validation/` goes
+further: it generates SHACL shapes from the CHAD-AP schema and validates the
+graph with pySHACL, then groups the violations into families of independent
+problems. It is adapted from an existing CHAD-KG validator; its README gives
+the provenance and the changes.
+
+```bash
+python -m shacl_validation                       # the merged sample graph
+python -m shacl_validation --data-source output/sample/knowledge-graph_merged.nt \
+    --ontology-source path/to/chad-ap.ttl
+python run_full_pipeline.py --profile sample --shacl   # as a pipeline step, after the merge
+```
+
+Reports go to `report/shacl/`, one set per run, named
+`shacl_<timestamp>_*`: summary JSON, pySHACL text report, issue families
+(JSON and text), class coverage, and the generated shapes. Exit code 0 means
+the graph conforms, 1 that it does not (a result, not an error), 2 that the
+validation could not run.
+
+Known limits:
+
+- **CHAD-AP version.** The mappings use the CHAD-AP development/14 namespace
+  (`obj:`), which no published CHAD-AP release (1.0.0 to 2.1.0) contains:
+  those model actors, names and time-spans directly with CIDOC-CRM. The
+  shapes must come from the development/14 schema, expected at
+  `shacl_validation/resources/chad_ap_development_14.ttl`; until it is there
+  the validation stops with exit code 2, and it refuses any schema that does
+  not contain the `obj:` namespace.
+- **Coverage.** The bibliographic graph uses canonical LRMoo and CIDOC-CRM
+  classes (`lrmoo:F1_Work`, `F2_Expression`, `F3_Manifestation`,
+  `F28_Expression_Creation`, `crm:E7_Activity`, ...) next to the `obj:` ones.
+  Each run lists, in `shacl_<timestamp>_coverage.txt`, which classes of the
+  graph the shapes reach and which they do not; no shape is written by hand
+  for the uncovered ones.
+- **Size.** pySHACL loads the whole graph in memory with rdflib: the
+  validation is meant for the sample graph and has only been run on it.
 
 ---
 

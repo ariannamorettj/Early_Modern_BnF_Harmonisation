@@ -11,6 +11,8 @@ Orchestrates the full BnF RDF knowledge graph pipeline:
   6. Validate roles graph
   7. Merge actors + bibliographic + roles → merged graph
   8. Validate merged graph
+  8b. SHACL validation of the merged graph against CHAD-AP (optional, --shacl;
+      see shacl_validation/README.md)
   9. Write summary report (triples + file sizes)
 
 Inputs (resolved by the preprocess step in scripts/bnf_graph_pipeline.py):
@@ -26,7 +28,7 @@ All logs and reports are written to output/logs/.
 Usage
 -----
     /path/to/python3.12 run_full_pipeline.py [--profile full|sample]
-        [--skip-actors] [--skip-bib] [--skip-roles]
+        [--skip-actors] [--skip-bib] [--skip-roles] [--shacl]
 
 Arguments
 ---------
@@ -34,6 +36,9 @@ Arguments
     --skip-actors  skip actors materialisation (reuse latest existing file)
     --skip-bib     skip bibliographic materialisation (reuse latest existing file)
     --skip-roles   skip roles materialisation (reuse latest existing file or omit)
+    --shacl        also validate the merged graph with SHACL shapes generated
+                   from CHAD-AP (off by default: it loads the whole graph in
+                   memory, which suits the sample profile)
 """
 
 import argparse
@@ -275,6 +280,29 @@ def step_validate(profile: str, target: str, nt_path: Path, sample_lines: int = 
     log.info(f"[VALIDATE] {target} ✓")
 
 
+def step_shacl(merged_nt: Path):
+    """SHACL validation of the merged graph (shacl_validation/bnf_run.py).
+
+    Runs after, and in addition to, the syntactic check of step_validate.
+    A graph that does not conform is a result, not a failure: the step logs it
+    and the pipeline goes on. Only a validation that cannot run (exit 2, e.g.
+    the CHAD-AP schema is missing) stops the pipeline.
+    """
+    hr()
+    log.info(f"[SHACL] file={merged_nt.name}  reports → report/shacl/")
+    rc = run(
+        [PYTHON, "-m", "shacl_validation", "--data-source", str(merged_nt)],
+        label="SHACL validate merged",
+    )
+    if rc == 1:
+        log.warning("[SHACL] merged graph does not conform: see report/shacl/")
+    elif rc != 0:
+        log.error("SHACL validation could not run")
+        sys.exit(rc)
+    else:
+        log.info("[SHACL] merged graph conforms ✓")
+
+
 def step_merge(profile: str, actors_nt: Path, bib_nt: Path,
                roles_nt: Path | None = None) -> Path:
     """Concatenate actors + bibliographic (+ optional roles) → merged timestamped file."""
@@ -416,6 +444,9 @@ def main():
                         help="Skip roles materialisation (omits role-edition edges from the merged graph)")
     parser.add_argument("--sample-lines", type=int, default=10000,
                         help="Number of lines to sample during validation (default: 10000)")
+    parser.add_argument("--shacl", action="store_true",
+                        help="Also validate the merged graph with SHACL (off by default; "
+                             "reports in report/shacl/)")
     args = parser.parse_args()
 
     profile = args.profile
@@ -439,7 +470,10 @@ def main():
     ]
     if run_roles:
         steps += ["Materialise roles", "Validate roles"]
-    steps += ["Merge", "Validate merged", "Write report"]
+    steps += ["Merge", "Validate merged"]
+    if args.shacl:
+        steps += ["SHACL validate merged"]
+    steps += ["Write report"]
 
     pbar = progress_bar(steps, desc="Pipeline", total=len(steps))
 
@@ -477,6 +511,9 @@ def main():
 
         elif step == "Validate merged":
             step_validate(profile, "merged", results["merged"], args.sample_lines)
+
+        elif step == "SHACL validate merged":
+            step_shacl(results["merged"])
 
         elif step == "Write report":
             write_report(

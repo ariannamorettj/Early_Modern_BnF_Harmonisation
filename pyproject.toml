@@ -28,6 +28,9 @@ pyyaml = "^6.0"
 # (its SPARQL endpoint is the standalone Oxigraph server pinned in portal.lock.json).
 pyoxigraph = ">=0.3,<0.4"
 pycountry = ">=24.6"
+# SHACL validation of the module 07 graphs (07_graph_materialisation/shacl_validation/),
+# same range as the validator it is adapted from.
+pyshacl = ">=0.30.1,<0.31.0"
 
 
 [build-system]
