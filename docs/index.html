@@ -648,7 +648,7 @@ a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); out
         <text x="360" y="384" font-family="IBM Plex Mono" font-size="10">language</text>
         <text x="360" y="400" font-family="IBM Plex Mono" font-size="10">publisher</text>
       </g>
-      <text x="168" y="436" class="flow-label">3 fields also route a small residual to Claude Opus 5</text>
+      <text x="168" y="436" class="flow-label">3 fields set a small residual aside for an LLM step (not yet run)</text>
       <line x1="360" y1="456" x2="360" y2="484" stroke="currentColor" stroke-width="1.2" marker-end="url(#arrow)"/>
       <text x="374" y="474" class="flow-label">one traceable "ready" row per entity</text>
 
@@ -956,7 +956,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
 
 <!-- ============================================================ 04 : THE BIG ONE -->
 <section id="mod-04" class="module wrap wrap--wide">
-  <p class="eyebrow"><span class="num-badge">04</span>Python &middot; Claude Opus 5</p>
+  <p class="eyebrow"><span class="num-badge">04</span>Python &middot; Claude Opus 5 (residual step, not yet run)</p>
   <h2 class="title">Harmonisation &amp; evaluation</h2>
   <p class="lede">One normaliser per field. Every one of them follows the same order of operations, and the order is the point.</p>
 
@@ -965,7 +965,9 @@ A. G. Eckhardt                  name  responsible agent name</pre>
     <cite>Deterministic-first, LLM-as-last-resort — module 04's governing principle</cite>
   </div>
 
-  <p class="body-text" style="margin-top:32px;">Two fields turned out to need far less than their own documentation once assumed: <strong>language</strong> is a fully structured LOC vocabulary URI in the real data, and <strong>external links</strong> carry no free text at all — both are 100%-deterministic. <strong>Publisher</strong> is the opposite case: the messy free-text field the project expected, still partly resolved by a language model.</p>
+  <p class="body-text" style="margin-top:32px;">Two fields turned out to need far less than their own documentation once assumed: <strong>language</strong> is a fully structured LOC vocabulary URI in the real data, and <strong>external links</strong> carry no free text at all — both are 100%-deterministic. <strong>Publisher</strong> is the opposite case: the messy free-text field the project expected, with the largest residual set aside for a language model.</p>
+
+  <p class="body-text"><strong>Status of the LLM step.</strong> For names, dates and publishers, the values the rules cannot resolve are set aside for a last-resort LLM step (Claude Opus 5, structured output, cached per distinct value). The three scripts are implemented and covered by tests with a fake client, but have not been run on the current data: the residual (122 name rows, 24 date values, 18,334 distinct publisher strings) stays unresolved and flagged in the harmonised output.</p>
 
   <p class="body-text">Every "before" value below is a real cell from the two module 01 tables — <code>actor_name</code>/<code>actor_dates</code>/<code>external_links</code> from <code>actor_data.csv</code>, <code>publication_place</code>/<code>language</code>/<code>publisher</code> from <code>bnf_edition_data_raw.csv</code> — not one is constructed for this page.</p>
 
@@ -973,7 +975,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
   <div class="field reveal pending" id="field-name">
     <div class="field-head">
       <h3>actor_name <span style="color:var(--ink-faint); font-weight:400;">/ first_name / last_name</span></h3>
-      <span class="field-badge complete">heuristic + LLM residual</span>
+      <span class="field-badge complete">heuristic; LLM residual pending</span>
     </div>
     <p class="body-text">A seven-rule cascade, first rule to fire wins: unwrap an RDF quoted-literal tag, strip a fully-balanced bracket or quote, drop text after an alias marker, remove an embedded title or role, flag (never split) a suspected multiple-value cell, prefer a fuller first/last-name pair over bare initials, or pass through unchanged.</p>
 
@@ -1006,7 +1008,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="fix">
           <div class="fix-original">M. B. L.</div>
           <div class="fix-arrow">&rarr;</div>
-          <div class="fix-result" style="color:var(--ink-faint); font-style:italic;">left unresolved &mdash; sent to Claude Opus 5</div>
+          <div class="fix-result" style="color:var(--ink-faint); font-style:italic;">left unresolved &mdash; set aside for the LLM step (not yet run)</div>
           <div class="fix-meta"><span class="tag">initials_or_abbreviation_unresolved</span><span class="conf low"><span class="dot"></span>low</span></div>
         </div>
       </div>
@@ -1017,8 +1019,8 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="dist-row"><span class="lbl">derived_from_first_last</span><div class="dist-track"><div class="dist-bar" style="width:13.2%"></div></div><span class="val tnum">14,046</span></div>
         <div class="dist-row"><span class="lbl">rdf_literal_stripped</span><div class="dist-track"><div class="dist-bar" style="width:2.4%"></div></div><span class="val tnum">2,507</span></div>
         <div class="dist-row"><span class="lbl">title_stripped</span><div class="dist-track"><div class="dist-bar" style="width:1.4%"></div></div><span class="val tnum">1,460</span></div>
-        <div class="dist-row"><span class="lbl">LLM residual (3 kinds)</span><div class="dist-track"><div class="dist-bar" style="width:.2%"></div></div><span class="val tnum">122</span></div>
-        <div class="dist-foot">The model never guesses a historical identity from bare initials — that is authority-linking's job, done downstream in module 06. It either produces a confident, narrow correction or returns <strong>empty, low confidence</strong>.</div>
+        <div class="dist-row"><span class="lbl">residual for LLM (3 kinds)</span><div class="dist-track"><div class="dist-bar" style="width:.2%"></div></div><span class="val tnum">122</span></div>
+        <div class="dist-foot">The model never guesses a historical identity from bare initials — that is authority-linking's job, done downstream in module 06. It is instructed to produce a confident, narrow correction or return <strong>empty, low confidence</strong>. The step has not been run yet: the 122 rows stay flagged with low confidence.</div>
       </div>
     </div>
     <p class="body-text">The portal showed these literals still on screen: the normaliser recorded the unwrapped name, but the ready-dataset assembly only filled empty cells from it. <code>assemble_actors_ready.py</code> now replaces the cell when the correction is <code>stripped_rdf_literal_tag</code> and the cell still holds the original value (11,425 rows, 2,507 organisations). The suspected broken encoding turned out to be a console display artefact: a byte-level scan found no corrupted characters. <code>02_sampling/05_text_issue_sample.py</code> and <code>03_analysis/06_text_integrity_check.py</code> now run that scan (invalid UTF-8, replacement characters, double encoding, control characters, serialised literals) on any CSV and sample the affected entities.</p>
@@ -1028,7 +1030,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
   <div class="field reveal pending" id="field-dates">
     <div class="field-head">
       <h3>actor_dates</h3>
-      <span class="field-badge complete">heuristic + LLM residual</span>
+      <span class="field-badge complete">heuristic; LLM residual pending</span>
     </div>
     <p class="body-text">The BnF source turned out to already use a structured numeric convention — not the free-text "ca. 1750" style the field was expected to need. Every value converts to EDTF by classifying it into one of six shapes.</p>
 
@@ -1061,7 +1063,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="fix">
           <div class="fix-original">150.-02-20</div>
           <div class="fix-arrow">&rarr;</div>
-          <div class="fix-result" style="color:var(--ink-faint); font-style:italic;">mask inside a full date &mdash; sent to Claude Opus 5</div>
+          <div class="fix-result" style="color:var(--ink-faint); font-style:italic;">mask inside a full date &mdash; set aside for the LLM step (not yet run)</div>
           <div class="fix-meta"><span class="tag">non_parseable</span><span class="conf low"><span class="dot"></span>low</span></div>
         </div>
       </div>
@@ -1074,7 +1076,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="dist-row"><span class="lbl">masked_precision</span><div class="dist-track"><div class="dist-bar" style="width:8%"></div></div><span class="val tnum">4.1%</span></div>
         <div class="dist-row"><span class="lbl">year_month</span><div class="dist-track"><div class="dist-bar" style="width:1.8%"></div></div><span class="val tnum">0.9%</span></div>
         <div class="dist-row"><span class="lbl">non_parseable</span><div class="dist-track"><div class="dist-bar" style="width:.03%"></div></div><span class="val tnum">0.013%</span></div>
-        <div class="dist-foot"><strong>99.98%</strong> resolved by the heuristic rule alone. The BCE offset was verified, not assumed: Aristotle's own record (384&ndash;322&nbsp;BCE) confirmed the source uses ordinary historical counting, not astronomical year numbering.</div>
+        <div class="dist-foot"><strong>99.98%</strong> resolved by the heuristic rule alone; the 24 remaining values are set aside for the LLM step, not yet run. The BCE offset was verified, not assumed: Aristotle's own record (384&ndash;322&nbsp;BCE) confirmed the source uses ordinary historical counting, not astronomical year numbering.</div>
       </div>
     </div>
     <p class="body-text">A bare three-digit year such as <code>170</code> is read as a decade (<code>170X</code>) rather than as the year 170, but only when another date of the same actor starts with a plausible four-digit year. Read literally it became <code>0170</code>, which broke the date check of the ESTC actor match; the rule touches 1,045 values.</p>
@@ -1185,7 +1187,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
   <div class="field reveal pending" id="field-pub">
     <div class="field-head">
       <h3>publisher</h3>
-      <span class="field-badge complete">heuristic + LLM residual</span>
+      <span class="field-badge complete">heuristic; LLM residual pending</span>
     </div>
     <p class="body-text">The one field where the original anomaly list held up: sine-nomine markers, self-published statements kept distinct from them, abbreviation variants of the same house, editorially-supplied names in brackets, and cells that concatenate two publishers.</p>
 
@@ -1212,7 +1214,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="fix">
           <div class="fix-original">Vve F. Muguet et H. Muguet</div>
           <div class="fix-arrow">&rarr;</div>
-          <div class="fix-result" style="color:var(--ink-faint); font-style:italic;">flagged, not split &mdash; sent to Claude Opus 5</div>
+          <div class="fix-result" style="color:var(--ink-faint); font-style:italic;">flagged, not split &mdash; set aside for the LLM step (not yet run)</div>
           <div class="fix-meta"><span class="tag">multi_value</span><span class="conf low"><span class="dot"></span>low</span></div>
         </div>
       </div>
@@ -1227,7 +1229,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="dist-row"><span class="lbl">bracketed_uncertain</span><div class="dist-track"><div class="dist-bar" style="width:12%"></div></div><span class="val tnum">34,631</span></div>
         <div class="dist-row"><span class="lbl">canonical_clustered</span><div class="dist-track"><div class="dist-bar" style="width:8%"></div></div><span class="val tnum">23,255</span></div>
         <div class="dist-row"><span class="lbl">self_published</span><div class="dist-track"><div class="dist-bar" style="width:2%"></div></div><span class="val tnum">5,891</span></div>
-        <div class="dist-foot">The 47,341 flagged rows collapse to <strong>18,334</strong> distinct strings — that's the actual number of model calls needed, deduplicated and cached, never repeated across a re-run.</div>
+        <div class="dist-foot">The 47,341 flagged rows collapse to <strong>18,334</strong> distinct strings — that's the number of model calls the LLM step will need, deduplicated and cached, never repeated across a re-run. The step has not been run yet.</div>
       </div>
     </div>
   </div>
