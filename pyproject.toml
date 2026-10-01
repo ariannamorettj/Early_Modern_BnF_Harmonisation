@@ -4,19 +4,23 @@ version = "0.1.0"
 description = ""
 authors = ["amorettij <209892264+bombedceramics@users.noreply.github.com>"]
 readme = "README.md"
-packages = [{include = "bnf_new_dataset_analysis"}]
+# The repository is a set of scripts, not an installable package:
+# `poetry install` installs the dependencies only.
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.11"
 pandas = "^2.2"
-numpy = "^1.26"
+numpy = ">=1.26"
 requests = "^2.32"
 beautifulsoup4 = "^4.12"
 urllib3 = "^2.2"
 tqdm = "^4.66"
 rdflib = "^7.0"
-flair = "^0.13"
-nameparser = "^1.1"
+# Only 03_analysis/actors/names/enhanced_detect_names*.py use flair;
+# 0.13 pins urllib3 < 2, which conflicts with urllib3 ^2.2 below.
+flair = ">=0.14"
+nameparser = ">=1.1"
 anthropic = "^1.4"
 morph-kgc = "^2.10"
 pyyaml = "^6.0"
