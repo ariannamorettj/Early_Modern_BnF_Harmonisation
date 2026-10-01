@@ -95,7 +95,10 @@ and works on any endpoint.
 - `editions.json`: `lrmoo:F3_Manifestation`. Facets: title, author, other
   contributors, year range, place, publisher, language. Views: table, map of
   places of publication, editions per decade, SPARQL export. Instance page
-  per edition.
+  per edition, with a link to the ESTC record when module 06 matched one
+  (`rdfs:seeAlso`; the link opens CERL's ESTC search by number, because
+  `estc.bl.uk` now redirects to the ESTC home page on CERL, whose record
+  pages have no stable URL).
 - `actors.json`: `obj:Person`, `obj:Organization`. Facets: name, type, role,
   gender, country, birth and death year ranges. Views: table, births per
   decade, export. Instance page per actor.
@@ -105,7 +108,11 @@ Page URLs use the ARK local id (`/editions/page/cb31015462k`), and
 
 **5. SPARQL query templates.** `configs/bnf/sparql_queries/`: the result-set
 property blocks, the map query and the chart queries, written against the
-`bnfp:` layer and the CHAD-AP graph.
+`bnfp:` layer and the CHAD-AP graph. Both perspectives replace Sampo-UI's
+result-set template with `facetResultSetQueryLateral`
+(`SparqlQueriesShared.js`), which wraps the property block in `LATERAL`:
+Oxigraph then evaluates the properties only for the 20 rows of the page
+instead of every instance (actors table on the full graph: 95 s → 7 s).
 
 **6. UI and localisation.** `configs/bnf/translations/localeEN.json` holds the
 portal texts and every property and facet label. The map (Leaflet) and the
@@ -147,13 +154,10 @@ three graphs (`portal.py load` shows the commands).
 - The top-bar full-text search and the Network view are disabled: the first
   needs a Jena text index, the second Sampo's external network-analysis
   service.
-- Data problems found upstream while building the portal, kept visible
-  rather than hidden:
-  - about 2,100 organisation names in `bnf_actors_enriched.csv` are still
-    serialised literals (`"France"@fr`), some with broken encoding
-    (`�glise`). The portal unwraps the literal for display only;
-  - module 04's TGN table resolves "Bordeaux" to `tgn:7659881`
-    (48.68 N, 1.10 E), a different place, which affects 1,153 editions;
-  - `mapping_actors.yaml` types `actor_start`/`actor_end` as
-    foundation/dissolution events for persons too; the portal reads those
-    years for organisations only.
+- Data problems found while building the portal, since fixed where they
+  originate: organisation names left as serialised literals (`"France"@fr`,
+  module 04 assembly), wrong TGN homonyms for ten places including Bordeaux
+  (module 04 place table, `verify_tgn_table.py` / `fix_tgn_table.py`), and
+  foundation/dissolution events minted for persons (module 07 preprocess).
+- On the full graph the facet counts over 814,031 editions take 20-30 s
+  with Oxigraph; tables, map and charts answer in 1-15 s.

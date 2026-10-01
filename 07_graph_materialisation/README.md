@@ -36,7 +36,7 @@ The preprocess step automatically picks the best available upstream source:
 | 1 | Module 06 enriched actors | `06_mapping/output/bnf_actors_enriched.csv` |
 | 2 | Module 05 optimised actors | `05_subset_optimisation/output/bnf_actors_optimised.csv` |
 | 3 | Legacy raw ZIP | `01_data_retrieval/02_actors/data/old_zip/actor_data.zip` |
-| 1 | Module 06 enriched editions | `06_mapping/output/bnf_editions_enriched.csv` |
+| 1 | Module 06 enriched editions | `data/bnf_edition_data/bnf_editions_enriched.csv` (git-ignored, about 500 MB) |
 | 3 | Legacy raw ZIP | `01_data_retrieval/01_editions/data/old_zip/bnf_edition_data_raw.zip` |
 
 The module 05 minimal CSV (`bnf_actors_optimised_minimal.csv`) is merged in

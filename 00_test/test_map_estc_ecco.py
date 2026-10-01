@@ -344,3 +344,154 @@ def test_load_monitor_module_resolves_real_monitor_script():
     assert hasattr(monitor, "start_monitor_state")
     assert hasattr(monitor, "update_monitor_state")
     assert hasattr(monitor, "stop_monitor_state")
+
+
+# ── COMHIS directory, actor bridge, scope, ambiguity, resume ─────────────────
+
+def _write(path, fieldnames, rows):
+    with open(path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fieldnames)
+        writer.writeheader()
+        for row in rows:
+            writer.writerow({**{k: "" for k in fieldnames}, **row})
+
+
+def _comhis_dir(tmp_path, core_rows, link_rows, actor_rows):
+    d = tmp_path / "estc"
+    d.mkdir()
+    _write(d / "estc_core.csv", ["estc_id", "primary_language", "publication_year",
+                                 "short_title", "publication_place", "publication_country"], core_rows)
+    _write(d / "estc_actor_links.csv", ["estc_id", "actor_id", "actor_role_author"], link_rows)
+    _write(d / "estc_actors.csv", ["actor_id", "name_unified"], actor_rows)
+    return d
+
+
+EDITION_FIELDS = ["edition", "bnf_id", "title", "year_first", "author",
+                  "language_harmonised", "publication_country"]
+SWIFT = "http://data.bnf.fr/ark:/12148/cb11925870x#about"
+
+
+def _setup_swift(tmp_path, core_rows):
+    estc_dir = _comhis_dir(
+        tmp_path, core_rows,
+        [{"estc_id": r["estc_id"], "actor_id": "viaf_1", "actor_role_author": "TRUE"} for r in core_rows]
+        + [{"estc_id": core_rows[0]["estc_id"], "actor_id": "printer_x", "actor_role_author": "FALSE"}],
+        [{"actor_id": "viaf_1", "name_unified": "Swift, Jonathan"},
+         {"actor_id": "printer_x", "name_unified": "Motte, Benjamin"}],
+    )
+    bnf_path = tmp_path / "bnf.csv"
+    _write(bnf_path, EDITION_FIELDS, [
+        {"edition": "<http://data.bnf.fr/ark:/12148/cb1#about>", "bnf_id": "1",
+         "title": "Travels into several remote nations of the world. In four parts. By Lemuel Gulliver",
+         "year_first": "1726", "author": f"<{SWIFT}>",
+         "language_harmonised": "eng", "publication_country": "Great Britain"},
+        {"edition": "<http://data.bnf.fr/ark:/12148/cb2#about>", "bnf_id": "2",
+         "title": "Voyages de Gulliver", "year_first": "1727", "author": f"<{SWIFT}>",
+         "language_harmonised": "fre", "publication_country": "France"},
+    ])
+    actors_path = tmp_path / "actors.csv"
+    _write(actors_path, ["actor", "actor_name"], [{"actor": f"<{SWIFT}>", "actor_name": "Jonathan Swift"}])
+    return estc_dir, bnf_path, actors_path
+
+
+def _run(estc, tmp_path, estc_dir, bnf_path, actors_path, mapping_path=None, **kw):
+    return estc.run_mapping(
+        bnf_path=str(bnf_path), estc_path=str(estc_dir),
+        output_path=str(tmp_path / "out.csv"), report_path=str(tmp_path / "report.json"),
+        author_thr=0.80, title_thr=0.75, llm_thr=0.80, year_window=2, sleep=0,
+        bnf_actors_path=str(actors_path),
+        estc_actor_mapping_path=str(mapping_path) if mapping_path else None, **kw)
+
+
+def _rows(tmp_path):
+    with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def test_heuristic_matches_names_in_either_order_and_skips_out_of_scope(monkeypatch, tmp_path):
+    estc = load_estc_module()
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    estc_dir, bnf_path, actors_path = _setup_swift(tmp_path, [
+        {"estc_id": "T1", "primary_language": "English", "publication_year": "1726",
+         "short_title": "Travels into several remote nations of the world"},
+    ])
+    stats = _run(estc, tmp_path, estc_dir, bnf_path, actors_path)
+    rows = _rows(tmp_path)
+
+    # The French edition is outside the ESTC scope: not written.
+    assert [r["BnF_edition_id"] for r in rows] == ["1"]
+    assert rows[0]["match_type"] == "heuristic"
+    assert rows[0]["estc_id"] == "T1"
+    assert rows[0]["estc_author"] == "Swift, Jonathan"  # the printer is not an author
+    assert stats["out_of_scope_this_run"] == 1
+
+
+def test_actor_bridge_takes_priority_and_uses_the_estc_actor(monkeypatch, tmp_path):
+    estc = load_estc_module()
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    estc_dir, bnf_path, actors_path = _setup_swift(tmp_path, [
+        {"estc_id": "T1", "primary_language": "English", "publication_year": "1726",
+         "short_title": "Travels into several remote nations of the world"},
+    ])
+    mapping = tmp_path / "estc_actor_mapping_confident.csv"
+    _write(mapping, ["BnF_ID", "estc_actor_id"], [{"BnF_ID": f"<{SWIFT}>", "estc_actor_id": "viaf_1"}])
+    _run(estc, tmp_path, estc_dir, bnf_path, actors_path, mapping)
+    assert _rows(tmp_path)[0]["match_type"] == "actor_bridge"
+
+
+def test_two_close_estc_records_of_the_same_year_are_ambiguous(monkeypatch, tmp_path):
+    estc = load_estc_module()
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    title = "Travels into several remote nations of the world"
+    estc_dir, bnf_path, actors_path = _setup_swift(tmp_path, [
+        {"estc_id": "T1", "primary_language": "English", "publication_year": "1726", "short_title": title},
+        {"estc_id": "T2", "primary_language": "English", "publication_year": "1726", "short_title": title},
+    ])
+    _run(estc, tmp_path, estc_dir, bnf_path, actors_path)
+    row = _rows(tmp_path)[0]
+    assert row["match_type"] == "ambiguous_heuristic"
+    assert row["estc_id"] in {"T1", "T2"}
+    assert "alternates" in row["notes"]
+
+
+def test_near_tie_is_settled_by_the_bnf_year(monkeypatch, tmp_path):
+    estc = load_estc_module()
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    title = "Travels into several remote nations of the world"
+    estc_dir, bnf_path, actors_path = _setup_swift(tmp_path, [
+        {"estc_id": "T0", "primary_language": "English", "publication_year": "1727", "short_title": title},
+        {"estc_id": "T1", "primary_language": "English", "publication_year": "1726", "short_title": title},
+    ])
+    _run(estc, tmp_path, estc_dir, bnf_path, actors_path)
+    row = _rows(tmp_path)[0]
+    assert (row["match_type"], row["estc_id"], row["notes"]) == ("heuristic", "T1", "")
+
+
+def test_title_similarity_compares_common_length_but_not_one_word_titles():
+    estc = load_estc_module()
+    long_bnf = "The Dunciad, an heroic poem. In three books. Dublin printed, London reprinted"
+    assert estc.title_similarity(long_bnf, "The Dunciad, an heroic poem. In three books") > 0.8
+    assert estc.title_similarity("Poems", "Poems on several occasions") < 0.75
+
+
+def test_rerun_resumes_without_duplicating_rows(monkeypatch, tmp_path):
+    estc = load_estc_module()
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    estc_dir, bnf_path, actors_path = _setup_swift(tmp_path, [
+        {"estc_id": "T1", "primary_language": "English", "publication_year": "1726",
+         "short_title": "Travels into several remote nations of the world"},
+    ])
+    _run(estc, tmp_path, estc_dir, bnf_path, actors_path)
+    stats = _run(estc, tmp_path, estc_dir, bnf_path, actors_path)
+    assert len(_rows(tmp_path)) == 1
+    assert stats["pass2_heuristic"] == 1
+
+
+def test_title_similarity_rejects_shared_boilerplate_and_expands_ligatures():
+    estc = load_estc_module()
+    assert estc.title_similarity(
+        "Ulysses, a tragedy, as written by N. Rowe,... and performed at the Theatre-Royal",
+        "Jane Shore. A tragedy, by N. Rowe, Esq. As performed at") == 0.0
+    assert estc.title_similarity("Historia naturae, variis experimentis",
+                                 "Antonii le Grand Historia naturae, variis experimentis") > 0.5
+    assert estc.title_similarity("Phaedra and Hippolitus, a tragedy", "Phædra and Hippolitus") > 0.75

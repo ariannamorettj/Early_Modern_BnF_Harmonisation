@@ -147,3 +147,34 @@ def test_run_merge_handles_missing_estc_actor_mapping_gracefully(tmp_path):
     with open(out_actors, newline="", encoding="utf-8") as f:
         rows = list(csv.DictReader(f))
     assert rows[0]["estc_actor_id"] == ""
+
+
+def test_run_merge_keeps_ambiguous_estc_edition_candidate_out_of_estc_id(tmp_path):
+    m = load_module()
+
+    actors_path = tmp_path / "actors.csv"
+    _write_csv(actors_path, ["BnF_ID", "actor_name"], [])
+    editions_path = tmp_path / "editions.csv"
+    _write_csv(editions_path, ["bnf_id", "title"], [
+        {"bnf_id": "1", "title": "Gulliver"}, {"bnf_id": "2", "title": "Poems"}])
+    estc_path = tmp_path / "estc_mapping.csv"
+    _write_csv(estc_path, ["BnF_edition_id", "estc_id", "match_type", "confidence"], [
+        {"BnF_edition_id": "1", "estc_id": "T1", "match_type": "heuristic", "confidence": "0.9"},
+        {"BnF_edition_id": "2", "estc_id": "T2", "match_type": "ambiguous_heuristic", "confidence": "0.8"},
+    ])
+    out_editions = tmp_path / "out_editions.csv"
+    report_path = tmp_path / "report.json"
+    m.run_merge(
+        str(actors_path), str(tmp_path / "no_viaf.csv"), str(tmp_path / "no_wikidata.csv"),
+        str(editions_path), str(estc_path),
+        str(tmp_path / "out_actors.csv"), str(out_editions), str(report_path),
+    )
+
+    with open(out_editions, newline="", encoding="utf-8") as f:
+        rows = {r["bnf_id"]: r for r in csv.DictReader(f)}
+    assert (rows["1"]["estc_id"], rows["1"]["estc_candidate_id"]) == ("T1", "")
+    assert (rows["2"]["estc_id"], rows["2"]["estc_candidate_id"]) == ("", "T2")
+    with open(report_path, encoding="utf-8") as f:
+        report = json.load(f)
+    assert report["editions"]["estc_matched"] == 1
+    assert report["editions"]["estc_ambiguous"] == 1

@@ -97,7 +97,11 @@ def test_derived_layer_builds_actor_shortcuts():
 
 
 def _exports(js_file: Path) -> set:
-    return set(re.findall(r"^export const (\w+)", js_file.read_text(encoding="utf-8"), re.M))
+    text = js_file.read_text(encoding="utf-8")
+    names = set(re.findall(r"^export const (\w+)", text, re.M))
+    for block in re.findall(r"^export \{([^}]*)\} from", text, re.M):  # re-exports
+        names.update(n.strip() for n in block.split(",") if n.strip())
+    return names
 
 
 def test_perspective_configs_reference_existing_queries_and_labels():
@@ -113,6 +117,7 @@ def test_perspective_configs_reference_existing_queries_and_labels():
             for block in (rc.get("paginatedResultsConfig", {}), rc.get("instanceConfig", {})):
                 referenced.update(v for k, v in block.items()
                                   if k in ("propertiesQueryBlock", "relatedInstances"))
+        referenced.update(cfg.get("generalQueries", {}).values())
         assert referenced <= exports, (perspective, referenced - exports)
 
         labels = locale["perspectives"][perspective]["properties"]

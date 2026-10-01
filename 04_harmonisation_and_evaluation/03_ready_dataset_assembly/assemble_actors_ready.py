@@ -25,8 +25,15 @@ harmonisations automatically as they get implemented, without code changes,
 as long as they're registered in HARMONISATION_SOURCES below.
 
 actor_name, actor_dates and external_links use different overlay semantics:
-  - actor_name only FILLS a field that was empty at the source (a name that
-    already exists is never second-guessed by a heuristic rule).
+  - actor_name FILLS a field that was empty at the source
+    (derived_from_first_last), and otherwise leaves an existing name alone,
+    with one exception: a name that arrived as a serialised RDF literal
+    ("France"@fr, 2,507 organisations in the BnF acquisition) is REPLACED by
+    its unwrapped form (stripped_rdf_literal_tag). Unwrapping removes SPARQL
+    syntax, not a judgement about the name, so it is not second-guessing;
+    it is applied only when the raw cell still equals the normaliser's
+    actor_name_original. The medium-confidence rewrites (stripped_title_role,
+    alias_split) still do not override an existing name.
   - actor_dates REPLACES the raw value whenever a harmonised EDTF form is
     available, even if the raw field was already populated — harmonising a
     date always means reformatting it (e.g. "17.." -> "17XX", "-43" ->
@@ -160,23 +167,39 @@ def iter_actor_rows(path: str):
 def load_actor_name_harmonised(path: str) -> dict[str, str]:
     """actor_uri -> derived actor_name, restricted to rows where a name was
     actually derived (correction_type == 'derived_from_first_last')."""
-    mapping: dict[str, str] = {}
+    fill, _ = load_actor_name_overlays(path)
+    return fill
+
+
+def load_actor_name_overlays(path: str) -> tuple[dict[str, str], dict[str, tuple[str, str]]]:
+    """Return (fill, unwrap).
+
+    fill:   actor_uri -> derived name, for empty source names
+            (correction_type == 'derived_from_first_last');
+    unwrap: actor_uri -> (raw serialised literal, unwrapped name)
+            (correction_type == 'stripped_rdf_literal_tag').
+    """
+    fill: dict[str, str] = {}
+    unwrap: dict[str, tuple[str, str]] = {}
     if not path or not os.path.exists(path):
         print(f"  [warn] Actor-name harmonised mapping not found at {path!r}. "
              f"Run name_normaliser.py first — actors_ready will carry actor_name "
              f"as-is.")
-        return mapping
+        return fill, unwrap
 
     with open(path, "r", encoding="utf-8", newline="") as f:
         for row in csv.DictReader(f):
-            if row.get("correction_type") != "derived_from_first_last":
-                continue
             uri  = normalise(row.get("actor_uri", ""))
             name = normalise(row.get("actor_name_harmonised", ""))
-            if uri and name:
-                mapping[uri] = name
-    print(f"  Loaded {len(mapping):,} derived actor names.")
-    return mapping
+            if not (uri and name):
+                continue
+            if row.get("correction_type") == "derived_from_first_last":
+                fill[uri] = name
+            elif row.get("correction_type") == "stripped_rdf_literal_tag":
+                unwrap[uri] = (normalise(row.get("actor_name_original", "")), name)
+    print(f"  Loaded {len(fill):,} derived actor names and "
+          f"{len(unwrap):,} names to unwrap from serialised RDF literals.")
+    return fill, unwrap
 
 
 def load_actor_dates_harmonised(path: str) -> dict[str, dict[str, str]]:
@@ -251,7 +274,7 @@ def run(input_path: str, actor_name_harmonised_path: str, actor_dates_harmonised
        external_links_harmonised_path: str = EXTERNAL_LINKS_HARMONISED_DEFAULT,
        use_monitor: bool = False, monitor_script: str = MONITOR_SCRIPT_DEFAULT) -> str:
 
-    name_overlay = load_actor_name_harmonised(actor_name_harmonised_path)
+    name_overlay, unwrap_overlay = load_actor_name_overlays(actor_name_harmonised_path)
     dates_overlay = load_actor_dates_harmonised(actor_dates_harmonised_path)
     links_overlay = load_external_links_harmonised(external_links_harmonised_path)
 
@@ -266,6 +289,7 @@ def run(input_path: str, actor_name_harmonised_path: str, actor_dates_harmonised
 
     total_rows = 0
     filled_actor_name = 0
+    unwrapped_actor_name = 0
     replaced_dates = {field: 0 for field in DATE_FIELDS}
     replaced_links = {field: 0 for field in LINK_FIELDS}
     seen_actors: set[str] = set()
@@ -296,6 +320,11 @@ def run(input_path: str, actor_name_harmonised_path: str, actor_dates_harmonised
                 if derived_name:
                     rec["actor_name"] = derived_name
                     filled_actor_name += 1
+            elif actor_uri in unwrap_overlay:
+                raw_literal, unwrapped = unwrap_overlay[actor_uri]
+                if rec["actor_name"] == raw_literal:
+                    rec["actor_name"] = unwrapped
+                    unwrapped_actor_name += 1
 
             if actor_uri:
                 actor_dates = dates_overlay.get(actor_uri)
@@ -321,8 +350,9 @@ def run(input_path: str, actor_name_harmonised_path: str, actor_dates_harmonised
         "unique_actors": len(seen_actors),
         "harmonised_fields": {
             "actor_name": {
-                "status": "harmonised" if name_overlay else "pending (source not found)",
+                "status": "harmonised" if (name_overlay or unwrap_overlay) else "pending (source not found)",
                 "rows_filled": filled_actor_name,
+                "rows_unwrapped_from_rdf_literal": unwrapped_actor_name,
             },
             "actor_dates": {
                 "status": "harmonised" if dates_overlay else "pending (source not found)",
@@ -351,6 +381,7 @@ def run(input_path: str, actor_name_harmonised_path: str, actor_dates_harmonised
 
     print(f"\n✓ Wrote {total_rows:,} rows ({len(seen_actors):,} actors) -> {output_path}")
     print(f"  actor_name filled: {filled_actor_name:,}")
+    print(f"  actor_name unwrapped from RDF literal: {unwrapped_actor_name:,}")
     for field, count in replaced_dates.items():
         print(f"  {field} replaced: {count:,}")
     for field, count in replaced_links.items():

@@ -1,0 +1,153 @@
+======================================================================
+SYSTEM MONITORING REPORT - PYTHON
+======================================================================
+
+Start Time: 2026-09-30 19:40:26
+Entry Script: 02_map_wikidata
+PID: 34448
+Sampling Mode: checkpoint-based updates during 02_map_wikidata.py execution
+Network Interface: 5
+Network Speed Source: passive delta from /proc/net/dev
+
+----------------------------------------------------------------------
+
+Cycle 1:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10069362z#about> (index 100/92780) - match_type=bnf_ark
+  System — CPU: 13.7% | Mem: 52.0% | Disk: 20.2%
+  GPU    — Util: 33% | Mem: 3148 MB
+  Network— DL: 0.22 Mbps | UL: 0.34 Mbps
+  Process— CPU: 1.3% | Mem: 0.54%
+
+Cycle 2:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10174130z#about> (index 200/92780) - match_type=name
+  System — CPU: 15.6% | Mem: 52.0% | Disk: 20.2%
+  GPU    — Util: 26% | Mem: 3138 MB
+  Network— DL: 0.20 Mbps | UL: 0.52 Mbps
+  Process— CPU: 2.6% | Mem: 0.54%
+
+Cycle 3:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10175203k#about> (index 300/92780) - match_type=name
+  System — CPU: 17.9% | Mem: 54.0% | Disk: 20.2%
+  GPU    — Util: 21% | Mem: 3309 MB
+  Network— DL: 0.14 Mbps | UL: 0.42 Mbps
+  Process— CPU: 2.3% | Mem: 0.54%
+
+Cycle 4:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb101762641#about> (index 400/92780) - match_type=unmatched
+  System — CPU: 17.0% | Mem: 58.0% | Disk: 20.2%
+  GPU    — Util: 8% | Mem: 3159 MB
+  Network— DL: 0.18 Mbps | UL: 0.73 Mbps
+  Process— CPU: 1.9% | Mem: 0.54%
+
+Cycle 5:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb101772559#about> (index 500/92780) - match_type=name
+  System — CPU: 14.0% | Mem: 55.0% | Disk: 20.2%
+  GPU    — Util: 8% | Mem: 3205 MB
+  Network— DL: 0.09 Mbps | UL: 0.30 Mbps
+  Process— CPU: 1.3% | Mem: 0.35%
+
+Cycle 6:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10178491z#about> (index 600/92780) - match_type=unmatched
+  System — CPU: 11.9% | Mem: 53.0% | Disk: 20.2%
+  GPU    — Util: 8% | Mem: 3187 MB
+  Network— DL: 0.11 Mbps | UL: 0.03 Mbps
+  Process— CPU: 2.8% | Mem: 0.33%
+
+Cycle 7:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10179637z#about> (index 700/92780) - match_type=name
+  System — CPU: 11.2% | Mem: 53.0% | Disk: 20.2%
+  GPU    — Util: 34% | Mem: 3186 MB
+  Network— DL: 0.11 Mbps | UL: 0.03 Mbps
+  Process— CPU: 3.4% | Mem: 0.33%
+
+Cycle 8:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10180638b#about> (index 800/92780) - match_type=unmatched
+  System — CPU: 11.0% | Mem: 53.0% | Disk: 20.2%
+  GPU    — Util: 34% | Mem: 3190 MB
+  Network— DL: 0.07 Mbps | UL: 0.02 Mbps
+  Process— CPU: 1.7% | Mem: 0.32%
+
+Cycle 9:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10181897n#about> (index 900/92780) - match_type=name
+  System — CPU: 8.7% | Mem: 53.0% | Disk: 20.2%
+  GPU    — Util: 17% | Mem: 3186 MB
+  Network— DL: 0.10 Mbps | UL: 0.02 Mbps
+  Process— CPU: 3.5% | Mem: 0.33%
+
+Cycle 10:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10183064z#about> (index 1000/92780) - match_type=name
+  System — CPU: 8.9% | Mem: 53.0% | Disk: 20.2%
+  GPU    — Util: 39% | Mem: 3185 MB
+  Network— DL: 0.09 Mbps | UL: 0.03 Mbps
+  Process— CPU: 2.9% | Mem: 0.33%
+
+Cycle 11:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10184544z#about> (index 1100/92780) - match_type=name
+  System — CPU: 10.6% | Mem: 53.0% | Disk: 20.2%
+  GPU    — Util: 23% | Mem: 3200 MB
+  Network— DL: 0.09 Mbps | UL: 0.03 Mbps
+  Process— CPU: 2.8% | Mem: 0.33%
+
+Cycle 12:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10186637f#about> (index 1200/92780) - match_type=name
+  System — CPU: 0.8% | Mem: 57.0% | Disk: 20.3%
+  GPU    — Util: 19% | Mem: 1031 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 0.0% | Mem: 0.32%
+
+Cycle 13:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10188216v#about> (index 1300/92780) - match_type=name
+  System — CPU: 12.7% | Mem: 56.0% | Disk: 20.3%
+  GPU    — Util: 6% | Mem: 1579 MB
+  Network— DL: 0.15 Mbps | UL: 0.21 Mbps
+  Process— CPU: 3.3% | Mem: 0.33%
+
+Cycle 14:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb101897572#about> (index 1400/92780) - match_type=unmatched
+  System — CPU: 17.8% | Mem: 56.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 1128 MB
+  Network— DL: 1.49 Mbps | UL: 0.21 Mbps
+  Process— CPU: 2.9% | Mem: 0.33%
+
+Cycle 15:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10191725q#about> (index 1500/92780) - match_type=name
+  System — CPU: 19.0% | Mem: 57.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 1195 MB
+  Network— DL: 1.37 Mbps | UL: 0.25 Mbps
+  Process— CPU: 3.3% | Mem: 0.33%
+
+Cycle 16:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10194176p#about> (index 1600/92780) - match_type=unmatched
+  System — CPU: 15.1% | Mem: 57.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 1157 MB
+  Network— DL: 0.95 Mbps | UL: 0.05 Mbps
+  Process— CPU: 3.3% | Mem: 0.32%
+
+Cycle 17:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10196788t#about> (index 1700/92780) - match_type=name
+  System — CPU: 16.0% | Mem: 56.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 1149 MB
+  Network— DL: 0.12 Mbps | UL: 0.28 Mbps
+  Process— CPU: 3.0% | Mem: 0.32%
+
+Cycle 18:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10198314n#about> (index 1800/92780) - match_type=name
+  System — CPU: 17.3% | Mem: 57.0% | Disk: 20.3%
+  GPU    — Util: 5% | Mem: 1118 MB
+  Network— DL: 0.33 Mbps | UL: 0.29 Mbps
+  Process— CPU: 3.0% | Mem: 0.32%
+
+Cycle 19:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10200839r#about> (index 1900/92780) - match_type=unmatched
+  System — CPU: 19.2% | Mem: 57.0% | Disk: 20.3%
+  GPU    — Util: 32% | Mem: 1274 MB
+  Network— DL: 0.42 Mbps | UL: 0.21 Mbps
+  Process— CPU: 3.2% | Mem: 0.31%
+
+Cycle 20:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb102030723#about> (index 2000/92780) - match_type=unmatched
+  System — CPU: 19.4% | Mem: 58.0% | Disk: 20.3%
+  GPU    — Util: 24% | Mem: 1273 MB
+  Network— DL: 3.20 Mbps | UL: 0.64 Mbps
+  Process— CPU: 3.7% | Mem: 0.31%
+

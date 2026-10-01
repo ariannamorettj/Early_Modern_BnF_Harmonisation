@@ -5,8 +5,8 @@ BnF DATASET OPTIMISATION REPORT
 BASIC STATISTICS
 ----------------------------------------------------------------------
 Total source rows processed : 551,622
-Exact duplicate rows        : 53,330
-Net rows (excl. duplicates) : 498,292
+Exact duplicate rows        : 55,493
+Net rows (excl. duplicates) : 496,129
 Unique actors in output     : 92,780
 Actors with merged records  : 28,143
 Merge rate                  : 30.33%
@@ -16,7 +16,7 @@ FIELD STATISTICS
 ----------------------------------------------------------------------
 Field                       Filled    Fill%   Avg/actor
 ----------------------------------------------------------------------
-actor_name                  92,780   100.0%      1.0002
+actor_name                  92,778   100.0%      1.0002
 actor_first_name            79,806    86.0%      0.8602
 actor_last_name             90,638    97.7%      0.9769
 actor_birth                 31,231    33.7%      0.3366
@@ -29,7 +29,7 @@ actor_gender                29,184    31.5%      0.3146
 actor_country               30,230    32.6%      0.3258
 actor_language              28,756    31.0%      0.3150
 actor_link_exact            32,437    35.0%      1.3245
-actor_link_close            19,835    21.4%      0.6098
+actor_link_close            19,835    21.4%      0.6059
 role_edition_map            92,780   100.0%      1.0902
 roles                       92,780   100.0%      1.0902
 

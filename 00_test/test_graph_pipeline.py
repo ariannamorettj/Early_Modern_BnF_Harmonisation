@@ -82,6 +82,21 @@ def test_finalise_types_actors_once_and_drops_empty_fragment_nodes():
     assert (out["actor_profession"] == "").all()
 
 
+def test_finalise_keeps_foundation_and_dissolution_for_organisations_only():
+    m = load_module()
+    df = pd.DataFrame({
+        "actor": ["http://x.org/p#about", "http://x.org/o#about"],
+        "entity_type": [PERSON, ORG],
+        "actor_start_obj": ["1665-01-01T00:00:00", "1789-01-01T00:00:00"],
+        "actor_end_obj": ["1736-01-01T00:00:00", "1791-01-01T00:00:00"],
+        "actor_start_event": ["http://x.org/p#start_event", "http://x.org/o#start_event"],
+        "actor_end_event": ["http://x.org/p#end_event", "http://x.org/o#end_event"],
+    })
+    out = m.finalise_for_mapping(df, "mapping_actors.yaml", LOGGER)
+    assert list(out["actor_start_event"]) == ["", "http://x.org/o#start_event"]
+    assert list(out["actor_end_event"]) == ["", "http://x.org/o#end_event"]
+
+
 def test_finalise_builds_wkt_point_from_harmonised_coordinates():
     m = load_module()
     df = pd.DataFrame({

@@ -105,6 +105,47 @@ def test_run_fills_empty_actor_name_from_overlay(tmp_path):
     assert rows["A2"]["actor_name"] == "Voltaire"  # not overwritten
 
 
+def test_run_unwraps_serialised_rdf_literal_names_only(tmp_path):
+    """A name that arrived as a serialised RDF literal ("France"@fr) is
+    replaced by its unwrapped form; the medium-confidence rewrites
+    (stripped_title_role) still never override an existing name, and an
+    unwrap is skipped when the raw cell no longer matches the original the
+    normaliser saw."""
+    mod = load_module()
+    input_path = tmp_path / "raw.csv"
+    _write_raw_actors_csv(input_path, [
+        {"actor": "O1", "actor_name": '"France. Trésorerie nationale"@fr'},
+        {"actor": "O1", "actor_name": '"France. Trésorerie nationale"@fr'},  # second link row
+        {"actor": "P1", "actor_name": "Sieur de Malherbe"},
+        {"actor": "O2", "actor_name": "Already clean"},
+    ])
+    overlay_path = tmp_path / "overlay.csv"
+    _write_name_overlay_csv(overlay_path, [
+        {"actor_uri": "O1", "actor_name_original": '"France. Trésorerie nationale"@fr',
+         "actor_name_harmonised": "France. Trésorerie nationale",
+         "correction_type": "stripped_rdf_literal_tag"},
+        {"actor_uri": "P1", "actor_name_original": "Sieur de Malherbe",
+         "actor_name_harmonised": "Malherbe", "correction_type": "stripped_title_role"},
+        {"actor_uri": "O2", "actor_name_original": '"Something else"@fr',
+         "actor_name_harmonised": "Something else",
+         "correction_type": "stripped_rdf_literal_tag"},
+    ])
+
+    mod.run(str(input_path), str(overlay_path), _no_overlay(tmp_path, "no_dates.csv"),
+           str(tmp_path / "out.csv"), str(tmp_path / "report.json"), use_monitor=False,
+           external_links_harmonised_path=_no_overlay(tmp_path, "no_links.csv"))
+
+    with open(tmp_path / "out.csv", newline="", encoding="utf-8") as f:
+        rows = list(csv.DictReader(f))
+    names = {(r["actor"], r["actor_name"]) for r in rows}
+    assert names == {("O1", "France. Trésorerie nationale"),
+                     ("P1", "Sieur de Malherbe"),
+                     ("O2", "Already clean")}
+    with open(tmp_path / "report.json", encoding="utf-8") as f:
+        report = json.load(f)
+    assert report["harmonised_fields"]["actor_name"]["rows_unwrapped_from_rdf_literal"] == 2
+
+
 def test_run_replaces_actor_dates_from_overlay_even_when_raw_present(tmp_path):
     """Unlike actor_name (fill-only), actor_dates REPLACES the raw value
     whenever a harmonised EDTF form is available — harmonising a date always

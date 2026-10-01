@@ -21,6 +21,10 @@ The BnF source already encodes dates with a structured numeric convention:
                                                           (century/decade/
                                                           millennium-level
                                                           precision)
+    truncated_decade    "170" for an actor whose other dates are in the
+                        second millennium -> "170X": the mask character
+                        of "170." was lost; decided per actor by
+                        resolve_truncated_decades() (confidence medium)
     missing             "NA", "", None
     non_parseable       everything else (~0.02% of values: masked digits
                          inside a full date e.g. "150.-02-20", stray "?"
@@ -307,6 +311,32 @@ def normalise_date(raw_value: str) -> dict:
     return {"harmonised": harmonised, "format_detected": fmt, "confidence": "high"}
 
 
+# truncated_decade: the source writes a decade-level date as "170." (mask
+# character kept, masked_precision above), but ~2,500 values arrive as a bare
+# three-digit number, "170", with the mask character gone. Read on its own
+# that is the year 170 ("0170"), which is right for Eusebius (265-340) and
+# wrong for Roger Coke (born 1628, died "170" = 170x). The actor's other
+# dates settle it: when another of them lies in the second millennium, a
+# bare three-digit year is the truncated decade, "170X".
+_THREE_DIGIT_RE = re.compile(r"^\d{3}$")
+_SECOND_MILLENNIUM_RE = re.compile(r"^[12][0-9X]{3}")
+
+
+def resolve_truncated_decades(originals: dict, results: dict) -> dict:
+    """Reinterpret bare three-digit years of one actor as decades when the
+    actor's other dates are in the second millennium. `originals` and
+    `results` map each date field to its raw value / normalise_date() result;
+    returns the (possibly updated) results."""
+    for field, result in results.items():
+        if result["format_detected"] != "exact_year" or not _THREE_DIGIT_RE.match(originals[field]):
+            continue
+        context = [r["harmonised"] for f, r in results.items() if f != field]
+        if any(_SECOND_MILLENNIUM_RE.match(h) for h in context):
+            results[field] = {"harmonised": f"{originals[field]}X",
+                              "format_detected": "truncated_decade", "confidence": "medium"}
+    return results
+
+
 # ── Monitor integration (embedded state-based monitoring, module 06_monitor) ──
 
 def load_monitor_module(monitor_script: str = MONITOR_SCRIPT_DEFAULT):
@@ -403,7 +433,7 @@ def run(input_path: str, output_dir: str,
     output_path = os.path.join(output_dir, output_filename)
 
     stats = {"exact_year": 0, "exact_date": 0, "year_month": 0,
-             "masked_precision": 0, "missing": 0, "non_parseable": 0}
+             "masked_precision": 0, "truncated_decade": 0, "missing": 0, "non_parseable": 0}
 
     monitor_module = None
     monitor_state = None
@@ -418,9 +448,11 @@ def run(input_path: str, output_dir: str,
         writer = csv.DictWriter(f, fieldnames=OUTPUT_FIELDS)
         writer.writeheader()
         for i, (actor_uri, fields) in enumerate(sorted(actors.items())):
+            results = resolve_truncated_decades(
+                fields, {field: normalise_date(fields[field]) for field in DATE_FIELDS})
             for field in DATE_FIELDS:
                 original = fields[field]
-                result = normalise_date(original)
+                result = results[field]
                 stats[result["format_detected"]] += 1
                 writer.writerow({
                     "actor_uri": actor_uri,

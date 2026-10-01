@@ -410,6 +410,13 @@ def finalise_for_mapping(df: pd.DataFrame, mapping_file: str, logger: logging.Lo
         org = ENTITY_TYPE_MAP["http://xmlns.com/foaf/0.1/Organization"]
         df["actor_if_person"] = df["actor"].where(df["entity_type"] == person, "")
         df["actor_if_organization"] = df["actor"].where(df["entity_type"] == org, "")
+        # mapping_actors.yaml types actor_start/actor_end as foundation and
+        # dissolution events. For persons BnF fills them with the life years
+        # (start == birth year for 22,741 of 22,919), which birth/death
+        # events already carry, so they are not events of a person.
+        for col in ("actor_start_obj", "actor_end_obj"):
+            if col in df.columns:
+                df[col] = df[col].where(df["entity_type"] != person, "")
     if mapping_file == "mapping_bibliographic.yaml" and "edition_base" in df.columns:
         for out_col, fragment in [("edition_pub_place_norm_app", "pub_place_norm_app"),
                                   ("edition_pub_actor_norm_app", "pub_actor_norm_app")]:

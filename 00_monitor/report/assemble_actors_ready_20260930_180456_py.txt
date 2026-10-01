@@ -1,0 +1,216 @@
+======================================================================
+SYSTEM MONITORING REPORT - PYTHON
+======================================================================
+
+Start Time: 2026-09-30 18:04:56
+Entry Script: assemble_actors_ready
+PID: 29756
+Sampling Mode: checkpoint-based updates during assemble_actors_ready.py execution
+Network Interface: 5
+Network Speed Source: passive delta from /proc/net/dev
+
+----------------------------------------------------------------------
+
+Cycle 1:
+  Context: Patched 20,000 rows so far
+  System — CPU: 16.7% | Mem: 57.0% | Disk: 20.4%
+  GPU    — Util: 10% | Mem: 2428 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 96.3% | Mem: 0.50%
+
+Cycle 2:
+  Context: Patched 40,000 rows so far
+  System — CPU: 19.4% | Mem: 57.0% | Disk: 20.4%
+  GPU    — Util: 22% | Mem: 2428 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 89.0% | Mem: 0.51%
+
+Cycle 3:
+  Context: Patched 60,000 rows so far
+  System — CPU: 18.2% | Mem: 57.0% | Disk: 20.4%
+  GPU    — Util: 9% | Mem: 2432 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 90.6% | Mem: 0.51%
+
+Cycle 4:
+  Context: Patched 80,000 rows so far
+  System — CPU: 17.3% | Mem: 57.0% | Disk: 20.4%
+  GPU    — Util: 28% | Mem: 2436 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 83.3% | Mem: 0.52%
+
+Cycle 5:
+  Context: Patched 100,000 rows so far
+  System — CPU: 19.2% | Mem: 57.0% | Disk: 20.4%
+  GPU    — Util: 22% | Mem: 2436 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 91.9% | Mem: 0.52%
+
+Cycle 6:
+  Context: Patched 120,000 rows so far
+  System — CPU: 15.7% | Mem: 57.0% | Disk: 20.4%
+  GPU    — Util: 15% | Mem: 2436 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 87.2% | Mem: 0.52%
+
+Cycle 7:
+  Context: Patched 140,000 rows so far
+  System — CPU: 16.2% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 22% | Mem: 2438 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 82.8% | Mem: 0.52%
+
+Cycle 8:
+  Context: Patched 160,000 rows so far
+  System — CPU: 17.1% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 14% | Mem: 2436 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 88.6% | Mem: 0.52%
+
+Cycle 9:
+  Context: Patched 180,000 rows so far
+  System — CPU: 21.0% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 11% | Mem: 2432 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 87.5% | Mem: 0.52%
+
+Cycle 10:
+  Context: Patched 200,000 rows so far
+  System — CPU: 16.3% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 21% | Mem: 2432 MB
+  Network— DL: 0.13 Mbps | UL: 0.01 Mbps
+  Process— CPU: 83.3% | Mem: 0.52%
+
+Cycle 11:
+  Context: Patched 220,000 rows so far
+  System — CPU: 18.0% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 26% | Mem: 2428 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 86.2% | Mem: 0.53%
+
+Cycle 12:
+  Context: Patched 240,000 rows so far
+  System — CPU: 18.5% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 17% | Mem: 2428 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 80.0% | Mem: 0.53%
+
+Cycle 13:
+  Context: Patched 260,000 rows so far
+  System — CPU: 13.9% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 11% | Mem: 2428 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 90.6% | Mem: 0.53%
+
+Cycle 14:
+  Context: Patched 280,000 rows so far
+  System — CPU: 17.4% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 22% | Mem: 2424 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 86.6% | Mem: 0.53%
+
+Cycle 15:
+  Context: Patched 300,000 rows so far
+  System — CPU: 14.3% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 8% | Mem: 2424 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 93.6% | Mem: 0.53%
+
+Cycle 16:
+  Context: Patched 320,000 rows so far
+  System — CPU: 14.5% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 8% | Mem: 2424 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 80.0% | Mem: 0.53%
+
+Cycle 17:
+  Context: Patched 340,000 rows so far
+  System — CPU: 14.8% | Mem: 58.0% | Disk: 20.4%
+  GPU    — Util: 9% | Mem: 2417 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 74.3% | Mem: 0.53%
+
+Cycle 18:
+  Context: Patched 360,000 rows so far
+  System — CPU: 18.3% | Mem: 59.0% | Disk: 20.4%
+  GPU    — Util: 19% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 93.0% | Mem: 0.54%
+
+Cycle 19:
+  Context: Patched 380,000 rows so far
+  System — CPU: 15.3% | Mem: 59.0% | Disk: 20.4%
+  GPU    — Util: 15% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 86.6% | Mem: 0.54%
+
+Cycle 20:
+  Context: Patched 400,000 rows so far
+  System — CPU: 17.8% | Mem: 59.0% | Disk: 20.4%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 80.0% | Mem: 0.55%
+
+Cycle 21:
+  Context: Patched 420,000 rows so far
+  System — CPU: 28.2% | Mem: 59.0% | Disk: 20.4%
+  GPU    — Util: 19% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 85.7% | Mem: 0.55%
+
+Cycle 22:
+  Context: Patched 440,000 rows so far
+  System — CPU: 27.9% | Mem: 60.0% | Disk: 20.4%
+  GPU    — Util: 12% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 88.3% | Mem: 0.55%
+
+Cycle 23:
+  Context: Patched 460,000 rows so far
+  System — CPU: 29.1% | Mem: 60.0% | Disk: 20.4%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 89.2% | Mem: 0.55%
+
+Cycle 24:
+  Context: Patched 480,000 rows so far
+  System — CPU: 19.5% | Mem: 61.0% | Disk: 20.4%
+  GPU    — Util: 14% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 83.3% | Mem: 0.55%
+
+Cycle 25:
+  Context: Patched 500,000 rows so far
+  System — CPU: 19.8% | Mem: 65.0% | Disk: 20.4%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 80.0% | Mem: 0.55%
+
+Cycle 26:
+  Context: Patched 520,000 rows so far
+  System — CPU: 18.9% | Mem: 61.0% | Disk: 20.4%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 87.5% | Mem: 0.55%
+
+Cycle 27:
+  Context: Patched 540,000 rows so far
+  System — CPU: 18.9% | Mem: 61.0% | Disk: 20.5%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 86.8% | Mem: 0.56%
+
+Cycle 28:
+  Context: Completed actors-ready assembly run
+  System — CPU: 22.5% | Mem: 61.0% | Disk: 20.5%
+  GPU    — Util: 16% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 78.9% | Mem: 0.56%
+
+----------------------------------------------------------------------
+
+End Time: 2026-09-30 18:05:10
+Total Duration: 13.94 seconds
+Total Cycles: 28
+
+======================================================================

@@ -73,18 +73,35 @@ WHERE {
 } ;
 
 # ── Editions: shared publishers (harmonised name, raw name as fallback) ──────
+# Two passes instead of OPTIONAL + FILTER NOT EXISTS, which did not finish
+# in 5 minutes on the full graph: harmonised names first, then the recorded
+# name for editions that still have no publisher (checked on the small
+# derived graph). The recorded appellation is the #pub_actor_app node.
 INSERT { GRAPH <https://w3id.org/bnf/portal/graph/derived> {
   ?e bnfp:publisher ?pub .
   ?pub a bnfp:Publisher ; skos:prefLabel ?name .
 } }
 WHERE { GRAPH <https://w3id.org/bnf/portal/graph/chad-ap> {
-  ?e a lrmoo:F3_Manifestation ; crm:P14_carried_out_by ?pa .
-  OPTIONAL { ?pa obj:isIdentifiedBy ?h . ?h obj:hasType aat:300404670 ; obj:hasSymbolicContent ?harmonised . }
-  OPTIONAL { ?pa obj:isIdentifiedBy ?r . FILTER NOT EXISTS { ?r obj:hasType ?anyType } ?r obj:hasSymbolicContent ?raw . }
-  BIND(COALESCE(?harmonised, ?raw) AS ?name)
-  FILTER(BOUND(?name))
+  ?e crm:P14_carried_out_by ?pa .
+  ?pa obj:isIdentifiedBy ?h .
+  ?h obj:hasType aat:300404670 ; obj:hasSymbolicContent ?name .
   BIND(IRI(CONCAT("https://w3id.org/bnf/portal/publisher/", ENCODE_FOR_URI(LCASE(?name)))) AS ?pub)
 } } ;
+
+INSERT { GRAPH <https://w3id.org/bnf/portal/graph/derived> {
+  ?e bnfp:publisher ?pub .
+  ?pub a bnfp:Publisher ; skos:prefLabel ?name .
+} }
+WHERE {
+  GRAPH <https://w3id.org/bnf/portal/graph/chad-ap> {
+    ?e crm:P14_carried_out_by ?pa .
+    ?pa obj:isIdentifiedBy ?r .
+    FILTER(STRENDS(STR(?r), "#pub_actor_app"))
+    ?r obj:hasSymbolicContent ?name .
+  }
+  FILTER NOT EXISTS { GRAPH <https://w3id.org/bnf/portal/graph/derived> { ?e bnfp:publisher ?any } }
+  BIND(IRI(CONCAT("https://w3id.org/bnf/portal/publisher/", ENCODE_FOR_URI(LCASE(?name)))) AS ?pub)
+} ;
 
 # ── Editions: language ───────────────────────────────────────────────────────
 INSERT { GRAPH <https://w3id.org/bnf/portal/graph/derived> {
@@ -111,23 +128,41 @@ WHERE { GRAPH <https://w3id.org/bnf/portal/graph/chad-ap> {
 } } ;
 
 # ── Actors: label, type, life years, gender ──────────────────────────────────
+# Full name, else surname, else the ARK id: three passes instead of a GROUP
+# BY with two OPTIONALs over every actor, which did not finish in 5 minutes
+# on the full graph. Each actor has one #app_fullname node at most.
+INSERT { GRAPH <https://w3id.org/bnf/portal/graph/derived> {
+  ?a skos:prefLabel ?label .
+} }
+WHERE { GRAPH <https://w3id.org/bnf/portal/graph/chad-ap> {
+  ?a obj:isIdentifiedBy ?fa .
+  ?fa obj:hasType obj:full-name ; obj:hasSymbolicContent ?full .
+  # Serialised literals ("France"@fr) are unwrapped upstream since module 04's
+  # assembly fix; kept as a guard for graphs built before it.
+  BIND(REPLACE(?full, "^\"(.*)\"@[A-Za-z-]+$", "$1") AS ?label)
+} } ;
+
+INSERT { GRAPH <https://w3id.org/bnf/portal/graph/derived> {
+  ?a skos:prefLabel ?last .
+} }
+WHERE {
+  GRAPH <https://w3id.org/bnf/portal/graph/chad-ap> {
+    ?a obj:isIdentifiedBy ?la .
+    ?la obj:hasType obj:last-name ; obj:hasSymbolicContent ?last .
+  }
+  FILTER NOT EXISTS { GRAPH <https://w3id.org/bnf/portal/graph/derived> { ?a skos:prefLabel ?any } }
+} ;
+
 INSERT { GRAPH <https://w3id.org/bnf/portal/graph/derived> {
   ?a skos:prefLabel ?label .
 } }
 WHERE {
-  {
-    SELECT ?a (SAMPLE(?full) AS ?f) (SAMPLE(?last) AS ?l) WHERE {
-      GRAPH <https://w3id.org/bnf/portal/graph/chad-ap> {
-        { ?a a obj:Person } UNION { ?a a obj:Organization }
-        OPTIONAL { ?a obj:isIdentifiedBy ?fa . ?fa obj:hasType obj:full-name ; obj:hasSymbolicContent ?full . }
-        OPTIONAL { ?a obj:isIdentifiedBy ?la . ?la obj:hasType obj:last-name ; obj:hasSymbolicContent ?last . }
-      }
-    } GROUP BY ?a
+  GRAPH <https://w3id.org/bnf/portal/graph/chad-ap> {
+    VALUES ?type { obj:Person obj:Organization }
+    ?a a ?type .
   }
-  BIND(COALESCE(?f, ?l, REPLACE(STR(?a), "^.*/(cb[^#]+).*$", "$1")) AS ?rawLabel)
-  # ~2,100 organisation names still arrive as serialised literals ("France"@fr)
-  # from module 05/06; unwrap them for display only (the graph keeps them).
-  BIND(REPLACE(?rawLabel, "^\"(.*)\"@[A-Za-z-]+$", "$1") AS ?label)
+  FILTER NOT EXISTS { GRAPH <https://w3id.org/bnf/portal/graph/derived> { ?a skos:prefLabel ?any } }
+  BIND(REPLACE(STR(?a), "^.*/(cb[^#]+).*$", "$1") AS ?label)
 } ;
 
 INSERT { GRAPH <https://w3id.org/bnf/portal/graph/derived> {

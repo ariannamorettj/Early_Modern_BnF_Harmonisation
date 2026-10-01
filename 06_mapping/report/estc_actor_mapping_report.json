@@ -3,9 +3,9 @@
   "distinct_actors_after_dedup": 92688,
   "duplicates_collapsed": 92,
   "by_match_type": {
-    "unmatched": 81939,
+    "unmatched": 81934,
     "viaf_id": 5290,
-    "ambiguous_name_only": 5159,
+    "ambiguous_name_only": 5164,
     "name_and_dates": 280,
     "ambiguous_name_and_dates": 20
   }

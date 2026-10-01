@@ -8,7 +8,7 @@ Module 06 bridges the BnF dataset with three external authoritative catalogues:
 |--------|--------|--------|
 | `01_map_viaf.py` | VIAF | ID lookup → name-based SRU search |
 | `02_map_wikidata.py` | Wikidata | QID lookup → SPARQL label search |
-| `03_map_estc_ecco.py` | ESTC / ECCO (editions) | Heuristic field matching → LLM translation check |
+| `03_map_estc_ecco.py` | ESTC / ECCO (editions) | ESTC actor bridge → name + year + title matching → LLM translation check |
 | `05_map_estc_actors.py` | ESTC actor authority (`estcr` package) | VIAF ID bridge → order-invariant name + date matching |
 | `04_merge_mappings.py` | — | Joins all mapping outputs into enriched datasets |
 
@@ -31,7 +31,7 @@ Module 06 bridges the BnF dataset with three external authoritative catalogues:
 │   ├── estc_mapping.csv
 │   ├── estc_actor_mapping.csv        ← BnF actor <-> ESTC actor overlap
 │   ├── bnf_actors_enriched.csv       ← final enriched actor dataset
-│   └── bnf_editions_enriched.csv     ← final enriched edition dataset
+│   └── bnf_editions_enriched.csv     ← 20-row fixture (see below)
 │
 └── report/
     ├── viaf_mapping_report.json
@@ -40,6 +40,12 @@ Module 06 bridges the BnF dataset with three external authoritative catalogues:
     ├── estc_actor_mapping_report.json
     └── merge_report.json
 ```
+
+The full enriched edition dataset (814,031 rows, about 500 MB) is written to
+`data/bnf_edition_data/bnf_editions_enriched.csv`, next to module 04's
+`bnf_editions_ready.csv` and git-ignored like it: the CSVs are stored in Git
+LFS, whose free quota a file that size would exhaust. Module 07 reads it from
+there (`editions_enriched_csv` in `pipeline_config.ini`).
 
 ---
 
@@ -58,7 +64,7 @@ python 06_mapping/02_map_wikidata.py \
 export ANTHROPIC_API_KEY=sk-...
 python 06_mapping/03_map_estc_ecco.py \
     --bnf-editions  data/bnf_edition_data/bnf_editions_ready.csv \
-    --estc-csv      data/estc/estc_raw_sane.csv
+    --estc          data/estc
 
 # Step 4 — Merge all
 python 06_mapping/04_merge_mappings.py
@@ -83,16 +89,32 @@ python 06_mapping/05_map_estc_actors.py \
 - `05_subset_optimisation/output/bnf_actors_optimised.csv`
 
 ### Algorithm
-**Pass 1 (ID-based):** VIAF URIs already present in `actor_link_exact` /
-`actor_link_close` are extracted. The VIAF REST API
-(`https://viaf.org/viaf/{id}/justlinks.json` + `viaf.json`) returns:
-- Preferred name (`mainHeadings`)
-- Birth / death dates
-- Co-referent IDs: Wikidata QID, LC, IdRef
+Three passes against VIAF's current API (`https://viaf.org/viaf/...`, JSON via
+`Accept: application/json`; the old `justlinks.json` / `viaf.json` endpoints
+now answer 404):
 
-**Pass 2 (name-based):** Actors without a VIAF URI trigger a SRU search
-(`https://viaf.org/search`) on `local.personalNames`. The top candidate is
-accepted if the Levenshtein similarity ratio ≥ `--threshold` (default 0.85).
+**Pass 1 (BnF record id):** `/viaf/sourceID/BNF|<8 digits>` returns the
+cluster that contains the BnF authority record, if any.
+
+**Pass 2 (VIAF link on file):** VIAF URIs already present in
+`actor_link_exact` / `actor_link_close` (31,095 of the 92,780 actors).
+
+**Pass 3 (name-based):** an SRU search (`/viaf/search?query=...`); the top
+candidate is accepted if the order-invariant name similarity is at least
+`--threshold` (default 0.85).
+
+Each cluster yields the preferred name (the BnF heading when there is one),
+birth and death dates, and the linked Wikidata, LC, IdRef and ISNI ids. A 404
+means "not in VIAF"; timeouts, HTTP 429 and 5xx are retried, and an actor
+that keeps failing is left out of the output (deferred) rather than written
+as unmatched, so the next run retries it.
+
+> **Rate limit.** VIAF now allows about 1,000 requests per day per client
+> (`X-Ratelimit-Limit-Day: 1003`). A full run over 92,780 actors is
+> therefore not feasible through the API; the run of 30 September 2026
+> stopped after 568 actors. How to obtain VIAF ids for the rest (the VIAF
+> links already in the data, Wikidata P214 via `02_map_wikidata.py`,
+> data.bnf.fr, or VIAF's data dumps) is an open decision.
 
 ### Output fields
 `BnF_ID, viaf_id, match_type, viaf_name, birth_date, death_date, wikidata_id, lc_id, idref_id, confidence`
@@ -159,7 +181,7 @@ description). Concretely:
   default the CLI entry point to `use_monitor = TRUE`);
 - at start-up it loads `00_monitor/monitor.py` and opens a monitoring state
   (`start_monitor_state`);
-- one checkpoint is written per processed actor (`update_monitor_state`),
+- one checkpoint is written every 100 actors and at the last one (`update_monitor_state`),
   tagged with a context string identifying the `BnF_ID` and the resulting
   `match_type` (`id`, `name`, or `unmatched`), plus one final checkpoint on
   completion;
@@ -184,46 +206,72 @@ used by the R equivalents in module 1.
 
 ### Inputs
 - `data/bnf_edition_data/bnf_editions_ready.csv` — BnF harmonised editions
-- `data/estc/estc_raw_sane.csv` — COMHIS ESTC CSV (tab-separated)
-  - Expected columns: `estc_id`, `title`, `author`, `year` (or variants),
-    `language`
-  - Source: COMHIS/estc-data-verified on GitHub (access by agreement with
-    the British Library / COMHIS group)
+  (module 04)
+- `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv` — BnF actor
+  names, to name each edition's authors (`--bnf-actors`)
+- `data/estc/` — the COMHIS ESTC release (`--estc`), three tables joined on load:
+  - `estc_core.csv`: `estc_id`, `short_title`, `publication_year`,
+    `primary_language`, `publication_place`, `publication_country`, ...
+  - `estc_actor_links.csv`: `estc_id` → `actor_id`, with one boolean column
+    per role; only `actor_role_author` links are used
+  - `estc_actors.csv`: `actor_id` → `name_unified`
+
+  `--estc` also accepts a single CSV with `estc_id`, `title`, `author`,
+  `year`, `language` columns.
+- `06_mapping/output/estc_actor_mapping_confident.csv` — script 5's
+  confident BnF actor → ESTC actor links (`--estc-actor-mapping`), extended
+  to duplicate BnF actors through module 04's `actor_dedup_mapping.csv`
+
+### Scope
+The ESTC collects what was printed in English anywhere, and anything printed
+in the British Isles and British America, up to 1800. Passes 1 and 2 only
+consider BnF editions in English (`language_harmonised` `eng`/`enm`) or
+published in those countries (`publication_country`); the other editions
+are counted in the report as `out_of_scope_this_run` and not written. With
+an `ANTHROPIC_API_KEY`, every edition with an author also goes through
+Pass 3, since a French edition can have an English translation in ESTC.
 
 ### Algorithm
+Every pass compares a BnF edition only with ESTC records of the same author,
+so no pass scans the whole ESTC. Editions without an author are not matched:
+a title and a year alone are not enough evidence for the same edition.
 
-**Pass 1 (ID bridge):** When a VIAF ID is shared between a BnF actor and an
-ESTC author record, a direct year-constrained join is performed.  This pass
-is currently scaffolded and requires the ESTC author authority table with
-VIAF IDs to be loaded via `--viaf-author-table` (forthcoming).
+**Pass 1 (actor bridge):** for each author of the BnF edition that script 5
+linked to an ESTC actor, the candidates are that actor's ESTC records within
+±`--year-window` years; a title similarity of at least `--title-threshold`
+accepts one. `match_type = "actor_bridge"`, confidence = (1 + title score) / 2.
 
-**Pass 2 (heuristic — "same edition in both catalogues"):**
-1. Year filter: only ESTC editions within ±`--year-window` years are candidates.
-2. Author similarity ≥ `--author-threshold` (default 0.80).
-3. Title similarity ≥ `--title-threshold` (default 0.75).
-Both checks must pass; confidence = mean of the two scores; `match_type = "heuristic"`.
-The year filter makes sense here because it targets the *same* print run
-appearing in both catalogues, which is necessarily close in time. A Pass-2
-match always takes priority over anything found in Pass 3.
+**Pass 2 (heuristic, "same edition in both catalogues"):** ESTC records are
+indexed by (publication year, author-name token). Candidates share a name
+token with a BnF author and fall within ±`--year-window` years. Authors are
+compared as order-invariant token sets (BnF "Jonathan Swift", ESTC "Swift,
+Jonathan"); titles on their common length, because ESTC keeps a short title
+and BnF the full one with its statement of responsibility (titles under four
+words are compared whole). Author and title both above their thresholds:
+`match_type = "heuristic"`, confidence = mean of the two scores. A Pass 1 or
+2 match always takes priority over Pass 3.
+
+**Ambiguity:** when a second ESTC record scores within 0.02 of the best one
+(typically the same title reissued in consecutive years), a single near-tie
+with the BnF edition's own year is taken as the match, since the same
+edition has the same year. Otherwise the match is not auto-resolved: `match_type` becomes
+`ambiguous_actor_bridge` / `ambiguous_heuristic`, the best candidate is kept
+and `notes` lists the alternates. `04_merge_mappings.py` writes such rows to
+`estc_candidate_id`, not `estc_id`.
 
 **Pass 3 (LLM translation check, optional):**
 A translation can be published decades — or centuries — after the original
-work, so this pass does **not** reuse the year-windowed Pass-2 candidate
-pool. It searches two candidate pools instead:
-- the Pass-2 year-windowed candidates whose title didn't match (still
-  checked, in case the translation *does* happen to fall within the window);
+work, so this pass does **not** reuse the year-windowed candidate pool. It
+searches two candidate pools instead:
+- the Pass-2 candidates whose author matched but whose title didn't;
 - a **year-unconstrained** pool retrieved via `author_index`, an index built
   by blocking ESTC records on the first token of the normalised author name
-  (the standard library-authority "Surname, Firstname" convention). This
-  lets Pass 3 find a translation published at any distance in time from the
-  BnF edition, as long as the author name matches (similarity ≥
-  `--author-threshold`) — capped at `--max-author-candidates` records per
-  BnF edition for performance.
+  — capped at `--max-author-candidates` records per BnF edition.
 
 For every candidate in either pool whose author matches, whose title does
 not, and whose language differs from the BnF edition's, a single Claude API
-call asks whether the BnF title is a translation of the ESTC title.  Requires
-`ANTHROPIC_API_KEY` in the environment; silently skipped if absent.
+call asks whether the BnF title is a translation of the ESTC title. Requires
+`ANTHROPIC_API_KEY` in the environment; skipped if absent.
 
 The LLM prompt:
 ```
@@ -232,41 +280,44 @@ of "<estc_title>" (language: <estc_lang>)?
 Answer ONLY with valid JSON: {"match": true or false, "confidence": 0.0 to 1.0}
 ```
 
-**Ambiguous translations:** if the LLM check accepts (match=true, confidence
-≥ `--llm-threshold`) more than one ESTC candidate for the *same* BnF edition,
-the match is not auto-resolved. This is expected for prolific or classical
-authors with several independent translations — e.g. a French and an English
-translation of a Latin original are not translations of *each other*, even
-though both would independently pass the author-match + language-mismatch
-check against the BnF edition. In that case `match_type = "ambiguous_translation"`:
-the highest-confidence candidate is still recorded in the output row
-(`estc_id`, `confidence`, etc.), but the `notes` field lists the discarded
-alternates, and the row is meant for manual review rather than being treated
-as a confident link. When exactly one candidate is accepted, `match_type = "llm"`
-as before.
+If the LLM check accepts more than one ESTC candidate for the same BnF
+edition, the match is not auto-resolved (`match_type = "ambiguous_translation"`):
+a French and an English translation of a Latin original are not
+translations of *each other*. When exactly one candidate is accepted,
+`match_type = "llm"`.
 
 ### Output fields
 `BnF_edition_id, estc_id, match_type, confidence, estc_title, estc_author, estc_year, estc_language, bnf_title, bnf_year, bnf_language, notes`
 
-`match_type` is one of: `heuristic`, `llm`, `ambiguous_translation`, `unmatched`.
+`match_type` is one of: `actor_bridge`, `heuristic`, `llm`, `ambiguous_actor_bridge`,
+`ambiguous_heuristic`, `ambiguous_translation`, `unmatched`.
 
 ### Parameters
 | Param | Default | Description |
 |-------|---------|-------------|
+| `--estc` | `data/estc` | COMHIS directory or one CSV |
+| `--bnf-actors` | `04_harmonisation_and_evaluation/output/bnf_actors_ready.csv` | BnF actor names |
+| `--estc-actor-mapping` | `06_mapping/output/estc_actor_mapping_confident.csv` | Script 5 output (Pass 1) |
 | `--author-threshold` | `0.80` | Min. author name similarity |
 | `--title-threshold` | `0.75` | Min. title similarity |
 | `--llm-threshold` | `0.80` | Min. LLM confidence for pass-3 acceptance |
 | `--year-window` | `2` | ±years around BnF publication year (Pass 2 only) |
 | `--max-author-candidates` | `2000` | Cap on ESTC candidates per BnF edition retrieved via `author_index` (Pass 3) |
-| `--sleep` | `0.3` | Seconds between calls |
+| `--sleep` | `0.3` | Seconds between LLM calls |
+| `--restart` | off | Start over instead of resuming from the existing output |
 | `--monitor-script` | `00_monitor/monitor.py` | Path to the resource-monitoring module (see below) |
 | `--no-monitor` | off | Disable the resource-usage monitor report |
 
-### Resource-usage monitoring
+### Resume and monitoring
+
+Rows are appended to the output as they are produced
+(`06_mapping/resumable.py`), so re-running the same command resumes at the
+first edition not yet written. The report counts are computed from the whole
+output file.
 
 Same "embedded state-based monitoring" mechanism as module 1
 (`query_agents.R` / `query_editions.R`) and `02_map_wikidata.py` (see
-`00_monitor/README.md`): one checkpoint every 100 BnF editions
+`00_monitor/README.md`): one checkpoint every 1000 BnF editions
 (`MONITOR_CHECKPOINT_EVERY`) and at the last one, plus a final checkpoint, on by default from the CLI (`--no-monitor` to disable),
 off by default when `run_mapping(...)` is called programmatically. Reports
 are written to:
@@ -281,7 +332,7 @@ are written to:
 
 Matches BnF actors directly against the ESTC **actor-authority** table
 (`estc_actors.csv`, from the COMHIS `estcr` R package —
-https://github.com/COMHIS/estcr — distinct from `estc_raw_sane.csv`, which is
+https://github.com/COMHIS/estcr — distinct from `estc_core.csv`, which is
 edition-level and consumed by script 03 above). This is the standalone
 deliverable for an author-level BnF/ESTC overlap: it only needs the two
 actor-side tables, so it can be produced before the edition/translation
@@ -401,8 +452,8 @@ ECCO (Eighteenth Century Collections Online, Gale) does not expose a public
 API or downloadable metadata.  The practical access route is via the ESTC,
 which underpins ECCO and is available as open data through COMHIS.
 
-The COMHIS ESTC harmonised CSV (`estc_raw_sane.csv`) is the recommended input
-for script 03.  Contact the COMHIS group (University of Helsinki) or consult
+The COMHIS ESTC release in `data/estc/` (`estc_core.csv`,
+`estc_actor_links.csv`, `estc_actors.csv`) is the input for scripts 03 and 05.  Contact the COMHIS group (University of Helsinki) or consult
 `https://github.com/COMHIS/estc-data-verified` for access.
 
 ---
@@ -425,7 +476,11 @@ four columns are simply empty, same behaviour as a missing VIAF/Wikidata
 mapping.
 
 ### Edition enrichment adds columns
-`estc_id, estc_title, estc_author, estc_year, estc_language, estc_match_type, estc_confidence`
+`estc_id, estc_title, estc_author, estc_year, estc_language, estc_match_type, estc_confidence, estc_candidate_id`
+
+`estc_id` is filled only for the `actor_bridge`, `heuristic` and `llm`
+match types; an `ambiguous_*` row keeps its best candidate in
+`estc_candidate_id` instead, as for the actors.
 
 ### Parameters (new)
 | Param | Default | Description |

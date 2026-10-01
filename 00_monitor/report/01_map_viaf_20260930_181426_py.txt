@@ -1,0 +1,62 @@
+======================================================================
+SYSTEM MONITORING REPORT - PYTHON
+======================================================================
+
+Start Time: 2026-09-30 18:14:26
+Entry Script: 01_map_viaf
+PID: 36344
+Sampling Mode: checkpoint-based updates during 01_map_viaf.py execution
+Network Interface: 5
+Network Speed Source: passive delta from /proc/net/dev
+
+----------------------------------------------------------------------
+
+Cycle 1:
+  Context: Processed actor 100/92780 - <http://data.bnf.fr/ark:/12148/cb10069362z#about> match_type=bnf_source_id
+  System — CPU: 12.6% | Mem: 60.0% | Disk: 20.4%
+  GPU    — Util: 10% | Mem: 2428 MB
+  Network— DL: 0.39 Mbps | UL: 0.06 Mbps
+  Process— CPU: 4.0% | Mem: 0.47%
+
+Cycle 2:
+  Context: Processed actor 200/92780 - <http://data.bnf.fr/ark:/12148/cb10174130z#about> match_type=unmatched
+  System — CPU: 13.2% | Mem: 63.0% | Disk: 20.4%
+  GPU    — Util: 18% | Mem: 2441 MB
+  Network— DL: 0.30 Mbps | UL: 0.29 Mbps
+  Process— CPU: 4.6% | Mem: 0.47%
+
+Cycle 3:
+  Context: Processed actor 300/92780 - <http://data.bnf.fr/ark:/12148/cb10175203k#about> match_type=unmatched
+  System — CPU: 18.1% | Mem: 54.0% | Disk: 20.2%
+  GPU    — Util: 9% | Mem: 2433 MB
+  Network— DL: 0.23 Mbps | UL: 0.93 Mbps
+  Process— CPU: 3.7% | Mem: 0.47%
+
+Cycle 4:
+  Context: Processed actor 400/92780 - <http://data.bnf.fr/ark:/12148/cb101762641#about> match_type=unmatched
+  System — CPU: 14.4% | Mem: 58.0% | Disk: 20.2%
+  GPU    — Util: 16% | Mem: 2425 MB
+  Network— DL: 0.19 Mbps | UL: 0.04 Mbps
+  Process— CPU: 3.6% | Mem: 0.47%
+
+Cycle 5:
+  Context: Processed actor 500/92780 - <http://data.bnf.fr/ark:/12148/cb101772559#about> match_type=unmatched
+  System — CPU: 11.0% | Mem: 62.0% | Disk: 20.2%
+  GPU    — Util: 7% | Mem: 2425 MB
+  Network— DL: 0.20 Mbps | UL: 0.04 Mbps
+  Process— CPU: 3.5% | Mem: 0.47%
+
+Cycle 6:
+  Context: Processed actor 600/92780 - <http://data.bnf.fr/ark:/12148/cb10178491z#about> match_type=deferred (https://viaf.org/viaf/sourceID/BNF%7C10178491: HTTP 429)
+  System — CPU: 15.6% | Mem: 51.0% | Disk: 20.2%
+  GPU    — Util: 22% | Mem: 2432 MB
+  Network— DL: 0.05 Mbps | UL: 0.14 Mbps
+  Process— CPU: 0.8% | Mem: 0.47%
+
+Cycle 7:
+  Context: Processed actor 700/92780 - <http://data.bnf.fr/ark:/12148/cb10179637z#about> match_type=deferred (https://viaf.org/viaf/sourceID/BNF%7C10179637: HTTP 429)
+  System — CPU: 12.1% | Mem: 35.0% | Disk: 19.8%
+  GPU    — Util: 13% | Mem: 2411 MB
+  Network— DL: 0.03 Mbps | UL: 0.04 Mbps
+  Process— CPU: 0.5% | Mem: 0.17%
+

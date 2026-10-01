@@ -1,0 +1,209 @@
+======================================================================
+SYSTEM MONITORING REPORT - PYTHON
+======================================================================
+
+Start Time: 2026-09-30 18:03:54
+Entry Script: assemble_editions_ready
+PID: 27140
+Sampling Mode: checkpoint-based updates during assemble_editions_ready.py execution
+Network Interface: 5
+Network Speed Source: passive delta from /proc/net/dev
+
+----------------------------------------------------------------------
+
+Cycle 1:
+  Context: Aggregated 50,000 rows, 33,780 editions so far
+  System — CPU: 27.0% | Mem: 59.0% | Disk: 20.2%
+  GPU    — Util: 18% | Mem: 2444 MB
+  Network— DL: 0.03 Mbps | UL: 0.08 Mbps
+  Process— CPU: 97.3% | Mem: 5.11%
+
+Cycle 2:
+  Context: Aggregated 100,000 rows, 66,647 editions so far
+  System — CPU: 20.7% | Mem: 60.0% | Disk: 20.2%
+  GPU    — Util: 14% | Mem: 2444 MB
+  Network— DL: 0.03 Mbps | UL: 0.02 Mbps
+  Process— CPU: 96.0% | Mem: 5.67%
+
+Cycle 3:
+  Context: Aggregated 150,000 rows, 98,427 editions so far
+  System — CPU: 21.7% | Mem: 61.0% | Disk: 20.2%
+  GPU    — Util: 25% | Mem: 2442 MB
+  Network— DL: 0.03 Mbps | UL: 0.02 Mbps
+  Process— CPU: 91.0% | Mem: 6.22%
+
+Cycle 4:
+  Context: Aggregated 200,000 rows, 130,531 editions so far
+  System — CPU: 28.0% | Mem: 61.0% | Disk: 20.2%
+  GPU    — Util: 16% | Mem: 2475 MB
+  Network— DL: 0.33 Mbps | UL: 0.25 Mbps
+  Process— CPU: 93.9% | Mem: 6.77%
+
+Cycle 5:
+  Context: Aggregated 250,000 rows, 163,179 editions so far
+  System — CPU: 24.1% | Mem: 62.0% | Disk: 20.2%
+  GPU    — Util: 19% | Mem: 2472 MB
+  Network— DL: 0.10 Mbps | UL: 0.01 Mbps
+  Process— CPU: 91.5% | Mem: 7.32%
+
+Cycle 6:
+  Context: Aggregated 300,000 rows, 195,449 editions so far
+  System — CPU: 24.6% | Mem: 62.0% | Disk: 20.2%
+  GPU    — Util: 15% | Mem: 2475 MB
+  Network— DL: 0.12 Mbps | UL: 0.17 Mbps
+  Process— CPU: 89.3% | Mem: 7.88%
+
+Cycle 7:
+  Context: Aggregated 350,000 rows, 229,718 editions so far
+  System — CPU: 23.9% | Mem: 63.0% | Disk: 20.2%
+  GPU    — Util: 13% | Mem: 2468 MB
+  Network— DL: 0.16 Mbps | UL: 0.18 Mbps
+  Process— CPU: 90.9% | Mem: 8.46%
+
+Cycle 8:
+  Context: Aggregated 400,000 rows, 265,649 editions so far
+  System — CPU: 28.2% | Mem: 64.0% | Disk: 20.2%
+  GPU    — Util: 12% | Mem: 2458 MB
+  Network— DL: 0.02 Mbps | UL: 0.01 Mbps
+  Process— CPU: 91.2% | Mem: 9.06%
+
+Cycle 9:
+  Context: Aggregated 450,000 rows, 296,664 editions so far
+  System — CPU: 28.9% | Mem: 64.0% | Disk: 20.2%
+  GPU    — Util: 13% | Mem: 2419 MB
+  Network— DL: 0.08 Mbps | UL: 0.05 Mbps
+  Process— CPU: 91.8% | Mem: 9.59%
+
+Cycle 10:
+  Context: Aggregated 500,000 rows, 327,378 editions so far
+  System — CPU: 23.0% | Mem: 65.0% | Disk: 20.2%
+  GPU    — Util: 13% | Mem: 2460 MB
+  Network— DL: 0.06 Mbps | UL: 0.10 Mbps
+  Process— CPU: 90.6% | Mem: 10.11%
+
+Cycle 11:
+  Context: Aggregated 550,000 rows, 354,365 editions so far
+  System — CPU: 20.3% | Mem: 65.0% | Disk: 20.2%
+  GPU    — Util: 8% | Mem: 2467 MB
+  Network— DL: 0.11 Mbps | UL: 0.15 Mbps
+  Process— CPU: 93.8% | Mem: 10.59%
+
+Cycle 12:
+  Context: Aggregated 600,000 rows, 384,497 editions so far
+  System — CPU: 21.0% | Mem: 66.0% | Disk: 20.2%
+  GPU    — Util: 8% | Mem: 2467 MB
+  Network— DL: 0.30 Mbps | UL: 0.73 Mbps
+  Process— CPU: 93.0% | Mem: 11.10%
+
+Cycle 13:
+  Context: Aggregated 650,000 rows, 416,474 editions so far
+  System — CPU: 20.2% | Mem: 66.0% | Disk: 20.2%
+  GPU    — Util: 29% | Mem: 2432 MB
+  Network— DL: 0.05 Mbps | UL: 0.07 Mbps
+  Process— CPU: 92.8% | Mem: 11.65%
+
+Cycle 14:
+  Context: Aggregated 700,000 rows, 446,027 editions so far
+  System — CPU: 17.2% | Mem: 67.0% | Disk: 20.2%
+  GPU    — Util: 15% | Mem: 2424 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 90.2% | Mem: 12.15%
+
+Cycle 15:
+  Context: Aggregated 750,000 rows, 478,871 editions so far
+  System — CPU: 16.9% | Mem: 67.0% | Disk: 20.2%
+  GPU    — Util: 11% | Mem: 2419 MB
+  Network— DL: 0.07 Mbps | UL: 0.06 Mbps
+  Process— CPU: 94.1% | Mem: 12.71%
+
+Cycle 16:
+  Context: Aggregated 800,000 rows, 510,601 editions so far
+  System — CPU: 21.0% | Mem: 68.0% | Disk: 20.2%
+  GPU    — Util: 11% | Mem: 2417 MB
+  Network— DL: 0.03 Mbps | UL: 0.01 Mbps
+  Process— CPU: 94.1% | Mem: 13.25%
+
+Cycle 17:
+  Context: Aggregated 850,000 rows, 541,401 editions so far
+  System — CPU: 20.3% | Mem: 69.0% | Disk: 20.2%
+  GPU    — Util: 25% | Mem: 2438 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 89.3% | Mem: 13.78%
+
+Cycle 18:
+  Context: Aggregated 900,000 rows, 571,164 editions so far
+  System — CPU: 22.4% | Mem: 69.0% | Disk: 20.2%
+  GPU    — Util: 34% | Mem: 2440 MB
+  Network— DL: 0.02 Mbps | UL: 0.09 Mbps
+  Process— CPU: 91.1% | Mem: 14.28%
+
+Cycle 19:
+  Context: Aggregated 950,000 rows, 598,516 editions so far
+  System — CPU: 18.4% | Mem: 69.0% | Disk: 20.2%
+  GPU    — Util: 9% | Mem: 2442 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 77.0% | Mem: 14.74%
+
+Cycle 20:
+  Context: Aggregated 1,000,000 rows, 626,056 editions so far
+  System — CPU: 20.5% | Mem: 70.0% | Disk: 20.2%
+  GPU    — Util: 8% | Mem: 2421 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 92.7% | Mem: 15.21%
+
+Cycle 21:
+  Context: Aggregated 1,050,000 rows, 652,727 editions so far
+  System — CPU: 19.3% | Mem: 71.0% | Disk: 20.2%
+  GPU    — Util: 12% | Mem: 2421 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 87.5% | Mem: 15.66%
+
+Cycle 22:
+  Context: Aggregated 1,100,000 rows, 680,294 editions so far
+  System — CPU: 20.2% | Mem: 71.0% | Disk: 20.2%
+  GPU    — Util: 8% | Mem: 2421 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 91.9% | Mem: 16.13%
+
+Cycle 23:
+  Context: Aggregated 1,150,000 rows, 708,206 editions so far
+  System — CPU: 20.7% | Mem: 72.0% | Disk: 20.2%
+  GPU    — Util: 23% | Mem: 2426 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 92.3% | Mem: 16.65%
+
+Cycle 24:
+  Context: Aggregated 1,200,000 rows, 735,883 editions so far
+  System — CPU: 20.4% | Mem: 72.0% | Disk: 20.2%
+  GPU    — Util: 16% | Mem: 2426 MB
+  Network— DL: 0.01 Mbps | UL: 0.11 Mbps
+  Process— CPU: 88.9% | Mem: 17.12%
+
+Cycle 25:
+  Context: Aggregated 1,250,000 rows, 761,235 editions so far
+  System — CPU: 20.8% | Mem: 73.0% | Disk: 20.2%
+  GPU    — Util: 15% | Mem: 2426 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 95.8% | Mem: 17.55%
+
+Cycle 26:
+  Context: Aggregated 1,300,000 rows, 788,412 editions so far
+  System — CPU: 22.7% | Mem: 73.0% | Disk: 20.2%
+  GPU    — Util: 10% | Mem: 2426 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 90.9% | Mem: 18.02%
+
+Cycle 27:
+  Context: Completed editions-ready assembly run
+  System — CPU: 21.2% | Mem: 78.0% | Disk: 20.6%
+  GPU    — Util: 16% | Mem: 2424 MB
+  Network— DL: 0.02 Mbps | UL: 0.03 Mbps
+  Process— CPU: 96.3% | Mem: 20.78%
+
+----------------------------------------------------------------------
+
+End Time: 2026-09-30 18:04:51
+Total Duration: 56.95 seconds
+Total Cycles: 27
+
+======================================================================

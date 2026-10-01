@@ -22,9 +22,9 @@ and a page for every edition and actor.
 >
 > | | Size |
 > |---|---|
-> | Full graph, N-Triples (`knowledge-graph_merged.nt`) | 39.6 million lines, 7.1 GB |
-> | Oxigraph store built from it, with the portal layer | about 13 GB on disk |
-> | Sample graph (included in this repository) | 18,334 triples, 3.7 MB |
+> | Full graph, N-Triples (`knowledge-graph_merged.nt`) | 39.3 million lines, 7.0 GB |
+> | Oxigraph store built from it, with the portal layer | 9.4 GB on disk (about 13 GB while loading) |
+> | Sample graph (included in this repository) | 14,861 triples, 3.0 MB |
 >
 > Serving the full graph needs a server with that much disk and enough memory
 > to query it, which no free hosting tier provides. The portal therefore runs
@@ -53,7 +53,7 @@ on 3001, portal on 8080) and stops them all on Ctrl+C.
 
 ### The full graph
 
-The full graph is not in the repository (7.1 GB). Rebuilding it needs module
+The full graph is not in the repository (7.0 GB). Rebuilding it needs module
 04's `data/bnf_edition_data/bnf_editions_ready.csv` (482 MB, git-ignored),
 which modules 01–04 produce from the data.bnf.fr acquisition. With that file
 in place, and the pipeline's dependencies installed:
@@ -61,13 +61,16 @@ in place, and the pipeline's dependencies installed:
 ```bash
 pip install pandas rdflib morph-kgc pyyaml "pyoxigraph>=0.3,<0.4" pycountry
 cd 07_graph_materialisation
-python scripts/bnf_graph_pipeline.py all --profile full --force   # ~15 min, 7.1 GB output
+python scripts/bnf_graph_pipeline.py all --profile full --force   # ~15 min, 7.0 GB output
 cd ..
-python 08_sampo_portal/portal.py load --profile full              # builds a ~13 GB store
+python 08_sampo_portal/portal.py load --profile full              # ~40 min, 9.4 GB store
 python 08_sampo_portal/portal.py dev
 ```
 
-Plan for about 25 GB of free disk space (graph plus store).
+Plan for about 25 GB of free disk space (graph plus store, and the
+temporary copy `load` builds before swapping it in). On the full graph the
+portal answers in 1-15 s for tables, map and charts and in 20-30 s for the
+facets over the 814,031 editions, on a 22-core laptop.
 
 ### When the data changes
 

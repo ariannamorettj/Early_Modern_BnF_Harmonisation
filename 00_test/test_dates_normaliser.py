@@ -360,3 +360,34 @@ def test_main_no_llm_flag_skips_llm_step(monkeypatch, tmp_path):
     dn.main()  # must not raise -> load_llm_module was never called
 
     assert (output_dir / dn.OUTPUT_FILENAME_DEFAULT).exists()
+
+
+def _results(dn, originals):
+    return {f: dn.normalise_date(v) for f, v in originals.items()}
+
+
+def test_bare_three_digit_year_is_a_truncated_decade_next_to_modern_dates():
+    """Roger Coke: born 1628, died "170" -- the mask of "170." was lost."""
+    dn = load_dates_normaliser_module()
+    originals = {"actor_birth": "1628", "actor_death": "170", "actor_start": "", "actor_end": ""}
+    out = dn.resolve_truncated_decades(originals, _results(dn, originals))
+    assert out["actor_death"] == {"harmonised": "170X", "format_detected": "truncated_decade",
+                                  "confidence": "medium"}
+    assert out["actor_birth"]["harmonised"] == "1628"
+
+
+def test_masked_second_millennium_context_also_counts():
+    dn = load_dates_normaliser_module()
+    originals = {"actor_birth": "174", "actor_death": "18..", "actor_start": "", "actor_end": ""}
+    out = dn.resolve_truncated_decades(originals, _results(dn, originals))
+    assert out["actor_birth"]["harmonised"] == "174X"
+
+
+def test_three_digit_years_stay_years_for_first_millennium_actors():
+    """Eusebius of Caesarea: 265 - 340-05-30."""
+    dn = load_dates_normaliser_module()
+    originals = {"actor_birth": "265", "actor_death": "0340-05-30", "actor_start": "265", "actor_end": "340"}
+    out = dn.resolve_truncated_decades(originals, _results(dn, originals))
+    assert out["actor_birth"]["harmonised"] == "0265"
+    assert out["actor_end"]["harmonised"] == "0340"
+    assert all(r["format_detected"] != "truncated_decade" for r in out.values())

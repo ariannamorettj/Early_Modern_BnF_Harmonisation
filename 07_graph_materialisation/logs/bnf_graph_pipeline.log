@@ -504,3 +504,182 @@
 2026-09-30 12:39:46,095 [INFO] [VALIDATE] line count: 39598072
 2026-09-30 12:39:46,418 [INFO] [VALIDATE] sampled valid non-empty lines: 10000
 2026-09-30 12:39:46,418 [INFO] [DONE]
+2026-09-30 18:18:45,681 [INFO] [START] command=all profile=sample time=2026-09-30T18:18:45
+2026-09-30 18:18:45,682 [INFO] [PROJECT] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:18:45,682 [INFO] [PREPROCESS] removing existing ready directory: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert
+2026-09-30 18:18:46,488 [INFO] [SAMPLE] 100 seed actors (of 90713 eligible) -> 238 edition ids
+2026-09-30 18:18:51,607 [INFO] [SAMPLE] editions pulled from bnf_editions_ready.csv: 238
+2026-09-30 18:18:51,651 [INFO] [PREPROCESS][BIB] estc columns from bnf_editions_enriched.csv: 20 enriched rows, 0 editions with an estc_id
+2026-09-30 18:18:51,666 [INFO] [SAMPLE] actors in sample (seeds + co-credited): 187
+2026-09-30 18:18:51,697 [INFO] [PREPROCESS][ACTORS] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\06_mapping\output\bnf_actors_enriched.csv
+2026-09-30 18:18:51,697 [INFO] [PREPROCESS][ACTORS] rows read: 187
+2026-09-30 18:18:51,765 [INFO] [PREPROCESS][ROLES] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_actors_ready_roles.csv (345 rows)
+2026-09-30 18:18:51,765 [INFO] [PREPROCESS][ROLES] skipped 16851 role edges whose edition id is not in the edition table
+2026-09-30 18:18:51,780 [INFO] [PREPROCESS] mapping_actors.yaml: added empty columns ['actor_profession']
+2026-09-30 18:18:51,847 [INFO] [PREPROCESS] mapping_actors.yaml: emptied 1592 fragment cells whose condition column is empty
+2026-09-30 18:18:51,855 [INFO] [PREPROCESS][ACTORS] ready main: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_actors_ready.csv (187 rows)
+2026-09-30 18:18:51,874 [INFO] [PREPROCESS][ACTORS] ready exact links: 471 rows
+2026-09-30 18:18:51,886 [INFO] [PREPROCESS][ACTORS] ready close links: 297 rows
+2026-09-30 18:18:51,886 [INFO] [PREPROCESS][BIB] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\data\bnf_edition_data\bnf_editions_ready.csv
+2026-09-30 18:18:51,886 [INFO] [PREPROCESS][BIB] rows read: 238
+2026-09-30 18:18:52,061 [INFO] [PREPROCESS] mapping_bibliographic.yaml: emptied 1345 fragment cells whose condition column is empty
+2026-09-30 18:18:52,071 [INFO] [PREPROCESS][BIB] ready editions: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_editions_ready.csv (238 rows)
+2026-09-30 18:18:52,072 [INFO] [PREPROCESS] done (linked sample)
+2026-09-30 18:18:52,095 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 18:18:52,095 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_actors.ini
+2026-09-30 18:18:52,095 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:18:56,467 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_actors.nt
+2026-09-30 18:18:56,522 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_actors.nt (4238 lines)
+2026-09-30 18:18:56,525 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 18:18:56,526 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_bibliographic.ini
+2026-09-30 18:18:56,526 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:19:00,512 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_bibliographic.nt
+2026-09-30 18:19:00,599 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_bibliographic.nt (10554 lines)
+2026-09-30 18:19:00,638 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 18:19:00,638 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_roles.ini
+2026-09-30 18:19:00,638 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:19:03,594 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_roles.nt
+2026-09-30 18:19:03,646 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_roles.nt (1683 lines)
+2026-09-30 18:19:03,646 [INFO] [MATERIALIZE] done
+2026-09-30 18:19:03,647 [INFO] [MERGE] appending knowledge-graph_actors.nt
+2026-09-30 18:19:03,649 [INFO] [MERGE] appending knowledge-graph_bibliographic.nt
+2026-09-30 18:19:03,651 [INFO] [MERGE] appending knowledge-graph_roles.nt
+2026-09-30 18:19:03,676 [INFO] [MERGE] output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_merged.nt (16475 lines)
+2026-09-30 18:19:03,775 [INFO] [VALIDATE] file: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_merged.nt
+2026-09-30 18:19:03,775 [INFO] [VALIDATE] line count: 16475
+2026-09-30 18:19:04,357 [INFO] [VALIDATE] sampled valid non-empty lines: 16475
+2026-09-30 18:19:04,357 [INFO] [DONE]
+2026-09-30 18:19:15,974 [INFO] [START] command=all profile=full time=2026-09-30T18:19:15
+2026-09-30 18:19:15,974 [INFO] [PROJECT] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:19:15,974 [INFO] [PREPROCESS] removing existing ready directory: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\ready_to_convert
+2026-09-30 18:19:15,983 [INFO] [PREPROCESS] actors source: module 06 enriched (bnf_actors_enriched.csv)
+2026-09-30 18:19:26,504 [INFO] [PREPROCESS][ROLES] edition id map: 814031 bnf_id -> IRI from bnf_editions_ready.csv
+2026-09-30 18:19:26,840 [INFO] [PREPROCESS][ACTORS] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\06_mapping\output\bnf_actors_enriched.csv
+2026-09-30 18:19:27,369 [INFO] [PREPROCESS][ACTORS] rows read: 92780
+2026-09-30 18:19:55,261 [INFO] [PREPROCESS][ROLES] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\ready_to_convert\bnf_actors_ready_roles.csv (507338 rows)
+2026-09-30 18:19:55,751 [INFO] [PREPROCESS] mapping_actors.yaml: added empty columns ['actor_profession']
+2026-09-30 18:19:56,109 [INFO] [PREPROCESS] mapping_actors.yaml: emptied 884264 fragment cells whose condition column is empty
+2026-09-30 18:19:57,702 [INFO] [PREPROCESS][ACTORS] ready main: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\ready_to_convert\bnf_actors_ready.csv (92780 rows)
+2026-09-30 18:20:00,176 [INFO] [PREPROCESS][ACTORS] ready exact links: 121968 rows
+2026-09-30 18:20:01,768 [INFO] [PREPROCESS][ACTORS] ready close links: 56219 rows
+2026-09-30 18:20:01,811 [INFO] [PREPROCESS] editions source: module 04 ready (bnf_editions_ready.csv) + estc columns from bnf_editions_enriched.csv
+2026-09-30 18:20:11,136 [INFO] [PREPROCESS][BIB] estc columns from bnf_editions_enriched.csv: 20 enriched rows, 0 editions with an estc_id
+2026-09-30 18:20:11,225 [INFO] [PREPROCESS][BIB] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\data\bnf_edition_data\bnf_editions_ready.csv
+2026-09-30 18:20:11,225 [INFO] [PREPROCESS][BIB] rows read: 814031
+2026-09-30 18:23:55,647 [INFO] [PREPROCESS] mapping_bibliographic.yaml: emptied 4912842 fragment cells whose condition column is empty
+2026-09-30 18:24:20,332 [INFO] [PREPROCESS][BIB] ready editions: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\ready_to_convert\bnf_editions_ready.csv (814031 rows)
+2026-09-30 18:24:20,669 [INFO] [PREPROCESS] done
+2026-09-30 18:24:20,872 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 18:24:20,872 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_full_actors.ini
+2026-09-30 18:24:20,872 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:24:51,568 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_actors.nt
+2026-09-30 18:24:52,226 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\full\knowledge-graph_actors.nt (1734773 lines)
+2026-09-30 18:24:52,231 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 18:24:52,231 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_full_bibliographic.ini
+2026-09-30 18:24:52,231 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:32:24,659 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_bibliographic.nt
+2026-09-30 18:32:36,681 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\full\knowledge-graph_bibliographic.nt (34898670 lines)
+2026-09-30 18:32:36,693 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 18:32:36,693 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_full_roles.ini
+2026-09-30 18:32:36,693 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 18:32:58,667 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_roles.nt
+2026-09-30 18:32:59,613 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\full\knowledge-graph_roles.nt (2647836 lines)
+2026-09-30 18:32:59,613 [INFO] [MATERIALIZE] done
+2026-09-30 18:32:59,614 [INFO] [MERGE] appending knowledge-graph_actors.nt
+2026-09-30 18:32:59,843 [INFO] [MERGE] appending knowledge-graph_bibliographic.nt
+2026-09-30 18:33:05,092 [INFO] [MERGE] appending knowledge-graph_roles.nt
+2026-09-30 18:33:12,674 [INFO] [MERGE] output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\full\knowledge-graph_merged.nt (39281279 lines)
+2026-09-30 18:33:20,076 [INFO] [VALIDATE] file: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\full\knowledge-graph_merged.nt
+2026-09-30 18:33:20,077 [INFO] [VALIDATE] line count: 39281279
+2026-09-30 18:33:20,465 [INFO] [VALIDATE] sampled valid non-empty lines: 10000
+2026-09-30 18:33:20,465 [INFO] [DONE]
+2026-09-30 20:10:11,487 [INFO] [START] command=all profile=sample time=2026-09-30T20:10:11
+2026-09-30 20:10:11,492 [INFO] [PROJECT] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:10:11,493 [INFO] [PREPROCESS] removing existing ready directory: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert
+2026-09-30 20:10:12,373 [INFO] [SAMPLE] 20 seed actors (of 90713 eligible) -> 47 edition ids
+2026-09-30 20:10:18,233 [INFO] [SAMPLE] editions pulled from bnf_editions_ready.csv: 47
+2026-09-30 20:10:26,007 [INFO] [PREPROCESS][BIB] estc columns from bnf_editions_enriched.csv: 814031 enriched rows, 0 editions with an estc_id
+2026-09-30 20:10:26,201 [INFO] [SAMPLE] actors in sample (seeds + co-credited): 31
+2026-09-30 20:10:26,231 [INFO] [PREPROCESS][ACTORS] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\06_mapping\output\bnf_actors_enriched.csv
+2026-09-30 20:10:26,231 [INFO] [PREPROCESS][ACTORS] rows read: 31
+2026-09-30 20:10:26,261 [INFO] [PREPROCESS][ROLES] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_actors_ready_roles.csv (58 rows)
+2026-09-30 20:10:26,261 [INFO] [PREPROCESS][ROLES] skipped 173 role edges whose edition id is not in the edition table
+2026-09-30 20:10:26,277 [INFO] [PREPROCESS] mapping_actors.yaml: added empty columns ['actor_profession']
+2026-09-30 20:10:26,363 [INFO] [PREPROCESS] mapping_actors.yaml: emptied 277 fragment cells whose condition column is empty
+2026-09-30 20:10:26,366 [INFO] [PREPROCESS][ACTORS] ready main: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_actors_ready.csv (31 rows)
+2026-09-30 20:10:26,375 [INFO] [PREPROCESS][ACTORS] ready exact links: 45 rows
+2026-09-30 20:10:26,382 [INFO] [PREPROCESS][ACTORS] ready close links: 18 rows
+2026-09-30 20:10:26,383 [INFO] [PREPROCESS][BIB] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\data\bnf_edition_data\bnf_editions_ready.csv
+2026-09-30 20:10:26,383 [INFO] [PREPROCESS][BIB] rows read: 47
+2026-09-30 20:10:26,475 [INFO] [PREPROCESS] mapping_bibliographic.yaml: emptied 309 fragment cells whose condition column is empty
+2026-09-30 20:10:26,478 [INFO] [PREPROCESS][BIB] ready editions: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_editions_ready.csv (47 rows)
+2026-09-30 20:10:26,478 [INFO] [PREPROCESS] done (linked sample)
+2026-09-30 20:10:26,494 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 20:10:26,494 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_actors.ini
+2026-09-30 20:10:26,494 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:10:30,643 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_actors.nt
+2026-09-30 20:10:30,722 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_actors.nt (660 lines)
+2026-09-30 20:10:30,730 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 20:10:30,730 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_bibliographic.ini
+2026-09-30 20:10:30,730 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:10:34,760 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_bibliographic.nt
+2026-09-30 20:10:34,870 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_bibliographic.nt (1909 lines)
+2026-09-30 20:10:34,882 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 20:10:34,883 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_roles.ini
+2026-09-30 20:10:34,883 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:10:37,829 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_roles.nt
+2026-09-30 20:10:37,916 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_roles.nt (305 lines)
+2026-09-30 20:10:37,916 [INFO] [MATERIALIZE] done
+2026-09-30 20:10:37,918 [INFO] [MERGE] appending knowledge-graph_actors.nt
+2026-09-30 20:10:37,920 [INFO] [MERGE] appending knowledge-graph_bibliographic.nt
+2026-09-30 20:10:37,922 [INFO] [MERGE] appending knowledge-graph_roles.nt
+2026-09-30 20:10:37,977 [INFO] [MERGE] output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_merged.nt (2874 lines)
+2026-09-30 20:10:38,043 [INFO] [VALIDATE] file: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_merged.nt
+2026-09-30 20:10:38,043 [INFO] [VALIDATE] line count: 2874
+2026-09-30 20:10:38,139 [INFO] [VALIDATE] sampled valid non-empty lines: 2874
+2026-09-30 20:10:38,140 [INFO] [DONE]
+2026-09-30 20:11:03,931 [INFO] [START] command=all profile=sample time=2026-09-30T20:11:03
+2026-09-30 20:11:03,931 [INFO] [PROJECT] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:11:03,931 [INFO] [PREPROCESS] removing existing ready directory: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert
+2026-09-30 20:11:04,775 [INFO] [SAMPLE] 100 seed actors (of 90713 eligible) -> 238 edition ids
+2026-09-30 20:11:11,039 [INFO] [SAMPLE] editions pulled from bnf_editions_ready.csv: 238
+2026-09-30 20:11:20,149 [INFO] [PREPROCESS][BIB] estc columns from bnf_editions_enriched.csv: 814031 enriched rows, 12 editions with an estc_id
+2026-09-30 20:11:20,342 [INFO] [SAMPLE] actors in sample (seeds + co-credited): 187
+2026-09-30 20:11:20,376 [INFO] [PREPROCESS][ACTORS] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\06_mapping\output\bnf_actors_enriched.csv
+2026-09-30 20:11:20,376 [INFO] [PREPROCESS][ACTORS] rows read: 187
+2026-09-30 20:11:20,479 [INFO] [PREPROCESS][ROLES] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_actors_ready_roles.csv (345 rows)
+2026-09-30 20:11:20,479 [INFO] [PREPROCESS][ROLES] skipped 16851 role edges whose edition id is not in the edition table
+2026-09-30 20:11:20,498 [INFO] [PREPROCESS] mapping_actors.yaml: added empty columns ['actor_profession']
+2026-09-30 20:11:20,570 [INFO] [PREPROCESS] mapping_actors.yaml: emptied 1592 fragment cells whose condition column is empty
+2026-09-30 20:11:20,583 [INFO] [PREPROCESS][ACTORS] ready main: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_actors_ready.csv (187 rows)
+2026-09-30 20:11:20,616 [INFO] [PREPROCESS][ACTORS] ready exact links: 471 rows
+2026-09-30 20:11:20,631 [INFO] [PREPROCESS][ACTORS] ready close links: 297 rows
+2026-09-30 20:11:20,631 [INFO] [PREPROCESS][BIB] enriched input: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\..\data\bnf_edition_data\bnf_editions_ready.csv
+2026-09-30 20:11:20,631 [INFO] [PREPROCESS][BIB] rows read: 238
+2026-09-30 20:11:20,817 [INFO] [PREPROCESS] mapping_bibliographic.yaml: emptied 1345 fragment cells whose condition column is empty
+2026-09-30 20:11:20,834 [INFO] [PREPROCESS][BIB] ready editions: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\input\sample_ready_to_convert\bnf_editions_ready.csv (238 rows)
+2026-09-30 20:11:20,834 [INFO] [PREPROCESS] done (linked sample)
+2026-09-30 20:11:20,854 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 20:11:20,854 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_actors.ini
+2026-09-30 20:11:20,854 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:11:24,978 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_actors.nt
+2026-09-30 20:11:25,086 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_actors.nt (4238 lines)
+2026-09-30 20:11:25,093 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 20:11:25,094 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_bibliographic.ini
+2026-09-30 20:11:25,094 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:11:29,321 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_bibliographic.nt
+2026-09-30 20:11:29,370 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_bibliographic.nt (10566 lines)
+2026-09-30 20:11:29,376 [INFO] [RUN] configured python_bin not found (/Users/ariannamorettj/miniforge3/bin/python3.12); using C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe
+2026-09-30 20:11:29,376 [INFO] [RUN] C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\.venv\Scripts\python.exe -m morph_kgc C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\runtime_configs\morph_sample_roles.ini
+2026-09-30 20:11:29,376 [INFO] [RUN] cwd=C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation
+2026-09-30 20:11:32,281 [INFO] [MATERIALIZE] appending 0-0-0-0.nt -> knowledge-graph_roles.nt
+2026-09-30 20:11:32,365 [INFO] [MATERIALIZE] final output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_roles.nt (1683 lines)
+2026-09-30 20:11:32,366 [INFO] [MATERIALIZE] done
+2026-09-30 20:11:32,367 [INFO] [MERGE] appending knowledge-graph_actors.nt
+2026-09-30 20:11:32,368 [INFO] [MERGE] appending knowledge-graph_bibliographic.nt
+2026-09-30 20:11:32,370 [INFO] [MERGE] appending knowledge-graph_roles.nt
+2026-09-30 20:11:32,422 [INFO] [MERGE] output: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_merged.nt (16487 lines)
+2026-09-30 20:11:32,509 [INFO] [VALIDATE] file: C:\Users\ariet\Documents\GitHub\Early_Modern_BnF_Harmonisation\07_graph_materialisation\output\sample\knowledge-graph_merged.nt
+2026-09-30 20:11:32,509 [INFO] [VALIDATE] line count: 16487
+2026-09-30 20:11:32,862 [INFO] [VALIDATE] sampled valid non-empty lines: 10000
+2026-09-30 20:11:32,863 [INFO] [DONE]

@@ -27,9 +27,13 @@ output/bnf_actors_enriched.csv
     external authorities" dataset consumed downstream, same rationale as
     already merging in VIAF/Wikidata rather than leaving those separate)
 
-output/bnf_editions_enriched.csv
+data/bnf_edition_data/bnf_editions_enriched.csv
+    (git-ignored like bnf_editions_ready.csv: about 500 MB)
     All original edition columns + estc_id, estc_title, estc_author,
-    estc_year, estc_language, estc_match_type, estc_confidence
+    estc_year, estc_language, estc_match_type, estc_confidence,
+    estc_candidate_id (03_map_estc_ecco.py; estc_id is filled only for the
+    actor_bridge / heuristic / llm match types, an ambiguous_* row keeps its
+    best candidate in estc_candidate_id instead)
 
 report/merge_report.json
     Coverage statistics for each enrichment dimension.
@@ -46,7 +50,7 @@ python 06_mapping/04_merge_mappings.py \\
     --editions   data/bnf_edition_data/bnf_editions_ready.csv \\
     --estc       06_mapping/output/estc_mapping.csv \\
     --out-actors   06_mapping/output/bnf_actors_enriched.csv \\
-    --out-editions 06_mapping/output/bnf_editions_enriched.csv \\
+    --out-editions data/bnf_edition_data/bnf_editions_enriched.csv \\
     --report    06_mapping/report/merge_report.json
 """
 
@@ -76,12 +80,15 @@ ESTC_ACTORS_DEFAULT  = "06_mapping/output/estc_actor_mapping.csv"
 EDITIONS_DEFAULT     = "data/bnf_edition_data/bnf_editions_ready.csv"
 ESTC_DEFAULT         = "06_mapping/output/estc_mapping.csv"
 OUT_ACTORS        = "06_mapping/output/bnf_actors_enriched.csv"
-OUT_EDITIONS      = "06_mapping/output/bnf_editions_enriched.csv"
+OUT_EDITIONS      = "data/bnf_edition_data/bnf_editions_enriched.csv"  # ~500 MB, git-ignored
 REPORT_DEFAULT    = "06_mapping/report/merge_report.json"
 
 # 05_map_estc_actors.py match types resolved automatically; the ambiguous_*
 # types keep a candidate id but stay unresolved pending review.
 ESTC_ACTOR_CONFIDENT_TYPES = {"viaf_id", "name_and_dates"}
+# 03_map_estc_ecco.py match types resolved automatically; ambiguous_* rows
+# keep their best candidate in estc_candidate_id only.
+ESTC_EDITION_CONFIDENT_TYPES = {"actor_bridge", "heuristic", "llm"}
 
 
 def normalise(v) -> str:
@@ -201,7 +208,7 @@ def run_merge(actors_path, viaf_path, wikidata_path,
 
     edition_records = []
     edition_fields  = None
-    stats_editions  = {"total": 0, "estc_matched": 0}
+    stats_editions  = {"total": 0, "estc_matched": 0, "estc_ambiguous": 0}
 
     if os.path.exists(editions_path):
         with open(editions_path, "r", encoding="utf-8", newline="",
@@ -213,7 +220,10 @@ def run_merge(actors_path, viaf_path, wikidata_path,
                 bnf_ed = normalise(row.get("bnf_id") or row.get("edition", ""))
 
                 erow = estc_idx.get(bnf_ed, {})
-                row["estc_id"]          = normalise(erow.get("estc_id", ""))
+                estc_ed_id = normalise(erow.get("estc_id", ""))
+                confident  = normalise(erow.get("match_type", "")) in ESTC_EDITION_CONFIDENT_TYPES
+                row["estc_id"]           = estc_ed_id if confident else ""
+                row["estc_candidate_id"] = "" if confident else estc_ed_id
                 row["estc_title"]       = normalise(erow.get("estc_title", ""))
                 row["estc_author"]      = normalise(erow.get("estc_author", ""))
                 row["estc_year"]        = normalise(erow.get("estc_year", ""))
@@ -222,12 +232,15 @@ def run_merge(actors_path, viaf_path, wikidata_path,
                 row["estc_confidence"]  = normalise(erow.get("confidence", ""))
                 if row["estc_id"]:
                     stats_editions["estc_matched"] += 1
+                elif row["estc_candidate_id"]:
+                    stats_editions["estc_ambiguous"] += 1
 
                 edition_records.append(row)
 
     extra_edition_cols = [
         "estc_id", "estc_title", "estc_author", "estc_year",
         "estc_language", "estc_match_type", "estc_confidence",
+        "estc_candidate_id",
     ]
     final_edition_fields = (edition_fields or []) + [
         c for c in extra_edition_cols if c not in (edition_fields or [])
@@ -235,6 +248,7 @@ def run_merge(actors_path, viaf_path, wikidata_path,
     write_csv(edition_records, out_editions, final_edition_fields)
     print(f"\n✓ Enriched editions → {out_editions}")
     print(f"  ESTC matched      : {stats_editions['estc_matched']:,} / {stats_editions['total']:,}")
+    print(f"  ESTC ambiguous (candidate only): {stats_editions['estc_ambiguous']:,}")
 
     # ── Report ────────────────────────────────────────────────────────────────
     report = {"actors": stats_actors, "editions": stats_editions}

@@ -6,6 +6,9 @@
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
     "sparqlQueriesFile": "SparqlQueriesActors.js",
+    "generalQueries": {
+        "facetResultSetQuery": "facetResultSetQueryLateral"
+    },
     "baseURI": "http://data.bnf.fr/ark:/12148",
     "URITemplate": "<BASE_URI>/<LOCAL_ID>#about",
     "facetClass": "obj:Person obj:Organization",

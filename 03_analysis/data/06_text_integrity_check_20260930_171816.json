@@ -1,0 +1,68 @@
+{
+  "issue_types": [
+    "invalid_utf8",
+    "replacement_char",
+    "double_encoded",
+    "control_char",
+    "serialised_rdf_literal"
+  ],
+  "files": [
+    {
+      "file": "01_data_retrieval/02_actors/actors_data/actor_data.csv",
+      "rows": 551622,
+      "rows_with_any_issue": 11425,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 11425
+      },
+      "by_column": {
+        "actor_name": {
+          "serialised_rdf_literal": 11425
+        }
+      },
+      "examples": {
+        "actor_name": {
+          "serialised_rdf_literal": [
+            {
+              "line": 262,
+              "value": "\"Imprimerie des 86 départements. Paris\"@fr"
+            },
+            {
+              "line": 263,
+              "value": "\"Imprimerie des 86 départements. Paris\"@fr"
+            },
+            {
+              "line": 364,
+              "value": "\"Le Cercle social. Paris\"@fr"
+            },
+            {
+              "line": 365,
+              "value": "\"Le Cercle social. Paris\"@fr"
+            },
+            {
+              "line": 454,
+              "value": "\"Club de 1789. Paris\"@fr"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "01_data_retrieval/01_editions/data/bnf_edition_data_raw.csv",
+      "rows": 1344914,
+      "rows_with_any_issue": 0,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 0
+      },
+      "by_column": {},
+      "examples": {}
+    }
+  ]
+}

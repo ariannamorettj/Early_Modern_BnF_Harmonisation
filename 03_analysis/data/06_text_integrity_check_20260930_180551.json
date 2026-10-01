@@ -1,0 +1,25 @@
+{
+  "issue_types": [
+    "invalid_utf8",
+    "replacement_char",
+    "double_encoded",
+    "control_char",
+    "serialised_rdf_literal"
+  ],
+  "files": [
+    {
+      "file": "05_subset_optimisation/output/bnf_actors_optimised.csv",
+      "rows": 124695,
+      "rows_with_any_issue": 0,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 0
+      },
+      "by_column": {},
+      "examples": {}
+    }
+  ]
+}

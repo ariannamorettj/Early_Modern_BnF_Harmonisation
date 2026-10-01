@@ -68,6 +68,16 @@ export const editionProperties = `
     }
     UNION
     {
+      ?id rdfs:seeAlso ?estcRecord__id .
+      FILTER(STRSTARTS(STR(?estcRecord__id), "https://estc.bl.uk/"))
+      BIND(REPLACE(STR(?estcRecord__id), "^.*/", "") AS ?estcNumber)
+      BIND(CONCAT("ESTC ", ?estcNumber) AS ?estcRecord__prefLabel)
+      # estc.bl.uk now redirects to the ESTC home page on CERL, whose record
+      # pages have no stable URL; CERL's search by ESTC number finds the record.
+      BIND(CONCAT("https://data.cerl.org/estc/_search?query=", ?estcNumber) AS ?estcRecord__dataProviderUrl)
+    }
+    UNION
+    {
       ?id crm:P3_has_note ?description .
     }
     UNION
@@ -112,3 +122,5 @@ export const editionsByDecadeQuery = `
   GROUP BY ?category
   ORDER BY ?category
 `
+
+export { facetResultSetQueryLateral } from './SparqlQueriesShared.js'

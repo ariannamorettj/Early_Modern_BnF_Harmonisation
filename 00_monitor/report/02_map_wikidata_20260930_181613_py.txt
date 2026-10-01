@@ -1,0 +1,13 @@
+======================================================================
+SYSTEM MONITORING REPORT - PYTHON
+======================================================================
+
+Start Time: 2026-09-30 18:16:13
+Entry Script: 02_map_wikidata
+PID: 19732
+Sampling Mode: checkpoint-based updates during 02_map_wikidata.py execution
+Network Interface: 5
+Network Speed Source: passive delta from /proc/net/dev
+
+----------------------------------------------------------------------
+

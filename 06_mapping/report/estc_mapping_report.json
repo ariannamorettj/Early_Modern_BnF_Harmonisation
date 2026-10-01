@@ -1,0 +1,12 @@
+{
+  "total": 814031,
+  "written": 32353,
+  "out_of_scope_this_run": 781678,
+  "pass1_actor_bridge": 6385,
+  "pass2_heuristic": 3331,
+  "pass3_llm": 0,
+  "pass3_llm_ambiguous": 0,
+  "ambiguous_actor_bridge": 2189,
+  "ambiguous_heuristic": 741,
+  "unmatched": 19707
+}

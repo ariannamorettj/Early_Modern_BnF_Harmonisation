@@ -1,0 +1,902 @@
+======================================================================
+SYSTEM MONITORING REPORT - PYTHON
+======================================================================
+
+Start Time: 2026-09-30 18:12:13
+Entry Script: dates_normaliser
+PID: 11668
+Sampling Mode: checkpoint-based updates during dates_normaliser.py execution
+Network Interface: 5
+Network Speed Source: passive delta from /proc/net/dev
+
+----------------------------------------------------------------------
+
+Cycle 1:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb101808575#about> (index 1000/124695)
+  System — CPU: 17.1% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 20% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.00 Mbps
+  Process— CPU: 99.4% | Mem: 0.23%
+
+Cycle 2:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb101951507#about> (index 2000/124695)
+  System — CPU: 14.4% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 20% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.8% | Mem: 0.23%
+
+Cycle 3:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10214021n#about> (index 3000/124695)
+  System — CPU: 12.6% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 4:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10234062n#about> (index 4000/124695)
+  System — CPU: 16.0% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 5:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10250782n#about> (index 5000/124695)
+  System — CPU: 16.9% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 6:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb102679378#about> (index 6000/124695)
+  System — CPU: 10.6% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 7:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10283411n#about> (index 7000/124695)
+  System — CPU: 13.7% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 8:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb103006590#about> (index 8000/124695)
+  System — CPU: 13.2% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.01 Mbps
+  Process— CPU: 19.8% | Mem: 0.23%
+
+Cycle 9:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb103114634#about> (index 9000/124695)
+  System — CPU: 13.5% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 10:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10325130h#about> (index 10000/124695)
+  System — CPU: 21.6% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 11:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10341223z#about> (index 11000/124695)
+  System — CPU: 7.4% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 12:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10349797t#about> (index 12000/124695)
+  System — CPU: 20.2% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 13:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb103618293#about> (index 13000/124695)
+  System — CPU: 9.1% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 19.8% | Mem: 0.23%
+
+Cycle 14:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10373874m#about> (index 14000/124695)
+  System — CPU: 14.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 15:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10386724q#about> (index 15000/124695)
+  System — CPU: 17.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 0.0% | Mem: 0.23%
+
+Cycle 16:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb103956472#about> (index 16000/124695)
+  System — CPU: 16.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 17:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10406624z#about> (index 17000/124695)
+  System — CPU: 25.6% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 18:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10418180r#about> (index 18000/124695)
+  System — CPU: 21.3% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.04 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 19:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10428452j#about> (index 19000/124695)
+  System — CPU: 15.9% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 20:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10436399n#about> (index 20000/124695)
+  System — CPU: 14.8% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 15% | Mem: 2420 MB
+  Network— DL: 0.03 Mbps | UL: 0.00 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 21:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10446596c#about> (index 21000/124695)
+  System — CPU: 9.8% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 15% | Mem: 2420 MB
+  Network— DL: 0.03 Mbps | UL: 0.01 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 22:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10457796c#about> (index 22000/124695)
+  System — CPU: 33.3% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 23:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10466202s#about> (index 23000/124695)
+  System — CPU: 11.7% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.03 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 24:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb104751432#about> (index 24000/124695)
+  System — CPU: 11.6% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 25:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10484229r#about> (index 25000/124695)
+  System — CPU: 15.1% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 49.6% | Mem: 0.23%
+
+Cycle 26:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb104938448#about> (index 26000/124695)
+  System — CPU: 11.8% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 27:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10500972c#about> (index 27000/124695)
+  System — CPU: 23.4% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.8% | Mem: 0.23%
+
+Cycle 28:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10509874z#about> (index 28000/124695)
+  System — CPU: 16.7% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 49.6% | Mem: 0.23%
+
+Cycle 29:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10519815n#about> (index 29000/124695)
+  System — CPU: 20.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 30:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10526546k#about> (index 30000/124695)
+  System — CPU: 19.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 31:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10534809x#about> (index 31000/124695)
+  System — CPU: 6.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 32:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb105443328#about> (index 32000/124695)
+  System — CPU: 16.0% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 33:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb105511415#about> (index 33000/124695)
+  System — CPU: 16.8% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 16% | Mem: 2420 MB
+  Network— DL: 0.05 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 34:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10559372x#about> (index 34000/124695)
+  System — CPU: 12.1% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 16% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 35:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10566877h#about> (index 35000/124695)
+  System — CPU: 19.2% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 16% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 36:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb105737333#about> (index 36000/124695)
+  System — CPU: 13.4% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 37:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10581608b#about> (index 37000/124695)
+  System — CPU: 16.1% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 38:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10586958x#about> (index 38000/124695)
+  System — CPU: 12.5% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 39:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10594198p#about> (index 39000/124695)
+  System — CPU: 19.0% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 40:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10600951k#about> (index 40000/124695)
+  System — CPU: 27.0% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 41:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106070079#about> (index 41000/124695)
+  System — CPU: 10.2% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 42:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106141208#about> (index 42000/124695)
+  System — CPU: 21.9% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 43:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10619664g#about> (index 43000/124695)
+  System — CPU: 10.9% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2422 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 19.8% | Mem: 0.23%
+
+Cycle 44:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106264098#about> (index 44000/124695)
+  System — CPU: 15.5% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2422 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 45:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10631701b#about> (index 45000/124695)
+  System — CPU: 13.3% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 46:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106382547#about> (index 46000/124695)
+  System — CPU: 8.3% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 19% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 47:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10643250v#about> (index 47000/124695)
+  System — CPU: 14.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 19% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 48:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106495299#about> (index 48000/124695)
+  System — CPU: 13.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 19% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.02 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 49:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10654689f#about> (index 49000/124695)
+  System — CPU: 12.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 16% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 50:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10660981r#about> (index 50000/124695)
+  System — CPU: 12.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 16% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.03 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 51:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10667374h#about> (index 51000/124695)
+  System — CPU: 13.1% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.07 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 52:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10673597z#about> (index 52000/124695)
+  System — CPU: 12.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.80 Mbps | UL: 0.02 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 53:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10680093p#about> (index 53000/124695)
+  System — CPU: 27.7% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 49.6% | Mem: 0.23%
+
+Cycle 54:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106864608#about> (index 54000/124695)
+  System — CPU: 20.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 14% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 55:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106932428#about> (index 55000/124695)
+  System — CPU: 18.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 14% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 56:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb106998849#about> (index 56000/124695)
+  System — CPU: 10.1% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 14% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 57:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb107064091#about> (index 57000/124695)
+  System — CPU: 10.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 12% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 0.0% | Mem: 0.23%
+
+Cycle 58:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10714075f#about> (index 58000/124695)
+  System — CPU: 12.7% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 12% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 39.6% | Mem: 0.23%
+
+Cycle 59:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb107221983#about> (index 59000/124695)
+  System — CPU: 13.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 60:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb107301515#about> (index 60000/124695)
+  System — CPU: 12.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 61:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10738207w#about> (index 61000/124695)
+  System — CPU: 15.3% | Mem: 53.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 62:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb107471632#about> (index 62000/124695)
+  System — CPU: 14.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 63:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb10920722c#about> (index 63000/124695)
+  System — CPU: 15.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 49.6% | Mem: 0.23%
+
+Cycle 64:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb111083874#about> (index 64000/124695)
+  System — CPU: 12.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.01 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 65:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb112325782#about> (index 65000/124695)
+  System — CPU: 14.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.02 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 66:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb11297233q#about> (index 66000/124695)
+  System — CPU: 17.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 0.0% | Mem: 0.23%
+
+Cycle 67:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb114921040#about> (index 67000/124695)
+  System — CPU: 31.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 66.5% | Mem: 0.23%
+
+Cycle 68:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb117608588#about> (index 68000/124695)
+  System — CPU: 20.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 69:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb11769003z#about> (index 69000/124695)
+  System — CPU: 17.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 70:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb118213156#about> (index 70000/124695)
+  System — CPU: 11.7% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 71:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb11900681b#about> (index 71000/124695)
+  System — CPU: 13.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 0.0% | Mem: 0.23%
+
+Cycle 72:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb119573999#about> (index 72000/124695)
+  System — CPU: 17.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 73:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb120019721#about> (index 73000/124695)
+  System — CPU: 11.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 13% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 74:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb120633576#about> (index 74000/124695)
+  System — CPU: 16.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 13% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 60.1% | Mem: 0.23%
+
+Cycle 75:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb12102203p#about> (index 75000/124695)
+  System — CPU: 15.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.8% | Mem: 0.23%
+
+Cycle 76:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb12146971w#about> (index 76000/124695)
+  System — CPU: 19.7% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.00 Mbps
+  Process— CPU: 39.6% | Mem: 0.23%
+
+Cycle 77:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb121883857#about> (index 77000/124695)
+  System — CPU: 16.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2422 MB
+  Network— DL: 0.00 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 78:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb12234129c#about> (index 78000/124695)
+  System — CPU: 17.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2422 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 79:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb123043075#about> (index 79000/124695)
+  System — CPU: 8.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 80:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb123775323#about> (index 80000/124695)
+  System — CPU: 17.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 81:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb12449611f#about> (index 81000/124695)
+  System — CPU: 12.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 82:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb12492797m#about> (index 82000/124695)
+  System — CPU: 10.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 10% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 83:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb125178085#about> (index 83000/124695)
+  System — CPU: 19.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 84:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb12534893x#about> (index 84000/124695)
+  System — CPU: 11.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 33.2% | Mem: 0.23%
+
+Cycle 85:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb125647860#about> (index 85000/124695)
+  System — CPU: 13.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.8% | Mem: 0.23%
+
+Cycle 86:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb12789425x#about> (index 86000/124695)
+  System — CPU: 11.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 87:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb129837260#about> (index 87000/124695)
+  System — CPU: 13.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.05 Mbps | UL: 1.00 Mbps
+  Process— CPU: 39.6% | Mem: 0.23%
+
+Cycle 88:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13010899w#about> (index 88000/124695)
+  System — CPU: 21.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 13% | Mem: 2420 MB
+  Network— DL: 0.06 Mbps | UL: 0.03 Mbps
+  Process— CPU: 16.8% | Mem: 0.23%
+
+Cycle 89:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13230928d#about> (index 89000/124695)
+  System — CPU: 22.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 13% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 49.6% | Mem: 0.23%
+
+Cycle 90:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13321772j#about> (index 90000/124695)
+  System — CPU: 11.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 13% | Mem: 2420 MB
+  Network— DL: 0.06 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 91:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13390982m#about> (index 91000/124695)
+  System — CPU: 12.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 92:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13405907c#about> (index 92000/124695)
+  System — CPU: 10.3% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 93:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13418131z#about> (index 93000/124695)
+  System — CPU: 22.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 49.6% | Mem: 0.23%
+
+Cycle 94:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13426663p#about> (index 94000/124695)
+  System — CPU: 17.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 95:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb134351111#about> (index 95000/124695)
+  System — CPU: 11.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 96:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb134489386#about> (index 96000/124695)
+  System — CPU: 14.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 97:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb134606663#about> (index 97000/124695)
+  System — CPU: 7.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 98:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13466455b#about> (index 98000/124695)
+  System — CPU: 15.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 11% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 99:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13485043d#about> (index 99000/124695)
+  System — CPU: 18.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 100:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb135313871#about> (index 100000/124695)
+  System — CPU: 15.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 101:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb13965231d#about> (index 101000/124695)
+  System — CPU: 17.1% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.03 Mbps | UL: 0.01 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 102:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb14306997c#about> (index 102000/124695)
+  System — CPU: 12.1% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 39.6% | Mem: 0.23%
+
+Cycle 103:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb143205330#about> (index 103000/124695)
+  System — CPU: 18.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 17% | Mem: 2420 MB
+  Network— DL: 0.09 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 104:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb14326657q#about> (index 104000/124695)
+  System — CPU: 12.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 105:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb143317063#about> (index 105000/124695)
+  System — CPU: 11.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 106:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb14337135g#about> (index 106000/124695)
+  System — CPU: 26.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 107:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb143482205#about> (index 107000/124695)
+  System — CPU: 15.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 108:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb145634897#about> (index 108000/124695)
+  System — CPU: 13.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 109:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb14840939f#about> (index 109000/124695)
+  System — CPU: 21.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 59.3% | Mem: 0.23%
+
+Cycle 110:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb149551494#about> (index 110000/124695)
+  System — CPU: 12.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 33.6% | Mem: 0.23%
+
+Cycle 111:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb14981459x#about> (index 111000/124695)
+  System — CPU: 11.9% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 9% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 112:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb151290803#about> (index 112000/124695)
+  System — CPU: 15.6% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 15% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 19.8% | Mem: 0.23%
+
+Cycle 113:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb15154859w#about> (index 113000/124695)
+  System — CPU: 12.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 15% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 114:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb15368722s#about> (index 114000/124695)
+  System — CPU: 23.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 15% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 115:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb15455868m#about> (index 115000/124695)
+  System — CPU: 11.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 50.4% | Mem: 0.23%
+
+Cycle 116:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb155903681#about> (index 116000/124695)
+  System — CPU: 17.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 16.6% | Mem: 0.23%
+
+Cycle 117:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb161832750#about> (index 117000/124695)
+  System — CPU: 20.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 18% | Mem: 2420 MB
+  Network— DL: 0.02 Mbps | UL: 0.01 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 118:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb164057135#about> (index 118000/124695)
+  System — CPU: 17.4% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 19% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.01 Mbps
+  Process— CPU: 49.6% | Mem: 0.23%
+
+Cycle 119:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb16655999n#about> (index 119000/124695)
+  System — CPU: 10.2% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 19% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 120:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb168964134#about> (index 120000/124695)
+  System — CPU: 15.1% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 40.1% | Mem: 0.23%
+
+Cycle 121:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb17000865x#about> (index 121000/124695)
+  System — CPU: 18.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 122:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb17330743g#about> (index 122000/124695)
+  System — CPU: 17.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 8% | Mem: 2420 MB
+  Network— DL: 0.01 Mbps | UL: 0.01 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+Cycle 123:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb17364603j#about> (index 123000/124695)
+  System — CPU: 16.5% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 12% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 124:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb179894358#about> (index 124000/124695)
+  System — CPU: 11.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 12% | Mem: 2420 MB
+  Network— DL: 0.06 Mbps | UL: 0.93 Mbps
+  Process— CPU: 20.0% | Mem: 0.23%
+
+Cycle 125:
+  Context: Processed actor <http://data.bnf.fr/ark:/12148/cb182662256#about> (index 124695/124695)
+  System — CPU: 12.8% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 12% | Mem: 2422 MB
+  Network— DL: 0.00 Mbps | UL: 0.01 Mbps
+  Process— CPU: 25.2% | Mem: 0.23%
+
+Cycle 126:
+  Context: Completed actor_dates harmonisation run
+  System — CPU: 100.0% | Mem: 52.0% | Disk: 20.3%
+  GPU    — Util: 14% | Mem: 2420 MB
+  Network— DL: 0.00 Mbps | UL: 0.00 Mbps
+  Process— CPU: 24.8% | Mem: 0.23%
+
+----------------------------------------------------------------------
+
+End Time: 2026-09-30 18:12:23
+Total Duration: 9.63 seconds
+Total Cycles: 126
+
+======================================================================

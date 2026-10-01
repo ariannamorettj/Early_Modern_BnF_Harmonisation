@@ -505,6 +505,15 @@ footer.colophon a{color:var(--accent); text-decoration:none; border-bottom:1px s
   position:fixed; top:-40px; left:8px;
 }
 a:focus-visible, .rail-list a:focus-visible{outline:2px solid var(--accent); outline-offset:2px;}
+.shots{display:grid; grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr)); gap:18px; margin:28px 0;}
+.shot{margin:0; background:var(--paper-raised); border:1px solid var(--rule); box-shadow:var(--shadow); min-width:0;}
+.shot--wide{grid-column:1 / -1;}
+.shot a{display:block;}
+.shot img{display:block; width:100%; height:auto; border-bottom:1px solid var(--rule);}
+.shot figcaption{padding:10px 12px; font-size:.8rem; color:var(--ink-muted); line-height:1.45;}
+.shot figcaption strong{color:var(--ink);}
+.callout{margin:24px 0; padding:14px 18px; border-left:3px solid var(--accent); background:var(--paper-raised); font-size:.9rem; line-height:1.55; color:var(--ink);}
+.callout p{margin:0 0 8px 0;} .callout p:last-child{margin-bottom:0;}
 </style>
 </head>
 <body>
@@ -1012,6 +1021,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="dist-foot">The model never guesses a historical identity from bare initials — that is authority-linking's job, done downstream in module 06. It either produces a confident, narrow correction or returns <strong>empty, low confidence</strong>.</div>
       </div>
     </div>
+    <p class="body-text">The portal showed these literals still on screen: the normaliser recorded the unwrapped name, but the ready-dataset assembly only filled empty cells from it. <code>assemble_actors_ready.py</code> now replaces the cell when the correction is <code>stripped_rdf_literal_tag</code> and the cell still holds the original value (11,425 rows, 2,507 organisations). The suspected broken encoding turned out to be a console display artefact: a byte-level scan found no corrupted characters. <code>02_sampling/05_text_issue_sample.py</code> and <code>03_analysis/06_text_integrity_check.py</code> now run that scan (invalid UTF-8, replacement characters, double encoding, control characters, serialised literals) on any CSV and sample the affected entities.</p>
   </div>
 
   <!-- ---------- FIELD: actor_dates ---------- -->
@@ -1043,6 +1053,12 @@ A. G. Eckhardt                  name  responsible agent name</pre>
           <div class="fix-meta"><span class="tag">exact_year, BCE</span><span class="conf high"><span class="dot"></span>high</span></div>
         </div>
         <div class="fix">
+          <div class="fix-original">170 <span style="color:var(--ink-faint);">(other date: 1705)</span></div>
+          <div class="fix-arrow">&rarr;</div>
+          <div class="fix-result">170X</div>
+          <div class="fix-meta"><span class="tag">truncated_decade</span><span class="conf medium"><span class="dot"></span>medium</span></div>
+        </div>
+        <div class="fix">
           <div class="fix-original">150.-02-20</div>
           <div class="fix-arrow">&rarr;</div>
           <div class="fix-result" style="color:var(--ink-faint); font-style:italic;">mask inside a full date &mdash; sent to Claude Opus 5</div>
@@ -1061,6 +1077,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <div class="dist-foot"><strong>99.98%</strong> resolved by the heuristic rule alone. The BCE offset was verified, not assumed: Aristotle's own record (384&ndash;322&nbsp;BCE) confirmed the source uses ordinary historical counting, not astronomical year numbering.</div>
       </div>
     </div>
+    <p class="body-text">A bare three-digit year such as <code>170</code> is read as a decade (<code>170X</code>) rather than as the year 170, but only when another date of the same actor starts with a plausible four-digit year. Read literally it became <code>0170</code>, which broke the date check of the ESTC actor match; the rule touches 1,045 values.</p>
   </div>
 
   <!-- ---------- FIELD: external_links ---------- -->
@@ -1129,6 +1146,7 @@ A. G. Eckhardt                  name  responsible agent name</pre>
         <p class="body-text" style="margin-top:0;">Bracket, parenthesis and question-mark markers on the raw string are preserved as separate uncertainty flags — the BnF catalogue's own doubt about a place survives into the harmonised row instead of being silently resolved away.</p>
       </div>
     </div>
+    <p class="body-text">The map in the portal exposed wrong entries in that table: Bordeaux pointed at <code>tgn:7659881</code>, another place of the same name. <code>verify_tgn_table.py</code> now checks every row against the Getty SPARQL endpoint (country, coordinates, label, and whether a core TGN settlement of the same name exists), caching each answer so an interrupted run resumes. <code>fix_tgn_table.py</code> applies only unambiguous corrections plus reviewed manual overrides, and logs each one. 24 rows changed (Augsburg, Avignon, Beauvais, Bordeaux, Dijon, La Rochelle, Tours, Valence, Valencia, and Philadelphia's swapped coordinates), affecting 6,060 editions.</p>
   </div>
 
   <!-- ---------- FIELD: language ---------- -->
@@ -1325,21 +1343,21 @@ roles:            <span class="k">"author"</span></pre>
     <div class="card">
       <span class="k">01_map_viaf.py</span>
       <span class="t">VIAF</span>
-      <span class="d">ID lookup, falling back to a name-based SRU search.</span>
+      <span class="d">Three passes against VIAF's current API: the BnF record id (<code>/viaf/sourceID/BNF|...</code>, which matches about 90% of actors), a VIAF link already on file, then a name-based SRU search. The old endpoints now answer 404; a 404 means "no record", while timeouts and 5xx are retried later instead of being written down as unmatched.</span>
       <p class="io"><span class="io-label">Input</span> one BnF actor (+ any VIAF URI already on file)</p>
       <p class="io"><span class="io-label">Output</span> <code>viaf_id, viaf_name, birth_date, death_date, wikidata_id, ...</code></p>
     </div>
     <div class="card">
       <span class="k">02_map_wikidata.py</span>
       <span class="t">Wikidata</span>
-      <span class="d">QID lookup (incl. one supplied by the VIAF step), falling back to a date-constrained SPARQL label search.</span>
+      <span class="d">Batched lookup by BnF ARK (Wikidata P268, 150 ids per query), then the QID supplied by the VIAF step, then a date-constrained SPARQL label search.</span>
       <p class="io"><span class="io-label">Input</span> one BnF actor (+ any QID from step 1)</p>
       <p class="io"><span class="io-label">Output</span> <code>qid, wikidata_label, isni, lc_id, ...</code></p>
     </div>
     <div class="card">
       <span class="k">03_map_estc_ecco.py</span>
       <span class="t">ESTC / ECCO editions</span>
-      <span class="d">Heuristic field matching (year + author + title similarity), then an optional LLM translation check.</span>
+      <span class="d">Offline, on the three COMHIS tables. Only editions in English or printed in the British Isles and British America are candidates (32,353). Pass 1 follows the ESTC actor links below to that author's ESTC records; pass 2 matches author name, year &plusmn;2 and title. Near-ties are settled by the exact year or left ambiguous. Result: 9,716 editions matched, 2,930 ambiguous. An LLM translation check is optional.</span>
       <p class="io"><span class="io-label">Input</span> one BnF edition</p>
       <p class="io"><span class="io-label">Output</span> <code>estc_id, match_type, confidence</code></p>
     </div>
@@ -1358,6 +1376,8 @@ roles:            <span class="k">"author"</span></pre>
       <p class="io"><span class="io-label">Output</span> <code>bnf_actors_enriched.csv</code> + <code>bnf_editions_enriched.csv</code></p>
     </div>
   </div>
+
+  <p class="body-text">The VIAF and Wikidata runs take about a day over 92,780 actors, so they resume where they stopped: each result row is appended and flushed to disk as soon as it is written, a partial last line left by a crash or power cut is dropped on restart, and actors already in the output are skipped. The system monitor takes a checkpoint every 100 actors.</p>
 
   <div class="dataset reveal pending">
     <div class="dataset-head">
@@ -1440,7 +1460,7 @@ bnf_death_year: 1726                    estc_death_year: 1726</pre>
       <span class="dataset-name">bnf_editions_enriched.csv</span>
       <span class="dataset-meta">module 06 output &middot; 42 columns</span>
     </div>
-    <p class="dataset-desc">Module 07's real input — the 1454 specimen, unchanged since module 01 except for the CHAD-AP-shaped <code>edition_*</code> columns morph-kgc's YARRRML mapping expects. <strong>Known gap:</strong> this file itself is only a 20-row test fixture on disk right now, not a run over the full 814,031-row table — and the <code>estc_*</code> columns are correspondingly still empty, since <code>03_map_estc_ecco.py</code> hasn't been run against the real editions table yet (module 06's own status).</p>
+    <p class="dataset-desc">Module 07's real input — the 1454 specimen, unchanged since module 01 except for the CHAD-AP-shaped <code>edition_*</code> columns morph-kgc's YARRRML mapping expects. The full profile reads all 814,031 rows straight from module 04's <code>bnf_editions_ready.csv</code> and merges in module 06's <code>estc_*</code> columns: 9,716 editions carry a confident ESTC id, which becomes an <code>rdfs:seeAlso</code> link to the ESTC record. The full enriched file (about 500 MB) lives next to the ready editions in the git-ignored <code>data/</code> folder, since the CSVs are stored in Git LFS.</p>
     <p class="dataset-cols"><span class="lbl">Columns (selected)</span><code>edition, bnf_id, title, year_first, place, publisher, language, author, ..., edition_base, edition_pub_place, edition_pub_actor, ..., estc_id, estc_title, estc_match_type, estc_confidence</code></p>
     <div class="term">
 <pre>edition:   &lt;...cb31015462k#about&gt;
@@ -1456,12 +1476,12 @@ estc_id:   <span style="color:var(--ink-faint); font-style:italic;">(empty — n
       <span class="dataset-name">bnf_actors_enriched.csv</span>
       <span class="dataset-meta">module 06 output &middot; 92,780 rows &middot; 34 columns</span>
     </div>
-    <p class="dataset-desc">Module 07's other real input — François Le Gentil again, this time with the ESTC match folded in and the still-empty VIAF/Wikidata columns (those two mapping scripts haven't been run this session either).</p>
+    <p class="dataset-desc">Module 07's other real input — François Le Gentil again, this time with the ESTC match folded in and the VIAF/Wikidata columns still empty in this version of the file: <code>01_map_viaf.py</code> is running over the 92,780 actors, and <code>02_map_wikidata.py</code> follows it.</p>
     <p class="dataset-cols"><span class="lbl">Columns (selected)</span><code>BnF_ID, actor_name, ..., role_edition_map, roles, viaf_id, viaf_name, qid, wikidata_label, isni, lc_id, estc_actor_id, estc_actor_name, estc_actor_match_type, estc_actor_confidence, estc_actor_candidate_id, estc_actor_candidate_name</code></p>
     <div class="term">
 <pre>BnF_ID:      &lt;...cb10017347j#about&gt;
 actor_name:  François Le Gentil
-viaf_id:     <span style="color:var(--ink-faint); font-style:italic;">(empty — 01_map_viaf.py not yet run)</span>
+viaf_id:     <span style="color:var(--ink-faint); font-style:italic;">(empty — 01_map_viaf.py still running)</span>
 estc_actor_id: viaf_17211219    estc_actor_match_type: <span class="hl">viaf_id</span>    estc_actor_confidence: 1.0</pre>
     </div>
   </div>
@@ -1482,26 +1502,26 @@ estc_actor_id: viaf_17211219    estc_actor_match_type: <span class="hl">viaf_id<
   </div>
   <p class="body-text">Each edition keeps the place and publisher as recorded next to module 04's harmonised values, and the TGN coordinates become a WKT point. CIDOC-CRM and LRMoo cover the bibliographic classes; CHAD-AP's <code>obj:</code> wrapper covers actor-side properties.</p>
 
-  <p class="body-text">Three YARRRML mapping files, one per CHAD-AP concern &mdash; actors, bibliographic entities, and the role arcs connecting them &mdash; are compiled by morph-kgc into three <code>.nt</code> shards and one merged graph. The sample profile is <em>linked</em>: seed actors drawn with a fixed seed, every edition they are credited on, and every other actor those editions credit. The current sample holds 309 actors and 220 editions in 18,334 distinct triples, with no role edge pointing outside the sample.</p>
+  <p class="body-text">Three YARRRML mapping files, one per CHAD-AP concern &mdash; actors, bibliographic entities, and the role arcs connecting them &mdash; are compiled by morph-kgc into three <code>.nt</code> shards and one merged graph. The sample profile is <em>linked</em>: seed actors drawn with a fixed seed, every edition they are credited on, and every other actor those editions credit. The current sample holds 187 actors and 238 editions in 14,861 distinct triples (16,487 lines, 12 of them ESTC links), with no role edge pointing outside the sample. The full graph is 39.3 million lines, 7.0 GB of N-Triples.</p>
 
-  <p class="body-text">Three problems turned up while wiring the portal and are fixed in preprocess. <code>role_edition_map</code> stores the bare FRBNF number, while the ARK carries a check character (<code>31015462</code> vs <code>cb31015462k</code>); ids are now resolved through the editions table instead of being guessed. morph-kgc ignores YARRRML <code>condition</code> blocks, which had typed every actor as both Person and Organization and minted empty birth and death events; fragment columns are now emptied wherever their condition column is empty. And the enriched actors' angle-bracketed <code>BnF_ID</code> no longer drops every actor.</p>
+  <p class="body-text">Three problems turned up while wiring the portal and are fixed in preprocess. <code>role_edition_map</code> stores the bare FRBNF number, while the ARK carries a check character (<code>31015462</code> vs <code>cb31015462k</code>); ids are now resolved through the editions table instead of being guessed. morph-kgc ignores YARRRML <code>condition</code> blocks, which had typed every actor as both Person and Organization and minted empty birth and death events; fragment columns are now emptied wherever their condition column is empty. And the enriched actors' angle-bracketed <code>BnF_ID</code> no longer drops every actor. A person's start and end years are no longer minted as foundation and dissolution events: those stay for organisations only.</p>
 
   <p class="body-text">The preprocess step picks its own upstream source automatically: module 06's enriched actors first, falling back to module 05's optimised actors if the enriched file isn't there; editions always come straight from module 04's <code>bnf_editions_ready.csv</code>, since there's no module-05 equivalent for editions to fall back through.</p>
 
   <ol class="cmdlist">
     <li><div><code>scripts/bnf_graph_pipeline.py preprocess --profile full --force</code>
       <p class="io"><span class="io-label">Input</span> module 06's enriched CSVs (falling back to module 05/04, per above) <span class="io-label">Output</span> ready CSVs, column-mapped to the YARRRML field names</p></div></li>
-    <li><div><code>run_full_pipeline.py --profile full</code>
-      <p class="io"><span class="io-label">Input</span> the ready CSVs + the three YARRRML mapping files <span class="io-label">Output</span> materialise &rarr; validate &rarr; merge &rarr; report, all in one orchestrated run: <code>knowledge-graph_actors.nt</code>, <code>_bibliographic.nt</code>, <code>_roles.nt</code> (when present), <code>_merged.nt</code></p></div></li>
+    <li><div><code>scripts/bnf_graph_pipeline.py all --profile full --force</code>
+      <p class="io"><span class="io-label">Input</span> the ready CSVs + the three YARRRML mapping files <span class="io-label">Output</span> preprocess &rarr; materialise &rarr; validate &rarr; merge in one run (about 15 minutes on the full profile): <code>knowledge-graph_actors.nt</code>, <code>_bibliographic.nt</code>, <code>_roles.nt</code>, <code>_merged.nt</code></p></div></li>
   </ol>
-  <p class="body-text" style="font-size:.85rem; color:var(--ink-muted);">The orchestrator wraps four lower-level <code>bnf_graph_pipeline.py</code> subcommands (<code>materialize</code>, <code>validate</code>, <code>merge</code>, plus its own report step) — each still callable directly, one target at a time, for granular re-runs.</p>
+  <p class="body-text" style="font-size:.85rem; color:var(--ink-muted);">Each step (<code>preprocess</code>, <code>materialize</code>, <code>validate</code>, <code>merge</code>) is also a subcommand of its own, for granular re-runs. <code>--profile sample</code> builds the linked sample; <code>--sample-mode</code>, <code>--max-editions-per-actor</code> and <code>--seed</code> control its size.</p>
 </section>
 
 <!-- ============================================================ 08 -->
 <section id="mod-08" class="module wrap">
   <p class="eyebrow"><span class="num-badge">08</span>Python &middot; Oxigraph &middot; Sampo-UI v4</p>
   <h2 class="title">Sampo portal</h2>
-  <span class="field-badge complete" style="margin-top:14px; display:inline-block;">running on the sample graph</span>
+  <span class="field-badge complete" style="margin-top:14px; display:inline-block;">running locally on the full graph</span>
   <p class="lede" style="margin-top:16px;">A faceted-search portal over the graph module 07 produces, rebuilt from whatever that module wrote last.</p>
 
   <div class="card-grid reveal pending">
@@ -1532,22 +1552,50 @@ estc_actor_id: viaf_17211219    estc_actor_match_type: <span class="hl">viaf_id<
     <table class="tbl">
       <thead><tr><th>Perspective</th><th>Facets</th><th>Views</th></tr></thead>
       <tbody>
-        <tr><td class="mono">editions</td><td>title, author, other contributors, year, place, publisher, language</td><td>table &middot; map of places of publication &middot; editions per decade &middot; export</td></tr>
+        <tr><td class="mono">editions</td><td>title, author, other contributors, year, place, publisher, language</td><td>table &middot; map of places of publication &middot; editions per decade &middot; export &middot; edition pages link to the matched ESTC record</td></tr>
         <tr><td class="mono">actors</td><td>name, type, role, gender, country, birth year, death year</td><td>table &middot; births per decade &middot; export</td></tr>
       </tbody>
     </table>
   </div>
 
+  <div class="shots reveal pending">
+    <figure class="shot shot--wide">
+      <a href="img/portal/editions_map.jpg"><img src="img/portal/editions_map.jpg" alt="Map view of the editions perspective: clusters of editions over Europe, 403,982 around Paris" loading="lazy"></a>
+      <figcaption><strong>Editions, map view.</strong> All 814,031 editions, clustered by harmonised place of publication; the coordinates come from module 04's TGN table.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="img/portal/editions_by_decade.jpg"><img src="img/portal/editions_by_decade.jpg" alt="Line chart of editions per decade, 1450 to 1790" loading="lazy"></a>
+      <figcaption><strong>Editions by decade</strong> of first publication. The chart follows the facet selection.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="img/portal/home.jpg"><img src="img/portal/home.jpg" alt="Portal home page with the Editions and Actors perspectives" loading="lazy"></a>
+      <figcaption><strong>Home page</strong>, with the two perspectives.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="img/portal/edition_page.jpg"><img src="img/portal/edition_page.jpg" alt="Instance page of an edition: title, author Henry Isaacson, year 1650, place London" loading="lazy"></a>
+      <figcaption><strong>Edition page</strong>: the same London 1650 edition shown in module 07, with the place both harmonised and as recorded.</figcaption>
+    </figure>
+    <figure class="shot">
+      <a href="img/portal/actor_page.jpg"><img src="img/portal/actor_page.jpg" alt="Instance page of the actor Henry Isaacson: person, born 1581, died 1654, United Kingdom, author" loading="lazy"></a>
+      <figcaption><strong>Actor page</strong>, reached from the author link: dates, gender, country, roles and editions.</figcaption>
+    </figure>
+  </div>
+
+  <div class="callout">
+    <p><strong>Why the portal is not online.</strong> A Sampo portal is not a static site: the React client calls a Node.js server, which queries a SPARQL endpoint holding the whole graph. GitHub Pages serves static files only, and the full graph (39.3 million lines, 7.0 GB of N-Triples; 9.4 GB as an Oxigraph store with the portal layer) needs a server with that much disk and memory, which no free hosting tier provides.</p>
+    <p>It runs on your machine instead: on the sample graph shipped with the repository (14,861 triples) in about ten minutes, or on the full graph once it has been rebuilt (about 15 minutes for the graph, 40 for the store). The screenshots above are from the full graph, where tables, map and charts answer in 1&ndash;15 s and facet counts in 20&ndash;30 s. Step-by-step instructions are in the repository README.</p>
+  </div>
+
   <ol class="cmdlist">
     <li><div><code>portal.py setup</code>
       <p class="io">Downloads the pinned Oxigraph binary and checks its SHA-256, clones Sampo-UI at the pinned commit, links <code>configs/</code> into it, and installs its npm dependencies.</p></div></li>
-    <li><div><code>portal.py load --profile sample</code>
-      <p class="io">Rebuilds the store after any module 07 run.</p></div></li>
+    <li><div><code>portal.py load --profile sample</code> (or <code>--profile full</code>)
+      <p class="io">Rebuilds the store after any module 07 run: seconds for the sample, about 40 minutes for the full graph. Stop <code>dev</code> first; the new store replaces the old one only once it is complete.</p></div></li>
     <li><div><code>portal.py dev</code>
       <p class="io">Starts the endpoint, the Sampo-UI server and the client (<code>localhost:8080</code>).</p></div></li>
   </ol>
 
-  <p class="body-text" style="font-size:.85rem; color:var(--ink-muted);"><strong>Known gaps:</strong> the top-bar full-text search and the network view are off, because they need a Jena text index and Sampo's external network service. Building the portal also surfaced three upstream data problems. About 2,100 organisation names still arrive as serialised literals (<code>"France"@fr</code>), some with broken encoding. Module 04's TGN table places Bordeaux at <code>tgn:7659881</code>, a different place, which affects 1,153 editions. The actor mapping types a person's start and end years as foundation and dissolution.</p>
+  <p class="body-text" style="font-size:.85rem; color:var(--ink-muted);"><strong>Known gaps:</strong> the top-bar full-text search and the network view are off, because they need a Jena text index and Sampo's external network service. Building the portal also surfaced three upstream data problems, each now fixed where it starts: organisation names left as serialised literals (<code>"France"@fr</code>, module 04 assembly), wrong TGN homonyms for ten places including Bordeaux (module 04 place table), and foundation and dissolution events minted for persons (module 07 preprocess). The results table uses a <code>LATERAL</code> query, so Oxigraph computes the displayed properties only for the rows on the page (actors table on the full graph: 95&nbsp;s &rarr; 7&nbsp;s).</p>
 </section>
 
 <footer class="colophon">

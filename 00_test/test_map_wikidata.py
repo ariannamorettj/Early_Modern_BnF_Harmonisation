@@ -217,3 +217,66 @@ def test_load_monitor_module_resolves_real_monitor_script():
     assert hasattr(monitor, "start_monitor_state")
     assert hasattr(monitor, "update_monitor_state")
     assert hasattr(monitor, "stop_monitor_state")
+
+
+def test_bnf_ark_is_the_p268_form():
+    wikidata = load_wikidata_module()
+    assert wikidata.bnf_ark("<http://data.bnf.fr/ark:/12148/cb11928669t#about>") == "11928669t"
+    assert wikidata.bnf_ark("A1") is None
+
+
+def test_run_mapping_uses_the_p268_batch_and_defers_network_failures(monkeypatch, tmp_path):
+    """Actors Wikidata lists under their BnF ARK are matched from the batch
+    lookup with no call of their own; an actor whose own lookup keeps failing
+    is left out of the output and picked up by the next run."""
+    wikidata = load_wikidata_module()
+    input_path = tmp_path / "actors.csv"
+    _write_actors_csv(input_path, [
+        {"BnF_ID": "<http://data.bnf.fr/ark:/12148/cb11928669t#about>", "actor_name": "Voltaire"},
+        {"BnF_ID": "<http://data.bnf.fr/ark:/12148/cb10000001b#about>", "actor_name": "Jean Dupont"},
+    ])
+    prefetch_calls = []
+
+    def fake_prefetch(arks, sleep, cache_path=None):
+        prefetch_calls.append(list(arks))
+        return {"11928669t": {"qid": "Q9068", "wikidata_label": "Voltaire", "bnf_ark": "11928669t"}}
+
+    def failing_search(*a, **kw):
+        raise wikidata.TransientError("HTTP 429")
+
+    monkeypatch.setattr(wikidata, "prefetch_by_bnf", fake_prefetch)
+    monkeypatch.setattr(wikidata, "search_wikidata_by_name", failing_search)
+    kwargs = dict(input_path=str(input_path), viaf_mapping_path=str(tmp_path / "none.csv"),
+                  output_path=str(tmp_path / "out.csv"), report_path=str(tmp_path / "rep.json"),
+                  threshold=0.85, sleep=0)
+    stats = wikidata.run_mapping(**kwargs)
+    assert stats["bnf_ark"] == 1 and stats["written"] == 1 and stats["deferred_this_run"] == 1
+
+    monkeypatch.setattr(wikidata, "search_wikidata_by_name", lambda *a, **kw: [])
+    stats = wikidata.run_mapping(**kwargs)
+    assert prefetch_calls[-1] == ["10000001b"]  # only the missing actor is looked up again
+    assert stats["written"] == 2 and stats["unmatched"] == 1
+
+
+def test_prefetch_by_bnf_resumes_from_its_batch_cache(monkeypatch, tmp_path):
+    wikidata = load_wikidata_module()
+    monkeypatch.setattr(wikidata, "BNF_BATCH_SIZE", 2)
+    queried = []
+
+    def fake_batch(batch, sleep):
+        queried.append(list(batch))
+        return {a: {"qid": "Q" + a, "bnf_ark": a} for a in batch if a.startswith("1")}
+
+    monkeypatch.setattr(wikidata, "_query_bnf_batch", fake_batch)
+    cache = tmp_path / "cache.jsonl"
+    first = wikidata.prefetch_by_bnf(["1a", "2b", "1c"], 0, str(cache))
+    with open(cache, "a", encoding="utf-8") as f:
+        f.write('{"arks": ["1d"')  # a batch cut short by a crash
+    queried.clear()
+    second = wikidata.prefetch_by_bnf(["1a", "2b", "1c", "1d"], 0, str(cache))
+
+    assert set(first) == {"1a", "1c"}
+    assert queried == [["1d"]]  # only the unfinished batch is queried again
+    assert set(second) == {"1a", "1c", "1d"}
+    third = wikidata.prefetch_by_bnf(["1a", "2b", "1c", "1d"], 0, str(cache))
+    assert set(third) == {"1a", "1c", "1d"} and queried == [["1d"]]  # 1d now read from the cache

@@ -1,0 +1,211 @@
+{
+  "issue_types": [
+    "invalid_utf8",
+    "replacement_char",
+    "double_encoded",
+    "control_char",
+    "serialised_rdf_literal"
+  ],
+  "files": [
+    {
+      "file": "01_data_retrieval/02_actors/actors_data/actor_data.csv",
+      "rows": 551622,
+      "rows_with_any_issue": 11425,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 11425
+      },
+      "by_column": {
+        "actor_name": {
+          "serialised_rdf_literal": 11425
+        }
+      },
+      "examples": {
+        "actor_name": {
+          "serialised_rdf_literal": [
+            {
+              "line": 262,
+              "value": "\"Imprimerie des 86 départements. Paris\"@fr"
+            },
+            {
+              "line": 263,
+              "value": "\"Imprimerie des 86 départements. Paris\"@fr"
+            },
+            {
+              "line": 364,
+              "value": "\"Le Cercle social. Paris\"@fr"
+            },
+            {
+              "line": 365,
+              "value": "\"Le Cercle social. Paris\"@fr"
+            },
+            {
+              "line": 454,
+              "value": "\"Club de 1789. Paris\"@fr"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "04_harmonisation_and_evaluation/output/bnf_actors_ready.csv",
+      "rows": 551622,
+      "rows_with_any_issue": 11425,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 11425
+      },
+      "by_column": {
+        "actor_name": {
+          "serialised_rdf_literal": 11425
+        }
+      },
+      "examples": {
+        "actor_name": {
+          "serialised_rdf_literal": [
+            {
+              "line": 262,
+              "value": "\"Imprimerie des 86 départements. Paris\"@fr"
+            },
+            {
+              "line": 263,
+              "value": "\"Imprimerie des 86 départements. Paris\"@fr"
+            },
+            {
+              "line": 364,
+              "value": "\"Le Cercle social. Paris\"@fr"
+            },
+            {
+              "line": 365,
+              "value": "\"Le Cercle social. Paris\"@fr"
+            },
+            {
+              "line": 454,
+              "value": "\"Club de 1789. Paris\"@fr"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "05_subset_optimisation/output/bnf_actors_optimised.csv",
+      "rows": 92780,
+      "rows_with_any_issue": 2142,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 2142
+      },
+      "by_column": {
+        "actor_name": {
+          "serialised_rdf_literal": 2142
+        }
+      },
+      "examples": {
+        "actor_name": {
+          "serialised_rdf_literal": [
+            {
+              "line": 119,
+              "value": "\"William Blake trust\"@fr"
+            },
+            {
+              "line": 123,
+              "value": "\"Abbaye Saint-Denis. Saint-Denis, Seine-Saint-Denis (1633-179.)\"@fr"
+            },
+            {
+              "line": 125,
+              "value": "\"Église catholique. Congrégation des évêques et réguliers\"@fr"
+            },
+            {
+              "line": 133,
+              "value": "\"Église réformée de France. Consistoire de Paris et de la région parisienne\"@fr"
+            },
+            {
+              "line": 134,
+              "value": "\"Pennsylvanie\"@fr"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "06_mapping/output/bnf_actors_enriched.csv",
+      "rows": 92780,
+      "rows_with_any_issue": 2142,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 2142
+      },
+      "by_column": {
+        "actor_name": {
+          "serialised_rdf_literal": 2142
+        }
+      },
+      "examples": {
+        "actor_name": {
+          "serialised_rdf_literal": [
+            {
+              "line": 119,
+              "value": "\"William Blake trust\"@fr"
+            },
+            {
+              "line": 123,
+              "value": "\"Abbaye Saint-Denis. Saint-Denis, Seine-Saint-Denis (1633-179.)\"@fr"
+            },
+            {
+              "line": 125,
+              "value": "\"Église catholique. Congrégation des évêques et réguliers\"@fr"
+            },
+            {
+              "line": 133,
+              "value": "\"Église réformée de France. Consistoire de Paris et de la région parisienne\"@fr"
+            },
+            {
+              "line": 134,
+              "value": "\"Pennsylvanie\"@fr"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "file": "01_data_retrieval/01_editions/data/bnf_edition_data_raw.csv",
+      "rows": 1344914,
+      "rows_with_any_issue": 0,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 0
+      },
+      "by_column": {},
+      "examples": {}
+    },
+    {
+      "file": "data/bnf_edition_data/bnf_editions_ready.csv",
+      "rows": 814031,
+      "rows_with_any_issue": 0,
+      "totals": {
+        "invalid_utf8": 0,
+        "replacement_char": 0,
+        "double_encoded": 0,
+        "control_char": 0,
+        "serialised_rdf_literal": 0
+      },
+      "by_column": {},
+      "examples": {}
+    }
+  ]
+}

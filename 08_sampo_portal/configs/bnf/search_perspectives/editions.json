@@ -6,6 +6,9 @@
         "prefixesFile": "SparqlQueriesPrefixes.js"
     },
     "sparqlQueriesFile": "SparqlQueriesEditions.js",
+    "generalQueries": {
+        "facetResultSetQuery": "facetResultSetQueryLateral"
+    },
     "baseURI": "http://data.bnf.fr/ark:/12148",
     "URITemplate": "<BASE_URI>/<LOCAL_ID>#about",
     "facetClass": "lrmoo:F3_Manifestation",
@@ -224,6 +227,15 @@
             "sortValues": false,
             "numberedList": false,
             "minWidth": 120
+        },
+        {
+            "id": "estcRecord",
+            "valueType": "object",
+            "makeLink": true,
+            "externalLink": true,
+            "sortValues": false,
+            "numberedList": false,
+            "minWidth": 120
         }
     ],
     "facets": {
@@ -304,6 +316,9 @@
         },
         "digitalCopy": {
             "sortByPredicate": "crm:P130i_features_are_also_found_on/obj:isIdentifiedBy/obj:hasSymbolicContent"
+        },
+        "estcRecord": {
+            "sortByPredicate": "rdfs:seeAlso"
         }
     }
 }

@@ -66,3 +66,5 @@ export const actorBirthsByDecadeQuery = `
   GROUP BY ?category
   ORDER BY ?category
 `
+
+export { facetResultSetQueryLateral } from './SparqlQueriesShared.js'

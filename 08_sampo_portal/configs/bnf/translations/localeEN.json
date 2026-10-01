@@ -235,6 +235,10 @@
         "digitalCopy": {
           "label": "Digital copy",
           "description": "Link to a digitised copy, for example on Gallica."
+        },
+        "estcRecord": {
+          "label": "ESTC record",
+          "description": "The same edition in the English Short Title Catalogue, matched by module 06 (03_map_estc_ecco.py) on author, year and title."
         }
       }
     },

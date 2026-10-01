@@ -1,13 +1,14 @@
 {
   "actors": {
     "total": 92780,
-    "viaf_matched": 0,
-    "wikidata_matched": 0,
+    "viaf_matched": 226,
+    "wikidata_matched": 186,
     "estc_actor_matched": 5570,
     "estc_actor_ambiguous": 20
   },
   "editions": {
     "total": 814031,
-    "estc_matched": 0
+    "estc_matched": 9716,
+    "estc_ambiguous": 2930
   }
 }
